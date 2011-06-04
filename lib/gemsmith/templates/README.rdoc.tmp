@@ -1,0 +1,22 @@
+= Overview
+
+= Features
+
+= Requirements
+
+= Setup
+
+= Usage
+
+= Author
+
+{<%= config[:company_name] %>}[<%= config[:company_url] %>]
+
+= License
+
+Copyright (c) <%= config[:year] %> {<%= config[:company_name] %>}[<%= config[:company_url] %>].
+Read the LICENSE for details.
+
+= History
+
+Read the CHANGELOG for details.

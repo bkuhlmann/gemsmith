@@ -1,0 +1,5 @@
+#!/usr/local/bin/ruby
+
+require "<%= config[:gem_name] %>"
+require "<%= config[:gem_name] %>/cli"
+<%= config[:gem_class] %>::CLI.start

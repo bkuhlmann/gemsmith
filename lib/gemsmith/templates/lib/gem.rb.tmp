@@ -1,0 +1,5 @@
+require File.join File.dirname(__FILE__), "<%= config[:gem_name] %>", "version.rb"
+
+module <%= config[:gem_class] %>
+  # Placeholder.
+end

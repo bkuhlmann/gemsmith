@@ -1,25 +1,19 @@
 = Overview
 
-# Add
-
-# s.platform    = Gem::Platform::RUBY
-# s.rdoc_options << "CHANGELOG.rdoc"
-
-# Remove
-
-# s.rubyforge_project = "gemsmith"
-
 = Features
 
-* TODO
-
 = Requirements
-
-1. Bundler[https://github.com/carlhuda/bundler].
 
 = Setup
 
 = Usage
+
+gem_platform
+author_name
+author_email
+author_url
+company_name
+company_url
 
 = Author
 
