@@ -1,0 +1,5 @@
+#!/usr/local/bin/ruby
+
+require "gemsmith"
+require "gemsmith/cli"
+Gemsmith::CLI.start

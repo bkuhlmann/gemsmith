@@ -1,0 +1,35 @@
+= Overview
+
+# Add
+
+# s.platform    = Gem::Platform::RUBY
+# s.rdoc_options << "CHANGELOG.rdoc"
+
+# Remove
+
+# s.rubyforge_project = "gemsmith"
+
+= Features
+
+* TODO
+
+= Requirements
+
+1. Bundler[https://github.com/carlhuda/bundler].
+
+= Setup
+
+= Usage
+
+= Author
+
+{Red Alchemist}[http://www.redalchemist.com]
+
+= License
+
+Copyright (c) 2010 {Red Alchemist}[http://www.redalchemist.com].
+Read the LICENSE for details.
+
+= History
+
+Read the CHANGELOG for details.
