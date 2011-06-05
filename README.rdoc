@@ -6,12 +6,14 @@ command then you'll enjoy this gem since it is essentially an enhanced version o
 
 = Features
 
-* Common custom settings that you can configure once and use for every new gem that you build.
-* Additional skeleton files such as a README, CHANGELOG, and LICENCE (which you pretty much always need).
+* Builds a gem skeleton with Bundler functionality in mind.
+* Allows for common settings that you can configure once and use for every new gem that you build.
+* Adds additional skeleton files such as a README, CHANGELOG, LICENCE, etc.
 
 = Requirements
 
-* A desire to develop professional gems.
+* Bundler[https://github.com/carlhuda/bundler]
+* Basic familiarity with gem building.
 
 = Setup
 
@@ -34,8 +36,8 @@ simply create the following file:
   :company_name: Red Alchmist
   :company_url: http://www.redalchemist.com 
 
-NOTE: All of the options above are optional. You don't have to create the setting.yml at all or you can pick and
-choose what you want to define. Up to you. If you don't specify any settings then everything defaults as follows:
+NOTE: All options above are optional. You don't have to create the setting.yml at all or you can pick and
+choose what options to define. Up to you. If no options are configured, then the default options are as follows:
 
   gem_platform: Gem::Platform::RUBY
   author_name: <git user name>
@@ -55,6 +57,13 @@ From the command line, type: gemsmith help
 For more gem creation options, type: gemsmith help create
 
   -b, [--bin]  # Add binary to gem build.
+
+Also, don't forget that once you have created your gem skeleton, the following rake tasks are also
+available to you via Bundler (i.e. rake -T):
+
+  rake build    # Build <gem>-<version>.gem into the pkg directory
+  rake install  # Build and install <gem>-<version>.gem into system gems
+  rake release  # Create tag v0.1.1 and build and push <gem>-<version>.gem to Rubygems
 
 = Author
 
