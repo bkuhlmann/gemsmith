@@ -1,21 +1,60 @@
 = Overview
 
-Working on documentation, standby...
+Gemsmith allows you to easily craft new gems via the command line with custom settings (if desired). If you are a fan
+of Bundler[https://github.com/carlhuda/bundler] and appreciate the quick and easy setup you get via the +bundle gem+
+command then you'll enjoy this gem since it is essentially an enhanced version of Bundler.
 
 = Features
 
+* Common custom settings that you can configure once and use for every new gem that you build.
+* Additional skeleton files such as a README, CHANGELOG, and LICENCE (which you pretty much always need).
+
 = Requirements
+
+* A desire to develop professional gems.
 
 = Setup
 
+Type the following from the command line to install:
+
+  gem install gemsmith
+
+You can also configure common custom settings that you would like to apply to all new gems that you build. To do this,
+simply create the following file:
+
+  ~/.gemsmith/settings.yml
+
+...with the following settings (for example):
+
+  --- 
+  :gem_platform: Gem::Platform::RUBY
+  :author_name: Brooke Kuhlmann
+  :author_email: brooke@redalchemist.com
+  :author_url: http://www.redalchemist.com
+  :company_name: Red Alchmist
+  :company_url: http://www.redalchemist.com 
+
+NOTE: All of the options above are optional. You don't have to create the setting.yml at all or you can pick and
+choose what you want to define. Up to you. If you don't specify any settings then everything defaults as follows:
+
+  gem_platform: Gem::Platform::RUBY
+  author_name: <git user name>
+  author_email: <git email>
+  author_url: nil
+  company_name: <author name>
+  company_url: <author URL>
+
 = Usage
 
-gem_platform
-author_name
-author_email
-author_url
-company_name
-company_url
+From the command line, type: tweeter help
+
+  gemsmith -c, [create=GEM_NAME]  # Create new gem.
+  gemsmith -h, [help]             # Show this message.
+  gemsmith -v, [version]          # Show version.
+
+For more gem creation options, type: tweeter help create
+
+  -b, [--bin]  # Add binary to gem build.
 
 = Author
 
@@ -23,7 +62,7 @@ company_url
 
 = License
 
-Copyright (c) 2010 {Red Alchemist}[http://www.redalchemist.com].
+Copyright (c) 2011 {Red Alchemist}[http://www.redalchemist.com].
 Read the LICENSE for details.
 
 = History
