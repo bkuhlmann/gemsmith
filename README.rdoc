@@ -46,13 +46,13 @@ choose what you want to define. Up to you. If you don't specify any settings the
 
 = Usage
 
-From the command line, type: tweeter help
+From the command line, type: gemsmith help
 
   gemsmith -c, [create=GEM_NAME]  # Create new gem.
   gemsmith -h, [help]             # Show this message.
   gemsmith -v, [version]          # Show version.
 
-For more gem creation options, type: tweeter help create
+For more gem creation options, type: gemsmith help create
 
   -b, [--bin]  # Add binary to gem build.
 
