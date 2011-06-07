@@ -3,6 +3,9 @@
 = Features
 
 = Requirements
+<% if config[:rails] %>
+1. {Ruby on Rails}[http://rubyonrails.org].
+<% end %>
 
 = Setup
 
