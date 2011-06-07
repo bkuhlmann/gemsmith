@@ -25,7 +25,8 @@ module Gemsmith
 
     desc "-c, [create=GEM_NAME]", "Create new gem."
     map "-c" => :create
-    method_option :bin, :aliases => "-b", :desc => "Add binary to gem build.", :type => :boolean, :default => false
+    method_option :bin, :aliases => "-b", :desc => "Adds binary support.", :type => :boolean, :default => false
+    method_option :rspec, :aliases => "-r", :desc => "Add RSpec support.", :type => :boolean, :default => true
     def create name
       shell.say "\nCreating gem..."
 
@@ -46,9 +47,10 @@ module Gemsmith
         :year => Time.now.year
       }
 
-      # Apply templates.
+      # Configure templates.
       target_path = File.join Dir.pwd, gem_name
-      empty_directory File.join(target_path, "lib", gem_name)
+      
+      # Default templates.
       template "README.rdoc.tmp", File.join(target_path, "README.rdoc"), template_options
       template "CHANGELOG.rdoc.tmp", File.join(target_path, "CHANGELOG.rdoc"), template_options
       template "LICENSE.rdoc.tmp", File.join(target_path, "LICENSE.rdoc"), template_options
@@ -58,8 +60,17 @@ module Gemsmith
       template "gem.gemspec.tmp", File.join(target_path, "#{gem_name}.gemspec"), template_options
       template File.join("lib", "gem.rb.tmp"), File.join(target_path, "lib", "#{gem_name}.rb"), template_options
       template File.join("lib", "gem", "version.rb.tmp"), File.join(target_path, "lib", gem_name, "version.rb"), template_options
+      
+      # Binary (optional).
       if options[:bin]
         template File.join("bin", "gem.tmp"), File.join(target_path, "bin", gem_name), template_options
+      end
+
+      # RSpec (optional).
+      if options[:rspec]
+        template "rspec.tmp", File.join(target_path, ".rspec"), template_options
+        template File.join("spec", "spec_helper.rb.tmp"), File.join(target_path, "spec", "spec_helper.rb"), template_options
+        template File.join("spec", "gem_spec.rb.tmp"), File.join(target_path, "spec", "#{gem_name}_spec.rb"), template_options
       end
       
       shell.say "Gem created: #{gem_name}\n\n"

@@ -1,0 +1,6 @@
+require "rubygems"
+require "bundler/setup"
+require "<%= config[:gem_name] %>"
+
+RSpec.configure do |config|
+end
