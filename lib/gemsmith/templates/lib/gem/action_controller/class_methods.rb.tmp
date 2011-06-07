@@ -1,0 +1,18 @@
+module <%= config[:gem_class] %>
+  module ActionController
+    def self.included base
+      base.extend ClassMethods
+    end
+    
+    module ClassMethods
+			# TODO - Rename the method name to your liking.
+      def is_<%= config[:gem_name] %>_enhanced options = {}
+        self.send :include, InstanceMethods
+        
+        # Default Options
+        class_inheritable_reader :<%= config[:gem_name] %>_options
+        write_inheritable_attribute :<%= config[:gem_name] %>_options
+      end
+    end
+  end
+end

@@ -44,7 +44,8 @@ module Gemsmith
         :author_url => author_url,
         :company_name => (@settings[:company_name] || author_name),
         :company_url => (@settings[:company_url] || author_url),
-        :year => Time.now.year
+        :year => Time.now.year,
+        :rails => options[:rails]
       }
 
       # Configure templates.
@@ -64,6 +65,19 @@ module Gemsmith
       # Binary (optional).
       if options[:bin]
         template File.join("bin", "gem.tmp"), File.join(target_path, "bin", gem_name), template_options
+      end
+
+      # Ruby on Rails (optional).
+      if options[:rails]
+        # ActionController
+        template File.join("lib", "gem", "action_controller", "class_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "action_controller", "class_methods.rb"), template_options
+        template File.join("lib", "gem", "action_controller", "instance_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "action_controller", "instance_methods.rb"), template_options
+        # ActionView
+        template File.join("lib", "gem", "action_view", "class_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "action_view", "class_methods.rb"), template_options
+        template File.join("lib", "gem", "action_view", "instance_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "action_view", "instance_methods.rb"), template_options
+        # ActiveRecord
+        template File.join("lib", "gem", "active_record", "class_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "active_record", "class_methods.rb"), template_options
+        template File.join("lib", "gem", "active_record", "instance_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "active_record", "instance_methods.rb"), template_options
       end
 
       # RSpec (optional).

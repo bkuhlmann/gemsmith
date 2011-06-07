@@ -1,0 +1,7 @@
+module <%= config[:gem_class] %>
+  module ActionView
+    module InstanceMethods
+			# TODO - Write some code.
+    end
+  end
+end
