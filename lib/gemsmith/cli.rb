@@ -87,6 +87,13 @@ module Gemsmith
         template File.join("spec", "gem_spec.rb.tmp"), File.join(target_path, "spec", "#{gem_name}_spec.rb"), template_options
       end
       
+      # Git
+      Dir.chdir(target_path) do
+        `git init`
+        `git add .`
+        `git commit -a -m "Gemsmith skeleton created."`
+      end
+      
       shell.say "Gem created: #{gem_name}\n\n"
     end
 
