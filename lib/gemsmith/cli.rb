@@ -26,6 +26,7 @@ module Gemsmith
     desc "-c, [create=GEM_NAME]", "Create new gem."
     map "-c" => :create
     method_option :bin, :aliases => "-b", :desc => "Adds binary support.", :type => :boolean, :default => false
+    method_option :rails, :aliases => "-R", :desc => "Adds Rails support.", :type => :boolean, :default => false
     method_option :rspec, :aliases => "-r", :desc => "Add RSpec support.", :type => :boolean, :default => true
     def create name
       shell.say "\nCreating gem..."
@@ -73,7 +74,6 @@ module Gemsmith
         template File.join("lib", "gem", "action_controller", "class_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "action_controller", "class_methods.rb"), template_options
         template File.join("lib", "gem", "action_controller", "instance_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "action_controller", "instance_methods.rb"), template_options
         # ActionView
-        template File.join("lib", "gem", "action_view", "class_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "action_view", "class_methods.rb"), template_options
         template File.join("lib", "gem", "action_view", "instance_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "action_view", "instance_methods.rb"), template_options
         # ActiveRecord
         template File.join("lib", "gem", "active_record", "class_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "active_record", "class_methods.rb"), template_options

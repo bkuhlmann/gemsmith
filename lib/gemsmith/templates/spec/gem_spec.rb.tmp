@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "<%= config[:gem_name] %>" do
+describe "<%= config[:gem_class] %>" do
 	it "should be tested" do
 	end
 end
