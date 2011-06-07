@@ -6,6 +6,14 @@
 
 = Setup
 
+Type the following from the command line to install:
+
+  gem install <%= config[:gem_name] %>
+
+Add the following to your Gemfile:
+
+  gem "<%= config[:gem_name] %>"
+
 = Usage
 
 = Author
