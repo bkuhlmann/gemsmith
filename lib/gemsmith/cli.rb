@@ -78,6 +78,10 @@ module Gemsmith
         # ActiveRecord
         template File.join("lib", "gem", "active_record", "class_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "active_record", "class_methods.rb"), template_options
         template File.join("lib", "gem", "active_record", "instance_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "active_record", "instance_methods.rb"), template_options
+        # Generators
+        empty_directory File.join(target_path, "lib", "generators", gem_name, "templates")
+        template File.join("lib", "generators", gem_name, "install", "install_generator.rb.tmp"), File.join(target_path, "lib", "generators", gem_name, "install", "install_generator.rb"), template_options
+        template File.join("lib", "generators", gem_name, "upgrade", "upgrade_generator.rb.tmp"), File.join(target_path, "lib", "generators", gem_name, "upgrade", "upgrade_generator.rb"), template_options
       end
 
       # RSpec (optional).
@@ -91,7 +95,7 @@ module Gemsmith
       Dir.chdir(target_path) do
         `git init`
         `git add .`
-        `git commit -a -m "Gemsmith skeleton created."`
+        `git commit -a -n -m "Gemsmith skeleton created."`
       end
       
       shell.say "Gem created: #{gem_name}\n\n"
