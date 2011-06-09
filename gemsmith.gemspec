@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Brooke Kuhlmann"]
   s.email       = ["brooke@redalchemist.com"]
   s.homepage    = "http://www.redalchemist.com"
-  s.summary     = "Craft new gems with custom settings."
-  s.description = "Craft new gems with custom settings and reduce setup redundancy."
+  s.summary     = "Ruby gem skeleton generation for the professional gemsmith."
+  s.description = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
 
   s.rdoc_options << "CHANGELOG.rdoc"
   s.add_dependency "thor", "~> 0.14.0"
