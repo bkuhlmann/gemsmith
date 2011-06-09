@@ -9,7 +9,7 @@ module <%= config[:gem_class] %>
 
     # Let others know about you.
     def self.banner
-      "rails generate <%= config[:gem_name] %>:install"
+      "rails generate <%= config[:gem_name] %>:upgrade"
     end
 
     # TODO - Explain yourself.
