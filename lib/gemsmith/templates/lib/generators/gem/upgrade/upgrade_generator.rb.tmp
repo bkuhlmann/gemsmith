@@ -14,7 +14,7 @@ module <%= config[:gem_class] %>
 
     # TODO - Explain yourself.
     def copy_files
-      # TODO - Add your fancy/schmancy install code here.
+      # TODO - Add your fancy/schmancy upgrade code here.
     end
   end
 end
