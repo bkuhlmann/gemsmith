@@ -8,7 +8,10 @@ command then you'll enjoy this gem since it is essentially an enhanced version o
 
 * Builds a gem skeleton with Bundler functionality in mind.
 * Allows for common settings that you can configure once and use for every new gem that you build.
-* Adds additional skeleton files such as a README, CHANGELOG, LICENCE, etc.
+* Supports binary skeletons with Thor[https://github.com/wycats/thor] command line functionality.
+* Supports {Ruby on Rails}[http://rubyonrails.org] skeletons.
+* Supports RSpec[http://rspec.info] test skeletons.
+* Adds commonly needed README, CHANGELOG, LICENSE, etc. template files.
 
 = Requirements
 
@@ -56,7 +59,10 @@ From the command line, type: gemsmith help
 
 For more gem creation options, type: gemsmith help create
 
-  -b, [--bin]  # Add binary to gem build.
+  -r, [--rspec]  # Add RSpec support.
+                 # Default: true
+  -b, [--bin]    # Adds binary support.
+  -R, [--rails]  # Adds Rails support.
 
 Also, don't forget that once you have created your gem skeleton, the following rake tasks are also
 available to you via Bundler (i.e. rake -T):

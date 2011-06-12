@@ -1,4 +1,19 @@
-= vx.x.x (master)
+= v0.2.0
+
+* Fixed typo in upgrade generator doc.
+* Fixed README typo with command line options.
+* Added Ruby on Rails skeleton generation support.
+* Added RSpec skeleton generation support.
+* Added a cli.rb template with basic Thor setup for binary skeletons.
+* Added binary executable name to gemspec template for binary skeletons.
+* Added gem dependencies to gemspec template for binary and RSpec skeletons.
+* Added proper support for underscoring/camelcasing gem names and classes during skeleton generation.
+* Added common setup options to the README template.
+* Added Ruby on Rails requirements to the README template (only if the Rails options is used).
+* Added Ruby on Rails generator templates for installs and upgrades.
+* Added Git initialization, addition, and first commit message of all skeleton files during gem creation.
+* Updated the gem description.
+* Updated the documentation to include Bundler rake tasks.
 
 = v0.1.0
 
