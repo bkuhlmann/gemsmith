@@ -32,8 +32,8 @@ module Gemsmith
       shell.say "\nCreating gem..."
 
       # Initialize options.
-      gem_name = name.downcase
-      gem_class = gem_name.capitalize
+      gem_name = underscore name
+      gem_class = classify gem_name
       author_name = @settings[:author_name] || `git config user.name`.chomp || "TODO: Write full name here."
       author_url = @settings[:author_url] || "TODO: Write home page URL here."
       template_options = {
@@ -113,6 +113,32 @@ module Gemsmith
     end
 
     private
+
+    # Transforms a camelcased string to an underscored equivalent (code stolen from the Ruby on Rails ActiveSupport underscore method).
+    # ==== Examples
+    # * "ExampleGem" -> "example_gem"
+    # * "SSLGem" -> "ssl_gem"
+    # ==== Parameters
+    # * +string+ - The string to underscore.
+    def underscore string
+      string = string.to_s.dup
+      string.gsub! /([A-Z]+)([A-Z][a-z])/, '\1_\2'
+      string.gsub! /([a-z\d])([A-Z])/, '\1_\2'
+      string.tr! "-", "_"
+      string.downcase
+     end
+     
+     # Transforms a lowercased/camelcased to a proper class name (code inspired by the Ruby on Rails ActiveSupport classify method).
+     # ==== Examples
+     # * "example" -> "example"
+     # * "my_cool_gem" -> "MyCoolGem"
+     # ==== Parameters
+     # * +string+ - The string to classify.
+     def classify string
+       string = string.to_s.dup
+       string.gsub!(/(^.{1}|_.)/) {$1.upcase}
+       string.tr '_', ''
+     end
     
     # Load settings.
     def load_settings
