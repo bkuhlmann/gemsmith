@@ -13,9 +13,10 @@ Gem::Specification.new do |s|
   s.description = "TODO: Write gem description."
 
   s.rdoc_options << "CHANGELOG.rdoc"
-  # s.add_dependency "thor", "~> 1.0.0"
-  # s.add_development_dependency "some_gem"
-  # s.executables << "gemsmith"
+  <% if options[:bin] %>s.add_dependency "thor"<% end %>
+  <% if options[:rspec] %>s.add_development_dependency "rspec"<% end %>
+  <% if options[:bin] %>s.add_development_dependency "aruba"<% end %>
+  <% if options[:bin] %>s.executables << "<%= options[:gem_name] %>"<% end %>
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {spec,features}/*`.split("\n")

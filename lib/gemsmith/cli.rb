@@ -46,7 +46,9 @@ module Gemsmith
         :company_name => (@settings[:company_name] || author_name),
         :company_url => (@settings[:company_url] || author_url),
         :year => Time.now.year,
-        :rails => options[:rails]
+        :bin => options[:bin],
+        :rails => options[:rails],
+        :rspec => options[:rspec]
       }
 
       # Configure templates.
@@ -66,6 +68,7 @@ module Gemsmith
       # Binary (optional).
       if options[:bin]
         template File.join("bin", "gem.tmp"), File.join(target_path, "bin", gem_name), template_options
+        template File.join("lib", "gem", "cli.rb.tmp"), File.join(target_path, "lib", gem_name, "cli.rb"), template_options
       end
 
       # Ruby on Rails (optional).
