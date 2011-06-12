@@ -1,16 +1,9 @@
 require "yaml"
 require "thor"
-require "thor/actions"
 
 module <%= config[:gem_class] %>
   class CLI < Thor
-    include Thor::Actions
 
-    # Overwritten Thor template source root.
-    def self.source_root
-      File.expand_path File.join(File.dirname(__FILE__), "templates")
-    end
-    
     # Initialize.
     def initialize args = [], options = {}, config = {}
       super
