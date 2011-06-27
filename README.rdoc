@@ -71,6 +71,10 @@ available to you via Bundler (i.e. rake -T):
   rake install  # Build and install <gem>-<version>.gem into system gems
   rake release  # Create tag v0.1.1 and build and push <gem>-<version>.gem to Rubygems
 
+= Best Practices
+
+1. Ensure your RUBYOPT env variable includes the -w option. {Read the reasons why here}[http://avdi.org/devblog/2011/06/23/how-ruby-helps-you-fix-your-broken-code/].
+
 = Author
 
 {Red Alchemist}[http://www.redalchemist.com]
