@@ -103,6 +103,12 @@ module Gemsmith
       
       shell.say "Gem created: #{gem_name}\n\n"
     end
+    
+    desc "-e, [edit]", "Edit settings in default editor (as set via the $EDITOR environment variable)."
+    map "-e" => :edit
+    def edit
+      `$EDITOR #{@settings_file}`
+    end
 
     desc "-v, [version]", "Show version."
     map "-v" => :version
