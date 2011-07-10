@@ -1,4 +1,3 @@
-require "yaml"
 require "thor"
 
 module <%= config[:gem_class] %>
@@ -12,19 +11,12 @@ module <%= config[:gem_class] %>
     desc "-v, [version]", "Show version."
     map "-v" => :version
     def version
-      print_version
+    	say "<%= config[:gem_class] %> " + VERSION
     end
     
     desc "-h, [help]", "Show this message."
     def help task = nil
-      shell.say and super
-    end
-
-    private
-
-    # Print version information.
-    def print_version
-      shell.say "<%= config[:gem_class] %> " + VERSION
+      say and super
     end
   end
 end
