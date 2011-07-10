@@ -7,7 +7,7 @@ module Gemsmith
     include Thor::Actions
     include Gemsmith::Utilities
 
-    # Overwritten Thor template source root.
+    # Overwrites the Thor template source root.
     def self.source_root
       File.expand_path File.join(File.dirname(__FILE__), "templates")
     end
@@ -81,7 +81,9 @@ module Gemsmith
         # Generators
         empty_directory File.join(target_path, "lib", "generators", gem_name, "templates")
         template File.join("lib", "generators", "gem", "install", "install_generator.rb.tmp"), File.join(target_path, "lib", "generators", gem_name, "install", "install_generator.rb"), template_options
+        template File.join("lib", "generators", "gem", "install", "USAGE.tmp"), File.join(target_path, "lib", "generators", gem_name, "install", "USAGE"), template_options
         template File.join("lib", "generators", "gem", "upgrade", "upgrade_generator.rb.tmp"), File.join(target_path, "lib", "generators", gem_name, "upgrade", "upgrade_generator.rb"), template_options
+        template File.join("lib", "generators", "gem", "upgrade", "USAGE.tmp"), File.join(target_path, "lib", "generators", gem_name, "upgrade", "USAGE"), template_options
       end
 
       # RSpec (optional).

@@ -1,0 +1,8 @@
+Description:
+    Installs additional <%= config[:gem_class] %> resources.
+
+Example:
+    rails generate <%= config[:gem_name] %>:install
+
+    This will create:
+        what/will/it/create

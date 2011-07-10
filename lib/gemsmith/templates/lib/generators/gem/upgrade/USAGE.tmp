@@ -1,0 +1,8 @@
+Description:
+    Upgrades previously installed <%= config[:gem_class] %> resources.
+
+Example:
+    rails generate <%= config[:gem_name] %>:upgrade
+
+    This will create:
+        what/will/it/create
