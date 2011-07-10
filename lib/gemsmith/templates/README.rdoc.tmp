@@ -11,11 +11,11 @@
 Type the following from the command line to install:
 
   gem install <%= config[:gem_name] %>
-
+<% if config[:rails] %>
 Add the following to your Gemfile:
 
   gem "<%= config[:gem_name] %>"
-
+<% end %>
 = Usage
 
 = Author
@@ -30,4 +30,4 @@ Read the LICENSE for details.
 = History
 
 Read the CHANGELOG for details.
-Built by Gemsmith[https://github.com/bkuhlmann/gemsmith].
+Built with Gemsmith[https://github.com/bkuhlmann/gemsmith].
