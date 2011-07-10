@@ -104,7 +104,7 @@ module Gemsmith
       say
     end
     
-    desc "-e, [edit]", "Edit settings in default editor (as set via the $EDITOR environment variable)."
+    desc "-e, [edit]", "Edit gem settings in default editor (assumes $EDITOR environment variable)."
     map "-e" => :edit
     def edit
       `$EDITOR #{@settings_file}`

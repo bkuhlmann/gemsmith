@@ -54,6 +54,7 @@ choose what options to define. Up to you. If no options are configured, then the
 From the command line, type: gemsmith help
 
   gemsmith -c, [create=GEM_NAME]  # Create new gem.
+  gemsmith -e, [edit]             # Edit gem settings in default editor (assumes $EDITOR environment variable).
   gemsmith -h, [help]             # Show this message.
   gemsmith -v, [version]          # Show version.
 

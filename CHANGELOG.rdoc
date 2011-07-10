@@ -1,3 +1,16 @@
+= v0.3.0
+
+* Added Best Practices section to the README.
+* Added the -e (edit) option for editing gem settings in default editor.
+* Added Thor utilities for info and error messaging.
+* Removed the classify and underscore methods since their equivalents are found in the Thor::Util class.
+* Removed the print_version method.
+* Added Rails generator USAGE documentation for the install and update generator templates.
+* Removed excess shell calls from the CLI template.
+* Added Thor::Actions to CLI class template.
+* Added "Built with Gemsmith" to README template.
+* Updated README template so that Gemfile mention is only provided when Rails is enabled.
+
 = v0.2.0
 
 * Fixed typo in upgrade generator doc.
