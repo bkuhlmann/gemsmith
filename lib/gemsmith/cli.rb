@@ -5,6 +5,7 @@ require "thor/actions"
 module Gemsmith
   class CLI < Thor
     include Thor::Actions
+    include Gemsmith::Utilities
 
     # Overwritten Thor template source root.
     def self.source_root
@@ -14,22 +15,17 @@ module Gemsmith
     # Initialize.
     def initialize args = [], options = {}, config = {}
       super
-      
-      # Defaults.
-      @shell = shell
       @settings_file = File.join ENV["HOME"], ".gemsmith", "settings.yml"
-
-      # Load and apply custom settings (if any).
       load_settings
     end
 
     desc "-c, [create=GEM_NAME]", "Create new gem."
     map "-c" => :create
-    method_option :bin, :aliases => "-b", :desc => "Adds binary support.", :type => :boolean, :default => false
-    method_option :rails, :aliases => "-R", :desc => "Adds Rails support.", :type => :boolean, :default => false
+    method_option :bin, :aliases => "-b", :desc => "Add binary support.", :type => :boolean, :default => false
+    method_option :rails, :aliases => "-R", :desc => "Add Rails support.", :type => :boolean, :default => false
     method_option :rspec, :aliases => "-r", :desc => "Add RSpec support.", :type => :boolean, :default => true
     def create name
-      shell.say "\nCreating gem..."
+      say_info "\nCreating gem..."
 
       # Initialize options.
       gem_name = underscore name
@@ -101,7 +97,7 @@ module Gemsmith
         `git commit -a -n -m "Gemsmith skeleton created."`
       end
       
-      shell.say "Gem created: #{gem_name}\n\n"
+      say_info "Gem created: #{gem_name}\n\n"
     end
     
     desc "-e, [edit]", "Edit settings in default editor (as set via the $EDITOR environment variable)."
@@ -118,7 +114,7 @@ module Gemsmith
     
     desc "-h, [help]", "Show this message."
     def help task = nil
-      shell.say and super
+      say and super
     end
 
     private
@@ -156,14 +152,14 @@ module Gemsmith
           settings = YAML::load_file @settings_file
           @settings = settings.reject {|key, value| value.nil?}
         rescue
-          shell.say "ERROR: Invalid settings: #{@settings_file}."
+          say_error "Invalid settings: #{@settings_file}."
         end
       end
     end
     
     # Print version information.
     def print_version
-      shell.say "Gemsmith " + VERSION
+      say "Gemsmith " + VERSION
     end
   end
 end
