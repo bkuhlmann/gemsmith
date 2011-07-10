@@ -25,11 +25,12 @@ module Gemsmith
     method_option :rails, :aliases => "-R", :desc => "Add Rails support.", :type => :boolean, :default => false
     method_option :rspec, :aliases => "-r", :desc => "Add RSpec support.", :type => :boolean, :default => true
     def create name
-      say_info "\nCreating gem..."
+      say
+      say_info "Creating gem..."
 
       # Initialize options.
-      gem_name = underscore name
-      gem_class = classify gem_name
+      gem_name = Thor::Util.snake_case name
+      gem_class = Thor::Util.camel_case name
       author_name = @settings[:author_name] || `git config user.name`.chomp || "TODO: Write full name here."
       author_url = @settings[:author_url] || "TODO: Write home page URL here."
       template_options = {
@@ -97,7 +98,8 @@ module Gemsmith
         `git commit -a -n -m "Gemsmith skeleton created."`
       end
       
-      say_info "Gem created: #{gem_name}\n\n"
+      say_info "Gem created."
+      say
     end
     
     desc "-e, [edit]", "Edit settings in default editor (as set via the $EDITOR environment variable)."
@@ -119,32 +121,6 @@ module Gemsmith
 
     private
 
-    # Transforms a camelcased string to an underscored equivalent (code stolen from the Ruby on Rails ActiveSupport underscore method).
-    # ==== Examples
-    # * "ExampleGem" -> "example_gem"
-    # * "SSLGem" -> "ssl_gem"
-    # ==== Parameters
-    # * +string+ - The string to underscore.
-    def underscore string
-      string = string.to_s.dup
-      string.gsub! /([A-Z]+)([A-Z][a-z])/, '\1_\2'
-      string.gsub! /([a-z\d])([A-Z])/, '\1_\2'
-      string.tr! "-", "_"
-      string.downcase
-     end
-     
-     # Transforms a lowercased/camelcased to a proper class name (code inspired by the Ruby on Rails ActiveSupport classify method).
-     # ==== Examples
-     # * "example" -> "example"
-     # * "my_cool_gem" -> "MyCoolGem"
-     # ==== Parameters
-     # * +string+ - The string to classify.
-     def classify string
-       string = string.to_s.dup
-       string.gsub!(/(^.{1}|_.)/) {$1.upcase}
-       string.tr '_', ''
-     end
-    
     # Load settings.
     def load_settings
       if File.exists? @settings_file
