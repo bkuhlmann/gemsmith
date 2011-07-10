@@ -111,7 +111,7 @@ module Gemsmith
     desc "-v, [version]", "Show version."
     map "-v" => :version
     def version
-      print_version
+      say "Gemsmith " + VERSION
     end
     
     desc "-h, [help]", "Show this message."
@@ -131,11 +131,6 @@ module Gemsmith
           say_error "Invalid settings: #{@settings_file}."
         end
       end
-    end
-    
-    # Print version information.
-    def print_version
-      say "Gemsmith " + VERSION
     end
   end
 end
