@@ -1,7 +1,9 @@
 require "thor"
+require "thor/actions"
 
 module <%= config[:gem_class] %>
   class CLI < Thor
+  	include Thor::Actions
 
     # Initialize.
     def initialize args = [], options = {}, config = {}
