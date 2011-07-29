@@ -11,7 +11,7 @@ module <%= config[:gem_class] %>
         
         # Default Options
         class_inheritable_reader :<%= config[:gem_name] %>_options
-        write_inheritable_attribute :<%= config[:gem_name] %>_options
+        write_inheritable_attribute :<%= config[:gem_name] %>_options, options
       end
     end
   end
