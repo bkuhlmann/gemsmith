@@ -1,10 +1,6 @@
 module <%= config[:gem_class] %>
   class UpgradeGenerator < Rails::Generators::Base
-
-    # Override the default source path by pulling from a shared templates directory for all generators.
-    def self.source_root
-      @source_root ||= File.join(File.dirname(__FILE__), "..", "templates")
-    end
+		source_root File.join(File.dirname(__FILE__), "..", "templates")
 
     desc "Upgrades previously installed <%= config[:gem_class] %> resources."
     def execute
