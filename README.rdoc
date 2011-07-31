@@ -2,7 +2,7 @@
 
 Gemsmith allows you to easily craft new gems via the command line with custom settings (if desired). If you are
 a fan of Bundler[https://github.com/carlhuda/bundler], then you'll appreciate the quick and easy setup. Gemsmith
-is essentially an enhanced version of Bundler.
+is essentially an enhanced version of Bundler's gem building capabilities.
 
 = Features
 
