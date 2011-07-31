@@ -7,11 +7,6 @@ module <%= config[:gem_class] %>
       @source_root ||= File.join(File.dirname(__FILE__), "..", "templates")
     end
 
-    # Let others know about you.
-    def self.banner
-      "rails generate <%= config[:gem_name] %>:install"
-    end
-
     # TODO - Explain yourself.
     def copy_files
       # TODO - Add your fancy/schmancy install code here.
