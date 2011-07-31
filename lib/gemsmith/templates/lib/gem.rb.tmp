@@ -1,18 +1,19 @@
 # Dependencies
 require File.join File.dirname(__FILE__), "<%= config[:gem_name] %>", "version.rb"
-<% if config[:rails] %>
+<%- if config[:rails] -%>
 require File.join File.dirname(__FILE__), "<%= config[:gem_name] %>", "active_record", "class_methods.rb"
 require File.join File.dirname(__FILE__), "<%= config[:gem_name] %>", "active_record", "instance_methods.rb"
 require File.join File.dirname(__FILE__), "<%= config[:gem_name] %>", "action_view", "instance_methods.rb"
 require File.join File.dirname(__FILE__), "<%= config[:gem_name] %>", "action_controller", "class_methods.rb"
 require File.join File.dirname(__FILE__), "<%= config[:gem_name] %>", "action_controller", "instance_methods.rb"
-<% end %>
+<%- end -%>
 
 # Namespace
 module <%= config[:gem_class] %>
   # Placeholder.
 end
-<% if config[:rails] %>
+
+<%- if config[:rails] -%>
 # Rails Enhancements
 if defined? Rails
   # Model
@@ -30,4 +31,4 @@ if defined? Rails
     ActionController::Base.send :include, <%= config[:gem_class] %>::ActionController
   end
 end
-<% end %>
+<%- end -%>
