@@ -60,10 +60,10 @@ From the command line, type: gemsmith help
 
 For more gem creation options, type: gemsmith help create
 
-  -r, [--rspec]  # Add RSpec support.
+  -b, [--bin]    # Add binary support.
+  -r, [--rails]  # Add Rails support.
+  -s, [--rspec]  # Add RSpec support.
                  # Default: true
-  -b, [--bin]    # Adds binary support.
-  -R, [--rails]  # Adds Rails support.
 
 Also, don't forget that once you have created your gem skeleton, the following rake tasks are also
 available to you via Bundler (i.e. rake -T):

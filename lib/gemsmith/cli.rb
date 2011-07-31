@@ -22,8 +22,8 @@ module Gemsmith
     desc "-c, [create=GEM_NAME]", "Create new gem."
     map "-c" => :create
     method_option :bin, :aliases => "-b", :desc => "Add binary support.", :type => :boolean, :default => false
-    method_option :rails, :aliases => "-R", :desc => "Add Rails support.", :type => :boolean, :default => false
-    method_option :rspec, :aliases => "-r", :desc => "Add RSpec support.", :type => :boolean, :default => true
+    method_option :rails, :aliases => "-r", :desc => "Add Rails support.", :type => :boolean, :default => false
+    method_option :rspec, :aliases => "-s", :desc => "Add RSpec support.", :type => :boolean, :default => true
     def create name
       say
       say_info "Creating gem..."
