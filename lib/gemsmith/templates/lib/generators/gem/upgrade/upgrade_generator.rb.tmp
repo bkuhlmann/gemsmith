@@ -7,7 +7,7 @@ module <%= config[:gem_class] %>
     end
 
     desc "Upgrades previously installed <%= config[:gem_class] %> resources."
-    def copy_files
+    def execute
       # TODO - Add your fancy/schmancy upgrade code here.
     end
   end
