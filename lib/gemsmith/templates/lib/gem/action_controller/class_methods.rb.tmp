@@ -5,7 +5,7 @@ module <%= config[:gem_class] %>
     end
     
     module ClassMethods
-			# TODO - Rename the method name to your liking.
+			# TODO - Rename this method to your liking.
       def is_<%= config[:gem_name] %>_enhanced options = {}
         self.send :include, InstanceMethods
         

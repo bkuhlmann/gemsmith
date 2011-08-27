@@ -4,7 +4,7 @@ module <%= config[:gem_class] %>
 
     desc "Installs additional <%= config[:gem_class] %> resources."
     def install
-      # TODO - Add your fancy/schmancy install code here.
+      # TODO - Add your install code here.
     end
   end
 end

@@ -31,14 +31,14 @@ module Gemsmith
       # Initialize options.
       gem_name = Thor::Util.snake_case name
       gem_class = Thor::Util.camel_case name
-      author_name = @settings[:author_name] || `git config user.name`.chomp || "TODO: Write full name here."
-      author_url = @settings[:author_url] || "TODO: Write home page URL here."
+      author_name = @settings[:author_name] || `git config user.name`.chomp || "TODO: Add your full name here."
+      author_url = @settings[:author_url] || "TODO: Add your home page URL here."
       template_options = {
         :gem_name => gem_name,
         :gem_class => gem_class,
         :gem_platform => (@settings[:gem_platform] || "Gem::Platform::RUBY"),
         :author_name => author_name,
-        :author_email => (@settings[:author_email] || `git config user.email`.chomp || "TODO: Write email address here."),
+        :author_email => (@settings[:author_email] || `git config user.email`.chomp || "TODO: Add your email address here."),
         :author_url => author_url,
         :company_name => (@settings[:company_name] || author_name),
         :company_url => (@settings[:company_url] || author_url),
