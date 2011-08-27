@@ -3,7 +3,7 @@ module <%= config[:gem_class] %>
   	source_root File.join(File.dirname(__FILE__), "..", "templates")
 
     desc "Installs additional <%= config[:gem_class] %> resources."
-    def execute
+    def install
       # TODO - Add your fancy/schmancy install code here.
     end
   end

@@ -3,7 +3,7 @@ module <%= config[:gem_class] %>
 		source_root File.join(File.dirname(__FILE__), "..", "templates")
 
     desc "Upgrades previously installed <%= config[:gem_class] %> resources."
-    def execute
+    def upgrade
       # TODO - Add your fancy/schmancy upgrade code here.
     end
   end
