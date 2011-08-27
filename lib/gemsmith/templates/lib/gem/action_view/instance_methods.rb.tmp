@@ -1,5 +1,9 @@
 module <%= config[:gem_class] %>
   module ActionView
+	  def self.included base
+	    base.send :include, InstanceMethods
+	  end
+
     module InstanceMethods
 			# TODO - Add your custom code here.
     end

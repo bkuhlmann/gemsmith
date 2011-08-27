@@ -18,7 +18,7 @@ if defined? Rails
 
   # View
   if defined? ActionView
-    ActionView::Base.send :include, <%= config[:gem_class] %>::ActionView::InstanceMethods
+    ActionView::Base.send :include, <%= config[:gem_class] %>::ActionView
   end
  
   # Controller
