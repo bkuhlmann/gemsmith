@@ -1,6 +1,7 @@
 = v0.5.0
 
 # Fixed bug with wrong definition of ActionView instance method include for main gem template.
+# Changed the ActionView template behavior so that instance methods are auto-included.
 # Renamed the execute methods for the install and upgrade generators to install and upgrade respectively.
 # Added Rails version options. Default: 3.0.0.
 # Added Ruby version option. Default: 1.9.2.
