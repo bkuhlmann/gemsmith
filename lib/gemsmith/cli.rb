@@ -46,6 +46,7 @@ module Gemsmith
         :bin => options[:bin],
         :rails => options[:rails],
         :rspec => options[:rspec],
+        :ruby_version => (@settings[:ruby_version] || "1.9.2")
         :rails_version => (@settings[:rails_version] || "3.0.0")
       }
 

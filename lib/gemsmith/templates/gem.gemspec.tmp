@@ -13,11 +13,12 @@ Gem::Specification.new do |s|
   s.description = "TODO: Write gem description."
 
   s.rdoc_options << "CHANGELOG.rdoc"
+	s.required_ruby_version = "~> <%= config[:ruby_version] %>"
   <%- if config[:bin] -%>
 	s.add_dependency "thor"
 	<%- end -%>
   <%- if config[:rails] -%>
-	s.add_dependency "rails", "~> 3.0.0"
+	s.add_dependency "rails", "~> config[:rails_version] %>"
 	<%- end -%>
   <%- if config[:rspec] -%>
 	s.add_development_dependency "rspec"

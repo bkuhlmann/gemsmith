@@ -45,6 +45,7 @@ NOTE: All options above are optional. If no options are configured, then the def
   author_url: nil
   company_name: <author name>
   company_url: <author URL>
+  ruby_version: 1.9.2
   rails_version: "3.0.0"
 
 = Usage
