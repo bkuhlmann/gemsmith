@@ -31,7 +31,6 @@ You can also configure common settings for future gem builds by creating the fol
 ...with the following settings (for example):
 
   --- 
-  :gem_platform: Gem::Platform::RUBY
   :author_name: Brooke Kuhlmann
   :author_email: brooke@redalchemist.com
   :author_url: http://www.redalchemist.com
@@ -46,6 +45,7 @@ NOTE: All options above are optional. If no options are configured, then the def
   author_url: nil
   company_name: <author name>
   company_url: <author URL>
+  rails_version: "3.0.0"
 
 = Usage
 

@@ -45,7 +45,8 @@ module Gemsmith
         :year => Time.now.year,
         :bin => options[:bin],
         :rails => options[:rails],
-        :rspec => options[:rspec]
+        :rspec => options[:rspec],
+        :rails_version => (@settings[:rails_version] || "3.0.0")
       }
 
       # Configure templates.
