@@ -8,11 +8,6 @@ require File.join File.dirname(__FILE__), "<%= config[:gem_name] %>", "action_co
 require File.join File.dirname(__FILE__), "<%= config[:gem_name] %>", "action_controller", "instance_methods.rb"
 <%- end -%>
 
-# Namespace
-module <%= config[:gem_class] %>
-  # Placeholder.
-end
-
 <%- if config[:rails] -%>
 # Rails Enhancements
 if defined? Rails
@@ -30,5 +25,10 @@ if defined? Rails
   if defined? ActionController
     ActionController::Base.send :include, <%= config[:gem_class] %>::ActionController
   end
+end
+<%- else -%>
+# Namespace
+module <%= config[:gem_class] %>
+  # TODO - Add your custom code here.
 end
 <%- end -%>
