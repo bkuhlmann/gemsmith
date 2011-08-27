@@ -1,3 +1,12 @@
+= v0.5.0
+
+# Fixed bug with wrong definition of ActionView instance method include for main gem template.
+# Renamed the execute methods for the install and upgrade generators to install and upgrade respectively.
+# Added Rails version options. Default: 3.0.0.
+# Added Ruby version option. Default: 1.9.2.
+# Made the module namespace optional when building gems specifically for Rails.
+# Relabeled the TODO helper text for all templates.
+
 = v0.4.0
 
 * Fixed bug with options not being supplied as second argument to write_inheritable_attribute for ActionController and ActiveRecord class method templates.
