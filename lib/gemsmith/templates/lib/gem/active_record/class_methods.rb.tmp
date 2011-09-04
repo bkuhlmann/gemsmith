@@ -6,7 +6,7 @@ module <%= config[:gem_class] %>
     
     module ClassMethods
 			# TODO - Rename this method to your liking.
-      def is_<%= config[:gem_name] %>_enhanced options = {}
+      def acts_as_<%= config[:gem_name] %> options = {}
         self.send :include, InstanceMethods
         
         # Default Options
