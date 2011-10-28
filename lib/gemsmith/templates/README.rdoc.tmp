@@ -24,11 +24,11 @@ Add the following to your Gemfile:
 
 = Organization
 
-<a href="<%= config[:organization_name] %>"><%= config[:organization_url] %></a>
+{<%= config[:organization_name] %>}[<%= config[:organization_url] %>]
 
 = Author
 
-<a href="<%= config[:author_url] %>"><%= config[:author_name] %></a>
+{<%= config[:author_name] %>}[<%= config[:author_url] %>]
 
 = License
 

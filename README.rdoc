@@ -43,7 +43,7 @@ If no options are configured, then the defaults are as follows:
   author_name: <git name>
   author_email: <git email>
   author_url: https://www.unknown.com
-  gem_url: "TODO: Add gem URL here."
+  gem_url: <author URL>
   organization_name: <author name>
   organization_url: <author URL>
   year: <current year>

@@ -148,7 +148,7 @@ module Gemsmith
         author_name: author_name,
         author_email: author_email,
         author_url: author_url,
-        gem_url: (settings[:gem_url] || "TODO: Add gem URL here."),
+        gem_url: (settings[:gem_url] || author_url),
         organization_name: (settings[:organization_name] || author_name),
         organization_url: (settings[:organization_url] || author_url),
         year: (settings[:year] || Time.now.year),
