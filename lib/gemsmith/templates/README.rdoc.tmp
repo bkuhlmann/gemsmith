@@ -22,13 +22,17 @@ Add the following to your Gemfile:
 
 = Usage
 
+= Organization
+
+<a href="<%= config[:organization_name] %>"><%= config[:organization_url] %></a>
+
 = Author
 
-{<%= config[:company_name] %>}[<%= config[:company_url] %>]
+<a href="<%= config[:author_url] %>"><%= config[:author_name] %></a>
 
 = License
 
-Copyright (c) <%= config[:year] %> {<%= config[:company_name] %>}[<%= config[:company_url] %>].
+Copyright (c) <%= config[:year] %> {<%= config[:organization_name] %>}[<%= config[:organization_url] %>].
 Read the LICENSE for details.
 
 = History

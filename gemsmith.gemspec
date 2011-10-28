@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "gemsmith"
   s.version     = Gemsmith::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Brooke Kuhlmann"]
-  s.email       = ["brooke@redalchemist.com"]
+  s.author      = "Brooke Kuhlmann"
+  s.email       = "brooke@redalchemist.com"
   s.homepage    = "http://www.redalchemist.com"
   s.summary     = "Ruby gem skeleton generation for the professional gemsmith."
   s.description = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "

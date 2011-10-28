@@ -24,30 +24,31 @@ Type the following from the command line to install:
 
   gem install gemsmith
 
-You can also configure common settings for future gem builds by creating the following file:
+You can configure common settings for future gem builds by creating the following file:
 
   ~/.gemsmith/settings.yml
 
-...with the following settings (for example):
+...using the following settings (for example):
 
   --- 
   :author_name: Brooke Kuhlmann
   :author_email: brooke@redalchemist.com
-  :author_url: http://www.redalchemist.com
-  :company_name: Red Alchmist
-  :company_url: http://www.redalchemist.com 
+  :gem_url: http://www.redalchemist.com
+  :organization_name: Red Alchmist
+  :organization_url: http://www.redalchemist.com 
 
-NOTE: All options above are optional. If no options are configured, then the defaults are as follows:
+If no options are configured, then the defaults are as follows:
 
   gem_platform: Gem::Platform::RUBY
-  author_name: <git user name>
+  author_name: <git name>
   author_email: <git email>
-  author_url: nil
-  company_name: <author name>
-  company_url: <author URL>
-  year: <current date of gem creation>
+  author_url: https://www.unknown.com
+  gem_url: "TODO: Add gem URL here."
+  organization_name: <author name>
+  organization_url: <author URL>
+  year: <current year>
   ruby_version: 1.9.2
-  rails_version: 3.0.0
+  rails_version: 3.1.1
 
 = Usage
 

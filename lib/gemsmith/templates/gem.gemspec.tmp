@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
   s.name        = "<%= config[:gem_name] %>"
   s.version     = <%= config[:gem_class] %>::VERSION
   s.platform    = <%= config[:gem_platform] %>
-  s.authors     = ["<%= config[:author_name] %>"]
-  s.email       = ["<%= config[:author_email] %>"]
-  s.homepage    = "<%= config[:author_url] %>"
-  s.summary     = "TODO: Add your gem summary here."
-  s.description = "TODO: Add your gem description here."
+  s.author      = "<%= config[:author_name] %>"
+  s.email       = "<%= config[:author_email] %>"
+  s.homepage    = "<%= config[:gem_url] %>"
+  s.summary     = "TODO: Add gem summary here."
+  s.description = "TODO: Add gem description here."
 
   s.rdoc_options << "CHANGELOG.rdoc"
 	s.required_ruby_version = "~> <%= config[:ruby_version] %>"
