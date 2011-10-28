@@ -47,7 +47,7 @@ module Gemsmith
         rails: options[:rails],
         rspec: options[:rspec],
         ruby_version: (@settings[:ruby_version] || "1.9.2"),
-        rails_version: (@settings[:rails_version] || "3.0.0")
+        rails_version: (@settings[:rails_version] || "3.1.1")
       }
 
       # Configure templates.
