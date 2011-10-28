@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.description = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
 
   s.rdoc_options << "CHANGELOG.rdoc"
+  s.required_ruby_version = "~> 1.9.0"
   s.add_dependency "thor", "~> 0.14.0"
   s.add_development_dependency "rspec"
   s.add_development_dependency "aruba"

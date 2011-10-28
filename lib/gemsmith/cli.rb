@@ -21,9 +21,9 @@ module Gemsmith
 
     desc "-c, [create=GEM_NAME]", "Create new gem."
     map "-c" => :create
-    method_option :bin, :aliases => "-b", :desc => "Add binary support.", :type => :boolean, :default => false
-    method_option :rails, :aliases => "-r", :desc => "Add Rails support.", :type => :boolean, :default => false
-    method_option :rspec, :aliases => "-s", :desc => "Add RSpec support.", :type => :boolean, :default => true
+    method_option :bin, aliases: "-b", desc: "Add binary support.", type: :boolean, default: false
+    method_option :rails, aliases: "-r", desc: "Add Rails support.", type: :boolean, default: false
+    method_option :rspec, aliases: "-s", desc: "Add RSpec support.", type: :boolean, default: true
     def create name
       say
       say_info "Creating gem..."
@@ -34,20 +34,20 @@ module Gemsmith
       author_name = @settings[:author_name] || `git config user.name`.chomp || "TODO: Add your full name here."
       author_url = @settings[:author_url] || "TODO: Add your home page URL here."
       template_options = {
-        :gem_name => gem_name,
-        :gem_class => gem_class,
-        :gem_platform => (@settings[:gem_platform] || "Gem::Platform::RUBY"),
-        :author_name => author_name,
-        :author_email => (@settings[:author_email] || `git config user.email`.chomp || "TODO: Add your email address here."),
-        :author_url => author_url,
-        :company_name => (@settings[:company_name] || author_name),
-        :company_url => (@settings[:company_url] || author_url),
-        :year => Time.now.year,
-        :bin => options[:bin],
-        :rails => options[:rails],
-        :rspec => options[:rspec],
-        :ruby_version => (@settings[:ruby_version] || "1.9.2"),
-        :rails_version => (@settings[:rails_version] || "3.0.0")
+        gem_name: gem_name,
+        gem_class: gem_class,
+        gem_platform: (@settings[:gem_platform] || "Gem::Platform::RUBY"),
+        author_name: author_name,
+        author_email: (@settings[:author_email] || `git config user.email`.chomp || "TODO: Add your email address here."),
+        author_url: author_url,
+        company_name: (@settings[:company_name] || author_name),
+        company_url: (@settings[:company_url] || author_url),
+        year: Time.now.year,
+        bin: options[:bin],
+        rails: options[:rails],
+        rspec: options[:rspec],
+        ruby_version: (@settings[:ruby_version] || "1.9.2"),
+        rails_version: (@settings[:rails_version] || "3.0.0")
       }
 
       # Configure templates.
