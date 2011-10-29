@@ -1,11 +1,12 @@
 require "yaml"
 require "thor"
 require "thor/actions"
+require "thor_plus/actions"
 
 module Gemsmith
   class CLI < Thor
     include Thor::Actions
-    include Gemsmith::Utilities
+    include ThorPlus::Actions
 
     # Overwrites the Thor template source root.
     def self.source_root
@@ -25,7 +26,7 @@ module Gemsmith
     method_option :rspec, aliases: "-s", desc: "Add RSpec support.", type: :boolean, default: true
     def create name
       say
-      say_info "Creating gem..."
+      info "Creating gem..."
 
       # Initialize options.
       template_options = build_template_options name, options
@@ -83,7 +84,7 @@ module Gemsmith
         `git commit -a -n -m "Gemsmith skeleton created."`
       end
       
-      say_info "Gem created."
+      info "Gem created."
       say
     end
     
@@ -120,7 +121,7 @@ module Gemsmith
           settings = YAML::load_file file
           @settings = settings.reject {|key, value| value.nil?}
         rescue
-          say_error "Invalid settings: #{file}."
+          error "Invalid settings: #{file}."
         end
       end
     end
