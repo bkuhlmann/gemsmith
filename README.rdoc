@@ -15,8 +15,10 @@ is essentially an enhanced version of Bundler's gem building capabilities.
 
 = Requirements
 
-* Bundler[https://github.com/carlhuda/bundler]
-* Basic familiarity with gem building.
+1. Basic understanding of gem building.
+2. A UNIX-based system.
+3. {Ruby 1.9.x}[http://www.ruby-lang.org]
+4. Bundler[https://github.com/carlhuda/bundler]
 
 = Setup
 
