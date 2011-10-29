@@ -1,12 +1,28 @@
+= v1.0.0
+
+* Upgraded to Ruby 1.9 and added Ruby 1.9 requirements.
+* Upgraded Rails defaults to 3.1.x.
+* Renamed ActionController and ActiveRecord class methods templates to be acts_as_* instead of is_*_enhanced.
+* Changed gem specifications to use singular form of author and email.
+* Added a gem_url setting (which is different from the author_url but does default to it).
+* Added a Company header to the README template.
+* Added the MIT license to the gemspec template.
+* Added the post_install_message option for adding custom messages to gem install output.
+* Simplified all TODO messages in the templates.
+* Added Thor+ gem requirement.
+* Removed the Utilities module and replaced all info and error messages with Thor+ actions.
+* Added requirements and includes for the Thor+ gem when generating binary-enabled gem skeletons.
+* Added the YAML requirement to the CLI template.
+
 = v0.5.0
 
-# Fixed bug with wrong definition of ActionView instance method include for main gem template.
-# Changed the ActionView template behavior so that instance methods are auto-included.
-# Renamed the execute methods for the install and upgrade generators to install and upgrade respectively.
-# Added Rails version options. Default: 3.0.0.
-# Added Ruby version option. Default: 1.9.2.
-# Made the module namespace optional when building gems specifically for Rails.
-# Relabeled the TODO helper text for all templates.
+* Fixed bug with wrong definition of ActionView instance method include for main gem template.
+* Changed the ActionView template behavior so that instance methods are auto-included.
+* Renamed the execute methods for the install and upgrade generators to install and upgrade respectively.
+* Added Rails version options. Default: 3.0.0.
+* Added Ruby version option. Default: 1.9.2.
+* Made the module namespace optional when building gems specifically for Rails.
+* Relabeled the TODO helper text for all templates.
 
 = v0.4.0
 
