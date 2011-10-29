@@ -40,11 +40,12 @@ describe "Settings" do
       options[:company_name].should be == author_name
       options[:company_url].should be == author_url
       options[:year].should be == Time.now.year
+      options[:ruby_version].should be == "1.9.0"
+      options[:rails_version].should be == "3.1.0"
+      options[:post_install_message].should be == nil
       options[:bin].should be_false
       options[:rails].should be_false
       options[:rspec].should be_true
-      options[:ruby_version].should be == "1.9.0"
-      options[:rails_version].should be == "3.1.0"
     end
     
     it "should be custom" do
@@ -59,11 +60,12 @@ describe "Settings" do
       options[:company_name].should be == "ACME"
       options[:company_url].should be == "https://www.acme.com"
       options[:year].should be == 1920
+      options[:ruby_version].should be == "1.8.0"
+      options[:rails_version].should be == "2.3.0"
+      options[:post_install_message].should be == "Follow @tester on Twitter for more info."
       options[:bin].should be_false
       options[:rails].should be_false
       options[:rspec].should be_true
-      options[:ruby_version].should be == "1.8.0"
-      options[:rails_version].should be == "2.3.0"
     end
   end
 end

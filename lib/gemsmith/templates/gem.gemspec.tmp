@@ -12,6 +12,9 @@ Gem::Specification.new do |s|
   s.summary     = "TODO: Add gem summary here."
   s.description = "TODO: Add gem description here."
 	s.license			= "MIT"
+  <%- if config[:post_install_message] -%>
+	s.post_install_message = "<%= config[:post_install_message] %>"
+	<%- end -%>
 
   s.rdoc_options << "CHANGELOG.rdoc"
 	s.required_ruby_version = "~> <%= config[:ruby_version] %>"

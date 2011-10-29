@@ -152,11 +152,12 @@ module Gemsmith
         company_name: (settings[:company_name] || author_name),
         company_url: (settings[:company_url] || author_url),
         year: (settings[:year] || Time.now.year),
+        ruby_version: (settings[:ruby_version] || "1.9.0"),
+        rails_version: (settings[:rails_version] || "3.1.0"),
+        post_install_message: settings[:post_install_message],
         bin: (options[:bin] || false),
         rails: (options[:rails] || false),
         rspec: (options[:rspec].nil? ? true : options[:rspec]),
-        ruby_version: (settings[:ruby_version] || "1.9.0"),
-        rails_version: (settings[:rails_version] || "3.1.0")
       }
     end
   end
