@@ -36,7 +36,7 @@ describe "Settings" do
       options[:author_name].should be == author_name
       options[:author_email].should be == (`git config user.email`.chomp || "TODO: Add email address here.")
       options[:author_url].should be == author_url
-      options[:gem_url].should be == "TODO: Add gem URL here."
+      options[:gem_url].should be == "https://www.unknown.com"
       options[:organization_name].should be == author_name
       options[:organization_url].should be == author_url
       options[:year].should be == Time.now.year
