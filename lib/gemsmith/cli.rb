@@ -155,8 +155,8 @@ module Gemsmith
         bin: (options[:bin] || false),
         rails: (options[:rails] || false),
         rspec: (options[:rspec].nil? ? true : options[:rspec]),
-        ruby_version: (settings[:ruby_version] || "1.9.2"),
-        rails_version: (settings[:rails_version] || "3.1.1")
+        ruby_version: (settings[:ruby_version] || "1.9.0"),
+        rails_version: (settings[:rails_version] || "3.1.0")
       }
     end
   end

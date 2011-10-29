@@ -43,8 +43,8 @@ describe "Settings" do
       options[:bin].should be_false
       options[:rails].should be_false
       options[:rspec].should be_true
-      options[:ruby_version].should be == "1.9.2"
-      options[:rails_version].should be == "3.1.1"
+      options[:ruby_version].should be == "1.9.0"
+      options[:rails_version].should be == "3.1.0"
     end
     
     it "should be custom" do
@@ -62,8 +62,8 @@ describe "Settings" do
       options[:bin].should be_false
       options[:rails].should be_false
       options[:rspec].should be_true
-      options[:ruby_version].should be == "1.9.0"
-      options[:rails_version].should be == "3.0.0"
+      options[:ruby_version].should be == "1.8.0"
+      options[:rails_version].should be == "2.3.0"
     end
   end
 end
