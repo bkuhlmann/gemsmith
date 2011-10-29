@@ -1,7 +1,7 @@
 module <%= config[:gem_class] %>
   module ActiveRecord
     module InstanceMethods
-			# TODO - Add your custom code here.
+			# TODO - Add code here.
     end
   end
 end

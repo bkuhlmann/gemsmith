@@ -5,7 +5,7 @@ module <%= config[:gem_class] %>
 	  end
 
     module InstanceMethods
-			# TODO - Add your custom code here.
+			# TODO - Add code here.
     end
   end
 end

@@ -5,7 +5,6 @@ module <%= config[:gem_class] %>
     end
     
     module ClassMethods
-			# TODO - Rename this method to your liking.
       def acts_as_<%= config[:gem_name] %> options = {}
         self.send :include, InstanceMethods
         

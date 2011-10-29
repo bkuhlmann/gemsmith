@@ -4,7 +4,7 @@ module <%= config[:gem_class] %>
 
     desc "Upgrades previously installed <%= config[:gem_class] %> resources."
     def upgrade
-      # TODO - Add your upgrade code here.
+      # TODO - Add upgrade code here.
     end
   end
 end

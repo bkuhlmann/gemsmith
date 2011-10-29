@@ -76,7 +76,7 @@ available to you via Bundler (i.e. rake -T):
 
 = Best Practices
 
-1. Ensure your RUBYOPT env variable includes the -w option. {Read the reasons why here}[http://avdi.org/devblog/2011/06/23/how-ruby-helps-you-fix-your-broken-code/].
+1. Ensure the RUBYOPT env variable includes the -w option. {Details}[http://avdi.org/devblog/2011/06/23/how-ruby-helps-you-fix-your-broken-code/].
 
 = Author
 

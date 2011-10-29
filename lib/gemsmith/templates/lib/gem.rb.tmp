@@ -29,6 +29,6 @@ end
 <%- else -%>
 # Namespace
 module <%= config[:gem_class] %>
-  # TODO - Add your custom code here.
+  # TODO - Add code here.
 end
 <%- end -%>
