@@ -1,13 +1,13 @@
 = Overview
 
 Gemsmith allows you to easily craft new gems via the command line with custom settings (if desired). If you are
-a fan of Bundler[https://github.com/carlhuda/bundler], then you'll appreciate the quick and easy setup. Gemsmith
-is essentially an enhanced version of Bundler's gem building capabilities.
+a fan of Bundler[https://github.com/carlhuda/bundler], then you'll appreciate the additional capabilities of this
+gem. Gemsmith is essentially an enhanced version of Bundler's gem building capabilities.
 
 = Features
 
 * Builds a gem skeleton with Bundler functionality in mind.
-* Allows for common settings that you can configure once and use for every new gem that you build.
+* Allows for common settings that you can apply to new gem creations.
 * Supports binary skeletons with Thor[https://github.com/wycats/thor] command line functionality.
 * Supports {Ruby on Rails}[http://rubyonrails.org] skeletons.
 * Supports RSpec[http://rspec.info] test skeletons.
@@ -35,9 +35,8 @@ You can configure common settings for future gem builds by creating the followin
   --- 
   :author_name: Brooke Kuhlmann
   :author_email: brooke@redalchemist.com
-  :gem_url: http://www.redalchemist.com
-  :company_name: Red Alchmist
-  :company_url: http://www.redalchemist.com 
+  :author_url: http://www.redalchemist.com
+  :company_name: Red Alchemist
 
 If no options are configured, then the defaults are as follows:
 
@@ -49,8 +48,8 @@ If no options are configured, then the defaults are as follows:
   company_name: <author name>
   company_url: <author URL>
   year: <current year>
-  ruby_version: 1.9.2
-  rails_version: 3.1.1
+  ruby_version: 1.9.0
+  rails_version: 3.1.0
   post_install_message: nil
 
 = Usage
@@ -80,9 +79,13 @@ available to you via Bundler (i.e. rake -T):
 
 1. Ensure the RUBYOPT env variable includes the -w option. {Details}[http://avdi.org/devblog/2011/06/23/how-ruby-helps-you-fix-your-broken-code/].
 
-= Author
+= Company
 
 {Red Alchemist}[http://www.redalchemist.com]
+
+= Author
+
+{Brooke Kuhlmann}[http://www.redalchemist.com]
 
 = License
 

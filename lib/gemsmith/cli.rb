@@ -148,7 +148,7 @@ module Gemsmith
         gem_platform: (settings[:gem_platform] || "Gem::Platform::RUBY"),
         author_name: author_name,
         author_email: author_email,
-        author_url: author_url,
+        author_url: (author_url || "http://www.unknown.com"),
         gem_url: (settings[:gem_url] || author_url),
         company_name: (settings[:company_name] || author_name),
         company_url: (settings[:company_url] || author_url),
