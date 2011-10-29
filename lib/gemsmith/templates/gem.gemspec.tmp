@@ -3,17 +3,17 @@ $:.push File.expand_path("../lib", __FILE__)
 require "<%=config[:gem_name]%>/version"
 
 Gem::Specification.new do |s|
-  s.name        = "<%= config[:gem_name] %>"
-  s.version     = <%= config[:gem_class] %>::VERSION
-  s.platform    = <%= config[:gem_platform] %>
-  s.author      = "<%= config[:author_name] %>"
-  s.email       = "<%= config[:author_email] %>"
-  s.homepage    = "<%= config[:gem_url] %>"
-  s.summary     = "TODO: Add gem summary here."
-  s.description = "TODO: Add gem description here."
-	s.license			= "MIT"
+  s.name									= "<%= config[:gem_name] %>"
+  s.version								= <%= config[:gem_class] %>::VERSION
+  s.platform							= <%= config[:gem_platform] %>
+  s.author								= "<%= config[:author_name] %>"
+  s.email									= "<%= config[:author_email] %>"
+  s.homepage							= "<%= config[:gem_url] %>"
+  s.summary								= "TODO: Add gem summary here."
+  s.description						= "TODO: Add gem description here."
+	s.license								= "MIT"
   <%- if config[:post_install_message] -%>
-	s.post_install_message = "<%= config[:post_install_message] %>"
+	s.post_install_message	= "<%= config[:post_install_message] %>"
 	<%- end -%>
 
   s.rdoc_options << "CHANGELOG.rdoc"

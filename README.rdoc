@@ -49,6 +49,7 @@ If no options are configured, then the defaults are as follows:
   year: <current year>
   ruby_version: 1.9.2
   rails_version: 3.1.1
+  post_install_message: nil
 
 = Usage
 
