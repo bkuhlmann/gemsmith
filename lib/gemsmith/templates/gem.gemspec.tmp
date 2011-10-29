@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
 	s.required_ruby_version = "~> <%= config[:ruby_version] %>"
   <%- if config[:bin] -%>
 	s.add_dependency "thor"
+	s.add_dependency "thor_plus"
 	<%- end -%>
   <%- if config[:rails] -%>
 	s.add_dependency "rails", "~> <%= config[:rails_version] %>"
