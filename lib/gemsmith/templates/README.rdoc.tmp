@@ -22,9 +22,9 @@ Add the following to your Gemfile:
 
 = Usage
 
-= Organization
+= Company
 
-{<%= config[:organization_name] %>}[<%= config[:organization_url] %>]
+{<%= config[:company_name] %>}[<%= config[:company_url] %>]
 
 = Author
 
@@ -32,7 +32,7 @@ Add the following to your Gemfile:
 
 = License
 
-Copyright (c) <%= config[:year] %> {<%= config[:organization_name] %>}[<%= config[:organization_url] %>].
+Copyright (c) <%= config[:year] %> {<%= config[:company_name] %>}[<%= config[:company_url] %>].
 Read the LICENSE for details.
 
 = History

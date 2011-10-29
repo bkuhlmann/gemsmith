@@ -34,8 +34,8 @@ You can configure common settings for future gem builds by creating the followin
   :author_name: Brooke Kuhlmann
   :author_email: brooke@redalchemist.com
   :gem_url: http://www.redalchemist.com
-  :organization_name: Red Alchmist
-  :organization_url: http://www.redalchemist.com 
+  :company_name: Red Alchmist
+  :company_url: http://www.redalchemist.com 
 
 If no options are configured, then the defaults are as follows:
 
@@ -44,8 +44,8 @@ If no options are configured, then the defaults are as follows:
   author_email: <git email>
   author_url: https://www.unknown.com
   gem_url: <author URL>
-  organization_name: <author name>
-  organization_url: <author URL>
+  company_name: <author name>
+  company_url: <author URL>
   year: <current year>
   ruby_version: 1.9.2
   rails_version: 3.1.1

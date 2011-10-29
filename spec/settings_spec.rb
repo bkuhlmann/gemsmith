@@ -37,8 +37,8 @@ describe "Settings" do
       options[:author_email].should be == (`git config user.email`.chomp || "TODO: Add email address here.")
       options[:author_url].should be == author_url
       options[:gem_url].should be == "https://www.unknown.com"
-      options[:organization_name].should be == author_name
-      options[:organization_url].should be == author_url
+      options[:company_name].should be == author_name
+      options[:company_url].should be == author_url
       options[:year].should be == Time.now.year
       options[:bin].should be_false
       options[:rails].should be_false
@@ -56,8 +56,8 @@ describe "Settings" do
       options[:author_email].should be == "test@test.com"
       options[:author_url].should be == "https://www.test.com"
       options[:gem_url].should be == "https://www.gem.com"
-      options[:organization_name].should be == "ACME"
-      options[:organization_url].should be == "https://www.acme.com"
+      options[:company_name].should be == "ACME"
+      options[:company_url].should be == "https://www.acme.com"
       options[:year].should be == 1920
       options[:bin].should be_false
       options[:rails].should be_false

@@ -4,8 +4,8 @@
 :author_email: "test@test.com"
 :author_url: "https://www.test.com"
 :gem_url: "https://www.gem.com"
-:organization_name: "ACME"
-:organization_url: "https://www.acme.com"
+:company_name: "ACME"
+:company_url: "https://www.acme.com"
 :year: 1920
 :ruby_version: 1.8.0
 :rails_version: 2.3.0
