@@ -75,7 +75,7 @@ available to you via Bundler (i.e. rake -T):
   rake install  # Build and install <gem>-<version>.gem into system gems
   rake release  # Create tag v0.1.1 and build and push <gem>-<version>.gem to Rubygems
 
-= Test
+= Tests
 
 To test, change directory to the gem root and run:
 
@@ -86,13 +86,13 @@ To test, change directory to the gem root and run:
 1. {Ruby on Rails Gem Packaging}[http://weblog.rubyonrails.org/2009/9/1/gem-packaging-best-practices]
 2. Ensure the RUBYOPT env variable includes the -w option. {Details}[http://avdi.org/devblog/2011/06/23/how-ruby-helps-you-fix-your-broken-code/].
 
-= Company
+= Contributions
 
-{Red Alchemist}[http://www.redalchemist.com]
+Please log all feedback/issues via {GitHub Issues}[https://github.com/bkuhlmann/gemsmith/issues] for the project. Thanks.
 
-= Author
+= Credits
 
-{Brooke Kuhlmann}[http://www.redalchemist.com]
+Developed by {Brooke Kuhlmann}[http://www.redalchemist.com] at {Red Alchemist}[http://www.redalchemist.com]
 
 = License
 

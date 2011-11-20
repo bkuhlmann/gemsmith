@@ -23,20 +23,20 @@ Add the following to your Gemfile:
 = Usage
 
 <%- if config[:rspec] -%>
-= Test
+= Tests
 
 To test, change directory to the gem root and run:
 
   bundle exec rspec spec
 <%- if config[:rspec] -%>
 
-= Company
+= Contributions
 
-{<%= config[:company_name] %>}[<%= config[:company_url] %>]
+Please log all feedback/issues via GitHub Issues for the project. Thanks.
 
-= Author
+= Credits
 
-{<%= config[:author_name] %>}[<%= config[:author_url] %>]
+Developed by {<%= config[:author_name] %>}[<%= config[:author_url] %>] at {<%= config[:company_name] %>}[<%= config[:company_url] %>]
 
 = License
 
