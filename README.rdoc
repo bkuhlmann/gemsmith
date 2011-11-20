@@ -7,11 +7,12 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 = Features
 
 * Builds a gem skeleton with Bundler functionality in mind.
-* Allows for common settings that you can apply to new gem creations.
+* Allows for common settings that can be applied to new gem creations.
 * Supports binary skeletons with Thor[https://github.com/wycats/thor] command line functionality.
 * Supports {Ruby on Rails}[http://rubyonrails.org] skeletons.
 * Supports RSpec[http://rspec.info] test skeletons.
 * Adds commonly needed README, CHANGELOG, LICENSE, etc. template files.
+* Provides the ability to open any installed gem within your favorite editor.
 
 = Requirements
 
@@ -59,6 +60,7 @@ From the command line, type: gemsmith help
   gemsmith -c, [create=GEM_NAME]  # Create new gem.
   gemsmith -e, [edit]             # Edit gem settings in default editor (assumes $EDITOR environment variable).
   gemsmith -h, [help]             # Show this message.
+  gemsmith -o, [open=NAME]        # Opens gem in default editor (assumes $EDITOR environment variable).
   gemsmith -v, [version]          # Show version.
 
 For more gem creation options, type: gemsmith help create
