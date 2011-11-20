@@ -10,7 +10,7 @@ module <%= config[:gem_class] %>
 
     # Initialize.
     def initialize args = [], options = {}, config = {}
-      super
+      super args, options, config
     end
 
     desc "-v, [version]", "Show version."

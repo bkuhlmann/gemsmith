@@ -15,7 +15,7 @@ module Gemsmith
     
     # Initialize.
     def initialize args = [], options = {}, config = {}
-      super
+      super args, options, config
       load_settings settings_file
     end
 
