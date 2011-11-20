@@ -88,6 +88,32 @@ module Gemsmith
       say
     end
     
+    desc "-o, [open=NAME]", "Opens gem in default editor (assumes $EDITOR environment variable)."
+    map "-o" => :open
+    def open name
+      specs = Gem::Specification.find_all_by_name name
+      case
+      when specs.size == 1
+        `$EDITOR #{specs.first.full_gem_path}`
+      when specs.size > 1
+        say "Multiple versions found:"
+        specs.each_with_index do |spec, index|
+          say "#{index + 1}. #{spec.name} #{spec.version.version}"
+        end
+        result = ask "Please pick one (or type 'q' to quit):"
+        unless result == 'q'
+          if (1..specs.size).include?(result.to_i)
+            spec = Gem::Specification.find_by_name(name, specs[result.to_i - 1].version.version)
+            `$EDITOR #{spec.full_gem_path}`
+          else
+            error "Invalid option: #{result}"
+          end
+        end
+      else
+        say "Unable to find gem: #{name}"
+      end
+    end
+    
     desc "-e, [edit]", "Edit gem settings in default editor (assumes $EDITOR environment variable)."
     map "-e" => :edit
     def edit
