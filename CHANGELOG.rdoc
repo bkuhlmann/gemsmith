@@ -1,3 +1,13 @@
+= v1.1.0
+
+* Fixed bug where args, options, and config were not being passed to super for CLI initialize for gem and gem template generation.
+* Updated gemspec settings and removed rubygem requirements from spec helper.
+* Defaulted RSpec output to documentation format for project and template generation.
+* Added Ruby on Rails Gem Packaging to Best Practices section of README.
+* Added the -o option for opening a gem in the default editor.
+* Added RSpec documentation to README and README template.
+* Added Tests, Contributions, and Credits section to README and README template.
+
 = v1.0.0
 
 * Upgraded to Ruby 1.9 and added Ruby 1.9 requirements.
