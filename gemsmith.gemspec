@@ -3,14 +3,16 @@ $:.push File.expand_path("../lib", __FILE__)
 require "gemsmith/version"
 
 Gem::Specification.new do |s|
-  s.name        = "gemsmith"
-  s.version     = Gemsmith::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.author      = "Brooke Kuhlmann"
-  s.email       = "brooke@redalchemist.com"
-  s.homepage    = "http://www.redalchemist.com"
-  s.summary     = "Ruby gem skeleton generation for the professional gemsmith."
-  s.description = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
+  s.name                  = "gemsmith"
+  s.version               = Gemsmith::VERSION
+  s.platform              = Gem::Platform::RUBY
+  s.author                = "Brooke Kuhlmann"
+  s.email                 = "brooke@redalchemist.com"
+  s.homepage              = "http://www.redalchemist.com"
+  s.summary               = "Ruby gem skeleton generation for the professional gemsmith."
+  s.description           = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
+  s.license               = "MIT"
+  s.post_install_message	= "(W): www.redalchemist.com. (T): @ralchemist."
 
   s.rdoc_options << "CHANGELOG.rdoc"
   s.required_ruby_version = "~> 1.9.0"
