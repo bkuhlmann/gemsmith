@@ -75,6 +75,12 @@ available to you via Bundler (i.e. rake -T):
   rake install  # Build and install <gem>-<version>.gem into system gems
   rake release  # Create tag v0.1.1 and build and push <gem>-<version>.gem to Rubygems
 
+= Test
+
+To test, change directory to the gem root and run:
+
+  bundle exec rspec spec
+
 = Best Practices
 
 1. {Ruby on Rails Gem Packaging}[http://weblog.rubyonrails.org/2009/9/1/gem-packaging-best-practices]

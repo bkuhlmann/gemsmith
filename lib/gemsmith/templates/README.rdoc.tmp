@@ -22,6 +22,14 @@ Add the following to your Gemfile:
 
 = Usage
 
+<%- if config[:rspec] -%>
+= Test
+
+To test, change directory to the gem root and run:
+
+  bundle exec rspec spec
+<%- if config[:rspec] -%>
+
 = Company
 
 {<%= config[:company_name] %>}[<%= config[:company_url] %>]
