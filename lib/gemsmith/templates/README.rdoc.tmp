@@ -28,7 +28,7 @@ Add the following to your Gemfile:
 To test, change directory to the gem root and run:
 
   bundle exec rspec spec
-<%- if config[:rspec] -%>
+<%- end -%>
 
 = Contributions
 
