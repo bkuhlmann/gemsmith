@@ -25,14 +25,16 @@ Add the following to your Gemfile:
 <%- if config[:rspec] -%>
 = Tests
 
-To test, change directory to the gem root and run:
+To test, do the following:
 
-  bundle exec rspec spec
+1. cd to the gem root.
+2. bundle install
+3. bundle exec rspec spec
 <%- end -%>
 
 = Contributions
 
-Please log all feedback/issues via GitHub Issues for the project. Thanks.
+Please log all feedback/issues via GitHub Issues. Thanks.
 
 = Credits
 

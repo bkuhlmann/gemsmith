@@ -77,20 +77,22 @@ available to you via Bundler (i.e. rake -T):
   rake install  # Build and install <gem>-<version>.gem into system gems
   rake release  # Create tag v0.1.1 and build and push <gem>-<version>.gem to Rubygems
 
-= Tests
-
-To test, change directory to the gem root and run:
-
-  bundle exec rspec spec
-
 = Best Practices
 
 1. {Ruby on Rails Gem Packaging}[http://weblog.rubyonrails.org/2009/9/1/gem-packaging-best-practices]
 2. Ensure the RUBYOPT env variable includes the -w option. {Details}[http://avdi.org/devblog/2011/06/23/how-ruby-helps-you-fix-your-broken-code/].
 
+= Tests
+
+To test, do the following:
+
+1. cd to the gem root.
+2. bundle install
+3. bundle exec rspec spec
+
 = Contributions
 
-Please log all feedback/issues via {GitHub Issues}[https://github.com/bkuhlmann/gemsmith/issues] for the project. Thanks.
+Please log all feedback/issues via {GitHub Issues}[https://github.com/bkuhlmann/gemsmith/issues]. Thanks.
 
 = Credits
 
