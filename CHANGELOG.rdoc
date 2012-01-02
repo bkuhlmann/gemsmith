@@ -5,6 +5,7 @@
 * Added Why You Should Use a BSD license to the README Best Practices section.
 * Added the Best Practices While Cutting Gems to the Best Practices section of the README.
 * Added the ruby warning and encoding option formats to the binary template.
+* Removed the do block from RSpec template so that initial tests show pending instead of successful results.
 
 = v1.1.0
 
