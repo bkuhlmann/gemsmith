@@ -16,7 +16,8 @@ module Gemsmith
     # Initialize.
     def initialize args = [], options = {}, config = {}
       super args, options, config
-      load_settings settings_file
+      @settings_file = File.join ENV["HOME"], ".gemsmith", "settings.yml"
+      @settings = load_yaml @settings_file
     end
 
     desc "-c, [create=GEM_NAME]", "Create new gem."
@@ -117,7 +118,7 @@ module Gemsmith
     desc "-e, [edit]", "Edit gem settings in default editor (assumes $EDITOR environment variable)."
     map "-e" => :edit
     def edit
-      `$EDITOR #{settings_file}`
+      `$EDITOR #{@settings_file}`
     end
 
     desc "-v, [version]", "Show version."
@@ -133,30 +134,6 @@ module Gemsmith
 
     private
 
-    # Answers the default settings file path.
-    def settings_file
-      @settings_file ||= File.join ENV["HOME"], ".gemsmith", "settings.yml"
-    end
-
-    # Load settings.
-    # ==== Parameters
-    # * +file+ - Required. The path to the settings (YAML) file.
-    def load_settings file
-      if file && File.exists?(file)
-        begin
-          settings = YAML::load_file file
-          @settings = settings.reject {|key, value| value.nil?}
-        rescue
-          error "Invalid settings: #{file}."
-        end
-      end
-    end
-
-    # Answers current settings.
-    def settings
-      @settings ||= {}
-    end
-    
     # Builds template options with default and/or custom settings (where the custom
     # settings trump default settings).
     # ==== Parameters
@@ -165,23 +142,23 @@ module Gemsmith
     def build_template_options name, options = {}
       gem_name = Thor::Util.snake_case name
       gem_class = Thor::Util.camel_case name
-      author_name = settings[:author_name] || `git config user.name`.chomp || "TODO: Add full name here."
-      author_email = settings[:author_email] || `git config user.email`.chomp || "TODO: Add email address here."
-      author_url = settings[:author_url] || "https://www.unknown.com"
+      author_name = @settings[:author_name] || `git config user.name`.chomp || "TODO: Add full name here."
+      author_email = @settings[:author_email] || `git config user.email`.chomp || "TODO: Add email address here."
+      author_url = @settings[:author_url] || "https://www.unknown.com"
       {
         gem_name: gem_name,
         gem_class: gem_class,
-        gem_platform: (settings[:gem_platform] || "Gem::Platform::RUBY"),
+        gem_platform: (@settings[:gem_platform] || "Gem::Platform::RUBY"),
         author_name: author_name,
         author_email: author_email,
         author_url: (author_url || "http://www.unknown.com"),
-        gem_url: (settings[:gem_url] || author_url),
-        company_name: (settings[:company_name] || author_name),
-        company_url: (settings[:company_url] || author_url),
-        year: (settings[:year] || Time.now.year),
-        ruby_version: (settings[:ruby_version] || "1.9.0"),
-        rails_version: (settings[:rails_version] || "3.1.0"),
-        post_install_message: settings[:post_install_message],
+        gem_url: (@settings[:gem_url] || author_url),
+        company_name: (@settings[:company_name] || author_name),
+        company_url: (@settings[:company_url] || author_url),
+        year: (@settings[:year] || Time.now.year),
+        ruby_version: (@settings[:ruby_version] || "1.9.0"),
+        rails_version: (@settings[:rails_version] || "3.1.0"),
+        post_install_message: @settings[:post_install_message],
         bin: (options[:bin] || false),
         rails: (options[:rails] || false),
         rspec: (options[:rspec].nil? ? true : options[:rspec]),

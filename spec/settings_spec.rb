@@ -4,28 +4,26 @@ describe "Settings" do
   before :each do
     # Default settings.
     class Gemsmith::CLI
-      private
-      def settings_file
-        nil
+      def initialize
+        super
+        @settings_file = File.join File.dirname(__FILE__), "support", "settings.yml"
+        @settings = {}
       end
     end
     @cli_default = Gemsmith::CLI.new
 
     # Custom settings.
     class Gemsmith::CLI
-      private
-      def settings_file
-        File.join File.dirname(__FILE__), "support", "settings.yml"
+      def initialize
+        super
+        @settings_file = File.join File.dirname(__FILE__), "support", "settings.yml"
+        @settings = load_yaml @settings_file
       end
     end
     @cli_custom = Gemsmith::CLI.new
   end
   
   context "Load" do
-    it "should be empty" do
-      @cli_default.send(:settings).should be_empty
-    end
-    
     it "should build defaults" do
       author_name = `git config user.name`.chomp || "TODO: Add full name here."
       author_url = "https://www.unknown.com"
