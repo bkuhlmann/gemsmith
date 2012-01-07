@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.rdoc_options << "CHANGELOG.rdoc"
   s.required_ruby_version = "~> 1.9.0"
   s.add_dependency "thor", "~> 0.14.0"
-  s.add_dependency "thor_plus", ">= 0.1.0"
+  s.add_dependency "thor_plus", ">= 0.2.0"
   s.add_development_dependency "rspec"
   s.add_development_dependency "aruba"
   s.executables << "gemsmith"
