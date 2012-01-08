@@ -15,7 +15,6 @@ describe "Settings" do
     class Gemsmith::CLI
       def initialize
         super
-        puts @settings_file
         @settings = load_yaml File.join(File.dirname(__FILE__), "support", "settings.yml")
       end
     end

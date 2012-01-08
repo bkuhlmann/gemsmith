@@ -25,6 +25,7 @@ module Gemsmith
     method_option :bin, aliases: "-b", desc: "Add binary support.", type: :boolean, default: false
     method_option :rails, aliases: "-r", desc: "Add Rails support.", type: :boolean, default: false
     method_option :rspec, aliases: "-s", desc: "Add RSpec support.", type: :boolean, default: true
+    method_option :travis_ci, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true
     def create name
       say
       info "Creating gem..."
@@ -76,6 +77,11 @@ module Gemsmith
         template "rspec.tmp", File.join(target_path, ".rspec"), template_options
         template File.join("spec", "spec_helper.rb.tmp"), File.join(target_path, "spec", "spec_helper.rb"), template_options
         template File.join("spec", "gem_spec.rb.tmp"), File.join(target_path, "spec", "#{gem_name}_spec.rb"), template_options
+      end
+
+      # Travis CI (optional).
+      if template_options[:travis_ci]
+        template "travis.yml.tmp", File.join(target_path, ".travis.yml"), template_options
       end
       
       # Git

@@ -1,5 +1,9 @@
 = Overview
 
+<%- if config[:travis_ci] -%>
+{<img src="https://secure.travis-ci.org/bkuhlmann/tokener.png" />}[http://travis-ci.org/bkuhlmann/<%= config[:gem_name] %>]
+<%- end -%>
+
 = Features
 
 = Requirements

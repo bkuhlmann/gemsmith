@@ -25,6 +25,9 @@ Gem::Specification.new do |s|
   <%- if config[:rails] -%>
 	s.add_dependency "rails", "~> <%= config[:rails_version] %>"
 	<%- end -%>
+  <%- if config[:travis_ci] -%>
+	s.add_development_dependency "rake"
+	<%- end -%>
   <%- if config[:rspec] -%>
 	s.add_development_dependency "rspec"
 	<%- end -%>
