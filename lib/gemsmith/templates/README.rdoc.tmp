@@ -1,6 +1,6 @@
 = Overview
 
-<%- if config[:travis_ci] -%>
+<%- if config[:travis] -%>
 {<img src="https://secure.travis-ci.org/bkuhlmann/tokener.png" />}[http://travis-ci.org/bkuhlmann/<%= config[:gem_name] %>]
 <%- end -%>
 
