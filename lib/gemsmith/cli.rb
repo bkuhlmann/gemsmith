@@ -148,8 +148,8 @@ module Gemsmith
     def build_template_options name, options = {}
       gem_name = Thor::Util.snake_case name
       gem_class = Thor::Util.camel_case name
-      author_name = @settings[:author_name] || `git config user.name`.chomp || "TODO: Add full name here."
-      author_email = @settings[:author_email] || `git config user.email`.chomp || "TODO: Add email address here."
+      author_name = @settings[:author_name] || Gemsmith::Kit.git_config_value("user.name") || "TODO: Add full name here."
+      author_email = @settings[:author_email] || Gemsmith::Kit.git_config_value("user.email") || "TODO: Add email address here."
       author_url = @settings[:author_url] || "https://www.unknown.com"
       {
         gem_name: gem_name,
@@ -161,7 +161,7 @@ module Gemsmith
         gem_url: (@settings[:gem_url] || author_url),
         company_name: (@settings[:company_name] || author_name),
         company_url: (@settings[:company_url] || author_url),
-        github_user: (@settings[:github_user] || `git config github.user`.chomp || "unknown"),
+        github_user: (@settings[:github_user] || Gemsmith::Kit.git_config_value("github.user") || "unknown"),
         year: (@settings[:year] || Time.now.year),
         ruby_version: (@settings[:ruby_version] || "1.9.0"),
         rails_version: (@settings[:rails_version] || "3.1.0"),
