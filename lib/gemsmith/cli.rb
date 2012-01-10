@@ -29,11 +29,11 @@ module Gemsmith
     def create name
       say
       info "Creating gem..."
-
+      
       # Initialize options.
       template_options = build_template_options name, options
       gem_name = template_options[:gem_name]
-      
+
       # Configure templates.
       target_path = File.join Dir.pwd, gem_name
       
@@ -167,7 +167,8 @@ module Gemsmith
         post_install_message: @settings[:post_install_message],
         bin: (options[:bin] || false),
         rails: (options[:rails] || false),
-        rspec: (options[:rspec].nil? ? true : options[:rspec]),
+        rspec: (options[:rspec] || false),
+        travis: (options[:travis] || false)
       }
     end
   end
