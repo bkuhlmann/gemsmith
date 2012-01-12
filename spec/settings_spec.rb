@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Settings" do
+describe Gemsmith::CLI do
   before :each do
     # Default settings.
     class Gemsmith::CLI
@@ -10,7 +10,7 @@ describe "Settings" do
       end
     end
     @cli_default = Gemsmith::CLI.new
-
+  
     # Custom settings.
     class Gemsmith::CLI
       def initialize
@@ -21,8 +21,8 @@ describe "Settings" do
     @cli_custom = Gemsmith::CLI.new
   end
   
-  context "Load" do
-    it "should build defaults" do
+  describe "#initialize" do
+    it "loads default settings" do
       author_name = Gemsmith::Kit.git_config_value("user.name") || "TODO: Add full name here."
       author_url = "https://www.unknown.com"
       options = @cli_default.send :build_template_options, "test"
@@ -46,7 +46,7 @@ describe "Settings" do
       options[:travis].should be_true
     end
     
-    it "should be custom" do
+    it "loads custom settings" do
       options = @cli_custom.send :build_template_options, "test"
       options[:gem_name].should be == "test"
       options[:gem_class].should be == "Test"
