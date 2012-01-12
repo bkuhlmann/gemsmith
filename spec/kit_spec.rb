@@ -1,8 +1,11 @@
 require "spec_helper"
 
 describe Gemsmith::Kit do
+  subject {Gemsmith::Kit}
+
   it "should answer git user name" do
-    Gemsmith::Kit.git_config_value("user.name").should == `git config user.name`.chomp
+    subject.should_receive(:'`').and_return("test")
+    Gemsmith::Kit.git_config_value("user.name").should == "test"
   end
 
   it "should answer nil for invalid key" do
