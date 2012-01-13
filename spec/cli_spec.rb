@@ -2,30 +2,15 @@ require "spec_helper"
 
 describe Gemsmith::CLI do
   before :each do
-    # Default settings.
-    class Gemsmith::CLI
-      def initialize
-        super
-        @settings = {}
-      end
-    end
-    @cli_default = Gemsmith::CLI.new
-  
-    # Custom settings.
-    class Gemsmith::CLI
-      def initialize
-        super
-        @settings = load_yaml File.join(File.dirname(__FILE__), "support", "settings.yml")
-      end
-    end
-    @cli_custom = Gemsmith::CLI.new
+    @cli = Gemsmith::CLI.new
   end
   
-  describe "#initialize" do
+  describe "#create" do
     it "loads default settings" do
       author_name = Gemsmith::Kit.git_config_value("user.name") || "TODO: Add full name here."
       author_url = "https://www.unknown.com"
-      options = @cli_default.send :build_template_options, "test"
+
+      options = @cli.send :build_template_options, "test"
       options[:gem_name].should be == "test"
       options[:gem_class].should be == "Test"
       options[:gem_platform].should be == "Gem::Platform::RUBY"
@@ -47,7 +32,9 @@ describe Gemsmith::CLI do
     end
     
     it "loads custom settings" do
-      options = @cli_custom.send :build_template_options, "test"
+      custom_settings = @cli.send :load_yaml, File.join(File.dirname(__FILE__), "support", "settings.yml")
+
+      options = @cli.send :build_template_options, "test", custom_settings
       options[:gem_name].should be == "test"
       options[:gem_class].should be == "Test"
       options[:gem_platform].should be == "Gem::Platform::CURRENT"
