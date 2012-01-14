@@ -1,7 +1,7 @@
 = Overview
 
 <%- if config[:travis] -%>
-{<img src="https://secure.travis-ci.org/<%= config[:github_user] %>/tokener.png" />}[http://travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>]
+{<img src="https://secure.travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>.png" />}[http://travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>]
 <%- end -%>
 
 = Features

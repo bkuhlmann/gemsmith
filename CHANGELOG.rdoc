@@ -1,3 +1,18 @@
+= v1.3.0
+
+* Specified Thor+ 0.2.x version dependency.
+* Added Travis CI support.
+* Added Travis CI template support (can be disable via your settings.yml or during new gem creation).
+* Added the spec/tmp directory to the gitignore template.
+* Added Gemsmith::Kit class with a supplementary utility method for obtaining .gitconfig values.
+* Added github user support - Defaults to github config file or settings.yml.
+* Updated RSpec format to better represent class and instance methods.
+* Removed the -w option from gem binary and the binary template.
+* No longer shell out to Git when referencing the gem/template files in gemspecs - This increases Rails boot performance.
+* Switched Gemfile and Gemfile.tmp reference from "http://rubygems.org" to :rubygems.
+* Moved documentation files to the extra_rdoc_files option for gem specifications
+* Removed the packaging of test files.
+
 = v1.2.0
 
 * Updated README and README template with new layout for test instructions.
