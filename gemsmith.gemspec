@@ -21,9 +21,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec"
   s.add_development_dependency "aruba"
 
-  s.files         = Dir["lib/**/*"] + %w(README* CHANGELOG* LICENSE*)
-  s.test_files    = Dir["{spec, features}/**/*"]
-  s.executables << "gemsmith"
-  s.require_paths = ["lib"]
+  s.files            = Dir["lib/**/*"]
+  s.extra_rdoc_files = Dir["README*", "CHANGELOG*", "LICENSE*"]
+  s.executables      << "gemsmith"
+  s.require_paths    = ["lib"]
 end
 
