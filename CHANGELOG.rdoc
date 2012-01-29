@@ -1,3 +1,11 @@
+= v1.4.0
+
+* Added Travis CI templates for Rails build matrix that can support multiple version tests.
+* Added vendor files to gemspec template so they are included when building a new gem (especially Rails related).
+* Moved library requirements within the Rails conditional check so that requirements are only loaded if Rails is detected.
+* Modified the RSpec development dependency so that if Rails is detected, the rspec-rails gem is included instead.
+* Changed the Rails default version to 3.2.0.
+
 = v1.3.0
 
 * Specified Thor+ 0.2.x version dependency.
