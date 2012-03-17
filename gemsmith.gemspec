@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = "~> 1.9.0"
   s.add_dependency "thor", "~> 0.14.0"
-  s.add_dependency "thor_plus", ">= 0.3.0"
+  s.add_dependency "thor_plus", "~> 0.3"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
   s.add_development_dependency "aruba"
