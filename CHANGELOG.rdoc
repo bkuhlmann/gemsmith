@@ -1,3 +1,10 @@
+= v1.5.0
+
+* Added auto-linking to GitHub Issues via README template.
+* Relaxed Rails gem settings to 3.x.x.
+* Switched gem dependency to Thor 0.x.x range.
+* Switched gem dependency to Thor+ 0.x.x range.
+
 = v1.4.0
 
 * Added Travis CI templates for Rails build matrix that can support multiple version tests.
