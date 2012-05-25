@@ -87,7 +87,14 @@ available to you via Bundler (i.e. rake -T):
 1. {Best Practices While Cutting Gems}[http://rubysource.com/crafting-rubies-best-practices-while-cutting-gems].
 2. {Ruby on Rails Gem Packaging}[http://weblog.rubyonrails.org/2009/9/1/gem-packaging-best-practices].
 3. {Why You Should Use a BSD Style License}[http://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html].
-4. Ensure the RUBYOPT env variable includes the -w option. {Details}[http://avdi.org/devblog/2011/06/23/how-ruby-helps-you-fix-your-broken-code].
+4. Add -w to the RUBYOPT environment variable when testing. {Details}[http://avdi.org/devblog/2011/06/23/how-ruby-helps-you-fix-your-broken-code].
+
+== When To Include a Railtie (quoted from {Crafting Rails Applications}[http://pragprog.com/book/jvrails/crafting-rails-applications] - Page 93 by José Valim)
+
+* "Your gem needs to perform a given task while or after the Rails application is initialized."
+* "Your gem needs to change a configuration value, such as setting a generator."
+* "Your gem must provide Rake tasks and generators in nondefault locations (the default location for the former is lib/tasks and lib/gen- erators or lib/rails/generators for the latter)."
+* "You want your gem to provide configuration options to the appli- cation, such as config.my_gem.key = :value."
 
 = Tests
 
