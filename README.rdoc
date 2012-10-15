@@ -106,7 +106,7 @@ To test, do the following:
 
 = Contributions
 
-Please log all feedback/issues via {GitHub Issues}[https://github.com/bkuhlmann/gemsmith/issues]. Thanks.
+Read CONTRIBUTING for details.
 
 = Credits
 
