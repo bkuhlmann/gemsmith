@@ -38,7 +38,7 @@ To test, do the following:
 
 = Contributions
 
-Please log all feedback/issues via {GitHub Issues}[https://github.com/<%= config[:github_user] %>/<%= config[:gem_name] %>/issues]. Thanks.
+Read CONTRIBUTING for details.
 
 = Credits
 
