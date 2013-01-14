@@ -1,5 +1,6 @@
 = Overview
 
+{<img src="https://badge.fury.io/rb/<%= config[:gem_name] %>.png" alt="Gem Version" />}[http://badge.fury.io/rb/<%= config[:gem_name] %>]
 <%- if config[:travis] -%>
 {<img src="https://secure.travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>.png" />}[http://travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>]
 <%- end -%>
