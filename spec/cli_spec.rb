@@ -29,6 +29,7 @@ describe Gemsmith::CLI do
       options[:rails].should be_false
       options[:rspec].should be_true
       options[:travis].should be_true
+      options[:code_climate].should be_true
     end
     
     it "loads custom settings" do
@@ -52,7 +53,7 @@ describe Gemsmith::CLI do
       options[:bin].should be_false
       options[:rails].should be_false
       options[:rspec].should be_true
-      options[:travis].should be_true
+      options[:code_climate].should be_true
     end
   end
 end

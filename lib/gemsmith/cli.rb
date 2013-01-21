@@ -26,6 +26,7 @@ module Gemsmith
     method_option :rails, aliases: "-r", desc: "Add Rails support.", type: :boolean, default: false
     method_option :rspec, aliases: "-s", desc: "Add RSpec support.", type: :boolean, default: true
     method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true
+    method_option :code_climate, aliases: "-c", desc: "Add Code Climate support.", type: :boolean, default: true
     def create name
       say
       info "Creating gem..."
@@ -177,7 +178,8 @@ module Gemsmith
         bin: (options[:bin] || false),
         rails: (options[:rails] || false),
         rspec: (options[:rspec] || true),
-        travis: (options[:travis] || true)
+        travis: (options[:travis] || true),
+        code_climate: (options[:code_climate] || true)
       }
     end
   end

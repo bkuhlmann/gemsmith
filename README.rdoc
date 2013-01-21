@@ -2,6 +2,7 @@
 
 {<img src="https://badge.fury.io/rb/gemsmith.png" alt="Gem Version" />}[http://badge.fury.io/rb/gemsmith]
 {<img src="https://secure.travis-ci.org/bkuhlmann/gemsmith.png" alt="Travis CI Status" />}[http://travis-ci.org/bkuhlmann/gemsmith]
+{<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/bkuhlmann/gemsmith]
 
 Gemsmith allows you to easily craft new gems via the command line with custom settings (if desired). If you are
 a fan of Bundler[https://github.com/carlhuda/bundler], then you'll appreciate the additional capabilities of this

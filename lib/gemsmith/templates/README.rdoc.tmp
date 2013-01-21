@@ -4,6 +4,9 @@
 <%- if config[:travis] -%>
 {<img src="https://secure.travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>.png" alt="Travis CI Status" />}[http://travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>]
 <%- end -%>
+<%- if config[:code_climate] -%>
+{<img src="https://codeclimate.com/badge.png" alt="Code Climate Status" />}[https://codeclimate.com/github/<%= config[:github_user] %>/<%= config[:gem_name] %>]
+<%- end -%>
 
 = Features
 
