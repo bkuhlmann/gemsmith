@@ -3,3 +3,8 @@ rvm:
   - 1.9.2
   - 1.9.3
 script: bundle exec rspec spec
+notifications:
+  email: false
+  campfire:
+    rooms:
+      - secure: "bzHQOOunFq2vXB9MLp9ku+WxyiNeVE9ZEm3owJL8qx12n+4liCm1aOImjh7W\nYAbUzCHDweddPFL2JGLV4J15FGGK/xHH3ikbACvPZNfpSrCr/b95Zke8PHO1\nJ5EXTELQd2d/gU7MHHm7fSrGtVyVBRmZtu6pLBvKeT5lqU3aLKE="
