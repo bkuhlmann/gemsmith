@@ -7,4 +7,4 @@ notifications:
   email: false
   campfire:
     rooms:
-      - secure: "bzHQOOunFq2vXB9MLp9ku+WxyiNeVE9ZEm3owJL8qx12n+4liCm1aOImjh7W\nYAbUzCHDweddPFL2JGLV4J15FGGK/xHH3ikbACvPZNfpSrCr/b95Zke8PHO1\nJ5EXTELQd2d/gU7MHHm7fSrGtVyVBRmZtu6pLBvKeT5lqU3aLKE="
+      - secure: "b1xAqaauueF59HwFewWwSyMLS7qPQ10k8VjoHBhv+P8xRz3gynMdgTKmAvj6\nNYPO/PeScXOrLxQS5q26CNjfdFeKXlk64+UbT4WEbaLv7uWz+CEZLWIwKaMn\nTjsmbXrX5/e6ha0S5LazmsumCQf9odK3WQlUdqA9+Kavl/uSS5c="
