@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
   s.summary               = "Ruby gem skeleton generation for the professional gemsmith."
   s.description           = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
   s.license               = "MIT"
-  s.post_install_message	= "(W): www.redalchemist.com. (T): @ralchemist."
 
   s.required_ruby_version = "~> 1.9.0"
   s.add_dependency "thor", "~> 0.14"
