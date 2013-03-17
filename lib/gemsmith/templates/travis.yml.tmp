@@ -1,7 +1,6 @@
 language: ruby
 rvm:
-  - 1.9.2
-  - 1.9.3
+  - 2.0.0
 <%- if config[:rails] -%>
 gemfile:
   - gemfiles/rails-3.0.x.gemfile

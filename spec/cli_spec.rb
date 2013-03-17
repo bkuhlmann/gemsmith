@@ -22,7 +22,7 @@ describe Gemsmith::CLI do
       options[:company_url].should be == author_url
       options[:github_user].should be == (Gemsmith::Kit.git_config_value("github.user") || "unknown")
       options[:year].should be == Time.now.year
-      options[:ruby_version].should be == "1.9.0"
+      options[:ruby_version].should be == "2.0.0"
       options[:rails_version].should be == "3.0"
       options[:post_install_message].should be == nil
       options[:bin].should be_false

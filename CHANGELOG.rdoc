@@ -1,3 +1,19 @@
+= v2.0.0
+
+* Added Railtie best practices to README.
+* Added Guard support.
+* Converted/detailed the CONTRIBUTING guidelines per GitHub requirements.
+* Updated the contribution details in the README template to point to the CONTRIBUTING template.
+* Added spec focus capability.
+* Added Gem Badge support.
+* Added Code Climate support.
+* Added Campfire notification support.
+* Switched from HTTP to HTTPS when sourcing from RubyGems.
+* Added Pry support.
+* Cleaned up Guard gem dependency requirements.
+* Added Guard support to gem generation.
+* Upgraded to Ruby 2.0.0.
+
 = v1.5.0
 
 * Added auto-linking to GitHub Issues via README template.

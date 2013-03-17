@@ -13,8 +13,11 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 * Builds a gem skeleton with Bundler functionality in mind.
 * Supports common settings that can be applied to new gem creations.
 * Supports binary skeletons with Thor[https://github.com/wycats/thor] command line functionality.
-* Supports {Ruby on Rails}[http://rubyonrails.org] skeletons.
-* Supports RSpec[http://rspec.info] skeletons.
+* Supports {Ruby on Rails}[http://rubyonrails.org].
+* Supports RSpec[http://rspec.info].
+* Supports Pry[http://pryrepl.org].
+* Supports Guard[https://github.com/guard/guard].
+* Supports {Code Climate}[https://codeclimate.com].
 * Supports {Travis CI}[http://travis-ci.org] skeletons.
 * Adds commonly needed README, CHANGELOG, LICENSE, etc. template files.
 * Provides the ability to open any installed gem within your favorite editor.
@@ -22,9 +25,9 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 = Requirements
 
 1. A UNIX-based system.
-2. {Ruby 1.9.x}[http://www.ruby-lang.org]
-3. RubyGems[http://rubygems.org]
-4. Bundler[https://github.com/carlhuda/bundler]
+2. {Ruby 2.0.x}[http://www.ruby-lang.org].
+3. RubyGems[http://rubygems.org].
+4. Bundler[https://github.com/carlhuda/bundler].
 
 = Setup
 
@@ -55,7 +58,7 @@ If no options are configured, then the defaults are as follows:
   company_url: <author URL>
   github_user: <github user>
   year: <current year>
-  ruby_version: 1.9.0
+  ruby_version: 2.0.0
   rails_version: 3.2.0
 
 = Usage
@@ -70,12 +73,18 @@ From the command line, type: gemsmith help
 
 For more gem creation options, type: gemsmith help create
 
-  -b, [--bin]     # Add binary support.
-  -r, [--rails]   # Add Rails support.
-  -s, [--rspec]   # Add RSpec support.
-                  # Default: true
-  -t, [--travis]  # Add Travis CI support.
-                  # Default: true
+  -b, [--bin]           # Add binary support.
+  -r, [--rails]         # Add Rails support.
+  -p, [--pry]           # Add Pry support.
+                        # Default: true
+  -g, [--guard]         # Add Guard support.
+                        # Default: true
+  -s, [--rspec]         # Add RSpec support.
+                        # Default: true
+  -t, [--travis]        # Add Travis CI support.
+                        # Default: true
+  -c, [--code-climate]  # Add Code Climate support.
+                        # Default: true
 
 Also, don't forget that once you have created your gem skeleton, the following rake tasks are also
 available to you via Bundler (i.e. rake -T):
