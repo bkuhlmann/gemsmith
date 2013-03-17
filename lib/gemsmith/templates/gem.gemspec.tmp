@@ -27,6 +27,12 @@ Gem::Specification.new do |s|
   <%- if config[:travis] -%>
   s.add_development_dependency "rake"
 	<%- end -%>
+  <%- if config[:pry] -%>
+  s.add_development_dependency "pry"
+  s.add_development_dependency "pry-nav"
+  s.add_development_dependency "pry-stack_explorer"
+  s.add_development_dependency "pry-vterm_aliases"
+  <%- end -%>
   <%- if config[:rspec] -%>
   <%- rspec_gem = config[:rails] ? "rspec-rails" : "rspec" -%>
   s.add_development_dependency "<%= rspec_gem %>"

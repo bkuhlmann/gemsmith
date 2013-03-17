@@ -17,6 +17,10 @@ Gem::Specification.new do |s|
   s.add_dependency "thor", "~> 0.14"
   s.add_dependency "thor_plus", "~> 0.4"
   s.add_development_dependency "rake"
+  s.add_development_dependency "pry"
+  s.add_development_dependency "pry-nav"
+  s.add_development_dependency "pry-stack_explorer"
+  s.add_development_dependency "pry-vterm_aliases"
   s.add_development_dependency "rspec"
   s.add_development_dependency "aruba"
   s.add_development_dependency("rb-fsevent") if RUBY_PLATFORM =~ /darwin/i

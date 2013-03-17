@@ -25,6 +25,7 @@ module Gemsmith
     method_option :bin, aliases: "-b", desc: "Add binary support.", type: :boolean, default: false
     method_option :rails, aliases: "-r", desc: "Add Rails support.", type: :boolean, default: false
     method_option :rspec, aliases: "-s", desc: "Add RSpec support.", type: :boolean, default: true
+    method_option :pry, aliases: "-p", desc: "Add Pry support.", type: :boolean, default: true
     method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true
     method_option :code_climate, aliases: "-c", desc: "Add Code Climate support.", type: :boolean, default: true
     def create name
@@ -177,6 +178,7 @@ module Gemsmith
         post_install_message: settings[:post_install_message],
         bin: (options[:bin] || false),
         rails: (options[:rails] || false),
+        pry: (options[:pry] || true),
         rspec: (options[:rspec] || true),
         travis: (options[:travis] || true),
         code_climate: (options[:code_climate] || true)

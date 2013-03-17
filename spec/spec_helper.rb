@@ -1,6 +1,7 @@
 require "bundler/setup"
 require "gemsmith"
 require File.join "gemsmith", "cli"
+require "pry"
 
 RSpec.configure do |config|
   config.filter_run focus: true
