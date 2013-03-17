@@ -38,7 +38,12 @@ Gem::Specification.new do |s|
   s.add_development_dependency "<%= rspec_gem %>"
 	<%- end -%>
   <%- if config[:bin] -%>
-	s.add_development_dependency "aruba"
+  s.add_development_dependency "aruba"
+  <%- end -%>
+  <%- if config[:guard] -%>
+  s.add_development_dependency "rb-fsevent" # Guard file events for OSX.
+  s.add_development_dependency "rb-inotify" # Guard file events for Linux.
+  s.add_development_dependency "guard-rspec"
 	<%- end -%>
 	
   s.files            = Dir["lib/**/*", "vendor/**/*"]
