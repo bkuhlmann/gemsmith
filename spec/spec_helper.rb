@@ -1,6 +1,6 @@
 require "bundler/setup"
 require "gemsmith"
-require File.join "gemsmith", "cli"
+require "gemsmith/cli"
 require "pry"
 
 RSpec.configure do |config|
