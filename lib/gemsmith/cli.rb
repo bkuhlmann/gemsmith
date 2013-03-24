@@ -76,8 +76,6 @@ module Gemsmith
         template File.join("lib", "generators", "gem", "upgrade", "USAGE.tmp"), File.join(target_path, "lib", "generators", gem_name, "upgrade", "USAGE"), template_options
         # Travis CI (optional).
         if template_options[:travis]
-          template File.join("gemfiles", "rails-3.0.x.gemfile.tmp"), File.join(target_path, "gemfiles", "rails-3.0.x.gemfile"), template_options
-          template File.join("gemfiles", "rails-3.1.x.gemfile.tmp"), File.join(target_path, "gemfiles", "rails-3.1.x.gemfile"), template_options
           template File.join("gemfiles", "rails-3.2.x.gemfile.tmp"), File.join(target_path, "gemfiles", "rails-3.2.x.gemfile"), template_options
         end
       end
