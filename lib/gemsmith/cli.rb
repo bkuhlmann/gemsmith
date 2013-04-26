@@ -174,6 +174,7 @@ module Gemsmith
         github_user: (settings[:github_user] || Gemsmith::Kit.git_config_value("github.user") || "unknown"),
         year: (settings[:year] || Time.now.year),
         ruby_version: (settings[:ruby_version] || "2.0.0"),
+        ruby_patch: (settings[:ruby_patch] || "p0"),
         rails_version: (settings[:rails_version] || "3.0"),
         post_install_message: settings[:post_install_message],
         bin: (options[:bin] || false),

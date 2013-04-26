@@ -1,1 +1,1 @@
-<%= config[:ruby_version] %>
+<%= [config[:ruby_version], config[:ruby_patch]] * '-' %>
