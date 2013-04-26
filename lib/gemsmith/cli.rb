@@ -12,7 +12,7 @@ module Gemsmith
     def self.source_root
       File.expand_path File.join(File.dirname(__FILE__), "templates")
     end
-    
+
     # Initialize.
     def initialize args = [], options = {}, config = {}
       super args, options, config
@@ -32,14 +32,14 @@ module Gemsmith
     def create name
       say
       info "Creating gem..."
-      
+
       # Initialize options.
       template_options = build_template_options name, @settings, options
       gem_name = template_options[:gem_name]
 
       # Configure templates.
       target_path = File.join Dir.pwd, gem_name
-      
+
       # Default templates.
       template "README.rdoc.tmp", File.join(target_path, "README.rdoc"), template_options
       template "CONTRIBUTING.md.tmp", File.join(target_path, "CONTRIBUTING.md"), template_options
@@ -48,10 +48,11 @@ module Gemsmith
       template "Gemfile.tmp", File.join(target_path, "Gemfile"), template_options
       template "Rakefile.tmp", File.join(target_path, "Rakefile"), template_options
       template "gitignore.tmp", File.join(target_path, ".gitignore"), template_options
+      template "ruby-version.tmp", File.join(target_path, ".ruby-version"), template_options
       template "gem.gemspec.tmp", File.join(target_path, "#{gem_name}.gemspec"), template_options
       template File.join("lib", "gem.rb.tmp"), File.join(target_path, "lib", "#{gem_name}.rb"), template_options
       template File.join("lib", "gem", "version.rb.tmp"), File.join(target_path, "lib", gem_name, "version.rb"), template_options
-      
+
       # Binary (optional).
       if template_options[:bin]
         template File.join("bin", "gem.tmp"), File.join(target_path, "bin", gem_name), template_options
@@ -91,18 +92,18 @@ module Gemsmith
       if template_options[:travis]
         template "travis.yml.tmp", File.join(target_path, ".travis.yml"), template_options
       end
-      
+
       # Git
       Dir.chdir(target_path) do
         `git init`
         `git add .`
         `git commit -a -n -m "Gemsmith skeleton created."`
       end
-      
+
       info "Gem created."
       say
     end
-    
+
     desc "-o, [open=NAME]", "Opens gem in default editor (assumes $EDITOR environment variable)."
     map "-o" => :open
     def open name
@@ -128,7 +129,7 @@ module Gemsmith
         say "Unable to find gem: #{name}"
       end
     end
-    
+
     desc "-e, [edit]", "Edit gem settings in default editor (assumes $EDITOR environment variable)."
     map "-e" => :edit
     def edit
@@ -140,7 +141,7 @@ module Gemsmith
     def version
       say "Gemsmith " + VERSION
     end
-    
+
     desc "-h, [help]", "Show this message."
     def help task = nil
       say and super
