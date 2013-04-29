@@ -103,6 +103,7 @@ To test, do the following:
 
 = Best Practices
 
+1. {Semantic Versioning}[http://semver.org]
 1. {Best Practices While Cutting Gems}[http://rubysource.com/crafting-rubies-best-practices-while-cutting-gems].
 2. {Ruby on Rails Gem Packaging}[http://weblog.rubyonrails.org/2009/9/1/gem-packaging-best-practices].
 3. {Why You Should Use a BSD Style License}[http://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html].
