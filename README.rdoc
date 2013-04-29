@@ -41,7 +41,7 @@ You can configure common settings for future gem builds by creating the followin
 
 ...using the following settings (for example):
 
-  --- 
+  ---
   :author_name: Brooke Kuhlmann
   :author_email: brooke@redalchemist.com
   :author_url: http://www.redalchemist.com
@@ -93,6 +93,14 @@ available to you via Bundler (i.e. rake -T):
   rake install  # Build and install <gem>-<version>.gem into system gems
   rake release  # Create tag v0.1.1 and build and push <gem>-<version>.gem to Rubygems
 
+= Tests
+
+To test, do the following:
+
+1. cd to the gem root.
+2. bundle install
+3. bundle exec rspec spec
+
 = Best Practices
 
 1. {Best Practices While Cutting Gems}[http://rubysource.com/crafting-rubies-best-practices-while-cutting-gems].
@@ -107,13 +115,21 @@ available to you via Bundler (i.e. rake -T):
 * "Your gem must provide Rake tasks and generators in nondefault locations (the default location for the former is lib/tasks and lib/gen- erators or lib/rails/generators for the latter)."
 * "You want your gem to provide configuration options to the appli- cation, such as config.my_gem.key = :value."
 
-= Tests
+= Documentation
 
-To test, do the following:
+In order to make your gem easier to use and adopt by others, good documentation is always a plus. Consider submitting
+your gem to RubyDocs[http://rubydoc.info] once your gem is released and available for use. RubyDocs supports both
+RDoc and YARD formats.
 
-1. cd to the gem root.
-2. bundle install
-3. bundle exec rspec spec
+= Promotion
+
+Once your gem is released, you might like to let the world know about the new awesomeness. Here are several resources
+worth submitting your gem to for announcement:
+
+* {Ruby Toolbox}[https://www.ruby-toolbox.com]
+* RubyFlow[http://www.rubyflow.com]
+* {The Ruby Show}[http://rubyshow.com]
+* {Ruby 5}[http://ruby5.envylabs.com]
 
 = Contributions
 
