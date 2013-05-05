@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency "thor_plus", "~> 1.0"
   s.add_development_dependency "rake"
   s.add_development_dependency "pry"
-  s.add_development_dependency "pry-nav"
+  s.add_development_dependency "pry-debugger"
   s.add_development_dependency "pry-stack_explorer"
   s.add_development_dependency "pry-vterm_aliases"
   s.add_development_dependency "rspec"

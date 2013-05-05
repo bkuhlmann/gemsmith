@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
 	<%- end -%>
   <%- if config[:pry] -%>
   s.add_development_dependency "pry"
-  s.add_development_dependency "pry-nav"
+  s.add_development_dependency "pry-debugger"
   s.add_development_dependency "pry-stack_explorer"
   s.add_development_dependency "pry-vterm_aliases"
   <%- end -%>
@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rb-inotify" # Guard file events for Linux.
   s.add_development_dependency "guard-rspec"
 	<%- end -%>
-	
+
   s.files            = Dir["lib/**/*", "vendor/**/*"]
   s.extra_rdoc_files = Dir["README*", "CHANGELOG*", "LICENSE*"]
   <%- if config[:bin] -%>
