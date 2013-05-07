@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "guard-rspec"
 
   s.files            = Dir["lib/**/*"]
-  s.extra_rdoc_files = Dir["README*", "CHANGELOG*", "LICENSE*"]
+  s.extra_rdoc_files = Dir["README*", "LICENSE*"]
   s.executables      << "gemsmith"
   s.require_paths    = ["lib"]
 end
