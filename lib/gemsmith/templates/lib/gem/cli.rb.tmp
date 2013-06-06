@@ -18,7 +18,7 @@ module <%= config[:gem_class] %>
     def version
     	say "<%= config[:gem_class] %> " + VERSION
     end
-    
+
     desc "-h, [help]", "Show this message."
     def help task = nil
       say and super

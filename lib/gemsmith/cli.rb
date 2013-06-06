@@ -33,72 +33,30 @@ module Gemsmith
       say
       info "Creating gem..."
 
-      # Initialize options.
+      # Initialize
       template_options = build_template_options name, @settings, options
-      gem_name = template_options[:gem_name]
+      target_path = File.join Dir.pwd, template_options[:gem_name]
 
-      # Configure templates.
-      target_path = File.join Dir.pwd, gem_name
+      # Basic
+      create_basic_skeleton target_path, template_options
 
-      # Default templates.
-      template "README.md.tmp", File.join(target_path, "README.md"), template_options
-      template "CONTRIBUTING.md.tmp", File.join(target_path, "CONTRIBUTING.md"), template_options
-      template "LICENSE.md.tmp", File.join(target_path, "LICENSE.md"), template_options
-      template "CHANGELOG.md.tmp", File.join(target_path, "CHANGELOG.md"), template_options
-      template "Gemfile.tmp", File.join(target_path, "Gemfile"), template_options
-      template "Rakefile.tmp", File.join(target_path, "Rakefile"), template_options
-      template "gitignore.tmp", File.join(target_path, ".gitignore"), template_options
-      template "ruby-version.tmp", File.join(target_path, ".ruby-version"), template_options
-      template "gem.gemspec.tmp", File.join(target_path, "#{gem_name}.gemspec"), template_options
-      template File.join("lib", "gem.rb.tmp"), File.join(target_path, "lib", "#{gem_name}.rb"), template_options
-      template File.join("lib", "gem", "version.rb.tmp"), File.join(target_path, "lib", gem_name, "version.rb"), template_options
+      # Documentation
+      create_doc_skeleton target_path, template_options
 
       # Binary (optional).
-      if template_options[:bin]
-        template File.join("bin", "gem.tmp"), File.join(target_path, "bin", gem_name), template_options
-        template File.join("lib", "gem", "cli.rb.tmp"), File.join(target_path, "lib", gem_name, "cli.rb"), template_options
-      end
+      create_binary_skeleton target_path, template_options
 
       # Ruby on Rails (optional).
-      if template_options[:rails]
-        # ActionController
-        template File.join("lib", "gem", "action_controller", "class_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "action_controller", "class_methods.rb"), template_options
-        template File.join("lib", "gem", "action_controller", "instance_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "action_controller", "instance_methods.rb"), template_options
-        # ActionView
-        template File.join("lib", "gem", "action_view", "instance_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "action_view", "instance_methods.rb"), template_options
-        # ActiveRecord
-        template File.join("lib", "gem", "active_record", "class_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "active_record", "class_methods.rb"), template_options
-        template File.join("lib", "gem", "active_record", "instance_methods.rb.tmp"), File.join(target_path, "lib", gem_name, "active_record", "instance_methods.rb"), template_options
-        # Generators
-        empty_directory File.join(target_path, "lib", "generators", gem_name, "templates")
-        template File.join("lib", "generators", "gem", "install", "install_generator.rb.tmp"), File.join(target_path, "lib", "generators", gem_name, "install", "install_generator.rb"), template_options
-        template File.join("lib", "generators", "gem", "install", "USAGE.tmp"), File.join(target_path, "lib", "generators", gem_name, "install", "USAGE"), template_options
-        template File.join("lib", "generators", "gem", "upgrade", "upgrade_generator.rb.tmp"), File.join(target_path, "lib", "generators", gem_name, "upgrade", "upgrade_generator.rb"), template_options
-        template File.join("lib", "generators", "gem", "upgrade", "USAGE.tmp"), File.join(target_path, "lib", "generators", gem_name, "upgrade", "USAGE"), template_options
-        # Travis CI (optional).
-        if template_options[:travis]
-          template File.join("gemfiles", "rails-3.2.x.gemfile.tmp"), File.join(target_path, "gemfiles", "rails-3.2.x.gemfile"), template_options
-        end
-      end
+      create_rails_skeleton target_path, template_options
 
       # RSpec (optional).
-      if template_options[:rspec]
-        template "rspec.tmp", File.join(target_path, ".rspec"), template_options
-        template File.join("spec", "spec_helper.rb.tmp"), File.join(target_path, "spec", "spec_helper.rb"), template_options
-        template File.join("spec", "gem_spec.rb.tmp"), File.join(target_path, "spec", "#{gem_name}_spec.rb"), template_options
-      end
+      create_rspec_skeleton target_path, template_options
 
       # Travis CI (optional).
-      if template_options[:travis]
-        template "travis.yml.tmp", File.join(target_path, ".travis.yml"), template_options
-      end
+      create_travis_skeleton target_path, template_options
 
       # Git
-      Dir.chdir(target_path) do
-        `git init`
-        `git add .`
-        `git commit -a -n -m "Gemsmith skeleton created."`
-      end
+      create_git_skeleton target_path
 
       info "Gem created."
       say
@@ -185,6 +143,98 @@ module Gemsmith
         travis: (options[:travis] || true),
         code_climate: (options[:code_climate] || true)
       }
+    end
+
+    # Creates basic gem skeleton.
+    # * +target_path+ - Required. The target (install) path.
+    # * +options+ - Optional. The custom options (if any).
+    def create_basic_skeleton target_path, options
+      template "Gemfile.tmp", File.join(target_path, "Gemfile"), options
+      template "Rakefile.tmp", File.join(target_path, "Rakefile"), options
+      template "gitignore.tmp", File.join(target_path, ".gitignore"), options
+      template "ruby-version.tmp", File.join(target_path, ".ruby-version"), options
+      template "gem.gemspec.tmp", File.join(target_path, "#{options[:gem_name]}.gemspec"), options
+      template File.join("lib", "gem.rb.tmp"), File.join(target_path, "lib", "#{options[:gem_name]}.rb"), options
+      template File.join("lib", "gem", "version.rb.tmp"), File.join(target_path, "lib", options[:gem_name], "version.rb"), options
+    end
+
+    # Creates documentation skeleton.
+    # * +target_path+ - Required. The target (install) path.
+    # * +options+ - Optional. The custom options (if any).
+    def create_doc_skeleton target_path, options
+      template "README.md.tmp", File.join(target_path, "README.md"), options
+      template "CONTRIBUTING.md.tmp", File.join(target_path, "CONTRIBUTING.md"), options
+      template "LICENSE.md.tmp", File.join(target_path, "LICENSE.md"), options
+      template "CHANGELOG.md.tmp", File.join(target_path, "CHANGELOG.md"), options
+    end
+
+    # Creates binary skeleton.
+    # * +target_path+ - Required. The target (install) path.
+    # * +options+ - Optional. The custom options (if any).
+    def create_binary_skeleton target_path, options
+      if options[:bin]
+        template File.join("bin", "gem.tmp"), File.join(target_path, "bin", options[:gem_name]), options
+        template File.join("lib", "gem", "cli.rb.tmp"), File.join(target_path, "lib", options[:gem_name], "cli.rb"), options
+      end
+    end
+
+    # Creates Ruby on Rails skeleton.
+    # * +target_path+ - Required. The target (install) path.
+    # * +options+ - Optional. The custom options (if any).
+    def create_rails_skeleton target_path, options
+      if options[:rails]
+        # ActionController
+        template File.join("lib", "gem", "action_controller", "class_methods.rb.tmp"), File.join(target_path, "lib", options[:gem_name], "action_controller", "class_methods.rb"), options
+        template File.join("lib", "gem", "action_controller", "instance_methods.rb.tmp"), File.join(target_path, "lib", options[:gem_name], "action_controller", "instance_methods.rb"), options
+
+        # ActionView
+        template File.join("lib", "gem", "action_view", "instance_methods.rb.tmp"), File.join(target_path, "lib", options[:gem_name], "action_view", "instance_methods.rb"), options
+
+        # ActiveRecord
+        template File.join("lib", "gem", "active_record", "class_methods.rb.tmp"), File.join(target_path, "lib", options[:gem_name], "active_record", "class_methods.rb"), options
+        template File.join("lib", "gem", "active_record", "instance_methods.rb.tmp"), File.join(target_path, "lib", options[:gem_name], "active_record", "instance_methods.rb"), options
+
+        # Generators
+        empty_directory File.join(target_path, "lib", "generators", options[:gem_name], "templates")
+        template File.join("lib", "generators", "gem", "install", "install_generator.rb.tmp"), File.join(target_path, "lib", "generators", options[:gem_name], "install", "install_generator.rb"), options
+        template File.join("lib", "generators", "gem", "install", "USAGE.tmp"), File.join(target_path, "lib", "generators", options[:gem_name], "install", "USAGE"), options
+        template File.join("lib", "generators", "gem", "upgrade", "upgrade_generator.rb.tmp"), File.join(target_path, "lib", "generators", options[:gem_name], "upgrade", "upgrade_generator.rb"), options
+        template File.join("lib", "generators", "gem", "upgrade", "USAGE.tmp"), File.join(target_path, "lib", "generators", options[:gem_name], "upgrade", "USAGE"), options
+
+        # Travis CI (optional).
+        if options[:travis]
+          template File.join("gemfiles", "rails-3.2.x.gemfile.tmp"), File.join(target_path, "gemfiles", "rails-3.2.x.gemfile"), options
+        end
+      end
+    end
+
+    # Creates RSpec skeleton.
+    # * +target_path+ - Required. The target (install) path.
+    # * +options+ - Optional. The custom options (if any).
+    def create_rspec_skeleton target_path, options
+      if options[:rspec]
+        template "rspec.tmp", File.join(target_path, ".rspec"), options
+        template File.join("spec", "spec_helper.rb.tmp"), File.join(target_path, "spec", "spec_helper.rb"), options
+        template File.join("spec", "gem_spec.rb.tmp"), File.join(target_path, "spec", "#{options[:gem_name]}_spec.rb"), options
+      end
+    end
+
+    # Creates Travis CI skeleton.
+    # * +target_path+ - Required. The target (install) path.
+    # * +options+ - Optional. The custom options (if any).
+    def create_travis_skeleton target_path, options
+      if options[:travis]
+        template "travis.yml.tmp", File.join(target_path, ".travis.yml"), options
+      end
+    end
+
+    # Creates Git skeleton.
+    def create_git_skeleton target_path
+      Dir.chdir(target_path) do
+        `git init`
+        `git add .`
+        `git commit -a -n -m "Gemsmith skeleton created."`
+      end
     end
   end
 end

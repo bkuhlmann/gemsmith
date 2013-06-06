@@ -19,7 +19,7 @@ if defined? Rails
   if defined? ActionView
     ActionView::Base.send :include, <%= config[:gem_class] %>::ActionView
   end
- 
+
   # Controller
   if defined? ActionController
     ActionController::Base.send :include, <%= config[:gem_class] %>::ActionController
