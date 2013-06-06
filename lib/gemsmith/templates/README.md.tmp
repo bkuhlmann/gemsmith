@@ -1,0 +1,59 @@
+# Overview
+
+[![Gem Version](https://badge.fury.io/rb/<%= config[:gem_name] %>.png)](http://badge.fury.io/rb/<%= config[:gem_name] %>)
+<%- if config[:code_climate] -%>
+[![Code Climate GPA](https://codeclimate.com/github/<%= config[:github_user] %>/<%= config[:gem_name] %>.png)](https://codeclimate.com/github/<%= config[:github_user] %>/<%= config[:gem_name] %>)
+<%- end -%>
+<%- if config[:travis] -%>
+[![Travis CI Status](https://secure.travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>.png)](http://travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>)
+<%- end -%>
+
+# Features
+
+# Requirements
+
+<%- if config[:rails] -%>
+0. [Ruby on Rails](http://rubyonrails.org).
+<%- end -%>
+
+# Setup
+
+Type the following from the command line to install:
+
+    gem install <%= config[:gem_name] %>
+
+<%- if config[:rails] -%>
+Add the following to your Gemfile:
+
+    gem "<%= config[:gem_name] %>"
+<%- end -%>
+
+# Usage
+
+<%- if config[:rspec] -%>
+# Tests
+
+To test, do the following:
+
+0. cd to the gem root.
+0. bundle install
+0. bundle exec rspec spec
+<%- end -%>
+
+# Contributions
+
+Read CONTRIBUTING for details.
+
+# Credits
+
+Developed by [<%= config[:author_name] %>](<%= config[:author_url] %>) at [<%= config[:company_name] %>](<%= config[:company_url] %>).
+
+# License
+
+Copyright (c) <%= config[:year] %> [<%= config[:company_name] %>](<%= config[:company_url] %>).
+Read the LICENSE for details.
+
+# History
+
+Read the CHANGELOG for details.
+Built with [Gemsmith](https://github.com/bkuhlmann/gemsmith).

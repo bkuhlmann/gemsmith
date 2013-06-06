@@ -41,10 +41,10 @@ module Gemsmith
       target_path = File.join Dir.pwd, gem_name
 
       # Default templates.
-      template "README.rdoc.tmp", File.join(target_path, "README.rdoc"), template_options
+      template "README.md.tmp", File.join(target_path, "README.md"), template_options
       template "CONTRIBUTING.md.tmp", File.join(target_path, "CONTRIBUTING.md"), template_options
-      template "LICENSE.rdoc.tmp", File.join(target_path, "LICENSE.rdoc"), template_options
-      template "CHANGELOG.rdoc.tmp", File.join(target_path, "CHANGELOG.rdoc"), template_options
+      template "LICENSE.md.tmp", File.join(target_path, "LICENSE.md"), template_options
+      template "CHANGELOG.md.tmp", File.join(target_path, "CHANGELOG.md"), template_options
       template "Gemfile.tmp", File.join(target_path, "Gemfile"), template_options
       template "Rakefile.tmp", File.join(target_path, "Rakefile"), template_options
       template "gitignore.tmp", File.join(target_path, ".gitignore"), template_options
