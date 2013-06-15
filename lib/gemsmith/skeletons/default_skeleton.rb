@@ -5,8 +5,8 @@ module Gemsmith
         template "Gemfile.tmp", File.join(install_path, "Gemfile"), template_options
         template "Rakefile.tmp", File.join(install_path, "Rakefile"), template_options
         template "gem.gemspec.tmp", File.join(install_path, "#{gem_name}.gemspec"), template_options
-        template File.join("lib", "gem.rb.tmp"), File.join(install_path, "lib", "#{gem_name}.rb"), template_options
-        template File.join("lib", "gem", "version.rb.tmp"), File.join(install_path, "lib", gem_name, "version.rb"), template_options
+        template File.join("lib", "gem.rb.tmp"), File.join(lib_install_path, "#{gem_name}.rb"), template_options
+        template File.join("lib", "gem", "version.rb.tmp"), File.join(lib_install_path, gem_name, "version.rb"), template_options
       end
 
       def create_ruby_files
