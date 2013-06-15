@@ -62,16 +62,13 @@ module Gemsmith
     desc "-o, [open=NAME]", "Opens gem in default editor (assumes $EDITOR environment variable)."
     map "-o" => :open
     def open name
-      gems = Gem::Specification.find_all_by_name name
-      case
-        when gems.size == 1
-          `$EDITOR #{gems.first.full_gem_path}`
-        when gems.size > 1
-          print_gem_versions gems
-          open_gem gems
-        else
-          say "Unable to find gem: #{name}"
-      end
+      process_gem name, "open"
+    end
+
+    desc "-r, [read=NAME]", "Opens gem in default browser."
+    map "-r" => :read
+    def read name
+      process_gem name, "read"
     end
 
     desc "-e, [edit]", "Edit gem settings in default editor (assumes $EDITOR environment variable)."

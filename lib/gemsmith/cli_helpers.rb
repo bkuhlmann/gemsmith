@@ -31,26 +31,59 @@ module Gemsmith
     # Prints currently installed gem name and version information.
     # ===== Parameters
     # * +gems+ - Required. The array of gem names (i.e. gem specifications).
-    def print_gem_versions gems
+    def print_gems gems
       say "Multiple versions found:"
       gems.each_with_index do |spec, index|
         say "#{index + 1}. #{spec.name} #{spec.version.version}"
       end
     end
 
-    # Opens selected gem within default editor.
+    # Picks a gem specification for processing.
     # ===== Parameters
-    # * +gems+ - Required. The array of gem names (i.e. gem specifications).
-    def open_gem gems
+    # * +gems+ - Required. The array of gem specifications.
+    # * +name+ - Required. The gem name to search for.
+    def pick_gem gems, name
       result = ask "Please pick one (or type 'q' to quit):"
 
       return if result == 'q' # Exit early.
 
       if (1..gems.size).include?(result.to_i)
-        spec = Gem::Specification.find_by_name name, gems[result.to_i - 1].version.version
-        `$EDITOR #{spec.full_gem_path}`
+        Gem::Specification.find_by_name name, gems[result.to_i - 1].version.version
       else
         error "Invalid option: #{result}"
+        nil
+      end
+    end
+
+    # Opens selected gem within default editor.
+    # ===== Parameters
+    # * +spec+ - Required. The gem specification.
+    def open_gem spec
+      `$EDITOR #{spec.full_gem_path}` if spec
+    end
+
+    # Opens selected gem within default browser.
+    # ===== Parameters
+    # * +spec+ - Required. The gem specification.
+    def read_gem spec
+      `open #{spec.homepage}` if spec
+    end
+
+    # Processes a gem for given name and command.
+    # ===== Parameters
+    # * +name+ - Required. The gem name.
+    # * +command+ - Required. The command to process the gem.
+    def process_gem name, command
+      specs = Gem::Specification.find_all_by_name name
+
+      case
+        when specs.size == 1
+          send "#{command}_gem", specs.first
+        when specs.size > 1
+          print_gems specs
+          send "#{command}_gem", pick_gem(specs, name)
+        else
+          say "Unable to find gem: #{name}"
       end
     end
   end
