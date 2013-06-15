@@ -27,7 +27,6 @@ module Gemsmith
 
       private
 
-      # Answers the gem lib path.
       def lib_install_path
         File.join install_path, "lib"
       end
