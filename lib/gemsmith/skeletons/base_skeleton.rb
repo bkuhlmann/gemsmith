@@ -27,8 +27,16 @@ module Gemsmith
 
       private
 
+      def gem_source_path
+        File.join "lib", "gem"
+      end
+
       def lib_install_path
         File.join install_path, "lib"
+      end
+
+      def gem_install_path
+        File.join lib_install_path, gem_name
       end
     end
   end

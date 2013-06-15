@@ -2,17 +2,17 @@ module Gemsmith
   module Skeletons
     class RailsSkeleton < BaseSkeleton
       def create_model_files
-        template File.join("lib", "gem", "active_record", "class_methods.rb.tmp"), File.join(lib_install_path, gem_name, "active_record", "class_methods.rb"), template_options
-        template File.join("lib", "gem", "active_record", "instance_methods.rb.tmp"), File.join(lib_install_path, gem_name, "active_record", "instance_methods.rb"), template_options
+        template File.join(gem_source_path, "active_record", "class_methods.rb.tmp"), File.join(gem_install_path, "active_record", "class_methods.rb"), template_options
+        template File.join(gem_source_path, "active_record", "instance_methods.rb.tmp"), File.join(gem_install_path, "active_record", "instance_methods.rb"), template_options
       end
 
       def create_view_files
-        template File.join("lib", "gem", "action_view", "instance_methods.rb.tmp"), File.join(lib_install_path, gem_name, "action_view", "instance_methods.rb"), template_options
+        template File.join(gem_source_path, "action_view", "instance_methods.rb.tmp"), File.join(gem_install_path, "action_view", "instance_methods.rb"), template_options
       end
 
       def create_controller_files
-        template File.join("lib", "gem", "action_controller", "class_methods.rb.tmp"), File.join(lib_install_path, gem_name, "action_controller", "class_methods.rb"), template_options
-        template File.join("lib", "gem", "action_controller", "instance_methods.rb.tmp"), File.join(lib_install_path, gem_name, "action_controller", "instance_methods.rb"), template_options
+        template File.join(gem_source_path, "action_controller", "class_methods.rb.tmp"), File.join(gem_install_path, "action_controller", "class_methods.rb"), template_options
+        template File.join(gem_source_path, "action_controller", "instance_methods.rb.tmp"), File.join(gem_install_path, "action_controller", "instance_methods.rb"), template_options
       end
 
       def create_generator_files
