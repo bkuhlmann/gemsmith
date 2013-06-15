@@ -17,6 +17,7 @@ module Gemsmith
   class CLI < Thor
     include Thor::Actions
     include ThorPlus::Actions
+    include CLIOptions
     include CLIHelpers
 
     # Overwrites the Thor template source root.
@@ -45,7 +46,7 @@ module Gemsmith
       say
       info "Creating gem..."
 
-      build_template_options name, @settings, options
+      build_template_options name, options
 
       Skeletons::DefaultSkeleton.run self
       Skeletons::DocumentationSkeleton.run self
