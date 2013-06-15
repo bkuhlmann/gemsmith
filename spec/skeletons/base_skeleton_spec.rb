@@ -30,8 +30,8 @@ describe Gemsmith::Skeletons::BaseSkeleton do
       skeleton.respond_to?("gem_name").should be_true
     end
 
-    it "responds to install_path" do
-      skeleton.respond_to?("install_path").should be_true
+    it "responds to destination_root" do
+      skeleton.respond_to?("destination_root").should be_true
     end
 
     it "does not responds to a bogus method" do

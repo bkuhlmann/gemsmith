@@ -2,12 +2,14 @@ module Gemsmith
   module CLIOptions
     module_function
 
-    # Builds template options with default and/or custom settings (where the custom settings trump default settings).
+    # Initializes template options with default and/or command line overrides.
     # ==== Parameters
     # * +name+ - Required. The gem name.
     # * +options+ - Optional. Additional command line options. Default: {}.
-    def build_template_options name, options = {}
+    def initialize_template_options name, options = {}
       @settings.merge! options
+      @settings = enforce_symbol_keys @settings
+
       gem_name name
       gem_class name
 

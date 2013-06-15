@@ -2,15 +2,15 @@ module Gemsmith
   module Skeletons
     class RspecSkeleton < BaseSkeleton
       def create_files
-        template "rspec.tmp", File.join(install_path, ".rspec"), template_options
-        template File.join("spec", "spec_helper.rb.tmp"), File.join(rspec_install_path, "spec_helper.rb"), template_options
-        template File.join("spec", "gem_spec.rb.tmp"), File.join(rspec_install_path, "#{gem_name}_spec.rb"), template_options
+        template "%gem_name%/.rspec.tt", template_options
+        template "#{rspec_root}/spec_helper.rb.tt", template_options
+        template "#{rspec_root}/%gem_name%_spec.rb.tt", template_options
       end
 
       private
 
-      def rspec_install_path
-        File.join install_path, "spec"
+      def rspec_root
+        "%gem_name%/spec"
       end
     end
   end

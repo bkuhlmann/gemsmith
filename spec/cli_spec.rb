@@ -13,7 +13,7 @@ describe Gemsmith::CLI do
       cli.stub(:author_name).and_return name
       cli.stub(:company_name).and_return name
 
-      options = cli.send :build_template_options, "test"
+      options = cli.send :initialize_template_options, "test"
       options[:gem_name].should be == "test"
       options[:gem_class].should be == "Test"
       options[:gem_platform].should be == "Gem::Platform::RUBY"
@@ -41,7 +41,7 @@ describe Gemsmith::CLI do
     it "loads custom settings" do
       custom_settings = cli.send :load_yaml, File.join(File.dirname(__FILE__), "support", "settings.yml")
 
-      options = cli.send :build_template_options, "test", custom_settings
+      options = cli.send :initialize_template_options, "test", custom_settings
       options[:gem_name].should be == "test"
       options[:gem_class].should be == "Test"
       options[:gem_platform].should be == "Gem::Platform::CURRENT"

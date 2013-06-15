@@ -46,8 +46,7 @@ module Gemsmith
       say
       info "Creating gem..."
 
-      build_template_options name, options
-
+      initialize_template_options name, options
       Skeletons::DefaultSkeleton.run self
       Skeletons::DocumentationSkeleton.run self
       Skeletons::CLISkeleton.run(self) if template_options[:bin]

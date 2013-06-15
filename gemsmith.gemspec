@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rb-inotify" # Guard file events for Linux.
   s.add_development_dependency "guard-rspec"
 
-  s.files            = Dir["lib/**/*"]
+  s.files            = Dir["lib/**/{*,.*}"]
   s.extra_rdoc_files = Dir["README*", "LICENSE*"]
   s.executables      << "gemsmith"
   s.require_paths    = ["lib"]

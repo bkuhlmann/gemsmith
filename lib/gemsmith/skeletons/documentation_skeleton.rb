@@ -2,10 +2,10 @@ module Gemsmith
   module Skeletons
     class DocumentationSkeleton < BaseSkeleton
       def create_files
-        template "README.md.tmp", File.join(install_path, "README.md"), template_options
-        template "CONTRIBUTING.md.tmp", File.join(install_path, "CONTRIBUTING.md"), template_options
-        template "LICENSE.md.tmp", File.join(install_path, "LICENSE.md"), template_options
-        template "CHANGELOG.md.tmp", File.join(install_path, "CHANGELOG.md"), template_options
+        template "%gem_name%/README.md.tt", template_options
+        template "%gem_name%/CONTRIBUTING.md.tt", template_options
+        template "%gem_name%/LICENSE.md.tt", template_options
+        template "%gem_name%/CHANGELOG.md.tt", template_options
       end
     end
   end
