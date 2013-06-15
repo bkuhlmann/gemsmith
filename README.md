@@ -106,6 +106,8 @@ To test, do the following:
 0. [Semantic Versioning](http://semver.org)
 0. [Best Practices While Cutting Gems](http://rubysource.com/crafting-rubies-best-practices-while-cutting-gems).
 0. [Ruby on Rails Gem Packaging](http://weblog.rubyonrails.org/2009/9/1/gem-packaging-best-practices).
+0. [Gem Activation and You: Part I](http://erik.hollensbe.org/2013/05/11/gem-activation-and-you)
+0. [Gem Activation and You: Part II](http://erik.hollensbe.org/2013/05/15/gem-activation-and-you-part-2-bundler-and-binstubs)
 0. [Why You Should Use a BSD Style License](http://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html).
 0. Add -w to the RUBYOPT environment variable when testing. [Details](http://avdi.org/devblog/2011/06/23/how-ruby-helps-you-fix-your-broken-code).
 
