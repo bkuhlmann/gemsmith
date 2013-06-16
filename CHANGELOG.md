@@ -1,3 +1,25 @@
+# v2.1.0
+
+* Removed Rails 3.0.x and 3.1.x template support.
+* Removed the CHANGELOG documentation from gem install.
+* Added the ability to read a gem (opens gem homepage in default browser).
+* Added the ability to treat symbols as true values by default when running RSpec specs.
+* Added .ruby-version support including Ruby patch support (can be specified as a config option too).
+* Added documentation for documenting and promiting a gem to README.
+* Added 'How to Spread the Word About Your Code' link to README. Thanks Eric.
+* Added a link to Semantic Versioning to the README.
+* Added 'Gem Activiation and You, Parts I and II' to the README.
+* Switched to using Markdown instead of Rdoc for documentation.
+* Switched from pry-nav to the pry-debugger gem.
+* Updated gemspec to Thor 0.18 and higher.
+* Added pry-rescue support.
+* Cleaned up requirement path syntax.
+* Significantly refactored the code as follows into cli helpers/options modules, feature skeletons, etc.
+* Removed extraneous gem source documentation.
+* Refactored all templates to use .tt suffixes.
+* Switched to using relative source tree structures for templates so that destination reflects source.
+* Refactored the code for opening and reading a gem.
+
 # v2.0.0
 
 * Added Railtie best practices to README.

@@ -59,6 +59,7 @@ If no options are configured, then the defaults are as follows:
     github_user: <github user>
     year: <current year>
     ruby_version: 2.0.0
+    ruby_patch: p0
     rails_version: 3.2.0
 
 # Usage
@@ -69,6 +70,7 @@ From the command line, type: gemsmith help
     gemsmith -e, [edit]             # Edit gem settings in default editor (assumes $EDITOR environment variable).
     gemsmith -h, [help]             # Show this message.
     gemsmith -o, [open=NAME]        # Opens gem in default editor (assumes $EDITOR environment variable).
+    gemsmith -r, [read=NAME]        # Opens gem in default browser.
     gemsmith -v, [version]          # Show version.
 
 For more gem creation options, type: gemsmith help create
