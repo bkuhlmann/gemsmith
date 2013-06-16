@@ -16,6 +16,7 @@ module Gemsmith
       end
 
       def create_generator_files
+        empty_directory "#{generator_root}/templates"
         template "#{generator_root}/install/install_generator.rb.tt", template_options
         template "#{generator_root}/install/USAGE.tt", template_options
         template "#{generator_root}/upgrade/upgrade_generator.rb.tt", template_options
