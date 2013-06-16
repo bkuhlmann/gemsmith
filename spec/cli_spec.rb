@@ -13,6 +13,8 @@ describe Gemsmith::CLI do
       cli.stub(:author_name).and_return name
       cli.stub(:company_name).and_return name
 
+      cli.stub(:ruby_patch).and_return "p0"
+
       options = cli.send :initialize_template_options, "test"
       options[:gem_name].should be == "test"
       options[:gem_class].should be == "Test"
