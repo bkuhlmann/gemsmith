@@ -136,6 +136,14 @@ Once your gem is released, you might like to let the world know about the new aw
 * [The Ruby Show](http://rubyshow.com)
 * [Ruby 5](http://ruby5.envylabs.com)
 
+# Versioning
+
+Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
+
+* Patch (x.y.Z) - Incremented for small, backwards compatible bug fixes.
+* Minor (x.Y.z) - Incremented for new, backwards compatible public API enhancements and/or bug fixes.
+* Major (X.y.z) - Incremented for any backwards incompatible public API changes.
+
 # Contributions
 
 Read CONTRIBUTING for details.
