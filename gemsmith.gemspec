@@ -13,6 +13,9 @@ Gem::Specification.new do |s|
   s.description           = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
   s.license               = "MIT"
 
+  s.signing_key = File.expand_path("~/.ssh/gem-private.pem")
+  s.cert_chain  = ["gem-public.pem"]
+
   s.required_ruby_version = "~> 2.0.0"
   s.add_dependency "thor", "~> 0.18"
   s.add_dependency "thor_plus", "~> 1.0"
