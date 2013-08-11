@@ -16,6 +16,11 @@ Gem::Specification.new do |s|
 	s.post_install_message	= "<%= config[:post_install_message] %>"
 	<%- end -%>
 
+  unless ENV["TRAVIS"]
+    s.signing_key = File.expand_path("~/.ssh/gem-private.pem")
+    s.cert_chain  = ["gem-public.pem"]
+  end
+
 	s.required_ruby_version = "~> <%= config[:ruby_version] %>"
   <%- if config[:bin] -%>
 	s.add_dependency "thor"
