@@ -1,5 +1,4 @@
 #!/usr/bin/ruby
-# encoding: UTF-8
 
 require "<%= config[:gem_name] %>"
 require "<%= config[:gem_name] %>/cli"
