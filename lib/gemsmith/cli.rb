@@ -33,8 +33,8 @@ module Gemsmith
       @template_options = {}
     end
 
-    desc "-c, [create=GEM_NAME]", "Create new gem."
-    map "-c" => :create
+    desc "-c, [create=CREATE]", "Create new gem."
+    map %w(-c --create) => :create
     method_option :bin, aliases: "-b", desc: "Add binary support.", type: :boolean, default: false
     method_option :rails, aliases: "-r", desc: "Add Rails support.", type: :boolean, default: false
     method_option :pry, aliases: "-p", desc: "Add Pry support.", type: :boolean, default: true
@@ -59,31 +59,32 @@ module Gemsmith
       say
     end
 
-    desc "-o, [open=NAME]", "Opens gem in default editor (assumes $EDITOR environment variable)."
-    map "-o" => :open
+    desc "-o, [open=OPEN]", "Opens gem in default editor (assumes $EDITOR environment variable)."
+    map %w(-o --open) => :open
     def open name
       process_gem name, "open"
     end
 
-    desc "-r, [read=NAME]", "Opens gem in default browser."
-    map "-r" => :read
+    desc "-r, [read=READ]", "Opens gem in default browser."
+    map %w(-r --read) => :read
     def read name
       process_gem name, "read"
     end
 
     desc "-e, [edit]", "Edit gem settings in default editor (assumes $EDITOR environment variable)."
-    map "-e" => :edit
+    map %w(-e --edit) => :edit
     def edit
       `$EDITOR #{@settings_file}`
     end
 
-    desc "-v, [version]", "Show version."
-    map "-v" => :version
+    desc "-v, [--version]", "Show version."
+    map %w(-v --version) => :version
     def version
       say "Gemsmith " + VERSION
     end
 
-    desc "-h, [help]", "Show this message."
+    desc "-h, [--help=HELP]", "Show this message or get help for a command."
+    map %w(-h --help) => :help
     def help task = nil
       say and super
     end

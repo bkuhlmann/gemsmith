@@ -13,13 +13,14 @@ module <%= config[:gem_class] %>
       super args, options, config
     end
 
-    desc "-v, [version]", "Show version."
-    map "-v" => :version
+    desc "-v, [--version]", "Show version."
+    map %w(-v --version) => :version
     def version
-    	say "<%= config[:gem_class] %> " + VERSION
+      say "<%= config[:gem_class] %> " + VERSION
     end
 
-    desc "-h, [help]", "Show this message."
+    desc "-h, [--help=HELP]", "Show this message or get help for a command."
+    map %w(-h --help) => :help
     def help task = nil
       say and super
     end
