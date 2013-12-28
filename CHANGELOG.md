@@ -1,3 +1,18 @@
+# v2.2.0
+
+* Fixed long-form commands to use "--" prefix. Example: --example.
+* Fixed Ruby Gem certificate requirements for package building.
+* Fixed RSpec deprecation warnings for treating metadata symbol keys as true values.
+* Removed UTF-8 encoding definitions - This is the default in Ruby 2.x.x.
+* Removed .ruby-version from .gitignore.
+* Removed Linux Guard notification support.
+* Updated to Ruby 2.1.0.
+* Updated the ignoring of signing a gem when building in a Travis CI environment.
+* Updated public gem certificate to be referenced from a central server.
+* Added a Versioning section to the README as defined here: http://semver.org.
+* Added public cert for secure install of gem.
+* Added Pry plugin requirements to RSpec spec helper.
+
 # v2.1.0
 
 * Removed Rails 3.0.x and 3.1.x template support.
