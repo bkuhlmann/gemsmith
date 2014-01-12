@@ -31,12 +31,12 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 
 # Setup
 
-Type the following from the command line to securely install (recommended):
+For a secure install, type the following from the command line (recommended):
 
     gem cert --add <(curl -Ls http://www.redalchemist.com/gem-public.pem)
     gem install gemsmith -P HighSecurity
 
-...or type the following to insecurely install (not recommended):
+...or, for an insecure install, type the following (not recommended):
 
     gem install gemsmith
 
