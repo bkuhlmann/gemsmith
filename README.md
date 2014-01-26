@@ -108,6 +108,20 @@ To test, do the following:
 0. bundle install
 0. bundle exec rspec spec
 
+# Security
+
+To creat a certificate for your gems, run the following:
+
+    cd ~/.ssh
+    gem cert --build you@example.com
+    chmod 600 gem-*.pem
+
+To learn more about gem certificates, read the following:
+
+* [Ruby Gems](http://guides.rubygems.org/security/#building_gems)
+* [A Practical Guide to Using Signed Ruby Gems - Part 1: Bundler](http://blog.meldium.com/home/2013/3/3/signed-rubygems-part)
+* [A Practical Guide to Using Signed Ruby Gems - Part 2: Heroku](http://blog.meldium.com/home/2013/3/6/signed-gems-on-heroku)
+
 # Best Practices
 
 0. [Semantic Versioning](http://semver.org)
