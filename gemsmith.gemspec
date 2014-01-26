@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.platform              = Gem::Platform::RUBY
   s.author                = "Brooke Kuhlmann"
   s.email                 = "brooke@redalchemist.com"
-  s.homepage              = "http://www.redalchemist.com"
+  s.homepage              = "https://github.com/bkuhlmann/gemsmith"
   s.summary               = "Ruby gem skeleton generation for the professional gemsmith."
   s.description           = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
   s.license               = "MIT"
