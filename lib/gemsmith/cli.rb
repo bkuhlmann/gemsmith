@@ -59,19 +59,19 @@ module Gemsmith
       say
     end
 
-    desc "-o, [open=OPEN]", "Opens gem in default editor (assumes $EDITOR environment variable)."
+    desc "-o, [open=OPEN]", "Open gem in default editor (assumes $EDITOR environment variable)."
     map %w(-o --open) => :open
     def open name
       process_gem name, "open"
     end
 
-    desc "-r, [read=READ]", "Opens gem in default browser."
+    desc "-r, [read=READ]", "Open gem in default browser."
     map %w(-r --read) => :read
     def read name
       process_gem name, "read"
     end
 
-    desc "-e, [edit]", "Edit gem settings in default editor (assumes $EDITOR environment variable)."
+    desc "-e, [edit]", "Edit gem in default editor (assumes $EDITOR environment variable)."
     map %w(-e --edit) => :edit
     def edit
       `$EDITOR #{@settings_file}`

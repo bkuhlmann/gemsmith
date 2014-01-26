@@ -59,7 +59,7 @@ module Gemsmith
     # ===== Parameters
     # * +spec+ - Required. The gem specification.
     def open_gem spec
-      `#{ENV["EDITOR"]} #{spec.full_gem_path}` if spec
+      `#{$EDITOR} #{spec.full_gem_path}` if spec
     end
 
     # Opens selected gem within default browser.
