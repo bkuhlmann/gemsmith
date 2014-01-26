@@ -71,12 +71,12 @@ If no options are configured, then the defaults are as follows:
 
 From the command line, type: gemsmith help
 
-    gemsmith -c, [create=GEM_NAME]  # Create new gem.
-    gemsmith -e, [edit]             # Edit gem settings in default editor (assumes $EDITOR environment variable).
-    gemsmith -h, [help]             # Show this message.
-    gemsmith -o, [open=NAME]        # Opens gem in default editor (assumes $EDITOR environment variable).
-    gemsmith -r, [read=NAME]        # Opens gem in default browser.
-    gemsmith -v, [version]          # Show version.
+    gemsmith -c, [create=CREATE]  # Create new gem.
+    gemsmith -e, [edit]           # Edit gem in default editor (assumes $EDITOR environment variable).
+    gemsmith -h, [--help=HELP]    # Show this message or get help for a command.
+    gemsmith -o, [open=OPEN]      # Open gem in default editor (assumes $EDITOR environment variable).
+    gemsmith -r, [read=READ]      # Open gem in default browser.
+    gemsmith -v, [--version]      # Show version.
 
 For more gem creation options, type: gemsmith help create
 
@@ -93,12 +93,11 @@ For more gem creation options, type: gemsmith help create
     -c, [--code-climate]  # Add Code Climate support.
                           # Default: true
 
-Also, don't forget that once you have created your gem skeleton, the following rake tasks are also
-available to you via Bundler (i.e. rake -T):
+Once a gem skeleton has been created, the following tasks are available within the project via Bundler (i.e. rake -T):
 
-    rake build    # Build <gem>-<version>.gem into the pkg directory
-    rake install  # Build and install <gem>-<version>.gem into system gems
-    rake release  # Create tag v0.1.1 and build and push <gem>-<version>.gem to Rubygems
+    rake build    # Build example-0.1.0.gem into the pkg directory
+    rake install  # Build and install example-0.1.0.gem into system gems
+    rake release  # Create tag v2.3.0 and build and push example-0.1.0.gem to Rubygems
 
 # Tests
 

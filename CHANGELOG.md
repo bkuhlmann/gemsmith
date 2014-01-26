@@ -1,3 +1,11 @@
+# v2.3.0
+
+* Added gem certificate information to the README security section.
+* Updated new skeleton Git commit message.
+* Updated gem-public.pem to default to ~/.ssh in gemspec template.
+* Updated gem option descriptions.
+* Updated gemspec homepage URL to use GitHub project URL.
+
 # v2.2.0
 
 * Fixed long-form commands to use "--" prefix. Example: --example.
