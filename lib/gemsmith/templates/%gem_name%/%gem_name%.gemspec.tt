@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   unless ENV["TRAVIS"]
     s.signing_key = File.expand_path("~/.ssh/gem-private.pem")
-    s.cert_chain  = ["gem-public.pem"]
+    s.cert_chain  = [File.expand_path("~/.ssh/gem-public.pem")]
   end
 
 	s.required_ruby_version = "~> <%= config[:ruby_version] %>"
