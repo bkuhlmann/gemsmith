@@ -4,7 +4,7 @@ require "gemsmith/version"
 def add_security_key specification, method, files
   file = files.is_a?(Array) ? files.first : files
   if File.exists? file
-    specification.public_send "#{method}=", files
+    specification.send "#{method}=", files
   else
     puts "WARNING: Security key not found for #{specification.name} gem specification: #{file}"
   end
