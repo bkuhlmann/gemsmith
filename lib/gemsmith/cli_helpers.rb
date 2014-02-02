@@ -1,5 +1,11 @@
 module Gemsmith
   module CLIHelpers
+    # Answers default editor.
+    # NOTE: This will be replaced by the Thor+ gem in the future.
+    def editor
+      ENV["EDITOR"]
+    end
+
     # Answers the gem name (snake case).
     # ==== Parameters
     # * +name+ - Optional. The gem name. Default: nil
@@ -59,7 +65,7 @@ module Gemsmith
     # ===== Parameters
     # * +spec+ - Required. The gem specification.
     def open_gem spec
-      `#{$EDITOR} #{spec.full_gem_path}` if spec
+      `#{editor} #{spec.full_gem_path}` if spec
     end
 
     # Opens selected gem within default browser.

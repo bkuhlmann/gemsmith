@@ -74,7 +74,7 @@ module Gemsmith
     desc "-e, [edit]", "Edit gem in default editor (assumes $EDITOR environment variable)."
     map %w(-e --edit) => :edit
     def edit
-      `$EDITOR #{@settings_file}`
+      `#{editor} #{@settings_file}`
     end
 
     desc "-v, [--version]", "Show version."
