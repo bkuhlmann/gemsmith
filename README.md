@@ -2,6 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/gemsmith.png)](http://badge.fury.io/rb/gemsmith)
 [![Code Climate GPA](https://codeclimate.com/github/bkuhlmann/gemsmith.png)](https://codeclimate.com/github/bkuhlmann/gemsmith)
+[![Gemnasium Status](https://gemnasium.com/bkuhlmann/gemsmith.png)](https://gemnasium.com/bkuhlmann/gemsmith)
 [![Travis CI Status](https://secure.travis-ci.org/bkuhlmann/gemsmith.png)](http://travis-ci.org/bkuhlmann/gemsmith)
 
 Gemsmith allows you to easily craft new gems via the command line with custom settings (if desired). If you are
