@@ -24,10 +24,13 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 
 # Requirements
 
-1. A UNIX-based system.
-2. [Ruby 2.x.x](http://www.ruby-lang.org).
-3. [RubyGems](http://rubygems.org).
-4. [Bundler](https://github.com/carlhuda/bundler).
+0. A UNIX-based system.
+0. Any of the following Ruby VMs:
+    * [MRI 2.x.x](http://www.ruby-lang.org)
+    * [JRuby 1.x.x](http://jruby.org)
+    * [Rubinius 2.x.x](http://rubini.us)
+0. [RubyGems](http://rubygems.org).
+0. [Bundler](https://github.com/carlhuda/bundler).
 
 # Setup
 

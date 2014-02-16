@@ -1,3 +1,7 @@
+# v2.4.0
+
+* Added JRuby and Rubinius VM support.
+
 # v2.3.0
 
 * Added gem certificate information to the README security section.
