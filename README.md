@@ -39,7 +39,7 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 For a secure install, type the following from the command line (recommended):
 
     gem cert --add <(curl -Ls http://www.redalchemist.com/gem-public.pem)
-    gem install gemsmith -P HighSecurity
+    gem install gemsmith --trust-policy HighSecurity
 
 ...or, for an insecure install, type the following (not recommended):
 
