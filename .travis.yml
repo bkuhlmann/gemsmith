@@ -8,6 +8,5 @@ before_install: rm -f Gemfile.lock
 script: bundle exec rspec spec
 notifications:
   email: false
-  campfire:
-    rooms:
-      - secure: "b1xAqaauueF59HwFewWwSyMLS7qPQ10k8VjoHBhv+P8xRz3gynMdgTKmAvj6\nNYPO/PeScXOrLxQS5q26CNjfdFeKXlk64+UbT4WEbaLv7uWz+CEZLWIwKaMn\nTjsmbXrX5/e6ha0S5LazmsumCQf9odK3WQlUdqA9+Kavl/uSS5c="
+  webhooks:
+    secure: "S8fXgKftpFIsLMa1u5Dj0Vhb1PtVKWQb5WUbVh3K2Ksipyn5Pwu4FSwxW2lJ9/95c1lVeNMkMTliNTTL94VY0HQTSlHIM+I/LWzMwQalkxnSCgTDuxywhEpDJiG3sRUhd4DLw1hzyNopC19Eqc11Y7Oqt7ERuoR9VU23D/ZM6sY="
