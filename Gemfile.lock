@@ -68,8 +68,6 @@ GEM
     pry-stack_explorer (0.4.9.1)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    pry-vterm_aliases (1.1.1)
-      pry (~> 0.9.12)
     rake (10.1.1)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
@@ -110,7 +108,6 @@ DEPENDENCIES
   pry-remote
   pry-rescue
   pry-stack_explorer
-  pry-vterm_aliases
   rake (~> 10.0)
   rb-fsevent
   rspec
