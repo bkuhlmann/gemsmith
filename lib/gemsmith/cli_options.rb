@@ -18,6 +18,8 @@ module Gemsmith
         gem_class: gem_class,
         gem_platform: gem_platform,
         gem_url: gem_url,
+        gem_private_key: gem_private_key,
+        gem_public_key: gem_public_key,
         author_name: author_name,
         author_email: author_email,
         author_url: author_url,
@@ -47,6 +49,14 @@ module Gemsmith
 
     def gem_url
       @settings[:gem_url] || author_url
+    end
+
+    def gem_private_key
+      @settings.fetch :gem_private_key, "~/.ssh/gem-private.pem"
+    end
+
+    def gem_public_key
+      @settings.fetch :gem_public_key, "~/.ssh/gem-public.pem"
     end
 
     def author_name

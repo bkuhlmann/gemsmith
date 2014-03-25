@@ -1,5 +1,7 @@
 ---
 :gem_platform: Gem::Platform::CURRENT
+:gem_private_key: /test/private.pem
+:gem_public_key: /test/public.pem
 :author_name: "Testy Tester"
 :author_email: "test@test.com"
 :author_url: "https://www.test.com"
