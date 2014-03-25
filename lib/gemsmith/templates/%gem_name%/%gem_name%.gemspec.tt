@@ -24,8 +24,8 @@ Gem::Specification.new do |s|
   s.post_install_message	= "<%= config[:post_install_message] %>"
   <%- end -%>
 
-  add_security_key s, "signing_key", File.expand_path("~/.ssh/gem-private.pem")
-  add_security_key s, "cert_chain", [File.expand_path("~/.ssh/gem-public.pem")]
+  add_security_key s, "signing_key", File.expand_path("<%= config[:gem_private_key] %>")
+  add_security_key s, "cert_chain", [File.expand_path("<%= config[:gem_public_key] %>")]
 
   s.required_ruby_version = "~> <%= config[:ruby_version] %>"
   <%- if config[:bin] -%>
