@@ -14,15 +14,18 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 
 * Builds a gem skeleton with Bundler functionality in mind.
 * Supports common settings that can be applied to new gem creations.
-* Supports binary skeletons with [Thor](https://github.com/wycats/thor) command line functionality.
+* Supports [Thor](https://github.com/wycats/thor) command line functionality.
 * Supports [Ruby on Rails](http://rubyonrails.org).
 * Supports [RSpec](http://rspec.info).
 * Supports [Pry](http://pryrepl.org).
 * Supports [Guard](https://github.com/guard/guard).
 * Supports [Code Climate](https://codeclimate.com).
-* Supports [Travis CI](http://travis-ci.org) skeletons.
+* Supports [Gemnasium](https://gemnasium.com).
+* Supports [Travis CI](http://travis-ci.org).
+* Supports [Coveralls](https://coveralls.io).
+* Provides the ability to open the source code of any gem within your favorite editor.
+* Provides the ability to read the documentation of any gem within your default browser.
 * Adds commonly needed README, CHANGELOG, LICENSE, etc. template files.
-* Provides the ability to open any installed gem within your favorite editor.
 
 # Requirements
 
@@ -60,6 +63,8 @@ You can configure common settings for future gem builds by creating the followin
 If no options are configured, then the defaults are as follows:
 
     gem_platform: Gem::Platform::RUBY
+    gem_private_key: ~/.ssh/gem-private.pem
+    gem_public_key: ~/.ssh/gem-public.pem
     author_name: <git name>
     author_email: <git email>
     author_url: https://www.unknown.com
@@ -70,7 +75,7 @@ If no options are configured, then the defaults are as follows:
     year: <current year>
     ruby_version: 2.0.0
     ruby_patch: p0
-    rails_version: 3.2.0
+    rails_version: 4.0
 
 # Usage
 
@@ -85,18 +90,22 @@ From the command line, type: gemsmith help
 
 For more gem creation options, type: gemsmith help create
 
-    -b, [--bin]           # Add binary support.
-    -r, [--rails]         # Add Rails support.
-    -p, [--pry]           # Add Pry support.
-                          # Default: true
-    -g, [--guard]         # Add Guard support.
-                          # Default: true
-    -s, [--rspec]         # Add RSpec support.
-                          # Default: true
-    -t, [--travis]        # Add Travis CI support.
-                          # Default: true
-    -c, [--code-climate]  # Add Code Climate support.
-                          # Default: true
+    -b, [--bin], [--no-bin]                    # Add binary support.
+    -r, [--rails], [--no-rails]                # Add Rails support.
+    -p, [--pry], [--no-pry]                    # Add Pry support.
+                                               # Default: true
+    -g, [--guard], [--no-guard]                # Add Guard support.
+                                               # Default: true
+    -s, [--rspec], [--no-rspec]                # Add RSpec support.
+                                               # Default: true
+    -c, [--code-climate], [--no-code-climate]  # Add Code Climate support.
+                                               # Default: true
+    -G, [--gemnasium], [--no-gemnasium]        # Add Gemnasium support.
+                                               # Default: true
+    -t, [--travis], [--no-travis]              # Add Travis CI support.
+                                               # Default: true
+    -C, [--coveralls], [--no-coveralls]        # Add Coveralls support.
+                                               # Default: true
 
 Once a gem skeleton has been created, the following tasks are available within the project via Bundler (i.e. rake -T):
 
@@ -114,11 +123,14 @@ To test, do the following:
 
 # Security
 
-To creat a certificate for your gems, run the following:
+To create a certificate for your gems, run the following:
 
     cd ~/.ssh
     gem cert --build you@example.com
     chmod 600 gem-*.pem
+
+The resulting *.pem keys can be referenced via the *gem_private_key* and *gem_public_key* settings mentioned in the
+Setup documentation.
 
 To learn more about gem certificates, read the following:
 

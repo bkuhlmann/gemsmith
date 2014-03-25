@@ -31,7 +31,7 @@ describe Gemsmith::CLI do
       expect(options[:year]).to eq(Time.now.year)
       expect(options[:ruby_version]).to eq("2.0.0")
       expect(options[:ruby_patch]).to eq("p0")
-      expect(options[:rails_version]).to eq("3.0")
+      expect(options[:rails_version]).to eq("4.0")
       expect(options[:post_install_message]).to eq(nil)
       expect(options[:bin]).to eq(false)
       expect(options[:rails]).to eq(false)

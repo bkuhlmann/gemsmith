@@ -1,3 +1,16 @@
+# v3.0.0
+
+* Removed the pry-vterm_aliases gem.
+* Updated to MRI 2.1.1.
+* Updated to Rubinius 2.x.x support.
+* Updated to Rails 4.0.
+* Updated gem dependencies.
+* Updated README with --trust-policy for secure install of gem.
+* Added Gemnasium badge support.
+* Added Coveralls badge support.
+* Added security support (including customization) of gem signing key and cert chain.
+* Added JRuby and Rubinius support to gem skeleton generation.
+
 # v2.4.0
 
 * Added JRuby and Rubinius VM support.

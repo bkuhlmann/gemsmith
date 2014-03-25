@@ -24,7 +24,12 @@
 
 # Setup
 
-Type the following from the command line to install:
+For a secure install, type the following from the command line (recommended):
+
+    gem cert --add <(curl -Ls http://www.my-website.com/gem-public.pem)
+    gem install <%= config[:gem_name] %> --trust-policy HighSecurity
+
+...or, for an insecure install, type the following (not recommended):
 
     gem install <%= config[:gem_name] %>
 
