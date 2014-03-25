@@ -1,24 +1,31 @@
 $:.push File.expand_path("../lib", __FILE__)
 require "<%=config[:gem_name]%>/version"
 
-Gem::Specification.new do |s|
-  s.name									= "<%= config[:gem_name] %>"
-  s.version								= <%= config[:gem_class] %>::VERSION
-  s.platform							= <%= config[:gem_platform] %>
-  s.author								= "<%= config[:author_name] %>"
-  s.email									= "<%= config[:author_email] %>"
-  s.homepage							= "<%= config[:gem_url] %>"
-  s.summary								= "TODO: Add gem summary here."
-  s.description						= "TODO: Add gem description here."
-	s.license								= "MIT"
-  <%- if config[:post_install_message] -%>
-	s.post_install_message	= "<%= config[:post_install_message] %>"
-	<%- end -%>
-
-  unless ENV["TRAVIS"]
-    s.signing_key = File.expand_path("~/.ssh/gem-private.pem")
-    s.cert_chain  = [File.expand_path("~/.ssh/gem-public.pem")]
+def add_security_key specification, method, files
+  file = files.is_a?(Array) ? files.first : files
+  if File.exists? file
+    specification.send "#{method}=", files
+  else
+    puts "WARNING: Security key not found for #{specification.name} gem specification: #{file}"
   end
+end
+
+Gem::Specification.new do |s|
+  s.name = "<%= config[:gem_name] %>"
+  s.version = <%= config[:gem_class] %>::VERSION
+  s.platform = <%= config[:gem_platform] %>
+  s.author = "<%= config[:author_name] %>"
+  s.email = "<%= config[:author_email] %>"
+  s.homepage = "<%= config[:gem_url] %>"
+  s.summary = "TODO: Add gem summary here."
+  s.description = "TODO: Add gem description here."
+  s.license = "MIT"
+  <%- if config[:post_install_message] -%>
+  s.post_install_message	= "<%= config[:post_install_message] %>"
+  <%- end -%>
+
+  add_security_key s, "signing_key", File.expand_path("~/.ssh/gem-private.pem")
+  add_security_key s, "cert_chain", [File.expand_path("~/.ssh/gem-public.pem")]
 
   s.required_ruby_version = "~> <%= config[:ruby_version] %>"
   <%- if config[:bin] -%>
@@ -53,10 +60,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency "coveralls"
   <%- end -%>
 
-  s.files            = Dir["lib/**/*", "vendor/**/*"]
+  s.files = Dir["lib/**/*", "vendor/**/*"]
   s.extra_rdoc_files = Dir["README*", "LICENSE*"]
   <%- if config[:bin] -%>
-	s.executables      << "<%= config[:gem_name] %>"
-	<%- end -%>
-  s.require_paths    = ["lib"]
+  s.executables << "<%= config[:gem_name] %>"
+  <%- end -%>
+  s.require_paths = ["lib"]
 end

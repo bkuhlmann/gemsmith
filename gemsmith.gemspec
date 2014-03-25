@@ -11,15 +11,15 @@ def add_security_key specification, method, files
 end
 
 Gem::Specification.new do |s|
-  s.name                  = "gemsmith"
-  s.version               = Gemsmith::VERSION
-  s.platform              = Gem::Platform::RUBY
-  s.author                = "Brooke Kuhlmann"
-  s.email                 = "brooke@redalchemist.com"
-  s.homepage              = "https://github.com/bkuhlmann/gemsmith"
-  s.summary               = "Ruby gem skeleton generation for the professional gemsmith."
-  s.description           = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
-  s.license               = "MIT"
+  s.name = "gemsmith"
+  s.version = Gemsmith::VERSION
+  s.platform = Gem::Platform::RUBY
+  s.author = "Brooke Kuhlmann"
+  s.email = "brooke@redalchemist.com"
+  s.homepage = "https://github.com/bkuhlmann/gemsmith"
+  s.summary = "Ruby gem skeleton generation for the professional gemsmith."
+  s.description = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
+  s.license = "MIT"
 
   add_security_key s, "signing_key", File.expand_path("~/.ssh/gem-private.pem")
   add_security_key s, "cert_chain", [File.expand_path("~/.ssh/gem-public.pem")]
@@ -48,9 +48,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency "guard-rspec"
   s.add_development_dependency "coveralls"
 
-  s.files            = Dir["lib/**/{*,.*}"]
+  s.files = Dir["lib/**/{*,.*}"]
   s.extra_rdoc_files = Dir["README*", "LICENSE*"]
-  s.executables      << "gemsmith"
-  s.require_paths    = ["lib"]
+  s.executables << "gemsmith"
+  s.require_paths = ["lib"]
 end
 
