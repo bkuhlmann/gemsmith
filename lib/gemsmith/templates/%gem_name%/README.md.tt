@@ -4,8 +4,14 @@
 <%- if config[:code_climate] -%>
 [![Code Climate GPA](https://codeclimate.com/github/<%= config[:github_user] %>/<%= config[:gem_name] %>.png)](https://codeclimate.com/github/<%= config[:github_user] %>/<%= config[:gem_name] %>)
 <%- end -%>
+<%- if config[:gemnasium] -%>
+[![Gemnasium Status](https://gemnasium.com/<%= config[:github_user] %>/<%= config[:gem_name] %>.png)](https://gemnasium.com/<%= config[:github_user] %>/<%= config[:gem_name] %>)
+<%- end -%>
 <%- if config[:travis] -%>
 [![Travis CI Status](https://secure.travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>.png)](http://travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>)
+<%- end -%>
+<%- if config[:coveralls] -%>
+[![Coveralls Status](https://coveralls.io/repos/<%= config[:github_user] %>/<%= config[:gem_name] %>/badge.png)](https://coveralls.io/r/<%= config[:github_user] %>/<%= config[:gem_name] %>)
 <%- end -%>
 
 # Features

@@ -40,8 +40,10 @@ module Gemsmith
     method_option :pry, aliases: "-p", desc: "Add Pry support.", type: :boolean, default: true
     method_option :guard, aliases: "-g", desc: "Add Guard support.", type: :boolean, default: true
     method_option :rspec, aliases: "-s", desc: "Add RSpec support.", type: :boolean, default: true
-    method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true
     method_option :code_climate, aliases: "-c", desc: "Add Code Climate support.", type: :boolean, default: true
+    method_option :gemnasium, aliases: "-G", desc: "Add Gemnasium support.", type: :boolean, default: true
+    method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true
+    method_option :coveralls, aliases: "-C", desc: "Add Coveralls support.", type: :boolean, default: true
     def create name
       say
       info "Creating gem..."

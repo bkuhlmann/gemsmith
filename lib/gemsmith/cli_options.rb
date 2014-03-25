@@ -34,8 +34,10 @@ module Gemsmith
         pry: default_boolean(:pry, true),
         guard: default_boolean(:guard, true),
         rspec: default_boolean(:rspec, true),
+        code_climate: default_boolean(:code_climate, true),
+        gemnasium: default_boolean(:gemnasium, true),
         travis: default_boolean(:travis, true),
-        code_climate: default_boolean(:code_climate, true)
+        coveralls: default_boolean(:coveralls, true)
       }
     end
 
