@@ -6,16 +6,16 @@ describe Gemsmith::CLI do
   describe "#create" do
     it "loads default settings" do
       url = "https://www.unknown.com"
-      cli.stub(:author_url).and_return url
-      cli.stub(:gem_url).and_return url
+      allow(cli).to receive(:author_url).and_return(url)
+      allow(cli).to receive(:gem_url).and_return(url)
 
       name = "Testy Tester"
-      cli.stub(:author_name).and_return name
-      cli.stub(:company_name).and_return name
-
-      cli.stub(:ruby_patch).and_return "p0"
+      allow(cli).to receive(:author_name).and_return(name)
+      allow(cli).to receive(:company_name).and_return(name)
+      allow(cli).to receive(:ruby_patch).and_return("p0")
 
       options = cli.send :initialize_template_options, "test"
+
       expect(options[:gem_name]).to eq("test")
       expect(options[:gem_class]).to eq("Test")
       expect(options[:gem_platform]).to eq("Gem::Platform::RUBY")

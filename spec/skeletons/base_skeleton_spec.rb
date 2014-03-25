@@ -6,13 +6,13 @@ describe Gemsmith::Skeletons::BaseSkeleton do
 
   describe "#create" do
     it "messages methods prefixed with 'create_'" do
-      skeleton.should_receive(:create_test_1).once
-      skeleton.should_receive(:create_test_2).once
+      expect(skeleton).to receive(:create_test_1).once
+      expect(skeleton).to receive(:create_test_2).once
       skeleton.create
     end
 
     it "never messages methods not prefixed with 'create_'" do
-      skeleton.should_receive(:bogus_method).never
+      expect(skeleton).to receive(:bogus_method).never
       skeleton.create
     end
   end
