@@ -25,7 +25,7 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 * Supports [Coveralls](https://coveralls.io).
 * Provides the ability to open the source code of any gem within your favorite editor.
 * Provides the ability to read the documentation of any gem within your default browser.
-* Adds commonly needed README, CHANGELOG, LICENSE, etc. template files.
+* Adds commonly needed README, CHANGELOG, CONTRIBUTING, LICENSE, etc. template files.
 
 # Requirements
 
