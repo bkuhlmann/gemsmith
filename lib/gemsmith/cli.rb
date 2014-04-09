@@ -5,13 +5,14 @@ require "thor_plus/actions"
 require "gemsmith/cli_options"
 require "gemsmith/cli_helpers"
 require "gemsmith/skeletons/base_skeleton"
+require "gemsmith/skeletons/cli_skeleton"
+require "gemsmith/skeletons/coveralls_skeleton"
 require "gemsmith/skeletons/default_skeleton"
 require "gemsmith/skeletons/documentation_skeleton"
-require "gemsmith/skeletons/cli_skeleton"
+require "gemsmith/skeletons/git_skeleton"
 require "gemsmith/skeletons/rails_skeleton"
 require "gemsmith/skeletons/rspec_skeleton"
 require "gemsmith/skeletons/travis_skeleton"
-require "gemsmith/skeletons/git_skeleton"
 
 module Gemsmith
   class CLI < Thor
@@ -55,6 +56,7 @@ module Gemsmith
       Skeletons::RailsSkeleton.run(self) if template_options[:rails]
       Skeletons::RspecSkeleton.run(self) if template_options[:rspec]
       Skeletons::TravisSkeleton.run(self) if template_options[:travis]
+      Skeletons::CoverallsSkeleton.run self
       Skeletons::GitSkeleton.run self
 
       info "Gem created."
