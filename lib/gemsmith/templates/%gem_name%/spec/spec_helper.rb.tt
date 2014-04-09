@@ -1,12 +1,13 @@
 require "bundler/setup"
+<%- if config[:coveralls] -%>
+require "coveralls"
+Coveralls.wear!
+<%- end -%>
 require "<%= config[:gem_name] %>"
 <%- if config[:pry] -%>
 require "pry"
 require "pry-remote"
 require "pry-rescue"
-<%- end -%>
-<%- if config[:coveralls] -%>
-require "coveralls"
 <%- end -%>
 
 <%- if config[:pry] -%>
@@ -20,10 +21,6 @@ case Gem.ruby_engine
     require "pry-nav"
     require "pry-stack_explorer"
 end
-<%- end -%>
-
-<%- if config[:coveralls] -%>
-Coveralls.wear!
 <%- end -%>
 
 RSpec.configure do |config|
