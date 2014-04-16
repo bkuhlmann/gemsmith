@@ -1,3 +1,9 @@
+# v3.1.0
+
+* Updated to Thor 0.19.x.
+* Updated to Thor+ 1.5.x.
+* Updated RSpec helper to disable GC for all specs in order to improve performance.
+
 # v3.0.0
 
 * Removed the pry-vterm_aliases gem.
