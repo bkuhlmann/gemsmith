@@ -1,6 +1,6 @@
 require "bundler/setup"
-require "coveralls"
-Coveralls.wear!
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 require "gemsmith"
 require "gemsmith/cli"
 require "pry"
