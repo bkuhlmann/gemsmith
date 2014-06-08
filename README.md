@@ -42,7 +42,7 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 
 For a secure install, type the following from the command line (recommended):
 
-    gem cert --add <(curl -Ls http://www.redalchemist.com/gem-public.pem)
+    gem cert --add <(curl -Ls http://www.alchemists.io/gem-public.pem)
     gem install gemsmith --trust-policy MediumSecurity
 
 NOTE: A HighSecurity trust policy would be best but MediumSecurity enables signed gem verification while
@@ -61,8 +61,8 @@ You can configure common settings for future gem builds by creating the followin
     ---
     :author_name: Brooke Kuhlmann
     :author_email: brooke@redalchemist.com
-    :author_url: http://www.redalchemist.com
-    :company_name: Red Alchemist
+    :author_url: http://www.alchemists.io
+    :company_name: Alchemists
 
 If no options are configured, then the defaults are as follows:
 
@@ -189,11 +189,11 @@ Read CONTRIBUTING for details.
 
 # Credits
 
-Developed by [Brooke Kuhlmann](http://www.redalchemist.com) at [Red Alchemist](http://www.redalchemist.com).
+Developed by [Brooke Kuhlmann](http://www.alchemists.io) at [Alchemists](http://www.alchemists.io).
 
 # License
 
-Copyright (c) 2011 [Red Alchemist](http://www.redalchemist.com).
+Copyright (c) 2011 [Alchemists](http://www.alchemists.io).
 Read the LICENSE for details.
 
 # History
