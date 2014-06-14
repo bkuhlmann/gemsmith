@@ -26,7 +26,7 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 * Supports [Coveralls](https://coveralls.io).
 * Provides the ability to open the source code of any gem within your favorite editor.
 * Provides the ability to read the documentation of any gem within your default browser.
-* Adds commonly needed README, CHANGELOG, CONTRIBUTING, LICENSE, etc. template files.
+* Adds commonly needed README, [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md), [LICENSE](LICENSE.md), etc. template files.
 
 # Requirements
 
@@ -185,7 +185,7 @@ Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 
 # Contributions
 
-Read CONTRIBUTING for details.
+Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 # Credits
 
@@ -194,8 +194,8 @@ Developed by [Brooke Kuhlmann](http://www.alchemists.io) at [Alchemists](http://
 # License
 
 Copyright (c) 2011 [Alchemists](http://www.alchemists.io).
-Read the LICENSE for details.
+Read the [LICENSE](LICENSE.md) for details.
 
 # History
 
-Read the CHANGELOG for details.
+Read the [CHANGELOG](CHANGELOG.md) for details.
