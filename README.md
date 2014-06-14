@@ -119,11 +119,9 @@ Once a gem skeleton has been created, the following tasks are available within t
 
 # Tests
 
-To test, do the following:
+To test, run:
 
-0. cd to the gem root.
-0. bundle install
-0. bundle exec rspec spec
+    bundle exec rspec spec
 
 # Security
 
