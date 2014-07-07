@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    gemsmith (3.1.0)
+    gemsmith (3.2.0)
       thor (~> 0.19)
-      thor_plus (~> 1.5)
+      thor_plus (~> 1.6)
 
 GEM
   remote: https://rubygems.org/
@@ -81,7 +81,7 @@ GEM
     simplecov-html (0.8.0)
     slop (3.5.0)
     thor (0.19.1)
-    thor_plus (1.5.0)
+    thor_plus (1.6.0)
       thor (~> 0.19)
     timers (1.1.0)
 

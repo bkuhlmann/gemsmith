@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   end
 
   s.add_dependency "thor", "~> 0.19"
-  s.add_dependency "thor_plus", "~> 1.5"
+  s.add_dependency "thor_plus", "~> 1.6"
   s.add_development_dependency "rake", "~> 10.0"
   s.add_development_dependency "pry"
   s.add_development_dependency "pry-remote"

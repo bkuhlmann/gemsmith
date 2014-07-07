@@ -1,3 +1,9 @@
+# v3.2.0
+
+* Added Code Climate test coverage support.
+* Updated to Ruby 2.1.2.
+* Updated gem-public.pem for gem install certificate chain.
+
 # v3.1.0
 
 * Updated to Thor 0.19.x.
