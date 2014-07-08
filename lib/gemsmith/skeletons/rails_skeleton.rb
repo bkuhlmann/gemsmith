@@ -25,7 +25,7 @@ module Gemsmith
 
       def create_travis_gemfiles
         if template_options[:travis]
-          template "%gem_name%/gemfiles/rails-3.2.x.gemfile.tt", template_options
+          template "%gem_name%/gemfiles/rails-4.1.x.gemfile.tt", template_options
         end
       end
 
