@@ -91,7 +91,7 @@ module Gemsmith
     end
 
     def rails_version
-      @settings[:rails_version] || "4.0"
+      @settings[:rails_version] || "4.1"
     end
 
     def default_boolean key, value = false

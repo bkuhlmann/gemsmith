@@ -29,7 +29,7 @@ describe Gemsmith::CLI do
       expect(options[:github_user]).to eq((Gemsmith::Kit.git_config_value("github.user") || "unknown"))
       expect(options[:year]).to eq(Time.now.year)
       expect(options[:ruby_version]).to eq("2.1.2")
-      expect(options[:rails_version]).to eq("4.0")
+      expect(options[:rails_version]).to eq("4.1")
       expect(options[:post_install_message]).to eq(nil)
       expect(options[:bin]).to eq(false)
       expect(options[:rails]).to eq(false)
