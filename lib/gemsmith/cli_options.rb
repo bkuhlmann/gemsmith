@@ -87,7 +87,7 @@ module Gemsmith
     end
 
     def ruby_version
-      @settings[:ruby_version] || "2.0.0"
+      @settings[:ruby_version] || "2.1.2"
     end
 
     def rails_version
