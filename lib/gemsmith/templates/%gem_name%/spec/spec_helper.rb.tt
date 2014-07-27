@@ -1,4 +1,8 @@
 require "bundler/setup"
+<%- if config[:code_climate] -%>
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+<%- end -%>
 require "<%= config[:gem_name] %>"
 <%- if config[:pry] -%>
 require "pry"
