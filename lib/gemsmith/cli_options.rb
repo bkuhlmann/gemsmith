@@ -28,7 +28,6 @@ module Gemsmith
         github_user: github_user,
         year: year,
         ruby_version: ruby_version,
-        ruby_patch: ruby_patch,
         rails_version: rails_version,
         post_install_message: @settings[:post_install_message],
         bin: default_boolean(:bin),
@@ -89,10 +88,6 @@ module Gemsmith
 
     def ruby_version
       @settings[:ruby_version] || "2.0.0"
-    end
-
-    def ruby_patch
-      @settings[:ruby_patch] || "p0"
     end
 
     def rails_version

@@ -12,7 +12,6 @@ describe Gemsmith::CLI do
       name = "Testy Tester"
       allow(cli).to receive(:author_name).and_return(name)
       allow(cli).to receive(:company_name).and_return(name)
-      allow(cli).to receive(:ruby_patch).and_return("p0")
 
       options = cli.send :initialize_template_options, "test"
 
@@ -30,7 +29,6 @@ describe Gemsmith::CLI do
       expect(options[:github_user]).to eq((Gemsmith::Kit.git_config_value("github.user") || "unknown"))
       expect(options[:year]).to eq(Time.now.year)
       expect(options[:ruby_version]).to eq("2.0.0")
-      expect(options[:ruby_patch]).to eq("p0")
       expect(options[:rails_version]).to eq("4.0")
       expect(options[:post_install_message]).to eq(nil)
       expect(options[:bin]).to eq(false)
