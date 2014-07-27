@@ -1,4 +1,4 @@
-$:.push File.expand_path("../lib", __FILE__)
+$LOAD_PATH.push File.expand_path("../lib", __FILE__)
 require "<%=config[:gem_name]%>/version"
 
 def add_security_key specification, method, files
