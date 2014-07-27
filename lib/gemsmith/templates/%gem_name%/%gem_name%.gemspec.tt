@@ -10,73 +10,73 @@ def add_security_key specification, method, files
   end
 end
 
-Gem::Specification.new do |s|
-  s.name = "<%= config[:gem_name] %>"
-  s.version = <%= config[:gem_class] %>::VERSION
-  s.platform = <%= config[:gem_platform] %>
-  s.author = "<%= config[:author_name] %>"
-  s.email = "<%= config[:author_email] %>"
-  s.homepage = "<%= config[:gem_url] %>"
-  s.summary = "TODO: Add gem summary here."
-  s.description = "TODO: Add gem description here."
-  s.license = "MIT"
+Gem::Specification.new do |spec|
+  spec.name = "<%= config[:gem_name] %>"
+  spec.version = <%= config[:gem_class] %>::VERSION
+  spec.platform = <%= config[:gem_platform] %>
+  spec.author = "<%= config[:author_name] %>"
+  spec.email = "<%= config[:author_email] %>"
+  spec.homepage = "<%= config[:gem_url] %>"
+  spec.summary = "TODO: Add gem summary here."
+  spec.description = "TODO: Add gem description here."
+  spec.license = "MIT"
   <%- if config[:post_install_message] -%>
-  s.post_install_message	= "<%= config[:post_install_message] %>"
+  spec.post_install_message	= "<%= config[:post_install_message] %>"
   <%- end -%>
 
-  add_security_key s, "signing_key", File.expand_path("<%= config[:gem_private_key] %>")
-  add_security_key s, "cert_chain", [File.expand_path("<%= config[:gem_public_key] %>")]
+  add_security_key spec, "signing_key", File.expand_path("<%= config[:gem_private_key] %>")
+  add_security_key spec, "cert_chain", [File.expand_path("<%= config[:gem_public_key] %>")]
 
   <%- if config[:pry] -%>
   case Gem.ruby_engine
     when "ruby"
-      s.add_development_dependency "pry-byebug"
-      s.add_development_dependency "pry-stack_explorer"
+      spec.add_development_dependency "pry-byebug"
+      spec.add_development_dependency "pry-stack_explorer"
     when "jruby"
-      s.add_development_dependency "pry-nav"
+      spec.add_development_dependency "pry-nav"
     when "rbx"
-      s.add_development_dependency "pry-nav"
-      s.add_development_dependency "pry-stack_explorer"
+      spec.add_development_dependency "pry-nav"
+      spec.add_development_dependency "pry-stack_explorer"
     else
       raise RuntimeError.new("Unsupported Ruby Engine!")
   end
   <%- end -%>
 
-  s.required_ruby_version = "~> <%= config[:ruby_version] %>"
+  spec.required_ruby_version = "~> <%= config[:ruby_version] %>"
   <%- if config[:bin] -%>
-  s.add_dependency "thor"
-  s.add_dependency "thor_plus"
+  spec.add_dependency "thor"
+  spec.add_dependency "thor_plus"
   <%- end -%>
   <%- if config[:rails] -%>
-  s.add_dependency "rails", "~> <%= config[:rails_version] %>"
+  spec.add_dependency "rails", "~> <%= config[:rails_version] %>"
   <%- end -%>
   <%- if config[:travis] -%>
-  s.add_development_dependency "rake"
+  spec.add_development_dependency "rake"
   <%- end -%>
   <%- if config[:pry] -%>
-  s.add_development_dependency "pry"
-  s.add_development_dependency "pry-remote"
-  s.add_development_dependency "pry-rescue"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "pry-remote"
+  spec.add_development_dependency "pry-rescue"
   <%- end -%>
   <%- if config[:rspec] -%>
   <%- rspec_gem = config[:rails] ? "rspec-rails" : "rspec" -%>
-  s.add_development_dependency "<%= rspec_gem %>"
+  spec.add_development_dependency "<%= rspec_gem %>"
   <%- end -%>
   <%- if config[:bin] -%>
-  s.add_development_dependency "aruba"
+  spec.add_development_dependency "aruba"
   <%- end -%>
   <%- if config[:guard] -%>
-  s.add_development_dependency "rb-fsevent" # Guard file events for OSX.
-  s.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "rb-fsevent" # Guard file events for OSX.
+  spec.add_development_dependency "guard-rspec"
   <%- end -%>
   <%- if config[:coveralls] -%>
-  s.add_development_dependency "coveralls"
+  spec.add_development_dependency "coveralls"
   <%- end -%>
 
-  s.files = Dir["lib/**/*", "vendor/**/*"]
-  s.extra_rdoc_files = Dir["README*", "LICENSE*"]
+  spec.files = Dir["lib/**/*", "vendor/**/*"]
+  spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
   <%- if config[:bin] -%>
-  s.executables << "<%= config[:gem_name] %>"
+  spec.executables << "<%= config[:gem_name] %>"
   <%- end -%>
-  s.require_paths = ["lib"]
+  spec.require_paths = ["lib"]
 end
