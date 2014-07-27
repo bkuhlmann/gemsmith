@@ -1,8 +1,4 @@
 require "bundler/setup"
-<%- if config[:coveralls] -%>
-require "coveralls"
-Coveralls.wear!
-<%- end -%>
 require "<%= config[:gem_name] %>"
 <%- if config[:pry] -%>
 require "pry"

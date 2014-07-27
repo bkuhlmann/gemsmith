@@ -6,7 +6,6 @@ require "gemsmith/cli_options"
 require "gemsmith/cli_helpers"
 require "gemsmith/skeletons/base_skeleton"
 require "gemsmith/skeletons/cli_skeleton"
-require "gemsmith/skeletons/coveralls_skeleton"
 require "gemsmith/skeletons/default_skeleton"
 require "gemsmith/skeletons/documentation_skeleton"
 require "gemsmith/skeletons/git_skeleton"
@@ -44,7 +43,6 @@ module Gemsmith
     method_option :code_climate, aliases: "-c", desc: "Add Code Climate support.", type: :boolean, default: true
     method_option :gemnasium, aliases: "-G", desc: "Add Gemnasium support.", type: :boolean, default: true
     method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true
-    method_option :coveralls, aliases: "-C", desc: "Add Coveralls support.", type: :boolean, default: true
     def create name
       say
       info "Creating gem..."
@@ -56,7 +54,6 @@ module Gemsmith
       Skeletons::RailsSkeleton.run(self) if template_options[:rails]
       Skeletons::RspecSkeleton.run(self) if template_options[:rspec]
       Skeletons::TravisSkeleton.run(self) if template_options[:travis]
-      Skeletons::CoverallsSkeleton.run self
       Skeletons::GitSkeleton.run self
 
       info "Gem created."

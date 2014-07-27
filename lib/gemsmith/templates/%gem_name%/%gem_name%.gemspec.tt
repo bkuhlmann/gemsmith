@@ -69,9 +69,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rb-fsevent" # Guard file events for OSX.
   spec.add_development_dependency "guard-rspec"
   <%- end -%>
-  <%- if config[:coveralls] -%>
-  spec.add_development_dependency "coveralls"
-  <%- end -%>
 
   spec.files = Dir["lib/**/*", "vendor/**/*"]
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
