@@ -10,47 +10,47 @@ def add_security_key specification, method, files
   end
 end
 
-Gem::Specification.new do |s|
-  s.name = "gemsmith"
-  s.version = Gemsmith::VERSION
-  s.platform = Gem::Platform::RUBY
-  s.author = "Brooke Kuhlmann"
-  s.email = "brooke@redalchemist.com"
-  s.homepage = "https://github.com/bkuhlmann/gemsmith"
-  s.summary = "Ruby gem skeleton generation for the professional gemsmith."
-  s.description = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
-  s.license = "MIT"
+Gem::Specification.new do |spec|
+  spec.name = "gemsmith"
+  spec.version = Gemsmith::VERSION
+  spec.platform = Gem::Platform::RUBY
+  spec.author = "Brooke Kuhlmann"
+  spec.email = "brooke@redalchemist.com"
+  spec.homepage = "https://github.com/bkuhlmann/gemsmith"
+  spec.summary = "Ruby gem skeleton generation for the professional gemsmith."
+  spec.description = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
+  spec.license = "MIT"
 
-  add_security_key s, "signing_key", File.expand_path("~/.ssh/gem-private.pem")
-  add_security_key s, "cert_chain", [File.expand_path("~/.ssh/gem-public.pem")]
+  add_security_key spec, "signing_key", File.expand_path("~/.ssh/gem-private.pem")
+  add_security_key spec, "cert_chain", [File.expand_path("~/.ssh/gem-public.pem")]
 
   case Gem.ruby_engine
     when "ruby"
-      s.add_development_dependency "pry-byebug"
-      s.add_development_dependency "pry-stack_explorer"
+      spec.add_development_dependency "pry-byebug"
+      spec.add_development_dependency "pry-stack_explorer"
     when "jruby"
-      s.add_development_dependency "pry-nav"
+      spec.add_development_dependency "pry-nav"
     when "rbx"
-      s.add_development_dependency "pry-nav"
-      s.add_development_dependency "pry-stack_explorer"
+      spec.add_development_dependency "pry-nav"
+      spec.add_development_dependency "pry-stack_explorer"
     else
       raise RuntimeError.new("Unsupported Ruby Engine!")
   end
 
-  s.add_dependency "thor", "~> 0.19"
-  s.add_dependency "thor_plus", "~> 1.6"
-  s.add_development_dependency "rake", "~> 10.0"
-  s.add_development_dependency "pry"
-  s.add_development_dependency "pry-remote"
-  s.add_development_dependency "pry-rescue"
-  s.add_development_dependency "rspec"
-  s.add_development_dependency "rb-fsevent" # Guard file events for OSX.
-  s.add_development_dependency "guard-rspec"
-  s.add_development_dependency "codeclimate-test-reporter"
+  spec.add_dependency "thor", "~> 0.19"
+  spec.add_dependency "thor_plus", "~> 1.6"
+  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "pry-remote"
+  spec.add_development_dependency "pry-rescue"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rb-fsevent" # Guard file events for OSX.
+  spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "codeclimate-test-reporter"
 
-  s.files = Dir["lib/**/{*,.*}"]
-  s.extra_rdoc_files = Dir["README*", "LICENSE*"]
-  s.executables << "gemsmith"
-  s.require_paths = ["lib"]
+  spec.files = Dir["lib/**/{*,.*}"]
+  spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
+  spec.executables << "gemsmith"
+  spec.require_paths = ["lib"]
 end
 
