@@ -22,6 +22,7 @@ RSpec.configure do |config|
   config.expect_with(:rspec) { |expectation| expectation.syntax = :expect }
   config.run_all_when_everything_filtered = true
   config.filter_run focus: true
+  config.order = "random"
 
   config.before(:all) { GC.disable }
   config.after(:all) { GC.enable }
