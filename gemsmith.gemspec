@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.version = Gemsmith::VERSION
   spec.platform = Gem::Platform::RUBY
   spec.authors = ["Brooke Kuhlmann"]
-  spec.email = "brooke@redalchemist.com"
+  spec.email = ["brooke@redalchemist.com"]
   spec.homepage = "https://github.com/bkuhlmann/gemsmith"
   spec.summary = "Ruby gem skeleton generation for the professional gemsmith."
   spec.description = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
