@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.name = "<%= config[:gem_name] %>"
   spec.version = <%= config[:gem_class] %>::VERSION
   spec.platform = <%= config[:gem_platform] %>
-  spec.author = "<%= config[:author_name] %>"
+  spec.authors = ["<%= config[:author_name] %>"]
   spec.email = "<%= config[:author_email] %>"
   spec.homepage = "<%= config[:gem_url] %>"
   spec.summary = "TODO: Add gem summary here."
