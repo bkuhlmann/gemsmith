@@ -4,6 +4,6 @@ rvm:
   - 2.1.0
 <%- if config[:rails] -%>
 gemfile:
-  - gemfiles/rails-3.2.x.gemfile
+  - gemfiles/rails-4.1.x.gemfile
 <%- end -%>
 script: bundle exec rspec spec
