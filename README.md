@@ -23,7 +23,6 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 * Supports [Code Climate](https://codeclimate.com).
 * Supports [Gemnasium](https://gemnasium.com).
 * Supports [Travis CI](http://travis-ci.org).
-* Supports [Coveralls](https://coveralls.io).
 * Provides the ability to open the source code of any gem within your favorite editor.
 * Provides the ability to read the documentation of any gem within your default browser.
 * Adds commonly needed README, [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md), [LICENSE](LICENSE.md), etc. template files.
@@ -108,8 +107,6 @@ For more gem creation options, type: gemsmith help create
                                                # Default: true
     -t, [--travis], [--no-travis]              # Add Travis CI support.
                                                # Default: true
-    -C, [--coveralls], [--no-coveralls]        # Add Coveralls support.
-                                               # Default: true
 
 Once a gem skeleton has been created, the following tasks are available within the project via Bundler (i.e. rake -T):
 
@@ -149,13 +146,6 @@ To learn more about gem certificates, read the following:
 0. [Gem Activation and You: Part II](http://erik.hollensbe.org/2013/05/15/gem-activation-and-you-part-2-bundler-and-binstubs)
 0. [Why You Should Use a BSD Style License](http://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html).
 0. Add -w to the RUBYOPT environment variable when testing. [Details](http://avdi.org/devblog/2011/06/23/how-ruby-helps-you-fix-your-broken-code).
-
-## When To Include a Railtie ([Crafting Rails Applications](http://pragprog.com/book/jvrails/crafting-rails-applications) - Page 93 by José Valim)
-
-* "Your gem needs to perform a given task while or after the Rails application is initialized."
-* "Your gem needs to change a configuration value, such as setting a generator."
-* "Your gem must provide Rake tasks and generators in nondefault locations (the default location for the former is lib/tasks and lib/gen- erators or lib/rails/generators for the latter)."
-* "You want your gem to provide configuration options to the appli- cation, such as config.my_gem.key # :value."
 
 # Documentation
 

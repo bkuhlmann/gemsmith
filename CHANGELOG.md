@@ -1,3 +1,20 @@
+# v4.0.0
+
+* Removed Coveralls support.
+* Removed Ruby version patch support.
+* Removed Rails controller, view, and model templates.
+* Removed gem namespace setup from gem main library file.
+* Fixed Rails version in .travis.yml template.
+* Updated the Travis CI gemfile template to Rails 4.1.x.
+* Updated to Rubinius 2.2.10.
+* Updated Ruby version default to 2.1.2.
+* Updated Rails version default to 4.1.
+* Updated email to be an array in the gemspec.
+* Added test randomization to spec helper.
+* Added Code Climate test coverage support.
+* Added authors array to gemspec.
+* Added Guardfile generation for the --guard option.
+
 # v3.2.0
 
 * Added Code Climate test coverage support.
