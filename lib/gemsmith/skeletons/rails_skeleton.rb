@@ -1,6 +1,10 @@
 module Gemsmith
   module Skeletons
     class RailsSkeleton < BaseSkeleton
+      def create_engine
+        system "rails plugin new #{template_options.fetch :gem_name} #{engine_options}"
+      end
+
       def create_generator_files
         empty_directory "#{generator_root}/templates"
         template "#{generator_root}/install/install_generator.rb.tt", template_options
@@ -16,6 +20,10 @@ module Gemsmith
       end
 
       private
+
+      def engine_options
+        "--skip --skip-bundle --skip-test-unit --skip-keeps --mountable --dummy-path=spec/dummy"
+      end
 
       def lib_gem_root
         "#{lib_root}/%gem_name%"
