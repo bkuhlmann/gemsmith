@@ -6,13 +6,10 @@ describe Gemsmith::Skeletons::BaseSkeleton do
 
   describe "#create" do
     it "messages methods prefixed with 'create_'" do
-      expect(skeleton).to receive(:create_test_1).once
-      expect(skeleton).to receive(:create_test_2).once
-      skeleton.create
-    end
+      def skeleton.create_test
+      end
 
-    it "never messages methods not prefixed with 'create_'" do
-      expect(skeleton).to receive(:bogus_method).never
+      expect(skeleton).to receive(:create_test).once
       skeleton.create
     end
   end
@@ -34,7 +31,7 @@ describe Gemsmith::Skeletons::BaseSkeleton do
       expect(skeleton.respond_to?("destination_root")).to eq(true)
     end
 
-    it "does not responds to a bogus method" do
+    it "does not respond to a bogus method" do
       expect(skeleton.respond_to?("bogus_method")).to eq(false)
     end
   end
