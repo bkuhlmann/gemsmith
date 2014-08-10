@@ -1,15 +1,6 @@
 $LOAD_PATH.push File.expand_path("../lib", __FILE__)
 require "<%=config[:gem_name]%>/version"
 
-def add_security_key specification, method, files
-  file = files.is_a?(Array) ? files.first : files
-  if File.exists? file
-    specification.send "#{method}=", files
-  else
-    puts "WARNING: Security key not found for #{specification.name} gem specification: #{file}"
-  end
-end
-
 Gem::Specification.new do |spec|
   spec.name = "<%= config[:gem_name] %>"
   spec.version = <%= config[:gem_class] %>::VERSION
@@ -24,8 +15,10 @@ Gem::Specification.new do |spec|
   spec.post_install_message	= "<%= config[:post_install_message] %>"
   <%- end -%>
 
-  add_security_key spec, "signing_key", File.expand_path("<%= config[:gem_private_key] %>")
-  add_security_key spec, "cert_chain", [File.expand_path("<%= config[:gem_public_key] %>")]
+  unless ENV["CI"] == "true"
+    spec.signing_key = File.expand_path("<%= config[:gem_private_key] %>")
+    spec.cert_chain = [File.expand_path("<%= config[:gem_public_key] %>")]
+  end
 
   <%- if config[:pry] -%>
   case Gem.ruby_engine
