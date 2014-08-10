@@ -1,15 +1,6 @@
 $LOAD_PATH.push File.expand_path("../lib", __FILE__)
 require "gemsmith/version"
 
-def add_security_key specification, method, files
-  file = files.is_a?(Array) ? files.first : files
-  if File.exists? file
-    specification.send "#{method}=", files
-  else
-    puts "WARNING: Security key not found for #{specification.name} gem specification: #{file}"
-  end
-end
-
 Gem::Specification.new do |spec|
   spec.name = "gemsmith"
   spec.version = Gemsmith::VERSION
@@ -21,8 +12,10 @@ Gem::Specification.new do |spec|
   spec.description = "Ruby gem skeleton generation for the professional gemsmith. Includes custom settings, binary, Ruby on Rails, and RSpec support. "
   spec.license = "MIT"
 
-  add_security_key spec, "signing_key", File.expand_path("~/.ssh/gem-private.pem")
-  add_security_key spec, "cert_chain", [File.expand_path("~/.ssh/gem-public.pem")]
+  unless ENV["CI"] == "true"
+    spec.signing_key = File.expand_path("~/.ssh/gem-private.pem")
+    spec.cert_chain = [File.expand_path("~/.ssh/gem-public.pem")]
+  end
 
   case Gem.ruby_engine
     when "ruby"
@@ -54,4 +47,3 @@ Gem::Specification.new do |spec|
   spec.executables << "gemsmith"
   spec.require_paths = ["lib"]
 end
-
