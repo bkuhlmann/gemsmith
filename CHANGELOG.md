@@ -1,3 +1,9 @@
+# v4.1.0
+
+* Updated --rails flag of --create option to support full Rails Engine template creation.
+* Updated RSpec config to verify partial doubles.
+* Updated gemspec to add security keys unless in a CI environment.
+
 # v4.0.0
 
 * Removed Coveralls support.

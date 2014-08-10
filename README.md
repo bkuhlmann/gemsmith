@@ -7,14 +7,12 @@
 [![Travis CI Status](https://secure.travis-ci.org/bkuhlmann/gemsmith.png)](http://travis-ci.org/bkuhlmann/gemsmith)
 [![Gittip](http://img.shields.io/gittip/bkuhlmann.svg)](https://www.gittip.com/bkuhlmann)
 
-Gemsmith allows you to easily craft new gems via the command line with custom settings (if desired). If you are
-a fan of [Bundler](https://github.com/carlhuda/bundler), then you'll appreciate the additional capabilities of this
-gem. Gemsmith is essentially an enhanced version of Bundler's gem building capabilities.
+Gemsmith allows you to easily craft new gems via the command line with custom settings (if desired).
 
 # Features
 
 * Builds a gem skeleton with Bundler functionality in mind.
-* Supports common settings that can be applied to new gem creations.
+* Supports common settings to be applied when creating new gems.
 * Supports [Thor](https://github.com/wycats/thor) command line functionality.
 * Supports [Ruby on Rails](http://rubyonrails.org).
 * Supports [RSpec](http://rspec.info).
@@ -25,7 +23,8 @@ gem. Gemsmith is essentially an enhanced version of Bundler's gem building capab
 * Supports [Travis CI](http://travis-ci.org).
 * Provides the ability to open the source code of any gem within your favorite editor.
 * Provides the ability to read the documentation of any gem within your default browser.
-* Adds commonly needed README, [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md), [LICENSE](LICENSE.md), etc. template files.
+* Adds commonly needed README, [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md), [LICENSE](LICENSE.md), etc.
+  template files.
 
 # Requirements
 
