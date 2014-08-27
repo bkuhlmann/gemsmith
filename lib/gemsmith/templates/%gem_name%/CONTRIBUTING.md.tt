@@ -5,12 +5,12 @@ following details what you need to know in order to contribute.
 
 # Requirements
 
-* Follow these [Basic Programming Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/basic.md).
-* Follow these [Code Review Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/code_reviews.md).
-* Follow these [Git Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/git.md).
-* Follow these [Bash Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/languages/bash.md).
-* Follow these [CSS Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/languages/css.md).
-* Follow these [Ruby Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/languages/ruby.md).
+- Follow these [Basic Programming Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/basic.md).
+- Follow these [Code Review Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/code_reviews.md).
+- Follow these [Git Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/git.md).
+- Follow these [Bash Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/languages/bash.md).
+- Follow these [CSS Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/languages/css.md).
+- Follow these [Ruby Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/languages/ruby.md).
 
 # Contributing Code
 

@@ -11,28 +11,28 @@ Gemsmith allows you to easily craft new gems via the command line with custom se
 
 # Features
 
-* Builds a gem skeleton with Bundler functionality in mind.
-* Supports common settings to be applied when creating new gems.
-* Supports [Thor](https://github.com/wycats/thor) command line functionality.
-* Supports [Ruby on Rails](http://rubyonrails.org).
-* Supports [RSpec](http://rspec.info).
-* Supports [Pry](http://pryrepl.org).
-* Supports [Guard](https://github.com/guard/guard).
-* Supports [Code Climate](https://codeclimate.com).
-* Supports [Gemnasium](https://gemnasium.com).
-* Supports [Travis CI](http://travis-ci.org).
-* Provides the ability to open the source code of any gem within your favorite editor.
-* Provides the ability to read the documentation of any gem within your default browser.
-* Adds commonly needed README, [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md), [LICENSE](LICENSE.md), etc.
+- Builds a gem skeleton with Bundler functionality in mind.
+- Supports common settings to be applied when creating new gems.
+- Supports [Thor](https://github.com/wycats/thor) command line functionality.
+- Supports [Ruby on Rails](http://rubyonrails.org).
+- Supports [RSpec](http://rspec.info).
+- Supports [Pry](http://pryrepl.org).
+- Supports [Guard](https://github.com/guard/guard).
+- Supports [Code Climate](https://codeclimate.com).
+- Supports [Gemnasium](https://gemnasium.com).
+- Supports [Travis CI](http://travis-ci.org).
+- Provides the ability to open the source code of any gem within your favorite editor.
+- Provides the ability to read the documentation of any gem within your default browser.
+- Adds commonly needed README, [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md), [LICENSE](LICENSE.md), etc.
   template files.
 
 # Requirements
 
 0. A UNIX-based system.
 0. Any of the following Ruby VMs:
-    * [MRI 2.x.x](http://www.ruby-lang.org)
-    * [JRuby 1.x.x](http://jruby.org)
-    * [Rubinius 2.x.x](http://rubini.us)
+    - [MRI 2.x.x](http://www.ruby-lang.org)
+    - [JRuby 1.x.x](http://jruby.org)
+    - [Rubinius 2.x.x](http://rubini.us)
 0. [RubyGems](http://rubygems.org).
 0. [Bundler](https://github.com/carlhuda/bundler).
 
@@ -127,14 +127,14 @@ To create a certificate for your gems, run the following:
     gem cert --build you@example.com
     chmod 600 gem-*.pem
 
-The resulting *.pem keys can be referenced via the *gem_private_key* and *gem_public_key* settings mentioned in the
+The resulting *.pem keys can be referenced via the *gem_private_key- and *gem_public_key- settings mentioned in the
 Setup documentation.
 
 To learn more about gem certificates, read the following:
 
-* [Ruby Gems](http://guides.rubygems.org/security/#building_gems)
-* [A Practical Guide to Using Signed Ruby Gems - Part 1: Bundler](http://blog.meldium.com/home/2013/3/3/signed-rubygems-part)
-* [A Practical Guide to Using Signed Ruby Gems - Part 2: Heroku](http://blog.meldium.com/home/2013/3/6/signed-gems-on-heroku)
+- [Ruby Gems](http://guides.rubygems.org/security/#building_gems)
+- [A Practical Guide to Using Signed Ruby Gems - Part 1: Bundler](http://blog.meldium.com/home/2013/3/3/signed-rubygems-part)
+- [A Practical Guide to Using Signed Ruby Gems - Part 2: Heroku](http://blog.meldium.com/home/2013/3/6/signed-gems-on-heroku)
 
 # Best Practices
 
@@ -156,19 +156,19 @@ RDoc and YARD formats.
 
 Once your gem is released, you might like to let the world know about the new awesomeness. Here are several resources:
 
-* [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code)
-* [Ruby Toolbox](https://www.ruby-toolbox.com)
-* [RubyFlow](http://www.rubyflow.com)
-* [The Ruby Show](http://rubyshow.com)
-* [Ruby 5](http://ruby5.envylabs.com)
+- [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code)
+- [Ruby Toolbox](https://www.ruby-toolbox.com)
+- [RubyFlow](http://www.rubyflow.com)
+- [The Ruby Show](http://rubyshow.com)
+- [Ruby 5](http://ruby5.envylabs.com)
 
 # Versioning
 
 Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 
-* Patch (x.y.Z) - Incremented for small, backwards compatible bug fixes.
-* Minor (x.Y.z) - Incremented for new, backwards compatible public API enhancements and/or bug fixes.
-* Major (X.y.z) - Incremented for any backwards incompatible public API changes.
+- Patch (x.y.Z) - Incremented for small, backwards compatible bug fixes.
+- Minor (x.Y.z) - Incremented for new, backwards compatible public API enhancements and/or bug fixes.
+- Major (X.y.z) - Incremented for any backwards incompatible public API changes.
 
 # Contributions
 
