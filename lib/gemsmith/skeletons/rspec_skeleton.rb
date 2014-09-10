@@ -5,11 +5,11 @@ module Gemsmith
         template "%gem_name%/.rspec.tt", template_options
         template "#{rspec_root}/spec_helper.rb.tt", template_options
         template "#{rspec_root}/%gem_name%_spec.rb.tt", template_options
-        template "#{rspec_root}/support/kit/base_config.rb.tt", template_options
-        template "#{rspec_root}/support/kit/manage_temp_dir.rb.tt", template_options
-        template "#{rspec_root}/support/kit/suppress_garbage_collection.rb.tt", template_options
-        template "#{rspec_root}/support/kit/suppress_stderr.rb.tt", template_options
-        template "#{rspec_root}/support/kit/suppress_stdout.rb.tt", template_options
+        template "#{rspec_root}/support/kit/default_config.rb.tt", template_options
+        template "#{rspec_root}/support/kit/garbage_collection.rb.tt", template_options
+        template "#{rspec_root}/support/kit/stderr.rb.tt", template_options
+        template "#{rspec_root}/support/kit/stdout.rb.tt", template_options
+        template "#{rspec_root}/support/kit/temp_dir.rb.tt", template_options
       end
 
       private
