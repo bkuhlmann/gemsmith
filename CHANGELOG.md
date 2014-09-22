@@ -1,3 +1,10 @@
+# v4.2.0 (2014-09-21)
+
+- Updated to Ruby 2.1.3.
+- Updated Code Climate to run only if environment variable is present.
+- Added the Guard Terminal Notifier gem.
+- Refactored RSpec setup and support files.
+
 # v4.1.0 (2014-08-10)
 
 - Updated --rails flag of --create option to support full Rails Engine template creation.
@@ -39,7 +46,6 @@
 - Updated to MRI 2.1.1.
 - Updated to Rubinius 2.x.x support.
 - Updated to Rails 4.0.
-- Updated gem dependencies.
 - Updated README with --trust-policy for secure install of gem.
 - Added Gemnasium badge support.
 - Added Coveralls badge support.
