@@ -58,7 +58,7 @@ You can configure common settings for future gem builds by creating the followin
 
     ---
     :author_name: Brooke Kuhlmann
-    :author_email: brooke@redalchemist.com
+    :author_email: bkuhlmann@alchemists.io
     :author_url: http://www.alchemists.io
     :company_name: Alchemists
 
