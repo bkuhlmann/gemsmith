@@ -1,3 +1,8 @@
+# v4.3.0 (2014-10-22)
+
+- Updated to Thor+ 1.7.x.
+- Updated gemspec author email address.
+
 # v4.2.0 (2014-09-21)
 
 - Updated to Ruby 2.1.3.
