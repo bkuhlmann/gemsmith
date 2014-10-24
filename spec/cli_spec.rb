@@ -33,11 +33,13 @@ describe Gemsmith::CLI do
       expect(options[:post_install_message]).to eq(nil)
       expect(options[:bin]).to eq(false)
       expect(options[:rails]).to eq(false)
+      expect(options[:security]).to eq(true)
       expect(options[:pry]).to eq(true)
       expect(options[:guard]).to eq(true)
       expect(options[:rspec]).to eq(true)
-      expect(options[:travis]).to eq(true)
       expect(options[:code_climate]).to eq(true)
+      expect(options[:gemnasium]).to eq(true)
+      expect(options[:travis]).to eq(true)
     end
 
     it "loads custom settings" do
@@ -62,8 +64,13 @@ describe Gemsmith::CLI do
       expect(options[:post_install_message]).to eq("Follow @tester on Twitter for more info.")
       expect(options[:bin]).to eq(false)
       expect(options[:rails]).to eq(false)
+      expect(options[:security]).to eq(true)
+      expect(options[:pry]).to eq(true)
+      expect(options[:guard]).to eq(true)
       expect(options[:rspec]).to eq(true)
       expect(options[:code_climate]).to eq(true)
+      expect(options[:gemnasium]).to eq(true)
+      expect(options[:travis]).to eq(true)
     end
   end
 end

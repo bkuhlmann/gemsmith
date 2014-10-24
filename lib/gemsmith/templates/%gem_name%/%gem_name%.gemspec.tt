@@ -15,10 +15,12 @@ Gem::Specification.new do |spec|
   spec.post_install_message	= "<%= config[:post_install_message] %>"
   <%- end -%>
 
+  <%- if config[:security] -%>
   unless ENV["CI"] == "true"
     spec.signing_key = File.expand_path("<%= config[:gem_private_key] %>")
     spec.cert_chain = [File.expand_path("<%= config[:gem_public_key] %>")]
   end
+  <%- end -%>
 
   <%- if config[:pry] -%>
   case Gem.ruby_engine

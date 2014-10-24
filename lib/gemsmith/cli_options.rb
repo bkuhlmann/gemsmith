@@ -32,6 +32,7 @@ module Gemsmith
         post_install_message: @settings[:post_install_message],
         bin: default_boolean(:bin),
         rails: default_boolean(:rails),
+        security: default_boolean(:security, true),
         pry: default_boolean(:pry, true),
         guard: default_boolean(:guard, true),
         rspec: default_boolean(:rspec, true),

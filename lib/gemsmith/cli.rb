@@ -38,6 +38,7 @@ module Gemsmith
     map %w(-c --create) => :create
     method_option :bin, aliases: "-b", desc: "Add binary support.", type: :boolean, default: false
     method_option :rails, aliases: "-r", desc: "Add Rails support.", type: :boolean, default: false
+    method_option :security, aliases: "-S", desc: "Add security support.", type: :boolean, default: true
     method_option :pry, aliases: "-p", desc: "Add Pry support.", type: :boolean, default: true
     method_option :guard, aliases: "-g", desc: "Add Guard support.", type: :boolean, default: true
     method_option :rspec, aliases: "-s", desc: "Add RSpec support.", type: :boolean, default: true
