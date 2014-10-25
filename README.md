@@ -57,10 +57,10 @@ You can configure common settings for future gem builds by creating the followin
 ...using the following settings (for example):
 
     ---
-    :author_name: Brooke Kuhlmann
-    :author_email: bkuhlmann@alchemists.io
-    :author_url: http://www.alchemists.io
-    :company_name: Alchemists
+    :author_name: Joe Smith
+    :author_email: joe@smithware.com
+    :author_url: https://www.smithware.com
+    :company_name: Smithware
 
 If no options are configured, then the defaults are as follows:
 
