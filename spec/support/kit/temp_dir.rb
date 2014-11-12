@@ -2,7 +2,7 @@ require "rspec/core/shared_context"
 
 module RSpecSupportKitTempDirContext
   extend RSpec::Core::SharedContext
-  let (:temp_dir) { File.expand_path "../../../../tmp/rspec", __FILE__ }
+  let(:temp_dir) { File.expand_path "../../../../tmp/rspec", __FILE__ }
 end
 
 RSpec.configure do |config|
