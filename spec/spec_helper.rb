@@ -24,6 +24,6 @@ end
 
 Dir[File.join(File.dirname(__FILE__), "support/kit/**/*.rb")].each { |file| require file }
 
-RSpec.configure do |config|
-  # NOTE: Add Gemsmith specific configuration here. For the common configuration, see the "support/kit" folder.
-end
+# Uncomment to add a custom configuration. For the default configuration, see the "support/kit" folder.
+# RSpec.configure do |config|
+# end
