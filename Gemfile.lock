@@ -70,7 +70,7 @@ GEM
     i18n (0.6.11)
     interception (0.5)
     json (1.8.1)
-    listen (2.7.11)
+    listen (2.8.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
