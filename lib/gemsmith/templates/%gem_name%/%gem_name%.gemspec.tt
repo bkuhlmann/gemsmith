@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   <%- end -%>
 
   <%- if config[:security] -%>
-  unless ENV["CI"] == "true"
+  if ENV["RUBY_GEM_SECURITY"] == "enabled"
     spec.signing_key = File.expand_path("<%= config[:gem_private_key] %>")
     spec.cert_chain = [File.expand_path("<%= config[:gem_public_key] %>")]
   end
