@@ -31,7 +31,7 @@ module Gemsmith
     # ===== Parameters
     # * +options+ - Optional. The hash to convert. Default: {}
     def enforce_symbol_keys options = {}
-      options.each_with_object({}) { |(key, value), hash| hash[key.to_sym] = value }
+      options.each.with_object({}) { |(key, value), hash| hash[key.to_sym] = value }
     end
 
     # Prints currently installed gem name and version information.
@@ -39,7 +39,7 @@ module Gemsmith
     # * +gems+ - Required. The array of gem names (i.e. gem specifications).
     def print_gems gems
       say "Multiple versions found:"
-      gems.each_with_index do |spec, index|
+      gems.each.with_index do |spec, index|
         say "#{index + 1}. #{spec.name} #{spec.version.version}"
       end
     end
