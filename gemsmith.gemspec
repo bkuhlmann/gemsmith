@@ -23,9 +23,6 @@ Gem::Specification.new do |spec|
       spec.add_development_dependency "pry-stack_explorer"
     when "jruby"
       spec.add_development_dependency "pry-nav"
-    when "rbx"
-      spec.add_development_dependency "pry-nav"
-      spec.add_development_dependency "pry-stack_explorer"
     else
       raise RuntimeError.new("Unsupported Ruby Engine!")
   end

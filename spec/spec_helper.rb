@@ -17,9 +17,6 @@ case Gem.ruby_engine
     require "pry-stack_explorer"
   when "jruby"
     require "pry-nav"
-  when "rbx"
-    require "pry-nav"
-    require "pry-stack_explorer"
 end
 
 Dir[File.join(File.dirname(__FILE__), "support/kit/**/*.rb")].each { |file| require file }
