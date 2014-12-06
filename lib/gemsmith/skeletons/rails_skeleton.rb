@@ -2,7 +2,10 @@ module Gemsmith
   module Skeletons
     class RailsSkeleton < BaseSkeleton
       def create_engine
-        system "rails plugin new #{template_options.fetch :gem_name} #{engine_options}"
+        gem_name = template_options.fetch :gem_name
+        system "rails plugin new #{gem_name} #{engine_options}"
+        remove_file "#{gem_name}/MIT-LICENSE", template_options
+        remove_file "#{gem_name}/README.rdoc", template_options
       end
 
       def create_generator_files
