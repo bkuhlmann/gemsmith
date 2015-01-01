@@ -32,7 +32,6 @@ Gemsmith allows you to easily craft new gems via the command line with custom se
 0. Any of the following Ruby VMs:
     - [MRI 2.x.x](http://www.ruby-lang.org)
     - [JRuby 1.x.x](http://jruby.org)
-    - [Rubinius 2.x.x](http://rubini.us)
 0. [RubyGems](http://rubygems.org).
 0. [Bundler](https://github.com/carlhuda/bundler).
 
@@ -75,9 +74,8 @@ If no options are configured, then the defaults are as follows:
     company_url: <author URL>
     github_user: <github user>
     year: <current year>
-    ruby_version: 2.0.0
-    ruby_patch: p0
-    rails_version: 4.0
+    ruby_version: 2.2.0
+    rails_version: 4.2
 
 # Usage
 
@@ -94,6 +92,8 @@ For more gem creation options, type: gemsmith help create
 
     -b, [--bin], [--no-bin]                    # Add binary support.
     -r, [--rails], [--no-rails]                # Add Rails support.
+    -S, [--security], [--no-security]          # Add security support.
+                                               # Default: true
     -p, [--pry], [--no-pry]                    # Add Pry support.
                                                # Default: true
     -g, [--guard], [--no-guard]                # Add Guard support.

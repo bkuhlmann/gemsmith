@@ -1,3 +1,17 @@
+# v5.0.0 (2015-01-01)
+
+- Removed Ruby 2.0.0 support.
+- Removed Rubinius support.
+- Removed auto-generated MIT-LICENSE and REAMDE.rdoc from rails engine templates.
+- Fixed bug where engine.rb was not required for rails engine.
+- Updated to Thor+ 2.x.x.
+- Updated spec helper to comment custom config until needed.
+- Updated Rails option to default to version 4.2 instead of 4.1.
+- Updated gemspec to use RUBY_GEM_SECURITY env var for gem certs.
+- Added security option to gem creation. Default: true.
+- Added Ruby 2.2.0 support.
+- Added Rails 4.2.x support.
+
 # v4.3.0 (2014-10-22)
 
 - Updated to Thor+ 1.7.x.
