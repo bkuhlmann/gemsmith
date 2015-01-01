@@ -4,7 +4,7 @@ PATH
     gemsmith (4.3.0)
       rails (~> 4.1)
       thor (~> 0.19)
-      thor_plus (~> 1.7)
+      thor_plus (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -178,7 +178,7 @@ GEM
     terminal-notifier (1.6.2)
     terminal-notifier-guard (1.6.4)
     thor (0.19.1)
-    thor_plus (1.7.0)
+    thor_plus (2.0.0)
       thor (~> 0.19)
     thread_safe (0.3.4)
     tilt (1.4.1)

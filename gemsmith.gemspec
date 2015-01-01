@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "thor", "~> 0.19"
-  spec.add_dependency "thor_plus", "~> 1.7"
+  spec.add_dependency "thor_plus", "~> 2.0"
   spec.add_dependency "rails", "~> 4.1"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "pry"
