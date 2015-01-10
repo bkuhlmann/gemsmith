@@ -6,7 +6,7 @@ env:
 rvm:
 - 2.1.0
 - 2.2.0
-- jruby-1.7.17
+- jruby
 before_install: rm -f Gemfile.lock
 script: bundle exec rspec spec
 notifications:
