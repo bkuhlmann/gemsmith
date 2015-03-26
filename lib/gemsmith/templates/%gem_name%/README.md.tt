@@ -58,13 +58,14 @@ Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 - Minor (x.Y.z) - Incremented for new, backwards compatible public API enhancements and/or bug fixes.
 - Major (X.y.z) - Incremented for any backwards incompatible public API changes.
 
+# Code of Conduct
+
+Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By participating in this project
+you agree to abide by its terms.
+
 # Contributions
 
 Read [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-# Credits
-
-Developed by [<%= config[:author_name] %>](<%= config[:author_url] %>) at [<%= config[:company_name] %>](<%= config[:company_url] %>).
 
 # License
 
@@ -75,3 +76,7 @@ Read the [LICENSE](LICENSE.md) for details.
 
 Read the [CHANGELOG](CHANGELOG.md) for details.
 Built with [Gemsmith](https://github.com/bkuhlmann/gemsmith).
+
+# Credits
+
+Developed by [<%= config[:author_name] %>](<%= config[:author_url] %>) at [<%= config[:company_name] %>](<%= config[:company_url] %>).

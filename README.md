@@ -170,13 +170,14 @@ Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 - Minor (x.Y.z) - Incremented for new, backwards compatible public API enhancements and/or bug fixes.
 - Major (X.y.z) - Incremented for any backwards incompatible public API changes.
 
+# Code of Conduct
+
+Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By participating in this project
+you agree to abide by its terms.
+
 # Contributions
 
 Read [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-# Credits
-
-Developed by [Brooke Kuhlmann](https://www.alchemists.io) at [Alchemists](https://www.alchemists.io).
 
 # License
 
@@ -186,3 +187,7 @@ Read the [LICENSE](LICENSE.md) for details.
 # History
 
 Read the [CHANGELOG](CHANGELOG.md) for details.
+
+# Credits
+
+Developed by [Brooke Kuhlmann](https://www.alchemists.io) at [Alchemists](https://www.alchemists.io).
