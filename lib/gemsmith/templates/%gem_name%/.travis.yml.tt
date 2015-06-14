@@ -5,7 +5,7 @@ env:
 rvm:
   - 2.0.0
   - 2.1.0
-  - jruby
+  - jruby-head
 <%- if config[:rails] -%>
 gemfile:
   - gemfiles/rails-4.1.x.gemfile
