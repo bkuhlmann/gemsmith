@@ -22,18 +22,6 @@ Gem::Specification.new do |spec|
   end
   <%- end -%>
 
-  <%- if config[:pry] -%>
-  case Gem.ruby_engine
-    when "ruby"
-      spec.add_development_dependency "pry-byebug"
-      spec.add_development_dependency "pry-stack_explorer"
-    when "jruby"
-      spec.add_development_dependency "pry-nav"
-    else
-      raise RuntimeError.new("Unsupported Ruby Engine!")
-  end
-  <%- end -%>
-
   spec.required_ruby_version = "~> <%= config[:ruby_version] %>"
   <%- if config[:bin] -%>
   spec.add_dependency "thor"
@@ -47,6 +35,8 @@ Gem::Specification.new do |spec|
   <%- end -%>
   <%- if config[:pry] -%>
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "pry-byebug"
+  spec.add_development_dependency "pry-stack_explorer"
   spec.add_development_dependency "pry-remote"
   spec.add_development_dependency "pry-rescue"
   <%- end -%>

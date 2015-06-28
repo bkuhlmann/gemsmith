@@ -8,16 +8,10 @@ end
 require "gemsmith"
 require "gemsmith/cli"
 require "pry"
+require "pry-byebug"
+require "pry-stack_explorer"
 require "pry-remote"
 require "pry-rescue"
-
-case Gem.ruby_engine
-  when "ruby"
-    require "pry-byebug"
-    require "pry-stack_explorer"
-  when "jruby"
-    require "pry-nav"
-end
 
 Dir[File.join(File.dirname(__FILE__), "support/kit/**/*.rb")].each { |file| require file }
 

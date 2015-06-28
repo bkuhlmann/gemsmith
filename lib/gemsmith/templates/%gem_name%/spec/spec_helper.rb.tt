@@ -8,18 +8,10 @@ end
 require "<%= config[:gem_name] %>"
 <%- if config[:pry] -%>
 require "pry"
+require "pry-byebug"
+require "pry-stack_explorer"
 require "pry-remote"
 require "pry-rescue"
-<%- end -%>
-
-<%- if config[:pry] -%>
-case Gem.ruby_engine
-  when "ruby"
-    require "pry-byebug"
-    require "pry-stack_explorer"
-  when "jruby"
-    require "pry-nav"
-end
 <%- end -%>
 
 Dir[File.join(File.dirname(__FILE__), "support/kit/**/*.rb")].each { |file| require file }
