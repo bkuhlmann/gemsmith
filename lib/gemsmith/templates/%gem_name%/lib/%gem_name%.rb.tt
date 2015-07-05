@@ -1,4 +1,4 @@
-require "<%= config[:gem_name] %>/version"
+require "<%= config[:gem_name] %>/identity"
 <%- if config[:rails] -%>
 require "<%= config[:gem_name] %>/engine"
 <%- end -%>

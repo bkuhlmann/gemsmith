@@ -1,3 +1,0 @@
-module <%= config[:gem_class] %>
-  VERSION = "0.1.0"
-end

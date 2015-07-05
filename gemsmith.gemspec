@@ -1,9 +1,9 @@
 $LOAD_PATH.push File.expand_path("../lib", __FILE__)
-require "gemsmith/version"
+require "gemsmith/identity"
 
 Gem::Specification.new do |spec|
-  spec.name = "gemsmith"
-  spec.version = Gemsmith::VERSION
+  spec.name = Gemsmith::Identity.name
+  spec.version = Gemsmith::Identity.version
   spec.platform = Gem::Platform::RUBY
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]

@@ -1,9 +1,9 @@
 $LOAD_PATH.push File.expand_path("../lib", __FILE__)
-require "<%=config[:gem_name]%>/version"
+require "<%=config[:gem_name]%>/identity"
 
 Gem::Specification.new do |spec|
-  spec.name = "<%= config[:gem_name] %>"
-  spec.version = <%= config[:gem_class] %>::VERSION
+  spec.name = <%= config[:gem_name] %>::Identity.name
+  spec.version = <%= config[:gem_class] %>::Identity.version
   spec.platform = <%= config[:gem_platform] %>
   spec.authors = ["<%= config[:author_name] %>"]
   spec.email = ["<%= config[:author_email] %>"]

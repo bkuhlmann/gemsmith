@@ -1,0 +1,19 @@
+module <%= config[:gem_class] %>
+  module Identity
+    def self.name
+      "<%= config[:gem_name] %>"
+    end
+
+    def self.label
+      "<%= config[:gem_class] %>"
+    end
+
+    def self.version
+      "0.1.0"
+    end
+
+    def self.label_version
+      [label, version].join " "
+    end
+  end
+end

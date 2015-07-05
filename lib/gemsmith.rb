@@ -1,2 +1,2 @@
-require "gemsmith/version"
+require "gemsmith/identity"
 require "gemsmith/kit"
