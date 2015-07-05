@@ -1,3 +1,11 @@
+# v5.1.0 (2015-07-05)
+
+- Removed JRuby support (no longer officially supported).
+- Fixed secure gem installs (new cert has 10 year lifespan).
+- Updated to Ruby 2.2.2.
+- Added CLI process title support.
+- Added code of conduct documentation.
+
 # v5.0.0 (2015-01-01)
 
 - Removed Ruby 2.0.0 support.
