@@ -2,4 +2,7 @@
 
 require "<%= config[:gem_name] %>"
 require "<%= config[:gem_name] %>/cli"
+require "<%= config[:gem_name] %>/identity"
+
+Process.setproctitle <%= config[:gem_class] %>::Identity.label_version
 <%= config[:gem_class] %>::CLI.start

@@ -84,7 +84,7 @@ module Gemsmith
     desc "-v, [--version]", "Show version."
     map %w(-v --version) => :version
     def version
-      say "Gemsmith " + VERSION
+      say Gemsmith::Identity.label_version
     end
 
     desc "-h, [--help=HELP]", "Show this message or get help for a command."
