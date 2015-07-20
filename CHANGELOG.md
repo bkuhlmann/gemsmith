@@ -1,3 +1,9 @@
+# v5.2.0 (2015-07-19)
+
+- Fixed bug with class name not being generated for gemspec name properly.
+- Fixed install of missing identity template.
+- Fixed invalid install of RSpec garbage collection template.
+
 # v5.1.0 (2015-07-05)
 
 - Removed JRuby support (no longer officially supported).
