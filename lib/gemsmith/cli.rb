@@ -21,6 +21,8 @@ module Gemsmith
     include CLIOptions
     include CLIHelpers
 
+    package_name Gemsmith::Identity.label
+
     # Overwrites the Thor template source root.
     def self.source_root
       File.expand_path File.join(File.dirname(__FILE__), "templates")

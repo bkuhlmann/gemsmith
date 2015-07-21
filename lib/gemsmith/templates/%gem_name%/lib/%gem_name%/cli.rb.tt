@@ -5,8 +5,10 @@ require "thor_plus/actions"
 
 module <%= config[:gem_class] %>
   class CLI < Thor
-  	include Thor::Actions
-  	include ThorPlus::Actions
+    include Thor::Actions
+    include ThorPlus::Actions
+
+    package_name <%= config[:gem_class] %>::Identity.label
 
     # Initialize.
     def initialize args = [], options = {}, config = {}
