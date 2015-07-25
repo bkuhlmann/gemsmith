@@ -1,4 +1,4 @@
-# Overview
+# <%= config[:gem_class] %>
 
 [![Gem Version](https://badge.fury.io/rb/<%= config[:gem_name] %>.png)](http://badge.fury.io/rb/<%= config[:gem_name] %>)
 <%- if config[:code_climate] -%>
