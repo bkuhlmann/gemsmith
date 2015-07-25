@@ -9,6 +9,28 @@
 
 Gemsmith allows you to easily craft new gems via the command line with custom settings (if desired).
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+# Table of Contents
+
+- [Features](#features)
+- [Requirements](#requirements)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Tests](#tests)
+- [Security](#security)
+- [Best Practices](#best-practices)
+- [Documentation](#documentation)
+- [Promotion](#promotion)
+- [Versioning](#versioning)
+- [Code of Conduct](#code-of-conduct)
+- [Contributions](#contributions)
+- [License](#license)
+- [History](#history)
+- [Credits](#credits)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Features
 
 - Builds a gem skeleton with Bundler functionality in mind.

@@ -12,6 +12,9 @@
 [![Travis CI Status](https://secure.travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>.png)](http://travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>)
 <%- end -%>
 
+<!-- START doctoc - For use by DocToc (https://github.com/thlorenz/doctoc), autogenerates the table of contents -->
+<!-- END doctoc -->
+
 # Features
 
 # Requirements
