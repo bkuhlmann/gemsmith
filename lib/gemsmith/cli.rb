@@ -5,6 +5,7 @@ require "thor_plus/actions"
 require "gemsmith/cli_options"
 require "gemsmith/cli_helpers"
 require "gemsmith/skeletons/base_skeleton"
+require "gemsmith/skeletons/bundler_skeleton"
 require "gemsmith/skeletons/cli_skeleton"
 require "gemsmith/skeletons/default_skeleton"
 require "gemsmith/skeletons/documentation_skeleton"
@@ -59,6 +60,7 @@ module Gemsmith
       Skeletons::RspecSkeleton.run(self) if template_options[:rspec]
       Skeletons::GuardSkeleton.run(self) if template_options[:guard]
       Skeletons::TravisSkeleton.run(self) if template_options[:travis]
+      Skeletons::BundlerSkeleton.run self
       Skeletons::GitSkeleton.run self
 
       info "Gem created."
