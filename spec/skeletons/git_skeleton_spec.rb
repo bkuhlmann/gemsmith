@@ -3,7 +3,8 @@ require "spec_helper"
 describe Gemsmith::Skeletons::GitSkeleton, :temp_dir do
   let(:gem_name) { "tester" }
   let(:gem_dir) { File.join temp_dir, gem_name }
-  let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir, gem_name: gem_name }
+  let(:options) { {} }
+  let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir, gem_name: gem_name, template_options: options }
   subject { described_class.new cli }
 
   before do
@@ -12,7 +13,14 @@ describe Gemsmith::Skeletons::GitSkeleton, :temp_dir do
   end
 
   describe "#create_files" do
-    before { subject.create_files }
+    it "creates Gemfile" do
+      subject.create_files
+      expect(cli).to have_received(:template).with("%gem_name%/Gemfile.tt", options)
+    end
+  end
+
+  describe "#create_repository" do
+    before { subject.create_repository }
 
     it "initializes Git repository" do
       expect(subject).to have_received(:`).with("git init")
@@ -23,7 +31,7 @@ describe Gemsmith::Skeletons::GitSkeleton, :temp_dir do
     end
 
     it "creates initial commit" do
-      expect(subject).to have_received(:`).with(%(git commit -a -n -m "Added Gemsmith skeleton."))
+      expect(subject).to have_received(:`).with(%(git commit --all --no-verify --message "Added Gemsmith skeleton."))
     end
   end
 end

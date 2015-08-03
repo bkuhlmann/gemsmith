@@ -12,10 +12,6 @@ describe Gemsmith::Skeletons::DefaultSkeleton, :temp_dir do
   describe "#create_default_files" do
     before { subject.create_default_files }
 
-    it "creates Gemfile" do
-      expect(cli).to have_received(:template).with("%gem_name%/Gemfile.tt", options)
-    end
-
     it "creates Rakefile" do
       expect(cli).to have_received(:template).with("%gem_name%/Rakefile.tt", options)
     end
