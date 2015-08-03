@@ -1,3 +1,13 @@
+# v5.3.0 (2015-08-02)
+
+- Fixed bug where --no-security option would add security text to README.md.
+- Updated to Code of Conduct 1.2.0.
+- Added CODE OF CONDUCT to template install.
+- Added [pry-state](https://github.com/SudhagarS/pry-state) development support.
+- Added bundler skeleton support.
+- Added project name to README.
+- Added table of contents to README.
+
 # v5.2.0 (2015-07-19)
 
 - Fixed bug with class name not being generated for gemspec name properly.
