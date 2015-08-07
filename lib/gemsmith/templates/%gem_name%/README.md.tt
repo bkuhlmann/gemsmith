@@ -6,7 +6,7 @@
 [![Code Climate Coverage](https://codeclimate.com/github/<%= config[:github_user] %>/<%= config[:gem_name] %>/coverage.svg)](https://codeclimate.com/github/<%= config[:github_user] %>/<%= config[:gem_name] %>)
 <%- end -%>
 <%- if config[:gemnasium] -%>
-[![Gemnasium Status](https://gemnasium.com/<%= config[:github_user] %>/<%= config[:gem_name] %>.png)](https://gemnasium.com/<%= config[:github_user] %>/<%= config[:gem_name] %>)
+[![Gemnasium Status](https://gemnasium.com/<%= config[:github_user] %>/<%= config[:gem_name] %>.svg)](https://gemnasium.com/<%= config[:github_user] %>/<%= config[:gem_name] %>)
 <%- end -%>
 <%- if config[:travis] -%>
 [![Travis CI Status](https://secure.travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>.png)](http://travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>)
