@@ -1,6 +1,6 @@
 # <%= config[:gem_class] %>
 
-[![Gem Version](https://badge.fury.io/rb/<%= config[:gem_name] %>.png)](http://badge.fury.io/rb/<%= config[:gem_name] %>)
+[![Gem Version](https://badge.fury.io/rb/<%= config[:gem_name] %>.svg)](http://badge.fury.io/rb/<%= config[:gem_name] %>)
 <%- if config[:code_climate] -%>
 [![Code Climate GPA](https://codeclimate.com/github/<%= config[:github_user] %>/<%= config[:gem_name] %>.png)](https://codeclimate.com/github/<%= config[:github_user] %>/<%= config[:gem_name] %>)
 [![Code Climate Coverage](https://codeclimate.com/github/<%= config[:github_user] %>/<%= config[:gem_name] %>/coverage.png)](https://codeclimate.com/github/<%= config[:github_user] %>/<%= config[:gem_name] %>)

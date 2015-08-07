@@ -1,6 +1,6 @@
 # Gemsmith
 
-[![Gem Version](https://badge.fury.io/rb/gemsmith.png)](http://badge.fury.io/rb/gemsmith)
+[![Gem Version](https://badge.fury.io/rb/gemsmith.svg)](http://badge.fury.io/rb/gemsmith)
 [![Code Climate GPA](https://codeclimate.com/github/bkuhlmann/gemsmith.png)](https://codeclimate.com/github/bkuhlmann/gemsmith)
 [![Code Climate Coverage](https://codeclimate.com/github/bkuhlmann/gemsmith/coverage.png)](https://codeclimate.com/github/bkuhlmann/gemsmith)
 [![Gemnasium Status](https://gemnasium.com/bkuhlmann/gemsmith.png)](https://gemnasium.com/bkuhlmann/gemsmith)
