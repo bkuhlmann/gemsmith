@@ -9,7 +9,7 @@
 [![Gemnasium Status](https://gemnasium.com/<%= config[:github_user] %>/<%= config[:gem_name] %>.svg)](https://gemnasium.com/<%= config[:github_user] %>/<%= config[:gem_name] %>)
 <%- end -%>
 <%- if config[:travis] -%>
-[![Travis CI Status](https://secure.travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>.png)](http://travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>)
+[![Travis CI Status](https://secure.travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>.svg)](http://travis-ci.org/<%= config[:github_user] %>/<%= config[:gem_name] %>)
 <%- end -%>
 
 <!-- START doctoc - For use by DocToc (https://github.com/thlorenz/doctoc), autogenerates the table of contents -->
