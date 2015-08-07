@@ -1,8 +1,8 @@
 # Gemsmith
 
 [![Gem Version](https://badge.fury.io/rb/gemsmith.svg)](http://badge.fury.io/rb/gemsmith)
-[![Code Climate GPA](https://codeclimate.com/github/bkuhlmann/gemsmith.png)](https://codeclimate.com/github/bkuhlmann/gemsmith)
-[![Code Climate Coverage](https://codeclimate.com/github/bkuhlmann/gemsmith/coverage.png)](https://codeclimate.com/github/bkuhlmann/gemsmith)
+[![Code Climate GPA](https://codeclimate.com/github/bkuhlmann/gemsmith.svg)](https://codeclimate.com/github/bkuhlmann/gemsmith)
+[![Code Climate Coverage](https://codeclimate.com/github/bkuhlmann/gemsmith/coverage.svg)](https://codeclimate.com/github/bkuhlmann/gemsmith)
 [![Gemnasium Status](https://gemnasium.com/bkuhlmann/gemsmith.png)](https://gemnasium.com/bkuhlmann/gemsmith)
 [![Travis CI Status](https://secure.travis-ci.org/bkuhlmann/gemsmith.png)](http://travis-ci.org/bkuhlmann/gemsmith)
 [![Gittip](http://img.shields.io/gittip/bkuhlmann.svg)](https://www.gittip.com/bkuhlmann)
