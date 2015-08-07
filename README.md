@@ -5,7 +5,6 @@
 [![Code Climate Coverage](https://codeclimate.com/github/bkuhlmann/gemsmith/coverage.svg)](https://codeclimate.com/github/bkuhlmann/gemsmith)
 [![Gemnasium Status](https://gemnasium.com/bkuhlmann/gemsmith.svg)](https://gemnasium.com/bkuhlmann/gemsmith)
 [![Travis CI Status](https://secure.travis-ci.org/bkuhlmann/gemsmith.svg)](http://travis-ci.org/bkuhlmann/gemsmith)
-[![Gittip](http://img.shields.io/gittip/bkuhlmann.svg)](https://www.gittip.com/bkuhlmann)
 
 Gemsmith allows you to easily craft new gems via the command line with custom settings (if desired).
 
