@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   <%- if config[:travis] -%>
   spec.add_development_dependency "rake"
   <%- end -%>
+  spec.add_development_dependency "gemsmith"
   <%- if config[:pry] -%>
   spec.add_development_dependency "pry"
   spec.add_development_dependency "pry-byebug"
