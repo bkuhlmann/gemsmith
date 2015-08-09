@@ -43,7 +43,7 @@ describe Gemsmith::CLI do
     end
 
     it "loads custom settings" do
-      custom_settings = cli.send :load_yaml, File.join(File.dirname(__FILE__), "support", "settings.yml")
+      custom_settings = cli.send :load_yaml, File.join(Dir.pwd, "spec", "support", "settings.yml")
 
       options = cli.send :initialize_template_options, "test", custom_settings
       expect(options[:gem_name]).to eq("test")
