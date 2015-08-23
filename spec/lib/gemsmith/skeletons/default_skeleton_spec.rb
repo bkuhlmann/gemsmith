@@ -16,10 +16,6 @@ describe Gemsmith::Skeletons::DefaultSkeleton, :temp_dir do
       expect(cli).to have_received(:template).with("%gem_name%/Gemfile.tt", options)
     end
 
-    it "creates Rakefile" do
-      expect(cli).to have_received(:template).with("%gem_name%/Rakefile.tt", options)
-    end
-
     it "creates gem spec" do
       expect(cli).to have_received(:template).with("%gem_name%/%gem_name%.gemspec.tt", options)
     end
