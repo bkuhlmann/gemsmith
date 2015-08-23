@@ -3,6 +3,7 @@ module Gemsmith
     class GitSkeleton < BaseSkeleton
       def create_files
         template "%gem_name%/Gemfile.tt", template_options
+        template "%gem_name%/.gitignore.tt", template_options
       end
 
       def create_repository

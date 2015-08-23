@@ -17,6 +17,11 @@ describe Gemsmith::Skeletons::GitSkeleton, :temp_dir do
       subject.create_files
       expect(cli).to have_received(:template).with("%gem_name%/Gemfile.tt", options)
     end
+
+    it "creates Git ignore file" do
+      subject.create_files
+      expect(cli).to have_received(:template).with("%gem_name%/.gitignore.tt", options)
+    end
   end
 
   describe "#create_repository" do

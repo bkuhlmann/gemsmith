@@ -35,11 +35,4 @@ describe Gemsmith::Skeletons::DefaultSkeleton, :temp_dir do
       expect(cli).to have_received(:template).with("%gem_name%/.ruby-version.tt", options)
     end
   end
-
-  describe "create_git_files" do
-    it "creates gem identity" do
-      subject.create_git_files
-      expect(cli).to have_received(:template).with("%gem_name%/.gitignore.tt", options)
-    end
-  end
 end

@@ -11,10 +11,6 @@ module Gemsmith
       def create_ruby_files
         template "%gem_name%/.ruby-version.tt", template_options
       end
-
-      def create_git_files
-        template "%gem_name%/.gitignore.tt", template_options
-      end
     end
   end
 end
