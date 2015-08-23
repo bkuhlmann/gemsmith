@@ -13,6 +13,7 @@ require "gemsmith/skeletons/git_skeleton"
 require "gemsmith/skeletons/guard_skeleton"
 require "gemsmith/skeletons/rails_skeleton"
 require "gemsmith/skeletons/rspec_skeleton"
+require "gemsmith/skeletons/ruby_skeleton"
 require "gemsmith/skeletons/travis_skeleton"
 
 module Gemsmith
@@ -57,6 +58,7 @@ module Gemsmith
       Skeletons::DocumentationSkeleton.run self
       Skeletons::CLISkeleton.run(self) if template_options[:bin]
       Skeletons::RailsSkeleton.run(self) if template_options[:rails]
+      Skeletons::RubySkeleton.run self
       Skeletons::RspecSkeleton.run(self) if template_options[:rspec]
       Skeletons::GuardSkeleton.run(self) if template_options[:guard]
       Skeletons::TravisSkeleton.run(self) if template_options[:travis]

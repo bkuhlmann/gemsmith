@@ -9,8 +9,8 @@ describe Gemsmith::Skeletons::DefaultSkeleton, :temp_dir do
 
   before { FileUtils.mkdir gem_dir }
 
-  describe "#create_default_files" do
-    before { subject.create_default_files }
+  describe "#create_files" do
+    before { subject.create_files }
 
     it "creates Gemfile" do
       expect(cli).to have_received(:template).with("%gem_name%/Gemfile.tt", options)
@@ -30,13 +30,6 @@ describe Gemsmith::Skeletons::DefaultSkeleton, :temp_dir do
 
     it "creates gem identity" do
       expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/identity.rb.tt", options)
-    end
-  end
-
-  describe "#create_ruby_files" do
-    it "creates gem identity" do
-      subject.create_ruby_files
-      expect(cli).to have_received(:template).with("%gem_name%/.ruby-version.tt", options)
     end
   end
 end
