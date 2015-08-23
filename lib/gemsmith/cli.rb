@@ -18,6 +18,7 @@ require "gemsmith/skeletons/ruby_skeleton"
 require "gemsmith/skeletons/travis_skeleton"
 
 module Gemsmith
+  # The Command Line Interface (CLI) for the gem.
   class CLI < Thor
     include Thor::Actions
     include ThorPlus::Actions
@@ -98,7 +99,7 @@ module Gemsmith
     desc "-h, [--help=HELP]", "Show this message or get help for a command."
     map %w(-h --help) => :help
     def help task = nil
-      say and super
+      say && super
     end
   end
 end

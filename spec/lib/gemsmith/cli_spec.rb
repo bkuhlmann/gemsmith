@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Gemsmith::CLI do
-  let (:cli) { Gemsmith::CLI.new }
+  let(:cli) { Gemsmith::CLI.new }
 
   describe "#create" do
     it "loads default settings" do
@@ -22,7 +22,7 @@ describe Gemsmith::CLI do
       expect(options[:gem_private_key]).to eq("~/.ssh/gem-private.pem")
       expect(options[:gem_public_key]).to eq("~/.ssh/gem-public.pem")
       expect(options[:author_name]).to eq(name)
-      expect(options[:author_email]).to eq((Gemsmith::Kit.git_config_value("user.email") || "TODO: Add email address here."))
+      expect(options[:author_email]).to eq((Gemsmith::Kit.git_config_value("user.email") || "TODO: Add email address."))
       expect(options[:author_url]).to eq(url)
       expect(options[:company_name]).to eq(name)
       expect(options[:company_url]).to eq(url)

@@ -13,7 +13,7 @@ module Gemsmith
         if kernel.system("command -v doctoc > /dev/null")
           kernel.system %(doctoc --title "# Table of Contents" README.md)
         else
-          shell.error "Unable to update README Table of Contents, please install DocToc (https://github.com/thlorenz/doctoc): npm install --global doctoc."
+          shell.error error_message
           kernel.exit 1
         end
       end
@@ -26,6 +26,13 @@ module Gemsmith
       private
 
       attr_reader :shell, :kernel
+
+      def error_message
+        url = "https://github.com/thlorenz/doctoc"
+        command = "npm install --global doctoc"
+
+        "Unable to update README Table of Contents, please install DocToc (#{url}): #{command}."
+      end
     end
   end
 end

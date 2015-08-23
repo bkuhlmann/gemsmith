@@ -1,5 +1,6 @@
 module Gemsmith
   module Skeletons
+    # Configures Rake support.
     class RakeSkeleton < BaseSkeleton
       def create_files
         template "%gem_name%/Rakefile.tt", template_options

@@ -1,4 +1,6 @@
 module Gemsmith
+  # Command Line Interface (CLI) helpers that aid the CLI class. These are extracted to a module
+  # in order to not clutter up the main CLI object.
   module CLIHelpers
     # Answers default editor.
     # NOTE: This will be replaced by the Thor+ gem in the future.
@@ -51,7 +53,7 @@ module Gemsmith
     def pick_gem gems, name
       result = ask "Please pick one (or type 'q' to quit):"
 
-      return if result == 'q' # Exit early.
+      return if result == "q" # Exit early.
 
       if (1..gems.size).include?(result.to_i)
         Gem::Specification.find_by_name name, gems[result.to_i - 1].version.version

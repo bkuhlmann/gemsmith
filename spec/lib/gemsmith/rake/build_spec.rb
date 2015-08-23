@@ -31,7 +31,11 @@ describe Gemsmith::Rake::Build, :temp_dir do
 
       it "prints error message" do
         error = -> { subject.table_of_contents }
-        expect(&error).to output("Unable to update README Table of Contents, please install DocToc (https://github.com/thlorenz/doctoc): npm install --global doctoc.\n").to_stdout
+        url = "https://github.com/thlorenz/doctoc"
+        command = "npm install --global doctoc"
+        message = "Unable to update README Table of Contents, please install DocToc (#{url}): #{command}.\n"
+
+        expect(&error).to output(message).to_stdout
       end
 
       it "exits as an error" do

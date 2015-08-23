@@ -1,5 +1,6 @@
 module Gemsmith
   module Skeletons
+    # Configures RSpec support.
     class RspecSkeleton < BaseSkeleton
       def create_files
         template "%gem_name%/lib/%gem_name%/tasks/rspec.rake.tt", template_options

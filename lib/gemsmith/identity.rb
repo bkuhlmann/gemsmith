@@ -1,4 +1,5 @@
 module Gemsmith
+  # The canonical source of gem information.
   module Identity
     def self.name
       "gemsmith"

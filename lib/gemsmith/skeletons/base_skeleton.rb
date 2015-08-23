@@ -1,12 +1,13 @@
 module Gemsmith
   module Skeletons
+    # Abstract class from which all skeletons inherit from.
     class BaseSkeleton
       def initialize cli
         @cli = cli
       end
 
       def self.run cli
-        self.new(cli).create
+        new(cli).create
       end
 
       def create

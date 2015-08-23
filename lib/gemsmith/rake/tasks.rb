@@ -4,6 +4,7 @@ require "gemsmith/rake/release"
 
 module Gemsmith
   module Rake
+    # Provides Rake tasks for use in all gems built by this gem.
     class Tasks
       include ::Rake::DSL
 

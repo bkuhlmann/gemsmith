@@ -1,4 +1,5 @@
 module Gemsmith
+  # Provides Command Line Interface (CLI) settings initialization with safe defaults.
   module CLIOptions
     module_function
 
@@ -59,11 +60,11 @@ module Gemsmith
     end
 
     def author_name
-      @settings[:author_name] || Gemsmith::Kit.git_config_value("user.name") || "TODO: Add full name here."
+      @settings[:author_name] || Gemsmith::Kit.git_config_value("user.name") || "TODO: Add full name."
     end
 
     def author_email
-      @settings[:author_email] || Gemsmith::Kit.git_config_value("user.email") || "TODO: Add email address here."
+      @settings[:author_email] || Gemsmith::Kit.git_config_value("user.email") || "TODO: Add email address."
     end
 
     def author_url
@@ -95,7 +96,7 @@ module Gemsmith
     end
 
     def default_boolean key, value = false
-      @settings.has_key?(key) ? @settings[key] : value
+      @settings.key?(key) ? @settings[key] : value
     end
   end
 end

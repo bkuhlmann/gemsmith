@@ -5,7 +5,7 @@ env:
 rvm:
 - 2.1.0
 - 2.2.0
-script: bundle exec rspec spec
+script: bundle exec rake
 notifications:
   email: false
   slack:

@@ -1,5 +1,6 @@
 module Gemsmith
   module Skeletons
+    # Configures Command Line Interface (CLI) support.
     class CLISkeleton < BaseSkeleton
       def create_files
         template "%gem_name%/bin/%gem_name%.tt", template_options

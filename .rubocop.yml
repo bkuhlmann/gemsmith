@@ -1,0 +1,12 @@
+inherit_from: .rubocop_todo.yml
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+Style/CaseIndentation:
+  IndentOneStep: true
+Style/MethodDefParentheses:
+  EnforcedStyle: require_no_parentheses
+Metrics/LineLength:
+  Max: 120

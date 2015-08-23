@@ -1,8 +1,8 @@
 require "spec_helper"
 
 describe Gemsmith::Skeletons::BaseSkeleton do
-  let (:cli) { Gemsmith::CLI.new }
-  let (:skeleton) { Gemsmith::Skeletons::BaseSkeleton.new cli }
+  let(:cli) { Gemsmith::CLI.new }
+  let(:skeleton) { Gemsmith::Skeletons::BaseSkeleton.new cli }
 
   describe "#create" do
     it "messages methods prefixed with 'create_'" do

@@ -1,5 +1,6 @@
 module Gemsmith
   module Skeletons
+    # Configures default gem support.
     class GemSkeleton < BaseSkeleton
       def create_files
         template "%gem_name%/Gemfile.tt", template_options

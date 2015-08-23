@@ -48,7 +48,8 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     before { subject.create_generator_files }
 
     it "creates install generator script" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/generators/%gem_name%/install/install_generator.rb.tt", options)
+      template = "%gem_name%/lib/generators/%gem_name%/install/install_generator.rb.tt"
+      expect(cli).to have_received(:template).with(template, options)
     end
 
     it "creates install generator usage documentation" do
@@ -56,7 +57,8 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     it "creates upgrade generator script" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/generators/%gem_name%/upgrade/upgrade_generator.rb.tt", options)
+      template = "%gem_name%/lib/generators/%gem_name%/upgrade/upgrade_generator.rb.tt"
+      expect(cli).to have_received(:template).with(template, options)
     end
 
     it "creates upgrade generator usage documentation" do

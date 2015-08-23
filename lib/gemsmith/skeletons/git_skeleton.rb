@@ -1,5 +1,6 @@
 module Gemsmith
   module Skeletons
+    # Configures Git support.
     class GitSkeleton < BaseSkeleton
       def create_files
         template "%gem_name%/.gitignore.tt", template_options

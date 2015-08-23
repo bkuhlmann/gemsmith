@@ -1,5 +1,6 @@
 module Gemsmith
   module Skeletons
+    # Configures Ruby on Rails support.
     class RailsSkeleton < BaseSkeleton
       def create_engine
         template "#{lib_root}/%gem_name%/engine.rb.tt", template_options
@@ -22,9 +23,8 @@ module Gemsmith
       end
 
       def create_travis_gemfiles
-        if template_options[:travis]
-          template "%gem_name%/gemfiles/rails-4.1.x.gemfile.tt", template_options
-        end
+        return unless template_options[:travis]
+        template "%gem_name%/gemfiles/rails-4.1.x.gemfile.tt", template_options
       end
 
       private
