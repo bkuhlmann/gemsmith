@@ -1,1 +1,2 @@
 require "gemsmith/rake/setup"
+Dir.glob("lib/<%= config[:gem_name] %>/tasks/*.rake").each { |file| load file }
