@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Gemsmith::Skeletons::DefaultSkeleton, :temp_dir do
+describe Gemsmith::Skeletons::GemSkeleton, :temp_dir do
   let(:gem_name) { "tester" }
   let(:gem_dir) { File.join temp_dir, gem_name }
   let(:options) { {} }

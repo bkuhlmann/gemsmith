@@ -1,6 +1,6 @@
 module Gemsmith
   module Skeletons
-    class DefaultSkeleton < BaseSkeleton
+    class GemSkeleton < BaseSkeleton
       def create_files
         template "%gem_name%/Gemfile.tt", template_options
         template "%gem_name%/%gem_name%.gemspec.tt", template_options

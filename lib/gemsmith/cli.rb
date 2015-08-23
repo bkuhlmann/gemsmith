@@ -7,8 +7,8 @@ require "gemsmith/cli_helpers"
 require "gemsmith/skeletons/base_skeleton"
 require "gemsmith/skeletons/bundler_skeleton"
 require "gemsmith/skeletons/cli_skeleton"
-require "gemsmith/skeletons/default_skeleton"
 require "gemsmith/skeletons/documentation_skeleton"
+require "gemsmith/skeletons/gem_skeleton"
 require "gemsmith/skeletons/git_skeleton"
 require "gemsmith/skeletons/guard_skeleton"
 require "gemsmith/skeletons/rails_skeleton"
@@ -55,7 +55,7 @@ module Gemsmith
       info "Creating gem..."
 
       initialize_template_options name, options
-      Skeletons::DefaultSkeleton.run self
+      Skeletons::GemSkeleton.run self
       Skeletons::DocumentationSkeleton.run self
       Skeletons::RakeSkeleton.run self
       Skeletons::CLISkeleton.run(self) if template_options[:bin]
