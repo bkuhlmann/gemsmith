@@ -1,4 +1,5 @@
 module <%= config[:gem_class] %>
+  # The canonical source of gem information.
   module Identity
     def self.name
       "<%= config[:gem_name] %>"

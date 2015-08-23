@@ -14,6 +14,7 @@ require "gemsmith/skeletons/guard_skeleton"
 require "gemsmith/skeletons/rails_skeleton"
 require "gemsmith/skeletons/rake_skeleton"
 require "gemsmith/skeletons/rspec_skeleton"
+require "gemsmith/skeletons/rubocop_skeleton"
 require "gemsmith/skeletons/ruby_skeleton"
 require "gemsmith/skeletons/travis_skeleton"
 
@@ -48,6 +49,7 @@ module Gemsmith
     method_option :pry, aliases: "-p", desc: "Add Pry support.", type: :boolean, default: true
     method_option :guard, aliases: "-g", desc: "Add Guard support.", type: :boolean, default: true
     method_option :rspec, aliases: "-s", desc: "Add RSpec support.", type: :boolean, default: true
+    method_option :rubocop, aliases: "-R", desc: "Add Rubocop support.", type: :boolean, default: true
     method_option :code_climate, aliases: "-c", desc: "Add Code Climate support.", type: :boolean, default: true
     method_option :gemnasium, aliases: "-G", desc: "Add Gemnasium support.", type: :boolean, default: true
     method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true
@@ -63,6 +65,7 @@ module Gemsmith
       Skeletons::RubySkeleton.run self
       Skeletons::RailsSkeleton.run(self) if template_options[:rails]
       Skeletons::RspecSkeleton.run(self) if template_options[:rspec]
+      Skeletons::RubocopSkeleton.run(self) if template_options[:rubocop]
       Skeletons::GuardSkeleton.run(self) if template_options[:guard]
       Skeletons::TravisSkeleton.run(self) if template_options[:travis]
       Skeletons::BundlerSkeleton.run self

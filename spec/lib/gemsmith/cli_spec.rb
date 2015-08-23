@@ -4,7 +4,7 @@ describe Gemsmith::CLI do
   let(:cli) { Gemsmith::CLI.new }
 
   describe "#create" do
-    it "loads default settings" do
+    it "loads default settings", :aggregate_failures do
       url = "https://www.unknown.com"
       allow(cli).to receive(:author_url).and_return(url)
       allow(cli).to receive(:gem_url).and_return(url)
@@ -37,12 +37,13 @@ describe Gemsmith::CLI do
       expect(options[:pry]).to eq(true)
       expect(options[:guard]).to eq(true)
       expect(options[:rspec]).to eq(true)
+      expect(options[:rubocop]).to eq(true)
       expect(options[:code_climate]).to eq(true)
       expect(options[:gemnasium]).to eq(true)
       expect(options[:travis]).to eq(true)
     end
 
-    it "loads custom settings" do
+    it "loads custom settings", :aggregate_failures do
       custom_settings = cli.send :load_yaml, File.join(Dir.pwd, "spec", "support", "settings.yml")
 
       options = cli.send :initialize_template_options, "test", custom_settings
@@ -68,6 +69,7 @@ describe Gemsmith::CLI do
       expect(options[:pry]).to eq(true)
       expect(options[:guard]).to eq(true)
       expect(options[:rspec]).to eq(true)
+      expect(options[:rubocop]).to eq(true)
       expect(options[:code_climate]).to eq(true)
       expect(options[:gemnasium]).to eq(true)
       expect(options[:travis]).to eq(true)

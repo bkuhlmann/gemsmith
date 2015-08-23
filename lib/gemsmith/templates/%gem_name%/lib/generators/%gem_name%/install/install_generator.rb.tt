@@ -1,10 +1,11 @@
 module <%= config[:gem_class] %>
+  # Generator for installing new files.
   class InstallGenerator < Rails::Generators::Base
-  	source_root File.join(File.dirname(__FILE__), "..", "templates")
+    source_root File.join(File.dirname(__FILE__), "..", "templates")
 
     desc "Installs additional <%= config[:gem_class] %> resources."
     def install
-      # TODO - Add install code here.
+      # TODO: Add install code.
     end
   end
 end

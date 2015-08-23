@@ -1,5 +1,9 @@
-inherit_from: .rubocop_todo.yml
-
+<%- if config[:rails] -%>
+AllCops:
+  Exclude:
+    - "spec/dummy/**/*"
+    - "bin/rails"
+<%- end -%>
 Style/CaseIndentation:
   IndentOneStep: true
 Style/MethodDefParentheses:

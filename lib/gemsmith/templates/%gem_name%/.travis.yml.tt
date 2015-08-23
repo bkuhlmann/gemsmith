@@ -6,4 +6,4 @@ rvm:
 gemfile:
   - gemfiles/rails-4.1.x.gemfile
 <%- end -%>
-script: bundle exec rspec spec
+script: bundle exec rake

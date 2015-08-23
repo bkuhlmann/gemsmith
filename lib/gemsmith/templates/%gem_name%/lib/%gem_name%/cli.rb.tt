@@ -4,6 +4,7 @@ require "thor/actions"
 require "thor_plus/actions"
 
 module <%= config[:gem_class] %>
+  # The Command Line Interface (CLI) for the gem.
   class CLI < Thor
     include Thor::Actions
     include ThorPlus::Actions
@@ -24,7 +25,7 @@ module <%= config[:gem_class] %>
     desc "-h, [--help=HELP]", "Show this message or get help for a command."
     map %w(-h --help) => :help
     def help task = nil
-      say and super
+      say && super
     end
   end
 end

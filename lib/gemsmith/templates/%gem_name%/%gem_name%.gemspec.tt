@@ -54,6 +54,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "terminal-notifier"
   spec.add_development_dependency "terminal-notifier-guard"
   <%- end -%>
+  <%- if config[:rubocop] -%>
+  spec.add_development_dependency "rubocop"
+  <%- end -%>
   <%- if config[:code_climate] -%>
   spec.add_development_dependency "codeclimate-test-reporter"
   <%- end -%>

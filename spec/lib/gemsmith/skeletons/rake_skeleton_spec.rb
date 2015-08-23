@@ -20,8 +20,24 @@ describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
     context "when RSpec is enabled" do
       let(:options) { {rspec: true} }
 
-      it "adds RSpec as a default task" do
+      it "adds RSpec to default tasks" do
         expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w(spec)\n")
+      end
+    end
+
+    context "when Rubocop is enabled" do
+      let(:options) { {rubocop: true} }
+
+      it "adds Rubocop to default tasks" do
+        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w(rubocop)\n")
+      end
+    end
+
+    context "when all options are enabled" do
+      let(:options) { described_class.allowed_options.keys.reduce({}) { |hash, key| hash.merge key => true } }
+
+      it "adds all tasks" do
+        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w(spec rubocop)\n")
       end
     end
 
