@@ -10,6 +10,6 @@
 :company_url: "https://www.acme.com"
 :github_user: "tester"
 :year: 1920
-:ruby_version: 1.8.0
-:rails_version: 2.3.0
+:ruby_version: 2.0.0
+:rails_version: 4.0.0
 :post_install_message: "Follow @tester on Twitter for more info."
