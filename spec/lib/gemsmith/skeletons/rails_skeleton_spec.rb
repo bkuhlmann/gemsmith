@@ -16,7 +16,11 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     it "generates Rails engine" do
-      expect(subject).to have_received(:system).with("rails plugin new tester --skip --skip-bundle --skip-test-unit --skip-keeps --mountable --dummy-path=spec/dummy")
+      command = "rails plugin new tester"
+      options = "--skip --skip-bundle --skip-test-unit --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
+      command_and_options = "#{command} #{options}"
+
+      expect(subject).to have_received(:system).with(command_and_options)
     end
 
     it "removes generated license" do

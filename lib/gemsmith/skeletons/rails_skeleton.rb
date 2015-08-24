@@ -25,7 +25,7 @@ module Gemsmith
       private
 
       def engine_options
-        "--skip --skip-bundle --skip-test-unit --skip-keeps --mountable --dummy-path=spec/dummy"
+        "--skip --skip-bundle --skip-test-unit --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
       end
 
       def lib_gem_root
