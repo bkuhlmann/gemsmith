@@ -1,3 +1,0 @@
-<%- if config[:travis] -%>
-service_name: travis-ci
-<%- end -%>
