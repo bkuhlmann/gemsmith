@@ -2,8 +2,10 @@ module Gemsmith
   module Skeletons
     class RailsSkeleton < BaseSkeleton
       def create_engine
+        template "#{lib_root}/%gem_name%/engine.rb.tt", template_options
+
         gem_name = template_options.fetch :gem_name
-        system "rails plugin new #{gem_name} #{engine_options}"
+        system "rails plugin new --skip #{gem_name} #{engine_options}"
 
         remove_file "#{gem_name}/app/helpers/#{gem_name}/application_helper.rb", template_options
         remove_file "#{gem_name}/lib/#{gem_name}/version.rb", template_options
@@ -28,7 +30,7 @@ module Gemsmith
       private
 
       def engine_options
-        "--skip --skip-bundle --skip-test-unit --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
+        "--skip-bundle --skip-test-unit --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
       end
 
       def generator_root

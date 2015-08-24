@@ -15,9 +15,13 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
       subject.create_engine
     end
 
+    it "creates engine file" do
+      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/engine.rb.tt", options)
+    end
+
     it "generates Rails engine" do
-      command = "rails plugin new tester"
-      options = "--skip --skip-bundle --skip-test-unit --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
+      command = "rails plugin new --skip tester"
+      options = "--skip-bundle --skip-test-unit --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
       command_and_options = "#{command} #{options}"
 
       expect(subject).to have_received(:system).with(command_and_options)
