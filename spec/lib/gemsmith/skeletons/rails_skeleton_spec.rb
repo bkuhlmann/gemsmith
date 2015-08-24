@@ -23,6 +23,10 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
       expect(subject).to have_received(:system).with(command_and_options)
     end
 
+    it "removes generated application helper file" do
+      expect(cli).to have_received(:remove_file).with("tester/app/helpers/tester/application_helper.rb", options)
+    end
+
     it "removes generated version file" do
       expect(cli).to have_received(:remove_file).with("tester/lib/tester/version.rb", options)
     end

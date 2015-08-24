@@ -5,6 +5,7 @@ module Gemsmith
         gem_name = template_options.fetch :gem_name
         system "rails plugin new #{gem_name} #{engine_options}"
 
+        remove_file "#{gem_name}/app/helpers/#{gem_name}/application_helper.rb", template_options
         remove_file "#{gem_name}/lib/#{gem_name}/version.rb", template_options
         remove_file "#{gem_name}/MIT-LICENSE", template_options
         remove_file "#{gem_name}/README.rdoc", template_options
