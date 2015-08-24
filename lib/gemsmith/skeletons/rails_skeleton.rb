@@ -4,6 +4,8 @@ module Gemsmith
       def create_engine
         gem_name = template_options.fetch :gem_name
         system "rails plugin new #{gem_name} #{engine_options}"
+
+        remove_file "#{gem_name}/lib/#{gem_name}/version.rb", template_options
         remove_file "#{gem_name}/MIT-LICENSE", template_options
         remove_file "#{gem_name}/README.rdoc", template_options
       end
@@ -26,10 +28,6 @@ module Gemsmith
 
       def engine_options
         "--skip --skip-bundle --skip-test-unit --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
-      end
-
-      def lib_gem_root
-        "#{lib_root}/%gem_name%"
       end
 
       def generator_root
