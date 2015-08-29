@@ -1,5 +1,6 @@
 require "bundler/gem_tasks"
 require "gemsmith/rake/build"
+require "gemsmith/rake/release"
 
 module Gemsmith
   module Rake
@@ -11,19 +12,29 @@ module Gemsmith
       end
 
       def install
+        build = Gemsmith::Rake::Build.new
+        release = Gemsmith::Rake::Release.new
+
         ::Rake::Task[:build].enhance [:clean, "readme:toc"]
         ::Rake::Task[:release].enhance { ::Rake::Task[:clean].invoke }
 
         namespace :readme do
-          desc "Update README Table of Contents"
+          desc "Update README Table of Contents."
           task :toc do
-            Gemsmith::Rake::Build.new.table_of_contents
+            build.table_of_contents
           end
         end
 
-        desc "Cleans gem artifacts."
+        desc "Clean gem artifacts."
         task :clean do
-          Gemsmith::Rake::Build.new.clean!
+          build.clean!
+        end
+
+        desc "Build, tag #{release.version_formatted} (signed), and push #{release.package_file_name} to RubyGems"
+        task publish: [:clean, :build, "release:guard_clean"] do
+          release.tag
+          release.push
+          ::Rake::Task["release:rubygem_push"].invoke
         end
       end
     end
