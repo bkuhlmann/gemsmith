@@ -2,7 +2,13 @@ module Gemsmith
   module Skeletons
     # Configures RSpec support.
     class RspecSkeleton < BaseSkeleton
+      def enabled?
+        cli.template_options.key?(:rspec) && cli.template_options[:rspec]
+      end
+
       def create
+        return unless enabled?
+
         cli.template "%gem_name%/lib/%gem_name%/tasks/rspec.rake.tt", cli.template_options
         cli.template "#{rspec_root}/spec_helper.rb.tt", cli.template_options
         cli.template "#{rspec_root}/%gem_name%_spec.rb.tt", cli.template_options
