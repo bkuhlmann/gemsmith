@@ -33,6 +33,23 @@ module Gemsmith
       File.expand_path File.join(File.dirname(__FILE__), "templates")
     end
 
+    def self.skeletons
+      [
+        Skeletons::GemSkeleton,
+        Skeletons::DocumentationSkeleton,
+        Skeletons::RakeSkeleton,
+        Skeletons::CLISkeleton,
+        Skeletons::RubySkeleton,
+        Skeletons::RailsSkeleton,
+        Skeletons::RspecSkeleton,
+        Skeletons::RubocopSkeleton,
+        Skeletons::GuardSkeleton,
+        Skeletons::TravisSkeleton,
+        Skeletons::BundlerSkeleton,
+        Skeletons::GitSkeleton
+      ]
+    end
+
     # Initialize.
     def initialize args = [], options = {}, config = {}
       super args, options, config
@@ -58,18 +75,7 @@ module Gemsmith
       info "Creating gem..."
 
       initialize_template_options name, options
-      Skeletons::GemSkeleton.create self
-      Skeletons::DocumentationSkeleton.create self
-      Skeletons::RakeSkeleton.create self
-      Skeletons::CLISkeleton.create(self) if template_options[:bin]
-      Skeletons::RubySkeleton.create self
-      Skeletons::RailsSkeleton.create(self) if template_options[:rails]
-      Skeletons::RspecSkeleton.create(self) if template_options[:rspec]
-      Skeletons::RubocopSkeleton.create(self) if template_options[:rubocop]
-      Skeletons::GuardSkeleton.create(self) if template_options[:guard]
-      Skeletons::TravisSkeleton.create(self) if template_options[:travis]
-      Skeletons::BundlerSkeleton.create self
-      Skeletons::GitSkeleton.create self
+      self.class.skeletons.each { |skeleton| skeleton.create self }
 
       info "Gem created."
       say
