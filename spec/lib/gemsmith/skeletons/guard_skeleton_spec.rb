@@ -8,10 +8,25 @@ describe Gemsmith::Skeletons::GuardSkeleton, :temp_dir do
   subject { described_class.new cli }
   before { FileUtils.mkdir gem_dir }
 
+  it_behaves_like "an optional skeleton", :guard
+
   describe "#create" do
-    it "creates Guardfile" do
-      subject.create
-      expect(cli).to have_received(:template).with("%gem_name%/Guardfile.tt", options)
+    before { subject.create }
+
+    context "when enabled" do
+      let(:options) { {guard: true} }
+
+      it "creates Guardfile" do
+        expect(cli).to have_received(:template).with("%gem_name%/Guardfile.tt", options)
+      end
+    end
+
+    context "when disabled" do
+      let(:options) { {guard: false} }
+
+      it "creates Guardfile" do
+        expect(cli).to_not have_received(:template)
+      end
     end
   end
 end
