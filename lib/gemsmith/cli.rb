@@ -58,18 +58,18 @@ module Gemsmith
       info "Creating gem..."
 
       initialize_template_options name, options
-      Skeletons::GemSkeleton.run self
-      Skeletons::DocumentationSkeleton.run self
-      Skeletons::RakeSkeleton.run self
-      Skeletons::CLISkeleton.run(self) if template_options[:bin]
-      Skeletons::RubySkeleton.run self
-      Skeletons::RailsSkeleton.run(self) if template_options[:rails]
-      Skeletons::RspecSkeleton.run(self) if template_options[:rspec]
-      Skeletons::RubocopSkeleton.run(self) if template_options[:rubocop]
-      Skeletons::GuardSkeleton.run(self) if template_options[:guard]
-      Skeletons::TravisSkeleton.run(self) if template_options[:travis]
-      Skeletons::BundlerSkeleton.run self
-      Skeletons::GitSkeleton.run self
+      Skeletons::GemSkeleton.create self
+      Skeletons::DocumentationSkeleton.create self
+      Skeletons::RakeSkeleton.create self
+      Skeletons::CLISkeleton.create(self) if template_options[:bin]
+      Skeletons::RubySkeleton.create self
+      Skeletons::RailsSkeleton.create(self) if template_options[:rails]
+      Skeletons::RspecSkeleton.create(self) if template_options[:rspec]
+      Skeletons::RubocopSkeleton.create(self) if template_options[:rubocop]
+      Skeletons::GuardSkeleton.create(self) if template_options[:guard]
+      Skeletons::TravisSkeleton.create(self) if template_options[:travis]
+      Skeletons::BundlerSkeleton.create self
+      Skeletons::GitSkeleton.create self
 
       info "Gem created."
       say

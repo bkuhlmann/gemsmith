@@ -11,14 +11,14 @@ describe Gemsmith::Skeletons::BundlerSkeleton, :temp_dir do
     allow(subject).to receive(:`)
   end
 
-  describe "#create_gemfile_lock" do
-    before { subject.create_gemfile_lock }
+  describe "#create" do
+    before { subject.create }
 
-    it "prints info about installing gem dependencies" do
+    it "prints gem dependencies are being installed" do
       expect(cli).to have_received(:info).with("Installing gem dependencies...")
     end
 
-    it "builds Gemfile.lock" do
+    it "creates Gemfile.lock" do
       expect(subject).to have_received(:`).with("bundle install")
     end
   end

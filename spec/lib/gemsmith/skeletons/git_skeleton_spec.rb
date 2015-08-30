@@ -12,9 +12,9 @@ describe Gemsmith::Skeletons::GitSkeleton, :temp_dir do
     allow(subject).to receive(:`)
   end
 
-  describe "#create_files" do
+  describe "#create_ignore_file" do
     it "creates Git ignore file" do
-      subject.create_files
+      subject.create_ignore_file
       expect(cli).to have_received(:template).with("%gem_name%/.gitignore.tt", options)
     end
   end
@@ -32,6 +32,20 @@ describe Gemsmith::Skeletons::GitSkeleton, :temp_dir do
 
     it "creates initial commit" do
       expect(subject).to have_received(:`).with(%(git commit --all --no-verify --message "Added Gemsmith skeleton."))
+    end
+  end
+
+  describe "#create" do
+    before do
+      allow(subject).to receive(:create_ignore_file)
+      allow(subject).to receive(:create_repository)
+    end
+
+    it "creates skeleton", :aggregate_failures do
+      subject.create
+
+      expect(subject).to have_received(:create_ignore_file)
+      expect(subject).to have_received(:create_repository)
     end
   end
 end

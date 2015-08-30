@@ -6,27 +6,17 @@ module Gemsmith
         @cli = cli
       end
 
-      def self.run cli
+      def self.create cli
         new(cli).create
       end
 
       def create
-        public_methods.each { |method| public_send(method) if method =~ /^create_.+$/ }
-      end
-
-      def respond_to? name, include_private = false
-        @cli.respond_to?(name, include_private) || super(name, include_private)
-      end
-
-      def method_missing name, *args, &block
-        if respond_to?(name)
-          @cli.public_send name, *args, &block
-        else
-          super name, *args, &block
-        end
+        fail NotImplementedError, "The method, #create, is not implemented yet."
       end
 
       private
+
+      attr_reader :cli
 
       def lib_root
         "%gem_name%/lib"

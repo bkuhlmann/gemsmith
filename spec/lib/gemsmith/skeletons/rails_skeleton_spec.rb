@@ -6,7 +6,6 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
   let(:options) { {gem_name: gem_name} }
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir, gem_name: gem_name, template_options: options }
   subject { described_class.new cli }
-
   before { FileUtils.mkdir gem_dir }
 
   describe "#create_engine" do
@@ -83,6 +82,22 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
         subject.create_travis_gemfiles
         expect(cli).to_not have_received(:template)
       end
+    end
+  end
+
+  describe "#create" do
+    before do
+      allow(subject).to receive(:create_engine)
+      allow(subject).to receive(:create_generator_files)
+      allow(subject).to receive(:create_travis_gemfiles)
+    end
+
+    it "creates skeleton", :aggregate_failures do
+      subject.create
+
+      expect(subject).to have_received(:create_engine)
+      expect(subject).to have_received(:create_generator_files)
+      expect(subject).to have_received(:create_travis_gemfiles)
     end
   end
 end

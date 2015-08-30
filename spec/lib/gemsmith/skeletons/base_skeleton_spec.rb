@@ -1,38 +1,20 @@
 require "spec_helper"
 
 describe Gemsmith::Skeletons::BaseSkeleton do
-  let(:cli) { Gemsmith::CLI.new }
-  let(:skeleton) { Gemsmith::Skeletons::BaseSkeleton.new cli }
+  let(:cli) { instance_spy Gemsmith::CLI }
+  subject { described_class.new cli }
 
-  describe "#create" do
-    it "messages methods prefixed with 'create_'" do
-      def skeleton.create_test
-      end
-
-      expect(skeleton).to receive(:create_test).once
-      skeleton.create
+  describe ".create" do
+    it "initializes instance and creates it" do
+      result = -> { described_class.create cli }
+      expect(&result).to raise_error(NotImplementedError, "The method, #create, is not implemented yet.")
     end
   end
 
-  describe "#respond_to?" do
-    it "responds to template" do
-      expect(skeleton.respond_to?("template")).to eq(true)
-    end
-
-    it "responds to template_options" do
-      expect(skeleton.respond_to?("template_options")).to eq(true)
-    end
-
-    it "responds to gem_name" do
-      expect(skeleton.respond_to?("gem_name")).to eq(true)
-    end
-
-    it "responds to destination_root" do
-      expect(skeleton.respond_to?("destination_root")).to eq(true)
-    end
-
-    it "does not respond to a bogus method" do
-      expect(skeleton.respond_to?("bogus_method")).to eq(false)
+  describe "#create" do
+    it "fails due to not being implemented yet" do
+      result = -> { subject.create }
+      expect(&result).to raise_error(NotImplementedError, "The method, #create, is not implemented yet.")
     end
   end
 end

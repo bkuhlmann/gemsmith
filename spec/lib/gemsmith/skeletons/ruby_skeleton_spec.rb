@@ -9,9 +9,9 @@ describe Gemsmith::Skeletons::RubySkeleton, :temp_dir do
 
   before { FileUtils.mkdir gem_dir }
 
-  describe "#create_files" do
+  describe "#create" do
     it "creates files" do
-      subject.create_files
+      subject.create
       expect(cli).to have_received(:template).with("%gem_name%/.ruby-version.tt", options)
     end
   end

@@ -9,8 +9,8 @@ describe Gemsmith::Skeletons::RspecSkeleton, :temp_dir do
 
   before { FileUtils.mkdir gem_dir }
 
-  describe "#create_files" do
-    before { subject.create_files }
+  describe "#create" do
+    before { subject.create }
 
     it "creates Rake file" do
       expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/tasks/rspec.rake.tt", options)
