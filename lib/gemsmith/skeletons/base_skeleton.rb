@@ -10,6 +10,10 @@ module Gemsmith
         new(cli).create
       end
 
+      def enabled?
+        true
+      end
+
       def create
         fail NotImplementedError, "The method, #create, is not implemented yet."
       end
