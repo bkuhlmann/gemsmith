@@ -1,9 +1,17 @@
 require "bundler/setup"
+
 <%- if config[:code_climate] -%>
 if ENV["CODECLIMATE_REPO_TOKEN"]
   require "codeclimate-test-reporter"
   CodeClimate::TestReporter.start
 end
+
+<%- end -%>
+<%- if config[:rails] -%>
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path "../dummy/config/environment", __FILE__
+ENV["RAILS_ROOT"] ||= File.dirname(__FILE__) + "/dummy"
+
 <%- end -%>
 require "<%= config[:gem_name] %>"
 <%- if config[:pry] -%>
