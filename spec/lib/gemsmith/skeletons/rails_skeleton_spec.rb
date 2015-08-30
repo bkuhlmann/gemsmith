@@ -8,6 +8,8 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
   subject { described_class.new cli }
   before { FileUtils.mkdir gem_dir }
 
+  it_behaves_like "an optional skeleton", :rails
+
   describe "#create_engine" do
     before do
       allow(subject).to receive(:system)
@@ -92,12 +94,28 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
       allow(subject).to receive(:create_travis_gemfiles)
     end
 
-    it "creates skeleton", :aggregate_failures do
-      subject.create
+    context "when enabled" do
+      let(:options) { {rails: true} }
 
-      expect(subject).to have_received(:create_engine)
-      expect(subject).to have_received(:create_generator_files)
-      expect(subject).to have_received(:create_travis_gemfiles)
+      it "creates skeleton", :aggregate_failures do
+        subject.create
+
+        expect(subject).to have_received(:create_engine)
+        expect(subject).to have_received(:create_generator_files)
+        expect(subject).to have_received(:create_travis_gemfiles)
+      end
+    end
+
+    context "when disabled" do
+      let(:options) { {rails: false} }
+
+      it "does not create skeleton", :aggregate_failures do
+        subject.create
+
+        expect(subject).to_not have_received(:create_engine)
+        expect(subject).to_not have_received(:create_generator_files)
+        expect(subject).to_not have_received(:create_travis_gemfiles)
+      end
     end
   end
 end

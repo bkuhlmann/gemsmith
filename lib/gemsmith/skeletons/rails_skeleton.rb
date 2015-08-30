@@ -2,6 +2,10 @@ module Gemsmith
   module Skeletons
     # Configures Ruby on Rails support.
     class RailsSkeleton < BaseSkeleton
+      def enabled?
+        cli.template_options.key?(:rails) && cli.template_options[:rails]
+      end
+
       def create_engine
         cli.template "#{lib_root}/%gem_name%/engine.rb.tt", cli.template_options
 
@@ -28,6 +32,8 @@ module Gemsmith
       end
 
       def create
+        return unless enabled?
+
         create_engine
         create_generator_files
         create_travis_gemfiles
