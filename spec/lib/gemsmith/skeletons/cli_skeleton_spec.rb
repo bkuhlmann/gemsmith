@@ -8,15 +8,29 @@ describe Gemsmith::Skeletons::CLISkeleton, :temp_dir do
   subject { described_class.new cli }
   before { FileUtils.mkdir gem_dir }
 
+  it_behaves_like "an optional skeleton", :bin
+
   describe "#create" do
     before { subject.create }
 
-    it "creates gem binary" do
-      expect(cli).to have_received(:template).with("%gem_name%/bin/%gem_name%.tt", options)
+    context "when enabled" do
+      let(:options) { {bin: true} }
+
+      it "creates gem binary" do
+        expect(cli).to have_received(:template).with("%gem_name%/bin/%gem_name%.tt", options)
+      end
+
+      it "creates command line interface" do
+        expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/cli.rb.tt", options)
+      end
     end
 
-    it "creates command line interface" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/cli.rb.tt", options)
+    context "when disabled" do
+      let(:options) { {bin: false} }
+
+      it "creates gem binary" do
+        expect(cli).to_not have_received(:template)
+      end
     end
   end
 end
