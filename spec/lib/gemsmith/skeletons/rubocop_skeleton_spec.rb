@@ -8,15 +8,29 @@ describe Gemsmith::Skeletons::RubocopSkeleton, :temp_dir do
   subject { described_class.new cli }
   before { FileUtils.mkdir gem_dir }
 
+  it_behaves_like "an optional skeleton", :rubocop
+
   describe "#create" do
     before { subject.create }
 
-    it "creates configuration file" do
-      expect(cli).to have_received(:template).with("%gem_name%/.rubocop.yml.tt", options)
+    context "when enabled" do
+      let(:options) { {rubocop: true} }
+
+      it "creates configuration file" do
+        expect(cli).to have_received(:template).with("%gem_name%/.rubocop.yml.tt", options)
+      end
+
+      it "creates Rake file" do
+        expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/tasks/rubocop.rake.tt", options)
+      end
     end
 
-    it "creates Rake file" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/tasks/rubocop.rake.tt", options)
+    context "when disabled" do
+      let(:options) { {rubocop: false} }
+
+      it "creates configuration file" do
+        expect(cli).to_not have_received(:template)
+      end
     end
   end
 end
