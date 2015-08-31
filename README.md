@@ -16,10 +16,13 @@ Gemsmith allows you to easily craft new gems via the command line with custom se
 - [Requirements](#requirements)
 - [Setup](#setup)
 - [Usage](#usage)
+  - [Command Line Interface (CLI)](#command-line-interface-cli)
+  - [Rake](#rake)
+  - [Upgrades](#upgrades)
 - [Tests](#tests)
 - [Security](#security)
-- [Best Practices](#best-practices)
-- [Documentation](#documentation)
+  - [Git Signing Key](#git-signing-key)
+  - [Gem Certificates](#gem-certificates)
 - [Promotion](#promotion)
 - [Versioning](#versioning)
 - [Code of Conduct](#code-of-conduct)
@@ -37,6 +40,7 @@ Gemsmith allows you to easily craft new gems via the command line with custom se
 - Supports [Thor](https://github.com/wycats/thor) command line functionality.
 - Supports [Ruby on Rails](http://rubyonrails.org).
 - Supports [RSpec](http://rspec.info).
+- Supports [Rubocop](https://github.com/bbatsov/rubocop).
 - Supports [Pry](http://pryrepl.org).
 - Supports [Guard](https://github.com/guard/guard).
 - Supports [Code Climate](https://codeclimate.com).
@@ -98,6 +102,8 @@ If no options are configured, then the defaults are as follows:
 
 # Usage
 
+## Command Line Interface (CLI)
+
 From the command line, type: gemsmith help
 
     gemsmith -c, [create=CREATE]  # Create new gem.
@@ -119,6 +125,8 @@ For more gem creation options, type: gemsmith help create
                                                # Default: true
     -s, [--rspec], [--no-rspec]                # Add RSpec support.
                                                # Default: true
+    -R, [--rubocop], [--no-rubocop]            # Add Rubocop support.
+                                               # Default: true
     -c, [--code-climate], [--no-code-climate]  # Add Code Climate support.
                                                # Default: true
     -G, [--gemnasium], [--no-gemnasium]        # Add Gemnasium support.
@@ -126,19 +134,67 @@ For more gem creation options, type: gemsmith help create
     -t, [--travis], [--no-travis]              # Add Travis CI support.
                                                # Default: true
 
+## Rake
+
 Once a gem skeleton has been created, the following tasks are available within the project via Bundler (i.e. rake -T):
 
-    rake build    # Build example-0.1.0.gem into the pkg directory
-    rake install  # Build and install example-0.1.0.gem into system gems
-    rake release  # Create tag v2.3.0 and build and push example-0.1.0.gem to Rubygems
+    rake build                 # Build gemsmith-5.4.0.gem into the pkg directory
+    rake clean                 # Clean gem artifacts
+    rake install               # Build and install gemsmith-5.4.0.gem into system gems
+    rake install:local         # Build and install gemsmith-5.4.0.gem into system gems without network access
+    rake publish               # Build, tag v5.4.0 (signed), and push gemsmith-5.4.0.gem to RubyGems
+    rake readme:toc            # Update README Table of Contents
+    rake release               # Create tag v5.4.0 and build and push gemsmith-5.4.0.gem to Rubygems
+    rake rubocop               # Run RuboCop
+    rake rubocop:auto_correct  # Auto-correct RuboCop offenses
+    rake spec                  # Run RSpec code examples
+
+## Upgrades
+
+For those upgrading from Gemsmith 5.3.0 and wanting to use the new Rake tasks, do the following:
+
+- Edit your `gemspec` and add the following dependency: `spec.add_development_dependency "gemsmith"`.
+- Edit your `Rakefile` and remove the Bundler requirement `require "bundler/gem_tasks"` and replace it with
+  the Gemsmith tasks: `require "gemsmith/rake/setup"`. Don't worry, this includes the Bundler tasks too.
 
 # Tests
 
 To test, run:
 
-    bundle exec rspec spec
+    bundle exec rake
 
 # Security
+
+## Git Signing Key
+
+To sign your Git tags, start by installing and configuring [GPG](https://www.gnupg.org):
+
+    brew install gpg
+    gpg --gen-key
+
+When setting up your GPG key, here is an example of safe defaults:
+
+- Key kind: RSA and RSA (default)
+- Key size: 4096
+- Key validity: 0
+- Real Name: `<your name>`
+- Email: `<your email>`
+- Passphrase: `<your passphrase>`
+
+To obtain your key, run the following and take the part after the forward slash:
+
+    gpg --list-keys | grep pub
+
+Add your key to your global Git configuration in the `[user]` section. Example:
+
+    [user]
+      signingkey = <your GPG key>
+
+Now, when publishing your gems with Gemsmith (i.e. `bundle exec rake publish`), signing of your Git tag will happen
+automatically. Should you not want to sign your tags, use `bundle exec rake release` which is the same as
+`bundle exec rake publish` except the Git tag is not signed.
+
+## Gem Certificates
 
 To create a certificate for your gems, run the following:
 
@@ -155,22 +211,6 @@ To learn more about gem certificates, read the following:
 - [A Practical Guide to Using Signed Ruby Gems - Part 1: Bundler](http://blog.meldium.com/home/2013/3/3/signed-rubygems-part)
 - [A Practical Guide to Using Signed Ruby Gems - Part 2: Heroku](http://blog.meldium.com/home/2013/3/6/signed-gems-on-heroku)
 
-# Best Practices
-
-0. [Semantic Versioning](http://semver.org)
-0. [Best Practices While Cutting Gems](http://rubysource.com/crafting-rubies-best-practices-while-cutting-gems).
-0. [Ruby on Rails Gem Packaging](http://weblog.rubyonrails.org/2009/9/1/gem-packaging-best-practices).
-0. [Gem Activation and You: Part I](http://erik.hollensbe.org/2013/05/11/gem-activation-and-you)
-0. [Gem Activation and You: Part II](http://erik.hollensbe.org/2013/05/15/gem-activation-and-you-part-2-bundler-and-binstubs)
-0. [Why You Should Use a BSD Style License](http://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html).
-0. Add -w to the RUBYOPT environment variable when testing. [Details](http://avdi.org/devblog/2011/06/23/how-ruby-helps-you-fix-your-broken-code).
-
-# Documentation
-
-In order to make your gem easier to use and adopt by others, good documentation is always a plus. Consider submitting
-your gem to RubyDocs[http://rubydoc.info] once your gem is released and available for use. RubyDocs supports both
-RDoc and YARD formats.
-
 # Promotion
 
 Once your gem is released, you might like to let the world know about the new awesomeness. Here are several resources:
@@ -179,7 +219,7 @@ Once your gem is released, you might like to let the world know about the new aw
 - [Ruby Toolbox](https://www.ruby-toolbox.com)
 - [RubyFlow](http://www.rubyflow.com)
 - [The Ruby Show](http://rubyshow.com)
-- [Ruby 5](http://ruby5.envylabs.com)
+- [Ruby 5](https://ruby5.codeschool.com)
 
 # Versioning
 

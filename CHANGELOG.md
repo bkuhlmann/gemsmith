@@ -1,3 +1,24 @@
+# v5.4.0 (2015-08-30)
+
+- Fixed Rails RSpec spec helper configuration.
+- Removed Rails .gitignore file generation.
+- Removed Rails application helper generation.
+- Removed Rails version file generation.
+- Removed Ruby version requirement from gemspec skeleton.
+- Updated to Ruby 2.2.3.
+- Updated to Rails 4.2.4.
+- Updated Rakefile to use Gemsmith rake tasks.
+- Added Rubocop support.
+- Added RSpec Rake tasks.
+- Added Gemsmith development requirement to gem skeleton gemspec.
+- Added supplemental rake tasks for building and publishing gems:
+    - rake clean                 # Clean gem artifacts
+    - rake publish               # Build, tag v5.4.0 (signed), and push gemsmith-5.4.0.gem to RubyGems
+    - rake readme:toc            # Update README Table of Contents
+    - rake rubocop               # Run RuboCop
+    - rake rubocop:auto_correct  # Auto-correct RuboCop offenses
+    - rake spec                  # Run RSpec code examples
+
 # v5.3.0 (2015-08-02)
 
 - Fixed bug where --no-security option would add security text to README.md.
