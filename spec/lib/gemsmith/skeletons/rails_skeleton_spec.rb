@@ -10,6 +10,26 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
 
   it_behaves_like "an optional skeleton", :rails
 
+  describe "#rails?" do
+    before { allow(subject).to receive(:system).with("command -v rails").and_return(rails) }
+
+    context "when rails exists" do
+      let(:rails) { true }
+
+      it "answers true" do
+        expect(subject.rails?).to eq(true)
+      end
+    end
+
+    context "when rails doesn't exist" do
+      let(:rails) { false }
+
+      it "answers false" do
+        expect(subject.rails?).to eq(false)
+      end
+    end
+  end
+
   describe "#create_engine" do
     before do
       allow(subject).to receive(:system)
@@ -88,15 +108,16 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
   end
 
   describe "#create" do
+    let(:rails) { true }
+    let(:options) { {rails: true} }
     before do
       allow(subject).to receive(:create_engine)
       allow(subject).to receive(:create_generator_files)
       allow(subject).to receive(:create_travis_gemfiles)
+      allow(subject).to receive(:rails?).and_return(rails)
     end
 
     context "when enabled" do
-      let(:options) { {rails: true} }
-
       it "creates skeleton", :aggregate_failures do
         subject.create
 
@@ -108,6 +129,28 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
 
     context "when disabled" do
       let(:options) { {rails: false} }
+
+      it "does not create skeleton", :aggregate_failures do
+        subject.create
+
+        expect(subject).to_not have_received(:create_engine)
+        expect(subject).to_not have_received(:create_generator_files)
+        expect(subject).to_not have_received(:create_travis_gemfiles)
+      end
+    end
+
+    context "when Ruby on Rails is supported" do
+      it "creates skeleton", :aggregate_failures do
+        subject.create
+
+        expect(subject).to have_received(:create_engine)
+        expect(subject).to have_received(:create_generator_files)
+        expect(subject).to have_received(:create_travis_gemfiles)
+      end
+    end
+
+    context "when Ruby on Rails isn't supported" do
+      let(:rails) { false }
 
       it "does not create skeleton", :aggregate_failures do
         subject.create

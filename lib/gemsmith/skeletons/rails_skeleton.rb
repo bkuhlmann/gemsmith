@@ -6,6 +6,10 @@ module Gemsmith
         cli.template_options.key?(:rails) && cli.template_options[:rails]
       end
 
+      def rails?
+        system "command -v rails"
+      end
+
       def create_engine
         cli.template "#{lib_root}/%gem_name%/engine.rb.tt", cli.template_options
 
@@ -32,7 +36,7 @@ module Gemsmith
       end
 
       def create
-        return unless enabled?
+        return unless enabled? && rails?
 
         create_engine
         create_generator_files
