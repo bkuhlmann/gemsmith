@@ -8,6 +8,9 @@ Style/CaseIndentation:
   IndentOneStep: true
 Style/MethodDefParentheses:
   EnforcedStyle: require_no_parentheses
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    "%r": "()"
 Style/SingleLineBlockParams:
   Enabled: false
 Style/SpaceInsideHashLiteralBraces:
