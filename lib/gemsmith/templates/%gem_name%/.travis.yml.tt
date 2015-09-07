@@ -7,3 +7,5 @@ gemfile:
   - gemfiles/rails-4.1.x.gemfile
 <%- end -%>
 script: bundle exec rake
+notifications:
+  email: false
