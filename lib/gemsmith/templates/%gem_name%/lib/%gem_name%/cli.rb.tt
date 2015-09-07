@@ -11,7 +11,6 @@ module <%= config[:gem_class] %>
 
     package_name <%= config[:gem_class] %>::Identity.label
 
-    # Initialize.
     def initialize args = [], options = {}, config = {}
       super args, options, config
     end
