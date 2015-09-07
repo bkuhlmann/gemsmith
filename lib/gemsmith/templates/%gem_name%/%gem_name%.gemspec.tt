@@ -45,9 +45,6 @@ Gem::Specification.new do |spec|
   <%- rspec_gem = config[:rails] ? "rspec-rails" : "rspec" -%>
   spec.add_development_dependency "<%= rspec_gem %>"
   <%- end -%>
-  <%- if config[:bin] -%>
-  spec.add_development_dependency "aruba"
-  <%- end -%>
   <%- if config[:guard] -%>
   spec.add_development_dependency "rb-fsevent" # Guard file events for OSX.
   spec.add_development_dependency "guard-rspec"
