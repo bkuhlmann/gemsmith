@@ -10,6 +10,8 @@ Style/CaseIndentation:
   IndentOneStep: true
 Style/MethodDefParentheses:
   EnforcedStyle: require_no_parentheses
+Style/NumericLiterals:
+  Enabled: false
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     "%r": "()"
