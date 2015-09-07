@@ -1,8 +1,10 @@
 <%- if config[:rails] -%>
 AllCops:
+  RunRailsCops: true
   Exclude:
     - "spec/dummy/**/*"
     - "bin/rails"
+    - "vendor/**/*"
 <%- end -%>
 Style/CaseIndentation:
   IndentOneStep: true
