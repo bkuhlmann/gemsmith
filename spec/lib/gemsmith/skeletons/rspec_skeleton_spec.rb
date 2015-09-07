@@ -25,7 +25,7 @@ describe Gemsmith::Skeletons::RspecSkeleton, :temp_dir do
       end
 
       it "creates gem spec" do
-        expect(cli).to have_received(:template).with("%gem_name%/spec/%gem_name%_spec.rb.tt", options)
+        expect(cli).to have_received(:template).with("%gem_name%/spec/lib/%gem_name%/%gem_name%_spec.rb.tt", options)
       end
 
       it "creates default config" do
