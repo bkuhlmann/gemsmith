@@ -93,7 +93,7 @@ module Gemsmith
       process_gem name, "read"
     end
 
-    desc "-e, [edit]", "Edit gem in default editor (assumes $EDITOR environment variable)."
+    desc "-e, [--edit]", "Edit #{Gemsmith::Identity.label} settings in default editor."
     map %w(-e --edit) => :edit
     def edit
       `#{editor} #{@settings_file}`
