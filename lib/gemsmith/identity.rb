@@ -16,5 +16,9 @@ module Gemsmith
     def self.label_version
       [label, version].join " "
     end
+
+    def self.file_name
+      ".#{name}rc"
+    end
   end
 end

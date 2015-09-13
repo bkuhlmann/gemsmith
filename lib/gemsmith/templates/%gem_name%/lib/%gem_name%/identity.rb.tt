@@ -16,5 +16,11 @@ module <%= config[:gem_class] %>
     def self.label_version
       [label, version].join " "
     end
+    <%- if config[:bin] -%>
+
+    def self.file_name
+      ".#{name}rc"
+    end
+    <%- end -%>
   end
 end
