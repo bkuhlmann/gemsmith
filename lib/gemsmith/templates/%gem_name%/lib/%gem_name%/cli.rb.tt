@@ -14,6 +14,14 @@ module <%= config[:gem_class] %>
     def initialize args = [], options = {}, config = {}
       super args, options, config
     end
+    <%- if config[:bin] -%>
+
+    desc "-e, [--edit]", "Edit #{<%= config[:gem_class] %>::Identity.label} settings in default editor."
+    map %w(-e --edit) => :edit
+    def edit
+      `#{editor} $HOME/#{<%= config[:gem_class] %>::Identity.file_name}`
+    end
+    <%- end -%>
 
     desc "-v, [--version]", "Show version."
     map %w(-v --version) => :version
