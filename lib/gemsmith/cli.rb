@@ -81,13 +81,13 @@ module Gemsmith
       say
     end
 
-    desc "-o, [open=OPEN]", "Open gem in default editor (assumes $EDITOR environment variable)."
+    desc "-o, [open=OPEN]", "Open a gem in default editor (assumes $EDITOR environment variable)."
     map %w(-o --open) => :open
     def open name
       process_gem name, "open"
     end
 
-    desc "-r, [read=READ]", "Open gem in default browser."
+    desc "-r, [read=READ]", "Open a gem in default browser."
     map %w(-r --read) => :read
     def read name
       process_gem name, "read"
@@ -99,10 +99,10 @@ module Gemsmith
       `#{editor} #{@settings_file}`
     end
 
-    desc "-v, [--version]", "Show version."
+    desc "-v, [--version]", "Show #{Gemsmith::Identity.label} version."
     map %w(-v --version) => :version
     def version
-      say Flacsmith::Identity.version_label
+      say Gemsmith::Identity.version_label
     end
 
     desc "-h, [--help=HELP]", "Show this message or get help for a command."

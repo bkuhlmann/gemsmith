@@ -23,7 +23,7 @@ module <%= config[:gem_class] %>
     end
     <%- end -%>
 
-    desc "-v, [--version]", "Show version."
+    desc "-v, [--version]", "Show #{<%= config[:gem_class] %>::Identity.label} version."
     map %w(-v --version) => :version
     def version
       say <%= config[:gem_class] %>::Identity.version_label
