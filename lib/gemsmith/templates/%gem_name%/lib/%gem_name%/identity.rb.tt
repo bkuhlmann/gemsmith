@@ -13,7 +13,7 @@ module <%= config[:gem_class] %>
       "0.1.0"
     end
 
-    def self.label_version
+    def self.version_label
       [label, version].join " "
     end
     <%- if config[:bin] -%>

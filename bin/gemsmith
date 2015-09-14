@@ -4,5 +4,5 @@ require "gemsmith"
 require "gemsmith/cli"
 require "gemsmith/identity"
 
-Process.setproctitle Gemsmith::Identity.label_version
+Process.setproctitle Gemsmith::Identity.version_label
 Gemsmith::CLI.start

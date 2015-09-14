@@ -13,7 +13,7 @@ module Gemsmith
       "5.4.0"
     end
 
-    def self.label_version
+    def self.version_label
       [label, version].join " "
     end
 

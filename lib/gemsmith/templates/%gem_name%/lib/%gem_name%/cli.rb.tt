@@ -9,7 +9,7 @@ module <%= config[:gem_class] %>
     include Thor::Actions
     include ThorPlus::Actions
 
-    package_name <%= config[:gem_class] %>::Identity.label
+    package_name <%= config[:gem_class] %>::Identity.version_label
 
     def initialize args = [], options = {}, config = {}
       super args, options, config
@@ -26,7 +26,7 @@ module <%= config[:gem_class] %>
     desc "-v, [--version]", "Show version."
     map %w(-v --version) => :version
     def version
-      say <%= config[:gem_class] %>::Identity.label_version
+      say <%= config[:gem_class] %>::Identity.version_label
     end
 
     desc "-h, [--help=HELP]", "Show this message or get help for a command."

@@ -26,7 +26,7 @@ module Gemsmith
     include CLIOptions
     include CLIHelpers
 
-    package_name Gemsmith::Identity.label
+    package_name Gemsmith::Identity.version_label
 
     # Overwrites the Thor template source root.
     def self.source_root
@@ -102,7 +102,7 @@ module Gemsmith
     desc "-v, [--version]", "Show version."
     map %w(-v --version) => :version
     def version
-      say Gemsmith::Identity.label_version
+      say Flacsmith::Identity.version_label
     end
 
     desc "-h, [--help=HELP]", "Show this message or get help for a command."
