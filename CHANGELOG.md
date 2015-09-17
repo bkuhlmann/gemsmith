@@ -1,3 +1,18 @@
+# v5.5.0 (2015-09-16)
+
+- Updated --edit option to include gem name in description.
+- Updated Rubocop Style/PercentLiteralDelimiters setting.
+- Updated Rubocop config to enable Rails cops when Rails is enabled.
+- Updated gem description.
+- Added --edit option to binary skeleton.
+- Added gem configuration file name to identity.
+- Added gem label to CLI version description.
+- Removed "# Initialize" comment from CLI skeleton.
+- Removed Aruba gem from binary skeletons.
+- Removed Rubocop Style/NumericLiterals support.
+- Removed Ruby on Rails dependency.
+- Removed email notifications for Travis CI skeletons.
+
 # v5.4.0 (2015-08-30)
 
 - Fixed Rails RSpec spec helper configuration.

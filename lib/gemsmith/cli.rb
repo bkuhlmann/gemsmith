@@ -81,7 +81,7 @@ module Gemsmith
       say
     end
 
-    desc "-o, [open=OPEN]", "Open a gem in default editor (assumes $EDITOR environment variable)."
+    desc "-o, [open=OPEN]", "Open a gem in default editor."
     map %w(-o --open) => :open
     def open name
       process_gem name, "open"
