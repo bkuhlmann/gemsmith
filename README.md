@@ -6,7 +6,7 @@
 [![Gemnasium Status](https://gemnasium.com/bkuhlmann/gemsmith.svg)](https://gemnasium.com/bkuhlmann/gemsmith)
 [![Travis CI Status](https://secure.travis-ci.org/bkuhlmann/gemsmith.svg)](http://travis-ci.org/bkuhlmann/gemsmith)
 
-Gemsmith allows you to easily craft new gems via the command line with custom settings (if desired).
+A command line interface for smithing new Ruby gems.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
