@@ -85,14 +85,9 @@ describe Gemsmith::Rake::Tasks do
         expect(Rake::Task[:publish].prerequisites).to contain_exactly("clean", "build", "release:guard_clean")
       end
 
-      it "tags release" do
+      it "publishes release" do
         Rake::Task[:publish].invoke
-        expect(release).to have_received(:tag)
-      end
-
-      it "pushes tags" do
-        Rake::Task[:publish].invoke
-        expect(release).to have_received(:push)
+        expect(release).to have_received(:publish)
       end
     end
   end

@@ -1,62 +1,43 @@
-require "bundler/ui/shell"
+require "milestoner"
 
 module Gemsmith
   module Rake
-    # Enhances gem publishing with release functionality. Meant to be wrapped in Rake tasks.
+    # Provides gem release functionality. Meant to be wrapped in Rake tasks.
     class Release
       def initialize gem_spec_path = Dir.glob("#{Dir.pwd}/*.gemspec").first,
-                     shell: Bundler::UI::Shell.new,
-                     kernel: Kernel
+                     bundler: Bundler,
+                     tagger: Milestoner::Tagger.new,
+                     shell: Bundler::UI::Shell.new
 
         @gem_spec_path = gem_spec_path
+        @tagger = tagger
         @shell = shell
-        @kernel = kernel
-
-        @gem_spec = load_gem_spec
+        @gem_spec = bundler.load_gemspec gem_spec_path.to_s
+      rescue Errno::ENOENT
+        @shell.error "Invalid gemspec file path: #{@gem_spec_path}."
       end
 
-      def name
-        gem_spec.name
-      end
-
-      def version
+      def version_number
         gem_spec.version.version
       end
 
-      def version_formatted
-        "v#{version}"
+      def version_label
+        "v#{version_number}"
       end
 
-      def package_file_name
-        "#{name}-#{version}.gem"
+      def gem_file_name
+        "#{gem_spec.name}-#{version_number}.gem"
       end
 
-      def tag
-        shell.error(%(Tag #{version_formatted} exists!)) && return if tagged?
-
-        return if kernel.system %(git tag --sign --annotate "#{version_formatted}" --message "Version #{version}.")
-
-        kernel.system "git tag -d #{version_formatted}"
-        shell.error %(Removed "#{version_formatted}" due to errors.)
-      end
-
-      def push
-        kernel.system "git push --tags"
+      def publish
+        tagger.create version_number, sign: true
+      rescue Milestoner::Errors::Base => error
+        shell.error error.message
       end
 
       private
 
-      attr_reader :gem_spec_path, :gem_spec, :shell, :kernel
-
-      def load_gem_spec
-        Bundler.load_gemspec gem_spec_path.to_s
-      rescue Errno::ENOENT
-        shell.error "Invalid gemspec file path: #{gem_spec_path}."
-      end
-
-      def tagged?
-        kernel.system %(git show #{version_formatted})
-      end
+      attr_reader :gem_spec_path, :gem_spec, :tagger, :shell
     end
   end
 end

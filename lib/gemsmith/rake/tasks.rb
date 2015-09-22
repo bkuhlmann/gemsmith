@@ -31,10 +31,9 @@ module Gemsmith
           build.clean!
         end
 
-        desc "Build, tag #{release.version_formatted} (signed), and push #{release.package_file_name} to RubyGems"
+        desc "Build, tag #{release.version_label} (signed), and push #{release.gem_file_name} to RubyGems"
         task publish: [:clean, :build, "release:guard_clean"] do
-          release.tag
-          release.push
+          release.publish
           ::Rake::Task["release:rubygem_push"].invoke
         end
       end
