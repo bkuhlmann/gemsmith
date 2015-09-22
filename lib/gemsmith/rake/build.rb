@@ -2,7 +2,7 @@ require "bundler/ui/shell"
 
 module Gemsmith
   module Rake
-    # Enhances gem publishing with build functionality. Meant to be wrapped in Rake tasks.
+    # Provides gem build functionality. Meant to be wrapped in Rake tasks.
     class Build
       def initialize shell: Bundler::UI::Shell.new, kernel: Kernel
         @shell = shell
