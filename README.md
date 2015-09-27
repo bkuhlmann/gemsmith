@@ -48,8 +48,8 @@ A command line interface for smithing new Ruby gems.
 - Supports [Travis CI](http://travis-ci.org).
 - Provides the ability to open the source code of any gem within your favorite editor.
 - Provides the ability to read the documentation of any gem within your default browser.
-- Adds commonly needed README, [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md), [LICENSE](LICENSE.md), etc.
-  template files.
+- Adds commonly needed [README](README.md), [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md),
+  [LICENSE](LICENSE.md), etc. template files.
 
 # Requirements
 
@@ -138,13 +138,13 @@ For more gem creation options, type: gemsmith help create
 
 Once a gem skeleton has been created, the following tasks are available within the project via Bundler (i.e. rake -T):
 
-    rake build                 # Build gemsmith-5.4.0.gem into the pkg directory
+    rake build                 # Build example-0.1.0.gem into the pkg directory
     rake clean                 # Clean gem artifacts
-    rake install               # Build and install gemsmith-5.4.0.gem into system gems
-    rake install:local         # Build and install gemsmith-5.4.0.gem into system gems without network access
-    rake publish               # Build, tag v5.4.0 (signed), and push gemsmith-5.4.0.gem to RubyGems
+    rake install               # Build and install example-0.1.0.gem into system gems
+    rake install:local         # Build and install example-0.1.0.gem into system gems without network access
+    rake publish               # Build, tag v0.1.0 (signed), and push example-0.1.0.gem to RubyGems
     rake readme:toc            # Update README Table of Contents
-    rake release               # Create tag v5.4.0 and build and push gemsmith-5.4.0.gem to Rubygems
+    rake release               # Create tag v0.1.0 and build and push example-0.1.0.gem to Rubygems
     rake rubocop               # Run RuboCop
     rake rubocop:auto_correct  # Auto-correct RuboCop offenses
     rake spec                  # Run RSpec code examples

@@ -1,3 +1,10 @@
+# v5.6.0 (2015-09-27)
+
+- Fixed RSpec example status persistence file path.
+- Fixed RSpec temp dir cleanup.
+- Fixed gem identity module description.
+- Added Milestoner support.
+
 # v5.5.0 (2015-09-16)
 
 - Updated --edit option to include gem name in description.
