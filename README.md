@@ -5,6 +5,7 @@
 [![Code Climate Coverage](https://codeclimate.com/github/bkuhlmann/gemsmith/coverage.svg)](https://codeclimate.com/github/bkuhlmann/gemsmith)
 [![Gemnasium Status](https://gemnasium.com/bkuhlmann/gemsmith.svg)](https://gemnasium.com/bkuhlmann/gemsmith)
 [![Travis CI Status](https://secure.travis-ci.org/bkuhlmann/gemsmith.svg)](http://travis-ci.org/bkuhlmann/gemsmith)
+[![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/bkuhlmann)
 
 A command line interface for smithing new Ruby gems.
 
