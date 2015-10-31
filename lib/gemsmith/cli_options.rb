@@ -40,7 +40,8 @@ module Gemsmith
         rubocop: default_boolean(:rubocop, true),
         code_climate: default_boolean(:code_climate, true),
         gemnasium: default_boolean(:gemnasium, true),
-        travis: default_boolean(:travis, true)
+        travis: default_boolean(:travis, true),
+        patreon: default_boolean(:patreon, true)
       }
     end
 

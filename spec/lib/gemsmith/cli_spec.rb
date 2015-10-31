@@ -58,6 +58,7 @@ describe Gemsmith::CLI do
       expect(options[:code_climate]).to eq(true)
       expect(options[:gemnasium]).to eq(true)
       expect(options[:travis]).to eq(true)
+      expect(options[:patreon]).to eq(true)
     end
 
     it "loads custom settings", :aggregate_failures do
@@ -90,6 +91,7 @@ describe Gemsmith::CLI do
       expect(options[:code_climate]).to eq(true)
       expect(options[:gemnasium]).to eq(true)
       expect(options[:travis]).to eq(true)
+      expect(options[:patreon]).to eq(true)
     end
   end
 end

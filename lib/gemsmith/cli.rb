@@ -70,6 +70,7 @@ module Gemsmith
     method_option :code_climate, aliases: "-c", desc: "Add Code Climate support.", type: :boolean, default: true
     method_option :gemnasium, aliases: "-G", desc: "Add Gemnasium support.", type: :boolean, default: true
     method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true
+    method_option :patreon, aliases: "-P", desc: "Add Patreon support.", type: :boolean, default: true
     def create name
       say
       info "Creating gem..."
