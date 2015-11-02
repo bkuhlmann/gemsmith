@@ -28,7 +28,7 @@ describe Gemsmith::Skeletons::CLISkeleton, :temp_dir do
     context "when disabled" do
       let(:options) { {bin: false} }
 
-      it "creates gem binary" do
+      it "does not create files" do
         expect(cli).to_not have_received(:template)
       end
     end

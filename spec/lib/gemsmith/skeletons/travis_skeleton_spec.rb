@@ -24,7 +24,7 @@ describe Gemsmith::Skeletons::TravisSkeleton, :temp_dir do
     context "when disabled" do
       let(:options) { {travis: false} }
 
-      it "creates Travic CI configuration" do
+      it "does not create Travic CI configuration" do
         expect(cli).to_not have_received(:template)
       end
     end

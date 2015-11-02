@@ -24,7 +24,7 @@ describe Gemsmith::Skeletons::GuardSkeleton, :temp_dir do
     context "when disabled" do
       let(:options) { {guard: false} }
 
-      it "creates Guardfile" do
+      it "does not create Guardfile" do
         expect(cli).to_not have_received(:template)
       end
     end

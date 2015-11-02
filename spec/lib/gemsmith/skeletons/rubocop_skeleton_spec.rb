@@ -28,7 +28,7 @@ describe Gemsmith::Skeletons::RubocopSkeleton, :temp_dir do
     context "when disabled" do
       let(:options) { {rubocop: false} }
 
-      it "creates configuration file" do
+      it "does not create configuration file" do
         expect(cli).to_not have_received(:template)
       end
     end
