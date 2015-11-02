@@ -14,6 +14,7 @@ describe Gemsmith::CLI do
                                                            Gemsmith::Skeletons::RspecSkeleton,
                                                            Gemsmith::Skeletons::RubocopSkeleton,
                                                            Gemsmith::Skeletons::GuardSkeleton,
+                                                           Gemsmith::Skeletons::PrySkeleton,
                                                            Gemsmith::Skeletons::TravisSkeleton,
                                                            Gemsmith::Skeletons::BundlerSkeleton,
                                                            Gemsmith::Skeletons::GitSkeleton)

@@ -23,10 +23,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "pry-byebug"
-  spec.add_development_dependency "pry-state"
-  spec.add_development_dependency "pry-stack_explorer"
   spec.add_development_dependency "pry-remote"
+  spec.add_development_dependency "pry-state"
   spec.add_development_dependency "pry-rescue"
+  spec.add_development_dependency "pry-stack_explorer"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "rb-fsevent" # Guard file events for OSX.
   spec.add_development_dependency "guard-rspec"
