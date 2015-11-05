@@ -14,7 +14,7 @@ module <%= config[:gem_class] %>
     end
 
     def self.version_label
-      [label, version].join " "
+      "#{label} #{version}"
     end
     <%- if config[:bin] -%>
 
