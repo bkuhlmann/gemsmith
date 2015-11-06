@@ -217,6 +217,7 @@ To learn more about gem certificates, read the following:
 Once your gem is released, you might like to let the world know about the new awesomeness. Here are several resources:
 
 - [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code)
+- [Ruby Green News](http://greenruby.org)
 - [Ruby Toolbox](https://www.ruby-toolbox.com)
 - [RubyFlow](http://www.rubyflow.com)
 - [The Ruby Show](http://rubyshow.com)
