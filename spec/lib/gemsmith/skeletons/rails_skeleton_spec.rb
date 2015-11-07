@@ -11,18 +11,18 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
   it_behaves_like "an optional skeleton", :rails
 
   describe "#rails?" do
-    before { allow(subject).to receive(:system).with("command -v rails").and_return(rails) }
+    let(:command) { "command -v rails > /dev/null" }
 
-    context "when rails exists" do
-      let(:rails) { true }
+    context "when Rails exists" do
+      before { allow(cli).to receive(:run).with(command).and_return(true) }
 
       it "answers true" do
         expect(subject.rails?).to eq(true)
       end
     end
 
-    context "when rails doesn't exist" do
-      let(:rails) { false }
+    context "when Rails doesn't exist" do
+      before { allow(cli).to receive(:run).with(command).and_return(false) }
 
       it "answers false" do
         expect(subject.rails?).to eq(false)
@@ -30,9 +30,44 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
   end
 
+  describe "install_rails" do
+    let(:prompt) { "Ruby on Rails is not installed. Would you like to install it (y/n)?" }
+    before do
+      allow(subject).to receive(:rails?).and_return(rails)
+      allow(cli).to receive(:yes?).with(prompt).and_return(choice)
+    end
+
+    context "when Rails exists" do
+      let(:rails) { true }
+      let(:choice) { false }
+
+      it "does not install Rails" do
+        expect(cli).to_not have_received(:run)
+      end
+    end
+
+    context "when Rails does not exist and Rails install is aborted" do
+      let(:rails) { false }
+      let(:choice) { false }
+
+      it "does not install Rails" do
+        expect(cli).to_not have_received(:run)
+      end
+    end
+
+    context "when Rails does not exist and Rails install is accepted" do
+      let(:rails) { false }
+      let(:choice) { true }
+
+      it "does not install Rails" do
+        subject.install_rails
+        expect(cli).to have_received(:run).with("gem install rails")
+      end
+    end
+  end
+
   describe "#create_engine" do
     before do
-      allow(subject).to receive(:system)
       subject.create_engine
     end
 
@@ -45,7 +80,7 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
       options = "--skip-bundle --skip-test-unit --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
       command_and_options = "#{command} #{options}"
 
-      expect(subject).to have_received(:system).with(command_and_options)
+      expect(cli).to have_received(:run).with(command_and_options)
     end
 
     it "removes generated application helper file" do
@@ -108,19 +143,20 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
   end
 
   describe "#create" do
-    let(:rails) { true }
-    let(:options) { {rails: true} }
     before do
+      allow(subject).to receive(:install_rails)
       allow(subject).to receive(:create_engine)
       allow(subject).to receive(:create_generator_files)
       allow(subject).to receive(:create_travis_gemfiles)
-      allow(subject).to receive(:rails?).and_return(rails)
     end
 
     context "when enabled" do
+      let(:options) { {gem_name: gem_name, rails: true} }
+
       it "creates skeleton", :aggregate_failures do
         subject.create
 
+        expect(subject).to have_received(:install_rails)
         expect(subject).to have_received(:create_engine)
         expect(subject).to have_received(:create_generator_files)
         expect(subject).to have_received(:create_travis_gemfiles)
@@ -128,33 +164,12 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     context "when disabled" do
-      let(:options) { {rails: false} }
+      let(:options) { {gem_name: gem_name, rails: false} }
 
       it "does not create skeleton", :aggregate_failures do
         subject.create
 
-        expect(subject).to_not have_received(:create_engine)
-        expect(subject).to_not have_received(:create_generator_files)
-        expect(subject).to_not have_received(:create_travis_gemfiles)
-      end
-    end
-
-    context "when Ruby on Rails is supported" do
-      it "creates skeleton", :aggregate_failures do
-        subject.create
-
-        expect(subject).to have_received(:create_engine)
-        expect(subject).to have_received(:create_generator_files)
-        expect(subject).to have_received(:create_travis_gemfiles)
-      end
-    end
-
-    context "when Ruby on Rails isn't supported" do
-      let(:rails) { false }
-
-      it "does not create skeleton", :aggregate_failures do
-        subject.create
-
+        expect(subject).to_not have_received(:install_rails)
         expect(subject).to_not have_received(:create_engine)
         expect(subject).to_not have_received(:create_generator_files)
         expect(subject).to_not have_received(:create_travis_gemfiles)

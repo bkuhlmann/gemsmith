@@ -7,15 +7,20 @@ module Gemsmith
       end
 
       def rails?
-        system "command -v rails"
+        cli.run "command -v rails > /dev/null"
+      end
+
+      def install_rails
+        return if rails?
+        return unless cli.yes?("Ruby on Rails is not installed. Would you like to install it (y/n)?")
+        cli.run "gem install rails"
       end
 
       def create_engine
-        cli.template "#{lib_root}/%gem_name%/engine.rb.tt", cli.template_options
-
         gem_name = cli.template_options.fetch :gem_name
-        system "rails plugin new --skip #{gem_name} #{engine_options}"
 
+        cli.template "#{lib_root}/%gem_name%/engine.rb.tt", cli.template_options
+        cli.run "rails plugin new --skip #{gem_name} #{engine_options}"
         cli.remove_file "#{gem_name}/app/helpers/#{gem_name}/application_helper.rb", cli.template_options
         cli.remove_file "#{gem_name}/lib/#{gem_name}/version.rb", cli.template_options
         cli.remove_file "#{gem_name}/MIT-LICENSE", cli.template_options
@@ -36,8 +41,9 @@ module Gemsmith
       end
 
       def create
-        return unless enabled? && rails?
+        return unless enabled?
 
+        install_rails
         create_engine
         create_generator_files
         create_travis_gemfiles
