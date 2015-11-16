@@ -16,9 +16,9 @@ module Gemsmith
         shell.info "Updated gem documentation."
       end
 
-      def clean!
+      def clean
         FileUtils.rm_rf "pkg"
-        shell.info "Gem artifacts cleaned."
+        shell.info "Cleaned gem artifacts."
       end
 
       private

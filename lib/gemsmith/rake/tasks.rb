@@ -26,7 +26,7 @@ module Gemsmith
 
         desc "Clean gem artifacts"
         task :clean do
-          build.clean!
+          build.clean
         end
 
         desc "Build, tag #{release.version_label} (signed), and push #{release.gem_file_name} to RubyGems"

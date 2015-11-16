@@ -21,7 +21,7 @@ describe Gemsmith::Rake::Build, :temp_dir do
     end
   end
 
-  describe "#clean!" do
+  describe "#clean" do
     let(:package_dir) { File.join temp_dir, "pkg" }
     let(:gem_file) { File.join package_dir, "test-0.1.0.gem" }
 
@@ -31,13 +31,13 @@ describe Gemsmith::Rake::Build, :temp_dir do
     end
 
     it "removes previously built gem artifacts" do
-      Dir.chdir(temp_dir) { subject.clean! }
+      Dir.chdir(temp_dir) { subject.clean }
       expect(File.exist?(gem_file)).to eq(false)
     end
 
     it "prints status message" do
-      result = -> { Dir.chdir(temp_dir) { subject.clean! } }
-      expect(&result).to output("Gem artifacts cleaned.\n").to_stdout
+      result = -> { Dir.chdir(temp_dir) { subject.clean } }
+      expect(&result).to output("Cleaned gem artifacts.\n").to_stdout
     end
   end
 end

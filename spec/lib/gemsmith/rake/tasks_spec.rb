@@ -57,14 +57,14 @@ describe Gemsmith::Rake::Tasks do
     describe "rake clean" do
       it "cleans gem package" do
         Rake::Task[:clean].invoke
-        expect(build).to have_received(:clean!)
+        expect(build).to have_received(:clean)
       end
     end
 
     describe "rake build" do
       it "invokes clean task prerequisite" do
         Rake::Task[:build].invoke
-        expect(build).to have_received(:clean!)
+        expect(build).to have_received(:clean)
       end
 
       it "invokes doc task prerequisite" do
@@ -76,7 +76,7 @@ describe Gemsmith::Rake::Tasks do
     describe "rake release" do
       it "invokes clean task" do
         Rake::Task[:release].invoke
-        expect(build).to have_received(:clean!)
+        expect(build).to have_received(:clean)
       end
     end
 
