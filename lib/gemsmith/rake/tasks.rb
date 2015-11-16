@@ -16,17 +16,15 @@ module Gemsmith
         build = Gemsmith::Rake::Build.new
         release = Gemsmith::Rake::Release.new
 
-        ::Rake::Task[:build].enhance [:clean, "readme:toc"]
+        ::Rake::Task[:build].enhance [:clean, :doc]
         ::Rake::Task[:release].enhance { ::Rake::Task[:clean].invoke }
 
-        namespace :readme do
-          desc "Update README Table of Contents."
-          task :toc do
-            build.table_of_contents
-          end
+        desc "Update README (table of contents)"
+        task :doc do
+          build.table_of_contents
         end
 
-        desc "Clean gem artifacts."
+        desc "Clean gem artifacts"
         task :clean do
           build.clean!
         end

@@ -25,8 +25,8 @@ describe Gemsmith::Rake::Tasks do
   describe "#install" do
     before { subject.install }
 
-    it "installs readme:toc task" do
-      expect(Rake::Task.task_defined?("readme:toc")).to eq(true)
+    it "installs doc task" do
+      expect(Rake::Task.task_defined?("doc")).to eq(true)
     end
 
     it "installs clean task" do
@@ -47,9 +47,9 @@ describe Gemsmith::Rake::Tasks do
       subject.install
     end
 
-    describe "rake readme:toc" do
-      it "builds/updates README table of contents" do
-        Rake::Task["readme:toc"].invoke
+    describe "rake doc" do
+      it "updates README" do
+        Rake::Task["doc"].invoke
         expect(build).to have_received(:table_of_contents)
       end
     end
@@ -67,7 +67,7 @@ describe Gemsmith::Rake::Tasks do
         expect(build).to have_received(:clean!)
       end
 
-      it "invokes readme:toc task prerequisite" do
+      it "invokes doc task prerequisite" do
         Rake::Task[:build].invoke
         expect(build).to have_received(:table_of_contents)
       end
