@@ -5,29 +5,32 @@ module Gemsmith
   module Rake
     # Provides gem build functionality. Meant to be wrapped in Rake tasks.
     class Build
-      def initialize tocer: Tocer::Writer, shell: Bundler::UI::Shell
+      def initialize tocer: Tocer::Writer, shell: Bundler::UI::Shell, kernel: Kernel
         @tocer = tocer
         @shell = shell.new
+        @kernel = kernel
       end
 
       def doc
         readme = File.join Dir.pwd, "README.md"
         tocer.new(readme).write
-        shell.info "Updated gem documentation."
+        shell.confirm "Updated gem documentation."
       end
 
       def clean
         FileUtils.rm_rf "pkg"
-        shell.info "Cleaned gem artifacts."
+        shell.confirm "Cleaned gem artifacts."
       end
 
       def validate
-        fail("Build failed: Gem has uncommitted changes.") unless `git status --porcelain`.empty?
+        return if `git status --porcelain`.empty?
+        shell.error "Build failed: Gem has uncommitted changes."
+        kernel.exit 1
       end
 
       private
 
-      attr_reader :tocer, :shell
+      attr_reader :tocer, :shell, :kernel
     end
   end
 end

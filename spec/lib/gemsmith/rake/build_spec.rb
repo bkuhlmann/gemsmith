@@ -4,7 +4,8 @@ require "gemsmith/rake/build"
 describe Gemsmith::Rake::Build, :temp_dir do
   let(:tocer_class) { class_spy Tocer::Writer }
   let(:tocer) { instance_spy Tocer::Writer }
-  subject { described_class.new tocer: tocer_class }
+  let(:kernel) { class_spy Kernel }
+  subject { described_class.new tocer: tocer_class, kernel: kernel }
 
   describe "#doc" do
     let(:readme) { File.join Dir.pwd, "README.md" }
@@ -53,22 +54,37 @@ describe Gemsmith::Rake::Build, :temp_dir do
         `git commit --all --message "Added test.txt."`
       end
     end
-    context "with Git changes" do
-      it "fails the build" do
-        Dir.chdir temp_dir do
-          `touch extra.txt`
-          result = -> { subject.validate }
 
-          expect(&result).to raise_error(StandardError, /Build failed: Gem has uncommitted changes./)
+    context "with Git changes" do
+      before { Dir.chdir(temp_dir) { `touch extra.txt` } }
+
+      it "prints build error" do
+        Dir.chdir temp_dir do
+          result = -> { subject.validate }
+          expect(&result).to output("Build failed: Gem has uncommitted changes.\n").to_stdout
+        end
+      end
+
+      it "exits with error" do
+        Dir.chdir temp_dir do
+          subject.validate
+          expect(kernel).to have_received(:exit).with(1)
         end
       end
     end
 
     context "without Git changes" do
-      it "passes the build" do
+      it "does not print output" do
         Dir.chdir temp_dir do
           result = -> { subject.validate }
-          expect(&result).to_not raise_error
+          expect(&result).to_not output.to_stdout
+        end
+      end
+
+      it "does not exit" do
+        Dir.chdir temp_dir do
+          subject.validate
+          expect(kernel).to_not have_received(:exit)
         end
       end
     end
