@@ -4,8 +4,7 @@ require "gemsmith/rake/build"
 describe Gemsmith::Rake::Build, :temp_dir do
   let(:tocer_class) { class_spy Tocer::Writer }
   let(:tocer) { instance_spy Tocer::Writer }
-  let(:kernel) { class_spy Kernel }
-  subject { described_class.new tocer: tocer_class, kernel: kernel }
+  subject { described_class.new tocer: tocer_class }
 
   describe "#doc" do
     let(:readme) { File.join Dir.pwd, "README.md" }
@@ -19,46 +18,6 @@ describe Gemsmith::Rake::Build, :temp_dir do
     it "prints status message" do
       result = -> { subject.doc }
       expect(&result).to output("Updated gem documentation.\n").to_stdout
-    end
-  end
-
-  describe "#table_of_contents" do
-    let(:doctoc_install) { "command -v doctoc > /dev/null" }
-    let(:doctoc_command) { %(doctoc --title "# Table of Contents" README.md) }
-
-    context "when DocToc is installed" do
-      it "detects DocToc is installed" do
-        subject.table_of_contents
-        expect(kernel).to have_received(:system).with(doctoc_install)
-      end
-
-      it "updates table of contents" do
-        subject.table_of_contents
-        expect(kernel).to have_received(:system).with(doctoc_command)
-      end
-    end
-
-    context "when DocToc is not installed" do
-      before { allow(kernel).to receive(:system).with(doctoc_install).and_return(false) }
-
-      it "does not update table of contents" do
-        subject.table_of_contents
-        expect(kernel).to_not have_received(:system).with(doctoc_command)
-      end
-
-      it "prints error message" do
-        error = -> { subject.table_of_contents }
-        url = "https://github.com/thlorenz/doctoc"
-        command = "npm install --global doctoc"
-        message = "Unable to update README Table of Contents, please install DocToc (#{url}): #{command}.\n"
-
-        expect(&error).to output(message).to_stdout
-      end
-
-      it "exits as an error" do
-        subject.table_of_contents
-        expect(kernel).to have_received(:exit).with(1)
-      end
     end
   end
 
