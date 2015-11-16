@@ -50,7 +50,7 @@ describe Gemsmith::Rake::Tasks do
     describe "rake doc" do
       it "updates README" do
         Rake::Task["doc"].invoke
-        expect(build).to have_received(:table_of_contents)
+        expect(build).to have_received(:doc)
       end
     end
 
@@ -69,7 +69,7 @@ describe Gemsmith::Rake::Tasks do
 
       it "invokes doc task prerequisite" do
         Rake::Task[:build].invoke
-        expect(build).to have_received(:table_of_contents)
+        expect(build).to have_received(:doc)
       end
     end
 

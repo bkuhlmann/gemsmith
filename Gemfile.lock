@@ -5,6 +5,7 @@ PATH
       milestoner (~> 1.0)
       thor (~> 0.19)
       thor_plus (~> 2.1)
+      tocer (~> 0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -111,6 +112,9 @@ GEM
     thor_plus (2.1.0)
       thor (~> 0.19)
     tins (1.6.0)
+    tocer (0.1.0)
+      thor
+      thor_plus
 
 PLATFORMS
   ruby

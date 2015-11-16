@@ -21,7 +21,7 @@ module Gemsmith
 
         desc "Update README (table of contents)"
         task :doc do
-          build.table_of_contents
+          build.doc
         end
 
         desc "Clean gem artifacts"
