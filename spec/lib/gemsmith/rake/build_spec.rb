@@ -40,4 +40,37 @@ describe Gemsmith::Rake::Build, :temp_dir do
       expect(&result).to output("Cleaned gem artifacts.\n").to_stdout
     end
   end
+
+  describe "#validate" do
+    before do
+      Dir.chdir temp_dir do
+        `git init`
+        `git config --local user.name "Testy Tester"`
+        `git config --local user.email "tester@example.com"`
+        `rm -rf .git/hooks`
+        `touch test.txt`
+        `git add --all .`
+        `git commit --all --message "Added test.txt."`
+      end
+    end
+    context "with Git changes" do
+      it "fails the build" do
+        Dir.chdir temp_dir do
+          `touch extra.txt`
+          result = -> { subject.validate }
+
+          expect(&result).to raise_error(StandardError, /Build failed: Gem has uncommitted changes./)
+        end
+      end
+    end
+
+    context "without Git changes" do
+      it "passes the build" do
+        Dir.chdir temp_dir do
+          result = -> { subject.validate }
+          expect(&result).to_not raise_error
+        end
+      end
+    end
+  end
 end

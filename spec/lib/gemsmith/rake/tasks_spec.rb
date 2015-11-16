@@ -33,6 +33,10 @@ describe Gemsmith::Rake::Tasks do
       expect(Rake::Task.task_defined?(:clean)).to eq(true)
     end
 
+    it "installs validate task" do
+      expect(Rake::Task.task_defined?(:validate)).to eq(true)
+    end
+
     it "installs publish task" do
       expect(Rake::Task.task_defined?(:publish)).to eq(true)
     end
@@ -61,6 +65,13 @@ describe Gemsmith::Rake::Tasks do
       end
     end
 
+    describe "rake validate" do
+      it "validates gem build" do
+        Rake::Task[:validate].invoke
+        expect(build).to have_received(:validate)
+      end
+    end
+
     describe "rake build" do
       it "invokes clean task prerequisite" do
         Rake::Task[:build].invoke
@@ -70,6 +81,11 @@ describe Gemsmith::Rake::Tasks do
       it "invokes doc task prerequisite" do
         Rake::Task[:build].invoke
         expect(build).to have_received(:doc)
+      end
+
+      it "invokes validate task prerequisite" do
+        Rake::Task[:build].invoke
+        expect(build).to have_received(:validate)
       end
     end
 

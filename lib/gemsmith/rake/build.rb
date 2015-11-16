@@ -21,6 +21,10 @@ module Gemsmith
         shell.info "Cleaned gem artifacts."
       end
 
+      def validate
+        fail("Build failed: Gem has uncommitted changes.") unless `git status --porcelain`.empty?
+      end
+
       private
 
       attr_reader :tocer, :shell

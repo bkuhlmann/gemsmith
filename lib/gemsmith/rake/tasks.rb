@@ -16,7 +16,7 @@ module Gemsmith
         build = Gemsmith::Rake::Build.new
         release = Gemsmith::Rake::Release.new
 
-        ::Rake::Task[:build].enhance [:clean, :doc]
+        ::Rake::Task[:build].enhance [:clean, :doc, :validate]
         ::Rake::Task[:release].enhance { ::Rake::Task[:clean].invoke }
 
         desc "Update README (table of contents)"
@@ -27,6 +27,10 @@ module Gemsmith
         desc "Clean gem artifacts"
         task :clean do
           build.clean
+        end
+
+        task :validate do
+          build.validate
         end
 
         desc "Build, tag #{release.version_label} (signed), and push #{release.gem_file_name} to RubyGems"
