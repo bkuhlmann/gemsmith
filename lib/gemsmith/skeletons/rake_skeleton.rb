@@ -2,33 +2,28 @@ module Gemsmith
   module Skeletons
     # Configures Rake support.
     class RakeSkeleton < BaseSkeleton
-      def self.allowed_options
-        {
-          rspec: "spec",
-          rubocop: "rubocop"
-        }
-      end
-
       def create
-        cli.template "%gem_name%/Rakefile.tt", cli.template_options
+        cli.template "%gem_name%/Rakefile.tt", configuration.to_h
         configure_rakefile
       end
 
       private
 
-      def allowed_options?
-        cli.template_options.keys.any? { |key| self.class.allowed_options.keys.include? key }
+      def rspec_task
+        "spec" if configuration.create_rspec?
+      end
+
+      def rubocop_task
+        "rubocop" if configuration.create_rubocop?
       end
 
       def default_tasks
-        cli.template_options.each.with_object([]) do |(key, _), tasks|
-          tasks.push self.class.allowed_options[key]
-        end
+        [rspec_task, rubocop_task].compact
       end
 
       def configure_rakefile
-        return unless allowed_options?
-        cli.append_to_file "%gem_name%/Rakefile", "\ntask default: %w(#{default_tasks.compact.join(' ')})\n"
+        return if default_tasks.empty?
+        cli.append_to_file "%gem_name%/Rakefile", "\ntask default: %w(#{default_tasks.join(' ')})\n"
       end
     end
   end

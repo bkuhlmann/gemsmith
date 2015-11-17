@@ -2,13 +2,9 @@ module Gemsmith
   module Skeletons
     # Configures Travis CI support.
     class TravisSkeleton < BaseSkeleton
-      def enabled?
-        cli.template_options.key?(:travis) && cli.template_options[:travis]
-      end
-
       def create
-        return unless enabled?
-        cli.template "%gem_name%/.travis.yml.tt", cli.template_options
+        return unless configuration.create_travis?
+        cli.template "%gem_name%/.travis.yml.tt", configuration.to_h
       end
     end
   end

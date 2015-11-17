@@ -1,14 +1,11 @@
 require "spec_helper"
 
 describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
-  let(:gem_name) { "tester" }
-  let(:gem_dir) { File.join temp_dir, gem_name }
-  let(:options) { {gem_name: gem_name} }
-  let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir, gem_name: gem_name, template_options: options }
-  subject { described_class.new cli }
+  let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
+  let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester" }
+  let(:gem_dir) { File.join temp_dir, configuration.gem_name }
+  subject { described_class.new cli, configuration: configuration }
   before { FileUtils.mkdir gem_dir }
-
-  it_behaves_like "an optional skeleton", :rails
 
   describe "#rails?" do
     let(:command) { "command -v rails > /dev/null" }
@@ -34,12 +31,12 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     let(:prompt) { "Ruby on Rails is not installed. Would you like to install it (y/n)?" }
     before do
       allow(subject).to receive(:rails?).and_return(rails)
-      allow(cli).to receive(:yes?).with(prompt).and_return(choice)
+      allow(cli).to receive(:yes?).with(prompt).and_return(create_rails)
     end
 
     context "when Rails exists" do
       let(:rails) { true }
-      let(:choice) { false }
+      let(:create_rails) { false }
 
       it "does not install Rails" do
         expect(cli).to_not have_received(:run)
@@ -48,7 +45,7 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
 
     context "when Rails does not exist and Rails install is aborted" do
       let(:rails) { false }
-      let(:choice) { false }
+      let(:create_rails) { false }
 
       it "does not install Rails" do
         expect(cli).to_not have_received(:run)
@@ -57,7 +54,7 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
 
     context "when Rails does not exist and Rails install is accepted" do
       let(:rails) { false }
-      let(:choice) { true }
+      let(:create_rails) { true }
 
       it "does not install Rails" do
         subject.install_rails
@@ -72,7 +69,7 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     it "creates engine file" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/engine.rb.tt", options)
+      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/engine.rb.tt", configuration.to_h)
     end
 
     it "generates Rails engine" do
@@ -84,19 +81,20 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     it "removes generated application helper file" do
-      expect(cli).to have_received(:remove_file).with("tester/app/helpers/tester/application_helper.rb", options)
+      file = "tester/app/helpers/tester/application_helper.rb"
+      expect(cli).to have_received(:remove_file).with(file, configuration.to_h)
     end
 
     it "removes generated version file" do
-      expect(cli).to have_received(:remove_file).with("tester/lib/tester/version.rb", options)
+      expect(cli).to have_received(:remove_file).with("tester/lib/tester/version.rb", configuration.to_h)
     end
 
     it "removes generated license file" do
-      expect(cli).to have_received(:remove_file).with("tester/MIT-LICENSE", options)
+      expect(cli).to have_received(:remove_file).with("tester/MIT-LICENSE", configuration.to_h)
     end
 
     it "removes generated readme file" do
-      expect(cli).to have_received(:remove_file).with("tester/README.rdoc", options)
+      expect(cli).to have_received(:remove_file).with("tester/README.rdoc", configuration.to_h)
     end
   end
 
@@ -105,35 +103,37 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
 
     it "creates install generator script" do
       template = "%gem_name%/lib/generators/%gem_name%/install/install_generator.rb.tt"
-      expect(cli).to have_received(:template).with(template, options)
+      expect(cli).to have_received(:template).with(template, configuration.to_h)
     end
 
     it "creates install generator usage documentation" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/generators/%gem_name%/install/USAGE.tt", options)
+      template = "%gem_name%/lib/generators/%gem_name%/install/USAGE.tt"
+      expect(cli).to have_received(:template).with(template, configuration.to_h)
     end
 
     it "creates upgrade generator script" do
       template = "%gem_name%/lib/generators/%gem_name%/upgrade/upgrade_generator.rb.tt"
-      expect(cli).to have_received(:template).with(template, options)
+      expect(cli).to have_received(:template).with(template, configuration.to_h)
     end
 
     it "creates upgrade generator usage documentation" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/generators/%gem_name%/upgrade/USAGE.tt", options)
+      template = "%gem_name%/lib/generators/%gem_name%/upgrade/USAGE.tt"
+      expect(cli).to have_received(:template).with(template, configuration.to_h)
     end
   end
 
   describe "#create_travis_gemfiles" do
     context "when Travis CI is enabled" do
-      let(:options) { {travis: true} }
+      let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_travis?: true }
 
       it "creates Rails gemfile" do
         subject.create_travis_gemfiles
-        expect(cli).to have_received(:template).with("%gem_name%/gemfiles/rails-4.1.x.gemfile.tt", options)
+        expect(cli).to have_received(:template).with("%gem_name%/gemfiles/rails-4.1.x.gemfile.tt", configuration.to_h)
       end
     end
 
     context "when Travis CI is disabled" do
-      let(:options) { {travis: false} }
+      let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_travis?: false }
 
       it "does not create Rails gemfile" do
         subject.create_travis_gemfiles
@@ -151,7 +151,7 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     context "when enabled" do
-      let(:options) { {gem_name: gem_name, rails: true} }
+      let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_rails?: true }
 
       it "creates skeleton", :aggregate_failures do
         subject.create
@@ -164,7 +164,7 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     context "when disabled" do
-      let(:options) { {gem_name: gem_name, rails: false} }
+      let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_rails?: false }
 
       it "does not create skeleton", :aggregate_failures do
         subject.create

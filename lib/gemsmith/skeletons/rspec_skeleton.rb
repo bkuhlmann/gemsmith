@@ -2,20 +2,16 @@ module Gemsmith
   module Skeletons
     # Configures RSpec support.
     class RspecSkeleton < BaseSkeleton
-      def enabled?
-        cli.template_options.key?(:rspec) && cli.template_options[:rspec]
-      end
-
       def create
-        return unless enabled?
+        return unless configuration.create_rspec?
 
-        cli.template "%gem_name%/lib/%gem_name%/tasks/rspec.rake.tt", cli.template_options
-        cli.template "#{rspec_root}/spec_helper.rb.tt", cli.template_options
-        cli.template "#{rspec_root}/lib/%gem_name%/%gem_name%_spec.rb.tt", cli.template_options
-        cli.template "#{rspec_root}/support/kit/default_config.rb.tt", cli.template_options
-        cli.template "#{rspec_root}/support/kit/stderr.rb.tt", cli.template_options
-        cli.template "#{rspec_root}/support/kit/stdout.rb.tt", cli.template_options
-        cli.template "#{rspec_root}/support/kit/temp_dir.rb.tt", cli.template_options
+        cli.template "%gem_name%/lib/%gem_name%/tasks/rspec.rake.tt", configuration.to_h
+        cli.template "#{rspec_root}/spec_helper.rb.tt", configuration.to_h
+        cli.template "#{rspec_root}/lib/%gem_name%/%gem_name%_spec.rb.tt", configuration.to_h
+        cli.template "#{rspec_root}/support/kit/default_config.rb.tt", configuration.to_h
+        cli.template "#{rspec_root}/support/kit/stderr.rb.tt", configuration.to_h
+        cli.template "#{rspec_root}/support/kit/stdout.rb.tt", configuration.to_h
+        cli.template "#{rspec_root}/support/kit/temp_dir.rb.tt", configuration.to_h
       end
 
       private

@@ -2,10 +2,6 @@ module Gemsmith
   module Skeletons
     # Configures Ruby on Rails support.
     class RailsSkeleton < BaseSkeleton
-      def enabled?
-        cli.template_options.key?(:rails) && cli.template_options[:rails]
-      end
-
       def rails?
         cli.run "command -v rails > /dev/null"
       end
@@ -17,31 +13,31 @@ module Gemsmith
       end
 
       def create_engine
-        gem_name = cli.template_options.fetch :gem_name
+        gem_name = configuration.gem_name
 
-        cli.template "#{lib_root}/%gem_name%/engine.rb.tt", cli.template_options
+        cli.template "#{lib_root}/%gem_name%/engine.rb.tt", configuration.to_h
         cli.run "rails plugin new --skip #{gem_name} #{engine_options}"
-        cli.remove_file "#{gem_name}/app/helpers/#{gem_name}/application_helper.rb", cli.template_options
-        cli.remove_file "#{gem_name}/lib/#{gem_name}/version.rb", cli.template_options
-        cli.remove_file "#{gem_name}/MIT-LICENSE", cli.template_options
-        cli.remove_file "#{gem_name}/README.rdoc", cli.template_options
+        cli.remove_file "#{gem_name}/app/helpers/#{gem_name}/application_helper.rb", configuration.to_h
+        cli.remove_file "#{gem_name}/lib/#{gem_name}/version.rb", configuration.to_h
+        cli.remove_file "#{gem_name}/MIT-LICENSE", configuration.to_h
+        cli.remove_file "#{gem_name}/README.rdoc", configuration.to_h
       end
 
       def create_generator_files
         cli.empty_directory "#{generator_root}/templates"
-        cli.template "#{generator_root}/install/install_generator.rb.tt", cli.template_options
-        cli.template "#{generator_root}/install/USAGE.tt", cli.template_options
-        cli.template "#{generator_root}/upgrade/upgrade_generator.rb.tt", cli.template_options
-        cli.template "#{generator_root}/upgrade/USAGE.tt", cli.template_options
+        cli.template "#{generator_root}/install/install_generator.rb.tt", configuration.to_h
+        cli.template "#{generator_root}/install/USAGE.tt", configuration.to_h
+        cli.template "#{generator_root}/upgrade/upgrade_generator.rb.tt", configuration.to_h
+        cli.template "#{generator_root}/upgrade/USAGE.tt", configuration.to_h
       end
 
       def create_travis_gemfiles
-        return unless cli.template_options[:travis]
-        cli.template "%gem_name%/gemfiles/rails-4.1.x.gemfile.tt", cli.template_options
+        return unless configuration.create_travis?
+        cli.template "%gem_name%/gemfiles/rails-4.1.x.gemfile.tt", configuration.to_h
       end
 
       def create
-        return unless enabled?
+        return unless configuration.create_rails?
 
         install_rails
         create_engine

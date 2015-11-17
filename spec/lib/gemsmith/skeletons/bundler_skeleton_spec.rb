@@ -1,10 +1,10 @@
 require "spec_helper"
 
 describe Gemsmith::Skeletons::BundlerSkeleton, :temp_dir do
-  let(:gem_name) { "tester" }
-  let(:gem_dir) { File.join temp_dir, gem_name }
-  let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir, gem_name: gem_name }
-  subject { described_class.new cli }
+  let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
+  let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester" }
+  let(:gem_dir) { File.join temp_dir, configuration.gem_name }
+  subject { described_class.new cli, configuration: configuration }
 
   before do
     FileUtils.mkdir(gem_dir)

@@ -3,7 +3,7 @@ module Gemsmith
     # Configures Ruby support.
     class RubySkeleton < BaseSkeleton
       def create
-        cli.template "%gem_name%/.ruby-version.tt", cli.template_options
+        cli.template "%gem_name%/.ruby-version.tt", configuration.to_h
       end
     end
   end

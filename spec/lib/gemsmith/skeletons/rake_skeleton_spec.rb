@@ -1,39 +1,42 @@
 require "spec_helper"
 
 describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
-  let(:gem_name) { "tester" }
-  let(:gem_dir) { File.join temp_dir, gem_name }
+  let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
+  let(:create_rspec) { false }
+  let(:create_rubocop) { false }
+  let(:config_options) { {gem_name: "tester", create_rspec?: create_rspec, create_rubocop?: create_rubocop} }
+  let(:configuration) { instance_spy Gemsmith::Configuration, config_options }
+  let(:gem_dir) { File.join temp_dir, configuration.gem_name }
   let(:rakefile) { File.join temp_dir, gem_name, "Rakefile" }
-  let(:options) { {} }
-  let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir, gem_name: gem_name, template_options: options }
-  subject { described_class.new cli }
+  subject { described_class.new cli, configuration: configuration }
   before { FileUtils.mkdir gem_dir }
 
   describe "#create" do
     before { subject.create }
 
     it "creates Rakefile" do
-      expect(cli).to have_received(:template).with("%gem_name%/Rakefile.tt", options)
+      expect(cli).to have_received(:template).with("%gem_name%/Rakefile.tt", configuration.to_h)
     end
 
-    context "when RSpec is enabled" do
-      let(:options) { {rspec: true} }
+    context "when only RSpec is enabled" do
+      let(:create_rspec) { true }
 
       it "adds RSpec to default tasks" do
         expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w(spec)\n")
       end
     end
 
-    context "when Rubocop is enabled" do
-      let(:options) { {rubocop: true} }
+    context "when only Rubocop is enabled" do
+      let(:create_rubocop) { true }
 
       it "adds Rubocop to default tasks" do
         expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w(rubocop)\n")
       end
     end
 
-    context "when all options are enabled" do
-      let(:options) { described_class.allowed_options.keys.reduce({}) { |hash, key| hash.merge key => true } }
+    context "when RSpec and Rubocop is enabled" do
+      let(:create_rspec) { true }
+      let(:create_rubocop) { true }
 
       it "adds all tasks" do
         expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w(spec rubocop)\n")

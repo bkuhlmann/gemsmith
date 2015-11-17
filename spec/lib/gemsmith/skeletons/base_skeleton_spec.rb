@@ -11,12 +11,6 @@ describe Gemsmith::Skeletons::BaseSkeleton do
     end
   end
 
-  describe "#enabled?" do
-    it "is enabled by default" do
-      expect(subject.enabled?).to eq(true)
-    end
-  end
-
   describe "#create" do
     it "fails due to not being implemented yet" do
       result = -> { subject.create }

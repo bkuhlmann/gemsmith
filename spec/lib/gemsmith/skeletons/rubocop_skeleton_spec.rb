@@ -1,32 +1,30 @@
 require "spec_helper"
 
 describe Gemsmith::Skeletons::RubocopSkeleton, :temp_dir do
-  let(:gem_name) { "tester" }
-  let(:gem_dir) { File.join temp_dir, gem_name }
-  let(:options) { {} }
-  let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir, gem_name: gem_name, template_options: options }
-  subject { described_class.new cli }
+  let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
+  let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_rubocop?: create_rubocop }
+  let(:gem_dir) { File.join temp_dir, configuration.gem_name }
+  subject { described_class.new cli, configuration: configuration }
   before { FileUtils.mkdir gem_dir }
-
-  it_behaves_like "an optional skeleton", :rubocop
 
   describe "#create" do
     before { subject.create }
 
     context "when enabled" do
-      let(:options) { {rubocop: true} }
+      let(:create_rubocop) { true }
 
       it "creates configuration file" do
-        expect(cli).to have_received(:template).with("%gem_name%/.rubocop.yml.tt", options)
+        expect(cli).to have_received(:template).with("%gem_name%/.rubocop.yml.tt", configuration.to_h)
       end
 
       it "creates Rake file" do
-        expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/tasks/rubocop.rake.tt", options)
+        template = "%gem_name%/lib/%gem_name%/tasks/rubocop.rake.tt"
+        expect(cli).to have_received(:template).with(template, configuration.to_h)
       end
     end
 
     context "when disabled" do
-      let(:options) { {rubocop: false} }
+      let(:create_rubocop) { false }
 
       it "does not create configuration file" do
         expect(cli).to_not have_received(:template)
