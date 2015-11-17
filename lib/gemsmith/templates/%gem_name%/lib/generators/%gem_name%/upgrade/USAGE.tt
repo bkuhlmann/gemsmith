@@ -1,8 +1,8 @@
 Description:
-    Upgrades previously installed <%= config[:gem_class] %> resources.
+    Upgrades previously installed <%= config.fetch(:gem).fetch(:class) %> resources.
 
 Example:
-    rails generate <%= config[:gem_name] %>:upgrade
+    rails generate <%= config.fetch(:gem).fetch(:name) %>:upgrade
 
     This will create:
         what/will/it/create

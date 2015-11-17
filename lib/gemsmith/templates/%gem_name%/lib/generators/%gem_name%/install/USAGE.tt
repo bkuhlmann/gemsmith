@@ -1,8 +1,8 @@
 Description:
-    Installs additional <%= config[:gem_class] %> resources.
+    Installs additional <%= config.fetch(:gem).fetch(:class) %> resources.
 
 Example:
-    rails generate <%= config[:gem_name] %>:install
+    rails generate <%= config.fetch(:gem).fetch(:name) %>:install
 
     This will create:
         what/will/it/create

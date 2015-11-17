@@ -1,9 +1,9 @@
-module <%= config[:gem_class] %>
+module <%= config.fetch(:gem).fetch(:class) %>
   # Generator for updating existing files.
   class UpgradeGenerator < Rails::Generators::Base
     source_root File.join(File.dirname(__FILE__), "..", "templates")
 
-    desc "Upgrades previously installed <%= config[:gem_class] %> resources."
+    desc "Upgrades previously installed <%= config.fetch(:gem).fetch(:class) %> resources."
     def upgrade
       # TODO: Add upgrade code.
     end

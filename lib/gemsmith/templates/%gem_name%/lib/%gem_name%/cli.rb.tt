@@ -3,30 +3,30 @@ require "thor"
 require "thor/actions"
 require "thor_plus/actions"
 
-module <%= config[:gem_class] %>
+module <%= config.fetch(:gem).fetch(:class) %>
   # The Command Line Interface (CLI) for the gem.
   class CLI < Thor
     include Thor::Actions
     include ThorPlus::Actions
 
-    package_name <%= config[:gem_class] %>::Identity.version_label
+    package_name <%= config.fetch(:gem).fetch(:class) %>::Identity.version_label
 
     def initialize args = [], options = {}, config = {}
       super args, options, config
     end
-    <%- if config[:bin] -%>
+    <%- if config.fetch(:create).fetch(:cli) -%>
 
-    desc "-e, [--edit]", "Edit #{<%= config[:gem_class] %>::Identity.label} settings in default editor."
+    desc "-e, [--edit]", "Edit #{<%= config.fetch(:gem).fetch(:class) %>::Identity.label} settings in default editor."
     map %w(-e --edit) => :edit
     def edit
-      `#{editor} $HOME/#{<%= config[:gem_class] %>::Identity.file_name}`
+      `#{editor} $HOME/#{<%= config.fetch(:gem).fetch(:class) %>::Identity.file_name}`
     end
     <%- end -%>
 
-    desc "-v, [--version]", "Show #{<%= config[:gem_class] %>::Identity.label} version."
+    desc "-v, [--version]", "Show #{<%= config.fetch(:gem).fetch(:class) %>::Identity.label} version."
     map %w(-v --version) => :version
     def version
-      say <%= config[:gem_class] %>::Identity.version_label
+      say <%= config.fetch(:gem).fetch(:class) %>::Identity.version_label
     end
 
     desc "-h, [--help=HELP]", "Show this message or get help for a command."

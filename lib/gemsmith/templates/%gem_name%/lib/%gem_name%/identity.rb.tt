@@ -1,12 +1,12 @@
-module <%= config[:gem_class] %>
+module <%= config.fetch(:gem).fetch(:class) %>
   # Gem identity information.
   module Identity
     def self.name
-      "<%= config[:gem_name] %>"
+      "<%= config.fetch(:gem).fetch(:name) %>"
     end
 
     def self.label
-      "<%= config[:gem_class] %>"
+      "<%= config.fetch(:gem).fetch(:class) %>"
     end
 
     def self.version
@@ -16,7 +16,7 @@ module <%= config[:gem_class] %>
     def self.version_label
       "#{label} #{version}"
     end
-    <%- if config[:bin] -%>
+    <%- if config.fetch(:create).fetch(:cli) -%>
 
     def self.file_name
       ".#{name}rc"
