@@ -22,19 +22,7 @@ module Gemsmith
       @gem_class ||= Thor::Util.camel_case name
     end
 
-    # Answers all gem template options.
-    def template_options
-      @template_options
-    end
-
     module_function
-
-    # Converts hash keys from strings to symbols (if any).
-    # ===== Parameters
-    # * +options+ - Optional. The hash to convert. Default: {}
-    def enforce_symbol_keys options = {}
-      options.each.with_object({}) { |(key, value), hash| hash[key.to_sym] = value }
-    end
 
     # Prints currently installed gem name and version information.
     # ===== Parameters

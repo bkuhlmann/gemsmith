@@ -2,7 +2,6 @@ require "yaml"
 require "thor"
 require "thor/actions"
 require "thor_plus/actions"
-require "gemsmith/cli_options"
 require "gemsmith/cli_helpers"
 require "gemsmith/skeletons/base_skeleton"
 require "gemsmith/skeletons/bundler_skeleton"
@@ -24,7 +23,6 @@ module Gemsmith
   class CLI < Thor
     include Thor::Actions
     include ThorPlus::Actions
-    include CLIOptions
     include CLIHelpers
 
     package_name Gemsmith::Identity.version_label
@@ -56,7 +54,6 @@ module Gemsmith
     def initialize args = [], options = {}, config = {}
       super args, options, config
       @configuration = Configuration.new
-      @template_options = {}
     end
 
     desc "-c, [create=CREATE]", "Create new gem."
@@ -78,7 +75,6 @@ module Gemsmith
 
       configuration.gem_name = gem_name name
       configuration.gem_class = gem_class name
-      # initialize_template_options name, options
       self.class.skeletons.each { |skeleton| skeleton.create self }
 
       info "Gem created."
