@@ -1,5 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
 Style/CaseIndentation:
   IndentOneStep: true
 Style/MethodDefParentheses:
@@ -15,6 +13,8 @@ Style/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+Metrics/AbcSize:
+  Max: 50
 Metrics/ClassLength:
   Exclude:
     - "lib/gemsmith/configuration.rb"
@@ -22,4 +22,6 @@ Metrics/LineLength:
   Max: 120
 Metrics/MethodLength:
   Exclude:
+    - "lib/gemsmith/cli.rb"
     - "lib/gemsmith/configuration.rb"
+    - "lib/gemsmith/rake/tasks.rb"
