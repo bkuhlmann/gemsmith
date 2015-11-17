@@ -55,8 +55,7 @@ module Gemsmith
     # Initialize.
     def initialize args = [], options = {}, config = {}
       super args, options, config
-      @settings_file = File.join ENV["HOME"], ".gemsmith", "settings.yml"
-      @settings = load_yaml @settings_file
+      @configuration = Configuration.new
       @template_options = {}
     end
 
@@ -77,7 +76,9 @@ module Gemsmith
       say
       info "Creating gem..."
 
-      initialize_template_options name, options
+      configuration.gem_name = gem_name name
+      configuration.gem_class = gem_class name
+      # initialize_template_options name, options
       self.class.skeletons.each { |skeleton| skeleton.create self }
 
       info "Gem created."
@@ -99,7 +100,7 @@ module Gemsmith
     desc "-e, [--edit]", "Edit #{Gemsmith::Identity.label} settings in default editor."
     map %w(-e --edit) => :edit
     def edit
-      `#{editor} #{@settings_file}`
+      `#{editor} #{configuration.file_path}`
     end
 
     desc "-v, [--version]", "Show #{Gemsmith::Identity.label} version."
@@ -113,5 +114,9 @@ module Gemsmith
     def help task = nil
       say && super
     end
+
+    private
+
+    attr_reader :configuration
   end
 end

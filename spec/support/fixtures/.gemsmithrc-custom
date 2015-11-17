@@ -1,0 +1,31 @@
+:gem:
+  :platform: "Gem::Platform::CURRENT"
+  :home_url: "https://www.example.com"
+  :license: "Apache"
+  :private_key: "~/.example-private"
+  :public_key: "~/.example-public"
+:author:
+  :name: "Author Name"
+  :email: "author@example.com"
+  :url: "https://author.example.com"
+:organization:
+  :name: "Org Name"
+  :email: "org@example.com"
+  :url: "https://org.example.com"
+:versions:
+  :ruby: "1.1.1"
+  :rails: "2.2.2"
+:create:
+  :cli: true
+  :rails: true
+  :security: false
+  :pry: false
+  :guard: false
+  :rspec: false
+  :rubocop: false
+  :code_climate: false
+  :gemnasium: false
+  :travis: false
+  :patreon: false
+:github_user: "example"
+:year: "2000"

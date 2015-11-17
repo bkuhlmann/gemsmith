@@ -15,5 +15,11 @@ Style/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+Metrics/ClassLength:
+  Exclude:
+    - "lib/gemsmith/configuration.rb"
 Metrics/LineLength:
   Max: 120
+Metrics/MethodLength:
+  Exclude:
+    - "lib/gemsmith/configuration.rb"
