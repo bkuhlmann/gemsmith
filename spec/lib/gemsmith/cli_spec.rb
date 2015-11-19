@@ -83,7 +83,7 @@ describe Gemsmith::CLI do
             ".ruby-version",
             ".travis.yml",
             "bin/tester",
-            "gemfiles/rails-4.1.x.gemfile",
+            "gemfiles/rails-4.2.x.gemfile",
             "lib/generators/tester/install/USAGE",
             "lib/generators/tester/install/install_generator.rb",
             "lib/generators/tester/upgrade/USAGE",
