@@ -1,7 +1,6 @@
 language: ruby
 rvm:
-  - 2.0.0
-  - 2.1.0
+  - <%= config.fetch(:versions).fetch(:ruby) %>
 <%- if config.fetch(:create).fetch(:rails) -%>
 gemfile:
   - gemfiles/rails-4.2.x.gemfile
