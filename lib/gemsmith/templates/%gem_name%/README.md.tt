@@ -59,7 +59,7 @@ Add the following to your Gemfile:
 
 To test, run:
 
-    bundle exec rspec spec
+    bundle exec rake
 <%- end -%>
 
 # Versioning
