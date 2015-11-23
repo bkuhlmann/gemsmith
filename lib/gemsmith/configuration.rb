@@ -25,7 +25,7 @@ module Gemsmith
     end
 
     def gem_home_url
-      @gem_home_url || settings_group(:gem).fetch(:home_url, "")
+      @gem_home_url || settings_group(:gem).fetch(:home_url, github_gem_url)
     end
 
     def gem_license
@@ -179,6 +179,11 @@ module Gemsmith
     def parse_boolean variable, group_key, item_key, default_value
       return variable if [true, false].include?(variable)
       settings_group(group_key).fetch item_key, default_value
+    end
+
+    def github_gem_url
+      return "" if github_user.nil?
+      "https://github.com/#{github_user}/#{gem_name}"
     end
   end
 end

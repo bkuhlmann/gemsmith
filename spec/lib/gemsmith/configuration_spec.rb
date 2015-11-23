@@ -91,7 +91,8 @@ describe Gemsmith::Configuration, :temp_dir do
   describe "#gem_home_url" do
     context "with default resource file" do
       it "answers gem home URL" do
-        expect(subject.gem_home_url).to eq("")
+        subject.gem_home_url
+        expect(git).to have_received(:config_value).with("github.user").twice
       end
     end
 
@@ -647,12 +648,12 @@ describe Gemsmith::Configuration, :temp_dir do
     let :defaults do
       {
         year: Time.now.year,
-        github_user: "test",
+        github_user: "tester",
         gem: {
           name: "unknown",
           class: "Unknown",
           platform: "Gem::Platform::RUBY",
-          home_url: "",
+          home_url: "https://github.com/tester/unknown",
           license: "MIT",
           private_key: "~/.ssh/gem-private.pem",
           public_key: "~/.ssh/gem-public.pem"
@@ -687,7 +688,7 @@ describe Gemsmith::Configuration, :temp_dir do
     end
 
     before do
-      allow(git).to receive(:config_value).with("github.user").and_return("test")
+      allow(git).to receive(:config_value).with("github.user").and_return("tester")
       allow(git).to receive(:config_value).with("user.name").and_return("Test")
       allow(git).to receive(:config_value).with("user.email").and_return("test@example.com")
     end
