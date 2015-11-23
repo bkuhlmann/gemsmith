@@ -7,6 +7,7 @@ end
 
 require "gemsmith"
 require "gemsmith/cli"
+require "climate_control"
 
 Dir[File.join(File.dirname(__FILE__), "support/extensions/**/*.rb")].each { |file| require file }
 Dir[File.join(File.dirname(__FILE__), "support/kit/**/*.rb")].each { |file| require file }

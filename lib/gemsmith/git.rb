@@ -1,12 +1,8 @@
 module Gemsmith
-  # Provides supplementary utility methods.
+  # A thin wrapper to Git.
   class Git
-    # Answers the git config (i.e. ~/.gitconfig) value for a given key, otherwise nil.
-    # ==== Parameters
-    # # * +key+ - Required. The git config key to search for.
     def self.config_value key
-      value = `git config #{key}`.chomp
-      value.nil? || value.empty? ? nil : value
+      `git config #{key}`.chomp
     end
   end
 end
