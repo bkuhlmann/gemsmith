@@ -61,7 +61,7 @@ module Gemsmith
     end
 
     def ruby_version
-      @ruby_version || settings_group(:versions).fetch(:ruby, "2.2.3")
+      @ruby_version || settings_group(:versions).fetch(:ruby, RUBY_VERSION)
     end
 
     def rails_version

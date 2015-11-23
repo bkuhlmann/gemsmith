@@ -301,7 +301,8 @@ describe Gemsmith::Configuration, :temp_dir do
   describe "#ruby_version" do
     context "with default resource file" do
       it "answers Ruby version" do
-        expect(subject.ruby_version).to eq("2.2.3")
+        stub_const "RUBY_VERSION", "2.0.0"
+        expect(subject.ruby_version).to eq("2.0.0")
       end
     end
 
@@ -668,7 +669,7 @@ describe Gemsmith::Configuration, :temp_dir do
           url: ""
         },
         versions: {
-          ruby: "2.2.3",
+          ruby: "2.0.0",
           rails: "4.2"
         },
         create: {
@@ -694,6 +695,7 @@ describe Gemsmith::Configuration, :temp_dir do
     end
 
     it "answers configuration as a hash" do
+      stub_const "RUBY_VERSION", "2.0.0"
       expect(subject.to_h).to eq(defaults)
     end
   end
