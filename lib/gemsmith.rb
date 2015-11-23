@@ -1,3 +1,3 @@
 require "gemsmith/identity"
-require "gemsmith/kit"
+require "gemsmith/git"
 require "gemsmith/configuration"

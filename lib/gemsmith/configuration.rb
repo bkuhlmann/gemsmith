@@ -37,11 +37,11 @@ module Gemsmith
     end
 
     def author_name
-      @author_name || settings_group(:author).fetch(:name, Gemsmith::Kit.git_config_value("user.name"))
+      @author_name || settings_group(:author).fetch(:name, Gemsmith::Git.config_value("user.name"))
     end
 
     def author_email
-      @author_email || settings_group(:author).fetch(:email, Gemsmith::Kit.git_config_value("user.email"))
+      @author_email || settings_group(:author).fetch(:email, Gemsmith::Git.config_value("user.email"))
     end
 
     def author_url
@@ -109,7 +109,7 @@ module Gemsmith
     end
 
     def github_user
-      @github_user || settings.fetch(:github_user, Gemsmith::Kit.git_config_value("github.user"))
+      @github_user || settings.fetch(:github_user, Gemsmith::Git.config_value("github.user"))
     end
 
     def year

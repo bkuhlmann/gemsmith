@@ -182,7 +182,7 @@ describe Gemsmith::Configuration, :temp_dir do
   describe "#author_name" do
     context "with default resource file" do
       it "answers author name" do
-        expect(subject.author_name).to eq(Gemsmith::Kit.git_config_value("user.name"))
+        expect(subject.author_name).to eq(Gemsmith::Git.config_value("user.name"))
       end
     end
 
@@ -205,7 +205,7 @@ describe Gemsmith::Configuration, :temp_dir do
   describe "#author_email" do
     context "with default resource file" do
       it "answers author email" do
-        expect(subject.author_email).to eq(Gemsmith::Kit.git_config_value("user.email"))
+        expect(subject.author_email).to eq(Gemsmith::Git.config_value("user.email"))
       end
     end
 
@@ -596,7 +596,7 @@ describe Gemsmith::Configuration, :temp_dir do
   describe "#github_user" do
     context "with default resource file" do
       it "answers GitHub user" do
-        expect(subject.github_user).to eq(Gemsmith::Kit.git_config_value("github.user"))
+        expect(subject.github_user).to eq(Gemsmith::Git.config_value("github.user"))
       end
     end
 
@@ -643,7 +643,7 @@ describe Gemsmith::Configuration, :temp_dir do
     let :defaults do
       {
         year: Time.now.year,
-        github_user: Gemsmith::Kit.git_config_value("github.user"),
+        github_user: Gemsmith::Git.config_value("github.user"),
         gem: {
           name: "unknown",
           class: "Unknown",
@@ -654,8 +654,8 @@ describe Gemsmith::Configuration, :temp_dir do
           public_key: "~/.ssh/gem-public.pem"
         },
         author: {
-          name: Gemsmith::Kit.git_config_value("user.name"),
-          email: Gemsmith::Kit.git_config_value("user.email"),
+          name: Gemsmith::Git.config_value("user.name"),
+          email: Gemsmith::Git.config_value("user.email"),
           url: ""
         },
         organization: {
