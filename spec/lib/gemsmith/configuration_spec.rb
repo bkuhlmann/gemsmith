@@ -3,7 +3,8 @@ require "spec_helper"
 describe Gemsmith::Configuration, :temp_dir do
   let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-empty" }
   let(:resource_path) { File.join temp_dir, Gemsmith::Identity.file_name }
-  subject { described_class.new file_path: resource_path }
+  let(:git) { class_spy Gemsmith::Git }
+  subject { described_class.new file_path: resource_path, git: git }
   before { FileUtils.cp fixture_path, resource_path }
 
   describe "#initialize" do
@@ -182,7 +183,8 @@ describe Gemsmith::Configuration, :temp_dir do
   describe "#author_name" do
     context "with default resource file" do
       it "answers author name" do
-        expect(subject.author_name).to eq(Gemsmith::Git.config_value("user.name"))
+        subject.author_name
+        expect(git).to have_received(:config_value).with("user.name")
       end
     end
 
@@ -205,7 +207,8 @@ describe Gemsmith::Configuration, :temp_dir do
   describe "#author_email" do
     context "with default resource file" do
       it "answers author email" do
-        expect(subject.author_email).to eq(Gemsmith::Git.config_value("user.email"))
+        subject.author_email
+        expect(git).to have_received(:config_value).with("user.email")
       end
     end
 
@@ -596,7 +599,8 @@ describe Gemsmith::Configuration, :temp_dir do
   describe "#github_user" do
     context "with default resource file" do
       it "answers GitHub user" do
-        expect(subject.github_user).to eq(Gemsmith::Git.config_value("github.user"))
+        subject.github_user
+        expect(git).to have_received(:config_value).with("github.user")
       end
     end
 
@@ -643,7 +647,7 @@ describe Gemsmith::Configuration, :temp_dir do
     let :defaults do
       {
         year: Time.now.year,
-        github_user: Gemsmith::Git.config_value("github.user"),
+        github_user: "test",
         gem: {
           name: "unknown",
           class: "Unknown",
@@ -654,8 +658,8 @@ describe Gemsmith::Configuration, :temp_dir do
           public_key: "~/.ssh/gem-public.pem"
         },
         author: {
-          name: Gemsmith::Git.config_value("user.name"),
-          email: Gemsmith::Git.config_value("user.email"),
+          name: "Test",
+          email: "test@example.com",
           url: ""
         },
         organization: {
@@ -680,6 +684,12 @@ describe Gemsmith::Configuration, :temp_dir do
           patreon: true
         }
       }
+    end
+
+    before do
+      allow(git).to receive(:config_value).with("github.user").and_return("test")
+      allow(git).to receive(:config_value).with("user.name").and_return("Test")
+      allow(git).to receive(:config_value).with("user.email").and_return("test@example.com")
     end
 
     it "answers configuration as a hash" do

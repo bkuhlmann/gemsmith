@@ -9,10 +9,14 @@ module Gemsmith
                 :create_guard, :create_rspec, :create_rubocop, :create_code_climate, :create_gemnasium,
                 :create_travis, :create_patreon, :github_user, :year
 
-    def initialize gem_name: "unknown", gem_class: "Unknown", file_path: File.join(ENV["HOME"], Identity.file_name)
+    def initialize gem_name: "unknown",
+                   gem_class: "Unknown",
+                   file_path: File.join(ENV["HOME"], Identity.file_name),
+                   git: Git
       @gem_name = gem_name
       @gem_class = gem_class
       @file_path = file_path
+      @git = git
       @settings = load_settings
     end
 
@@ -37,11 +41,11 @@ module Gemsmith
     end
 
     def author_name
-      @author_name || settings_group(:author).fetch(:name, Gemsmith::Git.config_value("user.name"))
+      @author_name || settings_group(:author).fetch(:name, git.config_value("user.name"))
     end
 
     def author_email
-      @author_email || settings_group(:author).fetch(:email, Gemsmith::Git.config_value("user.email"))
+      @author_email || settings_group(:author).fetch(:email, git.config_value("user.email"))
     end
 
     def author_url
@@ -109,7 +113,7 @@ module Gemsmith
     end
 
     def github_user
-      @github_user || settings.fetch(:github_user, Gemsmith::Git.config_value("github.user"))
+      @github_user || settings.fetch(:github_user, git.config_value("github.user"))
     end
 
     def year
@@ -160,7 +164,7 @@ module Gemsmith
 
     private
 
-    attr_reader :settings
+    attr_reader :git, :settings
 
     def load_settings
       return {} unless File.exist?(file_path)
