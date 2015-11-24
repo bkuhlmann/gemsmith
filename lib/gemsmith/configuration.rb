@@ -1,8 +1,7 @@
 module Gemsmith
   # Default configuration for gem with support for custom settings.
   class Configuration
-    attr_reader :file_path
-    attr_accessor :gem_name, :gem_class
+    attr_reader :gem_name, :gem_class, :file_path
     attr_writer :gem_platform, :gem_home_url, :gem_license, :gem_private_key, :gem_public_key, :author_name,
                 :author_email, :author_url, :organization_name, :organization_email, :organization_url,
                 :ruby_version, :rails_version, :create_cli, :create_rails, :create_security, :create_pry,
@@ -11,8 +10,9 @@ module Gemsmith
 
     def initialize gem_name: "unknown",
                    gem_class: "Unknown",
-                   file_path: File.join(ENV["HOME"], Identity.file_name),
-                   git: Git
+                   git: Git,
+                   file_path: File.join(ENV["HOME"], Identity.file_name)
+
       @gem_name = gem_name
       @gem_class = gem_class
       @file_path = file_path
@@ -164,7 +164,7 @@ module Gemsmith
 
     private
 
-    attr_reader :git, :settings
+    attr_reader :gem_parser, :git, :settings
 
     def load_settings
       return {} unless File.exist?(file_path)

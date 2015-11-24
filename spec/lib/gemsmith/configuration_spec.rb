@@ -18,49 +18,33 @@ describe Gemsmith::Configuration, :temp_dir do
   end
 
   describe "#gem_name" do
-    context "with default resource file" do
+    context "with default settings" do
       it "answers gem name" do
         expect(subject.gem_name).to eq("unknown")
       end
     end
 
-    context "with custom resource file" do
-      let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
-      subject { described_class.new gem_name: "example", gem_class: "Unknown", file_path: resource_path }
+    context "with custom settings" do
+      subject { described_class.new gem_name: "example" }
 
       it "answers gem name" do
         expect(subject.gem_name).to eq("example")
       end
     end
-
-    context "with overwritten settings" do
-      it "answers gem name" do
-        subject.gem_name = "overwritten"
-        expect(subject.gem_name).to eq("overwritten")
-      end
-    end
   end
 
   describe "#gem_class" do
-    context "with default resource file" do
+    context "with default settings" do
       it "answers gem class" do
         expect(subject.gem_class).to eq("Unknown")
       end
     end
 
-    context "with custom resource file" do
-      let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
-      subject { described_class.new gem_name: "example", gem_class: "Unknown", file_path: resource_path }
+    context "with custom settings" do
+      subject { described_class.new gem_class: "Example" }
 
-      it "answers gem class" do
-        expect(subject.gem_class).to eq("Unknown")
-      end
-    end
-
-    context "with overwritten settings" do
-      it "answers gem class" do
-        subject.gem_class = "Overwritten"
-        expect(subject.gem_class).to eq("Overwritten")
+      it "answers gem name" do
+        expect(subject.gem_class).to eq("Example")
       end
     end
   end
