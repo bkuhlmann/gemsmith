@@ -74,7 +74,7 @@ module Gemsmith
       say
       info "Creating gem..."
 
-      update_configuration! name, options
+      setup_configuration name, options
       self.class.skeletons.each { |skeleton| skeleton.create self, configuration: configuration }
 
       info "Gem created."
@@ -115,9 +115,9 @@ module Gemsmith
 
     attr_reader :configuration
 
-    def update_configuration! name, options
-      configuration.gem_name = gem_name name
-      configuration.gem_class = gem_class name
+    def setup_configuration name, options
+      gem = Aids::Gem.new name
+      @configuration = Configuration.new gem_name: gem.name, gem_class: gem.klass
       options.each { |key, value| configuration.public_send "create_#{key}=", value }
     end
   end
