@@ -46,7 +46,7 @@ To install, type the following:
     gem install <%= config.fetch(:gem).fetch(:name) %>
 <%- end -%>
 
-<%- if config.fetch(:create).fetch(:rails) -%>
+<%- unless config.fetch(:create).fetch(:cli) -%>
 Add the following to your Gemfile:
 
     gem "<%= config.fetch(:gem).fetch(:name) %>"
