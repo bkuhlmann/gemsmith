@@ -116,6 +116,16 @@ describe Gemsmith::CLI do
     end
   end
 
+  shared_examples_for "an edit command" do
+    let(:resource_path) { File.join ENV["HOME"], Gemsmith::Identity.file_name }
+
+    it "edits global configuration" do
+      ClimateControl.modify EDITOR: %(printf "%s\n") do
+        expect(&cli).to output(/info\s+Editing\:\s#{resource_path}\.\.\./).to_stdout
+      end
+    end
+  end
+
   shared_examples_for "a version command" do
     it "prints version" do
       expect(&cli).to output(/Gemsmith\s#{Gemsmith::Identity.version}\n/).to_stdout
@@ -184,12 +194,12 @@ describe Gemsmith::CLI do
 
   describe "--edit" do
     let(:command) { "--edit" }
-    it "behaves like an edit command"
+    it_behaves_like "an edit command"
   end
 
   describe "-e" do
     let(:command) { "-e" }
-    it "behaves like an edit command"
+    it_behaves_like "an edit command"
   end
 
   describe "--version" do

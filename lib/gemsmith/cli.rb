@@ -98,6 +98,7 @@ module Gemsmith
     desc "-e, [--edit]", "Edit #{Gemsmith::Identity.label} settings in default editor."
     map %w(-e --edit) => :edit
     def edit
+      info "Editing: #{configuration.file_path}..."
       `#{spec_aid.editor} #{configuration.file_path}`
     end
 
