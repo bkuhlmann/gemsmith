@@ -1,10 +1,6 @@
 module Gemsmith
   # Command Line Interface (CLI) helpers for the CLI class.
   module CLIHelpers
-    def editor
-      ENV["EDITOR"]
-    end
-
     def gem_name
       configuration.gem_name
     end
@@ -16,44 +12,33 @@ module Gemsmith
     module_function
 
     def print_gems gems
-      say "Multiple versions found:"
-      gems.each.with_index do |spec, index|
-        say "#{index + 1}. #{spec.name} #{spec.version.version}"
-      end
+      say "Multiple versions found:\n\n"
+      gems.each.with_index { |spec, index| say "#{index + 1}. #{spec.name} #{spec.version.version}" }
+      say "q. Quit.\n\n"
     end
 
     def pick_gem gems, name
-      result = ask "Please pick one (or type 'q' to quit):"
+      answer = ask "Enter selection:"
+      return if answer == "q"
 
-      return if result == "q" # Exit early.
-
-      if (1..gems.size).include?(result.to_i)
-        Gem::Specification.find_by_name name, gems[result.to_i - 1].version.version
+      if (1..gems.size).include?(answer.to_i)
+        spec_aid.find name, gems[answer.to_i - 1].version.version
       else
-        error "Invalid option: #{result}"
-        nil
+        error "Invalid option: #{answer}"
       end
     end
 
-    def open_gem spec
-      `#{editor} #{spec.full_gem_path}` if spec
-    end
-
-    def read_gem spec
-      `open #{spec.homepage}` if spec
-    end
-
-    def process_gem name, command
-      specs = Gem::Specification.find_all_by_name name
+    def process_gem name, method
+      specs = spec_aid.find_all name
 
       case
         when specs.size == 1
-          send "#{command}_gem", specs.first
+          spec_aid.send method, specs.first
         when specs.size > 1
           print_gems specs
-          send "#{command}_gem", pick_gem(specs, name)
+          spec_aid.send method, pick_gem(specs, name)
         else
-          say "Unable to find gem: #{name}"
+          error "Unable to find gem: #{name}."
       end
     end
   end

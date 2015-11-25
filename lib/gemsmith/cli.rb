@@ -56,6 +56,7 @@ module Gemsmith
     def initialize args = [], options = {}, config = {}
       super args, options, config
       @configuration = Configuration.new
+      @spec_aid = Aids::Spec.new
     end
 
     desc "-c, [create=CREATE]", "Create new gem."
@@ -97,7 +98,7 @@ module Gemsmith
     desc "-e, [--edit]", "Edit #{Gemsmith::Identity.label} settings in default editor."
     map %w(-e --edit) => :edit
     def edit
-      `#{editor} #{configuration.file_path}`
+      `#{spec_aid.editor} #{configuration.file_path}`
     end
 
     desc "-v, [--version]", "Show #{Gemsmith::Identity.label} version."
@@ -114,7 +115,7 @@ module Gemsmith
 
     private
 
-    attr_reader :configuration
+    attr_reader :configuration, :spec_aid
 
     def setup_configuration name, options
       gem = Aids::Gem.new name
