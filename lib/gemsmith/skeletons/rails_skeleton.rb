@@ -33,7 +33,7 @@ module Gemsmith
 
       def create_travis_gemfiles
         return unless configuration.create_travis?
-        cli.template "%gem_name%/gemfiles/rails-4.2.x.gemfile.tt", configuration.to_h
+        cli.template "%gem_name%/gemfiles/rails-%rails_version%.x.gemfile.tt", configuration.to_h
       end
 
       def create

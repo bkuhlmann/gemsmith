@@ -3,7 +3,7 @@ rvm:
   - <%= config.fetch(:versions).fetch(:ruby) %>
 <%- if config.fetch(:create).fetch(:rails) -%>
 gemfile:
-  - gemfiles/rails-4.2.x.gemfile
+  - gemfiles/rails-<%= config.fetch(:versions).fetch(:rails) %>.x.gemfile
 <%- end -%>
 script: bundle exec rake
 notifications:

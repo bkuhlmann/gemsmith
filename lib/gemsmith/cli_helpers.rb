@@ -9,6 +9,10 @@ module Gemsmith
       configuration.gem_class
     end
 
+    def rails_version
+      configuration.rails_version
+    end
+
     module_function
 
     def print_gems gems

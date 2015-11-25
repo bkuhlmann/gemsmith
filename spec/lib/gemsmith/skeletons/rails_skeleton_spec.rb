@@ -128,7 +128,8 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
 
       it "creates Rails gemfile" do
         subject.create_travis_gemfiles
-        expect(cli).to have_received(:template).with("%gem_name%/gemfiles/rails-4.2.x.gemfile.tt", configuration.to_h)
+        template = "%gem_name%/gemfiles/rails-%rails_version%.x.gemfile.tt"
+        expect(cli).to have_received(:template).with(template, configuration.to_h)
       end
     end
 

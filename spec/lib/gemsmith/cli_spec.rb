@@ -74,43 +74,45 @@ describe Gemsmith::CLI do
       end
 
       it "creates full skeleton" do
-        Dir.chdir temp_dir do
-          cli.call
+        ClimateControl.modify HOME: temp_dir do
+          Dir.chdir temp_dir do
+            cli.call
 
-          expect(skeleton_files).to contain_exactly(
-            ".gitignore",
-            ".rubocop.yml",
-            ".ruby-version",
-            ".travis.yml",
-            "bin/tester",
-            "gemfiles/rails-4.2.x.gemfile",
-            "lib/generators/tester/install/USAGE",
-            "lib/generators/tester/install/install_generator.rb",
-            "lib/generators/tester/upgrade/USAGE",
-            "lib/generators/tester/upgrade/upgrade_generator.rb",
-            "lib/tester/tasks/rspec.rake",
-            "lib/tester/tasks/rubocop.rake",
-            "lib/tester/cli.rb",
-            "lib/tester/engine.rb",
-            "lib/tester/identity.rb",
-            "lib/tester.rb",
-            "spec/lib/tester/tester_spec.rb",
-            "spec/support/extensions/pry.rb",
-            "spec/support/kit/default_config.rb",
-            "spec/support/kit/stderr.rb",
-            "spec/support/kit/stdout.rb",
-            "spec/support/kit/temp_dir.rb",
-            "spec/spec_helper.rb",
-            "CHANGELOG.md",
-            "CODE_OF_CONDUCT.md",
-            "CONTRIBUTING.md",
-            "Gemfile",
-            "Guardfile",
-            "LICENSE.md",
-            "Rakefile",
-            "README.md",
-            "tester.gemspec"
-          )
+            expect(skeleton_files).to contain_exactly(
+              ".gitignore",
+              ".rubocop.yml",
+              ".ruby-version",
+              ".travis.yml",
+              "bin/tester",
+              "gemfiles/rails-4.2.x.gemfile",
+              "lib/generators/tester/install/USAGE",
+              "lib/generators/tester/install/install_generator.rb",
+              "lib/generators/tester/upgrade/USAGE",
+              "lib/generators/tester/upgrade/upgrade_generator.rb",
+              "lib/tester/tasks/rspec.rake",
+              "lib/tester/tasks/rubocop.rake",
+              "lib/tester/cli.rb",
+              "lib/tester/engine.rb",
+              "lib/tester/identity.rb",
+              "lib/tester.rb",
+              "spec/lib/tester/tester_spec.rb",
+              "spec/support/extensions/pry.rb",
+              "spec/support/kit/default_config.rb",
+              "spec/support/kit/stderr.rb",
+              "spec/support/kit/stdout.rb",
+              "spec/support/kit/temp_dir.rb",
+              "spec/spec_helper.rb",
+              "CHANGELOG.md",
+              "CODE_OF_CONDUCT.md",
+              "CONTRIBUTING.md",
+              "Gemfile",
+              "Guardfile",
+              "LICENSE.md",
+              "Rakefile",
+              "README.md",
+              "tester.gemspec"
+            )
+          end
         end
       end
     end
