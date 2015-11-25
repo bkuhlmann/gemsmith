@@ -13,6 +13,8 @@ Style/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
