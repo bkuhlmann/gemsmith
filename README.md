@@ -53,6 +53,8 @@ A command line interface for smithing new Ruby gems.
 - Adds commonly needed [README](README.md), [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md),
   [CODE OF CONDUCT](CODE_OF_CONDUCT.md), [LICENSE](LICENSE.md), etc. documentation.
 
+[![asciicast](https://asciinema.org/a/30728.png)](https://asciinema.org/a/30728)
+
 # Requirements
 
 0. A UNIX-based system
