@@ -14,7 +14,7 @@ describe Gemsmith::Skeletons::RspecSkeleton, :temp_dir do
       let(:create_rspec) { true }
 
       it "creates Rake file" do
-        template = "%gem_name%/lib/%gem_name%/tasks/rspec.rake.tt"
+        template = "%gem_name%/lib/tasks/rspec.rake.tt"
         expect(cli).to have_received(:template).with(template, configuration.to_h)
       end
 

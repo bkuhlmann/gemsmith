@@ -18,7 +18,7 @@ describe Gemsmith::Skeletons::RubocopSkeleton, :temp_dir do
       end
 
       it "creates Rake file" do
-        template = "%gem_name%/lib/%gem_name%/tasks/rubocop.rake.tt"
+        template = "%gem_name%/lib/tasks/rubocop.rake.tt"
         expect(cli).to have_received(:template).with(template, configuration.to_h)
       end
     end

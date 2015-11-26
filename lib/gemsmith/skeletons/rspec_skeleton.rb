@@ -5,7 +5,7 @@ module Gemsmith
       def create
         return unless configuration.create_rspec?
 
-        cli.template "%gem_name%/lib/%gem_name%/tasks/rspec.rake.tt", configuration.to_h
+        cli.template "%gem_name%/lib/tasks/rspec.rake.tt", configuration.to_h
         cli.template "#{rspec_root}/spec_helper.rb.tt", configuration.to_h
         cli.template "#{rspec_root}/lib/%gem_name%/%gem_name%_spec.rb.tt", configuration.to_h
         cli.template "#{rspec_root}/support/kit/default_config.rb.tt", configuration.to_h
