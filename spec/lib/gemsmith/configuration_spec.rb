@@ -3,7 +3,7 @@ require "spec_helper"
 describe Gemsmith::Configuration, :temp_dir do
   let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-empty" }
   let(:resource_path) { File.join temp_dir, Gemsmith::Identity.file_name }
-  let(:git) { class_spy Gemsmith::Git }
+  let(:git) { class_spy Gemsmith::Aids::Git }
   subject { described_class.new file_path: resource_path, git: git }
   before { FileUtils.cp fixture_path, resource_path }
 

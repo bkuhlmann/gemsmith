@@ -10,7 +10,7 @@ module Gemsmith
 
     def initialize gem_name: "unknown",
                    gem_class: "Unknown",
-                   git: Git,
+                   git: Aids::Git,
                    file_path: File.join(ENV["HOME"], Identity.file_name)
 
       @gem_name = gem_name
