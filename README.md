@@ -36,28 +36,29 @@ A command line interface for smithing new Ruby gems.
 
 # Features
 
-- Builds a gem skeleton with Bundler functionality in mind.
+- Builds a gem skeleton with enhanced Bundler functionality.
 - Supports common settings to be applied when creating new gems.
-- Supports [Thor](https://github.com/wycats/thor) command line functionality.
+- Supports [Thor](https://github.com/wycats/thor) command line interface (CLI) functionality.
 - Supports [Ruby on Rails](http://rubyonrails.org).
-- Supports [RSpec](http://rspec.info).
-- Supports [Rubocop](https://github.com/bbatsov/rubocop).
 - Supports [Pry](http://pryrepl.org).
 - Supports [Guard](https://github.com/guard/guard).
+- Supports [RSpec](http://rspec.info).
+- Supports [Rubocop](https://github.com/bbatsov/rubocop).
 - Supports [Code Climate](https://codeclimate.com).
 - Supports [Gemnasium](https://gemnasium.com).
 - Supports [Travis CI](http://travis-ci.org).
+- Supports [Patreon](https://www.patreon.com).
 - Provides the ability to open the source code of any gem within your favorite editor.
 - Provides the ability to read the documentation of any gem within your default browser.
 - Adds commonly needed [README](README.md), [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md),
-  [LICENSE](LICENSE.md), etc. template files.
+  [CODE OF CONDUCT](CODE_OF_CONDUCT.md), [LICENSE](LICENSE.md), etc. documentation.
 
 # Requirements
 
-0. A UNIX-based system.
-0. [MRI 2.x.x](http://www.ruby-lang.org).
-0. [RubyGems](http://rubygems.org).
-0. [Bundler](https://github.com/carlhuda/bundler).
+0. A UNIX-based system
+0. [MRI 2.x.x](http://www.ruby-lang.org)
+0. [RubyGems](http://rubygems.org)
+0. [Bundler](https://github.com/carlhuda/bundler)
 
 # Setup
 
@@ -75,37 +76,60 @@ For an insecure install, type the following (not recommended):
 
 You can configure common settings for future gem builds by creating the following file:
 
-    ~/.gemsmith/settings.yml
+    ~/.gemsmithrc
 
-...using the following settings (for example):
+...using the following settings (as a simple example):
 
-    ---
-    :author_name: Joe Smith
-    :author_email: joe@smithware.com
-    :author_url: https://www.smithware.com
-    :company_name: Smithware
+    :author:
+      :name: "Joe Smith"
+      :email: "joe@example.com"
+      :url: "https://www.example.com"
+    :organization:
+      :name: "ExampleSoft"
+      :url: "https://www.example.com"
 
-If no options are configured, then the defaults are as follows:
+The following defaults are used when no options are configured:
 
-    gem_platform: Gem::Platform::RUBY
-    gem_private_key: ~/.ssh/gem-private.pem
-    gem_public_key: ~/.ssh/gem-public.pem
-    author_name: <git name>
-    author_email: <git email>
-    author_url: https://www.unknown.com
-    gem_url: <author URL>
-    company_name: <author name>
-    company_url: <author URL>
-    github_user: <github user>
-    year: <current year>
-    ruby_version: 2.2.0
-    rails_version: 4.2
+    :year: <current year>
+    :github_user: <git config GitHub user>
+    :gem:
+      :platform: "Gem::Platform::RUBY"
+      :home_url: ""
+      :license: "MIT"
+      :private_key: "~/.ssh/gem-private.pem"
+      :public_key: "~/.ssh/gem-public.pem"
+    :author:
+      :name: <git config user name>
+      :email: <git config user email>
+      :url: ""
+    :organization:
+      :name: ""
+      :url: ""
+    :versions:
+      :ruby: <current Ruby version>
+      :rails: "4.2"
+    :create:
+      :cli: false
+      :rails: false
+      :security: true
+      :pry: true
+      :guard: true
+      :rspec: true
+      :rubocop: true
+      :code_climate: true
+      :gemnasium: true
+      :travis: true
+      :patreon: true
+
+While Gemsmith is fully customizable, please keep in mind that these are *global* settings and, once set, will affect
+all future gem creations. Further customization is also provided via the CLI for a customizable experience per gem if
+necessary.
 
 # Usage
 
 ## Command Line Interface (CLI)
 
-From the command line, type: gemsmith help
+From the command line, type: `gemsmith --help`
 
     gemsmith -c, [create=CREATE]  # Create new gem.
     gemsmith -e, [--edit]         # Edit Gemsmith settings in default editor.
@@ -114,9 +138,9 @@ From the command line, type: gemsmith help
     gemsmith -r, [read=READ]      # Open a gem in default browser.
     gemsmith -v, [--version]      # Show Gemsmith version.
 
-For more gem creation options, type: gemsmith help create
+For more gem creation options, type: `gemsmith --help --create`
 
-    -b, [--bin], [--no-bin]                    # Add binary support.
+    -c, [--cli], [--no-cli]                    # Add CLI support.
     -r, [--rails], [--no-rails]                # Add Rails support.
     -S, [--security], [--no-security]          # Add security support.
                                                # Default: true
@@ -128,35 +152,45 @@ For more gem creation options, type: gemsmith help create
                                                # Default: true
     -R, [--rubocop], [--no-rubocop]            # Add Rubocop support.
                                                # Default: true
-    -c, [--code-climate], [--no-code-climate]  # Add Code Climate support.
+    -C, [--code-climate], [--no-code-climate]  # Add Code Climate support.
                                                # Default: true
     -G, [--gemnasium], [--no-gemnasium]        # Add Gemnasium support.
                                                # Default: true
     -t, [--travis], [--no-travis]              # Add Travis CI support.
+                                               # Default: true
+    -P, [--patreon], [--no-patreon]            # Add Patreon support.
                                                # Default: true
 
 ## Rake
 
 Once a gem skeleton has been created, the following tasks are available within the project via Bundler (i.e. rake -T):
 
-    rake build                 # Build example-0.1.0.gem into the pkg directory
+    rake build                 # Build gemsmith-6.0.0.gem into the pkg directory
     rake clean                 # Clean gem artifacts
-    rake install               # Build and install example-0.1.0.gem into system gems
-    rake install:local         # Build and install example-0.1.0.gem into system gems without network access
-    rake publish               # Build, tag v0.1.0 (signed), and push example-0.1.0.gem to RubyGems
-    rake readme:toc            # Update README Table of Contents
-    rake release               # Create tag v0.1.0 and build and push example-0.1.0.gem to Rubygems
+    rake doc                   # Update README (table of contents)
+    rake install               # Build and install gemsmith-6.0.0.gem into system gems
+    rake install:local         # Build and install gemsmith-6.0.0.gem into system gems without network access
+    rake publish               # Build, tag v6.0.0 (signed), and push gemsmith-6.0.0.gem to RubyGems
+    rake release               # Create tag v6.0.0 and build and push gemsmith-6.0.0.gem to Rubygems
     rake rubocop               # Run RuboCop
     rake rubocop:auto_correct  # Auto-correct RuboCop offenses
     rake spec                  # Run RSpec code examples
 
+Run `bundle exec rake` to run everything (includes all specs and code quality checks).
+
 ## Upgrades
 
-For those upgrading from Gemsmith 5.3.0 and wanting to use the new Rake tasks, do the following:
+For those upgrading from Gemsmith 5.6.0 please be aware of the following changes:
 
-- Edit your `gemspec` and add the following dependency: `spec.add_development_dependency "gemsmith"`.
-- Edit your `Rakefile` and remove the Bundler requirement `require "bundler/gem_tasks"` and replace it with
-  the Gemsmith tasks: `require "gemsmith/rake/setup"`. Don't worry, this includes the Bundler tasks too.
+- Move your `~/.gemsmith/settings.yml` settings to the new `~/.gemsmithrc` file. Refer to the Setup documentation
+  mentioned above for details.
+- The `--cli/-c` create option has been replaced with the `--bin/-b` create option.
+- The `--code-climate` create option shortcut is now `-C` instead of `-c`.
+- [Tocer](https://github.com/bkuhlmann/tocer) has replaced [DocToc](https://github.com/thlorenz/doctoc) as a pure Ruby
+  implementation for generating README table of contents and removing the dependency on NPM.
+- The `rake readme:toc` task has been replaced with `rake doc`.
+- Using Rake to build or publish a gem will fail if uncommitted Git changes are detected helping to prevent you
+  from publishing a gem with missing changes.
 
 # Tests
 
@@ -203,8 +237,8 @@ To create a certificate for your gems, run the following:
     gem cert --build you@example.com
     chmod 600 gem-*.pem
 
-The resulting *.pem keys can be referenced via the *gem_private_key- and *gem_public_key- settings mentioned in the
-Setup documentation.
+The resulting `*.pem` key files can be referenced via the `:private_key:` and `:public_key:` keys within the
+`~/.gemsmithrc` file.
 
 To learn more about gem certificates, read the following:
 
@@ -214,7 +248,7 @@ To learn more about gem certificates, read the following:
 
 # Promotion
 
-Once your gem is released, you might like to let the world know about the new awesomeness. Here are several resources:
+Once your gem is released, you might want to let the world know about your awesomeness. Here are several resources:
 
 - [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code)
 - [Ruby Green News](http://greenruby.org)

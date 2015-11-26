@@ -1,3 +1,40 @@
+# v6.0.0 (2015-11-25)
+
+- Fixed README template so Gemfile setup is available for non-CLI skeletons.
+- Fixed README test command instructions.
+- Fixed Rails skeleton to use Rails version for gemfiles.
+- Fixed bug with Rake not added as a gemspec dev dependency.
+- Added CLI specs for all commands.
+- Added Git option to configuration initialization.
+- Added Patreon (i.e. --patreon) support to gem creation.
+- Added Patreon badge to README.
+- Added Rails install prompt when creating Rails Engines.
+- Added Ruby Green News to README.
+- Added Ruby version detection.
+- Added [Tocer](https://github.com/bkuhlmann/tocer) support.
+- Added build validation to Rake build and publish tasks.
+- Added dynamic generation of GitHub gem URL.
+- Added gem configuration support.
+- Added gem name and class aid.
+- Added gem spec aid.
+- Added info message to CLI edit command.
+- Updated .travis.yml skeleton to use latest Ruby version.
+- Updated Code Climate to run when CI ENV is set.
+- Updated to Code of Conduct 1.3.0.
+- Updated build validation to not fail with an exception.
+- Updated gem skeleton templates to use configuration settings.
+- Updated to Rails 4.2 gemfiles.
+- Removed "clean" Rake task prerequisite from "publish" task.
+- Removed "readme:toc" Rake task (replaced with "doc").
+- Removed CLI options module.
+- Removed DocToc support.
+- Removed Rubocop TODO list.
+- Removed `Gemsmith::Kit` (use `Gemsmith::Aids::Git` instead).
+- Removed `Gemsmith::Rake::Build#clean!` (replaced with `#clean`).
+- Removed unnecessary exclusions from .gitignore.
+- Refactored RSpec Pry support as an extension.
+- Refactored Rake tasks to standard location.
+
 # v5.6.0 (2015-09-27)
 
 - Fixed RSpec example status persistence file path.
