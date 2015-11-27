@@ -39,6 +39,10 @@ describe Gemsmith::Aids::Spec do
       expect(shell).to have_received(:capture2).with("open", "https://www.example.com")
     end
 
+    it "answers gem home page URL" do
+      expect(subject.read(spec)).to eq("https://www.example.com")
+    end
+
     it "does nothing when spec is missing" do
       subject.read
       expect(shell).to_not have_received(:capture2)

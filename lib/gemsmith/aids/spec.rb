@@ -24,6 +24,7 @@ module Gemsmith
         return if spec.homepage.nil? || spec.homepage.empty?
 
         shell.capture2 "open", spec.homepage
+        spec.homepage
       end
 
       def find name, version
