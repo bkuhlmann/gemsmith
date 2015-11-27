@@ -88,7 +88,8 @@ module Gemsmith
     desc "-o, [open=OPEN]", "Open a gem in default editor."
     map %w(-o --open) => :open
     def open name
-      process_gem name, "open"
+      result = process_gem name, "open"
+      info("Opening: #{result}") unless result.nil? || result.empty?
     end
 
     desc "-r, [read=READ]", "Open a gem in default browser."

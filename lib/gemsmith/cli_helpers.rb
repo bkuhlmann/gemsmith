@@ -42,7 +42,7 @@ module Gemsmith
           print_gems specs
           spec_aid.send method, pick_gem(specs, name)
         else
-          error "Unable to find gem: #{name}."
+          error("Unable to find gem: #{name}.") && ""
       end
     end
   end
