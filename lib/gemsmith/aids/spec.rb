@@ -16,6 +16,7 @@ module Gemsmith
       def open spec = nil
         return unless spec
         shell.capture2 editor, spec.full_gem_path
+        spec.full_gem_path
       end
 
       def read spec = nil

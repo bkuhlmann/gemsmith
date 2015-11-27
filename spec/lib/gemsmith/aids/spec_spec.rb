@@ -21,6 +21,10 @@ describe Gemsmith::Aids::Spec do
       expect(shell).to have_received(:capture2).with(subject.editor, "/full/gem/path")
     end
 
+    it "answers full path to installed gem source code" do
+      expect(subject.open(spec)).to eq("/full/gem/path")
+    end
+
     it "does nothing when spec is missing" do
       subject.open
       expect(shell).to_not have_received(:capture2)
