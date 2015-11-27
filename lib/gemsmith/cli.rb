@@ -95,7 +95,13 @@ module Gemsmith
     desc "-r, [read=READ]", "Open a gem in default browser."
     map %w(-r --read) => :read
     def read name
-      process_gem name, "read"
+      result = process_gem name, "read"
+
+      if result.nil? || result.empty?
+        error "Gem home page is not defined."
+      else
+        info "Reading: #{result}"
+      end
     end
 
     desc "-e, [--edit]", "Edit #{Gemsmith::Identity.label} settings in default editor."
