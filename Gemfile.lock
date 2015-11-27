@@ -21,7 +21,7 @@ GEM
       parser (~> 2.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    byebug (8.2.0)
+    byebug (8.2.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     codeclimate-test-reporter (0.4.8)

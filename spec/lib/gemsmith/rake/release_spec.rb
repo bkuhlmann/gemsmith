@@ -2,9 +2,9 @@ require "spec_helper"
 require "gemsmith/rake/release"
 
 describe Gemsmith::Rake::Release, :temp_dir do
-  let(:tagger) { instance_spy Milestoner::Tagger }
+  let(:publisher) { instance_spy Milestoner::Publisher }
   let(:gem_spec_path) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures", "tester.gemspec" }
-  subject { described_class.new gem_spec_path, tagger: tagger }
+  subject { described_class.new gem_spec_path, publisher: publisher }
 
   describe "#initialize" do
     context "when using default gem spec path" do
@@ -59,7 +59,7 @@ describe Gemsmith::Rake::Release, :temp_dir do
   describe "#publish" do
     it "publishes gem" do
       subject.publish
-      expect(tagger).to have_received(:create).with("0.1.0", sign: true)
+      expect(publisher).to have_received(:publish).with("0.1.0", sign: true)
     end
 
     it "fails with Milestoner error when error is encountered" do

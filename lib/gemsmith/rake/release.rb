@@ -6,11 +6,11 @@ module Gemsmith
     class Release
       def initialize gem_spec_path = Dir.glob("#{Dir.pwd}/*.gemspec").first,
                      bundler: Bundler,
-                     tagger: Milestoner::Tagger.new,
+                     publisher: Milestoner::Publisher.new,
                      shell: Bundler::UI::Shell.new
 
         @gem_spec_path = gem_spec_path
-        @tagger = tagger
+        @publisher = publisher
         @shell = shell
         @gem_spec = bundler.load_gemspec gem_spec_path.to_s
       rescue Errno::ENOENT
@@ -30,14 +30,14 @@ module Gemsmith
       end
 
       def publish
-        tagger.create version_number, sign: true
+        publisher.publish version_number, sign: true
       rescue Milestoner::Errors::Base => error
         shell.error error.message
       end
 
       private
 
-      attr_reader :gem_spec_path, :gem_spec, :tagger, :shell
+      attr_reader :gem_spec_path, :gem_spec, :publisher, :shell
     end
   end
 end
