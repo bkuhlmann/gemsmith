@@ -1,3 +1,10 @@
+# v6.1.0 (2015-11-27)
+
+- Fixed bug where Git tags were not being pushed to remote.
+- Added CLI info message when opening a gem.
+- Added CLI info message when reading a gem.
+- Added asciinema screencast to README features.
+
 # v6.0.0 (2015-11-25)
 
 - Fixed README template so Gemfile setup is available for non-CLI skeletons.

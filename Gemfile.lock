@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    gemsmith (6.0.0)
-      milestoner (~> 1.1)
+    gemsmith (6.1.0)
+      milestoner (~> 1.2)
       thor (~> 0.19)
       thor_plus (~> 2.1)
       tocer (~> 1.0)
@@ -54,9 +54,9 @@ GEM
       rb-inotify (>= 0.9)
     lumberjack (1.0.9)
     method_source (0.8.2)
-    milestoner (1.1.0)
-      thor
-      thor_plus
+    milestoner (1.2.0)
+      thor (~> 0.19)
+      thor_plus (~> 2.1)
     minitest (5.8.3)
     nenv (0.2.0)
     notiffany (0.0.8)
