@@ -167,7 +167,7 @@ For more gem creation options, type: `gemsmith --help --create`
 
 ## Rake
 
-Once a gem skeleton has been created, the following tasks are available within the project via Bundler (i.e. rake -T):
+Once a gem skeleton has been created, the following tasks are available (i.e. `bundle exec rake -T`):
 
     rake build                 # Build gemsmith-6.0.0.gem into the pkg directory
     rake clean                 # Clean gem artifacts
@@ -180,7 +180,27 @@ Once a gem skeleton has been created, the following tasks are available within t
     rake rubocop:auto_correct  # Auto-correct RuboCop offenses
     rake spec                  # Run RSpec code examples
 
-Run `bundle exec rake` to run everything (includes all specs and code quality checks).
+The following Rake tasks are provided by [Bundler](http://bundler.io) and enhanced as follows (all other tasks are
+provided by Gemsmith):
+
+    rake build - Cleans and regenerates the README table of contents in addition to building the gem.
+    rake install - Inherits the `build` modifications mentioned above.
+    rake install:local - Inherits the `build` modifications mentioned above.
+    rake release - Inherits the `build` modifications mentioned above.
+
+When building/testing your gem locally, a typical workflow is:
+
+0. `gem uninstall <your gem name>`
+0. `bundle exec rake install`
+0. Test your gem locally.
+0. Repeat until satisfied.
+
+When satified with your gem, builds are green, and ready to publish, run:
+
+    bundle exec rake publish
+
+Alternatively, you can run `bundle exec rake release` if you don't wish to sign your gem releases (i.e default Bundler
+behavior) but the added security that `publish` provides is strongly recommended.
 
 ## Upgrades
 
@@ -188,13 +208,13 @@ For those upgrading from Gemsmith 5.6.0 please be aware of the following changes
 
 - Move your `~/.gemsmith/settings.yml` settings to the new `~/.gemsmithrc` file. Refer to the Setup documentation
   mentioned above for details.
-- The `--cli/-c` create option has been replaced with the `--bin/-b` create option.
+- The `--cli/-c` create option has replaced the `--bin/-b` create option.
 - The `--code-climate` create option shortcut is now `-C` instead of `-c`.
 - [Tocer](https://github.com/bkuhlmann/tocer) has replaced [DocToc](https://github.com/thlorenz/doctoc) as a pure Ruby
   implementation for generating README table of contents and removing the dependency on NPM.
 - The `rake readme:toc` task has been replaced with `rake doc`.
-- Using Rake to build or publish a gem will fail if uncommitted Git changes are detected helping to prevent you
-  from publishing a gem with missing changes.
+- Using Rake to build, release, or publish a gem will fail if uncommitted Git changes are detected which prevent you
+  from publishing a gem prematurely.
 
 # Tests
 
@@ -230,8 +250,7 @@ Add your key to your global Git configuration in the `[user]` section. Example:
       signingkey = <your GPG key>
 
 Now, when publishing your gems with Gemsmith (i.e. `bundle exec rake publish`), signing of your Git tag will happen
-automatically. Should you not want to sign your tags, use `bundle exec rake release` which is the same as
-`bundle exec rake publish` except the Git tag is not signed.
+automatically.
 
 ## Gem Certificates
 
@@ -246,7 +265,7 @@ The resulting `*.pem` key files can be referenced via the `:private_key:` and `:
 
 To learn more about gem certificates, read the following:
 
-- [Ruby Gems](http://guides.rubygems.org/security/#building_gems)
+- [RubyGems](http://guides.rubygems.org/security/#building_gems)
 - [A Practical Guide to Using Signed Ruby Gems - Part 1: Bundler](http://blog.meldium.com/home/2013/3/3/signed-rubygems-part)
 - [A Practical Guide to Using Signed Ruby Gems - Part 2: Heroku](http://blog.meldium.com/home/2013/3/6/signed-gems-on-heroku)
 
