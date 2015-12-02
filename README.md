@@ -4,7 +4,7 @@
 [![Code Climate GPA](https://codeclimate.com/github/bkuhlmann/gemsmith.svg)](https://codeclimate.com/github/bkuhlmann/gemsmith)
 [![Code Climate Coverage](https://codeclimate.com/github/bkuhlmann/gemsmith/coverage.svg)](https://codeclimate.com/github/bkuhlmann/gemsmith)
 [![Gemnasium Status](https://gemnasium.com/bkuhlmann/gemsmith.svg)](https://gemnasium.com/bkuhlmann/gemsmith)
-[![Travis CI Status](https://secure.travis-ci.org/bkuhlmann/gemsmith.svg)](http://travis-ci.org/bkuhlmann/gemsmith)
+[![Travis CI Status](https://secure.travis-ci.org/bkuhlmann/gemsmith.svg)](https://travis-ci.org/bkuhlmann/gemsmith)
 [![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/bkuhlmann)
 
 A command line interface for smithing new Ruby gems.
@@ -38,7 +38,7 @@ A command line interface for smithing new Ruby gems.
 
 - Builds a gem skeleton with enhanced Bundler functionality.
 - Supports common settings to be applied when creating new gems.
-- Supports [Thor](https://github.com/wycats/thor) command line interface (CLI) functionality.
+- Supports [Thor](https://github.com/erikhuda/thor) command line interface (CLI) functionality.
 - Supports [Ruby on Rails](http://rubyonrails.org).
 - Supports [Pry](http://pryrepl.org).
 - Supports [Guard](https://github.com/guard/guard).
@@ -46,7 +46,7 @@ A command line interface for smithing new Ruby gems.
 - Supports [Rubocop](https://github.com/bbatsov/rubocop).
 - Supports [Code Climate](https://codeclimate.com).
 - Supports [Gemnasium](https://gemnasium.com).
-- Supports [Travis CI](http://travis-ci.org).
+- Supports [Travis CI](https://travis-ci.org/).
 - Supports [Patreon](https://www.patreon.com).
 - Provides the ability to open the source code of any gem within your favorite editor.
 - Provides the ability to read the documentation of any gem within your default browser.
@@ -58,9 +58,9 @@ A command line interface for smithing new Ruby gems.
 # Requirements
 
 0. A UNIX-based system
-0. [MRI 2.x.x](http://www.ruby-lang.org)
-0. [RubyGems](http://rubygems.org)
-0. [Bundler](https://github.com/carlhuda/bundler)
+0. [MRI 2.x.x](https://www.ruby-lang.org/)
+0. [RubyGems](https://rubygems.org/)
+0. [Bundler](https://github.com/bundler/bundler)
 
 # Setup
 
@@ -252,7 +252,7 @@ To learn more about gem certificates, read the following:
 
 Once your gem is released, you might want to let the world know about your awesomeness. Here are several resources:
 
-- [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code)
+- [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code/)
 - [Ruby Green News](http://greenruby.org)
 - [Ruby Toolbox](https://www.ruby-toolbox.com)
 - [RubyFlow](http://www.rubyflow.com)
