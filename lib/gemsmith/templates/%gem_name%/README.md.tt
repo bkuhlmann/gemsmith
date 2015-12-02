@@ -9,7 +9,7 @@
 [![Gemnasium Status](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>.svg)](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>)
 <%- end -%>
 <%- if config.fetch(:create).fetch(:travis) -%>
-[![Travis CI Status](https://secure.travis-ci.org/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>.svg)](http://travis-ci.org/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>)
+[![Travis CI Status](https://secure.travis-ci.org/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>.svg)](https://travis-ci.org/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>)
 <%- end -%>
 <%- if config.fetch(:create).fetch(:patreon) -%>
 [![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/<%= config.fetch :github_user %>)
@@ -22,6 +22,7 @@
 
 # Requirements
 
+0. [MRI <%= config.fetch(:versions).fetch(:ruby) %>](https://www.ruby-lang.org)
 <%- if config.fetch(:create).fetch(:rails) -%>
 0. [Ruby on Rails](http://rubyonrails.org).
 <%- end -%>
@@ -31,7 +32,7 @@
 <%- if config.fetch(:create).fetch(:security) -%>
 For a secure install, type the following (recommended):
 
-    gem cert --add <(curl -Ls http://www.my-website.com/gem-public.pem)
+    gem cert --add <(curl -Ls https://www.my-website.com/gem-public.pem)
     gem install <%= config.fetch(:gem).fetch(:name) %> --trust-policy MediumSecurity
 
 NOTE: A HighSecurity trust policy would be best but MediumSecurity enables signed gem verification while
