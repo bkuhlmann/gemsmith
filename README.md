@@ -37,8 +37,10 @@ A command line interface for smithing new Ruby gems.
 # Features
 
 - Builds a gem skeleton with enhanced Bundler functionality.
-- Supports common settings to be applied when creating new gems.
-- Supports [Thor](https://github.com/erikhuda/thor) command line interface (CLI) functionality.
+- Uses [Milestoner](https://github.com/bkuhlmann/milestoner) for consistent project/gem versioning.
+- Uses [Tocer](https://github.com/bkuhlmann/tocer) for README table of contents generation.
+- Uses common settings and a structured layout for building new gems.
+- Supports [Thor](https://github.com/erikhuda/thor).
 - Supports [Ruby on Rails](http://rubyonrails.org).
 - Supports [Pry](http://pryrepl.org).
 - Supports [Guard](https://github.com/guard/guard).
@@ -48,10 +50,10 @@ A command line interface for smithing new Ruby gems.
 - Supports [Gemnasium](https://gemnasium.com).
 - Supports [Travis CI](https://travis-ci.org/).
 - Supports [Patreon](https://www.patreon.com).
-- Provides the ability to open the source code of any gem within your favorite editor.
-- Provides the ability to read the documentation of any gem within your default browser.
 - Adds commonly needed [README](README.md), [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md),
   [CODE OF CONDUCT](CODE_OF_CONDUCT.md), [LICENSE](LICENSE.md), etc. documentation.
+- Provides the ability to open the source code of any gem within your favorite editor.
+- Provides the ability to read the documentation of any gem within your default browser.
 
 [![asciicast](https://asciinema.org/a/30728.png)](https://asciinema.org/a/30728)
 
