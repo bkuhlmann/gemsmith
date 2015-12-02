@@ -61,7 +61,7 @@ module Gemsmith
       @spec_aid = Aids::Spec.new
     end
 
-    desc "-c, [create=CREATE]", "Create new gem."
+    desc "-c, [--create=CREATE]", "Create new gem."
     map %w(-c --create) => :create
     method_option :cli, aliases: "-c", desc: "Add CLI support.", type: :boolean, default: false
     method_option :rails, aliases: "-r", desc: "Add Rails support.", type: :boolean, default: false
@@ -85,14 +85,14 @@ module Gemsmith
       say
     end
 
-    desc "-o, [open=OPEN]", "Open a gem in default editor."
+    desc "-o, [--open=OPEN]", "Open a gem in default editor."
     map %w(-o --open) => :open
     def open name
       result = process_gem name, "open"
       info("Opening: #{result}") unless result.nil? || result.empty?
     end
 
-    desc "-r, [read=READ]", "Open a gem in default browser."
+    desc "-r, [--read=READ]", "Open a gem in default browser."
     map %w(-r --read) => :read
     def read name
       result = process_gem name, "read"
