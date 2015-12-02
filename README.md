@@ -48,7 +48,7 @@ A command line interface for smithing new Ruby gems.
 - Supports [Rubocop](https://github.com/bbatsov/rubocop).
 - Supports [Code Climate](https://codeclimate.com).
 - Supports [Gemnasium](https://gemnasium.com).
-- Supports [Travis CI](https://travis-ci.org/).
+- Supports [Travis CI](https://travis-ci.org).
 - Supports [Patreon](https://www.patreon.com).
 - Adds commonly needed [README](README.md), [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md),
   [CODE OF CONDUCT](CODE_OF_CONDUCT.md), [LICENSE](LICENSE.md), etc. documentation.
@@ -60,8 +60,8 @@ A command line interface for smithing new Ruby gems.
 # Requirements
 
 0. A UNIX-based system
-0. [MRI 2.x.x](https://www.ruby-lang.org/)
-0. [RubyGems](https://rubygems.org/)
+0. [MRI 2.x.x](https://www.ruby-lang.org)
+0. [RubyGems](https://rubygems.org)
 0. [Bundler](https://github.com/bundler/bundler)
 
 # Setup
@@ -180,8 +180,8 @@ Once a gem skeleton has been created, the following tasks are available (i.e. `b
     rake rubocop:auto_correct  # Auto-correct RuboCop offenses
     rake spec                  # Run RSpec code examples
 
-The following Rake tasks are provided by [Bundler](http://bundler.io) and enhanced as follows (all other tasks are
-provided by Gemsmith):
+Out of all Rake tasks listed above, the following are provided by [Bundler](http://bundler.io) and enhanced by
+Gemsmith:
 
     rake build - Cleans and regenerates the README table of contents in addition to building the gem.
     rake install - Inherits the `build` modifications mentioned above.
@@ -273,12 +273,8 @@ To learn more about gem certificates, read the following:
 
 Once your gem is released, you might want to let the world know about your awesomeness. Here are several resources:
 
-- [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code/)
-- [Ruby Green News](http://greenruby.org)
-- [Ruby Toolbox](https://www.ruby-toolbox.com)
+- [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code)
 - [RubyFlow](http://www.rubyflow.com)
-- [The Ruby Show](http://rubyshow.com)
-- [Ruby 5](https://ruby5.codeschool.com)
 
 # Versioning
 
