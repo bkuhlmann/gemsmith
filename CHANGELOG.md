@@ -1,3 +1,12 @@
+# v6.2.0 (2015-12-02)
+
+- Fixed CLI long form command usage documentation.
+- Added Milestoner and Tocer gems to README feature list.
+- Updated README Rake documentation.
+- Updated README template so HTTPS links are used.
+- Removed invalid gem promotion links from README.
+- Update README URLs based on HTTP redirects.
+
 # v6.1.0 (2015-11-27)
 
 - Fixed bug where Git tags were not being pushed to remote.
