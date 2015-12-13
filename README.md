@@ -226,12 +226,12 @@ To test, run:
 
 ## Git Signing Key
 
-To sign your Git tags, start by installing and configuring [GPG](https://www.gnupg.org):
+To securely sign your Git tags, install and configure [GPG](https://www.gnupg.org):
 
     brew install gpg
     gpg --gen-key
 
-When setting up your GPG key, here is an example of safe defaults:
+When creating your GPG key, choose these settings:
 
 - Key kind: RSA and RSA (default)
 - Key size: 4096
@@ -250,7 +250,7 @@ Add your key to your global Git configuration in the `[user]` section. Example:
       signingkey = <your GPG key>
 
 Now, when publishing your gems with Gemsmith (i.e. `bundle exec rake publish`), signing of your Git tag will happen
-automatically.
+automatically. You will be prompted for the GPG Passphrase each time but that is to be expected.
 
 ## Gem Certificates
 
@@ -271,7 +271,7 @@ To learn more about gem certificates, read the following:
 
 # Promotion
 
-Once your gem is released, you might want to let the world know about your awesomeness. Here are several resources:
+Once your gem is released, you might want to let the world know about your accomplishment:
 
 - [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code)
 - [RubyFlow](http://www.rubyflow.com)
