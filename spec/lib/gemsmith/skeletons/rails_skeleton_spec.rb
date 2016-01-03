@@ -64,9 +64,7 @@ describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
   end
 
   describe "#create_engine" do
-    before do
-      subject.create_engine
-    end
+    before { subject.create_engine }
 
     it "creates engine file" do
       expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/engine.rb.tt", configuration.to_h)

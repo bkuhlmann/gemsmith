@@ -11,7 +11,6 @@ describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
   subject { described_class.new cli, configuration: configuration }
   before { FileUtils.mkdir gem_dir }
 
-
   describe "#create_console_task" do
     before { subject.create_console_task }
 
