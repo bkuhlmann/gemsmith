@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Gemsmith::Aids::Gem do
+RSpec.describe Gemsmith::Aids::Gem do
   subject { described_class.new string }
 
   describe "#name" do

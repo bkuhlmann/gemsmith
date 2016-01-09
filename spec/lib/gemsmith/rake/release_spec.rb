@@ -1,7 +1,7 @@
 require "spec_helper"
 require "gemsmith/rake/release"
 
-describe Gemsmith::Rake::Release, :temp_dir do
+RSpec.describe Gemsmith::Rake::Release, :temp_dir do
   let(:publisher) { instance_spy Milestoner::Publisher }
   let(:gem_spec_path) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures", "tester.gemspec" }
   subject { described_class.new gem_spec_path, publisher: publisher }

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Gemsmith::Aids::Spec do
+RSpec.describe Gemsmith::Aids::Spec do
   let(:specification) { class_spy ::Gem::Specification }
   let(:shell) { class_spy Open3 }
   subject { described_class.new specification: specification, shell: shell }

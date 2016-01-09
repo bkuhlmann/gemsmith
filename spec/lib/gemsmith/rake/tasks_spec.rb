@@ -2,7 +2,7 @@ require "spec_helper"
 require "rake"
 require "gemsmith/rake/tasks"
 
-describe Gemsmith::Rake::Tasks do
+RSpec.describe Gemsmith::Rake::Tasks do
   subject { described_class.new }
   before do
     Rake::Task.clear

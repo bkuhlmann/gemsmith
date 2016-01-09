@@ -1,6 +1,7 @@
 RSpec.configure do |config|
   config.order = "random"
   config.filter_run focus: true
+  config.disable_monkey_patching!
   config.run_all_when_everything_filtered = true
   config.example_status_persistence_file_path = "./tmp/rspec-status.txt"
 

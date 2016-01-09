@@ -1,7 +1,7 @@
 require "spec_helper"
 require "gemsmith/rake/build"
 
-describe Gemsmith::Rake::Build, :temp_dir do
+RSpec.describe Gemsmith::Rake::Build, :temp_dir do
   let(:tocer_class) { class_spy Tocer::Writer }
   let(:tocer) { instance_spy Tocer::Writer }
   let(:kernel) { class_spy Kernel }

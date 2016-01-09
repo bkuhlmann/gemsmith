@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
+RSpec.describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:create_rspec) { false }
   let(:create_rubocop) { false }

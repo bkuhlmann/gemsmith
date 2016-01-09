@@ -1,5 +1,5 @@
 require "spec_helper"
 
-describe "<%= config.fetch(:gem).fetch(:class) %>" do
+RSpec.describe "<%= config.fetch(:gem).fetch(:class) %>" do
   it "should be tested"
 end

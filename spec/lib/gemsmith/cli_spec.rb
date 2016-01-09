@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Gemsmith::CLI do
+RSpec.describe Gemsmith::CLI do
   let(:options) { [] }
   let(:command_line) { Array(command).concat options }
   let(:cli) { -> { described_class.start command_line } }

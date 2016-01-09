@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Gemsmith::Skeletons::BaseSkeleton do
+RSpec.describe Gemsmith::Skeletons::BaseSkeleton do
   let(:cli) { instance_spy Gemsmith::CLI }
   subject { described_class.new cli }
 
