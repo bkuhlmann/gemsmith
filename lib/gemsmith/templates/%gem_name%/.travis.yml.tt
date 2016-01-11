@@ -1,9 +1,9 @@
 language: ruby
 rvm:
-  - <%= config.fetch(:versions).fetch(:ruby) %>
-<%- if config.fetch(:create).fetch(:rails) -%>
+  - <%= config.dig(:versions, :ruby) %>
+<%- if config.dig(:create, :rails) -%>
 gemfile:
-  - gemfiles/rails-<%= config.fetch(:versions).fetch(:rails) %>.x.gemfile
+  - gemfiles/rails-<%= config.dig(:versions, :rails) %>.x.gemfile
 <%- end -%>
 script: bundle exec rake
 notifications:

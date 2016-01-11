@@ -1,17 +1,17 @@
-# <%= config.fetch(:gem).fetch(:class) %>
+# <%= config.dig(:gem, :class) %>
 
-[![Gem Version](https://badge.fury.io/rb/<%= config.fetch(:gem).fetch(:name) %>.svg)](http://badge.fury.io/rb/<%= config.fetch(:gem).fetch(:name) %>)
-<%- if config.fetch(:create).fetch(:code_climate) -%>
-[![Code Climate GPA](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>.svg)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>)
-[![Code Climate Coverage](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>/coverage.svg)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>)
+[![Gem Version](https://badge.fury.io/rb/<%= config.dig(:gem, :name) %>.svg)](http://badge.fury.io/rb/<%= config.dig(:gem, :name) %>)
+<%- if config.dig(:create, :code_climate) -%>
+[![Code Climate GPA](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>.svg)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
+[![Code Climate Coverage](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>/coverage.svg)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
 <%- end -%>
-<%- if config.fetch(:create).fetch(:gemnasium) -%>
-[![Gemnasium Status](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>.svg)](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>)
+<%- if config.dig(:create, :gemnasium) -%>
+[![Gemnasium Status](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>.svg)](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
 <%- end -%>
-<%- if config.fetch(:create).fetch(:travis) -%>
-[![Travis CI Status](https://secure.travis-ci.org/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>.svg)](https://travis-ci.org/<%= config.fetch :github_user %>/<%= config.fetch(:gem).fetch(:name) %>)
+<%- if config.dig(:create, :travis) -%>
+[![Travis CI Status](https://secure.travis-ci.org/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>.svg)](https://travis-ci.org/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
 <%- end -%>
-<%- if config.fetch(:create).fetch(:patreon) -%>
+<%- if config.dig(:create, :patreon) -%>
 [![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/<%= config.fetch :github_user %>)
 <%- end -%>
 
@@ -22,40 +22,40 @@
 
 # Requirements
 
-0. [MRI <%= config.fetch(:versions).fetch(:ruby) %>](https://www.ruby-lang.org)
-<%- if config.fetch(:create).fetch(:rails) -%>
+0. [MRI <%= config.dig(:versions, :ruby) %>](https://www.ruby-lang.org)
+<%- if config.dig(:create, :rails) -%>
 0. [Ruby on Rails](http://rubyonrails.org).
 <%- end -%>
 
 # Setup
 
-<%- if config.fetch(:create).fetch(:security) -%>
+<%- if config.dig(:create, :security) -%>
 For a secure install, type the following (recommended):
 
     gem cert --add <(curl -Ls https://www.my-website.com/gem-public.pem)
-    gem install <%= config.fetch(:gem).fetch(:name) %> --trust-policy MediumSecurity
+    gem install <%= config.dig(:gem, :name) %> --trust-policy MediumSecurity
 
 NOTE: A HighSecurity trust policy would be best but MediumSecurity enables signed gem verification while
 allowing the installation of unsigned dependencies since they are beyond the scope of this gem.
 
 For an insecure install, type the following (not recommended):
 
-    gem install <%= config.fetch(:gem).fetch(:name) %>
+    gem install <%= config.dig(:gem, :name) %>
 <%- else -%>
 To install, type the following:
 
-    gem install <%= config.fetch(:gem).fetch(:name) %>
+    gem install <%= config.dig(:gem, :name) %>
 <%- end -%>
 
-<%- unless config.fetch(:create).fetch(:cli) -%>
+<%- unless config.dig(:create, :cli) -%>
 Add the following to your Gemfile:
 
-    gem "<%= config.fetch(:gem).fetch(:name) %>"
+    gem "<%= config.dig(:gem, :name) %>"
 <%- end -%>
 
 # Usage
 
-<%- if config.fetch(:create).fetch(:rspec) -%>
+<%- if config.dig(:create, :rspec) -%>
 # Tests
 
 To test, run:
@@ -82,7 +82,7 @@ Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 # License
 
-Copyright (c) <%= config.fetch :year %> [<%= config.fetch(:organization).fetch(:name) %>](<%= config.fetch(:organization).fetch(:url) %>).
+Copyright (c) <%= config.fetch :year %> [<%= config.dig :organization, :name %>](<%= config.dig :organization, :url %>).
 Read the [LICENSE](LICENSE.md) for details.
 
 # History
@@ -92,4 +92,4 @@ Built with [Gemsmith](https://github.com/bkuhlmann/gemsmith).
 
 # Credits
 
-Developed by [<%= config.fetch(:author).fetch(:name) %>](<%= config.fetch(:author).fetch(:url) %>) at [<%= config.fetch(:organization).fetch(:name) %>](<%= config.fetch(:organization).fetch(:url) %>).
+Developed by [<%= config.dig(:author, :name) %>](<%= config.dig :author, :url %>) at [<%= config.dig :organization, :name %>](<%= config.dig :organization, :url %>).

@@ -1,19 +1,19 @@
 require "bundler/setup"
 
-<%- if config.fetch(:create).fetch(:code_climate) -%>
+<%- if config.dig(:create, :code_climate) -%>
 if ENV["CI"]
   require "codeclimate-test-reporter"
   CodeClimate::TestReporter.start
 end
 
 <%- end -%>
-<%- if config.fetch(:create).fetch(:rails) -%>
+<%- if config.dig(:create, :rails) -%>
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path "../dummy/config/environment", __FILE__
 ENV["RAILS_ROOT"] ||= File.dirname(__FILE__) + "/dummy"
 
 <%- end -%>
-require "<%= config.fetch(:gem).fetch(:name) %>"
+require "<%= config.dig(:gem, :name) %>"
 
 Dir[File.join(File.dirname(__FILE__), "support/extensions/**/*.rb")].each { |file| require file }
 Dir[File.join(File.dirname(__FILE__), "support/kit/**/*.rb")].each { |file| require file }

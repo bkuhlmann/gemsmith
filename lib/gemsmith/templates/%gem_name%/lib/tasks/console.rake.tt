@@ -3,7 +3,7 @@
 desc "Open IRB console for gem development environment"
 task :console do
   require "irb"
-  require "<%= config.fetch(:gem).fetch(:name) %>"
+  require "<%= config.dig(:gem, :name) %>"
   ARGV.clear
   IRB.start
 end

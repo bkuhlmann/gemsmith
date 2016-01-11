@@ -1,1 +1,1 @@
-<%= config.fetch(:versions).fetch(:ruby) %>
+<%= config.dig(:versions, :ruby) %>

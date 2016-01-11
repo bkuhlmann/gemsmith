@@ -1,4 +1,4 @@
-<%- if config.fetch(:create).fetch(:rails) -%>
+<%- if config.dig(:create, :rails) -%>
 AllCops:
   RunRailsCops: true
   Exclude:

@@ -1,9 +1,9 @@
-module <%= config.fetch(:gem).fetch(:class) %>
+module <%= config.dig(:gem, :class) %>
   # Generator for installing new files.
   class InstallGenerator < Rails::Generators::Base
     source_root File.join(File.dirname(__FILE__), "..", "templates")
 
-    desc "Installs additional <%= config.fetch(:gem).fetch(:class) %> resources."
+    desc "Installs additional <%= config.dig(:gem, :class) %> resources."
     def install
       # TODO: Add install code.
     end

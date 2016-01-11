@@ -1,4 +1,4 @@
-require "<%= config.fetch(:gem).fetch(:name) %>/identity"
-<%- if config.fetch(:create).fetch(:rails) -%>
-require "<%= config.fetch(:gem).fetch(:name) %>/engine"
+require "<%= config.dig(:gem, :name) %>/identity"
+<%- if config.dig(:create, :rails) -%>
+require "<%= config.dig(:gem, :name) %>/engine"
 <%- end -%>

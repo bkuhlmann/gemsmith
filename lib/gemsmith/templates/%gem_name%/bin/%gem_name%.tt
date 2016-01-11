@@ -1,8 +1,8 @@
 #!/usr/bin/ruby
 
-require "<%= config.fetch(:gem).fetch(:name) %>"
-require "<%= config.fetch(:gem).fetch(:name) %>/cli"
-require "<%= config.fetch(:gem).fetch(:name) %>/identity"
+require "<%= config.dig(:gem, :name) %>"
+require "<%= config.dig(:gem, :name) %>/cli"
+require "<%= config.dig(:gem, :name) %>/identity"
 
-Process.setproctitle <%= config.fetch(:gem).fetch(:class) %>::Identity.version_label
-<%= config.fetch(:gem).fetch(:class) %>::CLI.start
+Process.setproctitle <%= config.dig(:gem, :class) %>::Identity.version_label
+<%= config.dig(:gem, :class) %>::CLI.start

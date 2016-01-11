@@ -1,6 +1,6 @@
-module <%= config.fetch(:gem).fetch(:class) %>
+module <%= config.dig(:gem, :class) %>
   # Defines and registers the Rails engine.
   class Engine < ::Rails::Engine
-    isolate_namespace <%= config.fetch(:gem).fetch(:class) %>
+    isolate_namespace <%= config.dig(:gem, :class) %>
   end
 end

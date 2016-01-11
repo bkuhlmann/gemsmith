@@ -1,34 +1,34 @@
 $LOAD_PATH.push File.expand_path("../lib", __FILE__)
-require "<%= config.fetch(:gem).fetch(:name) %>/identity"
+require "<%= config.dig(:gem, :name) %>/identity"
 
 Gem::Specification.new do |spec|
-  spec.name = <%= config.fetch(:gem).fetch(:class) %>::Identity.name
-  spec.version = <%= config.fetch(:gem).fetch(:class) %>::Identity.version
-  spec.platform = <%= config.fetch(:gem).fetch(:platform) %>
-  spec.authors = ["<%= config.fetch(:author).fetch(:name) %>"]
-  spec.email = ["<%= config.fetch(:author).fetch(:email) %>"]
-  spec.homepage = "<%= config.fetch(:gem).fetch(:home_url) %>"
+  spec.name = <%= config.dig(:gem, :class) %>::Identity.name
+  spec.version = <%= config.dig(:gem, :class) %>::Identity.version
+  spec.platform = <%= config.dig(:gem, :platform) %>
+  spec.authors = ["<%= config.dig(:author, :name) %>"]
+  spec.email = ["<%= config.dig(:author, :email) %>"]
+  spec.homepage = "<%= config.dig(:gem, :home_url) %>"
   spec.summary = "TODO: Add gem summary here."
   spec.description = "TODO: Add gem description here."
   spec.license = "MIT"
 
-  <%- if config.fetch(:create).fetch(:security) -%>
+  <%- if config.dig(:create, :security) -%>
   if ENV["RUBY_GEM_SECURITY"] == "enabled"
-    spec.signing_key = File.expand_path("<%= config.fetch(:gem).fetch(:private_key) %>")
-    spec.cert_chain = [File.expand_path("<%= config.fetch(:gem).fetch(:public_key) %>")]
+    spec.signing_key = File.expand_path("<%= config.dig(:gem, :private_key) %>")
+    spec.cert_chain = [File.expand_path("<%= config.dig(:gem, :public_key) %>")]
   end
   <%- end -%>
 
-  <%- if config.fetch(:create).fetch(:cli) -%>
+  <%- if config.dig(:create, :cli) -%>
   spec.add_dependency "thor"
   spec.add_dependency "thor_plus"
   <%- end -%>
-  <%- if config.fetch(:create).fetch(:rails) -%>
-  spec.add_dependency "rails", "~> <%= config.fetch(:versions).fetch(:rails) %>"
+  <%- if config.dig(:create, :rails) -%>
+  spec.add_dependency "rails", "~> <%= config.dig(:versions, :rails) %>"
   <%- end -%>
   spec.add_development_dependency "rake"
   spec.add_development_dependency "gemsmith"
-  <%- if config.fetch(:create).fetch(:pry) -%>
+  <%- if config.dig(:create, :pry) -%>
   spec.add_development_dependency "pry"
   spec.add_development_dependency "pry-byebug"
   spec.add_development_dependency "pry-remote"
@@ -36,26 +36,26 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-rescue"
   spec.add_development_dependency "pry-stack_explorer"
   <%- end -%>
-  <%- if config.fetch(:create).fetch(:rspec) -%>
-  spec.add_development_dependency "<%= config.fetch(:create).fetch(:rails) ? "rspec-rails" : "rspec" %>"
+  <%- if config.dig(:create, :rspec) -%>
+  spec.add_development_dependency "<%= config.dig(:create, :rails) ? "rspec-rails" : "rspec" %>"
   <%- end -%>
-  <%- if config.fetch(:create).fetch(:guard) -%>
+  <%- if config.dig(:create, :guard) -%>
   spec.add_development_dependency "rb-fsevent" # Guard file events for OSX.
   spec.add_development_dependency "guard-rspec"
   spec.add_development_dependency "terminal-notifier"
   spec.add_development_dependency "terminal-notifier-guard"
   <%- end -%>
-  <%- if config.fetch(:create).fetch(:rubocop) -%>
+  <%- if config.dig(:create, :rubocop) -%>
   spec.add_development_dependency "rubocop"
   <%- end -%>
-  <%- if config.fetch(:create).fetch(:code_climate) -%>
+  <%- if config.dig(:create, :code_climate) -%>
   spec.add_development_dependency "codeclimate-test-reporter"
   <%- end -%>
 
   spec.files = Dir["lib/**/*", "vendor/**/*"]
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
-  <%- if config.fetch(:create).fetch(:cli) -%>
-  spec.executables << "<%= config.fetch(:gem).fetch(:name) %>"
+  <%- if config.dig(:create, :cli) -%>
+  spec.executables << "<%= config.dig(:gem, :name) %>"
   <%- end -%>
   spec.require_paths = ["lib"]
 end
