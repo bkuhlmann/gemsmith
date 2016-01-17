@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Gemsmith
   module Aids
     # Parses a raw string into a valid gem and/or class name which can be used to construct gem skeletons

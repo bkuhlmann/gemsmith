@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module <%= config.dig(:gem, :class) %>
   # Generator for installing new files.
   class InstallGenerator < Rails::Generators::Base

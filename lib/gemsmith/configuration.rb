@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Gemsmith
   # Default configuration for gem with support for custom settings.
   class Configuration

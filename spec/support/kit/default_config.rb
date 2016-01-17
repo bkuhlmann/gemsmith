@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   config.order = "random"
   config.filter_run focus: true

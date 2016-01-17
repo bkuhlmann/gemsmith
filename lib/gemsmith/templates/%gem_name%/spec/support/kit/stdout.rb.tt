@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ENV["SUPPRESS_STDOUT"] == "enabled"
   RSpec.configure do |config|
     stdout_original = $stdout

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe Gemsmith::Skeletons::GemSkeleton, :temp_dir do

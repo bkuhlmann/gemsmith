@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "bundler/gem_tasks"
 require "gemsmith/rake/build"
 require "gemsmith/rake/release"

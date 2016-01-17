@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ENV["SUPPRESS_STDERR"] == "enabled"
   RSpec.configure do |config|
     stderr_original = $stderr

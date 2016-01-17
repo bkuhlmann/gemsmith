@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rspec/core/shared_context"
 
 module RSpec

@@ -1,4 +1,5 @@
-#!/usr/bin/ruby
+#! /usr/bin/ruby
+# frozen_string_literal: true
 
 require "gemsmith"
 require "gemsmith/cli"

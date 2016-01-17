@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Gemsmith
   module Aids
     # A thin wrapper to Git.

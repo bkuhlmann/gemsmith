@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe Gemsmith::Aids::Git, :temp_dir do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module <%= config.dig(:gem, :class) %>
   # Gem identity information.
   module Identity

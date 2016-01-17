@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module <%= config.dig(:gem, :class) %>
   # Defines and registers the Rails engine.
   class Engine < ::Rails::Engine

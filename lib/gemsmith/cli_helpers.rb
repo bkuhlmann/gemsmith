@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Gemsmith
   # Command Line Interface (CLI) helpers for the CLI class.
   module CLIHelpers
