@@ -19,7 +19,6 @@ A command line interface for smithing new Ruby gems.
 - [Usage](#usage)
   - [Command Line Interface (CLI)](#command-line-interface-cli)
   - [Rake](#rake)
-  - [Upgrades](#upgrades)
 - [Tests](#tests)
 - [Security](#security)
   - [Git Signing Key](#git-signing-key)
@@ -60,7 +59,7 @@ A command line interface for smithing new Ruby gems.
 # Requirements
 
 0. A UNIX-based system
-0. [MRI 2.x.x](https://www.ruby-lang.org)
+0. [Ruby 2.3.x](https://www.ruby-lang.org)
 0. [RubyGems](https://rubygems.org)
 0. [Bundler](https://github.com/bundler/bundler)
 
@@ -169,13 +168,15 @@ For more gem creation options, type: `gemsmith --help --create`
 
 Once a gem skeleton has been created, the following tasks are available (i.e. `bundle exec rake -T`):
 
-    rake build                 # Build gemsmith-6.0.0.gem into the pkg directory
-    rake clean                 # Clean gem artifacts
+    rake build                 # Build gemsmith-7.0.0.gem into the pkg directory
+    rake clean                 # Remove any temporary products / Clean gem artifacts
+    rake clobber               # Remove any generated files
+    rake console               # Open IRB console for gem development environment
     rake doc                   # Update README (table of contents)
-    rake install               # Build and install gemsmith-6.0.0.gem into system gems
-    rake install:local         # Build and install gemsmith-6.0.0.gem into system gems without network access
-    rake publish               # Build, tag v6.0.0 (signed), and push gemsmith-6.0.0.gem to RubyGems
-    rake release               # Create tag v6.0.0 and build and push gemsmith-6.0.0.gem to Rubygems
+    rake install               # Build and install gemsmith-7.0.0.gem into system gems
+    rake install:local         # Build and install gemsmith-7.0.0.gem into system gems without network access
+    rake publish               # Build, tag v7.0.0 (signed), and push gemsmith-7.0.0.gem to RubyGems
+    rake release[remote]       # Create tag v7.0.0 and build and push gemsmith-7.0.0.gem to Rubygems
     rake rubocop               # Run RuboCop
     rake rubocop:auto_correct  # Auto-correct RuboCop offenses
     rake spec                  # Run RSpec code examples
@@ -201,20 +202,6 @@ When satified with your gem, builds are green, and ready to publish, run:
 
 Alternatively, you can run `bundle exec rake release` if you don't wish to sign your gem releases (i.e default Bundler
 behavior) but the added security that `publish` provides is strongly recommended.
-
-## Upgrades
-
-For those upgrading from Gemsmith 5.6.0 please be aware of the following changes:
-
-- Move your `~/.gemsmith/settings.yml` settings to the new `~/.gemsmithrc` file. Refer to the Setup documentation
-  mentioned above for details.
-- The `--cli/-c` create option has replaced the `--bin/-b` create option.
-- The `--code-climate` create option shortcut is now `-C` instead of `-c`.
-- [Tocer](https://github.com/bkuhlmann/tocer) has replaced [DocToc](https://github.com/thlorenz/doctoc) as a pure Ruby
-  implementation for generating README table of contents and removing the dependency on NPM.
-- The `rake readme:toc` task has been replaced with `rake doc`.
-- Using Rake to build, release, or publish a gem will fail if uncommitted Git changes are detected which prevent you
-  from publishing a gem prematurely.
 
 # Tests
 

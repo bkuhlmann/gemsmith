@@ -1,3 +1,13 @@
+# v7.0.0 (2016-01-17)
+
+- Fixed spec formatting (minor).
+- Added IRB console Rake task support.
+- Updated Git Signing Key and Promotion README documentation.
+- Updated to Ruby 2.3.0.
+- Removed RSpec default monkey patching behavior.
+- Removed Ruby 2.1.x and 2.2.x support.
+- Refactored templates to use `Hash#dig`.
+
 # v6.2.0 (2015-12-02)
 
 - Fixed CLI long form command usage documentation.

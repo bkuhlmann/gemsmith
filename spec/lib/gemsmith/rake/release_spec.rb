@@ -54,7 +54,7 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
 
   describe "#gem_file_name" do
     it "answers versioned gem package file name" do
-      expect((subject.gem_file_name)).to eq("tester-0.1.0.gem")
+      expect(subject.gem_file_name).to eq("tester-0.1.0.gem")
     end
   end
 

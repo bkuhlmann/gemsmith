@@ -27,7 +27,7 @@ module Gemsmith
       answer = ask "Enter selection:"
       return if answer == "q"
 
-      if (1..gems.size).include?(answer.to_i)
+      if (1..gems.size).cover?(answer.to_i)
         spec_aid.find name, gems[answer.to_i - 1].version.version
       else
         error "Invalid option: #{answer}"
