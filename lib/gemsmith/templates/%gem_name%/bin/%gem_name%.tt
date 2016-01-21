@@ -1,5 +1,4 @@
 #! /usr/bin/ruby
-# frozen_string_literal: true
 
 require "<%= config.dig(:gem, :name) %>"
 require "<%= config.dig(:gem, :name) %>/cli"
