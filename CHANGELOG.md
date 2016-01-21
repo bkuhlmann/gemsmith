@@ -1,3 +1,9 @@
+# v7.1.0 (2016-01-20)
+
+- Fixed README template documentation for gem certificate.
+- Fixed gem secure install issues.
+- Removed frozen string literal from Rake files.
+
 # v7.0.0 (2016-01-17)
 
 - Fixed spec formatting (minor).

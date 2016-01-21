@@ -58,10 +58,10 @@ A command line interface for smithing new Ruby gems.
 
 # Requirements
 
-0. A UNIX-based system
-0. [Ruby 2.3.x](https://www.ruby-lang.org)
-0. [RubyGems](https://rubygems.org)
-0. [Bundler](https://github.com/bundler/bundler)
+0. A UNIX-based system.
+0. [Ruby 2.3.x](https://www.ruby-lang.org).
+0. [RubyGems](https://rubygems.org).
+0. [Bundler](https://github.com/bundler/bundler).
 
 # Setup
 
