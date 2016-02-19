@@ -10,7 +10,7 @@ following details what you need to know in order to contribute.
 - Follow these [Git Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/git.md).
 - Follow these [Bash Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/languages/bash.md).
 - Follow these [CSS Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/languages/css.md).
-- Follow these [Ruby Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/languages/ruby.md).
+- Follow these [Ruby Styles](https://github.com/bkuhlmann/style_guides/blob/master/programming/languages/ruby/ruby.md).
 
 # Contributing Code
 
@@ -31,5 +31,5 @@ following details what you need to know in order to contribute.
 
 # Feedback
 
-Expect a response with one to three business days (normally responses are faster than mentioned).
+Expect a response within one to three business days.
 Changes, alternatives, and/or improvements might be suggested upon review.
