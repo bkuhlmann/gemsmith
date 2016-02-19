@@ -13,6 +13,7 @@ require "gemsmith/skeletons/cli_skeleton"
 require "gemsmith/skeletons/documentation_skeleton"
 require "gemsmith/skeletons/gem_skeleton"
 require "gemsmith/skeletons/git_skeleton"
+require "gemsmith/skeletons/git_hub_skeleton"
 require "gemsmith/skeletons/guard_skeleton"
 require "gemsmith/skeletons/pry_skeleton"
 require "gemsmith/skeletons/rails_skeleton"
@@ -52,6 +53,7 @@ module Gemsmith
         Skeletons::PrySkeleton,
         Skeletons::TravisSkeleton,
         Skeletons::BundlerSkeleton,
+        Skeletons::GitHubSkeleton,
         Skeletons::GitSkeleton
       ]
     end
@@ -72,6 +74,7 @@ module Gemsmith
     method_option :guard, aliases: "-g", desc: "Add Guard support.", type: :boolean, default: true
     method_option :rspec, aliases: "-s", desc: "Add RSpec support.", type: :boolean, default: true
     method_option :rubocop, aliases: "-R", desc: "Add Rubocop support.", type: :boolean, default: true
+    method_option :git_hub, aliases: "-H", desc: "Add GitHub support.", type: :boolean, default: false
     method_option :code_climate, aliases: "-C", desc: "Add Code Climate support.", type: :boolean, default: true
     method_option :gemnasium, aliases: "-G", desc: "Add Gemnasium support.", type: :boolean, default: true
     method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true

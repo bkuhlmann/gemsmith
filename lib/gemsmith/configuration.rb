@@ -7,8 +7,8 @@ module Gemsmith
     attr_writer :gem_platform, :gem_home_url, :gem_license, :gem_private_key, :gem_public_key, :author_name,
                 :author_email, :author_url, :organization_name, :organization_email, :organization_url,
                 :ruby_version, :rails_version, :create_cli, :create_rails, :create_security, :create_pry,
-                :create_guard, :create_rspec, :create_rubocop, :create_code_climate, :create_gemnasium,
-                :create_travis, :create_patreon, :github_user, :year
+                :create_guard, :create_rspec, :create_rubocop, :create_git_hub, :create_code_climate,
+                :create_gemnasium, :create_travis, :create_patreon, :github_user, :year
 
     def initialize gem_name: "unknown",
                    gem_class: "Unknown",
@@ -94,6 +94,10 @@ module Gemsmith
       parse_boolean @create_rspec, :create, :rspec, true
     end
 
+    def create_git_hub?
+      parse_boolean @create_git_hub, :create, :git_hub, false
+    end
+
     def create_rubocop?
       parse_boolean @create_rubocop, :create, :rubocop, true
     end
@@ -156,6 +160,7 @@ module Gemsmith
           guard: create_guard?,
           rspec: create_rspec?,
           rubocop: create_rubocop?,
+          git_hub: create_git_hub?,
           code_climate: create_code_climate?,
           gemnasium: create_gemnasium?,
           travis: create_travis?,

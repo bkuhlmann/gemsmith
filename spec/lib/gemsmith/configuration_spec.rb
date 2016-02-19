@@ -492,6 +492,29 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
     end
   end
 
+  describe "#create_git_hub?" do
+    context "with default resource file" do
+      it "answers false" do
+        expect(subject.create_git_hub?).to eq(false)
+      end
+    end
+
+    context "with custom resource file" do
+      let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
+
+      it "answers true" do
+        expect(subject.create_git_hub?).to eq(true)
+      end
+    end
+
+    context "with overwritten settings" do
+      it "answers true" do
+        subject.create_git_hub = true
+        expect(subject.create_git_hub?).to eq(true)
+      end
+    end
+  end
+
   describe "#create_code_climate?" do
     context "with default resource file" do
       it "answers true" do
@@ -666,6 +689,7 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
           guard: true,
           rspec: true,
           rubocop: true,
+          git_hub: false,
           code_climate: true,
           gemnasium: true,
           travis: true,

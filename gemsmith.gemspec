@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop"
   spec.add_development_dependency "codeclimate-test-reporter"
 
-  spec.files = Dir["lib/**/{*,.*}"]
+  spec.files = Dir.glob("lib/**/*", File::FNM_DOTMATCH)
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
   spec.executables << "gemsmith"
   spec.require_paths = ["lib"]

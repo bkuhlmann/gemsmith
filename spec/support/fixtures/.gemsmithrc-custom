@@ -23,6 +23,7 @@
   :guard: false
   :rspec: false
   :rubocop: false
+  :git_hub: true
   :code_climate: false
   :gemnasium: false
   :travis: false

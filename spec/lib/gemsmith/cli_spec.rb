@@ -28,6 +28,7 @@ RSpec.describe Gemsmith::CLI do
           "--no-guard",
           "--no-rspec",
           "--no-rubocop",
+          "--no-git-hub",
           "--no-code-climate",
           "--no-gemnasium",
           "--no-travis",
@@ -69,6 +70,7 @@ RSpec.describe Gemsmith::CLI do
           "--guard",
           "--rspec",
           "--rubocop",
+          "--git-hub",
           "--code-climate",
           "--gemnasium",
           "--travis",
@@ -86,6 +88,8 @@ RSpec.describe Gemsmith::CLI do
               ".rubocop.yml",
               ".ruby-version",
               ".travis.yml",
+              ".github/ISSUE_TEMPLATE.md",
+              ".github/PULL_REQUEST_TEMPLATE.md",
               "bin/tester",
               "gemfiles/rails-4.2.x.gemfile",
               "lib/generators/tester/install/USAGE",
@@ -164,7 +168,8 @@ RSpec.describe Gemsmith::CLI do
                                                            Gemsmith::Skeletons::PrySkeleton,
                                                            Gemsmith::Skeletons::TravisSkeleton,
                                                            Gemsmith::Skeletons::BundlerSkeleton,
-                                                           Gemsmith::Skeletons::GitSkeleton)
+                                                           Gemsmith::Skeletons::GitSkeleton,
+                                                           Gemsmith::Skeletons::GitHubSkeleton)
     end
   end
 
