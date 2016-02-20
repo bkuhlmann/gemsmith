@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor_plus", "~> 3.0"
   spec.add_dependency "tocer", "~> 2.0"
   spec.add_dependency "milestoner", "~> 2.0"
+  spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "pry-byebug"
