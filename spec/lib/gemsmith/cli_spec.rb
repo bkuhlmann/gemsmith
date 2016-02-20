@@ -43,6 +43,7 @@ RSpec.describe Gemsmith::CLI do
           expect(skeleton_files).to contain_exactly(
             ".gitignore",
             ".ruby-version",
+            "bin/setup",
             "lib/tester/identity.rb",
             "lib/tester.rb",
             "lib/tasks/console.rake",
@@ -90,6 +91,7 @@ RSpec.describe Gemsmith::CLI do
               ".travis.yml",
               ".github/ISSUE_TEMPLATE.md",
               ".github/PULL_REQUEST_TEMPLATE.md",
+              "bin/setup",
               "bin/tester",
               "gemfiles/rails-4.2.x.gemfile",
               "lib/generators/tester/install/USAGE",

@@ -12,6 +12,10 @@ RSpec.describe Gemsmith::Skeletons::GemSkeleton, :temp_dir do
   describe "#create" do
     before { subject.create }
 
+    it "creates setup script" do
+      expect(cli).to have_received(:template).with("%gem_name%/bin/setup.tt", configuration.to_h)
+    end
+
     it "creates Gemfile" do
       expect(cli).to have_received(:template).with("%gem_name%/Gemfile.tt", configuration.to_h)
     end
