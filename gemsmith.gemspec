@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-state"
   spec.add_development_dependency "pry-rescue"
   spec.add_development_dependency "pry-stack_explorer"
-  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rspec", "~> 3.4"
   spec.add_development_dependency "climate_control"
   spec.add_development_dependency "rb-fsevent" # Guard file events for OSX.
   spec.add_development_dependency "guard-rspec"

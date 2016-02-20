@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-stack_explorer"
   <%- end -%>
   <%- if config.dig(:create, :rspec) -%>
-  spec.add_development_dependency "<%= config.dig(:create, :rails) ? "rspec-rails" : "rspec" %>"
+  spec.add_development_dependency "<%= config.dig(:create, :rails) ? "rspec-rails" : "rspec" %>", "~> 3.4"
   <%- end -%>
   <%- if config.dig(:create, :guard) -%>
   spec.add_development_dependency "rb-fsevent" # Guard file events for OSX.

@@ -132,6 +132,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (~> 1.11)
   climate_control
   codeclimate-test-reporter
   gemsmith!
@@ -144,8 +145,8 @@ DEPENDENCIES
   pry-state
   rake (~> 10.0)
   rb-fsevent
-  rspec
-  rubocop
+  rspec (~> 3.4)
+  rubocop (~> 0.37)
   terminal-notifier
   terminal-notifier-guard
 
