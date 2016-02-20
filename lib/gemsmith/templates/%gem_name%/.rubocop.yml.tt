@@ -1,10 +1,11 @@
 <%- if config.dig(:create, :rails) -%>
 AllCops:
-  RunRailsCops: true
   Exclude:
     - "spec/dummy/**/*"
     - "bin/rails"
     - "vendor/**/*"
+Rails:
+  Enabled: true
 <%- end -%>
 Style/CaseIndentation:
   IndentOneStep: true
