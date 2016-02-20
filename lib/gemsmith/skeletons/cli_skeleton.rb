@@ -9,6 +9,7 @@ module Gemsmith
 
         cli.template "%gem_name%/bin/%gem_name%.tt", configuration.to_h
         cli.template "%gem_name%/lib/%gem_name%/cli.rb.tt", configuration.to_h
+        cli.chmod "#{configuration.gem_name}/bin/#{configuration.gem_name}", 0755
       end
     end
   end

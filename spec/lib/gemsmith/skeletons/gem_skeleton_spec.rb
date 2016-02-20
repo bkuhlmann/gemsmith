@@ -31,5 +31,9 @@ RSpec.describe Gemsmith::Skeletons::GemSkeleton, :temp_dir do
     it "creates gem identity" do
       expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/identity.rb.tt", configuration.to_h)
     end
+
+    it "sets excecutable file permission for setup script" do
+      expect(cli).to have_received(:chmod).with("tester/bin/setup", 0755)
+    end
   end
 end

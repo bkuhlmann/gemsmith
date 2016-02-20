@@ -22,6 +22,10 @@ RSpec.describe Gemsmith::Skeletons::CLISkeleton, :temp_dir do
       it "creates command line interface" do
         expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/cli.rb.tt", configuration.to_h)
       end
+
+      it "sets excecutable file permission for setup script" do
+        expect(cli).to have_received(:chmod).with("tester/bin/tester", 0755)
+      end
     end
 
     context "when disabled" do
