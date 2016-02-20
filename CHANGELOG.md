@@ -1,3 +1,18 @@
+# v7.2.0 (2016-02-20)
+
+- Fixed Rubocop Rails configuration.
+- Fixed contributing guideline links.
+- Fixed gem skeleton binary file permissions to be executable.
+- Fixed missing versions from gemspec template.
+- Added Bundler dependency to gemspec.
+- Added GitHub issue and pull request templates.
+- Added GitHub support to gem skeleton creation.
+- Added RSpec gemspec version requirement.
+- Added Rubocop Style/SignalException cop style.
+- Added Rubocop gemspec version requirement.
+- Added shell setup script to gem skeleton creation.
+- Updated to Code of Conduct, Version 1.4.0.
+
 # v7.1.0 (2016-01-20)
 
 - Fixed README template documentation for gem certificate.

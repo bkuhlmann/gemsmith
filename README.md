@@ -14,6 +14,7 @@ A command line interface for smithing new Ruby gems.
 # Table of Contents
 
 - [Features](#features)
+- [Screencast](#screencast)
 - [Requirements](#requirements)
 - [Setup](#setup)
 - [Usage](#usage)
@@ -45,6 +46,7 @@ A command line interface for smithing new Ruby gems.
 - Supports [Guard](https://github.com/guard/guard).
 - Supports [RSpec](http://rspec.info).
 - Supports [Rubocop](https://github.com/bbatsov/rubocop).
+- Supports [GitHub](https://github.com).
 - Supports [Code Climate](https://codeclimate.com).
 - Supports [Gemnasium](https://gemnasium.com).
 - Supports [Travis CI](https://travis-ci.org).
@@ -53,6 +55,8 @@ A command line interface for smithing new Ruby gems.
   [CODE OF CONDUCT](CODE_OF_CONDUCT.md), [LICENSE](LICENSE.md), etc. documentation.
 - Provides the ability to open the source code of any gem within your favorite editor.
 - Provides the ability to read the documentation of any gem within your default browser.
+
+# Screencast
 
 [![asciicast](https://asciinema.org/a/30728.png)](https://asciinema.org/a/30728)
 
@@ -155,6 +159,7 @@ For more gem creation options, type: `gemsmith --help --create`
                                                # Default: true
     -R, [--rubocop], [--no-rubocop]            # Add Rubocop support.
                                                # Default: true
+    -H, [--git-hub], [--no-git-hub]            # Add GitHub support.
     -C, [--code-climate], [--no-code-climate]  # Add Code Climate support.
                                                # Default: true
     -G, [--gemnasium], [--no-gemnasium]        # Add Gemnasium support.

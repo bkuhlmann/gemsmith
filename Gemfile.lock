@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gemsmith (7.1.0)
+    gemsmith (7.2.0)
       milestoner (~> 2.0)
       thor (~> 0.19)
       thor_plus (~> 3.0)
