@@ -32,7 +32,7 @@
 <%- if config.dig(:create, :security) -%>
 For a secure install, type the following (recommended):
 
-    gem cert --add <(curl -Ls <%= config.dig :organization, :url %>/gem-public.pem)
+    gem cert --add <(curl --location --silent <%= config.dig :organization, :url %>/gem-public.pem)
     gem install <%= config.dig(:gem, :name) %> --trust-policy MediumSecurity
 
 NOTE: A HighSecurity trust policy would be best but MediumSecurity enables signed gem verification while
