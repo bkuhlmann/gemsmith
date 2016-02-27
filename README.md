@@ -14,7 +14,7 @@ A command line interface for smithing new Ruby gems.
 # Table of Contents
 
 - [Features](#features)
-- [Screencast](#screencast)
+- [Screencasts](#screencasts)
 - [Requirements](#requirements)
 - [Setup](#setup)
 - [Usage](#usage)
@@ -56,7 +56,7 @@ A command line interface for smithing new Ruby gems.
 - Provides the ability to open the source code of any gem within your favorite editor.
 - Provides the ability to read the documentation of any gem within your default browser.
 
-# Screencast
+# Screencasts
 
 [![asciicast](https://asciinema.org/a/30728.png)](https://asciinema.org/a/30728)
 
