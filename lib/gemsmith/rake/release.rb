@@ -57,8 +57,8 @@ module Gemsmith
         true
       end
 
-      def publish
-        publisher.publish version_number, sign: true
+      def publish sign: true
+        publisher.publish version_number, sign: sign
         push
       rescue Milestoner::Errors::Base => error
         shell.error error.message

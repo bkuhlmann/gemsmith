@@ -255,5 +255,17 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
         expect(subject).to_not have_received(:push)
       end
     end
+
+    context "with unsigned tag" do
+      before { subject.publish sign: false }
+
+      it "publishes gem" do
+        expect(publisher).to have_received(:publish).with("0.1.0", sign: false)
+      end
+
+      it "pushes gem" do
+        expect(subject).to have_received(:push)
+      end
+    end
   end
 end
