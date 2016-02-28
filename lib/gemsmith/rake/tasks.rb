@@ -19,7 +19,7 @@ module Gemsmith
         release = Gemsmith::Rake::Release.new
 
         ::Rake::Task[:build].enhance [:clean, :doc, :validate]
-        ::Rake::Task[:release].enhance { ::Rake::Task[:clean].invoke }
+        ::Rake::Task[:release].clear
 
         desc "Update README (table of contents)"
         task :doc do
@@ -33,6 +33,11 @@ module Gemsmith
 
         task :validate do
           build.validate
+        end
+
+        desc "Build, tag #{release.version_label} (unsigned), and push #{release.gem_file_name} to RubyGems"
+        task release: :build do
+          release.publish sign: false
         end
 
         desc "Build, tag #{release.version_label} (signed), and push #{release.gem_file_name} to RubyGems"

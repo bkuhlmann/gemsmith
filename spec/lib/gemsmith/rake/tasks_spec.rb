@@ -92,9 +92,13 @@ RSpec.describe Gemsmith::Rake::Tasks do
     end
 
     describe "rake release" do
-      it "invokes clean task" do
+      it "has prerequisites" do
+        expect(Rake::Task[:release].prerequisites).to contain_exactly("build")
+      end
+
+      it "publishes unsigned release" do
         Rake::Task[:release].invoke
-        expect(build).to have_received(:clean)
+        expect(release).to have_received(:publish).with(sign: false)
       end
     end
 
@@ -103,7 +107,7 @@ RSpec.describe Gemsmith::Rake::Tasks do
         expect(Rake::Task[:publish].prerequisites).to contain_exactly("build")
       end
 
-      it "publishes release" do
+      it "publishes signed release" do
         Rake::Task[:publish].invoke
         expect(release).to have_received(:publish)
       end
