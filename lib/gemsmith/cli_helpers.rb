@@ -39,10 +39,10 @@ module Gemsmith
 
       case
         when specs.size == 1
-          spec_aid.send method, specs.first
+          spec_aid.public_send method, specs.first
         when specs.size > 1
           print_gems specs
-          spec_aid.send method, pick_gem(specs, name)
+          spec_aid.public_send method, pick_gem(specs, name)
         else
           error("Unable to find gem: #{name}.") && ""
       end
