@@ -100,7 +100,7 @@ RSpec.describe Gemsmith::Rake::Tasks do
 
     describe "rake publish" do
       it "has prerequisites" do
-        expect(Rake::Task[:publish].prerequisites).to contain_exactly("build", "release:guard_clean")
+        expect(Rake::Task[:publish].prerequisites).to contain_exactly("build")
       end
 
       it "publishes release" do
