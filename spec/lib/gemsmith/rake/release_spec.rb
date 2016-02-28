@@ -229,17 +229,30 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
   end
 
   describe "#publish" do
-    it "publishes gem" do
-      subject.publish
-      expect(publisher).to have_received(:publish).with("0.1.0", sign: true)
+    before { allow(subject).to receive(:push).and_return(true) }
+
+    context "without Milestoner errors" do
+      before { subject.publish }
+
+      it "publishes gem" do
+        expect(publisher).to have_received(:publish).with("0.1.0", sign: true)
+      end
+
+      it "pushes gem" do
+        expect(subject).to have_received(:push)
+      end
     end
 
-    it "fails with Milestoner error when error is encountered" do
-      Dir.chdir(temp_dir) do
-        subject = described_class.new gem_spec_path
-        result = -> { subject.publish }
+    context "with Milestoner error" do
+      subject { described_class.new gem_spec_path, shell: shell }
+      before { Dir.chdir(temp_dir) { subject.publish } }
 
-        expect(&result).to output("Invalid Git repository.\n").to_stdout
+      it "prints error" do
+        expect(shell).to have_received(:error)
+      end
+
+      it "does not push gem" do
+        expect(subject).to_not have_received(:push)
       end
     end
   end

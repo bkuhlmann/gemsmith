@@ -59,6 +59,7 @@ module Gemsmith
 
       def publish
         publisher.publish version_number, sign: true
+        push
       rescue Milestoner::Errors::Base => error
         shell.error error.message
       end
