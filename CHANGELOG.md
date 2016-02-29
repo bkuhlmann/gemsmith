@@ -1,4 +1,4 @@
-# v7.3.0 (2016-02-28)
+# v7.3.0 (2016-02-29)
 
 - Added README Screencasts section.
 - Added README documentation for private gem servers.
