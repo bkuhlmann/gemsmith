@@ -24,6 +24,10 @@ A command line interface for smithing new Ruby gems.
 - [Security](#security)
   - [Git Signing Key](#git-signing-key)
   - [Gem Certificates](#gem-certificates)
+- [Private Gem Servers](#private-gem-servers)
+  - [Gem Specification Metadata](#gem-specification-metadata)
+  - [RubyGems Credentials](#rubygems-credentials)
+  - [Generating Credentials](#generating-credentials)
 - [Promotion](#promotion)
 - [Versioning](#versioning)
 - [Code of Conduct](#code-of-conduct)
@@ -260,6 +264,77 @@ To learn more about gem certificates, read the following:
 - [RubyGems](http://guides.rubygems.org/security/#building_gems)
 - [A Practical Guide to Using Signed Ruby Gems - Part 1: Bundler](http://blog.meldium.com/home/2013/3/3/signed-rubygems-part)
 - [A Practical Guide to Using Signed Ruby Gems - Part 2: Heroku](http://blog.meldium.com/home/2013/3/6/signed-gems-on-heroku)
+
+# Private Gem Servers
+
+By default, the following Rake tasks will publish your gem to [RubyGems](https://rubygems.org):
+
+    rake release
+    rake publish
+
+You can change this behavior by adding metadata to your gemspec that will allow the Rake tasks, mentioned above, to
+publish your gem to an alternate/private gem server instead. This can be done by updating your gem specification and
+RubyGems credentials.
+
+## Gem Specification Metadata
+
+Add the following metadata to your gemspec:
+
+    Gem::Specification.new do |spec|
+      spec.metadata = {
+        "allowed_push_key" => "example_key",
+        "allowed_push_host" => "https://gems.example.com"
+      }
+    end
+
+The gemspec metadata keys and values *must* be strings per the
+[RubyGems Specification](http://guides.rubygems.org/specification-reference/#metadata). Each key represents the
+following:
+
+- `allowed_push_key`: Provides a reference (look up) to the key defined the RubyGems credentials file so that sensitive
+  credentials are not used within your gemspec.
+- `allowed_push_host`: Provides the URL of the private gem server to push your gem to.
+
+## RubyGems Credentials
+
+The "example_key" defined within the gem specification, mentioned above, *must* be defined withing your
+`~/.gem/credentials` file and should look like this:
+
+    ---
+    :example_key: "Basic dXNlcjpwYXNzd29yZA=="
+
+The "example_key" *must* be a symbol (hence the double colons) due to RubyGems requirements.
+
+## Generating Credentials
+
+RubyGems uses an `Authorization` HTTP header when pushing a gem to a remote server. This can be an API key, HTTP Basic
+Auth, etc. When pushing a gem to RubyGems, you'll want to use the API key associated with your account. If that is the
+case, you're credentials would contain the following:
+
+    ---
+    :rubygems_api_key: 2a0b460650e67d9b85a60e183defa376
+
+For a server that might use HTTP Basic auth, you can generate the key value by launching IRB and running the following:
+
+    require "net/http"
+    Net::HTTP::Get.new("http://gems.example.com").basic_auth "user", "password"
+
+The URL is arbitrary but the user and password should be your account credentials. The output, from running the code
+above, should look like the following:
+
+    ["Basic dXNlcjpwYXNzd29yZA=="]
+
+You can then add this value to your credentials file like so:
+
+    ---
+    :example_key: "Basic dXNlcjpwYXNzd29yZA=="
+
+You can add multiple accounts to your RubyGems credentials (there is no limit to the number of accounts you might need
+to have access to). Example:
+
+    ---
+    :rubygems_api_key: 2a0b460650e67d9b85a60e183defa376
+    :example_key: "Basic dXNlcjpwYXNzd29yZA=="
 
 # Promotion
 
