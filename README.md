@@ -177,15 +177,15 @@ For more gem creation options, type: `gemsmith --help --create`
 
 Once a gem skeleton has been created, the following tasks are available (i.e. `bundle exec rake -T`):
 
-    rake build                 # Build gemsmith-7.0.0.gem into the pkg directory
+    rake build                 # Build example-0.1.0.gem into the pkg directory
     rake clean                 # Remove any temporary products / Clean gem artifacts
     rake clobber               # Remove any generated files
     rake console               # Open IRB console for gem development environment
     rake doc                   # Update README (table of contents)
-    rake install               # Build and install gemsmith-7.0.0.gem into system gems
-    rake install:local         # Build and install gemsmith-7.0.0.gem into system gems without network access
-    rake publish               # Build, tag v7.0.0 (signed), and push gemsmith-7.0.0.gem to RubyGems
-    rake release[remote]       # Create tag v7.0.0 and build and push gemsmith-7.0.0.gem to Rubygems
+    rake install               # Build and install example-0.1.0.gem into system gems
+    rake install:local         # Build and install example-0.1.0.gem into system gems without network access
+    rake publish               # Build, tag v0.1.0 (signed), and push example-0.1.0.gem to RubyGems
+    rake release[remote]       # Build, tag v0.1.0 (unsigned), and push example-0.1.0.gem to RubyGems
     rake rubocop               # Run RuboCop
     rake rubocop:auto_correct  # Auto-correct RuboCop offenses
     rake spec                  # Run RSpec code examples
@@ -196,7 +196,7 @@ Gemsmith:
     rake build - Cleans and regenerates the README table of contents in addition to building the gem.
     rake install - Inherits the `build` modifications mentioned above.
     rake install:local - Inherits the `build` modifications mentioned above.
-    rake release - Inherits the `build` modifications mentioned above.
+    rake release - Identical to the `publish` tasks but does not securely sign the Git tag.
 
 When building/testing your gem locally, a typical workflow is:
 

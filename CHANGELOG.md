@@ -1,3 +1,14 @@
+# v7.3.0 (2016-02-28)
+
+- Added README Screencasts section.
+- Added README documentation for private gem servers.
+- Added custom gem credentials and gemspec metadata support.
+- Updated README secure gem install documentation.
+- Updated Rake publish task to use new gem push capabilities.
+- Updated Rake release to publish signed and unsigned Git tags.
+- Updated Rake release to tag and push gem to remote server.
+- Updated `rake release` to use custom release process.
+
 # v7.2.0 (2016-02-20)
 
 - Fixed Rubocop Rails configuration.
