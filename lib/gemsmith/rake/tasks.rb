@@ -14,10 +14,12 @@ module Gemsmith
         new.install
       end
 
-      def install
-        build = Gemsmith::Rake::Build.new
-        release = Gemsmith::Rake::Release.new
+      def initialize
+        @build = Gemsmith::Rake::Build.new
+        @release = Gemsmith::Rake::Release.new
+      end
 
+      def install
         ::Rake::Task[:build].enhance [:clean, :doc, :validate]
         ::Rake::Task[:release].clear
 
@@ -45,6 +47,10 @@ module Gemsmith
           release.publish
         end
       end
+
+      private
+
+      attr_reader :build, :release
     end
   end
 end
