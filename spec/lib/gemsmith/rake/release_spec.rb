@@ -119,7 +119,7 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
 
         it "pushes gem to gem server" do
           subject.push
-          command = %(gem push "pkg/tester-0.1.0.gem" --key "rubygems_api_key" --host "https://rubygems.org")
+          command = %(gem push "pkg/tester-0.1.0.gem" --key "rubygems" --host "https://rubygems.org")
 
           expect(kernel).to have_received(:system).with(command)
         end

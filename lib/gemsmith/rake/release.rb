@@ -52,7 +52,7 @@ module Gemsmith
       def push
         return false unless gem_credentials? && gem_credential_value?
 
-        kernel.system %(gem push "pkg/#{gem_file_name}" --key "#{allowed_push_key}" --host "#{allowed_push_host}")
+        kernel.system %(gem push "pkg/#{gem_file_name}" --key "#{translated_api_key}" --host "#{allowed_push_host}")
         shell.confirm "Pushed #{gem_file_name} to #{allowed_push_host}."
         true
       end
