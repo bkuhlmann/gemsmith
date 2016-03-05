@@ -24,6 +24,7 @@ require "gemsmith/skeletons/rspec_skeleton"
 require "gemsmith/skeletons/rubocop_skeleton"
 require "gemsmith/skeletons/ruby_skeleton"
 require "gemsmith/skeletons/travis_skeleton"
+require "gemsmith/wrappers/gem_spec"
 require "gemsmith/cli_helpers"
 require "gemsmith/configuration"
 
