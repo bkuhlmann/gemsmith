@@ -65,7 +65,7 @@ module Gemsmith
     def initialize args = [], options = {}, config = {}
       super args, options, config
       @configuration = Configuration.new
-      @spec_aid = Aids::Spec.new
+      @gem_spec = Wrappers::GemSpec
     end
 
     desc "-c, [--create=CREATE]", "Create new gem."
@@ -96,14 +96,14 @@ module Gemsmith
     desc "-o, [--open=OPEN]", "Open a gem in default editor."
     map %w(-o --open) => :open
     def open name
-      result = process_gem name, "open"
+      result = process_gem name, "open_gem"
       info("Opening: #{result}") unless result.nil? || result.empty?
     end
 
     desc "-r, [--read=READ]", "Open a gem in default browser."
     map %w(-r --read) => :read
     def read name
-      result = process_gem name, "read"
+      result = process_gem name, "open_homepage"
 
       if result.nil? || result.empty?
         error "Gem home page is not defined."
@@ -116,7 +116,7 @@ module Gemsmith
     map %w(-e --edit) => :edit
     def edit
       info "Editing: #{configuration.file_path}..."
-      `#{spec_aid.editor} #{configuration.file_path}`
+      `#{gem_spec.editor} #{configuration.file_path}`
     end
 
     desc "-v, [--version]", "Show #{Gemsmith::Identity.label} version."
@@ -133,7 +133,7 @@ module Gemsmith
 
     private
 
-    attr_reader :configuration, :spec_aid
+    attr_reader :configuration, :gem_spec
 
     def setup_configuration name, options
       gem = Aids::Gem.new name
