@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require "bundler/gem_tasks"
+require "gemsmith/wrappers/gem_spec"
+require "gemsmith/errors/base"
+require "gemsmith/errors/gem_specification"
 require "gemsmith/rake/build"
 require "gemsmith/rake/release"
 
@@ -15,6 +18,7 @@ module Gemsmith
       end
 
       def initialize
+        @gem_spec = Gemsmith::Wrappers::GemSpec.new Dir.glob("#{Dir.pwd}/*.gemspec").first
         @build = Gemsmith::Rake::Build.new
         @release = Gemsmith::Rake::Release.new
       end
@@ -37,12 +41,12 @@ module Gemsmith
           build.validate
         end
 
-        desc "Build, tag #{release.version_label} (unsigned), and push #{release.gem_file_name} to RubyGems"
+        desc "Build, tag #{gem_spec.version_label} (unsigned), and push #{gem_spec.package_file_name} to RubyGems"
         task release: :build do
           release.publish sign: false
         end
 
-        desc "Build, tag #{release.version_label} (signed), and push #{release.gem_file_name} to RubyGems"
+        desc "Build, tag #{gem_spec.version_label} (signed), and push #{gem_spec.package_file_name} to RubyGems"
         task publish: :build do
           release.publish
         end
@@ -50,7 +54,7 @@ module Gemsmith
 
       private
 
-      attr_reader :build, :release
+      attr_reader :gem_spec, :build, :release
     end
   end
 end
