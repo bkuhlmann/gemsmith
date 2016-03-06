@@ -4,15 +4,16 @@ require "spec_helper"
 require "gemsmith/rake/release"
 
 RSpec.describe Gemsmith::Rake::Release, :temp_dir do
-  let(:publisher) { instance_spy Milestoner::Publisher }
   let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
-  let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
-  let(:gem_config) { Gem::ConfigFile.new [] }
   let(:gem_credentials_path) { File.join temp_dir, "credentials" }
+  let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
+  let(:gem_spec) { Gemsmith::Wrappers::GemSpec.new gem_spec_path }
+  let(:gem_config) { Gem::ConfigFile.new [] }
+  let(:publisher) { instance_spy Milestoner::Publisher }
   let(:shell) { instance_spy Bundler::UI::Shell }
   let(:kernel) { class_spy Kernel }
   subject do
-    described_class.new gem_spec_path,
+    described_class.new gem_spec: gem_spec,
                         gem_config: gem_config,
                         publisher: publisher,
                         shell: shell,
@@ -20,88 +21,6 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
   end
   before do
     allow(gem_config).to receive(:credentials_path).and_return(File.join(Dir.pwd, "tmp", "rspec", "credentials"))
-  end
-
-  describe "#initialize" do
-    context "when using default gem spec path" do
-      it "loads gemspec" do
-        subject = described_class.new
-        expect(subject.gem_file_name).to match(/gemsmith/)
-      end
-    end
-
-    context "when using default gem spec path in invalid directory" do
-      it "fails with gemspec file path error" do
-        Dir.chdir(temp_dir) do
-          result = -> { described_class.new }
-          expect(&result).to output("Invalid gemspec file path: .\n").to_stdout
-        end
-      end
-    end
-
-    context "when using custom gem spec path" do
-      it "builds gem file name from gemspec" do
-        subject = described_class.new gem_spec_path
-        expect(subject.gem_file_name).to eq("tester-0.1.0.gem")
-      end
-    end
-
-    context "when using invalid gem spec path" do
-      it "fails with gemspec file path error" do
-        result = -> { described_class.new "bogus" }
-        expect(&result).to output("Invalid gemspec file path: bogus.\n").to_stdout
-      end
-    end
-  end
-
-  describe "#version_number" do
-    it "answers current version number" do
-      expect(subject.version_number).to eq("0.1.0")
-    end
-  end
-
-  describe "#version_label" do
-    it "answers current version label" do
-      expect(subject.version_label).to eq("v0.1.0")
-    end
-  end
-
-  describe "#gem_file_name" do
-    it "answers versioned gem package file name" do
-      expect(subject.gem_file_name).to eq("tester-0.1.0.gem")
-    end
-  end
-
-  describe "#allowed_push_key" do
-    context "with custom gemspec metadata" do
-      let(:gem_spec_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
-
-      it "answers custom key" do
-        expect(subject.allowed_push_key).to eq("test")
-      end
-    end
-
-    context "without gemspec metadata" do
-      it "answers RubyGems key" do
-        expect(subject.allowed_push_key).to eq("rubygems_api_key")
-      end
-    end
-  end
-
-  describe "#allowed_push_host" do
-    context "with custom gemspec metadata" do
-      let(:gem_spec_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
-
-      it "answers custom host" do
-        expect(subject.allowed_push_host).to eq("https://www.test.com")
-      end
-    end
-
-    context "without gemspec metadata" do
-      it "answers default host" do
-        expect(subject.allowed_push_host).to eq("https://rubygems.org")
-      end
-    end
   end
 
   describe "#push" do
@@ -244,8 +163,10 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
     end
 
     context "with Milestoner error" do
-      subject { described_class.new gem_spec_path, shell: shell }
-      before { Dir.chdir(temp_dir) { subject.publish } }
+      before do
+        allow(publisher).to receive(:publish).and_raise(Milestoner::Errors::Base, "test")
+        Dir.chdir(temp_dir) { subject.publish }
+      end
 
       it "prints error" do
         expect(shell).to have_received(:error)
