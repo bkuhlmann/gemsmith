@@ -79,7 +79,7 @@ RSpec.describe Gemsmith::Wrappers::GemSpec do
 
   describe "#allowed_push_key" do
     context "with custom gemspec metadata" do
-      let(:file_path) { File.join fixtures_dir, "tester_with_custom_metadata.gemspec" }
+      let(:file_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
 
       it "answers custom key" do
         expect(subject.allowed_push_key).to eq("test")
@@ -95,7 +95,7 @@ RSpec.describe Gemsmith::Wrappers::GemSpec do
 
   describe "#allowed_push_host" do
     context "with custom gemspec metadata" do
-      let(:file_path) { File.join fixtures_dir, "tester_with_custom_metadata.gemspec" }
+      let(:file_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
 
       it "answers custom host" do
         expect(subject.allowed_push_host).to eq("https://www.test.com")

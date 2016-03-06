@@ -6,7 +6,7 @@ require "gemsmith/rake/release"
 RSpec.describe Gemsmith::Rake::Release, :temp_dir do
   let(:publisher) { instance_spy Milestoner::Publisher }
   let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
-  let(:gem_spec_path) { File.join fixtures_dir, "tester_without_metadata.gemspec" }
+  let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
   let(:gem_config) { Gem::ConfigFile.new [] }
   let(:gem_credentials_path) { File.join temp_dir, "credentials" }
   let(:shell) { instance_spy Bundler::UI::Shell }
@@ -74,7 +74,7 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
 
   describe "#allowed_push_key" do
     context "with custom gemspec metadata" do
-      let(:gem_spec_path) { File.join fixtures_dir, "tester_with_custom_metadata.gemspec" }
+      let(:gem_spec_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
 
       it "answers custom key" do
         expect(subject.allowed_push_key).to eq("test")
@@ -90,7 +90,7 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
 
   describe "#allowed_push_host" do
     context "with custom gemspec metadata" do
-      let(:gem_spec_path) { File.join fixtures_dir, "tester_with_custom_metadata.gemspec" }
+      let(:gem_spec_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
 
       it "answers custom host" do
         expect(subject.allowed_push_host).to eq("https://www.test.com")
@@ -137,12 +137,12 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
       end
 
       context "with RubyGems gemspec metadata" do
-        let(:gem_spec_path) { File.join fixtures_dir, "tester_with_ruby_gems_metadata.gemspec" }
+        let(:gem_spec_path) { File.join fixtures_dir, "tester-only_ruby_gems_metadata.gemspec" }
         it_behaves_like "a standard setup"
       end
 
       context "without gemspec metadata" do
-        let(:gem_spec_path) { File.join fixtures_dir, "tester_without_metadata.gemspec" }
+        let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
         it_behaves_like "a standard setup"
       end
     end
@@ -154,7 +154,7 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
       end
 
       context "with custom gemspec metadata" do
-        let(:gem_spec_path) { File.join fixtures_dir, "tester_with_custom_metadata.gemspec" }
+        let(:gem_spec_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
 
         it "doesn't print errors" do
           subject.push
@@ -181,7 +181,7 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
       end
 
       context "without gemspec metadata" do
-        let(:gem_spec_path) { File.join fixtures_dir, "tester_without_metadata.gemspec" }
+        let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
 
         it "prints invalid credential error" do
           subject.push
