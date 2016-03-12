@@ -6,7 +6,11 @@ module Gemsmith
   module Rake
     # Provides gem release functionality. Meant to be wrapped in Rake tasks.
     class Release
-      def initialize gem_spec: Gemsmith::Wrappers::GemSpec.new(Dir.glob("#{Dir.pwd}/*.gemspec").first),
+      def self.gem_spec_path
+        String Dir["#{Dir.pwd}/*.gemspec"].first
+      end
+
+      def initialize gem_spec: Gemsmith::Wrappers::GemSpec.new(self.class.gem_spec_path),
                      gem_config: Gem::ConfigFile.new([]),
                      publisher: Milestoner::Publisher.new,
                      shell: Bundler::UI::Shell.new,

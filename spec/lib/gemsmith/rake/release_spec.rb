@@ -23,6 +23,22 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
     allow(gem_config).to receive(:credentials_path).and_return(File.join(Dir.pwd, "tmp", "rspec", "credentials"))
   end
 
+  describe ".gem_spec_path" do
+    context "with gemspec" do
+      it "answers gemspec path" do
+        expect(described_class.gem_spec_path).to end_with("gemsmith.gemspec")
+      end
+    end
+
+    context "without gemspec" do
+      it "an empty string" do
+        Dir.chdir temp_dir do
+          expect(described_class.gem_spec_path).to eq("")
+        end
+      end
+    end
+  end
+
   describe "#push" do
     context "with RubyGems credentials" do
       before do
