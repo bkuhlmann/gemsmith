@@ -29,9 +29,8 @@ module Gemsmith
         creds.create
 
         options = %(--key "#{translate_key creds.key}" --host "#{gem_spec.allowed_push_host}")
-        kernel.system %(gem push "pkg/#{gem_spec.package_file_name}" #{options})
-        shell.confirm "Pushed #{gem_spec.package_file_name} to #{gem_spec.allowed_push_host}."
-        true
+        status = kernel.system %(gem push "pkg/#{gem_spec.package_file_name}" #{options})
+        process_push status
       end
 
       def publish sign: true
@@ -47,6 +46,17 @@ module Gemsmith
 
       def translate_key key
         key == credentials.default_key ? :rubygems : key
+      end
+
+      def process_push status
+        if status
+          shell.confirm "Pushed #{gem_spec.package_file_name} to #{gem_spec.allowed_push_host}."
+        else
+          shell.error "Failed pushing #{gem_spec.package_file_name} to #{gem_spec.allowed_push_host}. " \
+                      "Check gemspec and gem credential settings."
+        end
+
+        status
       end
     end
   end

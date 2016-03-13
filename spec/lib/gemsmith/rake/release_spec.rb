@@ -8,9 +8,7 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
   let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
   let(:gem_spec) { Gemsmith::Wrappers::GemSpec.new gem_spec_path }
   let :credentials do
-    instance_spy Gemsmith::Credentials,
-                 key: gem_spec.allowed_push_key.to_sym,
-                 url: gem_spec.allowed_push_host
+    instance_spy Gemsmith::Credentials, key: gem_spec.allowed_push_key.to_sym, url: gem_spec.allowed_push_host
   end
   let(:publisher) { instance_spy Milestoner::Publisher }
   let(:shell) { instance_spy Bundler::UI::Shell }
@@ -36,66 +34,86 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
 
   describe "#push" do
     shared_examples_for "a default setup" do
+      let(:command) { %(gem push "pkg/tester-0.1.0.gem" --key "rubygems" --host "https://rubygems.org") }
+
       it "pushes gem to gem server" do
         subject.push
-        command = %(gem push "pkg/tester-0.1.0.gem" --key "rubygems" --host "https://rubygems.org")
-
         expect(kernel).to have_received(:system).with(command)
       end
 
       it "prints successful gem push message" do
         subject.push
-        message = "Pushed tester-0.1.0.gem to https://rubygems.org."
-
-        expect(shell).to have_received(:confirm).with(message)
-      end
-
-      it "answers true" do
-        expect(subject.push).to eq(true)
+        expect(shell).to have_received(:confirm).with("Pushed tester-0.1.0.gem to https://rubygems.org.")
       end
     end
 
     context "with RubyGems gemspec metadata" do
       let(:gem_spec_path) { File.join fixtures_dir, "tester-only_ruby_gems_metadata.gemspec" }
+      let(:pushed) { true }
+
       it_behaves_like "a default setup"
     end
 
     context "with custom gemspec metadata" do
       let(:gem_spec_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
+      let(:pushed) { true }
+      let(:command) { %(gem push "pkg/tester-0.1.0.gem" --key "test" --host "https://www.test.com") }
 
       it "pushes gem to gem server" do
         subject.push
-        command = %(gem push "pkg/tester-0.1.0.gem" --key "test" --host "https://www.test.com")
-
         expect(kernel).to have_received(:system).with(command)
       end
 
       it "prints successful gem push message" do
         subject.push
-        message = "Pushed tester-0.1.0.gem to https://www.test.com."
-
-        expect(shell).to have_received(:confirm).with(message)
-      end
-
-      it "answers true" do
-        expect(subject.push).to eq(true)
+        expect(shell).to have_received(:confirm).with("Pushed tester-0.1.0.gem to https://www.test.com.")
       end
     end
 
     context "without gemspec metadata" do
       let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
+      let(:pushed) { true }
+
       it_behaves_like "a default setup"
+    end
+
+    context "when push fails" do
+      subject { described_class.new gem_spec: gem_spec, publisher: publisher, shell: shell }
+      before { allow(Kernel).to receive(:system).and_return(false) }
+
+      it "prints failure message" do
+        subject.push
+        message = "Failed pushing tester-0.1.0.gem to https://rubygems.org. Check gemspec and gem credential settings."
+
+        expect(shell).to have_received(:error).with(message)
+      end
+
+      it "answers false" do
+        expect(subject.push).to eq(false)
+      end
     end
   end
 
   describe "#publish" do
     before { allow(subject).to receive(:push).and_return(true) }
 
-    context "without Milestoner errors" do
+    context "with no errors" do
       before { subject.publish }
 
       it "publishes gem" do
         expect(publisher).to have_received(:publish).with("0.1.0", sign: true)
+      end
+
+      it "pushes gem" do
+        expect(subject).to have_received(:push)
+      end
+    end
+
+    context "with unsigned tag" do
+      before { subject.publish sign: false }
+
+      it "publishes gem" do
+        expect(publisher).to have_received(:publish).with("0.1.0", sign: false)
       end
 
       it "pushes gem" do
@@ -115,18 +133,6 @@ RSpec.describe Gemsmith::Rake::Release, :temp_dir do
 
       it "does not push gem" do
         expect(subject).to_not have_received(:push)
-      end
-    end
-
-    context "with unsigned tag" do
-      before { subject.publish sign: false }
-
-      it "publishes gem" do
-        expect(publisher).to have_received(:publish).with("0.1.0", sign: false)
-      end
-
-      it "pushes gem" do
-        expect(subject).to have_received(:push)
       end
     end
   end
