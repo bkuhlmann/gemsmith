@@ -47,7 +47,7 @@ RSpec.describe Gemsmith::Wrappers::GemSpec do
     context "with invalid file path" do
       it "raises unknown gem specification error" do
         init = -> { described_class.new "bogus_path" }
-        expect(&init).to raise_error(Gemsmith::Errors::GemSpecification, %(Unknown gem specification: "bogus_path".))
+        expect(&init).to raise_error(Gemsmith::Errors::Specification, %(Unknown gem specification: "bogus_path".))
       end
     end
 
@@ -56,7 +56,7 @@ RSpec.describe Gemsmith::Wrappers::GemSpec do
 
       it "raises unknown gem specification error" do
         init = -> { described_class.new file_path }
-        expect(&init).to raise_error(Gemsmith::Errors::GemSpecification, %(Unknown gem specification: "#{file_path}".))
+        expect(&init).to raise_error(Gemsmith::Errors::Specification, %(Unknown gem specification: "#{file_path}".))
       end
     end
   end

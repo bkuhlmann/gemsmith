@@ -3,7 +3,7 @@
 require "bundler/gem_tasks"
 require "gemsmith/wrappers/gem_spec"
 require "gemsmith/errors/base"
-require "gemsmith/errors/gem_specification"
+require "gemsmith/errors/specification"
 require "gemsmith/rake/build"
 require "gemsmith/rake/release"
 
