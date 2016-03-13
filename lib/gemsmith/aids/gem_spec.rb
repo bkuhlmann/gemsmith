@@ -3,15 +3,15 @@
 require "open3"
 
 module Gemsmith
-  module Wrappers
-    # A wrapper of the Gem::Specification with additional enhancements.
+  module Aids
+    # A Gem::Specification with additional enhancements.
     class GemSpec
       def self.specification
         ::Gem::Specification
       end
 
       def self.default_gem_host
-        Gem::DEFAULT_HOST
+        ::Gem::DEFAULT_HOST
       end
 
       def self.editor

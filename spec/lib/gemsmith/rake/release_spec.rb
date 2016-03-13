@@ -6,7 +6,7 @@ require "gemsmith/rake/release"
 RSpec.describe Gemsmith::Rake::Release, :temp_dir do
   let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
   let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
-  let(:gem_spec) { Gemsmith::Wrappers::GemSpec.new gem_spec_path }
+  let(:gem_spec) { Gemsmith::Aids::GemSpec.new gem_spec_path }
   let :credentials do
     instance_spy Gemsmith::Credentials, key: gem_spec.allowed_push_key.to_sym, url: gem_spec.allowed_push_host
   end

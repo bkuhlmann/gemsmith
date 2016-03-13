@@ -5,6 +5,7 @@ require "thor"
 require "thor/actions"
 require "thor_plus/actions"
 require "gemsmith/aids/gem"
+require "gemsmith/aids/gem_spec"
 require "gemsmith/aids/git"
 require "gemsmith/aids/spec"
 require "gemsmith/errors/base"
@@ -24,7 +25,6 @@ require "gemsmith/skeletons/rspec_skeleton"
 require "gemsmith/skeletons/rubocop_skeleton"
 require "gemsmith/skeletons/ruby_skeleton"
 require "gemsmith/skeletons/travis_skeleton"
-require "gemsmith/wrappers/gem_spec"
 require "gemsmith/cli_helpers"
 require "gemsmith/configuration"
 
@@ -65,7 +65,7 @@ module Gemsmith
     def initialize args = [], options = {}, config = {}
       super args, options, config
       @configuration = Configuration.new
-      @gem_spec = Wrappers::GemSpec
+      @gem_spec = Aids::GemSpec
     end
 
     desc "-c, [--create=CREATE]", "Create new gem."
