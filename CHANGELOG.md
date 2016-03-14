@@ -1,3 +1,21 @@
+# v7.4.0 (2016-03-13)
+
+- Added RubyGems authenticator.
+- Added a basic authenticator.
+- Added default editor to CI configuration.
+- Added error checking when pushing gem to remote server.
+- Added gem credentials support.
+- Added gem specific error classes.
+- Added gem specification wrapper.
+- Added valid, default, metadata to gemspec fixtures.
+- Refactored CLI to use gem spec wrapper.
+- Refactored Rake release object to use gem credentials.
+- Refactored Rake release to define path to current gemspec.
+- Refactored Rake release to use gem spec wrapper.
+- Refactored Rake tasks to use gem spec wrapper.
+- Refactored gem specification as an aid.
+- Refactored gem specification error class.
+
 # v7.3.0 (2016-02-29)
 
 - Added README Screencasts section.

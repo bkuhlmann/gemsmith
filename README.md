@@ -26,8 +26,7 @@ A command line interface for smithing new Ruby gems.
   - [Gem Certificates](#gem-certificates)
 - [Private Gem Servers](#private-gem-servers)
   - [Gem Specification Metadata](#gem-specification-metadata)
-  - [RubyGems Credentials](#rubygems-credentials)
-  - [Generating Credentials](#generating-credentials)
+  - [Gem Credentials](#gem-credentials)
 - [Promotion](#promotion)
 - [Versioning](#versioning)
 - [Code of Conduct](#code-of-conduct)
@@ -43,7 +42,6 @@ A command line interface for smithing new Ruby gems.
 - Builds a gem skeleton with enhanced Bundler functionality.
 - Uses [Milestoner](https://github.com/bkuhlmann/milestoner) for consistent project/gem versioning.
 - Uses [Tocer](https://github.com/bkuhlmann/tocer) for README table of contents generation.
-- Uses common settings and a structured layout for building new gems.
 - Supports [Thor](https://github.com/erikhuda/thor).
 - Supports [Ruby on Rails](http://rubyonrails.org).
 - Supports [Pry](http://pryrepl.org).
@@ -55,10 +53,12 @@ A command line interface for smithing new Ruby gems.
 - Supports [Gemnasium](https://gemnasium.com).
 - Supports [Travis CI](https://travis-ci.org).
 - Supports [Patreon](https://www.patreon.com).
-- Adds commonly needed [README](README.md), [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md),
+- Supports common settings and a structured layout for building new gems.
+- Supports publishing to public or private gem servers.
+- Provides commonly needed [README](README.md), [CHANGELOG](CHANGELOG.md), [CONTRIBUTING](CONTRIBUTING.md),
   [CODE OF CONDUCT](CODE_OF_CONDUCT.md), [LICENSE](LICENSE.md), etc. documentation.
-- Provides the ability to open the source code of any gem within your favorite editor.
-- Provides the ability to read the documentation of any gem within your default browser.
+- Provides the ability to view source code of any gem within your favorite editor.
+- Provides the ability to view the documentation of any gem within your default browser.
 
 # Screencasts
 
@@ -295,46 +295,21 @@ following:
   credentials are not used within your gemspec.
 - `allowed_push_host`: Provides the URL of the private gem server to push your gem to.
 
-## RubyGems Credentials
+## Gem Credentials
 
-The "example_key" defined within the gem specification, mentioned above, *must* be defined withing your
-`~/.gem/credentials` file and should look like this:
-
-    ---
-    :example_key: "Basic dXNlcjpwYXNzd29yZA=="
-
-The "example_key" *must* be a symbol (hence the double colons) due to RubyGems requirements.
-
-## Generating Credentials
-
-RubyGems uses an `Authorization` HTTP header when pushing a gem to a remote server. This can be an API key, HTTP Basic
-Auth, etc. When pushing a gem to RubyGems, you'll want to use the API key associated with your account. If that is the
-case, you're credentials would contain the following:
-
-    ---
-    :rubygems_api_key: 2a0b460650e67d9b85a60e183defa376
-
-For a server that might use HTTP Basic auth, you can generate the key value by launching IRB and running the following:
-
-    require "net/http"
-    Net::HTTP::Get.new("http://gems.example.com").basic_auth "user", "password"
-
-The URL is arbitrary but the user and password should be your account credentials. The output, from running the code
-above, should look like the following:
-
-    ["Basic dXNlcjpwYXNzd29yZA=="]
-
-You can then add this value to your credentials file like so:
-
-    ---
-    :example_key: "Basic dXNlcjpwYXNzd29yZA=="
-
-You can add multiple accounts to your RubyGems credentials (there is no limit to the number of accounts you might need
-to have access to). Example:
+With your gem specification metadata established, you are ready to publish your gem to a public or private server. If
+this is your first time publishing a gem and no gem credentials have been configured, you'll be prompted for them. This
+gem will ask you for your login and password during gem publish. Gem credentials will are stored in the
+`~/.gem/credentials` file as defined by RubyGems. *This will only happen once.* Afterwards, future gem publishing will
+your stored credentials instead. Multiple credentials can be stored in the `~/.gem/credentials` file. Example:
 
     ---
     :rubygems_api_key: 2a0b460650e67d9b85a60e183defa376
     :example_key: "Basic dXNlcjpwYXNzd29yZA=="
+
+Should you need delete a credential (due to a bad login/password for example), you can open the `~/.gem/credentials` in
+your default editor and remove the line(s) you don't need. Upon next publish of your gem, this gem will prompt you for
+new credentials.
 
 # Promotion
 
