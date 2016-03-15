@@ -298,18 +298,17 @@ following:
 ## Gem Credentials
 
 With your gem specification metadata established, you are ready to publish your gem to a public or private server. If
-this is your first time publishing a gem and no gem credentials have been configured, you'll be prompted for them. This
-gem will ask you for your login and password during gem publish. Gem credentials will are stored in the
-`~/.gem/credentials` file as defined by RubyGems. *This will only happen once.* Afterwards, future gem publishing will
-your stored credentials instead. Multiple credentials can be stored in the `~/.gem/credentials` file. Example:
+this is your first time publishing a gem and no gem credentials have been configured, you'll be prompted for them. Gem
+credentials are stored in the RubyGems `~/.gem/credentials` file. From this point forward, future gem publishing will
+use your stored credentials instead. Multiple credentials can be stored in the `~/.gem/credentials` file. Example:
 
     ---
     :rubygems_api_key: 2a0b460650e67d9b85a60e183defa376
     :example_key: "Basic dXNlcjpwYXNzd29yZA=="
 
-Should you need delete a credential (due to a bad login/password for example), you can open the `~/.gem/credentials` in
-your default editor and remove the line(s) you don't need. Upon next publish of your gem, this gem will prompt you for
-new credentials.
+Should you need to delete a credential (due to a bad login/password for example), you can open the `~/.gem/credentials`
+in your default editor and remove the line(s) you don't need. Upon next publish of your gem, you'll be prompted for the
+missing credentials.
 
 # Promotion
 
