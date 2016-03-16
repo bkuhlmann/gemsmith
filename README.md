@@ -127,6 +127,7 @@ The following defaults are used when no options are configured:
       :guard: true
       :rspec: true
       :rubocop: true
+      :git-hub: false
       :code_climate: true
       :gemnasium: true
       :travis: true
