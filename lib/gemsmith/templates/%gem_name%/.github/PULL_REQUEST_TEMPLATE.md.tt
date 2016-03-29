@@ -1,15 +1,11 @@
 ## Overview
+<!-- Required. Why is this important/necessary? -->
 
-<!-- Why is this pull request important/necessary -->
+## Details
+<!-- Optional. List the key features/highlights as bullet points. -->
 
-## Features
+## Notes
+<!-- Optional. List additional notes/references as bullet points. Delete if unused. -->
 
-<!-- List the key features of this pull request as bullet points. -->
-
--
-
-<!-- Optional. Uncomment to provide additional notes, links, concerns, caveats, etc. -->
-<!-- ## Notes -->
-
-<!-- Optional. Uncomment to provide image/video details. -->
-<!-- ## Screenshots/Screencasts -->
+## Screenshots/Screencasts
+<!-- Optional. Provide image/video support. Delete if unused. -->
