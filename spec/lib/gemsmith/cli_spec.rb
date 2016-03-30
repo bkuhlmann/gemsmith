@@ -7,7 +7,7 @@ RSpec.describe Gemsmith::CLI do
   let(:command_line) { Array(command).concat options }
   let(:cli) { -> { described_class.start command_line } }
 
-  shared_examples_for "a create command" do
+  shared_examples_for "a generate command" do
     let(:gem_name) { "tester" }
     let(:gem_dir) { Pathname.new File.join(temp_dir, gem_name) }
     let :skeleton_files do
@@ -175,14 +175,24 @@ RSpec.describe Gemsmith::CLI do
     end
   end
 
+  describe "--generate" do
+    let(:command) { "--generate" }
+    it_behaves_like "a generate command"
+  end
+
+  describe "-g" do
+    let(:command) { "-g" }
+    it_behaves_like "a generate command"
+  end
+
   describe "--create" do
     let(:command) { "--create" }
-    it_behaves_like "a create command"
+    it_behaves_like "a generate command"
   end
 
   describe "-c" do
     let(:command) { "-c" }
-    it "behaves like a create command"
+    it_behaves_like "a generate command"
   end
 
   describe "--open" do

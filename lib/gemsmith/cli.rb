@@ -30,6 +30,7 @@ require "gemsmith/configuration"
 
 module Gemsmith
   # The Command Line Interface (CLI) for the gem.
+  # rubocop:disable Metrics/ClassLength
   class CLI < Thor
     include Thor::Actions
     include ThorPlus::Actions
@@ -68,7 +69,32 @@ module Gemsmith
       @gem_spec = Aids::GemSpec
     end
 
-    desc "-c, [--create=CREATE]", "Create new gem."
+    desc "-g, [--generate=GENERATE]", "Generate new gem."
+    map %w(-g --generate) => :generate
+    method_option :cli, aliases: "-c", desc: "Add CLI support.", type: :boolean, default: false
+    method_option :rails, aliases: "-r", desc: "Add Rails support.", type: :boolean, default: false
+    method_option :security, aliases: "-S", desc: "Add security support.", type: :boolean, default: true
+    method_option :pry, aliases: "-p", desc: "Add Pry support.", type: :boolean, default: true
+    method_option :guard, aliases: "-g", desc: "Add Guard support.", type: :boolean, default: true
+    method_option :rspec, aliases: "-s", desc: "Add RSpec support.", type: :boolean, default: true
+    method_option :rubocop, aliases: "-R", desc: "Add Rubocop support.", type: :boolean, default: true
+    method_option :git_hub, aliases: "-H", desc: "Add GitHub support.", type: :boolean, default: false
+    method_option :code_climate, aliases: "-C", desc: "Add Code Climate support.", type: :boolean, default: true
+    method_option :gemnasium, aliases: "-G", desc: "Add Gemnasium support.", type: :boolean, default: true
+    method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true
+    method_option :patreon, aliases: "-P", desc: "Add Patreon support.", type: :boolean, default: true
+    def generate name
+      say
+      info "Generating gem..."
+
+      setup_configuration name, options
+      self.class.skeletons.each { |skeleton| skeleton.create self, configuration: configuration }
+
+      info "Gem generation finished."
+      say
+    end
+
+    desc "-c, [--create=CREATE]", "Create new gem. DEPRECATED (use --generate)."
     map %w(-c --create) => :create
     method_option :cli, aliases: "-c", desc: "Add CLI support.", type: :boolean, default: false
     method_option :rails, aliases: "-r", desc: "Add Rails support.", type: :boolean, default: false
@@ -83,13 +109,14 @@ module Gemsmith
     method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true
     method_option :patreon, aliases: "-P", desc: "Add Patreon support.", type: :boolean, default: true
     def create name
+      warn "[DEPRECATION]: --create (-c) is deprecated, use --generate (-g) instead."
       say
-      info "Creating gem..."
+      info "Generating gem..."
 
       setup_configuration name, options
       self.class.skeletons.each { |skeleton| skeleton.create self, configuration: configuration }
 
-      info "Gem created."
+      info "Gem generation finished."
       say
     end
 
