@@ -1,3 +1,11 @@
+# v7.5.0 (2016-04-03)
+
+- Fixed README gem credential documentation typos.
+- Added --generate (-g) command.
+- Added bond, wirb, hirb, and awesome_print development dependencies.
+- Added default GitHub key configuration to README.
+- Updated GitHub issue and pull request skeleton templates.
+
 # v7.4.0 (2016-03-13)
 
 - Added RubyGems authenticator.

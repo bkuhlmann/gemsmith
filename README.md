@@ -143,14 +143,15 @@ necessary.
 
 From the command line, type: `gemsmith --help`
 
-    gemsmith -c, [--create=CREATE]  # Create new gem.
-    gemsmith -e, [--edit]           # Edit Gemsmith settings in default editor.
-    gemsmith -h, [--help=HELP]      # Show this message or get help for a command.
-    gemsmith -o, [--open=OPEN]      # Open a gem in default editor.
-    gemsmith -r, [--read=READ]      # Open a gem in default browser.
-    gemsmith -v, [--version]        # Show Gemsmith version.
+    gemsmith -c, [--create=CREATE]      # Create new gem. DEPRECATED (use --generate).
+    gemsmith -e, [--edit]               # Edit Gemsmith settings in default editor.
+    gemsmith -g, [--generate=GENERATE]  # Generate new gem.
+    gemsmith -h, [--help=HELP]          # Show this message or get help for a command.
+    gemsmith -o, [--open=OPEN]          # Open a gem in default editor.
+    gemsmith -r, [--read=READ]          # Open a gem in default browser.
+    gemsmith -v, [--version]            # Show Gemsmith version.
 
-For more gem creation options, type: `gemsmith --help --create`
+For more gem creation options, type: `gemsmith --help --generate`
 
     -c, [--cli], [--no-cli]                    # Add CLI support.
     -r, [--rails], [--no-rails]                # Add Rails support.
