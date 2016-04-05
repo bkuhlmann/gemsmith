@@ -18,14 +18,14 @@ module <%= config.dig(:gem, :class) %>
     end
     <%- if config.dig(:create, :cli) -%>
 
-    desc "-e, [--edit]", "Edit #{<%= config.dig(:gem, :class) %>::Identity.label} settings in default editor."
+    desc "-e, [--edit]", "Edit gem settings in default editor."
     map %w(-e --edit) => :edit
     def edit
       `#{editor} $HOME/#{<%= config.dig(:gem, :class) %>::Identity.file_name}`
     end
     <%- end -%>
 
-    desc "-v, [--version]", "Show #{<%= config.dig(:gem, :class) %>::Identity.label} version."
+    desc "-v, [--version]", "Show gem version."
     map %w(-v --version) => :version
     def version
       say <%= config.dig(:gem, :class) %>::Identity.version_label
