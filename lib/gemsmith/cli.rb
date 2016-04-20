@@ -141,14 +141,14 @@ module Gemsmith
     end
 
     desc "-e, [--edit]", "Edit gem settings in default editor."
-    map %w(-e --edit) => :edit
+    map %w[-e --edit] => :edit
     def edit
       info "Editing: #{configuration.file_path}..."
       `#{gem_spec.editor} #{configuration.file_path}`
     end
 
     desc "-v, [--version]", "Show gem version."
-    map %w(-v --version) => :version
+    map %w[-v --version] => :version
     def version
       say Gemsmith::Identity.version_label
     end
