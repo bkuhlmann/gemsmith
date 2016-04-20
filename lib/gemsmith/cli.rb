@@ -4,6 +4,7 @@ require "yaml"
 require "thor"
 require "thor/actions"
 require "thor_plus/actions"
+require "refinements/string_extensions"
 require "gemsmith/aids/gem"
 require "gemsmith/aids/gem_spec"
 require "gemsmith/aids/git"
@@ -35,6 +36,7 @@ module Gemsmith
     include Thor::Actions
     include ThorPlus::Actions
     include CLIHelpers
+    using Refinements::StringExtensions
 
     package_name Gemsmith::Identity.version_label
 
@@ -163,8 +165,7 @@ module Gemsmith
     attr_reader :configuration, :gem_spec
 
     def setup_configuration name, options
-      gem = Aids::Gem.new name
-      @configuration = Configuration.new gem_name: gem.name, gem_class: gem.klass
+      @configuration = Configuration.new gem_name: name.snakecase, gem_class: name.camelcase
       options.each { |key, value| configuration.public_send "create_#{key}=", value }
     end
   end
