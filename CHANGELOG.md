@@ -1,3 +1,14 @@
+# v7.6.0 (2016-04-24)
+
+- Fixed Rubocop issues with CLI array options.
+- Added Refinements gem.
+- Added string refinements to CLI.
+- Updated Rubocop PercentLiteralDelimiters and AndOr styles.
+- Updated to Milestoner 3.0.0.
+- Updated to Tocer 2.2.0.
+- Removed gem aid.
+- Removed gem label from CLI edit and version descriptions.
+
 # v7.5.0 (2016-04-03)
 
 - Fixed README gem credential documentation typos.
