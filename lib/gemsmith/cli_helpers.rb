@@ -42,14 +42,13 @@ module Gemsmith
     def process_gem name, method
       specs = gem_spec.find_all name
 
-      case
-        when specs.size == 1
-          open_gem specs.first, method
-        when specs.size > 1
-          print_gems specs
-          open_gem pick_gem(specs, name), method
-        else
-          error("Unable to find gem: #{name}.") && ""
+      if specs.size == 1
+        open_gem specs.first, method
+      elsif specs.size > 1
+        print_gems specs
+        open_gem pick_gem(specs, name), method
+      else
+        error("Unable to find gem: #{name}.") && ""
       end
     end
   end
