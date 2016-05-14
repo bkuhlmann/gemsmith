@@ -19,20 +19,20 @@ module <%= config.dig(:gem, :class) %>
     <%- if config.dig(:create, :cli) -%>
 
     desc "-e, [--edit]", "Edit gem settings in default editor."
-    map %w(-e --edit) => :edit
+    map %w[-e --edit] => :edit
     def edit
       `#{editor} $HOME/#{<%= config.dig(:gem, :class) %>::Identity.file_name}`
     end
     <%- end -%>
 
     desc "-v, [--version]", "Show gem version."
-    map %w(-v --version) => :version
+    map %w[-v --version] => :version
     def version
       say <%= config.dig(:gem, :class) %>::Identity.version_label
     end
 
     desc "-h, [--help=HELP]", "Show this message or get help for a command."
-    map %w(-h --help) => :help
+    map %w[-h --help] => :help
     def help task = nil
       say and super
     end

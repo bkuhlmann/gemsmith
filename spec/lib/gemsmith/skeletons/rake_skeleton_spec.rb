@@ -39,7 +39,7 @@ RSpec.describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
       let(:create_rspec) { true }
 
       it "adds RSpec to default tasks" do
-        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w(spec)\n")
+        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w[spec]\n")
       end
     end
 
@@ -47,7 +47,7 @@ RSpec.describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
       let(:create_rubocop) { true }
 
       it "adds Rubocop to default tasks" do
-        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w(rubocop)\n")
+        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w[rubocop]\n")
       end
     end
 
@@ -56,7 +56,7 @@ RSpec.describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
       let(:create_rubocop) { true }
 
       it "adds all tasks" do
-        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w(spec rubocop)\n")
+        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w[spec rubocop]\n")
       end
     end
 

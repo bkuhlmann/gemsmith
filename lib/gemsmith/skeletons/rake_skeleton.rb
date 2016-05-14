@@ -30,7 +30,7 @@ module Gemsmith
 
       def configure_rakefile
         return if default_tasks.empty?
-        cli.append_to_file "%gem_name%/Rakefile", %(\ntask default: %w(#{default_tasks.join(" ")})\n)
+        cli.append_to_file "%gem_name%/Rakefile", %(\ntask default: %w[#{default_tasks.join(" ")}]\n)
       end
     end
   end
