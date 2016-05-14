@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+require "refinements/string_extensions"
+
 module Gemsmith
   # Default configuration for gem with support for custom settings.
   class Configuration
+    using Refinements::StringExtensions
+
     attr_reader :gem_name, :gem_class, :file_path
     attr_writer :gem_platform, :gem_home_url, :gem_license, :gem_private_key, :gem_public_key, :author_name,
                 :author_email, :author_url, :organization_name, :organization_email, :organization_url,
@@ -15,8 +19,8 @@ module Gemsmith
                    git: Aids::Git,
                    file_path: File.join(ENV["HOME"], Identity.file_name)
 
-      @gem_name = gem_name
-      @gem_class = gem_class
+      @gem_name = gem_name.snakecase
+      @gem_class = gem_class.camelcase
       @file_path = file_path
       @git = git
       @settings = load_settings
