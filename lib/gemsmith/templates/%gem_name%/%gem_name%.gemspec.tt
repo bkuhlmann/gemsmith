@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["<%= config.dig(:author, :name) %>"]
   spec.email = ["<%= config.dig(:author, :email) %>"]
   spec.homepage = "<%= config.dig(:gem, :home_url) %>"
-  spec.summary = "TODO: Add gem summary here."
-  spec.description = "TODO: Add gem description here."
+  spec.summary = ""
+  spec.description = ""
   spec.license = "MIT"
 
   <%- if config.dig(:create, :security) -%>
