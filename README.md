@@ -40,6 +40,7 @@ A command line interface for smithing new Ruby gems.
 # Features
 
 - Builds a gem skeleton with enhanced Bundler functionality.
+- Uses [Versionaire](https://github.com/bkuhlmann/versionaire) for semantic versioning.
 - Uses [Milestoner](https://github.com/bkuhlmann/milestoner) for consistent project/gem versioning.
 - Uses [Tocer](https://github.com/bkuhlmann/tocer) for README table of contents generation.
 - Supports [Thor](https://github.com/erikhuda/thor).

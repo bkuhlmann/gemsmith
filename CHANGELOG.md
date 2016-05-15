@@ -1,3 +1,19 @@
+# v7.7.0 (2016-05-15)
+
+- Fixed Rubocop array style issues in gem templates.
+- Fixed gem name/class snakecase/camelcase issues.
+- Fixed issues with opening of invalid gems in default editor.
+- Added Versionaire gem.
+- Added `Gemsmith::Aids::Spec` deprecation documentation.
+- Added gem requirement errors.
+- Added gem requirement support.
+- Updated gemspec template to default to blank summary and description.
+- Updated to Refinements 2.2.1.
+- Updated to Rubocop 0.40.0.
+- Updated to Ruby 2.3.1.
+- Removed unused Pry gems.
+- Refactored gem specification to use gem requirement.
+
 # v7.6.0 (2016-04-24)
 
 - Fixed Rubocop issues with CLI array options.
