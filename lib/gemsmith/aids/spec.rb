@@ -5,6 +5,7 @@ require "open3"
 module Gemsmith
   module Aids
     # A convenience aid to the Gem::Specification object.
+    # DEPRECATED: Will be removed in the next major release. Use `GemSpec` instead.
     class Spec
       def initialize specification: ::Gem::Specification, shell: Open3
         @specification = specification
