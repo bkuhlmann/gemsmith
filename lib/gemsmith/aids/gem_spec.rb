@@ -22,8 +22,8 @@ module Gemsmith
         specification.find_by_name name, version
       end
 
-      def self.find_all name
-        specification.find_all_by_name name
+      def self.find_all name, requirement: Gem::Requirement.new.to_s
+        specification.find_all_by_name name, requirement
       end
 
       def initialize file_path, shell: Open3

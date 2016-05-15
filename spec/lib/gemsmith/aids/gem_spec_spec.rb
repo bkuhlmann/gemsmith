@@ -32,7 +32,7 @@ RSpec.describe Gemsmith::Aids::GemSpec do
 
     it "answers matching gem specs" do
       described_class.find_all "test"
-      expect(specification).to have_received(:find_all_by_name).with("test")
+      expect(specification).to have_received(:find_all_by_name).with("test", ">= 0.0.0")
     end
   end
 
