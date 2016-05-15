@@ -31,10 +31,12 @@ module Gemsmith
         gem_spec.find name, gems[answer.to_i - 1].version.version
       else
         error "Invalid option: #{answer}"
+        nil
       end
     end
 
     def open_gem specification, method
+      return unless specification
       spec = gem_spec.new specification.spec_file
       spec.public_send method
     end
@@ -48,7 +50,7 @@ module Gemsmith
         print_gems specs
         open_gem pick_gem(specs, name), method
       else
-        error("Unable to find gem: #{name}.") && ""
+        error("Unable to find gem: #{name}.") and ""
       end
     end
   end
