@@ -311,7 +311,7 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#rails_version" do
     context "with default resource file" do
       it "answers Rails version" do
-        expect(subject.rails_version).to eq("4.2")
+        expect(subject.rails_version).to eq("5.0")
       end
     end
 
@@ -679,7 +679,7 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
         },
         versions: {
           ruby: "2.0.0",
-          rails: "4.2"
+          rails: "5.0"
         },
         create: {
           cli: false,

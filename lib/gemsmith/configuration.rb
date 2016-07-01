@@ -71,7 +71,7 @@ module Gemsmith
     end
 
     def rails_version
-      @rails_version || settings_group(:versions).fetch(:rails, "4.2")
+      @rails_version || settings_group(:versions).fetch(:rails, "5.0")
     end
 
     def create_cli?

@@ -93,7 +93,7 @@ RSpec.describe Gemsmith::CLI do
               ".github/PULL_REQUEST_TEMPLATE.md",
               "bin/setup",
               "bin/tester",
-              "gemfiles/rails-4.2.x.gemfile",
+              "gemfiles/rails-5.0.x.gemfile",
               "lib/generators/tester/install/USAGE",
               "lib/generators/tester/install/install_generator.rb",
               "lib/generators/tester/upgrade/USAGE",

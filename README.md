@@ -119,7 +119,7 @@ The following defaults are used when no options are configured:
       :url: ""
     :versions:
       :ruby: <current Ruby version>
-      :rails: "4.2"
+      :rails: "5.0"
     :create:
       :cli: false
       :rails: false
