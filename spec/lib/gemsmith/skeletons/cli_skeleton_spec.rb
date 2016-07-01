@@ -24,7 +24,7 @@ RSpec.describe Gemsmith::Skeletons::CLISkeleton, :temp_dir do
       end
 
       it "sets excecutable file permission for setup script" do
-        expect(cli).to have_received(:chmod).with("tester/bin/tester", 0755)
+        expect(cli).to have_received(:chmod).with("tester/bin/tester", 0o755)
       end
     end
 

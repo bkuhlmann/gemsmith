@@ -55,7 +55,7 @@ module Gemsmith
 
       FileUtils.mkdir_p File.dirname self.class.file_path
       File.open(self.class.file_path, "w") { |file| file << YAML.dump(new_credentials) }
-      FileUtils.chmod(0600, self.class.file_path)
+      FileUtils.chmod(0o600, self.class.file_path)
     end
 
     private
