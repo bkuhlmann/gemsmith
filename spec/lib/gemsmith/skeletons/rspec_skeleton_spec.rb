@@ -4,12 +4,15 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Skeletons::RspecSkeleton, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
-  let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_rspec?: create_rspec }
+  let :configuration do
+    instance_spy Gemsmith::Configuration, gem_name: "tester", create_rspec?: create_rspec, create_rails?: create_rails
+  end
   let(:gem_dir) { File.join temp_dir, configuration.gem_name }
   subject { described_class.new cli, configuration: configuration }
   before { FileUtils.mkdir gem_dir }
 
   describe "#create" do
+    let(:create_rails) { false }
     before { subject.create }
 
     context "when enabled" do
@@ -29,21 +32,22 @@ RSpec.describe Gemsmith::Skeletons::RspecSkeleton, :temp_dir do
         expect(cli).to have_received(:template).with(template, configuration.to_h)
       end
 
-      it "creates default config" do
-        template = "%gem_name%/spec/support/kit/default_config.rb.tt"
+      it "creates shared contexts" do
+        template = "%gem_name%/spec/support/shared_contexts/temp_dir.rb.tt"
         expect(cli).to have_received(:template).with(template, configuration.to_h)
       end
 
-      it "creates standard error support" do
-        expect(cli).to have_received(:template).with("%gem_name%/spec/support/kit/stderr.rb.tt", configuration.to_h)
+      it "does not create rails helper" do
+        expect(cli).to_not have_received(:template).with("%gem_name%/spec/rails_helper.rb.tt", configuration.to_h)
       end
+    end
 
-      it "creates standard output support" do
-        expect(cli).to have_received(:template).with("%gem_name%/spec/support/kit/stdout.rb.tt", configuration.to_h)
-      end
+    context "when Rails support is enabled" do
+      let(:create_rspec) { true }
+      let(:create_rails) { true }
 
-      it "creates tempory directory support" do
-        expect(cli).to have_received(:template).with("%gem_name%/spec/support/kit/temp_dir.rb.tt", configuration.to_h)
+      it "creates rails helper" do
+        expect(cli).to have_received(:template).with("%gem_name%/spec/rails_helper.rb.tt", configuration.to_h)
       end
     end
 
