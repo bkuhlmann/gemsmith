@@ -24,7 +24,7 @@
 
 # Requirements
 
-0. [MRI <%= config.dig(:versions, :ruby) %>](https://www.ruby-lang.org)
+0. [Ruby <%= config.dig(:versions, :ruby) %>](https://www.ruby-lang.org)
 <%- if config.dig(:create, :rails) -%>
 0. [Ruby on Rails](http://rubyonrails.org).
 <%- end -%>
