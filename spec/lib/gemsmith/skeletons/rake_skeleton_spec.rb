@@ -13,23 +13,8 @@ RSpec.describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
   subject { described_class.new cli, configuration: configuration }
   before { FileUtils.mkdir gem_dir }
 
-  describe "#create_console_task" do
-    before { subject.create_console_task }
-
-    it "creates engine file" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/tasks/console.rake.tt", configuration.to_h)
-    end
-  end
-
   describe "#create" do
-    before do
-      allow(subject).to receive(:create_console_task)
-      subject.create
-    end
-
-    it "creates console task" do
-      expect(subject).to have_received(:create_console_task)
-    end
+    before { subject.create }
 
     it "creates Rakefile" do
       expect(cli).to have_received(:template).with("%gem_name%/Rakefile.tt", configuration.to_h)

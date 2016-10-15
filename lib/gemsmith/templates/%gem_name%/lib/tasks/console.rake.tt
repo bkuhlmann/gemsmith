@@ -1,7 +1,0 @@
-desc "Open IRB console for gem development environment"
-task :console do
-  require "irb"
-  require "<%= config.dig(:gem, :name) %>"
-  ARGV.clear
-  IRB.start
-end

@@ -4,12 +4,7 @@ module Gemsmith
   module Skeletons
     # Configures Rake support.
     class RakeSkeleton < BaseSkeleton
-      def create_console_task
-        cli.template "%gem_name%/lib/tasks/console.rake.tt", configuration.to_h
-      end
-
       def create
-        create_console_task
         cli.template "%gem_name%/Rakefile.tt", configuration.to_h
         configure_rakefile
       end
