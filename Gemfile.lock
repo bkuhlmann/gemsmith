@@ -131,7 +131,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   bond
-  bundler (~> 1.12)
+  bundler (~> 1.13)
   climate_control
   codeclimate-test-reporter
   gemsmith!
