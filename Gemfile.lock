@@ -141,10 +141,9 @@ DEPENDENCIES
   pry-byebug
   pry-state
   rake (~> 11.0)
-  rb-fsevent
   rspec (~> 3.5)
   rubocop (~> 0.44)
   wirb
 
 BUNDLED WITH
-   1.13.4
+   1.13.5
