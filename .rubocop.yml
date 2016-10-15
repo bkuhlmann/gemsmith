@@ -13,6 +13,8 @@ Style/PercentLiteralDelimiters:
     "%i": "[]"
     "%I": "[]"
     "%r": "()"
+Style/SafeNavigation:
+  Enabled: false
 Style/SignalException:
   EnforcedStyle: semantic
 Style/SingleLineBlockParams:
@@ -23,8 +25,14 @@ Style/StringLiterals:
   EnforcedStyle: double_quotes
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
+Style/VariableNumber:
+  EnforcedStyle: snake_case
 Metrics/AbcSize:
   Max: 50
+Metrics/BlockLength:
+  Exclude:
+    - "**/*.gemspec"
+    - "spec/**/*"
 Metrics/ClassLength:
   Exclude:
     - "lib/gemsmith/configuration.rb"
