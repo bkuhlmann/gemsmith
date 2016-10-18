@@ -91,4 +91,48 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
       end
     end
   end
+
+  describe "#build" do
+    let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
+    let(:gem_spec_fixture_file) { File.join fixtures_dir, "tester-valid.gemspec" }
+    let(:gem_spec_file) { File.join temp_dir, "tester.gemspec" }
+    let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_file }
+    before { FileUtils.cp gem_spec_fixture_file, gem_spec_file }
+
+    context "when success" do
+      subject { described_class.new tocer: tocer_class }
+
+      it "builds gem package" do
+        Dir.chdir(temp_dir) do
+          subject.build gem_spec
+          expect(File.exist?("pkg/tester-0.1.0.gem")).to eq(true)
+        end
+      end
+
+      it "prints package built successfully" do
+        Dir.chdir(temp_dir) do
+          result = -> { subject.build gem_spec }
+          expect(&result).to output("Built: pkg/tester-0.1.0.gem.\n").to_stdout
+        end
+      end
+    end
+
+    context "when failure" do
+      let(:kernel) { class_spy Kernel, system: false }
+
+      it "does not build gem package" do
+        Dir.chdir(temp_dir) do
+          subject.build gem_spec
+          expect(File.exist?("pkg/tester-0.1.0.gem")).to eq(false)
+        end
+      end
+
+      it "prints error message" do
+        Dir.chdir(temp_dir) do
+          result = -> { subject.build gem_spec }
+          expect(&result).to output("Unable to build: pkg/tester-0.1.0.gem.\n").to_stdout
+        end
+      end
+    end
+  end
 end

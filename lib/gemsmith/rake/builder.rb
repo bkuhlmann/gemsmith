@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 require "bundler/ui/shell"
+require "fileutils"
 require "tocer"
 
 module Gemsmith
   module Rake
     # Provides gem build functionality. Meant to be wrapped in Rake tasks.
     class Builder
-      def initialize tocer: Tocer::Writer, shell: Bundler::UI::Shell, kernel: Kernel
+      def initialize tocer: Tocer::Writer, shell: Bundler::UI::Shell.new, kernel: Kernel
         @tocer = tocer
-        @shell = shell.new
+        @shell = shell
         @kernel = kernel
       end
 
@@ -18,25 +19,6 @@ module Gemsmith
         tocer.new(readme).write
         shell.confirm "Updated gem documentation."
       end
-
-      # def build_gem
-      #   file_name = nil
-      #   sh("gem build -V '#{spec_path}'") do
-      #     file_name = File.basename(built_gem_path)
-      #     SharedHelpers.filesystem_access(File.join(base, "pkg")) {|p| FileUtils.mkdir_p(p) }
-      #     FileUtils.mv(built_gem_path, "pkg")
-      #     Bundler.ui.confirm "#{name} #{version} built to pkg/#{file_name}."
-      #   end
-      #   File.join(base, "pkg", file_name)
-      # end
-
-
-      # def install_gem(built_gem_path = nil, local = false)
-      #   built_gem_path ||= build_gem
-      #   out, _ = sh_with_code("gem install '#{built_gem_path}'#{" --local" if local}")
-      #   raise "Couldn't install gem, run `gem install #{built_gem_path}' for more detailed output" unless out[/Successfully installed/]
-      #   Bundler.ui.confirm "#{name} (#{version}) installed."
-      # end
 
       def clean
         FileUtils.rm_rf "pkg"
@@ -49,9 +31,25 @@ module Gemsmith
         kernel.exit 1
       end
 
+      def build gem_spec
+        path = package_path gem_spec
+
+        if kernel.system("gem build #{gem_spec.name}.gemspec")
+          FileUtils.mkdir_p "pkg"
+          FileUtils.mv gem_spec.package_file_name, path
+          shell.confirm "Built: #{path}."
+        else
+          shell.error "Unable to build: #{path}."
+        end
+      end
+
       private
 
       attr_reader :tocer, :shell, :kernel
+
+      def package_path gem_spec
+        File.join "pkg", gem_spec.package_file_name
+      end
     end
   end
 end

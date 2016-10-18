@@ -39,6 +39,7 @@ module Gemsmith
 
         desc "Build #{gem_spec.package_file_name}"
         task build: [:clean, :doc, :validate] do
+          builder.build gem_spec
         end
 
         desc "Build, tag #{gem_spec.version_label}, and push #{gem_spec.package_file_name} to RubyGems"
