@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "gemsmith/rake/build"
+require "gemsmith/rake/builder"
 
-RSpec.describe Gemsmith::Rake::Build, :temp_dir do
+RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
   let(:tocer_class) { class_spy Tocer::Writer }
   let(:tocer) { instance_spy Tocer::Writer }
   let(:kernel) { class_spy Kernel }

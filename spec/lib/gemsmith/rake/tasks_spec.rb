@@ -45,10 +45,10 @@ RSpec.describe Gemsmith::Rake::Tasks do
   end
 
   describe "rake tasks" do
-    let(:build) { instance_spy Gemsmith::Rake::Build }
+    let(:builder) { instance_spy Gemsmith::Rake::Builder }
     let(:release) { instance_spy Gemsmith::Rake::Release }
     before do
-      allow(Gemsmith::Rake::Build).to receive(:new).and_return(build)
+      allow(Gemsmith::Rake::Builder).to receive(:new).and_return(builder)
       allow(Gemsmith::Rake::Release).to receive(:new).and_return(release)
       subject.install
     end
@@ -56,38 +56,38 @@ RSpec.describe Gemsmith::Rake::Tasks do
     describe "rake doc" do
       it "updates README" do
         Rake::Task["doc"].invoke
-        expect(build).to have_received(:doc)
+        expect(builder).to have_received(:doc)
       end
     end
 
     describe "rake clean" do
       it "cleans gem package" do
         Rake::Task[:clean].invoke
-        expect(build).to have_received(:clean)
+        expect(builder).to have_received(:clean)
       end
     end
 
     describe "rake validate" do
       it "validates gem build" do
         Rake::Task[:validate].invoke
-        expect(build).to have_received(:validate)
+        expect(builder).to have_received(:validate)
       end
     end
 
     describe "rake build" do
       it "invokes clean task prerequisite" do
         Rake::Task[:build].invoke
-        expect(build).to have_received(:clean)
+        expect(builder).to have_received(:clean)
       end
 
       it "invokes doc task prerequisite" do
         Rake::Task[:build].invoke
-        expect(build).to have_received(:doc)
+        expect(builder).to have_received(:doc)
       end
 
       it "invokes validate task prerequisite" do
         Rake::Task[:build].invoke
-        expect(build).to have_received(:validate)
+        expect(builder).to have_received(:validate)
       end
     end
 

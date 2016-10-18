@@ -4,7 +4,7 @@ require "bundler/gem_tasks"
 require "gemsmith/gem/specification"
 require "gemsmith/errors/base"
 require "gemsmith/errors/specification"
-require "gemsmith/rake/build"
+require "gemsmith/rake/builder"
 require "gemsmith/rake/release"
 
 module Gemsmith
@@ -19,7 +19,7 @@ module Gemsmith
 
       def initialize
         @gem_spec = Gemsmith::Gem::Specification.new Dir.glob("#{Dir.pwd}/*.gemspec").first
-        @build = Gemsmith::Rake::Build.new
+        @builder = Gemsmith::Rake::Builder.new
         @release = Gemsmith::Rake::Release.new
       end
 
@@ -29,16 +29,16 @@ module Gemsmith
 
         desc "Update README (table of contents)"
         task :doc do
-          build.doc
+          builder.doc
         end
 
         desc "Clean gem artifacts"
         task :clean do
-          build.clean
+          builder.clean
         end
 
         task :validate do
-          build.validate
+          builder.validate
         end
 
         desc "Build, tag #{gem_spec.version_label} (unsigned), and push #{gem_spec.package_file_name} to RubyGems"
@@ -54,7 +54,7 @@ module Gemsmith
 
       private
 
-      attr_reader :gem_spec, :build, :release
+      attr_reader :gem_spec, :builder, :release
     end
   end
 end

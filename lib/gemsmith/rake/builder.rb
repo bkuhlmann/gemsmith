@@ -6,7 +6,7 @@ require "tocer"
 module Gemsmith
   module Rake
     # Provides gem build functionality. Meant to be wrapped in Rake tasks.
-    class Build
+    class Builder
       def initialize tocer: Tocer::Writer, shell: Bundler::UI::Shell, kernel: Kernel
         @tocer = tocer
         @shell = shell.new
