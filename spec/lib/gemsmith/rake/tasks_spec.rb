@@ -6,10 +6,7 @@ require "gemsmith/rake/tasks"
 
 RSpec.describe Gemsmith::Rake::Tasks do
   subject { described_class.new }
-  before do
-    Rake::Task.clear
-    Rake::Task.define_task :build
-  end
+  before { Rake::Task.clear }
 
   describe ".setup" do
     let(:tasks) { instance_spy described_class }
@@ -34,6 +31,10 @@ RSpec.describe Gemsmith::Rake::Tasks do
 
     it "installs validate task" do
       expect(Rake::Task.task_defined?(:validate)).to eq(true)
+    end
+
+    it "installs build task" do
+      expect(Rake::Task.task_defined?(:build)).to eq(true)
     end
 
     it "installs publish task" do

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "bundler/gem_tasks"
 require "gemsmith/gem/specification"
 require "gemsmith/errors/base"
 require "gemsmith/errors/specification"
@@ -24,8 +23,6 @@ module Gemsmith
       end
 
       def install
-        ::Rake::Task[:build].enhance [:clean, :doc, :validate]
-
         desc "Update README (table of contents)"
         task :doc do
           builder.doc
@@ -38,6 +35,10 @@ module Gemsmith
 
         task :validate do
           builder.validate
+        end
+
+        desc "Build #{gem_spec.package_file_name}"
+        task build: [:clean, :doc, :validate] do
         end
 
         desc "Build, tag #{gem_spec.version_label}, and push #{gem_spec.package_file_name} to RubyGems"
