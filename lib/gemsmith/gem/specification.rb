@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "open3"
+require "versionaire"
 
 module Gemsmith
   module Gem
@@ -31,6 +32,7 @@ module Gemsmith
         @shell = shell
         @spec = self.class.specification.load file_path
         validate
+        @version = Versionaire::Version @spec.version.to_s
       end
 
       def homepage_url
@@ -56,11 +58,11 @@ module Gemsmith
       end
 
       def version_number
-        spec.version.version
+        version.to_s
       end
 
       def version_label
-        "v#{version_number}"
+        version.label
       end
 
       def package_file_name
@@ -69,7 +71,7 @@ module Gemsmith
 
       private
 
-      attr_reader :file_path, :spec, :shell
+      attr_reader :file_path, :spec, :shell, :version
 
       def validate
         return if spec.is_a?(self.class.specification)
