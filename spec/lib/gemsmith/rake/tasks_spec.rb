@@ -9,9 +9,6 @@ RSpec.describe Gemsmith::Rake::Tasks do
   before do
     Rake::Task.clear
     Rake::Task.define_task :build
-    Rake::Task.define_task :release
-    Rake::Task.define_task "release:guard_clean"
-    Rake::Task.define_task "release:rubygem_push"
   end
 
   describe ".setup" do
@@ -88,17 +85,6 @@ RSpec.describe Gemsmith::Rake::Tasks do
       it "invokes validate task prerequisite" do
         Rake::Task[:build].invoke
         expect(builder).to have_received(:validate)
-      end
-    end
-
-    describe "rake release" do
-      it "has prerequisites" do
-        expect(Rake::Task[:release].prerequisites).to contain_exactly("build")
-      end
-
-      it "publishes unsigned release" do
-        Rake::Task[:release].invoke
-        expect(publisher).to have_received(:publish).with(sign: false)
       end
     end
 
