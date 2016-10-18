@@ -29,7 +29,7 @@ RSpec.describe Gemsmith::Skeletons::DocumentationSkeleton, :temp_dir do
     end
 
     it "creates change log" do
-      expect(cli).to have_received(:template).with("%gem_name%/CHANGELOG.md.tt", configuration.to_h)
+      expect(cli).to have_received(:template).with("%gem_name%/CHANGES.md.tt", configuration.to_h)
     end
   end
 

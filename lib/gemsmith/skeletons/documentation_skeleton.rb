@@ -11,7 +11,7 @@ module Gemsmith
         cli.template "%gem_name%/CONTRIBUTING.md.tt", configuration.to_h
         cli.template "%gem_name%/CODE_OF_CONDUCT.md.tt", configuration.to_h
         cli.template "%gem_name%/LICENSE.md.tt", configuration.to_h
-        cli.template "%gem_name%/CHANGELOG.md.tt", configuration.to_h
+        cli.template "%gem_name%/CHANGES.md.tt", configuration.to_h
       end
 
       def update_readme

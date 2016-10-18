@@ -56,7 +56,7 @@ A command line interface for smithing new Ruby gems.
 - Supports [Patreon](https://www.patreon.com).
 - Supports common settings and a structured layout for building new gems.
 - Supports publishing to public or private gem servers.
-- Provides commonly needed [README](README.md), [CHANGELOG](CHANGELOG.md),
+- Provides commonly needed [README](README.md), [CHANGES](CHANGES.md),
   [CONTRIBUTING](CONTRIBUTING.md), [CODE OF CONDUCT](CODE_OF_CONDUCT.md), [LICENSE](LICENSE.md),
   etc. documentation.
 - Provides the ability to view source code of any gem within your favorite editor.
@@ -346,11 +346,11 @@ Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 # License
 
 Copyright (c) 2011 [Alchemists](https://www.alchemists.io).
-Read the [LICENSE](LICENSE.md) for details.
+Read [LICENSE](LICENSE.md) for details.
 
 # History
 
-Read the [CHANGELOG](CHANGELOG.md) for details.
+Read [CHANGES](CHANGES.md) for details.
 
 # Credits
 
