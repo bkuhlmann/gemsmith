@@ -5,7 +5,6 @@ require "thor"
 require "thor/actions"
 require "thor_plus/actions"
 require "gemsmith/aids/gem_spec"
-require "gemsmith/aids/git"
 require "gemsmith/errors/base"
 require "gemsmith/errors/requirement_conversion"
 require "gemsmith/errors/requirement_operator"
@@ -27,6 +26,7 @@ require "gemsmith/skeletons/ruby_skeleton"
 require "gemsmith/skeletons/travis_skeleton"
 require "gemsmith/cli_helpers"
 require "gemsmith/configuration"
+require "gemsmith/git"
 
 module Gemsmith
   # The Command Line Interface (CLI) for the gem.

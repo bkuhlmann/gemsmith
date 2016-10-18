@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::Aids::Git, :temp_dir do
+RSpec.describe Gemsmith::Git, :temp_dir do
   before do
     `printf "[user]\n" > "#{temp_dir}/.gitconfig"`
     `printf "  name = Test User\n" >> "#{temp_dir}/.gitconfig"`
