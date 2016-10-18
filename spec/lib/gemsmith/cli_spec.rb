@@ -179,16 +179,6 @@ RSpec.describe Gemsmith::CLI do
     it_behaves_like "a generate command"
   end
 
-  describe "--create" do
-    let(:command) { "--create" }
-    it_behaves_like "a generate command"
-  end
-
-  describe "-c" do
-    let(:command) { "-c" }
-    it_behaves_like "a generate command"
-  end
-
   describe "--open" do
     let(:command) { "--open" }
     it "behaves like an open command"
