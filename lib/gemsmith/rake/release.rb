@@ -11,7 +11,7 @@ module Gemsmith
         String Dir["#{Dir.pwd}/*.gemspec"].first
       end
 
-      def initialize gem_spec: Gemsmith::Aids::GemSpec.new(self.class.gem_spec_path),
+      def initialize gem_spec: Gemsmith::Gem::Specification.new(self.class.gem_spec_path),
                      credentials: Gemsmith::Credentials,
                      publisher: Milestoner::Publisher.new,
                      shell: Bundler::UI::Shell.new,

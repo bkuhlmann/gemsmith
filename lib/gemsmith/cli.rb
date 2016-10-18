@@ -4,12 +4,12 @@ require "yaml"
 require "thor"
 require "thor/actions"
 require "thor_plus/actions"
-require "gemsmith/aids/gem_spec"
 require "gemsmith/errors/base"
 require "gemsmith/errors/requirement_conversion"
 require "gemsmith/errors/requirement_operator"
 require "gemsmith/errors/specification"
 require "gemsmith/gem/requirement"
+require "gemsmith/gem/specification"
 require "gemsmith/skeletons/base_skeleton"
 require "gemsmith/skeletons/bundler_skeleton"
 require "gemsmith/skeletons/cli_skeleton"
@@ -64,7 +64,7 @@ module Gemsmith
     def initialize args = [], options = {}, config = {}
       super args, options, config
       @configuration = Configuration.new
-      @gem_spec = Aids::GemSpec
+      @gem_spec = Gem::Specification
     end
 
     desc "-g, [--generate=GENERATE]", "Generate new gem."

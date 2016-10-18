@@ -3,9 +3,9 @@
 require "open3"
 
 module Gemsmith
-  module Aids
+  module Gem
     # A Gem::Specification with additional enhancements.
-    class GemSpec
+    class Specification
       def self.specification
         ::Gem::Specification
       end

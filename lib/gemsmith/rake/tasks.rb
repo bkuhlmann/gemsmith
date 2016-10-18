@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "bundler/gem_tasks"
-require "gemsmith/aids/gem_spec"
+require "gemsmith/gem/specification"
 require "gemsmith/errors/base"
 require "gemsmith/errors/specification"
 require "gemsmith/rake/build"
@@ -18,7 +18,7 @@ module Gemsmith
       end
 
       def initialize
-        @gem_spec = Gemsmith::Aids::GemSpec.new Dir.glob("#{Dir.pwd}/*.gemspec").first
+        @gem_spec = Gemsmith::Gem::Specification.new Dir.glob("#{Dir.pwd}/*.gemspec").first
         @build = Gemsmith::Rake::Build.new
         @release = Gemsmith::Rake::Release.new
       end

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::Aids::GemSpec do
+RSpec.describe Gemsmith::Gem::Specification do
   let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
   let(:file_path) { File.join fixtures_dir, "tester-valid.gemspec" }
   let(:shell) { class_spy Open3 }
