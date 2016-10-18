@@ -46,10 +46,10 @@ RSpec.describe Gemsmith::Rake::Tasks do
 
   describe "rake tasks" do
     let(:builder) { instance_spy Gemsmith::Rake::Builder }
-    let(:release) { instance_spy Gemsmith::Rake::Release }
+    let(:publisher) { instance_spy Gemsmith::Rake::Publisher }
     before do
       allow(Gemsmith::Rake::Builder).to receive(:new).and_return(builder)
-      allow(Gemsmith::Rake::Release).to receive(:new).and_return(release)
+      allow(Gemsmith::Rake::Publisher).to receive(:new).and_return(publisher)
       subject.install
     end
 
@@ -98,7 +98,7 @@ RSpec.describe Gemsmith::Rake::Tasks do
 
       it "publishes unsigned release" do
         Rake::Task[:release].invoke
-        expect(release).to have_received(:publish).with(sign: false)
+        expect(publisher).to have_received(:publish).with(sign: false)
       end
     end
 
@@ -109,7 +109,7 @@ RSpec.describe Gemsmith::Rake::Tasks do
 
       it "publishes signed release" do
         Rake::Task[:publish].invoke
-        expect(release).to have_received(:publish)
+        expect(publisher).to have_received(:publish)
       end
     end
   end

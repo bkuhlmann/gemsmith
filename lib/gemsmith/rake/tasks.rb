@@ -5,7 +5,7 @@ require "gemsmith/gem/specification"
 require "gemsmith/errors/base"
 require "gemsmith/errors/specification"
 require "gemsmith/rake/builder"
-require "gemsmith/rake/release"
+require "gemsmith/rake/publisher"
 
 module Gemsmith
   module Rake
@@ -20,7 +20,7 @@ module Gemsmith
       def initialize
         @gem_spec = Gemsmith::Gem::Specification.new Dir.glob("#{Dir.pwd}/*.gemspec").first
         @builder = Gemsmith::Rake::Builder.new
-        @release = Gemsmith::Rake::Release.new
+        @publisher = Gemsmith::Rake::Publisher.new
       end
 
       def install
@@ -43,18 +43,18 @@ module Gemsmith
 
         desc "Build, tag #{gem_spec.version_label} (unsigned), and push #{gem_spec.package_file_name} to RubyGems"
         task release: :build do
-          release.publish sign: false
+          publisher.publish sign: false
         end
 
         desc "Build, tag #{gem_spec.version_label} (signed), and push #{gem_spec.package_file_name} to RubyGems"
         task publish: :build do
-          release.publish
+          publisher.publish
         end
       end
 
       private
 
-      attr_reader :gem_spec, :builder, :release
+      attr_reader :gem_spec, :builder, :publisher
     end
   end
 end

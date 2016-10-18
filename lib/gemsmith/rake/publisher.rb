@@ -6,7 +6,7 @@ require "gemsmith/credentials"
 module Gemsmith
   module Rake
     # Provides gem release functionality. Meant to be wrapped in Rake tasks.
-    class Release
+    class Publisher
       def self.gem_spec_path
         String Dir["#{Dir.pwd}/*.gemspec"].first
       end

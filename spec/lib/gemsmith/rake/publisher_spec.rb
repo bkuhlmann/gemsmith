@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "gemsmith/rake/release"
+require "gemsmith/rake/publisher"
 
-RSpec.describe Gemsmith::Rake::Release, :temp_dir do
+RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
   let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
   let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_path }
