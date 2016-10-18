@@ -14,9 +14,9 @@ Gem::Specification.new do |spec|
   spec.description = "A command line interface for smithing new Ruby gems."
   spec.license = "MIT"
 
-  if ENV["RUBY_GEM_SECURITY"] == "enabled"
-    spec.signing_key = File.expand_path("~/.ssh/gem-private.pem")
-    spec.cert_chain = [File.expand_path("~/.ssh/gem-public.pem")]
+  if File.exist?(Gem.default_key_path) && File.exist?(Gem.default_cert_path)
+    spec.signing_key = Gem.default_key_path
+    spec.cert_chain = [Gem.default_cert_path]
   end
 
   spec.required_ruby_version = "~> 2.3"

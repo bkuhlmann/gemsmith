@@ -13,9 +13,9 @@ Gem::Specification.new do |spec|
   spec.license = "MIT"
 
   <%- if config.dig(:create, :security) -%>
-  if ENV["RUBY_GEM_SECURITY"] == "enabled"
-    spec.signing_key = File.expand_path("<%= config.dig(:gem, :private_key) %>")
-    spec.cert_chain = [File.expand_path("<%= config.dig(:gem, :public_key) %>")]
+  if File.exist?(Gem.default_key_path) && File.exist?(Gem.default_cert_path)
+    spec.signing_key = Gem.default_key_path
+    spec.cert_chain = [Gem.default_cert_path]
   end
   <%- end -%>
 
