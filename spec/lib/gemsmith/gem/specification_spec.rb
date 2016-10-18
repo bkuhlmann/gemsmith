@@ -61,6 +61,12 @@ RSpec.describe Gemsmith::Gem::Specification do
     end
   end
 
+  describe "#name" do
+    it "answers gem spec name" do
+      expect(subject.name).to eq("tester")
+    end
+  end
+
   describe "#homepage_url" do
     context "with homepage URL" do
       let(:file_path) { File.join fixtures_dir, "tester-homepage_url.gemspec" }

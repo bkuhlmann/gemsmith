@@ -35,6 +35,10 @@ module Gemsmith
         @version = Versionaire::Version @spec.version.to_s
       end
 
+      def name
+        spec.name
+      end
+
       def homepage_url
         String spec.homepage
       end
@@ -66,7 +70,7 @@ module Gemsmith
       end
 
       def package_file_name
-        "#{spec.name}-#{version_number}.gem"
+        "#{name}-#{version_number}.gem"
       end
 
       private
