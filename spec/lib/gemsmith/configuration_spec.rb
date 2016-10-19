@@ -561,6 +561,29 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
     end
   end
 
+  describe "#publish_sign?" do
+    context "with default resource file" do
+      it "answers false" do
+        expect(subject.publish_sign?).to eq(false)
+      end
+    end
+
+    context "with custom resource file" do
+      let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
+
+      it "answers true" do
+        expect(subject.publish_sign?).to eq(true)
+      end
+    end
+
+    context "with overwritten settings" do
+      it "answers true" do
+        subject.publish_sign = true
+        expect(subject.publish_sign?).to eq(true)
+      end
+    end
+  end
+
   describe "#github_user" do
     context "with default resource file" do
       it "answers GitHub user" do
@@ -646,6 +669,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
           gemnasium: false,
           travis: false,
           patreon: false
+        },
+        publish: {
+          sign: false
         }
       }
     end

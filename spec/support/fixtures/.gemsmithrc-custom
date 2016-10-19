@@ -26,5 +26,7 @@
   :gemnasium: true
   :travis: true
   :patreon: true
+:publish:
+  :sign: true
 :github_user: "example"
 :year: "2000"

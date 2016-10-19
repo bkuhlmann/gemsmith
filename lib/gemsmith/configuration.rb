@@ -13,7 +13,7 @@ module Gemsmith
                 :ruby_version, :rails_version, :create_cli, :create_rails, :create_security,
                 :create_pry, :create_guard, :create_rspec, :create_rubocop, :create_git_hub,
                 :create_code_climate, :create_gemnasium, :create_travis, :create_patreon,
-                :github_user, :year
+                :publish_sign, :github_user, :year
 
     def initialize gem_name: "unknown",
                    gem_class: "Unknown",
@@ -115,6 +115,10 @@ module Gemsmith
       parse_boolean @create_patreon, :create, :patreon, false
     end
 
+    def publish_sign?
+      parse_boolean @publish_sign, :publish, :sign, false
+    end
+
     def github_user
       @github_user || settings.fetch(:github_user, git.config_value("github.user"))
     end
@@ -160,6 +164,9 @@ module Gemsmith
           gemnasium: create_gemnasium?,
           travis: create_travis?,
           patreon: create_patreon?
+        },
+        publish: {
+          sign: publish_sign?
         }
       }
     end
