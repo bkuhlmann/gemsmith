@@ -100,6 +100,17 @@ RSpec.describe Gemsmith::Rake::Tasks do
       end
     end
 
+    describe "rake install" do
+      it "has prerequisites" do
+        expect(Rake::Task[:install].prerequisites).to contain_exactly("build")
+      end
+
+      it "builds gem package" do
+        Rake::Task[:install].invoke
+        expect(builder).to have_received(:install)
+      end
+    end
+
     describe "rake publish" do
       it "has prerequisites" do
         expect(Rake::Task[:publish].prerequisites).to contain_exactly("build")

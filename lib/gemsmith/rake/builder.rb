@@ -43,6 +43,16 @@ module Gemsmith
         end
       end
 
+      def install gem_spec
+        gem_name = "#{gem_spec.name} #{gem_spec.version_number}"
+
+        if kernel.system("gem install #{package_path gem_spec}")
+          shell.confirm "Installed: #{gem_name}."
+        else
+          shell.error "Unable to install: #{gem_name}."
+        end
+      end
+
       private
 
       attr_reader :tocer, :shell, :kernel

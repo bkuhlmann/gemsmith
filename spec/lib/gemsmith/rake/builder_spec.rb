@@ -135,4 +135,28 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
       end
     end
   end
+
+  describe "#install" do
+    let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
+    let(:gem_spec_fixture_file) { File.join fixtures_dir, "tester-valid.gemspec" }
+    let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_fixture_file }
+
+    context "when success" do
+      let(:kernel) { class_spy Kernel, system: true }
+
+      it "prints gem was installed" do
+        result = -> { subject.install gem_spec }
+        expect(&result).to output("Installed: tester 0.1.0.\n").to_stdout
+      end
+    end
+
+    context "when failure" do
+      let(:kernel) { class_spy Kernel, system: false }
+
+      it "prints gem was installed" do
+        result = -> { subject.install gem_spec }
+        expect(&result).to output("Unable to install: tester 0.1.0.\n").to_stdout
+      end
+    end
+  end
 end

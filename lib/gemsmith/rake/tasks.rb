@@ -42,6 +42,11 @@ module Gemsmith
           builder.build gem_spec
         end
 
+        desc "Install #{gem_spec.package_file_name}"
+        task install: :build do
+          builder.install gem_spec
+        end
+
         desc "Build, tag #{gem_spec.version_label}, and push #{gem_spec.package_file_name} to RubyGems"
         task publish: :build do
           publisher.publish
