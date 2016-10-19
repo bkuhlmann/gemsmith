@@ -7,13 +7,20 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
   let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
   let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_path }
+  let(:gem_config) { instance_spy Gemsmith::Configuration }
   let :credentials do
     instance_spy Gemsmith::Credentials, key: gem_spec.allowed_push_key.to_sym, url: gem_spec.allowed_push_host
   end
   let(:publisher) { instance_spy Milestoner::Publisher }
   let(:shell) { instance_spy Bundler::UI::Shell }
   let(:kernel) { class_spy Kernel }
-  subject { described_class.new gem_spec: gem_spec, publisher: publisher, shell: shell, kernel: kernel }
+  subject do
+    described_class.new gem_spec: gem_spec,
+                        gem_config: gem_config,
+                        publisher: publisher,
+                        shell: shell,
+                        kernel: kernel
+  end
   before { allow(Gemsmith::Credentials).to receive(:new).and_return(credentials) }
 
   describe ".gem_spec_path" do
@@ -95,13 +102,15 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   end
 
   describe "#publish" do
+    let(:signed) { false }
+    let(:gem_config) { instance_spy Gemsmith::Configuration, publish_sign?: signed }
     before { allow(subject).to receive(:push).and_return(true) }
 
-    context "with no errors" do
+    context "with unsigned version tag" do
       before { subject.publish }
 
-      it "publishes gem" do
-        expect(publisher).to have_received(:publish).with("0.1.0", sign: true)
+      it "publishes unsigned gem" do
+        expect(publisher).to have_received(:publish).with("0.1.0", sign: false)
       end
 
       it "pushes gem" do
@@ -109,11 +118,12 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
       end
     end
 
-    context "with unsigned tag" do
-      before { subject.publish sign: false }
+    context "with signed version tag" do
+      let(:signed) { true }
+      before { subject.publish }
 
-      it "publishes gem" do
-        expect(publisher).to have_received(:publish).with("0.1.0", sign: false)
+      it "publishes signed gem" do
+        expect(publisher).to have_received(:publish).with("0.1.0", sign: true)
       end
 
       it "pushes gem" do
@@ -133,6 +143,26 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
 
       it "does not push gem" do
         expect(subject).to_not have_received(:push)
+      end
+    end
+  end
+
+  describe "#sign" do
+    let(:gem_config) { instance_spy Gemsmith::Configuration, publish_sign?: signed }
+
+    context "when gem configuration enables version signing" do
+      let(:signed) { false }
+
+      it "answers false" do
+        expect(subject.signed?).to eq(false)
+      end
+    end
+
+    context "when gem configuration disabled version signing" do
+      let(:signed) { true }
+
+      it "answers true" do
+        expect(subject.signed?).to eq(true)
       end
     end
   end

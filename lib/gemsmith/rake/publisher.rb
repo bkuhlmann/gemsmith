@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 require "milestoner"
+require "gemsmith/configuration"
 require "gemsmith/credentials"
+require "gemsmith/git"
+require "gemsmith/identity"
 
 module Gemsmith
   module Rake
@@ -11,13 +14,16 @@ module Gemsmith
         String Dir["#{Dir.pwd}/*.gemspec"].first
       end
 
+      # rubocop:disable Metrics/ParameterLists
       def initialize gem_spec: Gemsmith::Gem::Specification.new(self.class.gem_spec_path),
+                     gem_config: Gemsmith::Configuration.new,
                      credentials: Gemsmith::Credentials,
                      publisher: Milestoner::Publisher.new,
                      shell: Bundler::UI::Shell.new,
                      kernel: Kernel
 
         @gem_spec = gem_spec
+        @gem_config = gem_config
         @credentials = credentials
         @publisher = publisher
         @shell = shell
@@ -33,16 +39,20 @@ module Gemsmith
         process_push status
       end
 
-      def publish sign: true
-        publisher.publish gem_spec.version_number, sign: sign
+      def publish
+        publisher.publish gem_spec.version_number, sign: signed?
         push
       rescue Milestoner::Errors::Base => error
         shell.error error.message
       end
 
+      def signed?
+        gem_config.publish_sign?
+      end
+
       private
 
-      attr_reader :gem_spec, :credentials, :publisher, :shell, :kernel
+      attr_reader :gem_spec, :gem_config, :credentials, :publisher, :shell, :kernel
 
       def translate_key key
         key == credentials.default_key ? :rubygems : key
