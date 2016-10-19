@@ -78,7 +78,7 @@ module Gemsmith
     method_option :rubocop, aliases: "-R", desc: "Add Rubocop support.", type: :boolean, default: true
     method_option :git_hub, aliases: "-H", desc: "Add GitHub support.", type: :boolean, default: false
     method_option :code_climate, aliases: "-C", desc: "Add Code Climate support.", type: :boolean, default: true
-    method_option :gemnasium, aliases: "-G", desc: "Add Gemnasium support.", type: :boolean, default: true
+    method_option :gemnasium, aliases: "-G", desc: "Add Gemnasium support.", type: :boolean, default: false
     method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: true
     method_option :patreon, aliases: "-P", desc: "Add Patreon support.", type: :boolean, default: true
     def generate name

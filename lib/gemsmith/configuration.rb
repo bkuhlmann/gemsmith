@@ -104,7 +104,7 @@ module Gemsmith
     end
 
     def create_gemnasium?
-      parse_boolean @create_gemnasium, :create, :gemnasium, true
+      parse_boolean @create_gemnasium, :create, :gemnasium, false
     end
 
     def create_travis?

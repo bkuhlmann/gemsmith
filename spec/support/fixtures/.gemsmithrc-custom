@@ -23,7 +23,7 @@
   :rubocop: false
   :git_hub: true
   :code_climate: false
-  :gemnasium: false
+  :gemnasium: true
   :travis: false
   :patreon: false
 :github_user: "example"

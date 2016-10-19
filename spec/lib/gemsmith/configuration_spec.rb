@@ -494,23 +494,23 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
 
   describe "#create_gemnasium?" do
     context "with default resource file" do
-      it "answers true" do
-        expect(subject.create_gemnasium?).to eq(true)
+      it "answers false" do
+        expect(subject.create_gemnasium?).to eq(false)
       end
     end
 
     context "with custom resource file" do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
-      it "answers false" do
-        expect(subject.create_gemnasium?).to eq(false)
+      it "answers true" do
+        expect(subject.create_gemnasium?).to eq(true)
       end
     end
 
     context "with overwritten settings" do
-      it "answers false" do
-        subject.create_gemnasium = false
-        expect(subject.create_gemnasium?).to eq(false)
+      it "answers true" do
+        subject.create_gemnasium = true
+        expect(subject.create_gemnasium?).to eq(true)
       end
     end
   end
@@ -643,7 +643,7 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
           rubocop: true,
           git_hub: false,
           code_climate: true,
-          gemnasium: true,
+          gemnasium: false,
           travis: true,
           patreon: true
         }
