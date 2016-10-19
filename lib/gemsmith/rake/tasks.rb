@@ -12,14 +12,20 @@ module Gemsmith
     class Tasks
       include ::Rake::DSL
 
+      def self.default_gem_spec
+        Dir.glob("#{Dir.pwd}/*.gemspec").first
+      end
+
       def self.setup
         new.install
       end
 
-      def initialize
-        @gem_spec = Gemsmith::Gem::Specification.new Dir.glob("#{Dir.pwd}/*.gemspec").first
-        @builder = Gemsmith::Rake::Builder.new
-        @publisher = Gemsmith::Rake::Publisher.new
+      def initialize gem_spec: Gem::Specification.new(self.class.default_gem_spec),
+                     builder: Rake::Builder.new,
+                     publisher: Rake::Publisher.new
+        @gem_spec = gem_spec
+        @builder = builder
+        @publisher = publisher
       end
 
       def install
@@ -37,17 +43,17 @@ module Gemsmith
           builder.validate
         end
 
-        desc "Build #{gem_spec.package_file_name}"
+        desc "Build #{gem_spec.package_file_name} package"
         task build: [:clean, :doc, :validate] do
           builder.build gem_spec
         end
 
-        desc "Install #{gem_spec.package_file_name}"
+        desc "Install #{gem_spec.package_file_name} package"
         task install: :build do
           builder.install gem_spec
         end
 
-        desc "Build, tag #{gem_spec.version_label}, and push #{gem_spec.package_file_name} to RubyGems"
+        desc "Build, tag as #{gem_spec.version_label}, and push #{gem_spec.package_file_name} to RubyGems"
         task publish: :build do
           publisher.publish
         end
