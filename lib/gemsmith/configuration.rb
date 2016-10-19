@@ -8,11 +8,12 @@ module Gemsmith
     using Refinements::StringExtensions
 
     attr_reader :gem_name, :gem_class, :file_path
-    attr_writer :gem_platform, :gem_home_url, :gem_license, :gem_private_key, :gem_public_key, :author_name,
-                :author_email, :author_url, :organization_name, :organization_email, :organization_url,
-                :ruby_version, :rails_version, :create_cli, :create_rails, :create_security, :create_pry,
-                :create_guard, :create_rspec, :create_rubocop, :create_git_hub, :create_code_climate,
-                :create_gemnasium, :create_travis, :create_patreon, :github_user, :year
+    attr_writer :gem_platform, :gem_home_url, :gem_license, :author_name, :author_email,
+                :author_url, :organization_name, :organization_email, :organization_url,
+                :ruby_version, :rails_version, :create_cli, :create_rails, :create_security,
+                :create_pry, :create_guard, :create_rspec, :create_rubocop, :create_git_hub,
+                :create_code_climate, :create_gemnasium, :create_travis, :create_patreon,
+                :github_user, :year
 
     def initialize gem_name: "unknown",
                    gem_class: "Unknown",
@@ -36,14 +37,6 @@ module Gemsmith
 
     def gem_license
       @gem_license || settings_group(:gem).fetch(:license, "MIT")
-    end
-
-    def gem_private_key
-      @gem_private_key || settings_group(:gem).fetch(:private_key, "~/.ssh/gem-private.pem")
-    end
-
-    def gem_public_key
-      @gem_public_key || settings_group(:gem).fetch(:public_key, "~/.ssh/gem-public.pem")
     end
 
     def author_name
@@ -139,9 +132,7 @@ module Gemsmith
           class: gem_class,
           platform: gem_platform,
           home_url: gem_home_url,
-          license: gem_license,
-          private_key: gem_private_key,
-          public_key: gem_public_key
+          license: gem_license
         },
         author: {
           name: author_name,

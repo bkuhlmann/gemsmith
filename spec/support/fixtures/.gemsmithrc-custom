@@ -2,8 +2,6 @@
   :platform: "Gem::Platform::CURRENT"
   :home_url: "https://www.example.com"
   :license: "Apache"
-  :private_key: "~/.example-private"
-  :public_key: "~/.example-public"
 :author:
   :name: "Author Name"
   :email: "author@example.com"

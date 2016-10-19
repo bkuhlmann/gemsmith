@@ -121,52 +121,6 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
     end
   end
 
-  describe "#gem_private_key" do
-    context "with default resource file" do
-      it "answers private key" do
-        expect(subject.gem_private_key).to eq("~/.ssh/gem-private.pem")
-      end
-    end
-
-    context "with custom resource file" do
-      let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
-
-      it "answers private key" do
-        expect(subject.gem_private_key).to eq("~/.example-private")
-      end
-    end
-
-    context "with overwritten settings" do
-      it "answers gem private key" do
-        subject.gem_private_key = "~/.overwritten-private"
-        expect(subject.gem_private_key).to eq("~/.overwritten-private")
-      end
-    end
-  end
-
-  describe "#gem_public_key" do
-    context "with default resource file" do
-      it "answers public key" do
-        expect(subject.gem_public_key).to eq("~/.ssh/gem-public.pem")
-      end
-    end
-
-    context "with custom resource file" do
-      let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
-
-      it "answers public key" do
-        expect(subject.gem_public_key).to eq("~/.example-public")
-      end
-    end
-
-    context "with overwritten settings" do
-      it "answers gem public key" do
-        subject.gem_public_key = "~/.overwritten-public"
-        expect(subject.gem_public_key).to eq("~/.overwritten-public")
-      end
-    end
-  end
-
   describe "#author_name" do
     context "with default resource file" do
       it "answers author name" do
@@ -664,9 +618,7 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
           class: "Unknown",
           platform: "Gem::Platform::RUBY",
           home_url: "https://github.com/tester/unknown",
-          license: "MIT",
-          private_key: "~/.ssh/gem-private.pem",
-          public_key: "~/.ssh/gem-public.pem"
+          license: "MIT"
         },
         author: {
           name: "Test",
