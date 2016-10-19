@@ -25,6 +25,6 @@
   :code_climate: false
   :gemnasium: true
   :travis: true
-  :patreon: false
+  :patreon: true
 :github_user: "example"
 :year: "2000"

@@ -112,7 +112,7 @@ module Gemsmith
     end
 
     def create_patreon?
-      parse_boolean @create_patreon, :create, :patreon, true
+      parse_boolean @create_patreon, :create, :patreon, false
     end
 
     def github_user

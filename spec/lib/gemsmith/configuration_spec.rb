@@ -540,23 +540,23 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
 
   describe "#create_patreon?" do
     context "with default resource file" do
-      it "answers true" do
-        expect(subject.create_patreon?).to eq(true)
+      it "answers false" do
+        expect(subject.create_patreon?).to eq(false)
       end
     end
 
     context "with custom resource file" do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
-      it "answers false" do
-        expect(subject.create_patreon?).to eq(false)
+      it "answers true" do
+        expect(subject.create_patreon?).to eq(true)
       end
     end
 
     context "with overwritten settings" do
-      it "answers false" do
-        subject.create_patreon = false
-        expect(subject.create_patreon?).to eq(false)
+      it "answers true" do
+        subject.create_patreon = true
+        expect(subject.create_patreon?).to eq(true)
       end
     end
   end
@@ -645,7 +645,7 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
           code_climate: true,
           gemnasium: false,
           travis: false,
-          patreon: true
+          patreon: false
         }
       }
     end

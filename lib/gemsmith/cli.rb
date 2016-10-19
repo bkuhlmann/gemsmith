@@ -80,7 +80,7 @@ module Gemsmith
     method_option :code_climate, aliases: "-C", desc: "Add Code Climate support.", type: :boolean, default: true
     method_option :gemnasium, aliases: "-G", desc: "Add Gemnasium support.", type: :boolean, default: false
     method_option :travis, aliases: "-t", desc: "Add Travis CI support.", type: :boolean, default: false
-    method_option :patreon, aliases: "-P", desc: "Add Patreon support.", type: :boolean, default: true
+    method_option :patreon, aliases: "-P", desc: "Add Patreon support.", type: :boolean, default: false
     def generate name
       say
       info "Generating gem..."
