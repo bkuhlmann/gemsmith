@@ -30,21 +30,21 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 11.0"
   spec.add_development_dependency "gemsmith", "~> <%= Gemsmith::Identity.version[/\d{1}\.\d{1}/] %>"
   <%- if config.dig(:create, :pry) -%>
-  spec.add_development_dependency "pry"
-  spec.add_development_dependency "pry-byebug"
-  spec.add_development_dependency "pry-state"
+  spec.add_development_dependency "pry", "~> 0.10"
+  spec.add_development_dependency "pry-byebug", "~> 3.4"
+  spec.add_development_dependency "pry-state", "~> 0.1"
   <%- end -%>
   <%- if config.dig(:create, :rspec) -%>
   spec.add_development_dependency "<%= config.dig(:create, :rails) ? "rspec-rails" : "rspec" %>", "~> 3.5"
   <%- end -%>
   <%- if config.dig(:create, :guard) -%>
-  spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "guard-rspec", "~> 4.7"
   <%- end -%>
   <%- if config.dig(:create, :rubocop) -%>
   spec.add_development_dependency "rubocop", "~> 0.44"
   <%- end -%>
   <%- if config.dig(:create, :code_climate) -%>
-  spec.add_development_dependency "codeclimate-test-reporter"
+  spec.add_development_dependency "codeclimate-test-reporter", "~> 0.6"
   <%- end -%>
 
   spec.files = Dir["lib/**/*"]
