@@ -9,7 +9,6 @@ Gem::Specification.new do |spec|
   spec.email = ["<%= config.dig(:author, :email) %>"]
   spec.homepage = "<%= config.dig(:gem, :home_url) %>"
   spec.summary = ""
-  spec.description = ""
   spec.license = "MIT"
 
   <%- if config.dig(:create, :security) -%>
