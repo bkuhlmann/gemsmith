@@ -108,7 +108,7 @@ module Gemsmith
     end
 
     def create_travis?
-      parse_boolean @create_travis, :create, :travis, true
+      parse_boolean @create_travis, :create, :travis, false
     end
 
     def create_patreon?
