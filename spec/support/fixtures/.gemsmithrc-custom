@@ -22,7 +22,7 @@
   :rspec: false
   :rubocop: false
   :git_hub: true
-  :code_climate: false
+  :code_climate: true
   :gemnasium: true
   :travis: true
   :patreon: true

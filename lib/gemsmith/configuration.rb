@@ -100,7 +100,7 @@ module Gemsmith
     end
 
     def create_code_climate?
-      parse_boolean @create_code_climate, :create, :code_climate, true
+      parse_boolean @create_code_climate, :create, :code_climate, false
     end
 
     def create_gemnasium?
