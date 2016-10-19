@@ -53,7 +53,8 @@ module Gemsmith
           builder.install gem_spec
         end
 
-        desc "Build, tag as #{gem_spec.version_label}, and push #{gem_spec.package_file_name} to RubyGems"
+        desc "Build, tag as #{gem_spec.version_label} (#{signed_label}), " \
+             "and push #{gem_spec.package_file_name} to RubyGems"
         task publish: :build do
           publisher.publish
         end
@@ -62,6 +63,10 @@ module Gemsmith
       private
 
       attr_reader :gem_spec, :builder, :publisher
+
+      def signed_label
+        publisher.signed? ? "signed" : "unsigned"
+      end
     end
   end
 end
