@@ -27,10 +27,10 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
     end
 
     context "with custom settings" do
-      subject { described_class.new gem_name: "example" }
+      subject { described_class.new gem_name: "example-client" }
 
       it "answers gem name" do
-        expect(subject.gem_name).to eq("example")
+        expect(subject.gem_name).to eq("example-client")
       end
     end
   end

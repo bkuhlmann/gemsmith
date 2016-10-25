@@ -20,7 +20,7 @@ module Gemsmith
                    git: Git,
                    file_path: File.join(ENV["HOME"], Identity.file_name)
 
-      @gem_name = gem_name.snakecase
+      @gem_name = gem_name
       @gem_class = gem_class.camelcase
       @file_path = file_path
       @git = git
