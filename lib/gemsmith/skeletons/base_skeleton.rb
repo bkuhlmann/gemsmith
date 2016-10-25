@@ -22,7 +22,11 @@ module Gemsmith
       attr_reader :cli, :configuration
 
       def lib_root
-        "%gem_name%/lib"
+        File.join "%gem_name%", "lib"
+      end
+
+      def lib_gem_root
+        File.join lib_root, "%gem_path%"
       end
     end
   end
