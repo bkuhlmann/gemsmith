@@ -35,6 +35,22 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
     end
   end
 
+  describe "#gem_path" do
+    context "with default settings" do
+      it "answers gem path" do
+        expect(subject.gem_path).to eq("unknown")
+      end
+    end
+
+    context "with custom settings" do
+      subject { described_class.new gem_name: "example-client" }
+
+      it "answers gem path" do
+        expect(subject.gem_path).to eq("example/client")
+      end
+    end
+  end
+
   describe "#gem_class" do
     context "with default settings" do
       it "answers gem class" do
@@ -638,6 +654,7 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
         github_user: "tester",
         gem: {
           name: "unknown",
+          path: "unknown",
           class: "Unknown",
           platform: "Gem::Platform::RUBY",
           home_url: "https://github.com/tester/unknown",

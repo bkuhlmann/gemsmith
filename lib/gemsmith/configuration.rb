@@ -7,7 +7,7 @@ module Gemsmith
   class Configuration
     using Refinements::StringExtensions
 
-    attr_reader :gem_name, :gem_class, :file_path
+    attr_reader :gem_name, :gem_path, :gem_class, :file_path
     attr_writer :gem_platform, :gem_home_url, :gem_license, :author_name, :author_email,
                 :author_url, :organization_name, :organization_email, :organization_url,
                 :ruby_version, :rails_version, :create_cli, :create_rails, :create_security,
@@ -21,6 +21,7 @@ module Gemsmith
                    file_path: File.join(ENV["HOME"], Identity.file_name)
 
       @gem_name = gem_name
+      @gem_path = gem_name.snakecase
       @gem_class = gem_class.camelcase
       @file_path = file_path
       @git = git
@@ -133,6 +134,7 @@ module Gemsmith
         github_user: github_user,
         gem: {
           name: gem_name,
+          path: gem_path,
           class: gem_class,
           platform: gem_platform,
           home_url: gem_home_url,
