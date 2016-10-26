@@ -28,7 +28,7 @@ RSpec.describe Gemsmith::Skeletons::RspecSkeleton, :temp_dir do
       end
 
       it "creates gem spec" do
-        template = "%gem_name%/spec/lib/%gem_name%/%gem_name%_spec.rb.tt"
+        template = "%gem_name%/spec/lib/%gem_path%_spec.rb.tt"
         expect(cli).to have_received(:template).with(template, configuration.to_h)
       end
 

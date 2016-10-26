@@ -8,7 +8,7 @@ module Gemsmith
         return unless configuration.create_cli?
 
         cli.template "%gem_name%/bin/%gem_name%.tt", configuration.to_h
-        cli.template "%gem_name%/lib/%gem_name%/cli.rb.tt", configuration.to_h
+        cli.template "%gem_name%/lib/%gem_path%/cli.rb.tt", configuration.to_h
         cli.chmod "#{configuration.gem_name}/bin/#{configuration.gem_name}", 0o755
       end
     end

@@ -17,10 +17,10 @@ module Gemsmith
       def create_engine
         gem_name = configuration.gem_name
 
-        cli.template "#{lib_root}/%gem_name%/engine.rb.tt", configuration.to_h
+        cli.template "#{lib_root}/%gem_path%/engine.rb.tt", configuration.to_h
         cli.run "rails plugin new --skip #{gem_name} #{engine_options}"
         cli.remove_file "#{gem_name}/app/helpers/#{gem_name}/application_helper.rb", configuration.to_h
-        cli.remove_file "#{gem_name}/lib/#{gem_name}/version.rb", configuration.to_h
+        cli.remove_file "#{gem_name}/lib/%gem_path%/version.rb", configuration.to_h
         cli.remove_file "#{gem_name}/MIT-LICENSE", configuration.to_h
         cli.remove_file "#{gem_name}/README.rdoc", configuration.to_h
       end
@@ -54,7 +54,7 @@ module Gemsmith
       end
 
       def generator_root
-        "#{lib_root}/generators/%gem_name%"
+        "#{lib_root}/generators/%gem_path%"
       end
     end
   end

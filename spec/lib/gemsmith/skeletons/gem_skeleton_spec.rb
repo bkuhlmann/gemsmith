@@ -25,11 +25,11 @@ RSpec.describe Gemsmith::Skeletons::GemSkeleton, :temp_dir do
     end
 
     it "creates gem library" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%.rb.tt", configuration.to_h)
+      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_path%.rb.tt", configuration.to_h)
     end
 
     it "creates gem identity" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/identity.rb.tt", configuration.to_h)
+      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_path%/identity.rb.tt", configuration.to_h)
     end
 
     it "sets excecutable file permission for setup script" do

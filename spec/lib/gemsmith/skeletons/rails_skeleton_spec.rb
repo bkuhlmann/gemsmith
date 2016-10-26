@@ -4,7 +4,7 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
-  let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester" }
+  let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", gem_path: "tester" }
   let(:gem_dir) { File.join temp_dir, configuration.gem_name }
   subject { described_class.new cli, configuration: configuration }
   before { FileUtils.mkdir gem_dir }
@@ -69,7 +69,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     before { subject.create_engine }
 
     it "creates engine file" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_name%/engine.rb.tt", configuration.to_h)
+      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_path%/engine.rb.tt", configuration.to_h)
     end
 
     it "generates Rails engine" do
@@ -86,7 +86,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     it "removes generated version file" do
-      expect(cli).to have_received(:remove_file).with("tester/lib/tester/version.rb", configuration.to_h)
+      expect(cli).to have_received(:remove_file).with("tester/lib/%gem_path%/version.rb", configuration.to_h)
     end
 
     it "removes generated license file" do
@@ -102,22 +102,22 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     before { subject.create_generator_files }
 
     it "creates install generator script" do
-      template = "%gem_name%/lib/generators/%gem_name%/install/install_generator.rb.tt"
+      template = "%gem_name%/lib/generators/%gem_path%/install/install_generator.rb.tt"
       expect(cli).to have_received(:template).with(template, configuration.to_h)
     end
 
     it "creates install generator usage documentation" do
-      template = "%gem_name%/lib/generators/%gem_name%/install/USAGE.tt"
+      template = "%gem_name%/lib/generators/%gem_path%/install/USAGE.tt"
       expect(cli).to have_received(:template).with(template, configuration.to_h)
     end
 
     it "creates upgrade generator script" do
-      template = "%gem_name%/lib/generators/%gem_name%/upgrade/upgrade_generator.rb.tt"
+      template = "%gem_name%/lib/generators/%gem_path%/upgrade/upgrade_generator.rb.tt"
       expect(cli).to have_received(:template).with(template, configuration.to_h)
     end
 
     it "creates upgrade generator usage documentation" do
-      template = "%gem_name%/lib/generators/%gem_name%/upgrade/USAGE.tt"
+      template = "%gem_name%/lib/generators/%gem_path%/upgrade/USAGE.tt"
       expect(cli).to have_received(:template).with(template, configuration.to_h)
     end
   end
