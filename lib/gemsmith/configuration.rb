@@ -16,13 +16,12 @@ module Gemsmith
                 :publish_sign, :github_user, :year
 
     def initialize gem_name: "unknown",
-                   gem_class: "Unknown",
                    git: Git,
                    file_path: File.join(ENV["HOME"], Identity.file_name)
 
       @gem_name = gem_name
       @gem_path = gem_name.snakecase
-      @gem_class = gem_class.camelcase
+      @gem_class = gem_name.camelcase
       @file_path = file_path
       @git = git
       @settings = load_settings

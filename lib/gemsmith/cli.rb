@@ -135,7 +135,7 @@ module Gemsmith
     attr_reader :configuration, :gem_spec
 
     def setup_configuration name, options
-      @configuration = Configuration.new gem_name: name, gem_class: name
+      @configuration = Configuration.new gem_name: name
       options.each { |key, value| configuration.public_send "create_#{key}=", value }
     end
   end
