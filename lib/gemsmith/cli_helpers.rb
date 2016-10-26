@@ -7,6 +7,10 @@ module Gemsmith
       configuration.gem_name
     end
 
+    def gem_path
+      configuration.gem_path
+    end
+
     def gem_class
       configuration.gem_class
     end
