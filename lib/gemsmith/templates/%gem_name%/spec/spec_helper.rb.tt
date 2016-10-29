@@ -14,7 +14,7 @@ require "pry"
 require "pry-byebug"
 require "pry-state"
 <%- end -%>
-require "<%= config.dig(:gem, :path) %>"
+<%- unless config.dig(:create, :rails) -%>require "<%= config.dig(:gem, :path) %>"<%- end -%>
 
 Dir[File.join(File.dirname(__FILE__), "support/shared_contexts/**/*.rb")].each { |file| require file }
 
