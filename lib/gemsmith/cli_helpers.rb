@@ -19,6 +19,11 @@ module Gemsmith
       configuration.rails_version
     end
 
+    def render_namespace &block
+      body = capture(&block) if block_given?
+      concat Gem::ModuleFormatter.new(gem_class).render(body)
+    end
+
     module_function
 
     def print_gems gems
