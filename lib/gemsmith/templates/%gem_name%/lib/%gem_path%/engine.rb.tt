@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 <% render_namespace do %>
   # Defines and registers the Rails engine.
   class Engine < ::Rails::Engine

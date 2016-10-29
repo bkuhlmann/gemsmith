@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require "<%= config.dig(:gem, :path) %>/identity"
 <%- if config.dig(:create, :rails) -%>
 require "<%= config.dig(:gem, :path) %>/engine"
