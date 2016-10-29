@@ -1,9 +1,9 @@
 #! /usr/bin/ruby
 # frozen_string_literal: true
 
-require "<%= config.dig(:gem, :name) %>"
-require "<%= config.dig(:gem, :name) %>/cli"
-require "<%= config.dig(:gem, :name) %>/identity"
+require "<%= config.dig(:gem, :path) %>"
+require "<%= config.dig(:gem, :path) %>/cli"
+require "<%= config.dig(:gem, :path) %>/identity"
 
 Process.setproctitle <%= config.dig(:gem, :class) %>::Identity.version_label
 <%= config.dig(:gem, :class) %>::CLI.start

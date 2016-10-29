@@ -1,5 +1,5 @@
 $LOAD_PATH.push File.expand_path("../lib", __FILE__)
-require "<%= config.dig(:gem, :name) %>/identity"
+require "<%= config.dig(:gem, :path) %>/identity"
 
 Gem::Specification.new do |spec|
   spec.name = <%= config.dig(:gem, :class) %>::Identity.name
