@@ -5,7 +5,7 @@ require "thor"
 require "thor/actions"
 require "thor_plus/actions"
 
-module <%= config.dig(:gem, :class) %>
+<% render_namespace do %>
   # The Command Line Interface (CLI) for the gem.
   class CLI < Thor
     include Thor::Actions
@@ -37,4 +37,4 @@ module <%= config.dig(:gem, :class) %>
       say and super
     end
   end
-end
+<% end %>

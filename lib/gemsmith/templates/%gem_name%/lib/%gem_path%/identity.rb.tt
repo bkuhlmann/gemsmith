@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module <%= config.dig(:gem, :class) %>
+<% render_namespace do %>
   # Gem identity information.
   module Identity
     def self.name
@@ -25,4 +25,4 @@ module <%= config.dig(:gem, :class) %>
     end
     <%- end -%>
   end
-end
+<% end %>

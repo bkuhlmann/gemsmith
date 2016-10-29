@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module <%= config.dig(:gem, :class) %>
+<% render_namespace do %>
   # Defines and registers the Rails engine.
   class Engine < ::Rails::Engine
     isolate_namespace <%= config.dig(:gem, :class) %>
   end
-end
+<% end %>
