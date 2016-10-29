@@ -165,6 +165,7 @@ RSpec.describe Gemsmith::CLI do
                                                            Gemsmith::Skeletons::TravisSkeleton,
                                                            Gemsmith::Skeletons::BundlerSkeleton,
                                                            Gemsmith::Skeletons::GitSkeleton,
+                                                           Gemsmith::Skeletons::PragmaSkeleton,
                                                            Gemsmith::Skeletons::GitHubSkeleton)
     end
   end

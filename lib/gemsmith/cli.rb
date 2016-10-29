@@ -19,6 +19,7 @@ require "gemsmith/skeletons/gem_skeleton"
 require "gemsmith/skeletons/git_skeleton"
 require "gemsmith/skeletons/git_hub_skeleton"
 require "gemsmith/skeletons/guard_skeleton"
+require "gemsmith/skeletons/pragma_skeleton"
 require "gemsmith/skeletons/rails_skeleton"
 require "gemsmith/skeletons/rake_skeleton"
 require "gemsmith/skeletons/rspec_skeleton"
@@ -57,6 +58,7 @@ module Gemsmith
         Skeletons::TravisSkeleton,
         Skeletons::BundlerSkeleton,
         Skeletons::GitHubSkeleton,
+        Skeletons::PragmaSkeleton,
         Skeletons::GitSkeleton
       ]
     end
