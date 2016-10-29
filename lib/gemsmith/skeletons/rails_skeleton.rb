@@ -50,7 +50,7 @@ module Gemsmith
       private
 
       def engine_options
-        "--skip-bundle --skip-test-unit --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
+        "--skip-bundle --skip-test --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
       end
 
       def generator_root

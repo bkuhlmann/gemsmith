@@ -74,7 +74,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
 
     it "generates Rails engine" do
       command = "rails plugin new --skip tester"
-      options = "--skip-bundle --skip-test-unit --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
+      options = "--skip-bundle --skip-test --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
       command_and_options = "#{command} #{options}"
 
       expect(cli).to have_received(:run).with(command_and_options)
