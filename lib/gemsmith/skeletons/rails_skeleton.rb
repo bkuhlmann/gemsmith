@@ -15,14 +15,8 @@ module Gemsmith
       end
 
       def create_engine
-        gem_name = configuration.gem_name
-
         cli.template "#{lib_root}/%gem_path%/engine.rb.tt", configuration.to_h
-        cli.run "rails plugin new --skip #{gem_name} #{engine_options}"
-        cli.remove_file "#{gem_name}/app/helpers/#{gem_name}/application_helper.rb", configuration.to_h
-        cli.remove_file "#{gem_name}/lib/%gem_path%/version.rb", configuration.to_h
-        cli.remove_file "#{gem_name}/MIT-LICENSE", configuration.to_h
-        cli.remove_file "#{gem_name}/README.rdoc", configuration.to_h
+        cli.run "rails plugin new --skip #{configuration.gem_name} #{engine_options}"
       end
 
       def create_generator_files
@@ -38,6 +32,16 @@ module Gemsmith
         cli.template "%gem_name%/gemfiles/rails-%rails_version%.x.gemfile.tt", configuration.to_h
       end
 
+      def remove_files
+        gem_name = configuration.gem_name
+        gem_path = configuration.gem_path
+
+        cli.remove_file "#{gem_name}/app/helpers/#{gem_path}/application_helper.rb", configuration.to_h
+        cli.remove_file "#{gem_name}/lib/#{gem_path}/version.rb", configuration.to_h
+        cli.remove_file "#{gem_name}/MIT-LICENSE", configuration.to_h
+        cli.remove_file "#{gem_name}/README.rdoc", configuration.to_h
+      end
+
       def create
         return unless configuration.create_rails?
 
@@ -45,6 +49,7 @@ module Gemsmith
         create_engine
         create_generator_files
         create_travis_gemfiles
+        remove_files
       end
 
       private

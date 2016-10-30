@@ -79,23 +79,6 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
 
       expect(cli).to have_received(:run).with(command_and_options)
     end
-
-    it "removes generated application helper file" do
-      file = "tester/app/helpers/tester/application_helper.rb"
-      expect(cli).to have_received(:remove_file).with(file, configuration.to_h)
-    end
-
-    it "removes generated version file" do
-      expect(cli).to have_received(:remove_file).with("tester/lib/%gem_path%/version.rb", configuration.to_h)
-    end
-
-    it "removes generated license file" do
-      expect(cli).to have_received(:remove_file).with("tester/MIT-LICENSE", configuration.to_h)
-    end
-
-    it "removes generated readme file" do
-      expect(cli).to have_received(:remove_file).with("tester/README.rdoc", configuration.to_h)
-    end
   end
 
   describe "#create_generator_files" do
@@ -143,12 +126,34 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
   end
 
+  describe "#remove_files" do
+    before { subject.remove_files }
+
+    it "removes generated application helper file" do
+      file = "tester/app/helpers/tester/application_helper.rb"
+      expect(cli).to have_received(:remove_file).with(file, configuration.to_h)
+    end
+
+    it "removes generated version file" do
+      expect(cli).to have_received(:remove_file).with("tester/lib/tester/version.rb", configuration.to_h)
+    end
+
+    it "removes generated license file" do
+      expect(cli).to have_received(:remove_file).with("tester/MIT-LICENSE", configuration.to_h)
+    end
+
+    it "removes generated readme file" do
+      expect(cli).to have_received(:remove_file).with("tester/README.rdoc", configuration.to_h)
+    end
+  end
+
   describe "#create" do
     before do
       allow(subject).to receive(:install_rails)
       allow(subject).to receive(:create_engine)
       allow(subject).to receive(:create_generator_files)
       allow(subject).to receive(:create_travis_gemfiles)
+      allow(subject).to receive(:remove_files)
     end
 
     context "when enabled" do
@@ -161,6 +166,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
         expect(subject).to have_received(:create_engine)
         expect(subject).to have_received(:create_generator_files)
         expect(subject).to have_received(:create_travis_gemfiles)
+        expect(subject).to have_received(:remove_files)
       end
     end
 
@@ -174,6 +180,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
         expect(subject).to_not have_received(:create_engine)
         expect(subject).to_not have_received(:create_generator_files)
         expect(subject).to_not have_received(:create_travis_gemfiles)
+        expect(subject).to_not have_received(:remove_files)
       end
     end
   end
