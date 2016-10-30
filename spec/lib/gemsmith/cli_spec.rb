@@ -77,6 +77,22 @@ RSpec.describe Gemsmith::CLI do
           "--patreon"
         ]
       end
+      let(:controllers_dir) { File.join gem_dir, "app", "controllers", gem_name }
+      let(:mailers_dir) { File.join gem_dir, "app", "mailers", gem_name }
+      let(:models_dir) { File.join gem_dir, "app", "models", gem_name }
+
+      # FIX: This block should be removed once it is determined why `rails plugin new` doesn't run
+      # via the `RailsSkeleton#create_engine` within this spec.
+      before do
+        FileUtils.mkdir_p controllers_dir
+        FileUtils.touch File.join(controllers_dir, "application_controller.rb")
+
+        FileUtils.mkdir_p mailers_dir
+        FileUtils.touch File.join(mailers_dir, "application_mailer.rb")
+
+        FileUtils.mkdir_p models_dir
+        FileUtils.touch File.join(models_dir, "application_record.rb")
+      end
 
       it "creates full skeleton" do
         ClimateControl.modify HOME: temp_dir do
@@ -93,6 +109,9 @@ RSpec.describe Gemsmith::CLI do
               "bin/setup",
               "bin/tester",
               "gemfiles/rails-5.0.x.gemfile",
+              "app/controllers/tester/application_controller.rb",
+              "app/mailers/tester/application_mailer.rb",
+              "app/models/tester/application_record.rb",
               "lib/generators/tester/install/USAGE",
               "lib/generators/tester/install/install_generator.rb",
               "lib/generators/tester/upgrade/USAGE",
