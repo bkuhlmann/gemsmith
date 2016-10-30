@@ -126,6 +126,34 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
   end
 
+  describe "#add_comments" do
+    before { subject.add_comments }
+
+    it "adds application controller comment" do
+      expect(cli).to have_received(:insert_into_file).with(
+        "%gem_name%/app/controllers/%gem_path%/application_controller.rb",
+        "  # The application controller.\n",
+        before: /.+class.+/
+      )
+    end
+
+    it "adds application mailer comment" do
+      expect(cli).to have_received(:insert_into_file).with(
+        "%gem_name%/app/mailers/%gem_path%/application_mailer.rb",
+        "  # The application mailer.\n",
+        before: /.+class.+/
+      )
+    end
+
+    it "adds application record comment" do
+      expect(cli).to have_received(:insert_into_file).with(
+        "%gem_name%/app/models/%gem_path%/application_record.rb",
+        "  # The application record.\n",
+        before: /.+class.+/
+      )
+    end
+  end
+
   describe "#remove_files" do
     before { subject.remove_files }
 
@@ -153,11 +181,14 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
       allow(subject).to receive(:create_engine)
       allow(subject).to receive(:create_generator_files)
       allow(subject).to receive(:create_travis_gemfiles)
+      allow(subject).to receive(:add_comments)
       allow(subject).to receive(:remove_files)
     end
 
     context "when enabled" do
-      let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_rails?: true }
+      let :configuration do
+        instance_spy Gemsmith::Configuration, gem_name: "tester", gem_path: "tester", create_rails?: true
+      end
 
       it "creates skeleton", :aggregate_failures do
         subject.create
@@ -166,12 +197,15 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
         expect(subject).to have_received(:create_engine)
         expect(subject).to have_received(:create_generator_files)
         expect(subject).to have_received(:create_travis_gemfiles)
+        expect(subject).to have_received(:add_comments)
         expect(subject).to have_received(:remove_files)
       end
     end
 
     context "when disabled" do
-      let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_rails?: false }
+      let :configuration do
+        instance_spy Gemsmith::Configuration, gem_name: "tester", gem_path: "tester", create_rails?: false
+      end
 
       it "does not create skeleton", :aggregate_failures do
         subject.create
@@ -180,6 +214,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
         expect(subject).to_not have_received(:create_engine)
         expect(subject).to_not have_received(:create_generator_files)
         expect(subject).to_not have_received(:create_travis_gemfiles)
+        expect(subject).to_not have_received(:add_comments)
         expect(subject).to_not have_received(:remove_files)
       end
     end
