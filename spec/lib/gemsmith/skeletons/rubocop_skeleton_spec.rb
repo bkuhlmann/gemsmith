@@ -23,6 +23,10 @@ RSpec.describe Gemsmith::Skeletons::RubocopSkeleton, :temp_dir do
         template = "%gem_name%/lib/tasks/rubocop.rake.tt"
         expect(cli).to have_received(:template).with(template, configuration.to_h)
       end
+
+      it "runs rubocop" do
+        expect(cli).to have_received(:run).with("rubocop --auto-correct > /dev/null")
+      end
     end
 
     context "when disabled" do

@@ -9,6 +9,7 @@ module Gemsmith
 
         cli.template "%gem_name%/.rubocop.yml.tt", configuration.to_h
         cli.template "%gem_name%/lib/tasks/rubocop.rake.tt", configuration.to_h
+        cli.run "rubocop --auto-correct > /dev/null"
       end
     end
   end
