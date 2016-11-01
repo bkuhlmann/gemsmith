@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "refinements/string_extensions"
+require "refinements/strings"
 
 module Gemsmith
   # Default configuration for gem with support for custom settings.
   class Configuration
-    using Refinements::StringExtensions
+    using Refinements::Strings
 
     attr_reader :gem_name, :gem_path, :gem_class, :file_path
     attr_writer :gem_platform, :gem_home_url, :gem_license, :author_name, :author_email,

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "refinements/string_extensions"
+require "refinements/strings"
 
 module Gemsmith
   module Gem
     # Formats single or multiple modules with correct, two-space indentation for templates.
     class ModuleFormatter
-      using Refinements::StringExtensions
+      using Refinements::Strings
 
       def initialize namespace
         @namespace = namespace
