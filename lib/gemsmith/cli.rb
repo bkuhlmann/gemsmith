@@ -121,6 +121,25 @@ module Gemsmith
       `#{gem_spec.editor} #{configuration.computed_path}`
     end
 
+    desc "-c, [--config]", %(Manage gem configuration ("#{configuration.computed_path}").)
+    map %w[-c --config] => :config
+    method_option :edit,
+                  aliases: "-e",
+                  desc: "Edit gem configuration.",
+                  type: :boolean, default: false
+    method_option :info,
+                  aliases: "-i",
+                  desc: "Print gem configuration.",
+                  type: :boolean, default: false
+    def config
+      path = self.class.configuration.computed_path
+
+      if options.edit? then `#{editor} #{path}`
+      elsif options.info? then say(path)
+      else help(:config)
+      end
+    end
+
     desc "-v, [--version]", "Show gem version."
     map %w[-v --version] => :version
     def version
