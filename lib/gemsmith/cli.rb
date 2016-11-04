@@ -117,8 +117,8 @@ module Gemsmith
     desc "-e, [--edit]", "Edit gem settings in default editor."
     map %w[-e --edit] => :edit
     def edit
-      info "Editing: #{configuration.file_path}..."
-      `#{gem_spec.editor} #{configuration.file_path}`
+      info "Editing: #{configuration.computed_path}..."
+      `#{gem_spec.editor} #{configuration.computed_path}`
     end
 
     desc "-v, [--version]", "Show gem version."

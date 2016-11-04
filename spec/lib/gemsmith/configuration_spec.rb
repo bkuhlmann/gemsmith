@@ -4,14 +4,14 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Configuration, :temp_dir do
   let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-empty" }
-  let(:resource_path) { File.join temp_dir, Gemsmith::Identity.file_name }
+  let(:configuration_path) { File.join temp_dir, Gemsmith::Identity.file_name }
   let(:git) { class_spy Gemsmith::Git }
-  subject { described_class.new file_path: resource_path, git: git }
-  before { FileUtils.cp fixture_path, resource_path }
+  subject { described_class.new git: git }
+  before { FileUtils.cp fixture_path, configuration_path }
 
   describe "#initialize" do
     context "with invalid file path" do
-      subject { described_class.new file_path: ".bogusrc" }
+      subject { described_class.new file_name: ".bogusrc" }
 
       it "answers defaults" do
         expect(subject.gem_name).to eq("unknown")
@@ -70,7 +70,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#gem_platform" do
     context "with default resource file" do
       it "answers gem platform" do
-        expect(subject.gem_platform).to eq("Gem::Platform::RUBY")
+        Dir.chdir(temp_dir) do
+          expect(subject.gem_platform).to eq("Gem::Platform::RUBY")
+        end
       end
     end
 
@@ -78,7 +80,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers gem platform" do
-        expect(subject.gem_platform).to eq("Gem::Platform::CURRENT")
+        Dir.chdir(temp_dir) do
+          expect(subject.gem_platform).to eq("Gem::Platform::CURRENT")
+        end
       end
     end
 
@@ -93,8 +97,10 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#gem_home_url" do
     context "with default resource file" do
       it "answers gem home URL" do
-        subject.gem_home_url
-        expect(git).to have_received(:config_value).with("github.user").twice
+        Dir.chdir(temp_dir) do
+          subject.gem_home_url
+          expect(git).to have_received(:config_value).with("github.user").twice
+        end
       end
     end
 
@@ -102,7 +108,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers gem home URL" do
-        expect(subject.gem_home_url).to eq("https://www.example.com")
+        Dir.chdir(temp_dir) do
+          expect(subject.gem_home_url).to eq("https://www.example.com")
+        end
       end
     end
 
@@ -117,7 +125,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#gem_license" do
     context "with default resource file" do
       it "answers gem license" do
-        expect(subject.gem_license).to eq("MIT")
+        Dir.chdir(temp_dir) do
+          expect(subject.gem_license).to eq("MIT")
+        end
       end
     end
 
@@ -125,7 +135,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers gem license" do
-        expect(subject.gem_license).to eq("Apache")
+        Dir.chdir(temp_dir) do
+          expect(subject.gem_license).to eq("Apache")
+        end
       end
     end
 
@@ -140,8 +152,10 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#author_name" do
     context "with default resource file" do
       it "answers author name" do
-        subject.author_name
-        expect(git).to have_received(:config_value).with("user.name")
+        Dir.chdir(temp_dir) do
+          subject.author_name
+          expect(git).to have_received(:config_value).with("user.name")
+        end
       end
     end
 
@@ -149,7 +163,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers author name" do
-        expect(subject.author_name).to eq("Author Name")
+        Dir.chdir(temp_dir) do
+          expect(subject.author_name).to eq("Author Name")
+        end
       end
     end
 
@@ -164,8 +180,10 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#author_email" do
     context "with default resource file" do
       it "answers author email" do
-        subject.author_email
-        expect(git).to have_received(:config_value).with("user.email")
+        Dir.chdir(temp_dir) do
+          subject.author_email
+          expect(git).to have_received(:config_value).with("user.email")
+        end
       end
     end
 
@@ -173,7 +191,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers author email" do
-        expect(subject.author_email).to eq("author@example.com")
+        Dir.chdir(temp_dir) do
+          expect(subject.author_email).to eq("author@example.com")
+        end
       end
     end
 
@@ -188,7 +208,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#author_url" do
     context "with default resource file" do
       it "answers author URL" do
-        expect(subject.author_url).to eq("")
+        Dir.chdir(temp_dir) do
+          expect(subject.author_url).to eq("")
+        end
       end
     end
 
@@ -196,7 +218,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers author URL" do
-        expect(subject.author_url).to eq("https://author.example.com")
+        Dir.chdir(temp_dir) do
+          expect(subject.author_url).to eq("https://author.example.com")
+        end
       end
     end
 
@@ -211,7 +235,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#organization_name" do
     context "with default resource file" do
       it "answers organization name" do
-        expect(subject.organization_name).to eq("")
+        Dir.chdir(temp_dir) do
+          expect(subject.organization_name).to eq("")
+        end
       end
     end
 
@@ -219,7 +245,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers organization name" do
-        expect(subject.organization_name).to eq("Org Name")
+        Dir.chdir(temp_dir) do
+          expect(subject.organization_name).to eq("Org Name")
+        end
       end
     end
 
@@ -234,7 +262,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#organization_url" do
     context "with default resource file" do
       it "answers organization URL" do
-        expect(subject.organization_url).to eq("")
+        Dir.chdir(temp_dir) do
+          expect(subject.organization_url).to eq("")
+        end
       end
     end
 
@@ -242,7 +272,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers organization URL" do
-        expect(subject.organization_url).to eq("https://org.example.com")
+        Dir.chdir(temp_dir) do
+          expect(subject.organization_url).to eq("https://org.example.com")
+        end
       end
     end
 
@@ -257,8 +289,10 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#ruby_version" do
     context "with default resource file" do
       it "answers Ruby version" do
-        stub_const "RUBY_VERSION", "2.0.0"
-        expect(subject.ruby_version).to eq("2.0.0")
+        Dir.chdir(temp_dir) do
+          stub_const "RUBY_VERSION", "2.0.0"
+          expect(subject.ruby_version).to eq("2.0.0")
+        end
       end
     end
 
@@ -266,7 +300,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers Ruby version" do
-        expect(subject.ruby_version).to eq("1.1.1")
+        Dir.chdir(temp_dir) do
+          expect(subject.ruby_version).to eq("1.1.1")
+        end
       end
     end
 
@@ -281,7 +317,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#rails_version" do
     context "with default resource file" do
       it "answers Rails version" do
-        expect(subject.rails_version).to eq("5.0")
+        Dir.chdir(temp_dir) do
+          expect(subject.rails_version).to eq("5.0")
+        end
       end
     end
 
@@ -289,7 +327,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers Rails version" do
-        expect(subject.rails_version).to eq("2.2.2")
+        Dir.chdir(temp_dir) do
+          expect(subject.rails_version).to eq("2.2.2")
+        end
       end
     end
 
@@ -304,7 +344,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_cli?" do
     context "with default resource file" do
       it "answers false" do
-        expect(subject.create_cli?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_cli?).to eq(false)
+        end
       end
     end
 
@@ -312,7 +354,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers true" do
-        expect(subject.create_cli?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_cli?).to eq(true)
+        end
       end
     end
 
@@ -327,7 +371,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_rails?" do
     context "with default resource file" do
       it "answers false" do
-        expect(subject.create_rails?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_rails?).to eq(false)
+        end
       end
     end
 
@@ -335,7 +381,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers true" do
-        expect(subject.create_rails?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_rails?).to eq(true)
+        end
       end
     end
 
@@ -350,7 +398,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_security?" do
     context "with default resource file" do
       it "answers true" do
-        expect(subject.create_security?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_security?).to eq(true)
+        end
       end
     end
 
@@ -358,7 +408,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers false" do
-        expect(subject.create_security?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_security?).to eq(false)
+        end
       end
     end
 
@@ -373,7 +425,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_pry?" do
     context "with default resource file" do
       it "answers true" do
-        expect(subject.create_pry?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_pry?).to eq(true)
+        end
       end
     end
 
@@ -381,7 +435,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers false" do
-        expect(subject.create_pry?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_pry?).to eq(false)
+        end
       end
     end
 
@@ -396,7 +452,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_guard?" do
     context "with default resource file" do
       it "answers true" do
-        expect(subject.create_guard?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_guard?).to eq(true)
+        end
       end
     end
 
@@ -404,7 +462,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers false" do
-        expect(subject.create_guard?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_guard?).to eq(false)
+        end
       end
     end
 
@@ -419,7 +479,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_rspec?" do
     context "with default resource file" do
       it "answers true" do
-        expect(subject.create_rspec?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_rspec?).to eq(true)
+        end
       end
     end
 
@@ -427,7 +489,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers false" do
-        expect(subject.create_rspec?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_rspec?).to eq(false)
+        end
       end
     end
 
@@ -442,7 +506,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_rubocop?" do
     context "with default resource file" do
       it "answers true" do
-        expect(subject.create_rubocop?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_rubocop?).to eq(true)
+        end
       end
     end
 
@@ -450,7 +516,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers false" do
-        expect(subject.create_rubocop?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_rubocop?).to eq(false)
+        end
       end
     end
 
@@ -465,7 +533,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_git_hub?" do
     context "with default resource file" do
       it "answers false" do
-        expect(subject.create_git_hub?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_git_hub?).to eq(false)
+        end
       end
     end
 
@@ -473,7 +543,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers true" do
-        expect(subject.create_git_hub?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_git_hub?).to eq(true)
+        end
       end
     end
 
@@ -488,7 +560,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_code_climate?" do
     context "with default resource file" do
       it "answers false" do
-        expect(subject.create_code_climate?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_code_climate?).to eq(false)
+        end
       end
     end
 
@@ -496,7 +570,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers true" do
-        expect(subject.create_code_climate?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_code_climate?).to eq(true)
+        end
       end
     end
 
@@ -511,7 +587,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_gemnasium?" do
     context "with default resource file" do
       it "answers false" do
-        expect(subject.create_gemnasium?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_gemnasium?).to eq(false)
+        end
       end
     end
 
@@ -519,7 +597,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers true" do
-        expect(subject.create_gemnasium?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_gemnasium?).to eq(true)
+        end
       end
     end
 
@@ -534,7 +614,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_travis?" do
     context "with default resource file" do
       it "answers false" do
-        expect(subject.create_travis?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_travis?).to eq(false)
+        end
       end
     end
 
@@ -542,7 +624,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers true" do
-        expect(subject.create_travis?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_travis?).to eq(true)
+        end
       end
     end
 
@@ -557,7 +641,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#create_patreon?" do
     context "with default resource file" do
       it "answers false" do
-        expect(subject.create_patreon?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_patreon?).to eq(false)
+        end
       end
     end
 
@@ -565,7 +651,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers true" do
-        expect(subject.create_patreon?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.create_patreon?).to eq(true)
+        end
       end
     end
 
@@ -580,7 +668,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#publish_sign?" do
     context "with default resource file" do
       it "answers false" do
-        expect(subject.publish_sign?).to eq(false)
+        Dir.chdir(temp_dir) do
+          expect(subject.publish_sign?).to eq(false)
+        end
       end
     end
 
@@ -588,7 +678,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers true" do
-        expect(subject.publish_sign?).to eq(true)
+        Dir.chdir(temp_dir) do
+          expect(subject.publish_sign?).to eq(true)
+        end
       end
     end
 
@@ -603,8 +695,10 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#github_user" do
     context "with default resource file" do
       it "answers GitHub user" do
-        subject.github_user
-        expect(git).to have_received(:config_value).with("github.user")
+        Dir.chdir(temp_dir) do
+          subject.github_user
+          expect(git).to have_received(:config_value).with("github.user")
+        end
       end
     end
 
@@ -612,7 +706,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers GitHub user" do
-        expect(subject.github_user).to eq("example")
+        Dir.chdir(temp_dir) do
+          expect(subject.github_user).to eq("example")
+        end
       end
     end
 
@@ -627,7 +723,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
   describe "#year" do
     context "with default resource file" do
       it "answers year" do
-        expect(subject.year).to eq(Time.now.utc.year)
+        Dir.chdir(temp_dir) do
+          expect(subject.year).to eq(Time.now.utc.year)
+        end
       end
     end
 
@@ -635,7 +733,9 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
       let(:fixture_path) { File.join Dir.pwd, "spec", "support", "fixtures", ".gemsmithrc-custom" }
 
       it "answers year" do
-        expect(subject.year).to eq("2000")
+        Dir.chdir(temp_dir) do
+          expect(subject.year).to eq("2000")
+        end
       end
     end
 
@@ -700,8 +800,10 @@ RSpec.describe Gemsmith::Configuration, :temp_dir do
     end
 
     it "answers configuration as a hash" do
-      stub_const "RUBY_VERSION", "2.0.0"
-      expect(subject.to_h).to eq(defaults)
+      Dir.chdir(temp_dir) do
+        stub_const "RUBY_VERSION", "2.0.0"
+        expect(subject.to_h).to eq(defaults)
+      end
     end
   end
 end

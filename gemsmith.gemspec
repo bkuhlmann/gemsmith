@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor_plus", "~> 3.1"
   spec.add_dependency "refinements", "~> 3.0"
   spec.add_dependency "versionaire", "~> 2.0"
+  spec.add_dependency "runcom", "~> 0.1"
   spec.add_dependency "milestoner", "~> 3.0"
   spec.add_dependency "tocer", "~> 2.2"
   spec.add_dependency "pragmater", "~> 1.3"

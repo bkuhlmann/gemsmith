@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 require "refinements/strings"
+require "runcom"
 
 module Gemsmith
   # Default configuration for gem with support for custom settings.
-  class Configuration
+  class Configuration < Runcom::Configuration
     using Refinements::Strings
 
-    attr_reader :gem_name, :gem_path, :gem_class, :file_path
+    attr_reader :gem_name, :gem_path, :gem_class
     attr_writer :gem_platform, :gem_home_url, :gem_license, :author_name, :author_email,
                 :author_url, :organization_name, :organization_email, :organization_url,
                 :ruby_version, :rails_version, :create_cli, :create_rails, :create_security,
@@ -15,16 +16,12 @@ module Gemsmith
                 :create_code_climate, :create_gemnasium, :create_travis, :create_patreon,
                 :publish_sign, :github_user, :year
 
-    def initialize gem_name: "unknown",
-                   git: Git,
-                   file_path: File.join(ENV["HOME"], Identity.file_name)
-
+    def initialize file_name: Identity.file_name, defaults: {}, gem_name: "unknown", git: Git
+      super file_name: file_name, defaults: defaults
       @gem_name = gem_name
       @gem_path = gem_name.snakecase
       @gem_class = gem_name.camelcase
-      @file_path = file_path
       @git = git
-      @settings = load_settings
     end
 
     def gem_platform
@@ -174,13 +171,7 @@ module Gemsmith
 
     private
 
-    attr_reader :gem_parser, :git, :settings
-
-    def load_settings
-      return {} unless File.exist?(file_path)
-      yaml = YAML.load_file file_path
-      yaml.is_a?(Hash) ? yaml : {}
-    end
+    attr_reader :gem_parser, :git
 
     def settings_group key
       settings.fetch key, {}
