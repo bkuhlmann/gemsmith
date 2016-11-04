@@ -20,12 +20,6 @@ require "runcom"
       super args, options, config
     end
 
-    desc "-e, [--edit]", "Edit gem settings in default editor."
-    map %w[-e --edit] => :edit
-    def edit
-      `#{editor} $HOME/#{<%= config.dig(:gem, :class) %>::Identity.file_name}`
-    end
-
     desc "-c, [--config]", %(Manage gem configuration ("#{configuration.computed_path}").)
     map %w[-c --config] => :config
     method_option :edit,

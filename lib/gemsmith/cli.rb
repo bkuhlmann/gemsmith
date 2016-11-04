@@ -114,13 +114,6 @@ module Gemsmith
       end
     end
 
-    desc "-e, [--edit]", "Edit gem settings in default editor."
-    map %w[-e --edit] => :edit
-    def edit
-      info "Editing: #{configuration.computed_path}..."
-      `#{gem_spec.editor} #{configuration.computed_path}`
-    end
-
     desc "-c, [--config]", %(Manage gem configuration ("#{configuration.computed_path}").)
     map %w[-c --config] => :config
     method_option :edit,

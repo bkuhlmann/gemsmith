@@ -142,16 +142,6 @@ RSpec.describe Gemsmith::CLI do
     end
   end
 
-  shared_examples_for "an edit command" do
-    let(:resource_path) { File.join ENV["HOME"], Gemsmith::Identity.file_name }
-
-    it "edits global configuration" do
-      ClimateControl.modify EDITOR: %(printf "%s\n") do
-        expect(&cli).to output(/info\s+Editing\:\s#{resource_path}\.\.\./).to_stdout
-      end
-    end
-  end
-
   shared_examples_for "a config command", :temp_dir do
     let(:configuration_path) { File.join temp_dir, Gemsmith::Identity.file_name }
     before { FileUtils.touch configuration_path }
@@ -238,16 +228,6 @@ RSpec.describe Gemsmith::CLI do
   describe "-r" do
     let(:command) { "-r" }
     it "behaves like a read command"
-  end
-
-  describe "--edit" do
-    let(:command) { "--edit" }
-    it_behaves_like "an edit command"
-  end
-
-  describe "-e" do
-    let(:command) { "-e" }
-    it_behaves_like "an edit command"
   end
 
   describe "--config" do
