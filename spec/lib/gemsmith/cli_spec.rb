@@ -123,6 +123,7 @@ RSpec.describe Gemsmith::CLI do
               "lib/tester/identity.rb",
               "lib/tester.rb",
               "spec/lib/tester_spec.rb",
+              "spec/lib/tester/cli_spec.rb",
               "spec/support/shared_contexts/temp_dir.rb",
               "spec/rails_helper.rb",
               "spec/spec_helper.rb",
