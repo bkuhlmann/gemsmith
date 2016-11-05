@@ -5,16 +5,7 @@ require "spec_helper"
 RSpec.describe Gemsmith::Gem::Specification do
   let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
   let(:file_path) { File.join fixtures_dir, "tester-valid.gemspec" }
-  let(:shell) { class_spy Open3 }
-  subject { described_class.new file_path, shell: shell }
-
-  describe ".editor" do
-    it "answers current editor/IDE for editing source code" do
-      ClimateControl.modify EDITOR: "sublime" do
-        expect(described_class.editor).to eq("sublime")
-      end
-    end
-  end
+  subject { described_class.new file_path }
 
   describe ".find" do
     let(:specification) { class_spy ::Gem::Specification }
@@ -117,39 +108,6 @@ RSpec.describe Gemsmith::Gem::Specification do
     context "without gemspec metadata" do
       it "answers default host" do
         expect(subject.allowed_push_host).to eq("https://rubygems.org")
-      end
-    end
-  end
-
-  describe "#open_gem" do
-    it "opens gem for editing" do
-      subject.open_gem
-      expect(shell).to have_received(:capture2).with(described_class.editor, /.+tester\-0\.1\.0/)
-    end
-
-    it "answers full path to installed gem source code" do
-      expect(subject.open_gem).to match(/.+tester\-0\.1\.0/)
-    end
-  end
-
-  describe "#open_homepage" do
-    context "with homepage URL" do
-      let(:file_path) { File.join fixtures_dir, "tester-homepage_url.gemspec" }
-
-      it "opens gem for editing" do
-        subject.open_homepage
-        expect(shell).to have_received(:capture2).with("open", "https://www.example.com")
-      end
-
-      it "answers gem home page URL" do
-        expect(subject.open_homepage).to eq("https://www.example.com")
-      end
-    end
-
-    context "without homepage URL" do
-      it "does nothing" do
-        subject.open_homepage
-        expect(shell).to have_received(:capture2).with("open", "")
       end
     end
   end

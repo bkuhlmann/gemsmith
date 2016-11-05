@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "open3"
 require "versionaire"
 
 module Gemsmith
@@ -15,10 +14,6 @@ module Gemsmith
         ::Gem::DEFAULT_HOST
       end
 
-      def self.editor
-        ENV.fetch "EDITOR"
-      end
-
       def self.find name, version
         specification.find_by_name name, version
       end
@@ -27,9 +22,8 @@ module Gemsmith
         specification.find_all_by_name name, requirement
       end
 
-      def initialize file_path, shell: Open3
+      def initialize file_path
         @file_path = file_path
-        @shell = shell
         @spec = self.class.specification.load file_path
         validate
         @version = Versionaire::Version @spec.version.to_s
@@ -55,16 +49,6 @@ module Gemsmith
         spec.metadata.fetch("allowed_push_host") { self.class.default_gem_host }
       end
 
-      def open_gem
-        shell.capture2 self.class.editor, path
-        String path
-      end
-
-      def open_homepage
-        shell.capture2 "open", homepage_url
-        homepage_url
-      end
-
       def version_number
         version.to_s
       end
@@ -79,7 +63,7 @@ module Gemsmith
 
       private
 
-      attr_reader :file_path, :spec, :shell, :version
+      attr_reader :file_path, :spec, :version
 
       def validate
         return if spec.is_a?(self.class.specification)
