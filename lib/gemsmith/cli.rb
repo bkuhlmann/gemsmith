@@ -70,7 +70,7 @@ module Gemsmith
       @gem_spec = Gem::Specification
     end
 
-    desc "-g, [--generate=GENERATE]", "Generate new gem."
+    desc "-g, [--generate=GEM]", "Generate new gem."
     map %w[-g --generate] => :generate
     method_option :cli, aliases: "-c", desc: "Add CLI support.", type: :boolean, default: false
     method_option :rails, aliases: "-r", desc: "Add Rails support.", type: :boolean, default: false
@@ -95,14 +95,14 @@ module Gemsmith
       say
     end
 
-    desc "-o, [--open=OPEN]", "Open a gem in default editor."
+    desc "-o, [--open=GEM]", "Open a gem in default editor."
     map %w[-o --open] => :open
     def open name
       result = process_gem name, "open_gem"
       info("Opening: #{result}") unless result.nil? || result.empty?
     end
 
-    desc "-r, [--read=READ]", "Open a gem in default browser."
+    desc "-r, [--read=GEM]", "Open a gem in default browser."
     map %w[-r --read] => :read
     def read name
       result = process_gem name, "open_homepage"
@@ -139,7 +139,7 @@ module Gemsmith
       say Gemsmith::Identity.version_label
     end
 
-    desc "-h, [--help=HELP]", "Show this message or get help for a command."
+    desc "-h, [--help=COMMAND]", "Show this message or get help for a command."
     map %w[-h --help] => :help
     def help task = nil
       say and super
