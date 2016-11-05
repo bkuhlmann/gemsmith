@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
 
   <%- if config.dig(:create, :cli) -%>
   spec.add_dependency "thor", "~> 0.19"
-  spec.add_dependency "thor_plus", "~> 3.1"
-  spec.add_dependency "runcom", "~> 0.1"
+  spec.add_dependency "thor_plus", "~> 4.0"
+  spec.add_dependency "runcom", "~> 0.2"
   <%- end -%>
   <%- if config.dig(:create, :rails) -%>
   spec.add_dependency "rails", "~> <%= config.dig(:versions, :rails) %>"
@@ -40,7 +40,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   <%- end -%>
   <%- if config.dig(:create, :rubocop) -%>
-  spec.add_development_dependency "rubocop", "~> 0.44"
+  spec.add_development_dependency "rubocop", "~> 0.45"
   <%- end -%>
   <%- if config.dig(:create, :code_climate) -%>
   spec.add_development_dependency "codeclimate-test-reporter", "~> 0.6"

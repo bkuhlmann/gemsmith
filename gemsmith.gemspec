@@ -20,13 +20,13 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = "~> 2.3"
   spec.add_dependency "thor", "~> 0.19"
-  spec.add_dependency "thor_plus", "~> 3.1"
+  spec.add_dependency "thor_plus", "~> 4.0"
   spec.add_dependency "refinements", "~> 3.0"
   spec.add_dependency "versionaire", "~> 2.0"
-  spec.add_dependency "runcom", "~> 0.1"
-  spec.add_dependency "milestoner", "~> 3.0"
-  spec.add_dependency "tocer", "~> 2.2"
-  spec.add_dependency "pragmater", "~> 1.3"
+  spec.add_dependency "runcom", "~> 0.2"
+  spec.add_dependency "milestoner", "~> 4.0"
+  spec.add_dependency "tocer", "~> 3.0"
+  spec.add_dependency "pragmater", "~> 2.0"
   spec.add_development_dependency "rake", "~> 11.0"
   spec.add_development_dependency "pry", "~> 0.10"
   spec.add_development_dependency "pry-byebug", "~> 3.4"
@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.5"
   spec.add_development_dependency "climate_control", "~> 0.0"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
-  spec.add_development_dependency "rubocop", "~> 0.44"
+  spec.add_development_dependency "rubocop", "~> 0.45"
   spec.add_development_dependency "codeclimate-test-reporter", "~> 0.6"
 
   spec.files = Dir.glob("lib/**/*", File::FNM_DOTMATCH)
