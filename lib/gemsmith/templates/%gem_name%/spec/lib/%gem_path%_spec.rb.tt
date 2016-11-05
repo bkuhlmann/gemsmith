@@ -1,5 +1,0 @@
-require "spec_helper"
-
-RSpec.describe "<%= config.dig(:gem, :class) %>" do
-  it "should be tested"
-end

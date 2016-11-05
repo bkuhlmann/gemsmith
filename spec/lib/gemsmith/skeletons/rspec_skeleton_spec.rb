@@ -27,18 +27,13 @@ RSpec.describe Gemsmith::Skeletons::RspecSkeleton, :temp_dir do
         expect(cli).to have_received(:template).with("%gem_name%/spec/spec_helper.rb.tt", configuration.to_h)
       end
 
-      it "creates gem spec" do
-        template = "%gem_name%/spec/lib/%gem_path%_spec.rb.tt"
-        expect(cli).to have_received(:template).with(template, configuration.to_h)
+      it "does not create rails helper" do
+        expect(cli).to_not have_received(:template).with("%gem_name%/spec/rails_helper.rb.tt", configuration.to_h)
       end
 
       it "creates shared contexts" do
         template = "%gem_name%/spec/support/shared_contexts/temp_dir.rb.tt"
         expect(cli).to have_received(:template).with(template, configuration.to_h)
-      end
-
-      it "does not create rails helper" do
-        expect(cli).to_not have_received(:template).with("%gem_name%/spec/rails_helper.rb.tt", configuration.to_h)
       end
     end
 
