@@ -39,6 +39,10 @@ module Gemsmith
         spec.name
       end
 
+      def path
+        spec.full_gem_path
+      end
+
       def homepage_url
         String spec.homepage
       end
@@ -52,8 +56,8 @@ module Gemsmith
       end
 
       def open_gem
-        shell.capture2 self.class.editor, spec.full_gem_path
-        String spec.full_gem_path
+        shell.capture2 self.class.editor, path
+        String path
       end
 
       def open_homepage
