@@ -37,27 +37,26 @@ module Gemsmith
       return if answer == "q"
 
       if (1..gems.size).cover?(answer.to_i)
-        gem_spec.find name, gems[answer.to_i - 1].version.version
+        Gem::Specification.find name, gems[answer.to_i - 1].version.version
       else
         error "Invalid option: #{answer}"
         nil
       end
     end
 
-    def open_gem specification, method
+    def inspect_gem specification, method
       return unless specification
-      spec = gem_spec.new specification.spec_file
-      spec.public_send method
+      Gem::Inspector.new.public_send method, Gem::Specification.new(specification.spec_file)
     end
 
     def process_gem name, method
-      specs = gem_spec.find_all name
+      specs = Gem::Specification.find_all name
 
       if specs.size == 1
-        open_gem specs.first, method
+        inspect_gem specs.first, method
       elsif specs.size > 1
         print_gems specs
-        open_gem pick_gem(specs, name), method
+        inspect_gem pick_gem(specs, name), method
       else
         error("Unable to find gem: #{name}.") and ""
       end

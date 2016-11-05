@@ -68,7 +68,6 @@ module Gemsmith
     def initialize args = [], options = {}, config = {}
       super args, options, config
       @configuration = Configuration.new
-      @gem_spec = Gem::Specification
     end
 
     desc "-g, [--generate=GEM]", "Generate new gem."
@@ -99,20 +98,13 @@ module Gemsmith
     desc "-o, [--open=GEM]", "Open a gem in default editor."
     map %w[-o --open] => :open
     def open name
-      result = process_gem name, "open_gem"
-      info("Opening: #{result}") unless result.nil? || result.empty?
+      process_gem name, "edit"
     end
 
     desc "-r, [--read=GEM]", "Open a gem in default browser."
     map %w[-r --read] => :read
     def read name
-      result = process_gem name, "open_homepage"
-
-      if result.nil? || result.empty?
-        error "Gem home page is not defined."
-      else
-        info "Reading: #{result}"
-      end
+      error "Gem home page is not defined." unless process_gem(name, "visit")
     end
 
     desc "-c, [--config]", %(Manage gem configuration ("#{configuration.computed_path}").)
@@ -148,7 +140,7 @@ module Gemsmith
 
     private
 
-    attr_reader :configuration, :gem_spec
+    attr_reader :configuration
 
     def setup_configuration name, options
       @configuration = Configuration.new gem_name: name
