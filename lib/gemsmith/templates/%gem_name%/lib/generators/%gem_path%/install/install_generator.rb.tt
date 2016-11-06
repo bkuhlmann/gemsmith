@@ -5,7 +5,6 @@
 
     desc "Installs additional <%= config.dig(:gem, :class) %> resources."
     def install
-      # TODO: Add install code.
     end
   end
 <% end %>
