@@ -22,4 +22,52 @@ RSpec.describe Gemsmith::Git, :temp_dir do
       end
     end
   end
+
+  describe ".github_user" do
+    context "when GitHub user exists" do
+      before do
+        `printf "[github]\n" >> "#{temp_dir}/.gitconfig"`
+        `printf "  user = test\n" >> "#{temp_dir}/.gitconfig"`
+      end
+
+      it "answers GitHub user" do
+        ClimateControl.modify HOME: temp_dir do
+          expect(described_class.github_user).to eq("test")
+        end
+      end
+    end
+
+    context "when GitHub user doesn't exist" do
+      it "answers empty string" do
+        ClimateControl.modify HOME: temp_dir do
+          expect(described_class.github_user).to eq("")
+        end
+      end
+    end
+  end
+
+  describe ".github_url" do
+    let(:project) { "example" }
+
+    context "when GitHub user exists" do
+      before do
+        `printf "[github]\n" >> "#{temp_dir}/.gitconfig"`
+        `printf "  user = test\n" >> "#{temp_dir}/.gitconfig"`
+      end
+
+      it "answers GitHub URL" do
+        ClimateControl.modify HOME: temp_dir do
+          expect(described_class.github_url(project)).to eq("https://github.com/test/#{project}")
+        end
+      end
+    end
+
+    context "when GitHub user doesn't exist" do
+      it "answers empty string" do
+        ClimateControl.modify HOME: temp_dir do
+          expect(described_class.github_url(project)).to eq("")
+        end
+      end
+    end
+  end
 end
