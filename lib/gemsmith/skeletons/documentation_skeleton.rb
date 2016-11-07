@@ -7,15 +7,15 @@ module Gemsmith
     # Configures documentation support.
     class DocumentationSkeleton < BaseSkeleton
       def create_files
-        cli.template "%gem_name%/README.md.tt", configuration.to_h
-        cli.template "%gem_name%/CONTRIBUTING.md.tt", configuration.to_h
-        cli.template "%gem_name%/CODE_OF_CONDUCT.md.tt", configuration.to_h
-        cli.template "%gem_name%/LICENSE.md.tt", configuration.to_h
-        cli.template "%gem_name%/CHANGES.md.tt", configuration.to_h
+        cli.template "%gem_name%/README.md.tt", configuration
+        cli.template "%gem_name%/CONTRIBUTING.md.tt", configuration
+        cli.template "%gem_name%/CODE_OF_CONDUCT.md.tt", configuration
+        cli.template "%gem_name%/LICENSE.md.tt", configuration
+        cli.template "%gem_name%/CHANGES.md.tt", configuration
       end
 
       def update_readme
-        file = File.join cli.destination_root, configuration.gem_name, "README.md"
+        file = File.join cli.destination_root, configuration.dig(:gem, :name), "README.md"
         Tocer::Writer.new(file).write
       end
 

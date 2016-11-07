@@ -4,19 +4,18 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Skeletons::GitSkeleton, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
-  let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester" }
-  let(:gem_dir) { File.join temp_dir, configuration.gem_name }
+  let(:configuration) { {gem: {name: "tester"}} }
+  let(:gem_dir) { File.join temp_dir, configuration.dig(:gem, :name) }
   subject { described_class.new cli, configuration: configuration }
-
   before do
-    FileUtils.mkdir(gem_dir)
+    FileUtils.mkdir gem_dir
     allow(subject).to receive(:`)
   end
 
   describe "#create_ignore_file" do
     it "creates Git ignore file" do
       subject.create_ignore_file
-      expect(cli).to have_received(:template).with("%gem_name%/.gitignore.tt", configuration.to_h)
+      expect(cli).to have_received(:template).with("%gem_name%/.gitignore.tt", configuration)
     end
   end
 

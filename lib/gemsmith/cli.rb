@@ -4,6 +4,9 @@ require "yaml"
 require "thor"
 require "thor/actions"
 require "thor_plus/actions"
+require "refinements/strings"
+require "refinements/hashes"
+require "runcom"
 require "gemsmith/errors/base"
 require "gemsmith/errors/requirement_conversion"
 require "gemsmith/errors/requirement_operator"
@@ -28,21 +31,69 @@ require "gemsmith/skeletons/rubocop_skeleton"
 require "gemsmith/skeletons/ruby_skeleton"
 require "gemsmith/skeletons/travis_skeleton"
 require "gemsmith/cli_helpers"
-require "gemsmith/configuration"
 require "gemsmith/git"
 
 module Gemsmith
   # The Command Line Interface (CLI) for the gem.
+  # rubocop:disable Metrics/ClassLength
   class CLI < Thor
     include Thor::Actions
     include ThorPlus::Actions
     include CLIHelpers
+
+    using Refinements::Strings
+    using Refinements::Hashes
 
     package_name Gemsmith::Identity.version_label
 
     # Overwrites the Thor template source root.
     def self.source_root
       File.expand_path File.join(File.dirname(__FILE__), "templates")
+    end
+
+    def self.defaults
+      {
+        year: Time.now.year,
+        github_user: Git.github_user,
+        gem: {
+          name: "undefined",
+          path: "undefined",
+          class: "Undefined",
+          platform: "Gem::Platform::RUBY",
+          home_url: Git.github_url("undefined"),
+          license: "MIT"
+        },
+        author: {
+          name: Git.config_value("user.name"),
+          email: Git.config_value("user.email"),
+          url: ""
+        },
+        organization: {
+          name: "",
+          url: ""
+        },
+        versions: {
+          ruby: RUBY_VERSION,
+          rails: "5.0"
+        },
+        create: {
+          cli: false,
+          rails: false,
+          security: true,
+          pry: true,
+          guard: true,
+          rspec: true,
+          rubocop: true,
+          git_hub: false,
+          code_climate: false,
+          gemnasium: false,
+          travis: false,
+          patreon: false
+        },
+        publish: {
+          sign: false
+        }
+      }
     end
 
     def self.skeletons
@@ -67,7 +118,8 @@ module Gemsmith
     # Initialize.
     def initialize args = [], options = {}, config = {}
       super args, options, config
-      @configuration = Configuration.new
+      @configuration = Runcom::Configuration.new file_name: Identity.file_name, defaults: self.class.defaults
+      @generator_configuration = {}
     end
 
     desc "-g, [--generate=GEM]", "Generate new gem."
@@ -88,8 +140,8 @@ module Gemsmith
       say
       info "Generating gem..."
 
-      setup_configuration name, options
-      self.class.skeletons.each { |skeleton| skeleton.create self, configuration: configuration }
+      configure_generators name: name, options: options
+      self.class.skeletons.each { |skeleton| skeleton.create self, configuration: generator_configuration }
 
       info "Gem generation finished."
       say
@@ -140,11 +192,22 @@ module Gemsmith
 
     private
 
-    attr_reader :configuration
+    attr_reader :configuration, :generator_configuration
 
-    def setup_configuration name, options
-      @configuration = Configuration.new gem_name: name
-      options.each { |key, value| configuration.public_send "create_#{key}=", value }
+    def configure_generators name:, options: {}
+      symbolized_options = options.reduce({}) do |new_options, (key, value)|
+        new_options.merge! key.to_sym => value
+      end
+
+      @generator_configuration = configuration.merge(
+        gem: {
+          name: name,
+          path: name.snakecase,
+          class: name.camelcase,
+          home_url: Git.github_url(name)
+        },
+        create: symbolized_options
+      )
     end
   end
 end

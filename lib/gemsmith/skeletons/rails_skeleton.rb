@@ -15,21 +15,21 @@ module Gemsmith
       end
 
       def create_engine
-        cli.template "#{lib_root}/%gem_path%/engine.rb.tt", configuration.to_h
-        cli.run "rails plugin new --skip #{configuration.gem_name} #{engine_options}"
+        cli.template "#{lib_root}/%gem_path%/engine.rb.tt", configuration
+        cli.run "rails plugin new --skip #{configuration.dig :gem, :name} #{engine_options}"
       end
 
       def create_generator_files
         cli.empty_directory "#{generator_root}/templates"
-        cli.template "#{generator_root}/install/install_generator.rb.tt", configuration.to_h
-        cli.template "#{generator_root}/install/USAGE.tt", configuration.to_h
-        cli.template "#{generator_root}/upgrade/upgrade_generator.rb.tt", configuration.to_h
-        cli.template "#{generator_root}/upgrade/USAGE.tt", configuration.to_h
+        cli.template "#{generator_root}/install/install_generator.rb.tt", configuration
+        cli.template "#{generator_root}/install/USAGE.tt", configuration
+        cli.template "#{generator_root}/upgrade/upgrade_generator.rb.tt", configuration
+        cli.template "#{generator_root}/upgrade/USAGE.tt", configuration
       end
 
       def create_travis_gemfiles
-        return unless configuration.create_travis?
-        cli.template "%gem_name%/gemfiles/rails-%rails_version%.x.gemfile.tt", configuration.to_h
+        return unless configuration.dig(:create, :travis)
+        cli.template "%gem_name%/gemfiles/rails-%rails_version%.x.gemfile.tt", configuration
       end
 
       def add_comments
@@ -47,17 +47,17 @@ module Gemsmith
       end
 
       def remove_files
-        gem_name = configuration.gem_name
-        gem_path = configuration.gem_path
+        gem_name = configuration.dig :gem, :name
+        gem_path = configuration.dig :gem, :path
 
-        cli.remove_file "#{gem_name}/app/helpers/#{gem_path}/application_helper.rb", configuration.to_h
-        cli.remove_file "#{gem_name}/lib/#{gem_path}/version.rb", configuration.to_h
-        cli.remove_file "#{gem_name}/MIT-LICENSE", configuration.to_h
-        cli.remove_file "#{gem_name}/README.rdoc", configuration.to_h
+        cli.remove_file "#{gem_name}/app/helpers/#{gem_path}/application_helper.rb", configuration
+        cli.remove_file "#{gem_name}/lib/#{gem_path}/version.rb", configuration
+        cli.remove_file "#{gem_name}/MIT-LICENSE", configuration
+        cli.remove_file "#{gem_name}/README.rdoc", configuration
       end
 
       def create
-        return unless configuration.create_rails?
+        return unless configuration.dig(:create, :rails)
 
         install_rails
         create_engine
@@ -78,7 +78,7 @@ module Gemsmith
       end
 
       def indentation
-        "  " * (configuration.gem_path.scan("/").size + 1)
+        "  " * (configuration.dig(:gem, :path).scan("/").size + 1)
       end
     end
   end

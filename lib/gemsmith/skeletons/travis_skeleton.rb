@@ -5,8 +5,8 @@ module Gemsmith
     # Configures Travis CI support.
     class TravisSkeleton < BaseSkeleton
       def create
-        return unless configuration.create_travis?
-        cli.template "%gem_name%/.travis.yml.tt", configuration.to_h
+        return unless configuration.dig(:create, :travis)
+        cli.template "%gem_name%/.travis.yml.tt", configuration
       end
     end
   end

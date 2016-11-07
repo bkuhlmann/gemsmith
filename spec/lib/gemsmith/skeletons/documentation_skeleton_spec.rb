@@ -4,32 +4,30 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Skeletons::DocumentationSkeleton, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
-  let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester" }
-  let(:gem_dir) { File.join temp_dir, configuration.gem_name }
+  let(:configuration) { {gem: {name: "tester"}} }
   subject { described_class.new cli, configuration: configuration }
-  before { FileUtils.mkdir gem_dir }
 
   describe "#create_files" do
     before { subject.create_files }
 
     it "creates readme" do
-      expect(cli).to have_received(:template).with("%gem_name%/README.md.tt", configuration.to_h)
+      expect(cli).to have_received(:template).with("%gem_name%/README.md.tt", configuration)
     end
 
     it "creates contributing guidelines" do
-      expect(cli).to have_received(:template).with("%gem_name%/CONTRIBUTING.md.tt", configuration.to_h)
+      expect(cli).to have_received(:template).with("%gem_name%/CONTRIBUTING.md.tt", configuration)
     end
 
     it "creates code of conduct" do
-      expect(cli).to have_received(:template).with("%gem_name%/CODE_OF_CONDUCT.md.tt", configuration.to_h)
+      expect(cli).to have_received(:template).with("%gem_name%/CODE_OF_CONDUCT.md.tt", configuration)
     end
 
     it "creates software license" do
-      expect(cli).to have_received(:template).with("%gem_name%/LICENSE.md.tt", configuration.to_h)
+      expect(cli).to have_received(:template).with("%gem_name%/LICENSE.md.tt", configuration)
     end
 
     it "creates change log" do
-      expect(cli).to have_received(:template).with("%gem_name%/CHANGES.md.tt", configuration.to_h)
+      expect(cli).to have_received(:template).with("%gem_name%/CHANGES.md.tt", configuration)
     end
   end
 

@@ -7,7 +7,8 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
   let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
   let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_path }
-  let(:gem_config) { instance_spy Gemsmith::Configuration }
+  let(:signed) { false }
+  let(:gem_config) { {gem: {name: "tester"}, publish: {sign: signed}} }
   let :credentials do
     instance_spy Gemsmith::Credentials, key: gem_spec.allowed_push_key.to_sym, url: gem_spec.allowed_push_host
   end
@@ -102,8 +103,6 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   end
 
   describe "#publish" do
-    let(:signed) { false }
-    let(:gem_config) { instance_spy Gemsmith::Configuration, publish_sign?: signed }
     before { allow(subject).to receive(:push).and_return(true) }
 
     context "with unsigned version tag" do
@@ -148,11 +147,7 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   end
 
   describe "#sign" do
-    let(:gem_config) { instance_spy Gemsmith::Configuration, publish_sign?: signed }
-
     context "when gem configuration enables version signing" do
-      let(:signed) { false }
-
       it "answers false" do
         expect(subject.signed?).to eq(false)
       end

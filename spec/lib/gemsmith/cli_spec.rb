@@ -37,24 +37,26 @@ RSpec.describe Gemsmith::CLI do
       end
 
       it "creates basic skeleton" do
-        Dir.chdir temp_dir do
-          cli.call
+        ClimateControl.modify HOME: temp_dir do
+          Dir.chdir temp_dir do
+            cli.call
 
-          expect(skeleton_files).to contain_exactly(
-            ".gitignore",
-            ".ruby-version",
-            "bin/setup",
-            "lib/tester/identity.rb",
-            "lib/tester.rb",
-            "CHANGES.md",
-            "CODE_OF_CONDUCT.md",
-            "CONTRIBUTING.md",
-            "Gemfile",
-            "LICENSE.md",
-            "README.md",
-            "Rakefile",
-            "tester.gemspec"
-          )
+            expect(skeleton_files).to contain_exactly(
+              ".gitignore",
+              ".ruby-version",
+              "bin/setup",
+              "lib/tester/identity.rb",
+              "lib/tester.rb",
+              "CHANGES.md",
+              "CODE_OF_CONDUCT.md",
+              "CONTRIBUTING.md",
+              "Gemfile",
+              "LICENSE.md",
+              "README.md",
+              "Rakefile",
+              "tester.gemspec"
+            )
+          end
         end
       end
     end
@@ -178,6 +180,66 @@ RSpec.describe Gemsmith::CLI do
   describe ".source_root" do
     it "answers source root" do
       expect(described_class.source_root).to include("gemsmith/lib/gemsmith/templates")
+    end
+  end
+
+  describe ".defaults", :temp_dir do
+    let :defaults do
+      {
+        year: Time.now.year,
+        github_user: "tester",
+        gem: {
+          name: "undefined",
+          path: "undefined",
+          class: "Undefined",
+          platform: "Gem::Platform::RUBY",
+          home_url: "https://github.com/tester/undefined",
+          license: "MIT"
+        },
+        author: {
+          name: "Test",
+          email: "test@example.com",
+          url: ""
+        },
+        organization: {
+          name: "",
+          url: ""
+        },
+        versions: {
+          ruby: "2.0.0",
+          rails: "5.0"
+        },
+        create: {
+          cli: false,
+          rails: false,
+          security: true,
+          pry: true,
+          guard: true,
+          rspec: true,
+          rubocop: true,
+          git_hub: false,
+          code_climate: false,
+          gemnasium: false,
+          travis: false,
+          patreon: false
+        },
+        publish: {
+          sign: false
+        }
+      }
+    end
+
+    before do
+      allow(Gemsmith::Git).to receive(:config_value).with("github.user").and_return("tester")
+      allow(Gemsmith::Git).to receive(:config_value).with("user.name").and_return("Test")
+      allow(Gemsmith::Git).to receive(:config_value).with("user.email").and_return("test@example.com")
+    end
+
+    it "answers default settings" do
+      Dir.chdir(temp_dir) do
+        stub_const "RUBY_VERSION", "2.0.0"
+        expect(described_class.defaults).to eq(defaults)
+      end
     end
   end
 

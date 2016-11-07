@@ -5,8 +5,8 @@ module Gemsmith
     # Configures Guard support.
     class GuardSkeleton < BaseSkeleton
       def create
-        return unless configuration.create_guard?
-        cli.template "%gem_name%/Guardfile.tt", configuration.to_h
+        return unless configuration.dig(:create, :guard)
+        cli.template "%gem_name%/Guardfile.tt", configuration
       end
     end
   end

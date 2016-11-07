@@ -5,11 +5,11 @@ module Gemsmith
     # Configures Git support.
     class GitSkeleton < BaseSkeleton
       def create_ignore_file
-        cli.template "%gem_name%/.gitignore.tt", configuration.to_h
+        cli.template "%gem_name%/.gitignore.tt", configuration
       end
 
       def create_repository
-        Dir.chdir(File.join(cli.destination_root, configuration.gem_name)) do
+        Dir.chdir(gem_dir) do
           `git init`
           `git add .`
           `git commit --all --no-verify --message "Added Gemsmith skeleton."`
@@ -19,6 +19,12 @@ module Gemsmith
       def create
         create_ignore_file
         create_repository
+      end
+
+      private
+
+      def gem_dir
+        File.join cli.destination_root, configuration.dig(:gem, :name)
       end
     end
   end

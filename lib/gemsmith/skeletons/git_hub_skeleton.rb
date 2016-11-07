@@ -5,9 +5,9 @@ module Gemsmith
     # Configures GitHub support.
     class GitHubSkeleton < BaseSkeleton
       def create
-        return unless configuration.create_git_hub?
-        cli.template "%gem_name%/.github/ISSUE_TEMPLATE.md.tt", configuration.to_h
-        cli.template "%gem_name%/.github/PULL_REQUEST_TEMPLATE.md.tt", configuration.to_h
+        return unless configuration.dig(:create, :git_hub)
+        cli.template "%gem_name%/.github/ISSUE_TEMPLATE.md.tt", configuration
+        cli.template "%gem_name%/.github/PULL_REQUEST_TEMPLATE.md.tt", configuration
       end
     end
   end

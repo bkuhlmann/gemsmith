@@ -4,10 +4,8 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
-  let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", gem_path: "tester" }
-  let(:gem_dir) { File.join temp_dir, configuration.gem_name }
+  let(:configuration) { {gem: {name: "tester", path: "tester"}} }
   subject { described_class.new cli, configuration: configuration }
-  before { FileUtils.mkdir gem_dir }
 
   describe "#rails?" do
     let(:command) { "command -v rails > /dev/null" }
@@ -69,7 +67,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     before { subject.create_engine }
 
     it "creates engine file" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_path%/engine.rb.tt", configuration.to_h)
+      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_path%/engine.rb.tt", configuration)
     end
 
     it "generates Rails engine" do
@@ -86,38 +84,38 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
 
     it "creates install generator script" do
       template = "%gem_name%/lib/generators/%gem_path%/install/install_generator.rb.tt"
-      expect(cli).to have_received(:template).with(template, configuration.to_h)
+      expect(cli).to have_received(:template).with(template, configuration)
     end
 
     it "creates install generator usage documentation" do
       template = "%gem_name%/lib/generators/%gem_path%/install/USAGE.tt"
-      expect(cli).to have_received(:template).with(template, configuration.to_h)
+      expect(cli).to have_received(:template).with(template, configuration)
     end
 
     it "creates upgrade generator script" do
       template = "%gem_name%/lib/generators/%gem_path%/upgrade/upgrade_generator.rb.tt"
-      expect(cli).to have_received(:template).with(template, configuration.to_h)
+      expect(cli).to have_received(:template).with(template, configuration)
     end
 
     it "creates upgrade generator usage documentation" do
       template = "%gem_name%/lib/generators/%gem_path%/upgrade/USAGE.tt"
-      expect(cli).to have_received(:template).with(template, configuration.to_h)
+      expect(cli).to have_received(:template).with(template, configuration)
     end
   end
 
   describe "#create_travis_gemfiles" do
     context "when Travis CI is enabled" do
-      let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_travis?: true }
+      let(:configuration) { {gem: {name: "tester", path: "tester"}, create: {travis: true}} }
 
       it "creates Rails gemfile" do
         subject.create_travis_gemfiles
         template = "%gem_name%/gemfiles/rails-%rails_version%.x.gemfile.tt"
-        expect(cli).to have_received(:template).with(template, configuration.to_h)
+        expect(cli).to have_received(:template).with(template, configuration)
       end
     end
 
     context "when Travis CI is disabled" do
-      let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_travis?: false }
+      let(:configuration) { {gem: {name: "tester", path: "tester"}, create: {travis: false}} }
 
       it "does not create Rails gemfile" do
         subject.create_travis_gemfiles
@@ -159,19 +157,19 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
 
     it "removes generated application helper file" do
       file = "tester/app/helpers/tester/application_helper.rb"
-      expect(cli).to have_received(:remove_file).with(file, configuration.to_h)
+      expect(cli).to have_received(:remove_file).with(file, configuration)
     end
 
     it "removes generated version file" do
-      expect(cli).to have_received(:remove_file).with("tester/lib/tester/version.rb", configuration.to_h)
+      expect(cli).to have_received(:remove_file).with("tester/lib/tester/version.rb", configuration)
     end
 
     it "removes generated license file" do
-      expect(cli).to have_received(:remove_file).with("tester/MIT-LICENSE", configuration.to_h)
+      expect(cli).to have_received(:remove_file).with("tester/MIT-LICENSE", configuration)
     end
 
     it "removes generated readme file" do
-      expect(cli).to have_received(:remove_file).with("tester/README.rdoc", configuration.to_h)
+      expect(cli).to have_received(:remove_file).with("tester/README.rdoc", configuration)
     end
   end
 
@@ -186,9 +184,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     context "when enabled" do
-      let :configuration do
-        instance_spy Gemsmith::Configuration, gem_name: "tester", gem_path: "tester", create_rails?: true
-      end
+      let(:configuration) { {gem: {name: "tester", path: "tester"}, create: {rails: true}} }
 
       it "creates skeleton", :aggregate_failures do
         subject.create
@@ -203,9 +199,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     context "when disabled" do
-      let :configuration do
-        instance_spy Gemsmith::Configuration, gem_name: "tester", gem_path: "tester", create_rails?: false
-      end
+      let(:configuration) { {gem: {name: "tester", path: "tester"}, create: {rails: false}} }
 
       it "does not create skeleton", :aggregate_failures do
         subject.create

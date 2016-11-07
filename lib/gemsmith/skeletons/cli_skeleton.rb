@@ -5,12 +5,12 @@ module Gemsmith
     # Configures Command Line Interface (CLI) support.
     class CLISkeleton < BaseSkeleton
       def create
-        return unless configuration.create_cli?
+        return unless configuration.dig(:create, :cli)
 
-        cli.template "%gem_name%/bin/%gem_name%.tt", configuration.to_h
-        cli.template "%gem_name%/lib/%gem_path%/cli.rb.tt", configuration.to_h
-        cli.template "%gem_name%/spec/lib/%gem_path%/cli_spec.rb.tt", configuration.to_h
-        cli.chmod "#{configuration.gem_name}/bin/#{configuration.gem_name}", 0o755
+        cli.template "%gem_name%/bin/%gem_name%.tt", configuration
+        cli.template "%gem_name%/lib/%gem_path%/cli.rb.tt", configuration
+        cli.template "%gem_name%/spec/lib/%gem_path%/cli_spec.rb.tt", configuration
+        cli.chmod "#{configuration.dig :gem, :name}/bin/#{configuration.dig :gem, :name}", 0o755
       end
     end
   end

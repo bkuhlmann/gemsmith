@@ -5,7 +5,7 @@ module Gemsmith
     # Configures Bundler support.
     class BundlerSkeleton < BaseSkeleton
       def create
-        Dir.chdir(File.join(cli.destination_root, configuration.gem_name)) do
+        Dir.chdir(cli.destination_root) do
           cli.info "Installing gem dependencies..."
           `bundle install`
         end

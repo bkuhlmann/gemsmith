@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "milestoner"
-require "gemsmith/configuration"
 require "gemsmith/credentials"
 require "gemsmith/git"
 require "gemsmith/identity"
@@ -16,7 +15,7 @@ module Gemsmith
 
       # rubocop:disable Metrics/ParameterLists
       def initialize gem_spec: Gemsmith::Gem::Specification.new(self.class.gem_spec_path),
-                     gem_config: Gemsmith::Configuration.new,
+                     gem_config: {},
                      credentials: Gemsmith::Credentials,
                      publisher: Milestoner::Publisher.new,
                      shell: Bundler::UI::Shell.new,
@@ -47,7 +46,7 @@ module Gemsmith
       end
 
       def signed?
-        gem_config.publish_sign?
+        gem_config.dig :publish, :sign
       end
 
       private

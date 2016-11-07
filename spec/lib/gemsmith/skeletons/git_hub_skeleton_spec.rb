@@ -4,10 +4,8 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Skeletons::GitHubSkeleton, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
-  let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_git_hub?: create_git_hub }
-  let(:gem_dir) { File.join temp_dir, configuration.gem_name }
+  let(:configuration) { {gem: {name: "tester"}, create: {git_hub: create_git_hub}} }
   subject { described_class.new cli, configuration: configuration }
-  before { FileUtils.mkdir gem_dir }
 
   describe "#create" do
     before { subject.create }
@@ -16,12 +14,12 @@ RSpec.describe Gemsmith::Skeletons::GitHubSkeleton, :temp_dir do
       let(:create_git_hub) { true }
 
       it "creates issues template" do
-        expect(cli).to have_received(:template).with("%gem_name%/.github/ISSUE_TEMPLATE.md.tt", configuration.to_h)
+        expect(cli).to have_received(:template).with("%gem_name%/.github/ISSUE_TEMPLATE.md.tt", configuration)
       end
 
       it "creates pull request template" do
         template = "%gem_name%/.github/PULL_REQUEST_TEMPLATE.md.tt"
-        expect(cli).to have_received(:template).with(template, configuration.to_h)
+        expect(cli).to have_received(:template).with(template, configuration)
       end
     end
 

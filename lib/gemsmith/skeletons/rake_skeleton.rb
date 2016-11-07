@@ -5,18 +5,18 @@ module Gemsmith
     # Configures Rake support.
     class RakeSkeleton < BaseSkeleton
       def create
-        cli.template "%gem_name%/Rakefile.tt", configuration.to_h
+        cli.template "%gem_name%/Rakefile.tt", configuration
         configure_rakefile
       end
 
       private
 
       def rspec_task
-        "spec" if configuration.create_rspec?
+        "spec" if configuration.dig(:create, :rspec)
       end
 
       def rubocop_task
-        "rubocop" if configuration.create_rubocop?
+        "rubocop" if configuration.dig(:create, :rubocop)
       end
 
       def default_tasks

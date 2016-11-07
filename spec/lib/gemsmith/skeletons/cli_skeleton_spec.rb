@@ -4,10 +4,8 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Skeletons::CLISkeleton, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
-  let(:configuration) { instance_spy Gemsmith::Configuration, gem_name: "tester", create_cli?: create_cli }
-  let(:gem_dir) { File.join temp_dir, configuration.gem_name }
+  let(:configuration) { {gem: {name: "tester"}, create: {cli: create_cli}} }
   subject { described_class.new cli, configuration: configuration }
-  before { FileUtils.mkdir gem_dir }
 
   describe "#create" do
     before { subject.create }
@@ -16,16 +14,16 @@ RSpec.describe Gemsmith::Skeletons::CLISkeleton, :temp_dir do
       let(:create_cli) { true }
 
       it "creates gem binary" do
-        expect(cli).to have_received(:template).with("%gem_name%/bin/%gem_name%.tt", configuration.to_h)
+        expect(cli).to have_received(:template).with("%gem_name%/bin/%gem_name%.tt", configuration)
       end
 
       it "creates command line interface" do
-        expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_path%/cli.rb.tt", configuration.to_h)
+        expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_path%/cli.rb.tt", configuration)
       end
 
       it "creates command line interface spec" do
         template = "%gem_name%/spec/lib/%gem_path%/cli_spec.rb.tt"
-        expect(cli).to have_received(:template).with(template, configuration.to_h)
+        expect(cli).to have_received(:template).with(template, configuration)
       end
 
       it "sets excecutable file permission for setup script" do

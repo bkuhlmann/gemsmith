@@ -18,7 +18,7 @@ module Gemsmith
           Guardfile
           Rakefile
           config.ru
-          bin/#{configuration.gem_name}
+          bin/#{configuration.dig :gem, :name}
           bin/rails
           .gemspec
           .rake
@@ -32,12 +32,8 @@ module Gemsmith
 
       private
 
-      def gem_dir
-        File.join cli.destination_root, configuration.gem_name
-      end
-
       def whitelisted_files
-        Pathname.glob(%(#{gem_dir}/**/*{#{whitelist.join ","}})).select(&:file?)
+        Pathname.glob(%(#{cli.destination_root}/**/*{#{whitelist.join ","}})).select(&:file?)
       end
     end
   end
