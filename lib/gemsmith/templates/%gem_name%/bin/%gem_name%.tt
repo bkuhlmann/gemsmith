@@ -1,4 +1,4 @@
-#! /usr/bin/ruby
+#! /usr/bin/env ruby
 
 require "<%= config.dig(:gem, :path) %>"
 require "<%= config.dig(:gem, :path) %>/cli"
