@@ -236,9 +236,11 @@ RSpec.describe Gemsmith::CLI do
     end
 
     it "answers default settings" do
-      Dir.chdir(temp_dir) do
-        stub_const "RUBY_VERSION", "2.0.0"
-        expect(described_class.defaults).to eq(defaults)
+      ClimateControl.modify HOME: temp_dir do
+        Dir.chdir(temp_dir) do
+          stub_const "RUBY_VERSION", "2.0.0"
+          expect(described_class.configuration.to_h).to eq(defaults)
+        end
       end
     end
   end

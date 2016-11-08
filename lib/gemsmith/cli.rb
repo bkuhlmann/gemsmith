@@ -46,13 +46,13 @@ module Gemsmith
 
     package_name Gemsmith::Identity.version_label
 
-    # Overwrites the Thor template source root.
+    # Overwrites Thor's template source root.
     def self.source_root
       File.expand_path File.join(File.dirname(__FILE__), "templates")
     end
 
-    def self.defaults
-      {
+    def self.configuration
+      Runcom::Configuration.new file_name: Identity.file_name, defaults: {
         year: Time.now.year,
         github_user: Git.github_user,
         gem: {
@@ -118,8 +118,7 @@ module Gemsmith
     # Initialize.
     def initialize args = [], options = {}, config = {}
       super args, options, config
-      @configuration = Runcom::Configuration.new file_name: Identity.file_name, defaults: self.class.defaults
-      @generator_configuration = {}
+      @configuration = {}
     end
 
     desc "-g, [--generate=GEM]", "Generate new gem."
@@ -140,8 +139,8 @@ module Gemsmith
       say
       info "Generating gem..."
 
-      configure_generators name: name, options: options
-      self.class.skeletons.each { |skeleton| skeleton.create self, configuration: generator_configuration }
+      setup_configuration name: name, options: options
+      self.class.skeletons.each { |skeleton| skeleton.create self, configuration: configuration }
 
       info "Gem generation finished."
       say
@@ -192,14 +191,14 @@ module Gemsmith
 
     private
 
-    attr_reader :configuration, :generator_configuration
+    attr_reader :configuration
 
-    def configure_generators name:, options: {}
+    def setup_configuration name:, options: {}
       symbolized_options = options.reduce({}) do |new_options, (key, value)|
         new_options.merge! key.to_sym => value
       end
 
-      @generator_configuration = configuration.merge(
+      @configuration = self.class.configuration.to_h.merge(
         gem: {
           name: name,
           path: name.snakecase,
