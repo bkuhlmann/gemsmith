@@ -193,7 +193,7 @@ RSpec.describe Gemsmith::CLI do
           path: "undefined",
           class: "Undefined",
           platform: "Gem::Platform::RUBY",
-          home_url: "https://github.com/tester/undefined",
+          url: "https://github.com/tester/undefined",
           license: "MIT"
         },
         author: {

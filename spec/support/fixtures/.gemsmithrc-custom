@@ -1,6 +1,6 @@
 :gem:
   :platform: "Gem::Platform::CURRENT"
-  :home_url: "https://www.example.com"
+  :url: "https://www.example.com"
   :license: "Apache"
 :author:
   :name: "Author Name"

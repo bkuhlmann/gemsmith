@@ -60,7 +60,7 @@ module Gemsmith
           path: "undefined",
           class: "Undefined",
           platform: "Gem::Platform::RUBY",
-          home_url: Git.github_url("undefined"),
+          url: Git.github_url("undefined"),
           license: "MIT"
         },
         author: {
@@ -251,7 +251,9 @@ module Gemsmith
           name: name,
           path: name.snakecase,
           class: name.camelcase,
-          home_url: Git.github_url(name)
+          platform: "Gem::Platform::RUBY",
+          url: Git.github_url(name),
+          license: "MIT"
         },
         create: symbolized_options
       )
