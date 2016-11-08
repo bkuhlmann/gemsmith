@@ -31,6 +31,7 @@ require "gemsmith/skeletons/rubocop_skeleton"
 require "gemsmith/skeletons/ruby_skeleton"
 require "gemsmith/skeletons/travis_skeleton"
 require "gemsmith/cli_helpers"
+require "gemsmith/template_helper"
 require "gemsmith/git"
 
 module Gemsmith
@@ -40,6 +41,7 @@ module Gemsmith
     include Thor::Actions
     include ThorPlus::Actions
     include CLIHelpers
+    include TemplateHelper
 
     using Refinements::Strings
     using Refinements::Hashes
