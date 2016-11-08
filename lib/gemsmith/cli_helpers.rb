@@ -3,27 +3,6 @@
 module Gemsmith
   # Command Line Interface (CLI) helpers for the CLI class.
   module CLIHelpers
-    def gem_name
-      configuration.dig :gem, :name
-    end
-
-    def gem_path
-      configuration.dig :gem, :path
-    end
-
-    def gem_class
-      configuration.dig :gem, :class
-    end
-
-    def rails_version
-      configuration.dig :versions, :rails
-    end
-
-    def render_namespace &block
-      body = capture(&block) if block_given?
-      concat Gem::ModuleFormatter.new(gem_class).render(body)
-    end
-
     module_function
 
     def print_gems gems
