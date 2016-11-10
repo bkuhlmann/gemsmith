@@ -1,10 +1,7 @@
 require "bundler/setup"
-
 <%- if config.dig(:create, :code_climate) -%>
-if ENV["CI"]
-  require "codeclimate-test-reporter"
-  CodeClimate::TestReporter.start
-end
+require "simplecov"
+SimpleCov.start
 
 <%- end -%>
 <%- if config.dig(:create, :pry) -%>

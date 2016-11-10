@@ -9,6 +9,7 @@ rvm:
 before_install:
   - gem install rails
 script: bundle exec rake
+after_script: bundle exec codeclimate-test-reporter
 notifications:
   email: false
   slack:

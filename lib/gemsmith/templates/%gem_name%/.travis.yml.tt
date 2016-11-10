@@ -6,5 +6,8 @@ gemfile:
   - gemfiles/rails-<%= config.dig(:versions, :rails) %>.x.gemfile
 <%- end -%>
 script: bundle exec rake
+<%- if config.dig(:create, :code_climate) -%>
+after_script: bundle exec codeclimate-test-reporter
+<%- end -%>
 notifications:
   email: false

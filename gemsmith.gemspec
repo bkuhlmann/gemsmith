@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "climate_control", "~> 0.0"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   spec.add_development_dependency "rubocop", "~> 0.45"
-  spec.add_development_dependency "codeclimate-test-reporter", "~> 0.6"
+  spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0"
 
   spec.files = Dir.glob("lib/**/*", File::FNM_DOTMATCH)
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]

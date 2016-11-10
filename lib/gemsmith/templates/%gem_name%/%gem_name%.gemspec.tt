@@ -43,7 +43,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop", "~> 0.45"
   <%- end -%>
   <%- if config.dig(:create, :code_climate) -%>
-  spec.add_development_dependency "codeclimate-test-reporter", "~> 0.6"
+  spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0"
   <%- end -%>
 
   spec.files = Dir["lib/**/*"]
