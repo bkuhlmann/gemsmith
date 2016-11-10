@@ -18,6 +18,7 @@ require "gemsmith/gem/specification"
 require "gemsmith/skeletons/base_skeleton"
 require "gemsmith/skeletons/bundler_skeleton"
 require "gemsmith/skeletons/cli_skeleton"
+require "gemsmith/skeletons/code_climate_skeleton"
 require "gemsmith/skeletons/documentation_skeleton"
 require "gemsmith/skeletons/gem_skeleton"
 require "gemsmith/skeletons/git_skeleton"
@@ -108,6 +109,7 @@ module Gemsmith
         Skeletons::RailsSkeleton,
         Skeletons::RspecSkeleton,
         Skeletons::RubocopSkeleton,
+        Skeletons::CodeClimateSkeleton,
         Skeletons::GuardSkeleton,
         Skeletons::TravisSkeleton,
         Skeletons::BundlerSkeleton,

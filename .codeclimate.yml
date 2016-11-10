@@ -1,0 +1,36 @@
+---
+engines:
+  shellcheck:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  reek:
+    enabled: true
+  rubocop:
+    enabled: true
+  scss-lint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+  fixme:
+    enabled: true
+    config:
+      strings:
+        - TODO
+        - FIX
+        - DUPLICATE
+ratings:
+  paths:
+  - "app/**/*"
+  - "bin/**/*"
+  - "lib/**/*"
+  - "**.rb"
+  - "**.js"
+exclude_paths:
+- "spec/**/*"
+- "vendor/**/*"
+- ".codeclimate.yml"

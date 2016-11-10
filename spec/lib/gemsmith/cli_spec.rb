@@ -102,6 +102,7 @@ RSpec.describe Gemsmith::CLI do
             cli.call
 
             expect(skeleton_files).to contain_exactly(
+              ".codeclimate.yml",
               ".gitignore",
               ".rubocop.yml",
               ".ruby-version",
@@ -255,6 +256,7 @@ RSpec.describe Gemsmith::CLI do
                                                            Gemsmith::Skeletons::RailsSkeleton,
                                                            Gemsmith::Skeletons::RspecSkeleton,
                                                            Gemsmith::Skeletons::RubocopSkeleton,
+                                                           Gemsmith::Skeletons::CodeClimateSkeleton,
                                                            Gemsmith::Skeletons::GuardSkeleton,
                                                            Gemsmith::Skeletons::TravisSkeleton,
                                                            Gemsmith::Skeletons::BundlerSkeleton,
