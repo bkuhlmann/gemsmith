@@ -5,7 +5,12 @@ require "spec_helper"
 RSpec.describe Gemsmith::CLI do
   let(:options) { [] }
   let(:command_line) { Array(command).concat options }
-  let(:cli) { -> { described_class.start command_line } }
+  let :cli do
+    lambda do
+      load "gemsmith/cli.rb" # Ensures clean Thor `.method_option` evaluation per spec.
+      described_class.start command_line
+    end
+  end
 
   shared_examples_for "a generate command" do
     let(:gem_name) { "tester" }

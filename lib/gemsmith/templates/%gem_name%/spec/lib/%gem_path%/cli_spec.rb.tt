@@ -6,7 +6,12 @@ require "<%= config.dig(:gem, :path) %>/cli"
 RSpec.describe <%= config.dig(:gem, :class) %>::CLI do
   let(:options) { [] }
   let(:command_line) { Array(command).concat options }
-  let(:cli) { -> { described_class.start command_line } }
+  let :cli do
+    lambda do
+      load "<%= config.dig(:gem, :path) %>/cli.rb" # Ensures clean Thor `.method_option` evaluation per spec.
+      described_class.start command_line
+    end
+  end
 
   shared_examples_for "a config command", :temp_dir do
     let(:configuration_path) { File.join temp_dir, <%= config.dig(:gem, :class) %>::Identity.file_name }
@@ -17,7 +22,7 @@ RSpec.describe <%= config.dig(:gem, :class) %>::CLI do
 
       it "prints configuration path" do
         Dir.chdir(temp_dir) do
-          expect(&cli).to output("Using: #{configuration_path}.\n").to_stdout
+          expect(&cli).to output("#{configuration_path}\n").to_stdout
         end
       end
     end
