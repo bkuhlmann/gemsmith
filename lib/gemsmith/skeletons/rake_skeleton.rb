@@ -15,12 +15,16 @@ module Gemsmith
         "spec" if configuration.dig(:create, :rspec)
       end
 
+      def reek_task
+        "reek" if configuration.dig(:create, :reek)
+      end
+
       def rubocop_task
         "rubocop" if configuration.dig(:create, :rubocop)
       end
 
       def default_tasks
-        [rspec_task, rubocop_task].compact
+        [rspec_task, reek_task, rubocop_task].compact
       end
 
       def configure_rakefile

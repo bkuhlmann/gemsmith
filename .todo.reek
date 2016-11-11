@@ -1,0 +1,43 @@
+---
+InstanceVariableAssumption:
+  exclude:
+  - Gemsmith::Authenticators::RubyGems
+TooManyStatements:
+  exclude:
+  - initialize
+  - Gemsmith::CLI#generate
+  - Gemsmith::Credentials#create
+  - Gemsmith::Rake::Tasks#install
+  - Gemsmith::Skeletons::GemSkeleton#create
+  - Gemsmith::Skeletons::RailsSkeleton#add_comments
+  - Gemsmith::Skeletons::RailsSkeleton#create
+  - Gemsmith::Skeletons::RailsSkeleton#remove_files
+DuplicateMethodCall:
+  exclude:
+  - Gemsmith::CLIHelpers#pick_gem
+  - Gemsmith::CLIHelpers#process_gem
+  - Gemsmith::Credentials#create
+  - Gemsmith::Credentials#initialize
+  - Gemsmith::Gem::Requirement#validate!
+  - Gemsmith::Rake::Publisher#process_push
+  - Gemsmith::Rake::Publisher#push
+  - Gemsmith::Rake::Tasks#install
+  - Gemsmith::Skeletons::CLISkeleton#create
+  - Gemsmith::Skeletons::RailsSkeleton#add_comments
+FeatureEnvy:
+  exclude:
+  - Gemsmith::CLIHelpers#pick_gem
+UtilityFunction:
+  exclude:
+  - Gemsmith::Gem::ModuleFormatter#indentation
+  - Gemsmith::Rake::Builder#package_path
+  - Gemsmith::Skeletons::BaseSkeleton#lib_root
+PrimaDonnaMethod:
+  exclude:
+  - Gemsmith::Gem::Requirement
+LongParameterList:
+  exclude:
+  - Gemsmith::Rake::Publisher#initialize
+TooManyInstanceVariables:
+  exclude:
+  - Gemsmith::Rake::Publisher

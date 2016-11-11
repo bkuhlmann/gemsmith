@@ -39,6 +39,9 @@ Gem::Specification.new do |spec|
   <%- if config.dig(:create, :guard) -%>
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   <%- end -%>
+  <%- if config.dig(:create, :reek) -%>
+  spec.add_development_dependency "reek", "~> 4.5"
+  <%- end -%>
   <%- if config.dig(:create, :rubocop) -%>
   spec.add_development_dependency "rubocop", "~> 0.45"
   <%- end -%>

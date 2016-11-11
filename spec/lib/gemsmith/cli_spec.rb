@@ -32,6 +32,7 @@ RSpec.describe Gemsmith::CLI do
           "--no-pry",
           "--no-guard",
           "--no-rspec",
+          "--no-reek",
           "--no-rubocop",
           "--no-git-hub",
           "--no-code-climate",
@@ -76,6 +77,7 @@ RSpec.describe Gemsmith::CLI do
           "--pry",
           "--guard",
           "--rspec",
+          "--reek",
           "--rubocop",
           "--git-hub",
           "--code-climate",
@@ -124,6 +126,7 @@ RSpec.describe Gemsmith::CLI do
               "lib/generators/tester/install/install_generator.rb",
               "lib/generators/tester/upgrade/USAGE",
               "lib/generators/tester/upgrade/upgrade_generator.rb",
+              "lib/tasks/reek.rake",
               "lib/tasks/rspec.rake",
               "lib/tasks/rubocop.rake",
               "lib/tester/cli.rb",
@@ -189,7 +192,7 @@ RSpec.describe Gemsmith::CLI do
     end
   end
 
-  describe ".defaults", :temp_dir do
+  describe ".configuration", :temp_dir do
     let :defaults do
       {
         year: Time.now.year,
@@ -222,6 +225,7 @@ RSpec.describe Gemsmith::CLI do
           pry: true,
           guard: true,
           rspec: true,
+          reek: true,
           rubocop: true,
           git_hub: false,
           code_climate: false,
@@ -260,6 +264,7 @@ RSpec.describe Gemsmith::CLI do
                                                            Gemsmith::Skeletons::RubySkeleton,
                                                            Gemsmith::Skeletons::RailsSkeleton,
                                                            Gemsmith::Skeletons::RspecSkeleton,
+                                                           Gemsmith::Skeletons::ReekSkeleton,
                                                            Gemsmith::Skeletons::RubocopSkeleton,
                                                            Gemsmith::Skeletons::CodeClimateSkeleton,
                                                            Gemsmith::Skeletons::GuardSkeleton,

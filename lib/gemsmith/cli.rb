@@ -27,6 +27,7 @@ require "gemsmith/skeletons/guard_skeleton"
 require "gemsmith/skeletons/pragma_skeleton"
 require "gemsmith/skeletons/rails_skeleton"
 require "gemsmith/skeletons/rake_skeleton"
+require "gemsmith/skeletons/reek_skeleton"
 require "gemsmith/skeletons/rspec_skeleton"
 require "gemsmith/skeletons/rubocop_skeleton"
 require "gemsmith/skeletons/ruby_skeleton"
@@ -86,6 +87,7 @@ module Gemsmith
           pry: true,
           guard: true,
           rspec: true,
+          reek: true,
           rubocop: true,
           git_hub: false,
           code_climate: false,
@@ -108,6 +110,7 @@ module Gemsmith
         Skeletons::RubySkeleton,
         Skeletons::RailsSkeleton,
         Skeletons::RspecSkeleton,
+        Skeletons::ReekSkeleton,
         Skeletons::RubocopSkeleton,
         Skeletons::CodeClimateSkeleton,
         Skeletons::GuardSkeleton,
@@ -157,6 +160,10 @@ module Gemsmith
                   desc: "Add RSpec support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:create, :rspec)
+    method_option :reek,
+                  desc: "Add Reek support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:create, :reek)
     method_option :rubocop,
                   aliases: "-R",
                   desc: "Add Rubocop support.",
