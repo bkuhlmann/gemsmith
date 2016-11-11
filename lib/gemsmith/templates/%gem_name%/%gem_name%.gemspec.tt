@@ -45,6 +45,9 @@ Gem::Specification.new do |spec|
   <%- if config.dig(:create, :rubocop) -%>
   spec.add_development_dependency "rubocop", "~> 0.45"
   <%- end -%>
+  <%- if config.dig(:create, :scss_lint) -%>
+  spec.add_development_dependency "scss_lint", "~> 0.50"
+  <%- end -%>
   <%- if config.dig(:create, :code_climate) -%>
   spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0"
   <%- end -%>

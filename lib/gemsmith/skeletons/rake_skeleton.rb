@@ -23,8 +23,12 @@ module Gemsmith
         "rubocop" if configuration.dig(:create, :rubocop)
       end
 
+      def scss_lint_task
+        "scss_lint" if configuration.dig(:create, :scss_lint)
+      end
+
       def default_tasks
-        [rspec_task, reek_task, rubocop_task].compact
+        [rspec_task, reek_task, rubocop_task, scss_lint_task].compact
       end
 
       def configure_rakefile

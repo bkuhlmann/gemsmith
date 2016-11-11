@@ -31,6 +31,7 @@ require "gemsmith/skeletons/reek_skeleton"
 require "gemsmith/skeletons/rspec_skeleton"
 require "gemsmith/skeletons/rubocop_skeleton"
 require "gemsmith/skeletons/ruby_skeleton"
+require "gemsmith/skeletons/scss_lint_skeleton"
 require "gemsmith/skeletons/travis_skeleton"
 require "gemsmith/cli_helpers"
 require "gemsmith/template_helper"
@@ -89,6 +90,7 @@ module Gemsmith
           rspec: true,
           reek: true,
           rubocop: true,
+          scss_lint: false,
           git_hub: false,
           code_climate: false,
           gemnasium: false,
@@ -112,6 +114,7 @@ module Gemsmith
         Skeletons::RspecSkeleton,
         Skeletons::ReekSkeleton,
         Skeletons::RubocopSkeleton,
+        Skeletons::SCSSLintSkeleton,
         Skeletons::CodeClimateSkeleton,
         Skeletons::GuardSkeleton,
         Skeletons::TravisSkeleton,
@@ -169,6 +172,10 @@ module Gemsmith
                   desc: "Add Rubocop support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:create, :rubocop)
+    method_option :scss_lint,
+                  desc: "Add SCSS Lint support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:create, :scss_lint)
     method_option :git_hub,
                   aliases: "-H",
                   desc: "Add GitHub support.",

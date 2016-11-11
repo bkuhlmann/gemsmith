@@ -7,6 +7,7 @@ RSpec.describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
   let(:create_rspec) { false }
   let(:create_reek) { false }
   let(:create_rubocop) { false }
+  let(:create_scss_lint) { false }
   let :configuration do
     {
       gem: {
@@ -15,7 +16,8 @@ RSpec.describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
       create: {
         rspec: create_rspec,
         reek: create_reek,
-        rubocop: create_rubocop
+        rubocop: create_rubocop,
+        scss_lint: create_scss_lint
       }
     }
   end
@@ -53,15 +55,24 @@ RSpec.describe Gemsmith::Skeletons::RakeSkeleton, :temp_dir do
       end
     end
 
+    context "when only SCSS Lint is enabled" do
+      let(:create_scss_lint) { true }
+
+      it "adds SCSS Lint to default tasks" do
+        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w[scss_lint]\n")
+      end
+    end
+
     context "when RSpec, Reek, and Rubocop are enabled" do
       let(:create_rspec) { true }
       let(:create_reek) { true }
       let(:create_rubocop) { true }
+      let(:create_scss_lint) { true }
 
       it "adds all tasks" do
         expect(cli).to have_received(:append_to_file).with(
           "%gem_name%/Rakefile",
-          "\ntask default: %w[spec reek rubocop]\n"
+          "\ntask default: %w[spec reek rubocop scss_lint]\n"
         )
       end
     end
