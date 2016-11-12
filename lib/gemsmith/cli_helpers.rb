@@ -26,6 +26,8 @@ module Gemsmith
     def inspect_gem specification, method
       return unless specification
       Gem::Inspector.new.public_send method, Gem::Specification.new(specification.spec_file)
+    rescue Versionaire::Errors::Conversion => exception
+      error(exception.message)
     end
 
     def process_gem name, method
