@@ -5,11 +5,11 @@ engines:
   bundler-audit:
     enabled: true
   reek:
-    enabled: true
+    enabled: <%= config.dig :generate, :reek %>
   rubocop:
-    enabled: true
+    enabled: <%= config.dig :generate, :rubocop %>
   scss-lint:
-    enabled: true
+    enabled: <%= config.dig :generate, :scss_lint %>
   duplication:
     enabled: true
     config:
