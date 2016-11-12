@@ -2,7 +2,7 @@
 
 module Gemsmith
   module Generators
-    # Configures Git support.
+    # Generates Git support.
     class Git < Base
       def create_ignore_file
         cli.template "%gem_name%/.gitignore.tt", configuration
@@ -12,11 +12,11 @@ module Gemsmith
         Dir.chdir(gem_dir) do
           `git init`
           `git add .`
-          `git commit --all --no-verify --message "Added Gemsmith skeleton."`
+          `git commit --all --no-verify --message "Added Gemsmith files."`
         end
       end
 
-      def create
+      def run
         create_ignore_file
         create_repository
       end

@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures RSpec support.
+    # Generates RSpec support.
     class Rspec < Base
-      def create
+      def run
         return unless configuration.dig(:generate, :rspec)
 
         cli.template "%gem_name%/lib/tasks/rspec.rake.tt", configuration

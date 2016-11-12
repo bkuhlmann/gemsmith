@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures GitHub support.
+    # Generates GitHub support.
     class GitHub < Base
-      def create
+      def run
         return unless configuration.dig(:generate, :git_hub)
         cli.template "%gem_name%/.github/ISSUE_TEMPLATE.md.tt", configuration
         cli.template "%gem_name%/.github/PULL_REQUEST_TEMPLATE.md.tt", configuration

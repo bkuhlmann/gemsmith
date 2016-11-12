@@ -7,8 +7,8 @@ RSpec.describe Gemsmith::Generators::SCSSLint, :temp_dir do
   let(:configuration) { {gem: {name: "tester"}, generate: {scss_lint: create_scss_lint}} }
   subject { described_class.new cli, configuration: configuration }
 
-  describe "#create" do
-    before { subject.create }
+  describe "#run" do
+    before { subject.run }
 
     context "when enabled" do
       let(:create_scss_lint) { true }

@@ -2,7 +2,7 @@
 
 module Gemsmith
   module Generators
-    # Configures Ruby on Rails support.
+    # Generates Ruby on Rails support.
     class Rails < Base
       def rails?
         cli.run "command -v rails > /dev/null"
@@ -56,7 +56,7 @@ module Gemsmith
         cli.remove_file "#{gem_name}/README.rdoc", configuration
       end
 
-      def create
+      def run
         return unless configuration.dig(:generate, :rails)
 
         install_rails

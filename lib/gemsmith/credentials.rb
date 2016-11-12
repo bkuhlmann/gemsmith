@@ -6,7 +6,7 @@ require "gemsmith/authenticators/ruby_gems"
 require "gemsmith/authenticators/basic"
 
 module Gemsmith
-  # Configures gem credentials for RubyGems and/or alternative servers.
+  # Generates gem credentials for RubyGems and/or alternative servers.
   class Credentials
     attr_reader :key, :url
 

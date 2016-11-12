@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures default gem support.
+    # Generates default gem support.
     class Gem < Base
-      def create
+      def run
         cli.template "%gem_name%/bin/setup.tt", configuration
         cli.template "%gem_name%/Gemfile.tt", configuration
         cli.template "%gem_name%/%gem_name%.gemspec.tt", configuration

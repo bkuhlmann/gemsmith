@@ -4,7 +4,7 @@ require "tocer"
 
 module Gemsmith
   module Generators
-    # Configures documentation support.
+    # Generates documentation support.
     class Documentation < Base
       def create_files
         cli.template "%gem_name%/README.md.tt", configuration
@@ -19,7 +19,7 @@ module Gemsmith
         Tocer::Writer.new(file).write
       end
 
-      def create
+      def run
         create_files
         update_readme
       end

@@ -7,9 +7,9 @@ RSpec.describe Gemsmith::Generators::Ruby, :temp_dir do
   let(:configuration) { {gem: {name: "tester"}} }
   subject { described_class.new cli, configuration: configuration }
 
-  describe "#create" do
+  describe "#run" do
     it "creates files" do
-      subject.create
+      subject.run
       expect(cli).to have_received(:template).with("%gem_name%/.ruby-version.tt", configuration)
     end
   end

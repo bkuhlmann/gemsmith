@@ -7,8 +7,8 @@ RSpec.describe Gemsmith::Generators::Reek, :temp_dir do
   let(:configuration) { {gem: {name: "tester"}, generate: {reek: create_reek}} }
   subject { described_class.new cli, configuration: configuration }
 
-  describe "#create" do
-    before { subject.create }
+  describe "#run" do
+    before { subject.run }
 
     context "when enabled" do
       let(:create_reek) { true }

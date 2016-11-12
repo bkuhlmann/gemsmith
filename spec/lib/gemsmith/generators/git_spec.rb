@@ -26,23 +26,23 @@ RSpec.describe Gemsmith::Generators::Git, :temp_dir do
       expect(subject).to have_received(:`).with("git init")
     end
 
-    it "adds all skeleton files" do
+    it "adds generated files" do
       expect(subject).to have_received(:`).with("git add .")
     end
 
     it "creates initial commit" do
-      expect(subject).to have_received(:`).with(%(git commit --all --no-verify --message "Added Gemsmith skeleton."))
+      expect(subject).to have_received(:`).with(%(git commit --all --no-verify --message "Added Gemsmith files."))
     end
   end
 
-  describe "#create" do
+  describe "#run" do
     before do
       allow(subject).to receive(:create_ignore_file)
       allow(subject).to receive(:create_repository)
     end
 
-    it "creates skeleton", :aggregate_failures do
-      subject.create
+    it "generates Git support", :aggregate_failures do
+      subject.run
 
       expect(subject).to have_received(:create_ignore_file)
       expect(subject).to have_received(:create_repository)

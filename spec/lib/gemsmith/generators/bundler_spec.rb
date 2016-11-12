@@ -8,8 +8,8 @@ RSpec.describe Gemsmith::Generators::Bundler, :temp_dir do
   subject { described_class.new cli, configuration: configuration }
   before { allow(subject).to receive(:`) }
 
-  describe "#create" do
-    before { subject.create }
+  describe "#run" do
+    before { subject.run }
 
     it "prints gem dependencies are being installed" do
       expect(cli).to have_received(:info).with("Installing gem dependencies...")

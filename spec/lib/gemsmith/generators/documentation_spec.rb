@@ -44,19 +44,19 @@ RSpec.describe Gemsmith::Generators::Documentation, :temp_dir do
     end
   end
 
-  describe "#create" do
+  describe "#run" do
     before do
       allow(subject).to receive(:create_files)
       allow(subject).to receive(:update_readme)
     end
 
     it "creates files" do
-      subject.create
+      subject.run
       expect(subject).to have_received(:create_files)
     end
 
     it "creates updates readme" do
-      subject.create
+      subject.run
       expect(subject).to have_received(:update_readme)
     end
   end

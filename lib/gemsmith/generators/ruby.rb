@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures Ruby support.
+    # Generates Ruby support.
     class Ruby < Base
-      def create
+      def run
         cli.template "%gem_name%/.ruby-version.tt", configuration
       end
     end

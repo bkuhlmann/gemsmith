@@ -194,7 +194,7 @@ module Gemsmith
       info "Generating gem..."
 
       setup_configuration name: name, options: options
-      self.class.generators.each { |generator| generator.create self, configuration: configuration }
+      self.class.generators.each { |generator| generator.run self, configuration: configuration }
 
       info "Gem generation finished."
       say

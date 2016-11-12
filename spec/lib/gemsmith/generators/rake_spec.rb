@@ -24,8 +24,8 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
   let(:rakefile) { File.join temp_dir, "Rakefile" }
   subject { described_class.new cli, configuration: configuration }
 
-  describe "#create" do
-    before { subject.create }
+  describe "#run" do
+    before { subject.run }
 
     it "creates Rakefile" do
       expect(cli).to have_received(:template).with("%gem_name%/Rakefile.tt", configuration)

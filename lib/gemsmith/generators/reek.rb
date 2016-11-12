@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures Reek support.
+    # Generates Reek support.
     class Reek < Base
-      def create
+      def run
         return unless configuration.dig(:generate, :reek)
         cli.template "%gem_name%/lib/tasks/reek.rake.tt", configuration
       end

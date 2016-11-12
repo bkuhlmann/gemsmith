@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures Command Line Interface (CLI) support.
+    # Generates Command Line Interface (CLI) support.
     class CLI < Base
-      def create
+      def run
         return unless configuration.dig(:generate, :cli)
 
         cli.template "%gem_name%/bin/%gem_name%.tt", configuration

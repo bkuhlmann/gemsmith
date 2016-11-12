@@ -7,10 +7,10 @@ TooManyStatements:
   - initialize
   - Gemsmith::CLI#generate
   - Gemsmith::Credentials#create
-  - Gemsmith::Generators::Gem#create
+  - Gemsmith::Generators::Gem#run
   - Gemsmith::Generators::Rails#add_comments
-  - Gemsmith::Generators::Rails#create
   - Gemsmith::Generators::Rails#remove_files
+  - Gemsmith::Generators::Rails#run
   - Gemsmith::Rake::Tasks#install
 DuplicateMethodCall:
   exclude:
@@ -19,7 +19,7 @@ DuplicateMethodCall:
   - Gemsmith::Credentials#create
   - Gemsmith::Credentials#initialize
   - Gemsmith::Gem::Requirement#validate!
-  - Gemsmith::Generators::CLI#create
+  - Gemsmith::Generators::CLI#run
   - Gemsmith::Generators::Rails#add_comments
   - Gemsmith::Rake::Publisher#process_push
   - Gemsmith::Rake::Publisher#push

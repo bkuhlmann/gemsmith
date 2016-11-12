@@ -15,7 +15,7 @@ RSpec.describe Gemsmith::CLI do
   shared_examples_for "a generate command" do
     let(:gem_name) { "tester" }
     let(:gem_dir) { Pathname.new File.join(temp_dir, gem_name) }
-    let :skeleton_files do
+    let :files do
       files = Pathname.glob("#{gem_dir}/**/*", File::FNM_DOTMATCH).select(&:file?)
       files = files.map { |file| file.relative_path_from gem_dir }
       files = files.reject { |file| file.to_s =~ %r(^(\.git\/.+|\.tags)$) }
@@ -43,12 +43,12 @@ RSpec.describe Gemsmith::CLI do
         ]
       end
 
-      it "creates basic skeleton" do
+      it "generates basic gem" do
         ClimateControl.modify HOME: temp_dir do
           Dir.chdir temp_dir do
             cli.call
 
-            expect(skeleton_files).to contain_exactly(
+            expect(files).to contain_exactly(
               ".gitignore",
               ".ruby-version",
               "bin/setup",
@@ -93,7 +93,7 @@ RSpec.describe Gemsmith::CLI do
       let(:models_dir) { File.join gem_dir, "app", "models", gem_name }
 
       # FIX: This block should be removed once it is determined why `rails plugin new` doesn't run
-      # via the `RailsSkeleton#create_engine` within this spec.
+      # via the `Generators::Rails#create_engine` within this spec.
       before do
         FileUtils.mkdir_p controllers_dir
         FileUtils.touch File.join(controllers_dir, "application_controller.rb")
@@ -105,12 +105,12 @@ RSpec.describe Gemsmith::CLI do
         FileUtils.touch File.join(models_dir, "application_record.rb")
       end
 
-      it "creates full skeleton" do
+      it "generates full gem" do
         ClimateControl.modify HOME: temp_dir do
           Dir.chdir temp_dir do
             cli.call
 
-            expect(skeleton_files).to contain_exactly(
+            expect(files).to contain_exactly(
               ".codeclimate.yml",
               ".gitignore",
               ".rubocop.yml",

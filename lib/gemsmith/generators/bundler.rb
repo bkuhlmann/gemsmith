@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures Bundler support.
+    # Generates Bundler support.
     class Bundler < Base
-      def create
+      def run
         Dir.chdir(cli.destination_root) do
           cli.info "Installing gem dependencies..."
           `bundle install`

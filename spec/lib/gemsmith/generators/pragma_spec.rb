@@ -30,8 +30,8 @@ RSpec.describe Gemsmith::Generators::Pragma, :temp_dir do
     end
   end
 
-  describe "#create" do
-    before { subject.create }
+  describe "#run" do
+    before { subject.run }
 
     it "updates files" do
       expect(pragmater).to have_received(:add)

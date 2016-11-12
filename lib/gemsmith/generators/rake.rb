@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures Rake support.
+    # Generates Rake support.
     class Rake < Base
-      def create
+      def run
         cli.template "%gem_name%/Rakefile.tt", configuration
         configure_rakefile
       end

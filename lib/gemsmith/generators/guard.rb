@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures Guard support.
+    # Generates Guard support.
     class Guard < Base
-      def create
+      def run
         return unless configuration.dig(:generate, :guard)
         cli.template "%gem_name%/Guardfile.tt", configuration
       end

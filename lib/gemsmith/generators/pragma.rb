@@ -26,7 +26,7 @@ module Gemsmith
         ]
       end
 
-      def create
+      def run
         whitelisted_files.each { |file| Pragmater::Writer.new(file, self.class.comments).add }
       end
 

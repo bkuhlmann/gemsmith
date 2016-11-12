@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures Travis CI support.
+    # Generates Travis CI support.
     class Travis < Base
-      def create
+      def run
         return unless configuration.dig(:generate, :travis)
         cli.template "%gem_name%/.travis.yml.tt", configuration
       end

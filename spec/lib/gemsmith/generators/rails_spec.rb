@@ -173,7 +173,7 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
     end
   end
 
-  describe "#create" do
+  describe "#run" do
     before do
       allow(subject).to receive(:install_rails)
       allow(subject).to receive(:create_engine)
@@ -186,8 +186,8 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
     context "when enabled" do
       let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {rails: true}} }
 
-      it "creates skeleton", :aggregate_failures do
-        subject.create
+      it "generates Rails support", :aggregate_failures do
+        subject.run
 
         expect(subject).to have_received(:install_rails)
         expect(subject).to have_received(:create_engine)
@@ -201,8 +201,8 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
     context "when disabled" do
       let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {rails: false}} }
 
-      it "does not create skeleton", :aggregate_failures do
-        subject.create
+      it "does not generate Rails support", :aggregate_failures do
+        subject.run
 
         expect(subject).to_not have_received(:install_rails)
         expect(subject).to_not have_received(:create_engine)

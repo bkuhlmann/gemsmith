@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures Rubocop support.
+    # Generates Rubocop support.
     class Rubocop < Base
-      def create
+      def run
         return unless configuration.dig(:generate, :rubocop)
 
         cli.template "%gem_name%/.rubocop.yml.tt", configuration

@@ -7,8 +7,8 @@ RSpec.describe Gemsmith::Generators::GitHub, :temp_dir do
   let(:configuration) { {gem: {name: "tester"}, generate: {git_hub: create_git_hub}} }
   subject { described_class.new cli, configuration: configuration }
 
-  describe "#create" do
-    before { subject.create }
+  describe "#run" do
+    before { subject.run }
 
     context "when enabled" do
       let(:create_git_hub) { true }

@@ -2,9 +2,9 @@
 
 module Gemsmith
   module Generators
-    # Configures Code Climate support.
+    # Generates Code Climate support.
     class CodeClimate < Base
-      def create
+      def run
         return unless configuration.dig(:generate, :code_climate)
 
         cli.template "%gem_name%/.codeclimate.yml.tt", configuration
