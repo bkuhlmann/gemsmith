@@ -28,7 +28,7 @@ module Gemsmith
       end
 
       def create_travis_gemfiles
-        return unless configuration.dig(:create, :travis)
+        return unless configuration.dig(:generate, :travis)
         cli.template "%gem_name%/gemfiles/rails-%rails_version%.x.gemfile.tt", configuration
       end
 
@@ -57,7 +57,7 @@ module Gemsmith
       end
 
       def create
-        return unless configuration.dig(:create, :rails)
+        return unless configuration.dig(:generate, :rails)
 
         install_rails
         create_engine

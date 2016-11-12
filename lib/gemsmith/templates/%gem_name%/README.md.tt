@@ -1,17 +1,17 @@
 # <%= config.dig(:gem, :class) %>
 
 [![Gem Version](https://badge.fury.io/rb/<%= config.dig(:gem, :name) %>.svg)](http://badge.fury.io/rb/<%= config.dig(:gem, :name) %>)
-<%- if config.dig(:create, :code_climate) -%>
+<%- if config.dig(:generate, :code_climate) -%>
 [![Code Climate GPA](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>.svg)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
 [![Code Climate Coverage](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>/coverage.svg)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
 <%- end -%>
-<%- if config.dig(:create, :gemnasium) -%>
+<%- if config.dig(:generate, :gemnasium) -%>
 [![Gemnasium Status](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>.svg)](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
 <%- end -%>
-<%- if config.dig(:create, :travis) -%>
+<%- if config.dig(:generate, :travis) -%>
 [![Travis CI Status](https://secure.travis-ci.org/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>.svg)](https://travis-ci.org/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
 <%- end -%>
-<%- if config.dig(:create, :patreon) -%>
+<%- if config.dig(:generate, :patreon) -%>
 [![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/<%= config.fetch :github_user %>)
 <%- end -%>
 
@@ -25,13 +25,13 @@
 # Requirements
 
 0. [Ruby <%= config.dig(:versions, :ruby) %>](https://www.ruby-lang.org)
-<%- if config.dig(:create, :rails) -%>
+<%- if config.dig(:generate, :rails) -%>
 0. [Ruby on Rails](http://rubyonrails.org).
 <%- end -%>
 
 # Setup
 
-<%- if config.dig(:create, :security) -%>
+<%- if config.dig(:generate, :security) -%>
 For a secure install, type the following (recommended):
 
     gem cert --add <(curl --location --silent <%= config.dig :organization, :url %>/gem-public.pem)
@@ -50,7 +50,7 @@ To install, type the following:
     gem install <%= config.dig(:gem, :name) %>
 <%- end -%>
 
-<%- unless config.dig(:create, :cli) -%>
+<%- unless config.dig(:generate, :cli) -%>
 Add the following to your Gemfile:
 
     gem "<%= config.dig(:gem, :name) %>"
@@ -58,7 +58,7 @@ Add the following to your Gemfile:
 
 # Usage
 
-<%- if config.dig(:create, :rspec) -%>
+<%- if config.dig(:generate, :rspec) -%>
 # Tests
 
 To test, run:

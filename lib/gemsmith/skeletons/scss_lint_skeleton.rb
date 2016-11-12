@@ -5,7 +5,7 @@ module Gemsmith
     # Configures SCSS Lint support.
     class SCSSLintSkeleton < BaseSkeleton
       def create
-        return unless configuration.dig(:create, :scss_lint)
+        return unless configuration.dig(:generate, :scss_lint)
         cli.template "%gem_name%/lib/tasks/scss_lint.rake.tt", configuration
       end
     end

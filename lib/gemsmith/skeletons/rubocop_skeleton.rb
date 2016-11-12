@@ -5,7 +5,7 @@ module Gemsmith
     # Configures Rubocop support.
     class RubocopSkeleton < BaseSkeleton
       def create
-        return unless configuration.dig(:create, :rubocop)
+        return unless configuration.dig(:generate, :rubocop)
 
         cli.template "%gem_name%/.rubocop.yml.tt", configuration
         cli.template "%gem_name%/lib/tasks/rubocop.rake.tt", configuration

@@ -105,7 +105,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
 
   describe "#create_travis_gemfiles" do
     context "when Travis CI is enabled" do
-      let(:configuration) { {gem: {name: "tester", path: "tester"}, create: {travis: true}} }
+      let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {travis: true}} }
 
       it "creates Rails gemfile" do
         subject.create_travis_gemfiles
@@ -115,7 +115,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     context "when Travis CI is disabled" do
-      let(:configuration) { {gem: {name: "tester", path: "tester"}, create: {travis: false}} }
+      let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {travis: false}} }
 
       it "does not create Rails gemfile" do
         subject.create_travis_gemfiles
@@ -184,7 +184,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     context "when enabled" do
-      let(:configuration) { {gem: {name: "tester", path: "tester"}, create: {rails: true}} }
+      let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {rails: true}} }
 
       it "creates skeleton", :aggregate_failures do
         subject.create
@@ -199,7 +199,7 @@ RSpec.describe Gemsmith::Skeletons::RailsSkeleton, :temp_dir do
     end
 
     context "when disabled" do
-      let(:configuration) { {gem: {name: "tester", path: "tester"}, create: {rails: false}} }
+      let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {rails: false}} }
 
       it "does not create skeleton", :aggregate_failures do
         subject.create

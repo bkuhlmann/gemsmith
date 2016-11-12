@@ -11,50 +11,50 @@ Gem::Specification.new do |spec|
   spec.summary = ""
   spec.license = "MIT"
 
-  <%- if config.dig(:create, :security) -%>
+  <%- if config.dig(:generate, :security) -%>
   if File.exist?(Gem.default_key_path) && File.exist?(Gem.default_cert_path)
     spec.signing_key = Gem.default_key_path
     spec.cert_chain = [Gem.default_cert_path]
   end
   <%- end -%>
 
-  <%- if config.dig(:create, :cli) -%>
+  <%- if config.dig(:generate, :cli) -%>
   spec.add_dependency "thor", "~> 0.19"
   spec.add_dependency "thor_plus", "~> 4.0"
   spec.add_dependency "runcom", "~> 0.2"
   <%- end -%>
-  <%- if config.dig(:create, :rails) -%>
+  <%- if config.dig(:generate, :rails) -%>
   spec.add_dependency "rails", "~> <%= config.dig(:versions, :rails) %>"
   <%- end -%>
   spec.add_development_dependency "rake", "~> 11.0"
   spec.add_development_dependency "gemsmith", "~> <%= Gemsmith::Identity.version[/\d{1}\.\d{1}/] %>"
-  <%- if config.dig(:create, :pry) -%>
+  <%- if config.dig(:generate, :pry) -%>
   spec.add_development_dependency "pry", "~> 0.10"
   spec.add_development_dependency "pry-byebug", "~> 3.4"
   spec.add_development_dependency "pry-state", "~> 0.1"
   <%- end -%>
-  <%- if config.dig(:create, :rspec) -%>
-  spec.add_development_dependency "<%= config.dig(:create, :rails) ? "rspec-rails" : "rspec" %>", "~> 3.5"
+  <%- if config.dig(:generate, :rspec) -%>
+  spec.add_development_dependency "<%= config.dig(:generate, :rails) ? "rspec-rails" : "rspec" %>", "~> 3.5"
   <%- end -%>
-  <%- if config.dig(:create, :guard) -%>
+  <%- if config.dig(:generate, :guard) -%>
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   <%- end -%>
-  <%- if config.dig(:create, :reek) -%>
+  <%- if config.dig(:generate, :reek) -%>
   spec.add_development_dependency "reek", "~> 4.5"
   <%- end -%>
-  <%- if config.dig(:create, :rubocop) -%>
+  <%- if config.dig(:generate, :rubocop) -%>
   spec.add_development_dependency "rubocop", "~> 0.45"
   <%- end -%>
-  <%- if config.dig(:create, :scss_lint) -%>
+  <%- if config.dig(:generate, :scss_lint) -%>
   spec.add_development_dependency "scss_lint", "~> 0.50"
   <%- end -%>
-  <%- if config.dig(:create, :code_climate) -%>
+  <%- if config.dig(:generate, :code_climate) -%>
   spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0"
   <%- end -%>
 
   spec.files = Dir["lib/**/*"]
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
-  <%- if config.dig(:create, :cli) -%>
+  <%- if config.dig(:generate, :cli) -%>
   spec.executables << "<%= config.dig(:gem, :name) %>"
   <%- end -%>
   spec.require_paths = ["lib"]

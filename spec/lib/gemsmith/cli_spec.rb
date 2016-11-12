@@ -221,7 +221,7 @@ RSpec.describe Gemsmith::CLI do
           ruby: "2.0.0",
           rails: "5.0"
         },
-        create: {
+        generate: {
           cli: false,
           rails: false,
           security: true,

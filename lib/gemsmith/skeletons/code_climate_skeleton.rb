@@ -5,7 +5,7 @@ module Gemsmith
     # Configures Code Climate support.
     class CodeClimateSkeleton < BaseSkeleton
       def create
-        return unless configuration.dig(:create, :code_climate)
+        return unless configuration.dig(:generate, :code_climate)
 
         cli.template "%gem_name%/.codeclimate.yml.tt", configuration
       end

@@ -81,7 +81,7 @@ module Gemsmith
           ruby: RUBY_VERSION,
           rails: "5.0"
         },
-        create: {
+        generate: {
           cli: false,
           rails: false,
           security: true,
@@ -137,70 +137,70 @@ module Gemsmith
                   aliases: "-c",
                   desc: "Add CLI support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :cli)
+                  default: configuration.to_h.dig(:generate, :cli)
     method_option :rails,
                   aliases: "-r",
                   desc: "Add Rails support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :rails)
+                  default: configuration.to_h.dig(:generate, :rails)
     method_option :security,
                   aliases: "-S",
                   desc: "Add security support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :security)
+                  default: configuration.to_h.dig(:generate, :security)
     method_option :pry,
                   aliases: "-p",
                   desc: "Add Pry support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :pry)
+                  default: configuration.to_h.dig(:generate, :pry)
     method_option :guard,
                   aliases: "-g",
                   desc: "Add Guard support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :guard)
+                  default: configuration.to_h.dig(:generate, :guard)
     method_option :rspec,
                   aliases: "-s",
                   desc: "Add RSpec support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :rspec)
+                  default: configuration.to_h.dig(:generate, :rspec)
     method_option :reek,
                   desc: "Add Reek support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :reek)
+                  default: configuration.to_h.dig(:generate, :reek)
     method_option :rubocop,
                   aliases: "-R",
                   desc: "Add Rubocop support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :rubocop)
+                  default: configuration.to_h.dig(:generate, :rubocop)
     method_option :scss_lint,
                   desc: "Add SCSS Lint support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :scss_lint)
+                  default: configuration.to_h.dig(:generate, :scss_lint)
     method_option :git_hub,
                   aliases: "-H",
                   desc: "Add GitHub support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :git_hub)
+                  default: configuration.to_h.dig(:generate, :git_hub)
     method_option :code_climate,
                   aliases: "-C",
                   desc: "Add Code Climate support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :code_climate)
+                  default: configuration.to_h.dig(:generate, :code_climate)
     method_option :gemnasium,
                   aliases: "-G",
                   desc: "Add Gemnasium support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :gemnasium)
+                  default: configuration.to_h.dig(:generate, :gemnasium)
     method_option :travis,
                   aliases: "-t",
                   desc: "Add Travis CI support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :travis)
+                  default: configuration.to_h.dig(:generate, :travis)
     method_option :patreon,
                   aliases: "-P",
                   desc: "Add Patreon support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:create, :patreon)
+                  default: configuration.to_h.dig(:generate, :patreon)
     def generate name
       say
       info "Generating gem..."
@@ -273,7 +273,7 @@ module Gemsmith
           url: Git.github_url(name),
           license: "MIT"
         },
-        create: symbolized_options
+        generate: symbolized_options
       )
     end
   end

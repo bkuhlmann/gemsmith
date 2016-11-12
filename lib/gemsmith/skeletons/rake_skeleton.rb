@@ -12,19 +12,19 @@ module Gemsmith
       private
 
       def rspec_task
-        "spec" if configuration.dig(:create, :rspec)
+        "spec" if configuration.dig(:generate, :rspec)
       end
 
       def reek_task
-        "reek" if configuration.dig(:create, :reek)
+        "reek" if configuration.dig(:generate, :reek)
       end
 
       def rubocop_task
-        "rubocop" if configuration.dig(:create, :rubocop)
+        "rubocop" if configuration.dig(:generate, :rubocop)
       end
 
       def scss_lint_task
-        "scss_lint" if configuration.dig(:create, :scss_lint)
+        "scss_lint" if configuration.dig(:generate, :scss_lint)
       end
 
       def default_tasks

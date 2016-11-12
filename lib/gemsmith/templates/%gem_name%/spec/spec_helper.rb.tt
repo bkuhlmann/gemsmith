@@ -1,15 +1,15 @@
 require "bundler/setup"
-<%- if config.dig(:create, :code_climate) -%>
+<%- if config.dig(:generate, :code_climate) -%>
 require "simplecov"
 SimpleCov.start
 
 <%- end -%>
-<%- if config.dig(:create, :pry) -%>
+<%- if config.dig(:generate, :pry) -%>
 require "pry"
 require "pry-byebug"
 require "pry-state"
 <%- end -%>
-<%- unless config.dig(:create, :rails) -%>require "<%= config.dig(:gem, :path) %>"<%- end -%>
+<%- unless config.dig(:generate, :rails) -%>require "<%= config.dig(:gem, :path) %>"<%- end -%>
 
 Dir[File.join(File.dirname(__FILE__), "support/shared_contexts/**/*.rb")].each { |file| require file }
 

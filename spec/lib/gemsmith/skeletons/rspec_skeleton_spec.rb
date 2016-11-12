@@ -4,7 +4,7 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Skeletons::RspecSkeleton, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
-  let(:configuration) { {gem: {name: "tester"}, create: {rspec: create_rspec, rails: create_rails}} }
+  let(:configuration) { {gem: {name: "tester"}, generate: {rspec: create_rspec, rails: create_rails}} }
   subject { described_class.new cli, configuration: configuration }
 
   describe "#create" do

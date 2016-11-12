@@ -5,7 +5,7 @@ module Gemsmith
     # Configures Reek support.
     class ReekSkeleton < BaseSkeleton
       def create
-        return unless configuration.dig(:create, :reek)
+        return unless configuration.dig(:generate, :reek)
         cli.template "%gem_name%/lib/tasks/reek.rake.tt", configuration
       end
     end

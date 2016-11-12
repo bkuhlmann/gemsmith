@@ -4,7 +4,7 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Skeletons::RubocopSkeleton, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
-  let(:configuration) { {gem: {name: "tester"}, create: {rubocop: create_rubocop}} }
+  let(:configuration) { {gem: {name: "tester"}, generate: {rubocop: create_rubocop}} }
   subject { described_class.new cli, configuration: configuration }
 
   describe "#create" do

@@ -1,4 +1,4 @@
-<%- if config.dig(:create, :rails) -%>
+<%- if config.dig(:generate, :rails) -%>
 AllCops:
   Exclude:
     - "spec/dummy/**/*"
