@@ -134,32 +134,26 @@ module Gemsmith
     desc "-g, [--generate=GEM]", "Generate new gem."
     map %w[-g --generate] => :generate
     method_option :cli,
-                  aliases: "-c",
                   desc: "Add CLI support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :cli)
     method_option :rails,
-                  aliases: "-r",
                   desc: "Add Rails support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :rails)
     method_option :security,
-                  aliases: "-S",
                   desc: "Add security support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :security)
     method_option :pry,
-                  aliases: "-p",
                   desc: "Add Pry support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :pry)
     method_option :guard,
-                  aliases: "-g",
                   desc: "Add Guard support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :guard)
     method_option :rspec,
-                  aliases: "-s",
                   desc: "Add RSpec support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :rspec)
@@ -168,7 +162,6 @@ module Gemsmith
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :reek)
     method_option :rubocop,
-                  aliases: "-R",
                   desc: "Add Rubocop support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :rubocop)
@@ -177,27 +170,22 @@ module Gemsmith
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :scss_lint)
     method_option :git_hub,
-                  aliases: "-H",
                   desc: "Add GitHub support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :git_hub)
     method_option :code_climate,
-                  aliases: "-C",
                   desc: "Add Code Climate support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :code_climate)
     method_option :gemnasium,
-                  aliases: "-G",
                   desc: "Add Gemnasium support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :gemnasium)
     method_option :travis,
-                  aliases: "-t",
                   desc: "Add Travis CI support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :travis)
     method_option :patreon,
-                  aliases: "-P",
                   desc: "Add Patreon support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :patreon)
