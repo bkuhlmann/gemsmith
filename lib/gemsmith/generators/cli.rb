@@ -1,0 +1,17 @@
+# frozen_string_literal: true
+
+module Gemsmith
+  module Generators
+    # Configures Command Line Interface (CLI) support.
+    class CLI < Base
+      def create
+        return unless configuration.dig(:generate, :cli)
+
+        cli.template "%gem_name%/bin/%gem_name%.tt", configuration
+        cli.template "%gem_name%/lib/%gem_path%/cli.rb.tt", configuration
+        cli.template "%gem_name%/spec/lib/%gem_path%/cli_spec.rb.tt", configuration
+        cli.chmod "#{configuration.dig :gem, :name}/bin/#{configuration.dig :gem, :name}", 0o755
+      end
+    end
+  end
+end

@@ -15,24 +15,24 @@ require "gemsmith/gem/inspector"
 require "gemsmith/gem/module_formatter"
 require "gemsmith/gem/requirement"
 require "gemsmith/gem/specification"
-require "gemsmith/skeletons/base_skeleton"
-require "gemsmith/skeletons/bundler_skeleton"
-require "gemsmith/skeletons/cli_skeleton"
-require "gemsmith/skeletons/code_climate_skeleton"
-require "gemsmith/skeletons/documentation_skeleton"
-require "gemsmith/skeletons/gem_skeleton"
-require "gemsmith/skeletons/git_skeleton"
-require "gemsmith/skeletons/git_hub_skeleton"
-require "gemsmith/skeletons/guard_skeleton"
-require "gemsmith/skeletons/pragma_skeleton"
-require "gemsmith/skeletons/rails_skeleton"
-require "gemsmith/skeletons/rake_skeleton"
-require "gemsmith/skeletons/reek_skeleton"
-require "gemsmith/skeletons/rspec_skeleton"
-require "gemsmith/skeletons/rubocop_skeleton"
-require "gemsmith/skeletons/ruby_skeleton"
-require "gemsmith/skeletons/scss_lint_skeleton"
-require "gemsmith/skeletons/travis_skeleton"
+require "gemsmith/generators/base"
+require "gemsmith/generators/bundler"
+require "gemsmith/generators/cli"
+require "gemsmith/generators/code_climate"
+require "gemsmith/generators/documentation"
+require "gemsmith/generators/gem"
+require "gemsmith/generators/git"
+require "gemsmith/generators/git_hub"
+require "gemsmith/generators/guard"
+require "gemsmith/generators/pragma"
+require "gemsmith/generators/rails"
+require "gemsmith/generators/rake"
+require "gemsmith/generators/reek"
+require "gemsmith/generators/rspec"
+require "gemsmith/generators/rubocop"
+require "gemsmith/generators/ruby"
+require "gemsmith/generators/scss_lint"
+require "gemsmith/generators/travis"
 require "gemsmith/cli_helpers"
 require "gemsmith/template_helper"
 require "gemsmith/git"
@@ -103,25 +103,25 @@ module Gemsmith
       }
     end
 
-    def self.skeletons
+    def self.generators
       [
-        Skeletons::GemSkeleton,
-        Skeletons::DocumentationSkeleton,
-        Skeletons::RakeSkeleton,
-        Skeletons::CLISkeleton,
-        Skeletons::RubySkeleton,
-        Skeletons::RailsSkeleton,
-        Skeletons::RspecSkeleton,
-        Skeletons::ReekSkeleton,
-        Skeletons::RubocopSkeleton,
-        Skeletons::SCSSLintSkeleton,
-        Skeletons::CodeClimateSkeleton,
-        Skeletons::GuardSkeleton,
-        Skeletons::TravisSkeleton,
-        Skeletons::BundlerSkeleton,
-        Skeletons::GitHubSkeleton,
-        Skeletons::PragmaSkeleton,
-        Skeletons::GitSkeleton
+        Generators::Gem,
+        Generators::Documentation,
+        Generators::Rake,
+        Generators::CLI,
+        Generators::Ruby,
+        Generators::Rails,
+        Generators::Rspec,
+        Generators::Reek,
+        Generators::Rubocop,
+        Generators::SCSSLint,
+        Generators::CodeClimate,
+        Generators::Guard,
+        Generators::Travis,
+        Generators::Bundler,
+        Generators::GitHub,
+        Generators::Pragma,
+        Generators::Git
       ]
     end
 
@@ -194,7 +194,7 @@ module Gemsmith
       info "Generating gem..."
 
       setup_configuration name: name, options: options
-      self.class.skeletons.each { |skeleton| skeleton.create self, configuration: configuration }
+      self.class.generators.each { |generator| generator.create self, configuration: configuration }
 
       info "Gem generation finished."
       say

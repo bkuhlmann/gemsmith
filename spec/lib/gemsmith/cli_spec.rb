@@ -259,25 +259,25 @@ RSpec.describe Gemsmith::CLI do
     end
   end
 
-  describe ".skeletons" do
-    it "answers gem skeletons" do
-      expect(described_class.skeletons).to contain_exactly(Gemsmith::Skeletons::GemSkeleton,
-                                                           Gemsmith::Skeletons::DocumentationSkeleton,
-                                                           Gemsmith::Skeletons::RakeSkeleton,
-                                                           Gemsmith::Skeletons::CLISkeleton,
-                                                           Gemsmith::Skeletons::RubySkeleton,
-                                                           Gemsmith::Skeletons::RailsSkeleton,
-                                                           Gemsmith::Skeletons::RspecSkeleton,
-                                                           Gemsmith::Skeletons::ReekSkeleton,
-                                                           Gemsmith::Skeletons::RubocopSkeleton,
-                                                           Gemsmith::Skeletons::SCSSLintSkeleton,
-                                                           Gemsmith::Skeletons::CodeClimateSkeleton,
-                                                           Gemsmith::Skeletons::GuardSkeleton,
-                                                           Gemsmith::Skeletons::TravisSkeleton,
-                                                           Gemsmith::Skeletons::BundlerSkeleton,
-                                                           Gemsmith::Skeletons::GitSkeleton,
-                                                           Gemsmith::Skeletons::PragmaSkeleton,
-                                                           Gemsmith::Skeletons::GitHubSkeleton)
+  describe ".generators" do
+    it "answers gem generators" do
+      expect(described_class.generators).to contain_exactly(Gemsmith::Generators::Gem,
+                                                            Gemsmith::Generators::Documentation,
+                                                            Gemsmith::Generators::Rake,
+                                                            Gemsmith::Generators::CLI,
+                                                            Gemsmith::Generators::Ruby,
+                                                            Gemsmith::Generators::Rails,
+                                                            Gemsmith::Generators::Rspec,
+                                                            Gemsmith::Generators::Reek,
+                                                            Gemsmith::Generators::Rubocop,
+                                                            Gemsmith::Generators::SCSSLint,
+                                                            Gemsmith::Generators::CodeClimate,
+                                                            Gemsmith::Generators::Guard,
+                                                            Gemsmith::Generators::Travis,
+                                                            Gemsmith::Generators::Bundler,
+                                                            Gemsmith::Generators::Git,
+                                                            Gemsmith::Generators::Pragma,
+                                                            Gemsmith::Generators::GitHub)
     end
   end
 
