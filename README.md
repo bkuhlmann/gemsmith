@@ -28,6 +28,7 @@ A command line interface for smithing new Ruby gems.
   - [Gem Specification Metadata](#gem-specification-metadata)
   - [Gem Credentials](#gem-credentials)
 - [Promotion](#promotion)
+- [Troubleshooting](#troubleshooting)
 - [Versioning](#versioning)
 - [Code of Conduct](#code-of-conduct)
 - [Contributions](#contributions)
@@ -40,15 +41,21 @@ A command line interface for smithing new Ruby gems.
 # Features
 
 - Builds a gem skeleton with enhanced Bundler functionality.
+- Uses [Refinements](https://github.com/bkuhlmann/refinements) Ruby core library enhancements.
 - Uses [Versionaire](https://github.com/bkuhlmann/versionaire) for semantic versioning.
+- Uses [Runcom](https://github.com/bkuhlmann/runcom) for resource configuration management.
 - Uses [Milestoner](https://github.com/bkuhlmann/milestoner) for consistent project/gem versioning.
+- Uses [Pragmater](https://github.com/bkuhlmann/pragmater) for Ruby source pragma directives.
 - Uses [Tocer](https://github.com/bkuhlmann/tocer) for README table of contents generation.
 - Supports [Thor](https://github.com/erikhuda/thor).
 - Supports [Ruby on Rails](http://rubyonrails.org).
+- Supports [RubyGems Security](http://guides.rubygems.org/security).
 - Supports [Pry](http://pryrepl.org).
 - Supports [Guard](https://github.com/guard/guard).
 - Supports [RSpec](http://rspec.info).
+- Supports [Reek](https://github.com/troessner/reek).
 - Supports [Rubocop](https://github.com/bbatsov/rubocop).
+- Supports [SCSS Lint](https://github.com/brigade/scss-lint).
 - Supports [GitHub](https://github.com).
 - Supports [Code Climate](https://codeclimate.com).
 - Supports [Gemnasium](https://gemnasium.com).
@@ -56,15 +63,18 @@ A command line interface for smithing new Ruby gems.
 - Supports [Patreon](https://www.patreon.com).
 - Supports common settings and a structured layout for building new gems.
 - Supports publishing to public or private gem servers.
-- Provides commonly needed [README](README.md), [CHANGES](CHANGES.md),
-  [CONTRIBUTING](CONTRIBUTING.md), [CODE OF CONDUCT](CODE_OF_CONDUCT.md), [LICENSE](LICENSE.md),
-  etc. documentation.
-- Provides the ability to view source code of any gem within your favorite editor.
-- Provides the ability to view the documentation of any gem within your default browser.
+- Provides common documentation:
+  - [README](README.md)
+  - [CHANGES](CHANGES.md)
+  - [CONTRIBUTING](CONTRIBUTING.md)
+  - [CODE OF CONDUCT](CODE_OF_CONDUCT.md)
+  - [LICENSE](LICENSE.md)
+- Aids in viewing source code of semantically versioned gems within your favorite editor.
+- Aids in viewing documentation of semantically versioned within your default browser.
 
 # Screencasts
 
-[![asciicast](https://asciinema.org/a/30728.png)](https://asciinema.org/a/30728)
+[![asciicast](https://asciinema.org/a/92550.png)](https://asciinema.org/a/92550)
 
 # Requirements
 
@@ -92,49 +102,44 @@ You can configure common settings for future gem builds by creating the followin
 
     ~/.gemsmithrc
 
-...using the following settings (as a simple example):
-
-    :author:
-      :name: "Joe Smith"
-      :email: "joe@example.com"
-      :url: "https://www.example.com"
-    :organization:
-      :name: "ExampleSoft"
-      :url: "https://www.example.com"
-
 The following defaults are used when no options are configured:
 
     :year: <current year>
-    :github_user: <git config GitHub user>
+    :github_user: "<Git config GitHub user>",
     :gem:
+      :name: "undefined"
+      :path: "undefined"
+      :class: "Undefined"
       :platform: "Gem::Platform::RUBY"
-      :home_url: ""
+      :url: "https://github.com/<author>/<gem name>"
       :license: "MIT"
-      :private_key: "~/.ssh/gem-private.pem"
-      :public_key: "~/.ssh/gem-public.pem"
     :author:
-      :name: <git config user name>
-      :email: <git config user email>
+      :name: "<Git config user name>"
+      :email: "<Git config user email>"
       :url: ""
     :organization:
       :name: ""
       :url: ""
     :versions:
-      :ruby: <current Ruby version>
+      :ruby: "<current Ruby version>"
       :rails: "5.0"
-    :create:
+    :generate:
       :cli: false
       :rails: false
       :security: true
       :pry: true
       :guard: true
       :rspec: true
+      :reek: true
       :rubocop: true
-      :git-hub: false
-      :code_climate: true
-      :gemnasium: true
-      :travis: true
-      :patreon: true
+      :scss_lint: false
+      :git_hub: false
+      :code_climate: false
+      :gemnasium: false
+      :travis: false
+      :patreon: false
+    :publish:
+      :sign: false
 
 While Gemsmith is fully customizable, please keep in mind that these are *global* settings and, once
 set, will affect all future gem creations. Further customization is also provided via the CLI for a
@@ -146,67 +151,49 @@ customizable experience per gem if necessary.
 
 From the command line, type: `gemsmith --help`
 
-    gemsmith -c, [--create=CREATE]      # Create new gem. DEPRECATED (use --generate).
-    gemsmith -e, [--edit]               # Edit gem settings in default editor.
-    gemsmith -g, [--generate=GENERATE]  # Generate new gem.
-    gemsmith -h, [--help=HELP]          # Show this message or get help for a command.
-    gemsmith -o, [--open=OPEN]          # Open a gem in default editor.
-    gemsmith -r, [--read=READ]          # Open a gem in default browser.
-    gemsmith -v, [--version]            # Show gem version.
+    gemsmith -c, [--config]        # Manage gem configuration.
+    gemsmith -g, [--generate=GEM]  # Generate new gem.
+    gemsmith -h, [--help=COMMAND]  # Show this message or get help for a command.
+    gemsmith -o, [--open=GEM]      # Open a gem in default editor.
+    gemsmith -r, [--read=GEM]      # Open a gem in default browser.
+    gemsmith -v, [--version]       # Show gem version.
 
-For more gem creation options, type: `gemsmith --help --generate`
+For more gem generation options, type: `gemsmith --help --generate`
 
-    -c, [--cli], [--no-cli]                    # Add CLI support.
-    -r, [--rails], [--no-rails]                # Add Rails support.
-    -S, [--security], [--no-security]          # Add security support.
-                                               # Default: true
-    -p, [--pry], [--no-pry]                    # Add Pry support.
-                                               # Default: true
-    -g, [--guard], [--no-guard]                # Add Guard support.
-                                               # Default: true
-    -s, [--rspec], [--no-rspec]                # Add RSpec support.
-                                               # Default: true
-    -R, [--rubocop], [--no-rubocop]            # Add Rubocop support.
-                                               # Default: true
-    -H, [--git-hub], [--no-git-hub]            # Add GitHub support.
-    -C, [--code-climate], [--no-code-climate]  # Add Code Climate support.
-                                               # Default: true
-    -G, [--gemnasium], [--no-gemnasium]        # Add Gemnasium support.
-                                               # Default: true
-    -t, [--travis], [--no-travis]              # Add Travis CI support.
-                                               # Default: true
-    -P, [--patreon], [--no-patreon]            # Add Patreon support.
-                                               # Default: true
+    [--cli], [--no-cli]                    # Add CLI support.
+    [--rails], [--no-rails]                # Add Rails support.
+    [--security], [--no-security]          # Add security support.
+                                           # Default: true
+    [--pry], [--no-pry]                    # Add Pry support.
+                                           # Default: true
+    [--guard], [--no-guard]                # Add Guard support.
+                                           # Default: true
+    [--rspec], [--no-rspec]                # Add RSpec support.
+                                           # Default: true
+    [--reek], [--no-reek]                  # Add Reek support.
+                                           # Default: true
+    [--rubocop], [--no-rubocop]            # Add Rubocop support.
+                                           # Default: true
+    [--scss-lint], [--no-scss-lint]        # Add SCSS Lint support.
+    [--git-hub], [--no-git-hub]            # Add GitHub support.
+    [--code-climate], [--no-code-climate]  # Add Code Climate support.
+    [--gemnasium], [--no-gemnasium]        # Add Gemnasium support.
+    [--travis], [--no-travis]              # Add Travis CI support.
+    [--patreon], [--no-patreon]            # Add Patreon support.
 
 ## Rake
 
 Once a gem skeleton has been created, the following tasks are available (i.e. `bundle exec rake
 -T`):
 
-    rake build                 # Build example-0.1.0.gem into the pkg directory
-    rake clean                 # Remove any temporary products / Clean gem artifacts
-    rake clobber               # Remove any generated files
-    rake console               # Open IRB console for gem development environment
+    rake build                 # Build gemsmith-8.0.0.gem package
+    rake clean                 # Clean gem artifacts
     rake doc                   # Update README (table of contents)
-    rake install               # Build and install example-0.1.0.gem into system gems
-    rake install:local         # Build and install example-0.1.0.gem into system gems without network access
-    rake publish               # Build, tag v0.1.0 (signed), and push example-0.1.0.gem to RubyGems
-    rake release[remote]       # Build, tag v0.1.0 (unsigned), and push example-0.1.0.gem to RubyGems
-    rake rubocop               # Run RuboCop
-    rake rubocop:auto_correct  # Auto-correct RuboCop offenses
-    rake spec                  # Run RSpec code examples
-
-Out of all Rake tasks listed above, the following are provided by [Bundler](http://bundler.io) and
-enhanced by Gemsmith:
-
-    rake build - Cleans and regenerates the README table of contents in addition to building the gem.
-    rake install - Inherits the `build` modifications mentioned above.
-    rake install:local - Inherits the `build` modifications mentioned above.
-    rake release - Identical to the `publish` tasks but does not securely sign the Git tag.
+    rake install               # Install gemsmith-8.0.0.gem package
+    rake publish               # Build, tag as v8.0.0 (unsigned), and push gemsmith-8.0.0.gem to RubyGems
 
 When building/testing your gem locally, a typical workflow is:
 
-0. `gem uninstall <your gem name>`
 0. `bundle exec rake install`
 0. Test your gem locally.
 0. Repeat until satisfied.
@@ -214,10 +201,6 @@ When building/testing your gem locally, a typical workflow is:
 When satified with your gem, builds are green, and ready to publish, run:
 
     bundle exec rake publish
-
-Alternatively, you can run `bundle exec rake release` if you don't wish to sign your gem releases
-(i.e default Bundler behavior) but the added security that `publish` provides is strongly
-recommended.
 
 # Tests
 
@@ -275,10 +258,9 @@ To learn more about gem certificates, read the following:
 
 # Private Gem Servers
 
-By default, the following Rake tasks will publish your gem to [RubyGems](https://rubygems.org):
+By default, the following Rake task will publish your gem to [RubyGems](https://rubygems.org):
 
-    rake release
-    rake publish
+    bundle exec rake publish
 
 You can change this behavior by adding metadata to your gemspec that will allow the Rake tasks,
 mentioned above, to publish your gem to an alternate/private gem server instead. This can be done by
@@ -325,6 +307,13 @@ Once your gem is released, you might want to let the world know about your accom
 
 - [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code)
 - [RubyFlow](http://www.rubyflow.com)
+
+# Troubleshooting
+
+When running `bundle exec rake install` or `bundle exec rake publish` with modified, staged, or
+uncommitted Git changes, the rake task will throw an error to this effect. When this occurs, it is
+recommended that you commit your changes or [stash](https://git-scm.com/docs/git-stash) them before
+proceeding.
 
 # Versioning
 

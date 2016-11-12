@@ -1,3 +1,100 @@
+# v8.0.0 (2016-11-12)
+
+- Fixed Bash script header to dynamically load correct environment.
+- Fixed CLI class method evaluation.
+- Fixed CLI helper stack dump when dealing with non-symantic versions.
+- Fixed CLI spec to fake Rails engine file generation.
+- Fixed RSpec helpers so that Rails engine is loaded correctly.
+- Fixed Rails skeleton generation so test unit is skipped.
+- Fixed Rakefile to safely load Gemsmith tasks.
+- Fixed Rubocop Style/NumericLiteralPrefix issues.
+- Fixed Ruby pragma.
+- Added CLI spec to CLI skeleton generation.
+- Added CLI template helper.
+- Added Code Climate engine support.
+- Added GitHub convenience methods for obtaining user and URL info.
+- Added Pragmater gem.
+- Added Rails skeleton file removal support.
+- Added Rails skeleton source commenting.
+- Added Reek support.
+- Added Rubocop skeleton autofix support.
+- Added SCSS Lint support.
+- Added `--config` command.
+- Added default configuration for publishing signed gems.
+- Added frozen string literal pragma.
+- Added gem build support.
+- Added gem configuration to rake publisher.
+- Added gem inspector.
+- Added gem install support.
+- Added gem path configuration support.
+- Added gem path to CLI helper.
+- Added gem specification name support.
+- Added gem specification path.
+- Added lib gem root path support to base skeleton.
+- Added module formatter (template helper).
+- Added namespace formatter to CLI helper module.
+- Added pragma skeleton.
+- Updated CLI command option documentation.
+- Updated Code Climate configuration to default to false.
+- Updated Code Climate configuration to use CLI options.
+- Updated Gemnasium configuration to default to false.
+- Updated Patreon configuration to default to false.
+- Updated README to mention "Ruby" instead of "MRI".
+- Updated README versioning documentation.
+- Updated README word wrapping column limit.
+- Updated RSpec temp directory to use Bundler root path.
+- Updated Travis CI configuration to default to false.
+- Updated `--generate` command to use configuration defaults.
+- Updated `rake publish` task description to included tag signing.
+- Updated gem skeletons and temlates to use gem path.
+- Updated gemspec with conservative versions.
+- Updated templates to render indented namespaces properly.
+- Updated templates to use gem path.
+- Updated to Bundler 1.13.
+- Updated to Code Climate Test Reporter 1.0.0.
+- Updated to Rails 5.0.0.
+- Updated to Refinements 3.0.0.
+- Updated to Rubocop 0.44.
+- Updated to Versionaire 2.0.0.
+- Removed "gem.home_url" configuration key (use "gem.url" instead).
+- Removed Bundler Rake tasks.
+- Removed CHANGELOG.md (use CHANGES.md instead).
+- Removed CLI defaults (using configuration instead).
+- Removed Gemsmith::Aids::Spec object.
+- Removed Rake console task.
+- Removed TODO comments from Rails generators.
+- Removed `--create` option (use `--generate` instead).
+- Removed `--edit` command.
+- Removed `--generate` command option aliases.
+- Removed `:create` configuration key (use `:generate` instead).
+- Removed `Gemsmith::Configuration`.
+- Removed `rake release` task.
+- Removed duplicate CLI helper methods.
+- Removed frozen string literal pragma from templates
+- Removed gem class initialization from configuration.
+- Removed gemspec description.
+- Removed gemspec development dependency for Bundler.
+- Removed gemspec private and public key support.
+- Removed generation of default gem RSpec spec.
+- Removed rb-fsevent development dependency from gemspec.
+- Removed snakecase formatting from gem name.
+- Removed terminal notifier gems from gemspec.
+- Removed unused "vendor" folder from gemspec.
+- Removed unused gem specification inspect methods.
+- Refactored CLI configuration to inherit from Runcom configuration.
+- Refactored CLI to use gem inspector.
+- Refactored RSpec spec helper configuration.
+- Refactored Rake tasks so that dependencies are injected.
+- Refactored `Gemsmith::Aids::GemSpec` as `Gemsmith::Gem::Specification`.
+- Refactored `Gemsmith::Aids::Git` as `Gemsmith::Git`.
+- Refactored `Gemsmith::Gem::Specification` to use Versionaire version.
+- Refactored `Gemsmith::Rake::Build` as `Gemsmith::Rake::Builder`.
+- Refactored `Gemsmith::Rake::Release` as `Gemsmith::Rake::Publisher`.
+- Refactored gemspec aid to use guard clause when validating.
+- Refactored gemspec to use default security keys.
+- Refactored generators to use `#run` instead of `#create`.
+- Refactored skeletons as generators.
+
 # v7.7.0 (2016-05-15)
 
 - Fixed Rubocop array style issues in gem templates.
