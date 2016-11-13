@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "gemsmith/credentials"
 
 RSpec.describe Gemsmith::Credentials, :temp_dir do
   let(:test_credentials_dir) { File.join temp_dir, ".gem" }

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "rake"
-require "gemsmith/rake/tasks"
 
 RSpec.describe Gemsmith::Rake::Tasks do
   let(:gem_spec) { instance_spy Gemsmith::Gem::Specification }

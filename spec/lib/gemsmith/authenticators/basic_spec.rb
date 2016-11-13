@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "gemsmith/authenticators/basic"
 
 RSpec.describe Gemsmith::Authenticators::Basic do
   let(:login) { "admin" }

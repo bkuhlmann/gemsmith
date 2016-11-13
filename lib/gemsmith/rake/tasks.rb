@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "rake"
 require "gemsmith/gem/specification"
 require "gemsmith/errors/base"
 require "gemsmith/errors/specification"

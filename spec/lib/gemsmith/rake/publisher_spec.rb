@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "gemsmith/rake/publisher"
 
 RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }

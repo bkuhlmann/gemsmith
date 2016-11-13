@@ -2,8 +2,6 @@
 
 require "yaml"
 require "fileutils"
-require "gemsmith/authenticators/ruby_gems"
-require "gemsmith/authenticators/basic"
 
 module Gemsmith
   # Generates gem credentials for RubyGems and/or alternative servers.

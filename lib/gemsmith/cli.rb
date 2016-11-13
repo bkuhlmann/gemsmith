@@ -1,41 +1,13 @@
 # frozen_string_literal: true
 
-require "yaml"
 require "thor"
 require "thor/actions"
 require "thor_plus/actions"
 require "refinements/strings"
 require "refinements/hashes"
 require "runcom"
-require "gemsmith/errors/base"
-require "gemsmith/errors/requirement_conversion"
-require "gemsmith/errors/requirement_operator"
-require "gemsmith/errors/specification"
-require "gemsmith/gem/inspector"
-require "gemsmith/gem/module_formatter"
-require "gemsmith/gem/requirement"
-require "gemsmith/gem/specification"
-require "gemsmith/generators/base"
-require "gemsmith/generators/bundler"
-require "gemsmith/generators/cli"
-require "gemsmith/generators/code_climate"
-require "gemsmith/generators/documentation"
-require "gemsmith/generators/gem"
-require "gemsmith/generators/git"
-require "gemsmith/generators/git_hub"
-require "gemsmith/generators/guard"
-require "gemsmith/generators/pragma"
-require "gemsmith/generators/rails"
-require "gemsmith/generators/rake"
-require "gemsmith/generators/reek"
-require "gemsmith/generators/rspec"
-require "gemsmith/generators/rubocop"
-require "gemsmith/generators/ruby"
-require "gemsmith/generators/scss_lint"
-require "gemsmith/generators/travis"
 require "gemsmith/cli_helpers"
 require "gemsmith/template_helper"
-require "gemsmith/git"
 
 module Gemsmith
   # The Command Line Interface (CLI) for the gem.
@@ -49,7 +21,7 @@ module Gemsmith
     using Refinements::Strings
     using Refinements::Hashes
 
-    package_name Gemsmith::Identity.version_label
+    package_name Identity.version_label
 
     # Overwrites Thor's template source root.
     def self.source_root
@@ -234,7 +206,7 @@ module Gemsmith
     desc "-v, [--version]", "Show gem version."
     map %w[-v --version] => :version
     def version
-      say Gemsmith::Identity.version_label
+      say Identity.version_label
     end
 
     desc "-h, [--help=COMMAND]", "Show this message or get help for a command."

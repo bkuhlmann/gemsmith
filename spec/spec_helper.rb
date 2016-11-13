@@ -9,7 +9,6 @@ require "pry-byebug"
 require "pry-state"
 require "climate_control"
 require "gemsmith"
-require "gemsmith/cli"
 
 Dir[File.join(File.dirname(__FILE__), "support/shared_contexts/**/*.rb")].each { |file| require file }
 
