@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 require "milestoner"
+require "gemsmith/identity"
 require "gemsmith/credentials"
 require "gemsmith/git"
-require "gemsmith/identity"
+require "gemsmith/cli"
 
 module Gemsmith
   module Rake
@@ -15,7 +16,7 @@ module Gemsmith
 
       # rubocop:disable Metrics/ParameterLists
       def initialize gem_spec: Gemsmith::Gem::Specification.new(self.class.gem_spec_path),
-                     gem_config: {},
+                     gem_config: Gemsmith::CLI.configuration.to_h,
                      credentials: Gemsmith::Credentials,
                      publisher: Milestoner::Publisher.new,
                      shell: Bundler::UI::Shell.new,
