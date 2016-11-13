@@ -165,7 +165,7 @@ module Gemsmith
       say
       info "Generating gem..."
 
-      setup_configuration name: name, options: options
+      setup_configuration name: name, options: options.to_h
       self.class.generators.each { |generator| generator.run self, configuration: configuration }
 
       info "Gem generation finished."
@@ -220,10 +220,6 @@ module Gemsmith
     attr_reader :configuration
 
     def setup_configuration name:, options: {}
-      symbolized_options = options.reduce({}) do |new_options, (key, value)|
-        new_options.merge! key.to_sym => value
-      end
-
       @configuration = self.class.configuration.to_h.merge(
         gem: {
           name: name,
@@ -233,7 +229,7 @@ module Gemsmith
           url: Git.github_url(name),
           license: "MIT"
         },
-        generate: symbolized_options
+        generate: options.symbolize_keys
       )
     end
   end
