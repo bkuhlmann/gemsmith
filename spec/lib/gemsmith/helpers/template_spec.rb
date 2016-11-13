@@ -2,10 +2,10 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::TemplateHelper do
+RSpec.describe Gemsmith::Helpers::Template do
   let :cli do
     Class.new do
-      include Gemsmith::TemplateHelper
+      include Gemsmith::Helpers::Template
 
       def configuration
         {

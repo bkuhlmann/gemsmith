@@ -11,11 +11,11 @@ TooManyStatements:
   - Gemsmith::Generators::Rails#add_comments
   - Gemsmith::Generators::Rails#remove_files
   - Gemsmith::Generators::Rails#run
+  - Gemsmith::Helpers::CLI#pick_gem
+  - Gemsmith::Helpers::CLI#process_gem
   - Gemsmith::Rake::Tasks#install
 DuplicateMethodCall:
   exclude:
-  - Gemsmith::CLIHelpers#pick_gem
-  - Gemsmith::CLIHelpers#process_gem
   - Gemsmith::Credentials#create
   - Gemsmith::Credentials#initialize
   - Gemsmith::Gem::Requirement#validate!
@@ -24,9 +24,6 @@ DuplicateMethodCall:
   - Gemsmith::Rake::Publisher#process_push
   - Gemsmith::Rake::Publisher#push
   - Gemsmith::Rake::Tasks#install
-FeatureEnvy:
-  exclude:
-  - Gemsmith::CLIHelpers#pick_gem
 UtilityFunction:
   exclude:
   - Gemsmith::Gem::ModuleFormatter#indentation
@@ -35,6 +32,9 @@ UtilityFunction:
 PrimaDonnaMethod:
   exclude:
   - Gemsmith::Gem::Requirement
+FeatureEnvy:
+  exclude:
+  - Gemsmith::Helpers::CLI#pick_gem
 LongParameterList:
   exclude:
   - Gemsmith::Rake::Publisher#initialize

@@ -6,8 +6,8 @@ require "thor_plus/actions"
 require "refinements/strings"
 require "refinements/hashes"
 require "runcom"
-require "gemsmith/cli_helpers"
-require "gemsmith/template_helper"
+require "gemsmith/helpers/cli"
+require "gemsmith/helpers/template"
 
 module Gemsmith
   # The Command Line Interface (CLI) for the gem.
@@ -15,8 +15,8 @@ module Gemsmith
   class CLI < Thor
     include Thor::Actions
     include ThorPlus::Actions
-    include CLIHelpers
-    include TemplateHelper
+    include Helpers::CLI
+    include Helpers::Template
 
     using Refinements::Strings
     using Refinements::Hashes
