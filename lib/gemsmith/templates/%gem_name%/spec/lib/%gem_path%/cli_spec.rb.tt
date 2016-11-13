@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "<%= config.dig(:gem, :path) %>/cli"
 
 RSpec.describe <%= config.dig(:gem, :class) %>::CLI do
   let(:options) { [] }
