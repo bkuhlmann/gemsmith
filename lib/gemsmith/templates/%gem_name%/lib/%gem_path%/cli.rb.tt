@@ -9,7 +9,7 @@ require "runcom"
     include Thor::Actions
     include ThorPlus::Actions
 
-    package_name <%= config.dig(:gem, :class) %>::Identity.version_label
+    package_name Identity.version_label
 
     def self.configuration
       Runcom::Configuration.new file_name: Identity.file_name
@@ -41,7 +41,7 @@ require "runcom"
     desc "-v, [--version]", "Show gem version."
     map %w[-v --version] => :version
     def version
-      say <%= config.dig(:gem, :class) %>::Identity.version_label
+      say Identity.version_label
     end
 
     desc "-h, [--help=COMMAND]", "Show this message or get help for a command."
