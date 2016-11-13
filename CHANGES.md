@@ -1,3 +1,12 @@
+# v8.1.0 (2016-11-13)
+
+- Fixed Rake Publisher not loading Gemsmith configuration properly.
+- Updated CLI template to not use gem namespace for identity.
+- Updated gem library to require CLI if enabled.
+- Refactored CLI/Template helpers.
+- Refactored source requirements.
+- Refactored symbolization of Thor option keys.
+
 # v8.0.0 (2016-11-12)
 
 - Fixed Bash script header to dynamically load correct environment.

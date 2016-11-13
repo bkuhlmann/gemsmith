@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gemsmith (8.0.0)
+    gemsmith (8.1.0)
       milestoner (~> 4.1)
       pragmater (~> 2.1)
       refinements (~> 3.1)
