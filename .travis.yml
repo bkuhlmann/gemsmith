@@ -4,11 +4,8 @@ env:
   global:
     - EDITOR=vim
     - secure: BN5B5TkYA3E/njHTw9KoUNDqZP2+LRvtt+1PiOfdsVMbMGX1ehnJ42jvdPSvbICoCeQIT+2fz9KUao/DUGs/2doXc9M2EJm6Tkr9KLixeZbmrRDiaQDT/yZETFVQK4DB+PlVkAWMOKua94nRjiZm47Ri4HuZ1ZIJVBYzrXYcObI=
-rvm:
-- 2.3.0
 before_install:
   - gem install rails
-script: bundle exec rake
 after_script: bundle exec codeclimate-test-reporter
 notifications:
   email: false

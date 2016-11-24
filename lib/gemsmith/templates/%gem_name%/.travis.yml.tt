@@ -1,11 +1,8 @@
 language: ruby
-rvm:
-  - <%= config.dig(:versions, :ruby) %>
 <%- if config.dig(:generate, :rails) -%>
 gemfile:
   - gemfiles/rails-<%= config.dig(:versions, :rails) %>.x.gemfile
 <%- end -%>
-script: bundle exec rake
 <%- if config.dig(:generate, :code_climate) -%>
 after_script: bundle exec codeclimate-test-reporter
 <%- end -%>
