@@ -47,7 +47,6 @@ module Gemsmith
       end
 
       def remove_files
-        gem_name = configuration.dig :gem, :name
         gem_path = configuration.dig :gem, :path
 
         cli.remove_file "#{gem_name}/app/helpers/#{gem_path}/application_helper.rb", configuration

@@ -7,7 +7,6 @@ module Gemsmith
       def run
         return unless configuration.dig(:generate, :reek)
 
-        gem_name = configuration.dig :gem, :name
         cli.uncomment_lines "#{gem_name}/Rakefile", /require.+reek.+/
         cli.uncomment_lines "#{gem_name}/Rakefile", /Reek.+/
       end

@@ -18,7 +18,6 @@ module Gemsmith
       end
 
       def uncomment_lines
-        gem_name = configuration.dig :gem, :name
         cli.uncomment_lines "#{gem_name}/Rakefile", /require.+rspec.+/
         cli.uncomment_lines "#{gem_name}/Rakefile", /RSpec.+/
       end

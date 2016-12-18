@@ -28,6 +28,10 @@ module Gemsmith
       def lib_gem_root
         File.join lib_root, "%gem_path%"
       end
+
+      def gem_name
+        configuration.dig :gem, :name
+      end
     end
   end
 end
