@@ -1,3 +1,14 @@
+# v8.2.0 (2016-12-18)
+
+- Fixed Rakefile support for RSpec, Reek, Rubocop, and SCSS Lint.
+- Added `Gemfile.lock` to `.gitignore`.
+- Updated Travis CI configuration to use defaults.
+- Updated to Rake 12.x.x.
+- Updated to Rubocop 0.46.x.
+- Updated to Ruby 2.3.2.
+- Updated to Ruby 2.3.3.
+- Refactored gem name to base generator.
+
 # v8.1.0 (2016-11-13)
 
 - Fixed Rake Publisher not loading Gemsmith configuration properly.
