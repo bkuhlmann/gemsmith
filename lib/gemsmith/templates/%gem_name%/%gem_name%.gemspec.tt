@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   <%- if config.dig(:generate, :rails) -%>
   spec.add_dependency "rails", "~> <%= config.dig(:versions, :rails) %>"
   <%- end -%>
-  spec.add_development_dependency "rake", "~> 11.0"
+  spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "gemsmith", "~> <%= Gemsmith::Identity.version[/\d{1}\.\d{1}/] %>"
   <%- if config.dig(:generate, :pry) -%>
   spec.add_development_dependency "pry", "~> 0.10"
