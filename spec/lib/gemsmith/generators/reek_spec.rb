@@ -13,17 +13,17 @@ RSpec.describe Gemsmith::Generators::Reek, :temp_dir do
     context "when enabled" do
       let(:create_reek) { true }
 
-      it "creates Rake file" do
-        template = "%gem_name%/lib/tasks/reek.rake.tt"
-        expect(cli).to have_received(:template).with(template, configuration)
+      it "enables Rakefile Reek support" do
+        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /require.+reek.+/)
+        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /Reek.+/)
       end
     end
 
     context "when disabled" do
       let(:create_reek) { false }
 
-      it "does not create configuration file" do
-        expect(cli).to_not have_received(:template)
+      it "does not uncomment lines" do
+        expect(cli).to_not have_received(:uncomment_lines)
       end
     end
   end

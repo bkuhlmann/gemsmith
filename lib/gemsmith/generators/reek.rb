@@ -6,7 +6,10 @@ module Gemsmith
     class Reek < Base
       def run
         return unless configuration.dig(:generate, :reek)
-        cli.template "%gem_name%/lib/tasks/reek.rake.tt", configuration
+
+        gem_name = configuration.dig :gem, :name
+        cli.uncomment_lines "#{gem_name}/Rakefile", /require.+reek.+/
+        cli.uncomment_lines "#{gem_name}/Rakefile", /Reek.+/
       end
     end
   end

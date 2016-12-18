@@ -13,13 +13,13 @@ RSpec.describe Gemsmith::Generators::Rubocop, :temp_dir do
     context "when enabled" do
       let(:create_rubocop) { true }
 
-      it "creates configuration file" do
-        expect(cli).to have_received(:template).with("%gem_name%/.rubocop.yml.tt", configuration)
+      it "enables Rakefile Rubocop support" do
+        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /require.+rubocop.+/)
+        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /RuboCop.+/)
       end
 
-      it "creates Rake file" do
-        template = "%gem_name%/lib/tasks/rubocop.rake.tt"
-        expect(cli).to have_received(:template).with(template, configuration)
+      it "creates configuration file" do
+        expect(cli).to have_received(:template).with("%gem_name%/.rubocop.yml.tt", configuration)
       end
 
       it "runs rubocop" do
@@ -30,8 +30,16 @@ RSpec.describe Gemsmith::Generators::Rubocop, :temp_dir do
     context "when disabled" do
       let(:create_rubocop) { false }
 
+      it "does not uncomment lines" do
+        expect(cli).to_not have_received(:uncomment_lines)
+      end
+
       it "does not create configuration file" do
         expect(cli).to_not have_received(:template)
+      end
+
+      it "does run rubocop autocorrect" do
+        expect(cli).to_not have_received(:run)
       end
     end
   end

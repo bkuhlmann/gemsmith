@@ -7,8 +7,11 @@ module Gemsmith
       def run
         return unless configuration.dig(:generate, :rubocop)
 
+        gem_name = configuration.dig :gem, :name
+
+        cli.uncomment_lines "#{gem_name}/Rakefile", /require.+rubocop.+/
+        cli.uncomment_lines "#{gem_name}/Rakefile", /RuboCop.+/
         cli.template "%gem_name%/.rubocop.yml.tt", configuration
-        cli.template "%gem_name%/lib/tasks/rubocop.rake.tt", configuration
         cli.run "rubocop --auto-correct > /dev/null"
       end
     end

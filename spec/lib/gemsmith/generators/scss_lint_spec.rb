@@ -13,9 +13,9 @@ RSpec.describe Gemsmith::Generators::SCSSLint, :temp_dir do
     context "when enabled" do
       let(:create_scss_lint) { true }
 
-      it "creates Rake file" do
-        template = "%gem_name%/lib/tasks/scss_lint.rake.tt"
-        expect(cli).to have_received(:template).with(template, configuration)
+      it "enables Rakefile SCSS Lint support" do
+        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /require.+scss.+/)
+        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /SCSSLint.+/)
       end
     end
 
@@ -23,7 +23,7 @@ RSpec.describe Gemsmith::Generators::SCSSLint, :temp_dir do
       let(:create_scss_lint) { false }
 
       it "does not create configuration file" do
-        expect(cli).to_not have_received(:template)
+        expect(cli).to_not have_received(:uncomment_lines)
       end
     end
   end

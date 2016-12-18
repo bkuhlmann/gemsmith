@@ -7,16 +7,26 @@ module Gemsmith
       def run
         return unless configuration.dig(:generate, :rspec)
 
-        cli.template "%gem_name%/lib/tasks/rspec.rake.tt", configuration
-        cli.template "#{rspec_root}/spec_helper.rb.tt", configuration
-        cli.template("#{rspec_root}/rails_helper.rb.tt", configuration) if configuration.dig(:generate, :rails)
-        cli.template "#{rspec_root}/support/shared_contexts/temp_dir.rb.tt", configuration
+        uncomment_lines
+        install_templates
       end
 
       private
 
       def rspec_root
         "%gem_name%/spec"
+      end
+
+      def uncomment_lines
+        gem_name = configuration.dig :gem, :name
+        cli.uncomment_lines "#{gem_name}/Rakefile", /require.+rspec.+/
+        cli.uncomment_lines "#{gem_name}/Rakefile", /RSpec.+/
+      end
+
+      def install_templates
+        cli.template "#{rspec_root}/spec_helper.rb.tt", configuration
+        cli.template("#{rspec_root}/rails_helper.rb.tt", configuration) if configuration.dig(:generate, :rails)
+        cli.template "#{rspec_root}/support/shared_contexts/temp_dir.rb.tt", configuration
       end
     end
   end
