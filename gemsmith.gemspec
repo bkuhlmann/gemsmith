@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.required_ruby_version = "~> 2.3"
+  spec.add_dependency "bundler", "~> 1.13"
   spec.add_dependency "thor", "~> 0.19"
   spec.add_dependency "thor_plus", "~> 4.1"
   spec.add_dependency "refinements", "~> 3.1"
