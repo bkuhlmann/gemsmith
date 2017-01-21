@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
     spec.cert_chain = [Gem.default_cert_path]
   end
 
-  spec.required_ruby_version = "~> 2.3"
+  spec.required_ruby_version = "~> 2.4"
   spec.add_dependency "bundler", "~> 1.13"
   spec.add_dependency "thor", "~> 0.19"
   spec.add_dependency "thor_plus", "~> 4.1"
