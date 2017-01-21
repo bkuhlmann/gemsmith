@@ -44,3 +44,5 @@ Metrics/BlockLength:
     - "spec/**/*"
 Metrics/LineLength:
   Max: 120
+Metrics/ParameterLists:
+  Max: 3

@@ -45,3 +45,5 @@ Metrics/MethodLength:
     - "lib/gemsmith/cli.rb"
     - "lib/gemsmith/configuration.rb"
     - "lib/gemsmith/rake/tasks.rb"
+Metrics/ParameterLists:
+  Max: 3
