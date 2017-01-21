@@ -53,7 +53,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0"
   <%- end -%>
 
+  <%- if config.dig(:generate, :rails) -%>
+  spec.files = Dir["app/**/*", "bin/**/*", "config/**/*", "lib/**/*", "vendor/**/*"]
+  <%- else -%>
   spec.files = Dir["lib/**/*"]
+  <%- end -%>
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
   <%- if config.dig(:generate, :cli) -%>
   spec.executables << "<%= config.dig(:gem, :name) %>"
