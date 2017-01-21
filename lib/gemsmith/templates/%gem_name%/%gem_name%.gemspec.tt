@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   end
   <%- end -%>
 
+  spec.required_ruby_version = "~> <%= config.dig(:versions, :ruby)[/\d{1}\.\d{1}/] %>"
   <%- if config.dig(:generate, :cli) -%>
   spec.add_dependency "thor", "~> 0.19"
   spec.add_dependency "thor_plus", "~> 4.1"
