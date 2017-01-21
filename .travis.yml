@@ -5,6 +5,7 @@ env:
     - EDITOR=vim
     - secure: BN5B5TkYA3E/njHTw9KoUNDqZP2+LRvtt+1PiOfdsVMbMGX1ehnJ42jvdPSvbICoCeQIT+2fz9KUao/DUGs/2doXc9M2EJm6Tkr9KLixeZbmrRDiaQDT/yZETFVQK4DB+PlVkAWMOKua94nRjiZm47Ri4HuZ1ZIJVBYzrXYcObI=
 before_install:
+  - gem update --system && gem update && gem cleanup
   - gem install rails
 after_script: bundle exec codeclimate-test-reporter
 notifications:

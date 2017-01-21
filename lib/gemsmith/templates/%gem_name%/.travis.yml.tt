@@ -3,6 +3,7 @@ language: ruby
 gemfile:
   - gemfiles/rails-<%= config.dig(:versions, :rails) %>.x.gemfile
 <%- end -%>
+before_install: gem update --system && gem update && gem cleanup
 <%- if config.dig(:generate, :code_climate) -%>
 after_script: bundle exec codeclimate-test-reporter
 <%- end -%>
