@@ -18,7 +18,10 @@ RSpec.describe Gemsmith::Generators::CLI, :temp_dir do
       end
 
       it "creates command line interface" do
-        expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_path%/cli.rb.tt", configuration)
+        expect(cli).to have_received(:template).with(
+          "%gem_name%/lib/%gem_path%/cli.rb.tt",
+          configuration
+        )
       end
 
       it "creates command line interface spec" do

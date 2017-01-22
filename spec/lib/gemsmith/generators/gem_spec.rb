@@ -19,7 +19,10 @@ RSpec.describe Gemsmith::Generators::Gem, :temp_dir do
     end
 
     it "creates gem spec" do
-      expect(cli).to have_received(:template).with("%gem_name%/%gem_name%.gemspec.tt", configuration)
+      expect(cli).to have_received(:template).with(
+        "%gem_name%/%gem_name%.gemspec.tt",
+        configuration
+      )
     end
 
     it "creates gem library" do
@@ -27,7 +30,10 @@ RSpec.describe Gemsmith::Generators::Gem, :temp_dir do
     end
 
     it "creates gem identity" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_path%/identity.rb.tt", configuration)
+      expect(cli).to have_received(:template).with(
+        "%gem_name%/lib/%gem_path%/identity.rb.tt",
+        configuration
+      )
     end
 
     it "sets excecutable file permission for setup script" do

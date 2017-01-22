@@ -31,7 +31,8 @@ module Gemsmith
       end
 
       def push
-        creds = credentials.new key: gem_spec.allowed_push_key.to_sym, url: gem_spec.allowed_push_host
+        creds = credentials.new key: gem_spec.allowed_push_key.to_sym,
+                                url: gem_spec.allowed_push_host
         creds.create
 
         options = %(--key "#{translate_key creds.key}" --host "#{gem_spec.allowed_push_host}")
@@ -62,7 +63,8 @@ module Gemsmith
         if status
           shell.confirm "Pushed #{gem_spec.package_file_name} to #{gem_spec.allowed_push_host}."
         else
-          shell.error "Failed pushing #{gem_spec.package_file_name} to #{gem_spec.allowed_push_host}. " \
+          shell.error "Failed pushing #{gem_spec.package_file_name} to " \
+                      "#{gem_spec.allowed_push_host}. " \
                       "Check gemspec and gem credential settings."
         end
 

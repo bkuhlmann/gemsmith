@@ -8,7 +8,11 @@ module Gemsmith
 
       def print_gems gems
         say "Multiple versions found:\n\n"
-        gems.each.with_index { |spec, index| say "#{index + 1}. #{spec.name} #{spec.version.version}" }
+
+        gems.each.with_index do |spec, index|
+          say "#{index + 1}. #{spec.name} #{spec.version.version}"
+        end
+
         say "q. Quit.\n\n"
       end
 

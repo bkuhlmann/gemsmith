@@ -8,9 +8,13 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_path }
   let(:signed) { false }
   let(:gem_config) { {gem: {name: "tester"}, publish: {sign: signed}} }
+
   let :credentials do
-    instance_spy Gemsmith::Credentials, key: gem_spec.allowed_push_key.to_sym, url: gem_spec.allowed_push_host
+    instance_spy Gemsmith::Credentials,
+                 key: gem_spec.allowed_push_key.to_sym,
+                 url: gem_spec.allowed_push_host
   end
+
   let(:publisher) { instance_spy Milestoner::Publisher }
   let(:shell) { instance_spy Bundler::UI::Shell }
   let(:kernel) { class_spy Kernel }
@@ -41,7 +45,9 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
 
   describe "#push" do
     shared_examples_for "a default setup" do
-      let(:command) { %(gem push "pkg/tester-0.1.0.gem" --key "rubygems" --host "https://rubygems.org") }
+      let :command do
+        %(gem push "pkg/tester-0.1.0.gem" --key "rubygems" --host "https://rubygems.org")
+      end
 
       it "pushes gem to gem server" do
         subject.push
@@ -50,7 +56,8 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
 
       it "prints successful gem push message" do
         subject.push
-        expect(shell).to have_received(:confirm).with("Pushed tester-0.1.0.gem to https://rubygems.org.")
+        output = "Pushed tester-0.1.0.gem to https://rubygems.org."
+        expect(shell).to have_received(:confirm).with(output)
       end
     end
 
@@ -64,7 +71,9 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
     context "with custom gemspec metadata" do
       let(:gem_spec_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
       let(:pushed) { true }
-      let(:command) { %(gem push "pkg/tester-0.1.0.gem" --key "test" --host "https://www.test.com") }
+      let :command do
+        %(gem push "pkg/tester-0.1.0.gem" --key "test" --host "https://www.test.com")
+      end
 
       it "pushes gem to gem server" do
         subject.push
@@ -73,7 +82,9 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
 
       it "prints successful gem push message" do
         subject.push
-        expect(shell).to have_received(:confirm).with("Pushed tester-0.1.0.gem to https://www.test.com.")
+        output = "Pushed tester-0.1.0.gem to https://www.test.com."
+
+        expect(shell).to have_received(:confirm).with(output)
       end
     end
 
@@ -90,7 +101,8 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
 
       it "prints failure message" do
         subject.push
-        message = "Failed pushing tester-0.1.0.gem to https://rubygems.org. Check gemspec and gem credential settings."
+        message = "Failed pushing tester-0.1.0.gem to https://rubygems.org. " \
+                  "Check gemspec and gem credential settings."
 
         expect(shell).to have_received(:error).with(message)
       end

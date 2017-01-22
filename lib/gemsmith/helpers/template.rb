@@ -2,8 +2,8 @@
 
 module Gemsmith
   module Helpers
-    # Provides helper methods for use by the Thor CLI. These methods are necessary to resolve %% file
-    # and folder variables and render dynamic content within the Thor ERB *templates* structure.
+    # Provides Thor CLI helper methods. These methods are necessary to resolve %% file and folder
+    # variables and render dynamic content within the Thor ERB *templates* structure.
     module Template
       def gem_name
         configuration.dig :gem, :name

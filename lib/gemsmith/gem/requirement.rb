@@ -4,7 +4,8 @@ require "versionaire"
 
 module Gemsmith
   module Gem
-    # Defines a gem requirement. This is a partial, cleaner implementation of the RubyGems `Gem::Requirement` object.
+    # Defines a gem requirement. This is a partial, cleaner implementation of the RubyGems
+    # `Gem::Requirement` object.
     class Requirement
       def self.operators
         [">", ">=", "=", "!=", "<", "<=", "~>"]
@@ -20,7 +21,8 @@ module Gemsmith
             operator, version = object.split " "
             new operator: operator, raw_version: version
           else
-            fail Errors::RequirementConversion, %(Invalid string conversion. Use: "<operator> <version>".)
+            fail Errors::RequirementConversion,
+                 %(Invalid string conversion. Use: "<operator> <version>".)
         end
       end
 
@@ -42,7 +44,9 @@ module Gemsmith
 
       def validate!
         return true if self.class.operators.include?(operator)
-        fail Errors::RequirementOperator, %(Invalid gem requirement operator. Use: #{self.class.operators.join ", "}.)
+
+        fail Errors::RequirementOperator,
+             %(Invalid gem requirement operator. Use: #{self.class.operators.join ", "}.)
       end
     end
   end

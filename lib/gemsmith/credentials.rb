@@ -24,7 +24,9 @@ module Gemsmith
       [Authenticators::RubyGems, Authenticators::Basic]
     end
 
-    def initialize key: self.class.default_key, url: self.class.default_url, shell: Bundler::UI::Shell.new
+    def initialize key: self.class.default_key,
+                   url: self.class.default_url,
+                   shell: Bundler::UI::Shell.new
       @key = key
       @url = url
       @shell = shell

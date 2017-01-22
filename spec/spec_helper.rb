@@ -10,7 +10,9 @@ require "pry-state"
 require "climate_control"
 require "gemsmith"
 
-Dir[File.join(File.dirname(__FILE__), "support/shared_contexts/**/*.rb")].each { |file| require file }
+Dir[File.join(File.dirname(__FILE__), "support/shared_contexts/**/*.rb")].each do |file|
+  require file
+end
 
 RSpec.configure do |config|
   config.order = "random"

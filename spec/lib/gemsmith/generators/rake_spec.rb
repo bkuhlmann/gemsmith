@@ -35,7 +35,10 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
       let(:generate_rspec) { true }
 
       it "adds RSpec to default tasks" do
-        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w[spec]\n")
+        expect(cli).to have_received(:append_to_file).with(
+          "%gem_name%/Rakefile",
+          "\ntask default: %w[spec]\n"
+        )
       end
     end
 
@@ -43,7 +46,10 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
       let(:generate_reek) { true }
 
       it "adds Reek to default tasks" do
-        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w[reek]\n")
+        expect(cli).to have_received(:append_to_file).with(
+          "%gem_name%/Rakefile",
+          "\ntask default: %w[reek]\n"
+        )
       end
     end
 
@@ -51,7 +57,10 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
       let(:generate_rubocop) { true }
 
       it "adds Rubocop to default tasks" do
-        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w[rubocop]\n")
+        expect(cli).to have_received(:append_to_file).with(
+          "%gem_name%/Rakefile",
+          "\ntask default: %w[rubocop]\n"
+        )
       end
     end
 
@@ -59,7 +68,10 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
       let(:generate_scss_lint) { true }
 
       it "adds SCSS Lint to default tasks" do
-        expect(cli).to have_received(:append_to_file).with("%gem_name%/Rakefile", "\ntask default: %w[scss_lint]\n")
+        expect(cli).to have_received(:append_to_file).with(
+          "%gem_name%/Rakefile",
+          "\ntask default: %w[scss_lint]\n"
+        )
       end
     end
 

@@ -39,7 +39,7 @@ Metrics/ClassLength:
   Exclude:
     - "lib/gemsmith/configuration.rb"
 Metrics/LineLength:
-  Max: 120
+  Max: 100
 Metrics/MethodLength:
   Exclude:
     - "lib/gemsmith/cli.rb"

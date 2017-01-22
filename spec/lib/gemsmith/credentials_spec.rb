@@ -129,7 +129,8 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
     let(:shell) { instance_spy Bundler::UI::Shell }
     subject { described_class.new shell: shell }
     before do
-      allow(authenticator_class).to receive(:new).with(login, password).and_return(authenticator_instance)
+      allow(authenticator_class).to receive(:new).with(login, password)
+        .and_return(authenticator_instance)
       allow(shell).to receive(:ask).with(%(What is your "#{url}" login?)).and_return(login)
       allow(shell).to receive(:ask).with(%(What is your "#{url}" password?)).and_return(password)
     end

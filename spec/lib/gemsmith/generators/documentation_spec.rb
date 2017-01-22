@@ -19,7 +19,10 @@ RSpec.describe Gemsmith::Generators::Documentation, :temp_dir do
     end
 
     it "creates code of conduct" do
-      expect(cli).to have_received(:template).with("%gem_name%/CODE_OF_CONDUCT.md.tt", configuration)
+      expect(cli).to have_received(:template).with(
+        "%gem_name%/CODE_OF_CONDUCT.md.tt",
+        configuration
+      )
     end
 
     it "creates software license" do

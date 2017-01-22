@@ -14,7 +14,10 @@ RSpec.describe Gemsmith::Generators::GitHub, :temp_dir do
       let(:create_git_hub) { true }
 
       it "creates issues template" do
-        expect(cli).to have_received(:template).with("%gem_name%/.github/ISSUE_TEMPLATE.md.tt", configuration)
+        expect(cli).to have_received(:template).with(
+          "%gem_name%/.github/ISSUE_TEMPLATE.md.tt",
+          configuration
+        )
       end
 
       it "creates pull request template" do

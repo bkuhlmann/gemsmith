@@ -28,7 +28,7 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
   end
 
   describe "install_rails" do
-    let(:prompt) { "Ruby on Rails is not installed. Would you like to install it (y/n)?" }
+    let(:prompt) { "Ruby on Rails is not installed. Would you like it installed (y/n)?" }
     before do
       allow(subject).to receive(:rails?).and_return(rails)
       allow(cli).to receive(:yes?).with(prompt).and_return(create_rails)
@@ -67,13 +67,21 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
     before { subject.create_engine }
 
     it "creates engine file" do
-      expect(cli).to have_received(:template).with("%gem_name%/lib/%gem_path%/engine.rb.tt", configuration)
+      template = "%gem_name%/lib/%gem_path%/engine.rb.tt"
+      expect(cli).to have_received(:template).with(template, configuration)
     end
 
     it "generates Rails engine" do
       command = "rails plugin new --skip tester"
-      options = "--skip-bundle --skip-test --skip-keeps --skip-git --mountable --dummy-path=spec/dummy"
-      command_and_options = "#{command} #{options}"
+      options = %w[
+        --skip-bundle
+        --skip-test
+        --skip-keeps
+        --skip-git
+        --mountable
+        --dummy-path=spec/dummy
+      ]
+      command_and_options = %(#{command} #{options.join " "})
 
       expect(cli).to have_received(:run).with(command_and_options)
     end

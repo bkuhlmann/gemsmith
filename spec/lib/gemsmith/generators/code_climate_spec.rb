@@ -14,7 +14,10 @@ RSpec.describe Gemsmith::Generators::CodeClimate, :temp_dir do
       let(:create_code_climate) { true }
 
       it "creates configuration file" do
-        expect(cli).to have_received(:template).with("%gem_name%/.codeclimate.yml.tt", configuration)
+        expect(cli).to have_received(:template).with(
+          "%gem_name%/.codeclimate.yml.tt",
+          configuration
+        )
       end
     end
 

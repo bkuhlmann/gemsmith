@@ -4,7 +4,11 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
-  let(:configuration) { {gem: {name: "tester"}, generate: {rspec: create_rspec, rails: create_rails}} }
+
+  let :configuration do
+    {gem: {name: "tester"}, generate: {rspec: create_rspec, rails: create_rails}}
+  end
+
   subject { described_class.new cli, configuration: configuration }
 
   describe "#run" do
@@ -20,11 +24,13 @@ RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
       end
 
       it "creates spec helper" do
-        expect(cli).to have_received(:template).with("%gem_name%/spec/spec_helper.rb.tt", configuration)
+        template = "%gem_name%/spec/spec_helper.rb.tt"
+        expect(cli).to have_received(:template).with(template, configuration)
       end
 
       it "does not create rails helper" do
-        expect(cli).to_not have_received(:template).with("%gem_name%/spec/rails_helper.rb.tt", configuration)
+        template = "%gem_name%/spec/rails_helper.rb.tt"
+        expect(cli).to_not have_received(:template).with(template, configuration)
       end
 
       it "creates shared contexts" do
@@ -38,7 +44,8 @@ RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
       let(:create_rails) { true }
 
       it "creates rails helper" do
-        expect(cli).to have_received(:template).with("%gem_name%/spec/rails_helper.rb.tt", configuration)
+        template = "%gem_name%/spec/rails_helper.rb.tt"
+        expect(cli).to have_received(:template).with(template, configuration)
       end
     end
 

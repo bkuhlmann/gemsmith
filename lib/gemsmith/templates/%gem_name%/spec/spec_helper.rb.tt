@@ -11,7 +11,9 @@ require "pry-state"
 <%- end -%>
 <%- unless config.dig(:generate, :rails) -%>require "<%= config.dig(:gem, :path) %>"<%- end -%>
 
-Dir[File.join(File.dirname(__FILE__), "support/shared_contexts/**/*.rb")].each { |file| require file }
+Dir[File.join(File.dirname(__FILE__), "support/shared_contexts/**/*.rb")].each do |file|
+  require file
+end
 
 RSpec.configure do |config|
   config.order = "random"
