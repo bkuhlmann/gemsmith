@@ -32,20 +32,6 @@ module Gemsmith
         cli.template "%gem_name%/gemfiles/rails-%rails_version%.x.gemfile.tt", configuration
       end
 
-      def add_comments
-        file = "%gem_name%/app/controllers/%gem_path%/application_controller.rb"
-        comment = "#{indentation}# The application controller.\n"
-        cli.insert_into_file file, comment, before: /.+class.+/
-
-        file = "%gem_name%/app/mailers/%gem_path%/application_mailer.rb"
-        comment = "#{indentation}# The application mailer.\n"
-        cli.insert_into_file file, comment, before: /.+class.+/
-
-        file = "%gem_name%/app/models/%gem_path%/application_record.rb"
-        comment = "#{indentation}# The application record.\n"
-        cli.insert_into_file file, comment, before: /.+class.+/
-      end
-
       def remove_files
         gem_path = configuration.dig :gem, :path
 
@@ -62,7 +48,6 @@ module Gemsmith
         create_engine
         create_generator_files
         create_travis_gemfiles
-        add_comments
         remove_files
       end
 

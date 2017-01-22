@@ -2,6 +2,8 @@ Style/AndOr:
   EnforcedStyle: conditionals
 Style/CaseIndentation:
   IndentOneStep: true
+Style/Documentation:
+  Enabled: false
 Style/EmptyMethod:
   EnforcedStyle: expanded
 Style/MethodDefParentheses:

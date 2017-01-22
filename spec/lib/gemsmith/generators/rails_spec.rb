@@ -132,34 +132,6 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
     end
   end
 
-  describe "#add_comments" do
-    before { subject.add_comments }
-
-    it "adds application controller comment" do
-      expect(cli).to have_received(:insert_into_file).with(
-        "%gem_name%/app/controllers/%gem_path%/application_controller.rb",
-        "  # The application controller.\n",
-        before: /.+class.+/
-      )
-    end
-
-    it "adds application mailer comment" do
-      expect(cli).to have_received(:insert_into_file).with(
-        "%gem_name%/app/mailers/%gem_path%/application_mailer.rb",
-        "  # The application mailer.\n",
-        before: /.+class.+/
-      )
-    end
-
-    it "adds application record comment" do
-      expect(cli).to have_received(:insert_into_file).with(
-        "%gem_name%/app/models/%gem_path%/application_record.rb",
-        "  # The application record.\n",
-        before: /.+class.+/
-      )
-    end
-  end
-
   describe "#remove_files" do
     before { subject.remove_files }
 
@@ -187,7 +159,6 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
       allow(subject).to receive(:create_engine)
       allow(subject).to receive(:create_generator_files)
       allow(subject).to receive(:create_travis_gemfiles)
-      allow(subject).to receive(:add_comments)
       allow(subject).to receive(:remove_files)
     end
 
@@ -201,7 +172,6 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
         expect(subject).to have_received(:create_engine)
         expect(subject).to have_received(:create_generator_files)
         expect(subject).to have_received(:create_travis_gemfiles)
-        expect(subject).to have_received(:add_comments)
         expect(subject).to have_received(:remove_files)
       end
     end
@@ -216,7 +186,6 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
         expect(subject).to_not have_received(:create_engine)
         expect(subject).to_not have_received(:create_generator_files)
         expect(subject).to_not have_received(:create_travis_gemfiles)
-        expect(subject).to_not have_received(:add_comments)
         expect(subject).to_not have_received(:remove_files)
       end
     end
