@@ -32,6 +32,12 @@ module Gemsmith
         cli.template "%gem_name%/gemfiles/rails-%rails_version%.x.gemfile.tt", configuration
       end
 
+      def stub_assets
+        gem_path = configuration.dig :gem, :path
+        cli.run %(printf "%s" > "#{gem_name}/app/assets/javascripts/#{gem_path}/application.js")
+        cli.run %(printf "%s" > "#{gem_name}/app/assets/stylesheets/#{gem_path}/application.css")
+      end
+
       def remove_files
         gem_path = configuration.dig :gem, :path
 
@@ -48,6 +54,7 @@ module Gemsmith
         create_engine
         create_generator_files
         create_travis_gemfiles
+        stub_assets
         remove_files
       end
 

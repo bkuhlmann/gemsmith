@@ -132,6 +132,20 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
     end
   end
 
+  describe "#stub_assets" do
+    before { subject.stub_assets }
+
+    it "stubs JavaScript application file" do
+      command = %(printf "%s" > "tester/app/assets/javascripts/tester/application.js")
+      expect(cli).to have_received(:run).with(command)
+    end
+
+    it "stubs stylesheet application file" do
+      command = %(printf "%s" > "tester/app/assets/stylesheets/tester/application.css")
+      expect(cli).to have_received(:run).with(command)
+    end
+  end
+
   describe "#remove_files" do
     before { subject.remove_files }
 
@@ -159,6 +173,7 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
       allow(subject).to receive(:create_engine)
       allow(subject).to receive(:create_generator_files)
       allow(subject).to receive(:create_travis_gemfiles)
+      allow(subject).to receive(:stub_assets)
       allow(subject).to receive(:remove_files)
     end
 
@@ -172,6 +187,7 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
         expect(subject).to have_received(:create_engine)
         expect(subject).to have_received(:create_generator_files)
         expect(subject).to have_received(:create_travis_gemfiles)
+        expect(subject).to have_received(:stub_assets)
         expect(subject).to have_received(:remove_files)
       end
     end
@@ -186,6 +202,7 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
         expect(subject).to_not have_received(:create_engine)
         expect(subject).to_not have_received(:create_generator_files)
         expect(subject).to_not have_received(:create_travis_gemfiles)
+        expect(subject).to_not have_received(:stub_assets)
         expect(subject).to_not have_received(:remove_files)
       end
     end
