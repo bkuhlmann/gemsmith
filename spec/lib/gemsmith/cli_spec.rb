@@ -68,11 +68,50 @@ RSpec.describe Gemsmith::CLI do
       end
     end
 
-    context "with all options", :temp_dir do
+    context "with CLI option only", :temp_dir do
       let :options do
         [
           gem_name,
-          "--cli",
+          "--cli"
+        ]
+      end
+
+      it "generates CLI gem" do
+        ClimateControl.modify HOME: temp_dir do
+          Dir.chdir temp_dir do
+            cli.call
+
+            expect(files).to contain_exactly(
+              ".gitignore",
+              ".rubocop.yml",
+              ".ruby-version",
+              "bin/setup",
+              "bin/tester",
+              "lib/tester/identity.rb",
+              "lib/tester/cli.rb",
+              "lib/tester.rb",
+              "spec/lib/tester/cli_spec.rb",
+              "spec/support/shared_contexts/temp_dir.rb",
+              "spec/spec_helper.rb",
+              "CHANGES.md",
+              "CODE_OF_CONDUCT.md",
+              "CONTRIBUTING.md",
+              "Gemfile",
+              "Guardfile",
+              "LICENSE.md",
+              "README.md",
+              "Rakefile",
+              "tester.gemspec"
+            )
+          end
+        end
+      end
+    end
+
+    context "with all options (minus CLI)", :temp_dir do
+      let :options do
+        [
+          gem_name,
           "--rails",
           "--security",
           "--pry",
@@ -119,7 +158,6 @@ RSpec.describe Gemsmith::CLI do
               ".github/ISSUE_TEMPLATE.md",
               ".github/PULL_REQUEST_TEMPLATE.md",
               "bin/setup",
-              "bin/tester",
               "gemfiles/rails-5.0.x.gemfile",
               "app/controllers/tester/application_controller.rb",
               "app/mailers/tester/application_mailer.rb",
@@ -128,11 +166,9 @@ RSpec.describe Gemsmith::CLI do
               "lib/generators/tester/install/install_generator.rb",
               "lib/generators/tester/upgrade/USAGE",
               "lib/generators/tester/upgrade/upgrade_generator.rb",
-              "lib/tester/cli.rb",
               "lib/tester/engine.rb",
               "lib/tester/identity.rb",
               "lib/tester.rb",
-              "spec/lib/tester/cli_spec.rb",
               "spec/support/shared_contexts/temp_dir.rb",
               "spec/rails_helper.rb",
               "spec/spec_helper.rb",
@@ -146,6 +182,35 @@ RSpec.describe Gemsmith::CLI do
               "README.md",
               "tester.gemspec"
             )
+          end
+        end
+      end
+    end
+
+    context "with CLI and Rails Engine options only", :temp_dir do
+      let :options do
+        [
+          gem_name,
+          "--cli",
+          "--rails"
+        ]
+      end
+
+      it "generates basic gem" do
+        ClimateControl.modify HOME: temp_dir do
+          Dir.chdir temp_dir do
+            cli.call
+
+            expect(files).to be_empty
+          end
+        end
+      end
+
+      it "prints error message" do
+        ClimateControl.modify HOME: temp_dir do
+          Dir.chdir temp_dir do
+            result = -> { cli.call }
+            expect(&result).to output(/.+is\snot\sallowed.+/).to_stdout
           end
         end
       end

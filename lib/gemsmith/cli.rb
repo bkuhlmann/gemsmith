@@ -162,14 +162,14 @@ module Gemsmith
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :patreon)
     def generate name
-      say
+      print_cli_and_rails_engine_option_error && return if options.cli? && options.rails?
+
       info "Generating gem..."
 
       setup_configuration name: name, options: options.to_h
       self.class.generators.each { |generator| generator.run self, configuration: configuration }
 
       info "Gem generation finished."
-      say
     end
 
     desc "-o, [--open=GEM]", "Open a gem in default editor."
@@ -231,6 +231,11 @@ module Gemsmith
         },
         generate: options.symbolize_keys
       )
+    end
+
+    def print_cli_and_rails_engine_option_error
+      error "Generating a gem with CLI and Rails Engine functionality is not allowed. " \
+            "Build separate gems for improved separation of concerns and design."
     end
   end
 end
