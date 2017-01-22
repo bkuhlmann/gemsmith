@@ -32,6 +32,10 @@ module Gemsmith
       def gem_name
         configuration.dig :gem, :name
       end
+
+      def gem_path
+        configuration.dig :gem, :path
+      end
     end
   end
 end

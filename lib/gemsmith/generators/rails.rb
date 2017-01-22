@@ -33,14 +33,11 @@ module Gemsmith
       end
 
       def stub_assets
-        gem_path = configuration.dig :gem, :path
         cli.run %(printf "%s" > "#{gem_name}/app/assets/javascripts/#{gem_path}/application.js")
         cli.run %(printf "%s" > "#{gem_name}/app/assets/stylesheets/#{gem_path}/application.css")
       end
 
       def remove_files
-        gem_path = configuration.dig :gem, :path
-
         cli.remove_file "#{gem_name}/app/helpers/#{gem_path}/application_helper.rb", configuration
         cli.remove_file "#{gem_name}/lib/#{gem_path}/version.rb", configuration
         cli.remove_file "#{gem_name}/MIT-LICENSE", configuration
