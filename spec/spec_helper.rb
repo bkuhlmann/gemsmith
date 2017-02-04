@@ -15,6 +15,7 @@ Dir[File.join(File.dirname(__FILE__), "support/shared_contexts/**/*.rb")].each d
 end
 
 RSpec.configure do |config|
+  config.color = true
   config.order = "random"
   config.disable_monkey_patching!
   config.filter_run_when_matching :focus
