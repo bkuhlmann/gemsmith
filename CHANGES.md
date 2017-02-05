@@ -1,3 +1,14 @@
+# v9.1.0 (2017-02-05)
+
+- Fixed Travis CI configuration to not update gems.
+- Added `tmp` directory to Git ignore template.
+- Added code quality Rake task.
+- Updated RSpec spec helper to enable color output.
+- Updated Rubocop to import from global configuration.
+- Updated contributing documentation.
+- Removed Code Climate code comment checks.
+- Removed `.bundle` directory from `.gitignore`.
+
 # v9.0.0 (2017-01-22)
 
 - Fixed Rails Engine JavaScript and stylesheet templates.
