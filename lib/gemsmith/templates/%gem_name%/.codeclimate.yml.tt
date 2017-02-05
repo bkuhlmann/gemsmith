@@ -1,4 +1,3 @@
----
 engines:
   shellcheck:
     enabled: true
@@ -16,13 +15,6 @@ engines:
       languages:
       - ruby
       - javascript
-  fixme:
-    enabled: true
-    config:
-      strings:
-        - TODO
-        - FIX
-        - DUPLICATE
 ratings:
   paths:
   - "app/**/*"
