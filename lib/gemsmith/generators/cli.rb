@@ -4,6 +4,7 @@ module Gemsmith
   module Generators
     # Generates Command Line Interface (CLI) support.
     class CLI < Base
+      # rubocop:disable Metrics/AbcSize
       def run
         return unless configuration.dig(:generate, :cli)
 

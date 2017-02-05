@@ -1,7 +1,8 @@
+prepare:
+  fetch:
+    - https://raw.githubusercontent.com/bkuhlmann/code_quality/master/configurations/.rubocop.yml
 engines:
   shellcheck:
-    enabled: true
-  bundler-audit:
     enabled: true
   reek:
     enabled: true

@@ -29,6 +29,8 @@ module Gemsmith
         @publisher = publisher
       end
 
+      # rubocop:disable Metrics/AbcSize
+      # rubocop:disable Metrics/MethodLength
       def install
         desc "Update README (table of contents)"
         task :doc do

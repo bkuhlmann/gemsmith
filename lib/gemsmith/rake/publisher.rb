@@ -30,6 +30,7 @@ module Gemsmith
         @kernel = kernel
       end
 
+      # rubocop:disable Metrics/AbcSize
       def push
         creds = credentials.new key: gem_spec.allowed_push_key.to_sym,
                                 url: gem_spec.allowed_push_host

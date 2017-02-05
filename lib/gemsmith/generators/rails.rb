@@ -19,6 +19,7 @@ module Gemsmith
         cli.run "rails plugin new --skip #{configuration.dig :gem, :name} #{engine_options}"
       end
 
+      # rubocop:disable Metrics/AbcSize
       def create_generator_files
         cli.empty_directory "#{generator_root}/templates"
         cli.template "#{generator_root}/install/install_generator.rb.tt", configuration

@@ -1,50 +1,6 @@
+inherit_from:
+  - https://raw.githubusercontent.com/bkuhlmann/code_quality/v0.1.0/configurations/.rubocop.yml
 <%- if config.dig(:generate, :rails) -%>
-AllCops:
-  Exclude:
-    - "spec/dummy/**/*"
-    - "bin/rails"
-    - "vendor/**/*"
 Rails:
   Enabled: true
 <%- end -%>
-Style/AndOr:
-  EnforcedStyle: conditionals
-Style/CaseIndentation:
-  IndentOneStep: true
-Style/Documentation:
-  Enabled: false
-Style/EmptyMethod:
-  EnforcedStyle: expanded
-Style/MethodDefParentheses:
-  EnforcedStyle: require_no_parentheses
-Style/NumericLiterals:
-  Enabled: false
-Style/PercentLiteralDelimiters:
-  PreferredDelimiters:
-    "%w": "[]"
-    "%W": "[]"
-    "%i": "[]"
-    "%I": "[]"
-    "%r": "()"
-Style/SafeNavigation:
-  Enabled: false
-Style/SignalException:
-  EnforcedStyle: semantic
-Style/SingleLineBlockParams:
-  Enabled: false
-Style/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-Style/StringLiteralsInInterpolation:
-  EnforcedStyle: double_quotes
-Style/VariableNumber:
-  EnforcedStyle: snake_case
-Metrics/BlockLength:
-  Exclude:
-    - "**/*.gemspec"
-    - "spec/**/*"
-Metrics/LineLength:
-  Max: 100
-Metrics/ParameterLists:
-  Max: 3

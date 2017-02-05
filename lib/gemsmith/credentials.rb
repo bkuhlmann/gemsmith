@@ -46,6 +46,7 @@ module Gemsmith
       credentials? && !String(credentials[key]).empty?
     end
 
+    # rubocop:disable Metrics/AbcSize
     def create
       return if valid?
 

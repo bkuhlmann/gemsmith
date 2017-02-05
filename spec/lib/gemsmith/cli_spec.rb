@@ -18,7 +18,7 @@ RSpec.describe Gemsmith::CLI do
     let :files do
       files = Pathname.glob("#{gem_dir}/**/*", File::FNM_DOTMATCH).select(&:file?)
       files = files.map { |file| file.relative_path_from gem_dir }
-      files = files.reject { |file| file.to_s =~ %r(^(\.git\/.+|\.tags)$) }
+      files = files.reject { |file| file.to_s =~ %r(^(\.git\/.+|\.tags|\.rubocop-http.*)$) }
       files.map(&:to_s)
     end
 

@@ -28,6 +28,7 @@ module Gemsmith
       File.expand_path File.join(File.dirname(__FILE__), "templates")
     end
 
+    # rubocop:disable Metrics/MethodLength
     def self.configuration
       Runcom::Configuration.new file_name: Identity.file_name, defaults: {
         year: Time.now.year,
@@ -161,6 +162,7 @@ module Gemsmith
                   desc: "Add Patreon support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :patreon)
+    # rubocop:disable Metrics/AbcSize
     def generate name
       print_cli_and_rails_engine_option_error && return if options.cli? && options.rails?
 

@@ -4,6 +4,7 @@ module Gemsmith
   module Generators
     # Generates default gem support.
     class Gem < Base
+      # rubocop:disable Metrics/AbcSize
       def run
         cli.template "%gem_name%/bin/setup.tt", configuration
         cli.template "%gem_name%/Gemfile.tt", configuration
