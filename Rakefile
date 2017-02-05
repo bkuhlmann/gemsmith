@@ -13,4 +13,7 @@ rescue LoadError => error
   puts error.message
 end
 
-task default: %w[spec reek rubocop]
+desc "Run code quality checks"
+task code_quality: %i[reek rubocop]
+
+task default: %i[code_quality spec]

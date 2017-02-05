@@ -1,40 +1,67 @@
 # frozen_string_literal: true
 
+require "refinements/arrays"
+
 module Gemsmith
   module Generators
     # Generates Rake support.
     class Rake < Base
+      using Refinements::Arrays
+
+      def generate_code_quality_task
+        return "" if code_quality_tasks.empty?
+        %(\ndesc "Run code quality checks"\ntask code_quality: %i[#{code_quality_tasks}]\n)
+      end
+
+      def generate_default_task
+        return "" if default_task.empty?
+        %(\ntask default: %i[#{default_task}]\n)
+      end
+
       def run
         cli.template "%gem_name%/Rakefile.tt", configuration
-        configure_rakefile
+        append_code_quality_task
+        append_default_task
       end
 
       private
 
       def rspec_task
-        "spec" if configuration.dig(:generate, :rspec)
+        configuration.dig(:generate, :rspec) ? "spec" : ""
       end
 
       def reek_task
-        "reek" if configuration.dig(:generate, :reek)
+        configuration.dig(:generate, :reek) ? "reek" : ""
       end
 
       def rubocop_task
-        "rubocop" if configuration.dig(:generate, :rubocop)
+        configuration.dig(:generate, :rubocop) ? "rubocop" : ""
       end
 
       def scss_lint_task
-        "scss_lint" if configuration.dig(:generate, :scss_lint)
+        configuration.dig(:generate, :scss_lint) ? "scss_lint" : ""
       end
 
-      def default_tasks
-        [rspec_task, reek_task, rubocop_task, scss_lint_task].compact
+      def code_quality_tasks
+        [reek_task, rubocop_task, scss_lint_task].compress.join " "
       end
 
-      def configure_rakefile
-        return if default_tasks.empty?
-        cli.append_to_file "%gem_name%/Rakefile",
-                           %(\ntask default: %w[#{default_tasks.join(" ")}]\n)
+      def code_quality_task
+        code_quality_tasks.empty? ? "" : "code_quality"
+      end
+
+      def default_task
+        [code_quality_task, rspec_task].compress.join " "
+      end
+
+      def append_code_quality_task
+        return if code_quality_task.empty?
+        cli.append_to_file "%gem_name%/Rakefile", generate_code_quality_task
+      end
+
+      def append_default_task
+        return if default_task.empty?
+        cli.append_to_file "%gem_name%/Rakefile", generate_default_task
       end
     end
   end
