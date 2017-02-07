@@ -47,7 +47,7 @@ module Gemsmith
         end
 
         desc "Build #{gem_spec.package_file_name} package"
-        task build: [:clean, :doc, :validate] do
+        task build: %i[clean doc validate] do
           builder.build gem_spec
         end
 
