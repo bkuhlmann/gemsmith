@@ -34,7 +34,7 @@ module Gemsmith
     end
 
     def authenticator
-      selected = self.class.authenticators.detect { |auth| auth.url.include? url }
+      selected = self.class.authenticators.find { |auth| auth.url.include? url }
       selected ? selected : Authenticators::Basic
     end
 
