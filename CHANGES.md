@@ -1,3 +1,13 @@
+# v9.2.0 (2017-02-11)
+
+- Fixed Rubocop Style/CollectionMethods issues.
+- Fixed Rubocop Style/FirstMethodArgumentLineBreak issues.
+- Fixed Rubocop Style/SymbolArray issues.
+- Updated README semantic versioning order.
+- Updated RSpec configuration to output documentation when running.
+- Updated gemspec template to latest Thor+ and Runcom versions.
+- Updated to Code Quality 0.3.0.
+
 # v9.1.0 (2017-02-05)
 
 - Fixed Travis CI configuration to not update gems.
