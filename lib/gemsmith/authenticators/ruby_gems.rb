@@ -2,6 +2,7 @@
 
 require "net/http"
 require "uri"
+require "openssl"
 
 module Gemsmith
   module Authenticators
