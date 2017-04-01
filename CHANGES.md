@@ -1,3 +1,13 @@
+# v9.3.0 (2017-04-01)
+
+- Fixed OpenSSL requirement.
+- Fixed aggressive pragma auto-correction for gem generation.
+- Fixed gem credentials requirement order.
+- Fixed install of gem dependencies.
+- Updated Guardfile to always run RSpec with documentation format.
+- Updated to Ruby 2.4.1.
+- Refactored gem root to base generator.
+
 # v9.2.0 (2017-02-11)
 
 - Fixed Rubocop Style/CollectionMethods issues.
