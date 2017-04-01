@@ -5,7 +5,7 @@ module Gemsmith
     # Generates Bundler support.
     class Bundler < Base
       def run
-        Dir.chdir(cli.destination_root) do
+        Dir.chdir(gem_root) do
           cli.info "Installing gem dependencies..."
           `bundle install`
         end
