@@ -2,9 +2,9 @@
 
 require "gemsmith/identity"
 require "gemsmith/git"
-require "gemsmith/credentials"
 require "gemsmith/authenticators/basic"
 require "gemsmith/authenticators/ruby_gems"
+require "gemsmith/credentials"
 require "gemsmith/errors/base"
 require "gemsmith/errors/requirement_conversion"
 require "gemsmith/errors/requirement_operator"
