@@ -7,10 +7,12 @@ RSpec.describe Gemsmith::Generators::Pragma, :temp_dir do
   let(:configuration) { {gem: {name: "tester"}} }
   let(:comments) { ["# frozen_string_literal: true"] }
   let(:pragmater) { instance_spy Pragmater::Writer }
-  let(:source_file) { Pathname.new File.join(temp_dir, "test.rb") }
+  let(:gem_root) { File.join temp_dir, "tester" }
+  let(:source_file) { Pathname.new File.join(gem_root, "test.rb") }
   subject { described_class.new cli, configuration: configuration }
   before do
     allow(Pragmater::Writer).to receive(:new).with(source_file, comments).and_return(pragmater)
+    FileUtils.mkdir_p gem_root
     FileUtils.touch source_file
   end
 

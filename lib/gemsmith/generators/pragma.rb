@@ -32,8 +32,12 @@ module Gemsmith
 
       private
 
+      def gem_root
+        File.join cli.destination_root, configuration.dig(:gem, :name)
+      end
+
       def whitelisted_files
-        Pathname.glob(%(#{cli.destination_root}/**/*{#{whitelist.join ","}})).select(&:file?)
+        Pathname.glob(%(#{gem_root}/**/*{#{whitelist.join ","}})).select(&:file?)
       end
     end
   end
