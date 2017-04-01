@@ -15,8 +15,8 @@ module Gemsmith
       end
 
       def update_readme
-        file = File.join cli.destination_root, configuration.dig(:gem, :name), "README.md"
-        Tocer::Writer.new(file).write
+        readme = File.join gem_root, "README.md"
+        Tocer::Writer.new(readme).write
       end
 
       def run

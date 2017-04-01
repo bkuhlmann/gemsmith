@@ -36,6 +36,10 @@ module Gemsmith
       def gem_path
         configuration.dig :gem, :path
       end
+
+      def gem_root
+        File.join cli.destination_root, gem_name
+      end
     end
   end
 end

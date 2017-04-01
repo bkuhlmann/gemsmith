@@ -9,7 +9,7 @@ module Gemsmith
       end
 
       def create_repository
-        Dir.chdir(gem_dir) do
+        Dir.chdir(gem_root) do
           `git init`
           `git add .`
           `git commit --all --no-verify --message "Added Gemsmith files."`
@@ -19,12 +19,6 @@ module Gemsmith
       def run
         create_ignore_file
         create_repository
-      end
-
-      private
-
-      def gem_dir
-        File.join cli.destination_root, configuration.dig(:gem, :name)
       end
     end
   end
