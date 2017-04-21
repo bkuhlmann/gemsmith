@@ -28,7 +28,7 @@ module Gemsmith
 
     def initialize key: self.class.default_key,
                    url: self.class.default_url,
-                   shell: Bundler::UI::Shell.new
+                   shell: Thor::Shell::Basic.new
       @key = key
       @url = url
       @shell = shell
@@ -53,7 +53,9 @@ module Gemsmith
       return if valid?
 
       login = shell.ask %(What is your "#{url}" login?)
-      password = shell.ask %(What is your "#{url}" password?)
+      password = shell.ask %(What is your "#{url}" password?), echo: false
+      shell.say
+
       new_credentials = credentials.merge key => authenticator.new(login, password).authorization
 
       FileUtils.mkdir_p File.dirname self.class.file_path

@@ -126,13 +126,14 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
     let(:password) { "secret" }
     let(:authorization) { "authorized" }
     let(:authenticator_instance) { instance_spy authenticator_class, authorization: authorization }
-    let(:shell) { instance_spy Bundler::UI::Shell }
+    let(:shell) { instance_spy Thor::Shell::Basic }
     subject { described_class.new shell: shell }
     before do
       allow(authenticator_class).to receive(:new).with(login, password)
         .and_return(authenticator_instance)
       allow(shell).to receive(:ask).with(%(What is your "#{url}" login?)).and_return(login)
-      allow(shell).to receive(:ask).with(%(What is your "#{url}" password?)).and_return(password)
+      allow(shell).to receive(:ask).with(%(What is your "#{url}" password?), echo: false)
+        .and_return(password)
     end
 
     context "with RubyGems authentication" do
