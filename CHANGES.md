@@ -1,3 +1,8 @@
+# v9.4.0 (2017-04-23)
+
+- Fixed Open SSL namespace issues.
+- Fixed issue with gem credentials password prompt not being masked.
+
 # v9.3.0 (2017-04-01)
 
 - Fixed OpenSSL requirement.
