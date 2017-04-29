@@ -1,6 +1,6 @@
 prepare:
   fetch:
-    - https://raw.githubusercontent.com/bkuhlmann/code_quality/master/configurations/.rubocop.yml
+    - https://raw.githubusercontent.com/bkuhlmann/code_quality/master/configurations/rubocop/ruby.yml
 engines:
   shellcheck:
     enabled: true
