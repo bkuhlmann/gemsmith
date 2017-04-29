@@ -74,10 +74,12 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
     it "generates Rails engine" do
       command = "rails plugin new --skip tester"
       options = %w[
-        --skip-bundle
-        --skip-test
-        --skip-keeps
         --skip-git
+        --skip-bundle
+        --skip-keeps
+        --skip-turbolinks
+        --skip-spring
+        --skip-test
         --mountable
         --dummy-path=spec/dummy
       ]

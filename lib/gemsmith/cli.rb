@@ -52,7 +52,7 @@ module Gemsmith
         },
         versions: {
           ruby: RUBY_VERSION,
-          rails: "5.0"
+          rails: "5.1"
         },
         generate: {
           cli: false,

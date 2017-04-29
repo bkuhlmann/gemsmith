@@ -158,7 +158,7 @@ RSpec.describe Gemsmith::CLI do
               ".github/ISSUE_TEMPLATE.md",
               ".github/PULL_REQUEST_TEMPLATE.md",
               "bin/setup",
-              "gemfiles/rails-5.0.x.gemfile",
+              "gemfiles/rails-5.1.x.gemfile",
               "app/controllers/tester/application_controller.rb",
               "app/mailers/tester/application_mailer.rb",
               "app/models/tester/application_record.rb",
@@ -280,7 +280,7 @@ RSpec.describe Gemsmith::CLI do
         },
         versions: {
           ruby: "2.0.0",
-          rails: "5.0"
+          rails: "5.1"
         },
         generate: {
           cli: false,
