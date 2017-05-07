@@ -1,3 +1,10 @@
+# v9.5.0 (2017-05-07)
+
+- Added Rails 5.1.0 support.
+- Updated Code Climate configuration.
+- Updated Rubocop configuration.
+- Updated gem dependencies.
+
 # v9.4.0 (2017-04-23)
 
 - Fixed Open SSL namespace issues.
