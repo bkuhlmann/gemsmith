@@ -307,7 +307,8 @@ RSpec.describe Gemsmith::CLI do
     before do
       allow(Gemsmith::Git).to receive(:config_value).with("github.user").and_return("tester")
       allow(Gemsmith::Git).to receive(:config_value).with("user.name").and_return("Test")
-      allow(Gemsmith::Git).to receive(:config_value).with("user.email")
+      allow(Gemsmith::Git).to receive(:config_value)
+        .with("user.email")
         .and_return("test@example.com")
     end
 
