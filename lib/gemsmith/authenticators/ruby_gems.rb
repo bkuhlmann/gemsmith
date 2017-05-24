@@ -16,7 +16,7 @@ module Gemsmith
         @login = login
         @password = password
         @uri = URI.parse self.class.url
-        configure_client
+        @client = configure_client
       end
 
       def authorization
@@ -31,9 +31,10 @@ module Gemsmith
       attr_reader :login, :password, :uri, :client
 
       def configure_client
-        @client = Net::HTTP.new uri.host, uri.port
-        @client.use_ssl = true
-        @client.verify_mode = OpenSSL::SSL::VERIFY_PEER
+        Net::HTTP.new(uri.host, uri.port).tap do |client|
+          client.use_ssl = true
+          client.verify_mode = OpenSSL::SSL::VERIFY_PEER
+        end
       end
     end
   end
