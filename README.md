@@ -17,6 +17,9 @@ A command line interface for smithing new Ruby gems.
 - [Screencasts](#screencasts)
 - [Requirements](#requirements)
 - [Setup](#setup)
+  - [Install](#install)
+  - [Configuration](#configuration)
+  - [Existing Gems](#existing-gems)
 - [Usage](#usage)
   - [Command Line Interface (CLI)](#command-line-interface-cli)
   - [Rake](#rake)
@@ -85,6 +88,8 @@ A command line interface for smithing new Ruby gems.
 
 # Setup
 
+## Install
+
 For a secure install, type the following from the command line (recommended):
 
     gem cert --add <(curl --location --silent https://www.alchemists.io/gem-public.pem)
@@ -97,6 +102,8 @@ gem.
 For an insecure install, type the following (not recommended):
 
     gem install gemsmith
+
+## Configuration
 
 You can configure common settings for future gem builds by creating the following file:
 
@@ -144,6 +151,29 @@ The following defaults are used when no options are configured:
 While Gemsmith is fully customizable, please keep in mind that these are *global* settings and, once
 set, will affect all future gem creations. Further customization is also provided via the CLI for a
 customizable experience per gem if necessary.
+
+## Existing Gems
+
+If you have gems that were not originally crafted by Gemsmith, you can add Gemsmith support to them
+by modifying the following files:
+
+Add the following to your gem's `*.gemspec` file:
+
+    spec.add_development_dependency "gemsmith"
+
+Replace or add a modified version of the following to your gem's `Rakefile`:
+
+    # frozen_string_literal: true
+
+    begin
+      require "gemsmith/rake/setup"
+    rescue LoadError => error
+      puts error.message
+    end
+
+*NOTE: Ensure `require "bundler/gem_tasks"` is removed as Gemsmith replaces Bundler functionality.*
+
+With those changes, you can leverage the benefits of Gemsmith within your existing gem.
 
 # Usage
 
