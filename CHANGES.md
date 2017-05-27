@@ -1,3 +1,12 @@
+# v9.6.0 (2017-05-27)
+
+- Fixed Reek InstanceVariableAssumption issues.
+- Fixed alignment with spec return statements.
+- Added existing gem setup documentation.
+- Updated to Bundler 1.15.
+- Updated to Code Quality 1.1.0.
+- Updated to Rubocop 0.49.0.
+
 # v9.5.0 (2017-05-07)
 
 - Added Rails 5.1.0 support.

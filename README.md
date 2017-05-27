@@ -216,11 +216,16 @@ For more gem generation options, type: `gemsmith --help --generate`
 Once a gem skeleton has been created, the following tasks are available (i.e. `bundle exec rake
 -T`):
 
-    rake build                 # Build gemsmith-8.0.0.gem package
+    rake build                 # Build gemsmith-9.6.0.gem package
     rake clean                 # Clean gem artifacts
+    rake code_quality          # Run code quality checks
     rake doc                   # Update README (table of contents)
-    rake install               # Install gemsmith-8.0.0.gem package
-    rake publish               # Build, tag as v8.0.0 (unsigned), and push gemsmith-8.0.0.gem to RubyGems
+    rake install               # Install gemsmith-9.6.0.gem package
+    rake publish               # Build, tag as v9.6.0 (signed), and push gemsmith-9.6.0.gem to RubyGems
+    rake reek                  # Check for code smells
+    rake rubocop               # Run RuboCop
+    rake rubocop:auto_correct  # Auto-correct RuboCop offenses
+    rake spec                  # Run RSpec code examples
 
 When building/testing your gem locally, a typical workflow is:
 
