@@ -1,0 +1,11 @@
+dependencies:
+  pre:
+    - gem update --system
+    - gem update bundler
+test:
+  override:
+    - bundle exec rake
+<%- if config.dig(:generate, :code_climate) -%>
+  post:
+    - bundle exec codeclimate-test-reporter
+<%- end -%>

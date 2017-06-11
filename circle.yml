@@ -1,0 +1,13 @@
+machine:
+  environment:
+    EDITOR: vim
+dependencies:
+  pre:
+    - gem update --system
+    - gem update bundler
+    - gem install rails
+test:
+  override:
+    - bundle exec rake
+  post:
+    - bundle exec codeclimate-test-reporter

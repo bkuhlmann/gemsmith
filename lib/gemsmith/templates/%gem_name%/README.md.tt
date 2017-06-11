@@ -8,6 +8,9 @@
 <%- if config.dig(:generate, :gemnasium) -%>
 [![Gemnasium Status](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>.svg)](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
 <%- end -%>
+<%- if config.dig(:generate, :circle_ci) -%>
+[![Circle CI Status](https://circleci.com/gh/<%= config.fetch :github_user %>/<%= config.dig :gem, :name %>.svg?style=svg)](https://circleci.com/gh/<%= config.fetch :github_user %>/<%= config.dig :gem, :name %>)
+<%- end -%>
 <%- if config.dig(:generate, :travis) -%>
 [![Travis CI Status](https://secure.travis-ci.org/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>.svg)](https://travis-ci.org/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
 <%- end -%>

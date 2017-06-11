@@ -38,6 +38,7 @@ RSpec.describe Gemsmith::CLI do
           "--no-git-hub",
           "--no-code-climate",
           "--no-gemnasium",
+          "--no-circle-ci",
           "--no-travis",
           "--no-patreon"
         ]
@@ -123,6 +124,7 @@ RSpec.describe Gemsmith::CLI do
           "--git-hub",
           "--code-climate",
           "--gemnasium",
+          "--circle-ci",
           "--travis",
           "--patreon"
         ]
@@ -174,6 +176,7 @@ RSpec.describe Gemsmith::CLI do
               "spec/spec_helper.rb",
               "CHANGES.md",
               "CODE_OF_CONDUCT.md",
+              "circle.yml",
               "CONTRIBUTING.md",
               "Gemfile",
               "Guardfile",
@@ -295,6 +298,7 @@ RSpec.describe Gemsmith::CLI do
           git_hub: false,
           code_climate: false,
           gemnasium: false,
+          circle_ci: false,
           travis: false,
           patreon: false
         },
@@ -337,6 +341,7 @@ RSpec.describe Gemsmith::CLI do
         Gemsmith::Generators::SCSSLint,
         Gemsmith::Generators::CodeClimate,
         Gemsmith::Generators::Guard,
+        Gemsmith::Generators::CircleCI,
         Gemsmith::Generators::Travis,
         Gemsmith::Generators::Bundler,
         Gemsmith::Generators::Git,
