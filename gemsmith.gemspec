@@ -39,6 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.6"
   spec.add_development_dependency "climate_control", "~> 0.1"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
+  spec.add_development_dependency "git-cop", "~> 1.0"
   spec.add_development_dependency "reek", "~> 4.6"
   spec.add_development_dependency "rubocop", "~> 0.49"
   spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0"

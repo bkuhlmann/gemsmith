@@ -30,6 +30,10 @@ module Gemsmith
         configuration.dig(:generate, :rspec) ? "spec" : ""
       end
 
+      def git_cop_task
+        configuration.dig(:generate, :git_cop) ? "git_cop" : ""
+      end
+
       def reek_task
         configuration.dig(:generate, :reek) ? "reek" : ""
       end
@@ -43,7 +47,7 @@ module Gemsmith
       end
 
       def code_quality_tasks
-        [reek_task, rubocop_task, scss_lint_task].compress.join " "
+        [git_cop_task, reek_task, rubocop_task, scss_lint_task].compress.join " "
       end
 
       def code_quality_task

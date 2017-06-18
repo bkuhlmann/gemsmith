@@ -60,6 +60,7 @@ module Gemsmith
           security: true,
           pry: true,
           guard: true,
+          git_cop: true,
           rspec: true,
           reek: true,
           rubocop: true,
@@ -85,6 +86,7 @@ module Gemsmith
         Generators::Ruby,
         Generators::Rails,
         Generators::Rspec,
+        Generators::GitCop,
         Generators::Reek,
         Generators::Rubocop,
         Generators::SCSSLint,
@@ -126,6 +128,10 @@ module Gemsmith
                   desc: "Add Guard support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :guard)
+    method_option :git_cop,
+                  desc: "Add Git Cop support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :git_cop)
     method_option :rspec,
                   desc: "Add RSpec support.",
                   type: :boolean,
