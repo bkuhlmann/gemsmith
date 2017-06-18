@@ -44,7 +44,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "git-cop", "~> 1.0"
   <%- end -%>
   <%- if config.dig(:generate, :reek) -%>
-  spec.add_development_dependency "reek", "~> 4.6"
+  spec.add_development_dependency "reek", "~> 4.7"
   <%- end -%>
   <%- if config.dig(:generate, :rubocop) -%>
   spec.add_development_dependency "rubocop", "~> 0.49"
