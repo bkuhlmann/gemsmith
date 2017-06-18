@@ -2,7 +2,6 @@
 
 require "thor"
 require "thor/actions"
-require "thor_plus/actions"
 require "refinements/strings"
 require "refinements/hashes"
 require "runcom"
@@ -14,7 +13,6 @@ module Gemsmith
   # rubocop:disable Metrics/ClassLength
   class CLI < Thor
     include Thor::Actions
-    include ThorPlus::Actions
     include Helpers::CLI
     include Helpers::Template
 
@@ -172,12 +170,12 @@ module Gemsmith
     def generate name
       print_cli_and_rails_engine_option_error && return if options.cli? && options.rails?
 
-      info "Generating gem..."
+      say_status :info, "Generating gem...", :green
 
       setup_configuration name: name, options: options.to_h
       self.class.generators.each { |generator| generator.run self, configuration: configuration }
 
-      info "Gem generation finished."
+      say_status :info, "Gem generation finished.", :green
     end
 
     desc "-o, [--open=GEM]", "Open a gem in default editor."
@@ -189,7 +187,7 @@ module Gemsmith
     desc "-r, [--read=GEM]", "Open a gem in default browser."
     map %w[-r --read] => :read
     def read name
-      error "Gem home page is not defined." unless process_gem(name, "visit")
+      say_status :error, "Gem home page is not defined.", :red unless process_gem(name, "visit")
     end
 
     desc "-c, [--config]", "Manage gem configuration."
@@ -205,7 +203,7 @@ module Gemsmith
     def config
       path = self.class.configuration.path
 
-      if options.edit? then `#{editor} #{path}`
+      if options.edit? then `#{ENV["EDITOR"]} #{path}`
       elsif options.info?
         path ? say(path) : say("Configuration doesn't exist.")
       else help(:config)
@@ -243,8 +241,10 @@ module Gemsmith
     end
 
     def print_cli_and_rails_engine_option_error
-      error "Generating a gem with CLI and Rails Engine functionality is not allowed. " \
-            "Build separate gems for improved separation of concerns and design."
+      say_status :error,
+                 "Generating a gem with CLI and Rails Engine functionality is not allowed. " \
+                 "Build separate gems for improved separation of concerns and design.",
+                 :red
     end
   end
 end

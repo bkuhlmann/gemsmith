@@ -16,7 +16,11 @@ RSpec.describe Gemsmith::Generators::Bundler, :temp_dir do
     before { subject.run }
 
     it "prints gem dependencies are being installed" do
-      expect(cli).to have_received(:info).with("Installing gem dependencies...")
+      expect(cli).to have_received(:say_status).with(
+        :info,
+        "Installing gem dependencies...",
+        :green
+      )
     end
 
     it "creates Gemfile.lock" do

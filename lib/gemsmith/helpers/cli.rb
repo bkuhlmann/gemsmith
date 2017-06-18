@@ -25,7 +25,7 @@ module Gemsmith
         if (1..gems.size).cover?(answer)
           Gem::Specification.find name, gems[answer - 1].version.version
         else
-          error "Invalid option: #{answer}"
+          say_status :error, "Invalid option: #{answer}", :red
           nil
         end
       end
@@ -33,8 +33,8 @@ module Gemsmith
       def inspect_gem specification, method
         return unless specification
         Gem::Inspector.new.public_send method, Gem::Specification.new(specification.spec_file)
-      rescue Versionaire::Errors::Conversion => exception
-        error(exception.message)
+      rescue Versionaire::Errors::Conversion => error
+        say_status :error, error.message, :red
       end
 
       def process_gem name, method
@@ -47,7 +47,7 @@ module Gemsmith
           print_gems specs
           inspect_gem pick_gem(specs, name), method
         else
-          error("Unable to find gem: #{name}.") and ""
+          say_status(:error, "Unable to find gem: #{name}.", :red) and ""
         end
       end
     end
