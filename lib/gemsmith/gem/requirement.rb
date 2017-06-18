@@ -43,10 +43,11 @@ module Gemsmith
       private
 
       def validate!
-        return true if self.class.operators.include?(operator)
+        operators = self.class.operators
+        return true if operators.include?(operator)
 
         fail Errors::RequirementOperator,
-             %(Invalid gem requirement operator. Use: #{self.class.operators.join ", "}.)
+             %(Invalid gem requirement operator. Use: #{operators.join ", "}.)
       end
     end
   end

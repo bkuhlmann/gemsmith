@@ -32,11 +32,10 @@ module Gemsmith
 
       # rubocop:disable Metrics/AbcSize
       def push
-        creds = credentials.new key: gem_spec.allowed_push_key.to_sym,
-                                url: gem_spec.allowed_push_host
+        creds = credentials.new key: gem_spec.allowed_push_key.to_sym, url: gem_host
         creds.create
 
-        options = %(--key "#{translate_key creds.key}" --host "#{gem_spec.allowed_push_host}")
+        options = %(--key "#{translate_key creds.key}" --host "#{gem_host}")
         status = kernel.system %(gem push "pkg/#{gem_spec.package_file_name}" #{options})
         process_push status
       end
@@ -56,16 +55,21 @@ module Gemsmith
 
       attr_reader :gem_spec, :gem_config, :credentials, :publisher, :shell, :kernel
 
+      def gem_host
+        gem_spec.allowed_push_host
+      end
+
       def translate_key key
         key == credentials.default_key ? :rubygems : key
       end
 
       def process_push status
+        package = gem_spec.package_file_name
+
         if status
-          shell.confirm "Pushed #{gem_spec.package_file_name} to #{gem_spec.allowed_push_host}."
+          shell.confirm "Pushed #{package} to #{gem_host}."
         else
-          shell.error "Failed pushing #{gem_spec.package_file_name} to " \
-                      "#{gem_spec.allowed_push_host}. " \
+          shell.error "Failed pushing #{package} to #{gem_host}. " \
                       "Check gemspec and gem credential settings."
         end
 

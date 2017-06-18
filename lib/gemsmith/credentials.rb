@@ -58,9 +58,10 @@ module Gemsmith
 
       new_credentials = credentials.merge key => authenticator.new(login, password).authorization
 
-      FileUtils.mkdir_p File.dirname self.class.file_path
-      File.open(self.class.file_path, "w") { |file| file << YAML.dump(new_credentials) }
-      FileUtils.chmod(0o600, self.class.file_path)
+      file_path = self.class.file_path
+      FileUtils.mkdir_p File.dirname file_path
+      File.open(file_path, "w") { |file| file << YAML.dump(new_credentials) }
+      FileUtils.chmod(0o600, file_path)
     end
 
     private

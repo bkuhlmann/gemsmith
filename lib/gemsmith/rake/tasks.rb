@@ -46,18 +46,18 @@ module Gemsmith
           builder.validate
         end
 
-        desc "Build #{gem_spec.package_file_name} package"
+        desc "Build #{gem_package} package"
         task build: %i[clean doc validate] do
           builder.build gem_spec
         end
 
-        desc "Install #{gem_spec.package_file_name} package"
+        desc "Install #{gem_package} package"
         task install: :build do
           builder.install gem_spec
         end
 
         desc "Build, tag as #{gem_spec.version_label} (#{signed_label}), " \
-             "and push #{gem_spec.package_file_name} to RubyGems"
+             "and push #{gem_package} to RubyGems"
         task publish: :build do
           publisher.publish
         end
@@ -66,6 +66,10 @@ module Gemsmith
       private
 
       attr_reader :gem_spec, :builder, :publisher
+
+      def gem_package
+        gem_spec.package_file_name
+      end
 
       def signed_label
         publisher.signed? ? "signed" : "unsigned"
