@@ -5,30 +5,28 @@ require "spec_helper"
 RSpec.describe <%= config.dig(:gem, :class) %>::CLI do
   let(:options) { [] }
   let(:command_line) { Array(command).concat options }
-  let :cli do
-    lambda do
-      load "<%= config.dig(:gem, :path) %>/cli.rb" # Ensures clean Thor `.method_option` evaluation per spec.
-      described_class.start command_line
-    end
-  end
+  let(:cli) { described_class.start command_line }
 
   shared_examples_for "a config command", :temp_dir do
     context "with no options" do
       it "prints help text" do
-        expect(&cli).to output(/Manage gem configuration./).to_stdout
+        result = -> { cli }
+        expect(&result).to output(/Manage gem configuration./).to_stdout
       end
     end
   end
 
   shared_examples_for "a version command" do
     it "prints version" do
-      expect(&cli).to output(/<%= config.dig(:gem, :class) %>\s#{<%= config.dig(:gem, :class) %>::Identity.version}\n/).to_stdout
+      result = -> { cli }
+      expect(&result).to output(/<%= config.dig(:gem, :class) %>\s#{<%= config.dig(:gem, :class) %>::Identity.version}\n/).to_stdout
     end
   end
 
   shared_examples_for "a help command" do
     it "prints usage" do
-      expect(&cli).to output(/<%= config.dig(:gem, :class) %>\s#{<%= config.dig(:gem, :class) %>::Identity.version}\scommands:\n/).to_stdout
+      result = -> { cli }
+      expect(&result).to output(/<%= config.dig(:gem, :class) %>\s#{<%= config.dig(:gem, :class) %>::Identity.version}\scommands:\n/).to_stdout
     end
   end
 

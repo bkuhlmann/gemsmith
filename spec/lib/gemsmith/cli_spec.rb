@@ -5,12 +5,7 @@ require "spec_helper"
 RSpec.describe Gemsmith::CLI do
   let(:options) { [] }
   let(:command_line) { Array(command).concat options }
-  let :cli do
-    lambda do
-      load "gemsmith/cli.rb" # Ensures clean Thor `.method_option` evaluation per spec.
-      described_class.start command_line
-    end
-  end
+  let(:cli) { described_class.start command_line }
 
   shared_examples_for "a generate command" do
     let(:gem_name) { "tester" }
@@ -47,7 +42,7 @@ RSpec.describe Gemsmith::CLI do
       it "generates basic gem" do
         ClimateControl.modify HOME: temp_dir do
           Dir.chdir temp_dir do
-            cli.call
+            cli
 
             expect(files).to contain_exactly(
               ".gitignore",
@@ -80,7 +75,7 @@ RSpec.describe Gemsmith::CLI do
       it "generates CLI gem" do
         ClimateControl.modify HOME: temp_dir do
           Dir.chdir temp_dir do
-            cli.call
+            cli
 
             expect(files).to contain_exactly(
               ".gitignore",
@@ -149,7 +144,7 @@ RSpec.describe Gemsmith::CLI do
       it "generates full gem" do
         ClimateControl.modify HOME: temp_dir do
           Dir.chdir temp_dir do
-            cli.call
+            cli
 
             expect(files).to contain_exactly(
               ".codeclimate.yml",
@@ -200,8 +195,7 @@ RSpec.describe Gemsmith::CLI do
       it "generates basic gem" do
         ClimateControl.modify HOME: temp_dir do
           Dir.chdir temp_dir do
-            cli.call
-
+            cli
             expect(files).to be_empty
           end
         end
@@ -210,7 +204,7 @@ RSpec.describe Gemsmith::CLI do
       it "prints error message" do
         ClimateControl.modify HOME: temp_dir do
           Dir.chdir temp_dir do
-            result = -> { cli.call }
+            result = -> { cli }
             expect(&result).to output(/.+is\snot\sallowed.+/).to_stdout
           end
         end
@@ -221,20 +215,23 @@ RSpec.describe Gemsmith::CLI do
   shared_examples_for "a config command", :temp_dir do
     context "with no options" do
       it "prints help text" do
-        expect(&cli).to output(/Manage gem configuration./).to_stdout
+        result = -> { cli }
+        expect(&result).to output(/Manage gem configuration./).to_stdout
       end
     end
   end
 
   shared_examples_for "a version command" do
     it "prints version" do
-      expect(&cli).to output(/Gemsmith\s#{Gemsmith::Identity.version}\n/).to_stdout
+      result = -> { cli }
+      expect(&result).to output(/Gemsmith\s#{Gemsmith::Identity.version}\n/).to_stdout
     end
   end
 
   shared_examples_for "a help command" do
     it "prints usage" do
-      expect(&cli).to output(/Gemsmith\s#{Gemsmith::Identity.version}\scommands:\n/).to_stdout
+      result = -> { cli }
+      expect(&result).to output(/Gemsmith\s#{Gemsmith::Identity.version}\scommands:\n/).to_stdout
     end
   end
 
