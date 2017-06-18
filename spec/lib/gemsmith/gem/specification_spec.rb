@@ -137,4 +137,10 @@ RSpec.describe Gemsmith::Gem::Specification do
       expect(subject.package_file_name).to eq("tester-0.1.0.gem")
     end
   end
+
+  describe "#package_path" do
+    it "answers relative package path" do
+      expect(subject.package_path).to eq("pkg/tester-0.1.0.gem")
+    end
+  end
 end

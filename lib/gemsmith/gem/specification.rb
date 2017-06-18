@@ -61,6 +61,10 @@ module Gemsmith
         "#{name}-#{version_number}.gem"
       end
 
+      def package_path
+        File.join "pkg", package_file_name
+      end
+
       private
 
       attr_reader :file_path, :spec, :version
