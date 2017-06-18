@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "pragmater"
 require "pathname"
+require "pragmater"
 
 module Gemsmith
   module Generators
@@ -14,26 +14,29 @@ module Gemsmith
       # rubocop:disable Metrics/MethodLength
       def whitelist
         %W[
-          Gemfile
-          Guardfile
-          Rakefile
-          config.ru
-          bin/#{configuration.dig :gem, :name}
-          bin/rails
-          .gemspec
-          .rake
-          .rb
+          **/*Gemfile
+          **/*Guardfile
+          **/*Rakefile
+          **/*config.ru
+          **/*bin/#{configuration.dig :gem, :name}
+          **/*bin/bundle
+          **/*bin/rails
+          **/*bin/rake
+          **/*bin/setup
+          **/*bin/update
+          **/*bin/yarn
+          **/*.gemspec
+          **/*.rake
+          **/*.rb
         ]
       end
 
       def run
-        whitelisted_files.each { |file| Pragmater::Writer.new(file, self.class.comments).add }
-      end
-
-      private
-
-      def whitelisted_files
-        Pathname.glob(%(#{gem_root}/**/*{#{whitelist.join ","}})).select(&:file?)
+        Pragmater::Runner.new(
+          gem_root,
+          comments: self.class.comments,
+          whitelist: whitelist
+        ).run action: :add
       end
     end
   end
