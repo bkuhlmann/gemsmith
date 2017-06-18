@@ -56,13 +56,14 @@ A command line interface for smithing new Ruby gems.
 - Supports [Pry](http://pryrepl.org).
 - Supports [Guard](https://github.com/guard/guard).
 - Supports [RSpec](http://rspec.info).
+- Supports [Git Cop](https://github.com/bkuhlmann/git-cop).
 - Supports [Reek](https://github.com/troessner/reek).
 - Supports [Rubocop](https://github.com/bbatsov/rubocop).
 - Supports [SCSS Lint](https://github.com/brigade/scss-lint).
 - Supports [GitHub](https://github.com).
 - Supports [Code Climate](https://codeclimate.com).
 - Supports [Gemnasium](https://gemnasium.com).
-- Supports [Travis CI](https://travis-ci.org).
+- Supports [Circle CI](https://circleci.com).
 - Supports [Patreon](https://www.patreon.com).
 - Supports common settings and a structured layout for building new gems.
 - Supports publishing to public or private gem servers.
@@ -77,7 +78,7 @@ A command line interface for smithing new Ruby gems.
 
 ## Screencasts
 
-[![asciicast](https://asciinema.org/a/92550.png)](https://asciinema.org/a/92550)
+[![asciicast](https://asciinema.org/a/125222.png)](https://asciinema.org/a/125222)
 
 ## Requirements
 
@@ -117,6 +118,7 @@ The default configuration is as follows:
     :year: <current year>
     :github_user: "<Git config GitHub user>",
     :gem:
+      :label: "Undefined"
       :name: "undefined"
       :path: "undefined"
       :class: "Undefined"
@@ -132,13 +134,14 @@ The default configuration is as follows:
       :url: ""
     :versions:
       :ruby: "<current Ruby version>"
-      :rails: "5.0"
+      :rails: "5.1"
     :generate:
       :cli: false
       :rails: false
       :security: true
       :pry: true
       :guard: true
+      :git_cop: true
       :rspec: true
       :reek: true
       :rubocop: true
@@ -146,6 +149,7 @@ The default configuration is as follows:
       :git_hub: false
       :code_climate: false
       :gemnasium: false
+      :circle_ci: false
       :patreon: false
     :publish:
       :sign: false
@@ -199,6 +203,8 @@ For more gem generation options, type: `gemsmith --help --generate`
                                            # Default: true
     [--guard], [--no-guard]                # Add Guard support.
                                            # Default: true
+    [--git-cop], [--no-git-cop]            # Add Git Cop support.
+                                           # Default: true
     [--rspec], [--no-rspec]                # Add RSpec support.
                                            # Default: true
     [--reek], [--no-reek]                  # Add Reek support.
@@ -209,7 +215,7 @@ For more gem generation options, type: `gemsmith --help --generate`
     [--git-hub], [--no-git-hub]            # Add GitHub support.
     [--code-climate], [--no-code-climate]  # Add Code Climate support.
     [--gemnasium], [--no-gemnasium]        # Add Gemnasium support.
-    [--travis], [--no-travis]              # Add Travis CI support.
+    [--circle-ci], [--no-circle-ci]        # Add Circle CI support.
     [--patreon], [--no-patreon]            # Add Patreon support.
 
 ### Rake
@@ -217,12 +223,13 @@ For more gem generation options, type: `gemsmith --help --generate`
 Once a gem skeleton has been created, the following tasks are available (i.e. `bundle exec rake
 -T`):
 
-    rake build                 # Build gemsmith-9.6.0.gem package
+    rake build                 # Build example-0.1.0.gem package
     rake clean                 # Clean gem artifacts
     rake code_quality          # Run code quality checks
     rake doc                   # Update README (table of contents)
-    rake install               # Install gemsmith-9.6.0.gem package
-    rake publish               # Build, tag as v9.6.0 (signed), and push gemsmith-9.6.0.gem to RubyGems
+    rake git_cop               # Run Git Cop
+    rake install               # Install example-0.1.0.gem package
+    rake publish               # Build, tag as v0.1.0 (unsigned), and push example-0.1.0.gem to RubyGems
     rake reek                  # Check for code smells
     rake rubocop               # Run RuboCop
     rake rubocop:auto_correct  # Auto-correct RuboCop offenses

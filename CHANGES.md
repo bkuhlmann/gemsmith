@@ -1,3 +1,23 @@
+# v10.0.0 (2017-06-18)
+
+- Fixed Reek DuplicateMethodCall issues.
+- Fixed Reek UtilityFunction issues.
+- Fixed gem label generation.
+- Fixed version/help command specs.
+- Added Circle CI support.
+- Added Git Cop support.
+- Added gemspec package path.
+- Updated README headers.
+- Updated gem dependencies.
+- Updated to Runcom 1.1.0.
+- Removed Climate Control from CLI specs.
+- Removed Thor+ support.
+- Removed Travis CI support.
+- Removed local Travis CI configuration.
+- Refactored CLI spec setup.
+- Refactored Reek issues.
+- Refactored pragma generator to use runner.
+
 # v9.6.0 (2017-05-27)
 
 - Fixed Reek InstanceVariableAssumption issues.
