@@ -1,5 +1,5 @@
 Description:
-    Upgrades previously installed <%= config.dig(:gem, :class) %> resources.
+    Upgrades previously installed <%= config.dig(:gem, :label) %> resources.
 
 Example:
     rails generate <%= config.dig(:gem, :name) %>:upgrade

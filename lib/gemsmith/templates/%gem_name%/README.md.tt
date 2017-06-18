@@ -1,4 +1,4 @@
-# <%= config.dig(:gem, :class) %>
+# <%= config.dig(:gem, :label) %>
 
 [![Gem Version](https://badge.fury.io/rb/<%= config.dig(:gem, :name) %>.svg)](http://badge.fury.io/rb/<%= config.dig(:gem, :name) %>)
 <%- if config.dig(:generate, :code_climate) -%>

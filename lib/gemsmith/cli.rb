@@ -32,6 +32,7 @@ module Gemsmith
         year: Time.now.year,
         github_user: Git.github_user,
         gem: {
+          label: "Undefined",
           name: "undefined",
           path: "undefined",
           class: "Undefined",
@@ -229,6 +230,7 @@ module Gemsmith
     def setup_configuration name:, options: {}
       @configuration = self.class.configuration.to_h.merge(
         gem: {
+          label: name.titleize,
           name: name,
           path: name.snakecase,
           class: name.camelcase,

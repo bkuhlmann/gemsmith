@@ -6,7 +6,7 @@
     end
 
     def self.label
-      "<%= config.dig(:gem, :class) %>"
+      "<%= config.dig(:gem, :label) %>"
     end
 
     def self.version

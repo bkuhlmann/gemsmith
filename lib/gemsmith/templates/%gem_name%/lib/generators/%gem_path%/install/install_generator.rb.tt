@@ -3,7 +3,7 @@
   class InstallGenerator < Rails::Generators::Base
     source_root File.join(File.dirname(__FILE__), "..", "templates")
 
-    desc "Installs additional <%= config.dig(:gem, :class) %> resources."
+    desc "Installs additional <%= config.dig(:gem, :label) %> resources."
     def install
     end
   end

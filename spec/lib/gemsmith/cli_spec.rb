@@ -247,6 +247,7 @@ RSpec.describe Gemsmith::CLI do
         year: Time.now.year,
         github_user: "tester",
         gem: {
+          label: "Undefined",
           name: "undefined",
           path: "undefined",
           class: "Undefined",
