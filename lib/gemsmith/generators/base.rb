@@ -4,6 +4,8 @@ module Gemsmith
   module Generators
     # Abstract class from which all generators inherit from.
     class Base
+      LIB_ROOT = File.join("%gem_name%", "lib").freeze
+
       def initialize cli, configuration: {}
         @cli = cli
         @configuration = configuration
@@ -21,12 +23,8 @@ module Gemsmith
 
       attr_reader :cli, :configuration
 
-      def lib_root
-        File.join "%gem_name%", "lib"
-      end
-
       def lib_gem_root
-        File.join lib_root, "%gem_path%"
+        File.join LIB_ROOT, "%gem_path%"
       end
 
       def gem_name

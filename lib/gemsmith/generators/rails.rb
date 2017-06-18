@@ -15,7 +15,7 @@ module Gemsmith
       end
 
       def create_engine
-        cli.template "#{lib_root}/%gem_path%/engine.rb.tt", configuration
+        cli.template "#{LIB_ROOT}/%gem_path%/engine.rb.tt", configuration
         cli.run "rails plugin new --skip #{configuration.dig :gem, :name} #{engine_options}"
       end
 
@@ -64,7 +64,7 @@ module Gemsmith
       end
 
       def generator_root
-        "#{lib_root}/generators/%gem_path%"
+        "#{LIB_ROOT}/generators/%gem_path%"
       end
 
       def indentation

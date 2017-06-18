@@ -8,6 +8,10 @@ module Gemsmith
     class ModuleFormatter
       using Refinements::Strings
 
+      def self.indent length = 0
+        "  " * length
+      end
+
       def initialize namespace
         @namespace = namespace
         @modules = namespace.split "::"
@@ -24,27 +28,21 @@ module Gemsmith
 
       def prefix
         modules.each.with_index.reduce "" do |result, (module_name, index)|
-          result + "#{indentation index}module #{module_name}\n"
+          result + "#{self.class.indent index}module #{module_name}\n"
         end
       end
 
       def body content
-        indent = indentation depth + 1
-
         content.sub(/\A\n/, "").split("\n").reduce "" do |body, line|
           next "#{body}\n" if line.blank?
-          body + "#{indent}#{line.gsub(/^\s{2}/, "")}\n"
+          body + "#{self.class.indent depth + 1}#{line.gsub(/^\s{2}/, "")}\n"
         end
       end
 
       def suffix
         modules.each.with_index.reduce "" do |result, (_, index)|
-          result + "#{indentation depth - index}end\n"
+          result + "#{self.class.indent depth - index}end\n"
         end
-      end
-
-      def indentation length
-        "  " * length
       end
     end
   end
