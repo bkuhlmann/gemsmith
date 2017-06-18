@@ -40,26 +40,24 @@ RSpec.describe Gemsmith::CLI do
       end
 
       it "generates basic gem" do
-        ClimateControl.modify HOME: temp_dir do
-          Dir.chdir temp_dir do
-            cli
+        Dir.chdir temp_dir do
+          cli
 
-            expect(files).to contain_exactly(
-              ".gitignore",
-              ".ruby-version",
-              "bin/setup",
-              "lib/tester/identity.rb",
-              "lib/tester.rb",
-              "CHANGES.md",
-              "CODE_OF_CONDUCT.md",
-              "CONTRIBUTING.md",
-              "Gemfile",
-              "LICENSE.md",
-              "README.md",
-              "Rakefile",
-              "tester.gemspec"
-            )
-          end
+          expect(files).to contain_exactly(
+            ".gitignore",
+            ".ruby-version",
+            "bin/setup",
+            "lib/tester/identity.rb",
+            "lib/tester.rb",
+            "CHANGES.md",
+            "CODE_OF_CONDUCT.md",
+            "CONTRIBUTING.md",
+            "Gemfile",
+            "LICENSE.md",
+            "README.md",
+            "Rakefile",
+            "tester.gemspec"
+          )
         end
       end
     end
@@ -73,33 +71,31 @@ RSpec.describe Gemsmith::CLI do
       end
 
       it "generates CLI gem" do
-        ClimateControl.modify HOME: temp_dir do
-          Dir.chdir temp_dir do
-            cli
+        Dir.chdir temp_dir do
+          cli
 
-            expect(files).to contain_exactly(
-              ".gitignore",
-              ".rubocop.yml",
-              ".ruby-version",
-              "bin/setup",
-              "bin/tester",
-              "lib/tester/identity.rb",
-              "lib/tester/cli.rb",
-              "lib/tester.rb",
-              "spec/lib/tester/cli_spec.rb",
-              "spec/support/shared_contexts/temp_dir.rb",
-              "spec/spec_helper.rb",
-              "CHANGES.md",
-              "CODE_OF_CONDUCT.md",
-              "CONTRIBUTING.md",
-              "Gemfile",
-              "Guardfile",
-              "LICENSE.md",
-              "README.md",
-              "Rakefile",
-              "tester.gemspec"
-            )
-          end
+          expect(files).to contain_exactly(
+            ".gitignore",
+            ".rubocop.yml",
+            ".ruby-version",
+            "bin/setup",
+            "bin/tester",
+            "lib/tester/identity.rb",
+            "lib/tester/cli.rb",
+            "lib/tester.rb",
+            "spec/lib/tester/cli_spec.rb",
+            "spec/support/shared_contexts/temp_dir.rb",
+            "spec/spec_helper.rb",
+            "CHANGES.md",
+            "CODE_OF_CONDUCT.md",
+            "CONTRIBUTING.md",
+            "Gemfile",
+            "Guardfile",
+            "LICENSE.md",
+            "README.md",
+            "Rakefile",
+            "tester.gemspec"
+          )
         end
       end
     end
@@ -142,43 +138,41 @@ RSpec.describe Gemsmith::CLI do
       end
 
       it "generates full gem" do
-        ClimateControl.modify HOME: temp_dir do
-          Dir.chdir temp_dir do
-            cli
+        Dir.chdir temp_dir do
+          cli
 
-            expect(files).to contain_exactly(
-              ".codeclimate.yml",
-              ".gitignore",
-              ".rubocop.yml",
-              ".ruby-version",
-              ".github/ISSUE_TEMPLATE.md",
-              ".github/PULL_REQUEST_TEMPLATE.md",
-              "bin/setup",
-              "app/controllers/tester/application_controller.rb",
-              "app/mailers/tester/application_mailer.rb",
-              "app/models/tester/application_record.rb",
-              "lib/generators/tester/install/USAGE",
-              "lib/generators/tester/install/install_generator.rb",
-              "lib/generators/tester/upgrade/USAGE",
-              "lib/generators/tester/upgrade/upgrade_generator.rb",
-              "lib/tester/engine.rb",
-              "lib/tester/identity.rb",
-              "lib/tester.rb",
-              "spec/support/shared_contexts/temp_dir.rb",
-              "spec/rails_helper.rb",
-              "spec/spec_helper.rb",
-              "CHANGES.md",
-              "CODE_OF_CONDUCT.md",
-              "circle.yml",
-              "CONTRIBUTING.md",
-              "Gemfile",
-              "Guardfile",
-              "LICENSE.md",
-              "Rakefile",
-              "README.md",
-              "tester.gemspec"
-            )
-          end
+          expect(files).to contain_exactly(
+            ".codeclimate.yml",
+            ".gitignore",
+            ".rubocop.yml",
+            ".ruby-version",
+            ".github/ISSUE_TEMPLATE.md",
+            ".github/PULL_REQUEST_TEMPLATE.md",
+            "bin/setup",
+            "app/controllers/tester/application_controller.rb",
+            "app/mailers/tester/application_mailer.rb",
+            "app/models/tester/application_record.rb",
+            "lib/generators/tester/install/USAGE",
+            "lib/generators/tester/install/install_generator.rb",
+            "lib/generators/tester/upgrade/USAGE",
+            "lib/generators/tester/upgrade/upgrade_generator.rb",
+            "lib/tester/engine.rb",
+            "lib/tester/identity.rb",
+            "lib/tester.rb",
+            "spec/support/shared_contexts/temp_dir.rb",
+            "spec/rails_helper.rb",
+            "spec/spec_helper.rb",
+            "CHANGES.md",
+            "CODE_OF_CONDUCT.md",
+            "circle.yml",
+            "CONTRIBUTING.md",
+            "Gemfile",
+            "Guardfile",
+            "LICENSE.md",
+            "Rakefile",
+            "README.md",
+            "tester.gemspec"
+          )
         end
       end
     end
@@ -193,20 +187,16 @@ RSpec.describe Gemsmith::CLI do
       end
 
       it "generates basic gem" do
-        ClimateControl.modify HOME: temp_dir do
-          Dir.chdir temp_dir do
-            cli
-            expect(files).to be_empty
-          end
+        Dir.chdir temp_dir do
+          cli
+          expect(files).to be_empty
         end
       end
 
       it "prints error message" do
-        ClimateControl.modify HOME: temp_dir do
-          Dir.chdir temp_dir do
-            result = -> { cli }
-            expect(&result).to output(/.+is\snot\sallowed.+/).to_stdout
-          end
+        Dir.chdir temp_dir do
+          result = -> { cli }
+          expect(&result).to output(/.+is\snot\sallowed.+/).to_stdout
         end
       end
     end
@@ -300,11 +290,9 @@ RSpec.describe Gemsmith::CLI do
     end
 
     it "answers default settings" do
-      ClimateControl.modify HOME: temp_dir do
-        Dir.chdir(temp_dir) do
-          stub_const "RUBY_VERSION", "2.0.0"
-          expect(described_class.configuration.to_h).to eq(defaults)
-        end
+      Dir.chdir(temp_dir) do
+        stub_const "RUBY_VERSION", "2.0.0"
+        expect(described_class.configuration.to_h).to eq(defaults)
       end
     end
   end
