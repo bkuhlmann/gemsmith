@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   end
   <%- end -%>
 
-  spec.required_ruby_version = "~> <%= config.dig(:versions, :ruby)[/\d{1}\.\d{1}/] %>"
+  spec.required_ruby_version = "~> <%= config.dig(:versions, :ruby)[/\d+\.\d+/] %>"
   <%- if config.dig(:generate, :cli) -%>
   spec.add_dependency "thor", "~> 0.19"
   spec.add_dependency "runcom", "~> 1.1"
@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", "~> <%= config.dig(:versions, :rails) %>"
   <%- end -%>
   spec.add_development_dependency "rake", "~> 12.0"
-  spec.add_development_dependency "gemsmith", "~> <%= Gemsmith::Identity.version[/\d{1}\.\d{1}/] %>"
+  spec.add_development_dependency "gemsmith", "~> <%= Gemsmith::Identity.version[/\d+\.\d+/] %>"
   <%- if config.dig(:generate, :pry) -%>
   spec.add_development_dependency "pry", "~> 0.10"
   spec.add_development_dependency "pry-byebug", "~> 3.4"
