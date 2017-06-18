@@ -28,11 +28,6 @@ module Gemsmith
         cli.template "#{generator_root}/upgrade/USAGE.tt", configuration
       end
 
-      def create_travis_gemfiles
-        return unless configuration.dig(:generate, :travis)
-        cli.template "%gem_name%/gemfiles/rails-%rails_version%.x.gemfile.tt", configuration
-      end
-
       def stub_assets
         cli.run %(printf "%s" > "#{gem_name}/app/assets/javascripts/#{gem_path}/application.js")
         cli.run %(printf "%s" > "#{gem_name}/app/assets/stylesheets/#{gem_path}/application.css")
@@ -51,7 +46,6 @@ module Gemsmith
         install_rails
         create_engine
         create_generator_files
-        create_travis_gemfiles
         stub_assets
         remove_files
       end

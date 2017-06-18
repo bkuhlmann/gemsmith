@@ -68,7 +68,6 @@ module Gemsmith
           code_climate: false,
           gemnasium: false,
           circle_ci: false,
-          travis: false,
           patreon: false
         },
         publish: {
@@ -92,7 +91,6 @@ module Gemsmith
         Generators::CodeClimate,
         Generators::Guard,
         Generators::CircleCI,
-        Generators::Travis,
         Generators::Bundler,
         Generators::GitHub,
         Generators::Pragma,
@@ -160,10 +158,6 @@ module Gemsmith
                   desc: "Add Circle CI support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :circle_ci)
-    method_option :travis,
-                  desc: "Add Travis CI support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :travis)
     method_option :patreon,
                   desc: "Add Patreon support.",
                   type: :boolean,

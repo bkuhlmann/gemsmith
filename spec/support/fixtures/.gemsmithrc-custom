@@ -24,7 +24,6 @@
   :git_hub: true
   :code_climate: true
   :gemnasium: true
-  :travis: true
   :patreon: true
 :publish:
   :sign: true

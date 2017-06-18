@@ -113,27 +113,6 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
     end
   end
 
-  describe "#create_travis_gemfiles" do
-    context "when Travis CI is enabled" do
-      let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {travis: true}} }
-
-      it "creates Rails gemfile" do
-        subject.create_travis_gemfiles
-        template = "%gem_name%/gemfiles/rails-%rails_version%.x.gemfile.tt"
-        expect(cli).to have_received(:template).with(template, configuration)
-      end
-    end
-
-    context "when Travis CI is disabled" do
-      let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {travis: false}} }
-
-      it "does not create Rails gemfile" do
-        subject.create_travis_gemfiles
-        expect(cli).to_not have_received(:template)
-      end
-    end
-  end
-
   describe "#stub_assets" do
     before { subject.stub_assets }
 
@@ -174,7 +153,6 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
       allow(subject).to receive(:install_rails)
       allow(subject).to receive(:create_engine)
       allow(subject).to receive(:create_generator_files)
-      allow(subject).to receive(:create_travis_gemfiles)
       allow(subject).to receive(:stub_assets)
       allow(subject).to receive(:remove_files)
     end
@@ -188,7 +166,6 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
         expect(subject).to have_received(:install_rails)
         expect(subject).to have_received(:create_engine)
         expect(subject).to have_received(:create_generator_files)
-        expect(subject).to have_received(:create_travis_gemfiles)
         expect(subject).to have_received(:stub_assets)
         expect(subject).to have_received(:remove_files)
       end
@@ -203,7 +180,6 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
         expect(subject).to_not have_received(:install_rails)
         expect(subject).to_not have_received(:create_engine)
         expect(subject).to_not have_received(:create_generator_files)
-        expect(subject).to_not have_received(:create_travis_gemfiles)
         expect(subject).to_not have_received(:stub_assets)
         expect(subject).to_not have_received(:remove_files)
       end

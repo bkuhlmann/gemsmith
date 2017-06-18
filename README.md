@@ -146,7 +146,6 @@ The default configuration is as follows:
       :git_hub: false
       :code_climate: false
       :gemnasium: false
-      :travis: false
       :patreon: false
     :publish:
       :sign: false
