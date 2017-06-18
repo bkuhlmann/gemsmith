@@ -11,37 +11,37 @@ A command line interface for smithing new Ruby gems.
 
 <!-- Tocer[start]: Auto-generated, don't remove. -->
 
-# Table of Contents
+## Table of Contents
 
-- [Features](#features)
-- [Screencasts](#screencasts)
-- [Requirements](#requirements)
-- [Setup](#setup)
-  - [Install](#install)
-  - [Configuration](#configuration)
-  - [Existing Gems](#existing-gems)
-- [Usage](#usage)
-  - [Command Line Interface (CLI)](#command-line-interface-cli)
-  - [Rake](#rake)
-- [Tests](#tests)
-- [Security](#security)
-  - [Git Signing Key](#git-signing-key)
-  - [Gem Certificates](#gem-certificates)
-- [Private Gem Servers](#private-gem-servers)
-  - [Gem Specification Metadata](#gem-specification-metadata)
-  - [Gem Credentials](#gem-credentials)
-- [Promotion](#promotion)
-- [Troubleshooting](#troubleshooting)
-- [Versioning](#versioning)
-- [Code of Conduct](#code-of-conduct)
-- [Contributions](#contributions)
-- [License](#license)
-- [History](#history)
-- [Credits](#credits)
+  - [Features](#features)
+  - [Screencasts](#screencasts)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+    - [Install](#install)
+    - [Configuration](#configuration)
+    - [Existing Gems](#existing-gems)
+  - [Usage](#usage)
+    - [Command Line Interface (CLI)](#command-line-interface-cli)
+    - [Rake](#rake)
+  - [Tests](#tests)
+  - [Security](#security)
+    - [Git Signing Key](#git-signing-key)
+    - [Gem Certificates](#gem-certificates)
+  - [Private Gem Servers](#private-gem-servers)
+    - [Gem Specification Metadata](#gem-specification-metadata)
+    - [Gem Credentials](#gem-credentials)
+  - [Promotion](#promotion)
+  - [Troubleshooting](#troubleshooting)
+  - [Versioning](#versioning)
+  - [Code of Conduct](#code-of-conduct)
+  - [Contributions](#contributions)
+  - [License](#license)
+  - [History](#history)
+  - [Credits](#credits)
 
 <!-- Tocer[finish]: Auto-generated, don't remove. -->
 
-# Features
+## Features
 
 - Builds a gem skeleton with enhanced Bundler functionality.
 - Uses [Refinements](https://github.com/bkuhlmann/refinements) Ruby core library enhancements.
@@ -75,20 +75,20 @@ A command line interface for smithing new Ruby gems.
 - Aids in viewing source code of semantically versioned gems within your favorite editor.
 - Aids in viewing documentation of semantically versioned within your default browser.
 
-# Screencasts
+## Screencasts
 
 [![asciicast](https://asciinema.org/a/92550.png)](https://asciinema.org/a/92550)
 
-# Requirements
+## Requirements
 
 0. A UNIX-based system.
 0. [Ruby 2.4.x](https://www.ruby-lang.org).
 0. [RubyGems](https://rubygems.org).
 0. [Bundler](https://github.com/bundler/bundler).
 
-# Setup
+## Setup
 
-## Install
+### Install
 
 For a secure install, type the following from the command line (recommended):
 
@@ -103,7 +103,7 @@ For an insecure install, type the following (not recommended):
 
     gem install gemsmith
 
-## Configuration
+### Configuration
 
 This gem can be configured via a global configuration:
 
@@ -154,7 +154,7 @@ The default configuration is as follows:
 Feel free to take this default configuration, modify, and save as your own custom
 `configuration.yml`.
 
-## Existing Gems
+### Existing Gems
 
 If you have gems that were not originally crafted by Gemsmith, you can add Gemsmith support to them
 by modifying the following files:
@@ -177,9 +177,9 @@ Replace or add a modified version of the following to your gem's `Rakefile`:
 
 With those changes, you can leverage the benefits of Gemsmith within your existing gem.
 
-# Usage
+## Usage
 
-## Command Line Interface (CLI)
+### Command Line Interface (CLI)
 
 From the command line, type: `gemsmith --help`
 
@@ -213,7 +213,7 @@ For more gem generation options, type: `gemsmith --help --generate`
     [--travis], [--no-travis]              # Add Travis CI support.
     [--patreon], [--no-patreon]            # Add Patreon support.
 
-## Rake
+### Rake
 
 Once a gem skeleton has been created, the following tasks are available (i.e. `bundle exec rake
 -T`):
@@ -239,15 +239,15 @@ When satified with your gem, builds are green, and ready to publish, run:
 
     bundle exec rake publish
 
-# Tests
+## Tests
 
 To test, run:
 
     bundle exec rake
 
-# Security
+## Security
 
-## Git Signing Key
+### Git Signing Key
 
 To securely sign your Git tags, install and configure [GPG](https://www.gnupg.org):
 
@@ -276,7 +276,7 @@ Now, when publishing your gems with Gemsmith (i.e. `bundle exec rake publish`), 
 tag will happen automatically. You will be prompted for the GPG Passphrase each time but that is to
 be expected.
 
-## Gem Certificates
+### Gem Certificates
 
 To create a certificate for your gems, run the following:
 
@@ -293,7 +293,7 @@ To learn more about gem certificates, read the following:
 - [A Practical Guide to Using Signed Ruby Gems - Part 1: Bundler](http://blog.meldium.com/home/2013/3/3/signed-rubygems-part)
 - [A Practical Guide to Using Signed Ruby Gems - Part 2: Heroku](http://blog.meldium.com/home/2013/3/6/signed-gems-on-heroku)
 
-# Private Gem Servers
+## Private Gem Servers
 
 By default, the following Rake task will publish your gem to [RubyGems](https://rubygems.org):
 
@@ -303,7 +303,7 @@ You can change this behavior by adding metadata to your gemspec that will allow 
 mentioned above, to publish your gem to an alternate/private gem server instead. This can be done by
 updating your gem specification and RubyGems credentials.
 
-## Gem Specification Metadata
+### Gem Specification Metadata
 
 Add the following metadata to your gemspec:
 
@@ -322,7 +322,7 @@ represents the following:
   file so that sensitive credentials are not used within your gemspec.
 - `allowed_push_host`: Provides the URL of the private gem server to push your gem to.
 
-## Gem Credentials
+### Gem Credentials
 
 With your gem specification metadata established, you are ready to publish your gem to a public or
 private server. If this is your first time publishing a gem and no gem credentials have been
@@ -338,21 +338,21 @@ Should you need to delete a credential (due to a bad login/password for example)
 `~/.gem/credentials` in your default editor and remove the line(s) you don't need. Upon next publish
 of your gem, you'll be prompted for the missing credentials.
 
-# Promotion
+## Promotion
 
 Once your gem is released, you might want to let the world know about your accomplishment:
 
 - [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code)
 - [RubyFlow](http://www.rubyflow.com)
 
-# Troubleshooting
+## Troubleshooting
 
 When running `bundle exec rake install` or `bundle exec rake publish` with modified, staged, or
 uncommitted Git changes, the rake task will throw an error to this effect. When this occurs, it is
 recommended that you commit your changes or [stash](https://git-scm.com/docs/git-stash) them before
 proceeding.
 
-# Versioning
+## Versioning
 
 Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 
@@ -360,25 +360,25 @@ Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 - Minor (x.Y.z) - Incremented for new, backwards compatible, public API enhancements/fixes.
 - Patch (x.y.Z) - Incremented for small, backwards compatible, bug fixes.
 
-# Code of Conduct
+## Code of Conduct
 
 Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By
 participating in this project you agree to abide by its terms.
 
-# Contributions
+## Contributions
 
 Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-# License
+## License
 
 Copyright (c) 2011 [Alchemists](https://www.alchemists.io).
 Read [LICENSE](LICENSE.md) for details.
 
-# History
+## History
 
 Read [CHANGES](CHANGES.md) for details.
 
-# Credits
+## Credits
 
 Developed by [Brooke Kuhlmann](https://www.alchemists.io) at
 [Alchemists](https://www.alchemists.io).

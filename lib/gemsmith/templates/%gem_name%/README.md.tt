@@ -21,18 +21,18 @@
 <!-- Tocer[start]: Auto-generated, don't remove. -->
 <!-- Tocer[finish]: Auto-generated, don't remove. -->
 
-# Features
+## Features
 
-# Screencasts
+## Screencasts
 
-# Requirements
+## Requirements
 
 0. [Ruby <%= config.dig(:versions, :ruby) %>](https://www.ruby-lang.org)
 <%- if config.dig(:generate, :rails) -%>
 0. [Ruby on Rails](http://rubyonrails.org).
 <%- end -%>
 
-# Setup
+## Setup
 
 <%- if config.dig(:generate, :security) -%>
 For a secure install, type the following (recommended):
@@ -59,17 +59,17 @@ Add the following to your Gemfile:
     gem "<%= config.dig(:gem, :name) %>"
 <%- end -%>
 
-# Usage
+## Usage
 
 <%- if config.dig(:generate, :rspec) -%>
-# Tests
+## Tests
 
 To test, run:
 
     bundle exec rake
 <%- end -%>
 
-# Versioning
+## Versioning
 
 Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 
@@ -77,26 +77,26 @@ Read [Semantic Versioning](http://semver.org) for details. Briefly, it means:
 - Minor (x.Y.z) - Incremented for new, backwards compatible, public API enhancements/fixes.
 - Patch (x.y.Z) - Incremented for small, backwards compatible, bug fixes.
 
-# Code of Conduct
+## Code of Conduct
 
 Please note that this project is released with a [CODE OF CONDUCT](CODE_OF_CONDUCT.md). By
 participating in this project you agree to abide by its terms.
 
-# Contributions
+## Contributions
 
 Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-# License
+## License
 
 Copyright (c) <%= config.fetch :year %> [<%= config.dig :organization, :name %>](<%= config.dig :organization, :url %>).
 Read [LICENSE](LICENSE.md) for details.
 
-# History
+## History
 
 Read [CHANGES](CHANGES.md) for details.
 Built with [Gemsmith](https://github.com/bkuhlmann/gemsmith).
 
-# Credits
+## Credits
 
 Developed by [<%= config.dig(:author, :name) %>](<%= config.dig :author, :url %>) at
 [<%= config.dig :organization, :name %>](<%= config.dig :organization, :url %>).
