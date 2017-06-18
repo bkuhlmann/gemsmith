@@ -16,11 +16,5 @@
     def self.version_label
       "#{label} #{version}"
     end
-    <%- if config.dig(:generate, :cli) -%>
-
-    def self.file_name
-      ".#{name}rc"
-    end
-    <%- end -%>
   end
 <% end %>

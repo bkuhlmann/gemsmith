@@ -105,11 +105,14 @@ For an insecure install, type the following (not recommended):
 
 ## Configuration
 
-You can configure common settings for future gem builds by creating the following file:
+This gem can be configured via a global configuration:
 
-    ~/.gemsmithrc
+    ~/.config/gemsmith/configuration.yml
 
-The following defaults are used when no options are configured:
+It can also be configured via [XDG environment variables](https://github.com/bkuhlmann/runcom#xdg)
+as provided by the [Runcom](https://github.com/bkuhlmann/runcom) gem.
+
+The default configuration is as follows:
 
     :year: <current year>
     :github_user: "<Git config GitHub user>",
@@ -148,9 +151,8 @@ The following defaults are used when no options are configured:
     :publish:
       :sign: false
 
-While Gemsmith is fully customizable, please keep in mind that these are *global* settings and, once
-set, will affect all future gem creations. Further customization is also provided via the CLI for a
-customizable experience per gem if necessary.
+Feel free to take this default configuration, modify, and save as your own custom
+`configuration.yml`.
 
 ## Existing Gems
 

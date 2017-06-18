@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   <%- if config.dig(:generate, :cli) -%>
   spec.add_dependency "thor", "~> 0.19"
   spec.add_dependency "thor_plus", "~> 5.1"
-  spec.add_dependency "runcom", "~> 0.6"
+  spec.add_dependency "runcom", "~> 1.1"
   <%- end -%>
   <%- if config.dig(:generate, :rails) -%>
   spec.add_dependency "rails", "~> <%= config.dig(:versions, :rails) %>"
