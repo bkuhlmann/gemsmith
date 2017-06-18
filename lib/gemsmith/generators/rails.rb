@@ -40,6 +40,7 @@ module Gemsmith
         cli.remove_file "#{gem_name}/README.rdoc", configuration
       end
 
+      # :reek:TooManyStatements
       def run
         return unless configuration.dig(:generate, :rails)
 

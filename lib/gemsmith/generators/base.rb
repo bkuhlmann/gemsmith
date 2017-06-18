@@ -23,6 +23,7 @@ module Gemsmith
 
       attr_reader :cli, :configuration
 
+      # :reek:UtilityFunction
       def lib_gem_root
         File.join LIB_ROOT, "%gem_path%"
       end

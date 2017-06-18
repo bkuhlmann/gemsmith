@@ -6,6 +6,7 @@ module Gemsmith
   module Gem
     # Defines a gem requirement. This is a partial, cleaner implementation of the RubyGems
     # `Gem::Requirement` object.
+    # :reek:PrimaDonnaMethod
     class Requirement
       def self.operators
         [">", ">=", "=", "!=", "<", "<=", "~>"]

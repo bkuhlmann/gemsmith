@@ -26,6 +26,7 @@ module Gemsmith
       [Authenticators::RubyGems, Authenticators::Basic]
     end
 
+    # :reek:DuplicateMethodCall
     def initialize key: self.class.default_key,
                    url: self.class.default_url,
                    shell: Thor::Shell::Basic.new
@@ -49,6 +50,7 @@ module Gemsmith
     end
 
     # rubocop:disable Metrics/AbcSize
+    # :reek:TooManyStatements
     def create
       return if valid?
 

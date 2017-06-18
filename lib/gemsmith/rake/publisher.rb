@@ -9,12 +9,14 @@ require "gemsmith/cli"
 module Gemsmith
   module Rake
     # Provides gem release functionality. Meant to be wrapped in Rake tasks.
+    # :reek:TooManyInstanceVariables
     class Publisher
       def self.gem_spec_path
         String Dir["#{Dir.pwd}/*.gemspec"].first
       end
 
       # rubocop:disable Metrics/ParameterLists
+      # :reek:LongParameterList
       def initialize gem_spec: Gemsmith::Gem::Specification.new(self.class.gem_spec_path),
                      gem_config: Gemsmith::CLI.configuration.to_h,
                      credentials: Gemsmith::Credentials,

@@ -16,6 +16,8 @@ module Gemsmith
         say "q. Quit.\n\n"
       end
 
+      # :reek:FeatureEnvy
+      # :reek:TooManyStatements
       def pick_gem gems, name
         answer = ask "Enter selection:"
         return if answer == "q"
@@ -37,6 +39,7 @@ module Gemsmith
         say_status :error, error.message, :red
       end
 
+      # :reek:TooManyStatements
       def process_gem name, method
         specs = Gem::Specification.find_all name
         spec_count = specs.size

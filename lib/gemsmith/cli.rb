@@ -168,6 +168,7 @@ module Gemsmith
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :patreon)
     # rubocop:disable Metrics/AbcSize
+    # :reek:TooManyStatements
     def generate name
       print_cli_and_rails_engine_option_error && return if options.cli? && options.rails?
 

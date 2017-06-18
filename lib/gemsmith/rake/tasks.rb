@@ -31,6 +31,7 @@ module Gemsmith
 
       # rubocop:disable Metrics/AbcSize
       # rubocop:disable Metrics/MethodLength
+      # :reek:TooManyStatements
       def install
         desc "Update README (table of contents)"
         task :doc do
