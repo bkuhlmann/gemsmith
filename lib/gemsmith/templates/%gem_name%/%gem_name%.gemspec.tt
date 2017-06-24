@@ -40,7 +40,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   <%- end -%>
   <%- if config.dig(:generate, :git_cop) -%>
-  spec.add_development_dependency "git-cop", "~> 1.0"
+  spec.add_development_dependency "git-cop", "~> 1.1"
   <%- end -%>
   <%- if config.dig(:generate, :reek) -%>
   spec.add_development_dependency "reek", "~> 4.7"
