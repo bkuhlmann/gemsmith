@@ -1,3 +1,9 @@
+# v10.1.0 (2017-06-28)
+
+- Updated CONTRIBUTING documentation.
+- Updated GitHub templates.
+- Updated gem dependencies.
+
 # v10.0.0 (2017-06-18)
 
 - Fixed Reek DuplicateMethodCall issues.
