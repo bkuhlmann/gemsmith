@@ -1,3 +1,8 @@
+# v10.2.0 (2017-07-16)
+
+- Added Gemsmith version to gem skeleton commit message.
+- Updated gem dependencies.
+
 # v10.1.0 (2017-06-28)
 
 - Updated CONTRIBUTING documentation.
