@@ -8,11 +8,15 @@ module Gemsmith
         cli.template "%gem_name%/.gitignore.tt", configuration
       end
 
+      # :reek:TooManyStatements
       def create_repository
+        subject = "Added Gemsmith files."
+        body = "Built with #{Identity.version_label}."
+
         Dir.chdir(gem_root) do
           `git init`
           `git add .`
-          `git commit --all --no-verify --message "Added Gemsmith files."`
+          `git commit --all --no-verify --message "#{subject}" --message "#{body}"`
         end
       end
 
