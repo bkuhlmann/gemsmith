@@ -17,7 +17,7 @@ end
 RSpec.configure do |config|
   config.color = true
   config.order = "random"
-  config.formatter = :documentation
+  config.formatter = ENV["CI"] == "true" ? :progress : :documentation
   config.disable_monkey_patching!
   config.filter_run_when_matching :focus
   config.example_status_persistence_file_path = "./tmp/rspec-status.txt"
