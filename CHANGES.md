@@ -1,3 +1,11 @@
+# v10.3.0 (2017-08-20)
+
+- Fixed Rubocop gem dependency.
+- Added dynamic formatting of RSpec output.
+- Updated to Code Quality 1.2.0.
+- Updated to Git Cop 1.3.0.
+- Updated to Runcom 1.3.0.
+
 # v10.2.0 (2017-07-16)
 
 - Added Gemsmith version to gem skeleton commit message.
