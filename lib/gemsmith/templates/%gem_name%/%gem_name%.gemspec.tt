@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = "~> <%= config.dig(:versions, :ruby)[/\d+\.\d+/] %>"
   <%- if config.dig(:generate, :cli) -%>
-  spec.add_dependency "thor", "~> 0.19"
-  spec.add_dependency "runcom", "~> 1.2"
+  spec.add_dependency "thor", "~> 0.20"
+  spec.add_dependency "runcom", "~> 1.3"
   <%- end -%>
   <%- if config.dig(:generate, :rails) -%>
   spec.add_dependency "rails", "~> <%= config.dig(:versions, :rails) %>"
@@ -40,7 +40,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   <%- end -%>
   <%- if config.dig(:generate, :git_cop) -%>
-  spec.add_development_dependency "git-cop", "~> 1.3"
+  spec.add_development_dependency "git-cop", "~> 1.6"
   <%- end -%>
   <%- if config.dig(:generate, :reek) -%>
   spec.add_development_dependency "reek", "~> 4.7"

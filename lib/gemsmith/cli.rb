@@ -102,7 +102,9 @@ module Gemsmith
     # Initialize.
     def initialize args = [], options = {}, config = {}
       super args, options, config
-      @configuration = {}
+      @configuration = self.class.configuration
+    rescue Runcom::Errors::Base => error
+      abort error.message
     end
 
     desc "-g, [--generate=GEM]", "Generate new gem."
@@ -203,7 +205,7 @@ module Gemsmith
                   desc: "Print gem configuration.",
                   type: :boolean, default: false
     def config
-      path = self.class.configuration.path
+      path = configuration.path
 
       if options.edit? then `#{ENV["EDITOR"]} #{path}`
       elsif options.info?
@@ -228,8 +230,9 @@ module Gemsmith
 
     attr_reader :configuration
 
+    # :reek:FeatureEnvy
     def setup_configuration name:, options: {}
-      @configuration = self.class.configuration.to_h.merge(
+      @configuration = configuration.to_h.merge(
         gem: {
           label: name.titleize,
           name: name,

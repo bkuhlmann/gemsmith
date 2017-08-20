@@ -15,6 +15,9 @@ require "runcom"
 
     def initialize args = [], options = {}, config = {}
       super args, options, config
+      @configuration = self.class.configuration
+    rescue Runcom::Errors::Base => error
+      abort error.message
     end
 
     desc "-c, [--config]", "Manage gem configuration."
@@ -28,7 +31,7 @@ require "runcom"
                   desc: "Print gem configuration.",
                   type: :boolean, default: false
     def config
-      path = self.class.configuration.path
+      path = configuration.path
 
       if options.edit? then `#{ENV["EDITOR"]} #{path}`
       elsif options.info?
@@ -48,5 +51,9 @@ require "runcom"
     def help task = nil
       say and super
     end
+
+    private
+
+    attr_reader :configuration
   end
 <% end %>

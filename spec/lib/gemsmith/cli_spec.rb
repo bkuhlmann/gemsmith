@@ -5,7 +5,10 @@ require "spec_helper"
 RSpec.describe Gemsmith::CLI do
   let(:options) { [] }
   let(:command_line) { Array(command).concat options }
-  let(:cli) { described_class.start command_line }
+  let :cli do
+    load "gemsmith/cli.rb" # Ensures clean Thor `.method_option` evaluation per spec.
+    described_class.start command_line
+  end
 
   shared_examples_for "a generate command" do
     let(:gem_name) { "tester" }
@@ -71,31 +74,33 @@ RSpec.describe Gemsmith::CLI do
       end
 
       it "generates CLI gem" do
-        Dir.chdir temp_dir do
-          cli
+        ClimateControl.modify XDG_CONFIG_HOME: temp_dir do
+          Dir.chdir temp_dir do
+            cli
 
-          expect(files).to contain_exactly(
-            ".gitignore",
-            ".rubocop.yml",
-            ".ruby-version",
-            "bin/setup",
-            "bin/tester",
-            "lib/tester/identity.rb",
-            "lib/tester/cli.rb",
-            "lib/tester.rb",
-            "spec/lib/tester/cli_spec.rb",
-            "spec/support/shared_contexts/temp_dir.rb",
-            "spec/spec_helper.rb",
-            "CHANGES.md",
-            "CODE_OF_CONDUCT.md",
-            "CONTRIBUTING.md",
-            "Gemfile",
-            "Guardfile",
-            "LICENSE.md",
-            "README.md",
-            "Rakefile",
-            "tester.gemspec"
-          )
+            expect(files).to contain_exactly(
+              ".gitignore",
+              ".rubocop.yml",
+              ".ruby-version",
+              "bin/setup",
+              "bin/tester",
+              "lib/tester/identity.rb",
+              "lib/tester/cli.rb",
+              "lib/tester.rb",
+              "spec/lib/tester/cli_spec.rb",
+              "spec/support/shared_contexts/temp_dir.rb",
+              "spec/spec_helper.rb",
+              "CHANGES.md",
+              "CODE_OF_CONDUCT.md",
+              "CONTRIBUTING.md",
+              "Gemfile",
+              "Guardfile",
+              "LICENSE.md",
+              "README.md",
+              "Rakefile",
+              "tester.gemspec"
+            )
+          end
         end
       end
     end
@@ -290,9 +295,11 @@ RSpec.describe Gemsmith::CLI do
     end
 
     it "answers default settings" do
-      Dir.chdir(temp_dir) do
-        stub_const "RUBY_VERSION", "2.0.0"
-        expect(described_class.configuration.to_h).to eq(defaults)
+      ClimateControl.modify XDG_CONFIG_HOME: temp_dir do
+        Dir.chdir(temp_dir) do
+          stub_const "RUBY_VERSION", "2.0.0"
+          expect(described_class.configuration.to_h).to eq(defaults)
+        end
       end
     end
   end
