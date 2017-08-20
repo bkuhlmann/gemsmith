@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "milestoner", "~> 6.2"
   spec.add_dependency "pragmater", "~> 4.2"
   spec.add_dependency "tocer", "~> 6.2"
+  spec.add_dependency "rubocop", "~> 0.49"
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "pry", "~> 0.10"
   spec.add_development_dependency "pry-byebug", "~> 3.4"
@@ -40,7 +41,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   spec.add_development_dependency "git-cop", "~> 1.6"
   spec.add_development_dependency "reek", "~> 4.7"
-  spec.add_development_dependency "rubocop", "~> 0.49"
   spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0"
 
   spec.files = Dir.glob("lib/**/*", File::FNM_DOTMATCH)
