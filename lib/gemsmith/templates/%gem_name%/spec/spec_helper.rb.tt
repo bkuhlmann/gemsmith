@@ -7,7 +7,6 @@ SimpleCov.start
 <%- if config.dig(:generate, :pry) -%>
 require "pry"
 require "pry-byebug"
-require "pry-state"
 <%- end -%>
 <%- unless config.dig(:generate, :rails) -%>require "<%= config.dig(:gem, :path) %>"<%- end -%>
 

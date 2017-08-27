@@ -6,7 +6,6 @@ SimpleCov.start
 
 require "pry"
 require "pry-byebug"
-require "pry-state"
 require "climate_control"
 require "gemsmith"
 

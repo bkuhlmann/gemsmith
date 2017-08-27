@@ -30,8 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "gemsmith", "~> <%= Gemsmith::Identity.version[/\d+\.\d+/] %>"
   <%- if config.dig(:generate, :pry) -%>
   spec.add_development_dependency "pry", "~> 0.10"
-  spec.add_development_dependency "pry-byebug", "~> 3.4"
-  spec.add_development_dependency "pry-state", "~> 0.1"
+  spec.add_development_dependency "pry-byebug", "~> 3.5"
   <%- end -%>
   <%- if config.dig(:generate, :rspec) -%>
   spec.add_development_dependency "<%= config.dig(:generate, :rails) ? "rspec-rails" : "rspec" %>", "~> 3.6"
