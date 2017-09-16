@@ -76,7 +76,7 @@ module Gemsmith
 
     def load_credentials
       Hash YAML.load_file(self.class.file_path)
-    rescue
+    rescue StandardError
       {}
     end
   end
