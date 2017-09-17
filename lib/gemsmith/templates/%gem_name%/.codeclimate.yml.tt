@@ -1,10 +1,10 @@
 prepare:
   fetch:
-    - url: https://raw.githubusercontent.com/bkuhlmann/code_quality/v1.2.0/configurations/rubocop/ruby.yml
-      path: .rubocop-https---raw-githubusercontent-com-bkuhlmann-code-quality-v1-2-0-configurations-rubocop-ruby-yml
+    - url: https://raw.githubusercontent.com/bkuhlmann/code_quality/v1.3.0/configurations/rubocop/ruby.yml
+      path: .rubocop-https---raw-githubusercontent-com-bkuhlmann-code-quality-v1-3-0-configurations-rubocop-ruby-yml
 <%- if config.dig(:generate, :rails) -%>
-    - url: https://raw.githubusercontent.com/bkuhlmann/code_quality/v1.2.0/configurations/rubocop/rails.yml
-      path: .rubocop-https---raw-githubusercontent-com-bkuhlmann-code-quality-v1-2-0-configurations-rubocop-rails-yml
+    - url: https://raw.githubusercontent.com/bkuhlmann/code_quality/v1.3.0/configurations/rubocop/rails.yml
+      path: .rubocop-https---raw-githubusercontent-com-bkuhlmann-code-quality-v1-3-0-configurations-rubocop-rails-yml
 <%- end -%>
 engines:
   shellcheck:
