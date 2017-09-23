@@ -54,22 +54,22 @@ module Gemsmith
           rails: "5.1"
         },
         generate: {
-          cli: false,
-          rails: false,
-          security: true,
-          pry: true,
-          guard: true,
           bundler_audit: false,
-          git_cop: true,
-          rspec: true,
-          reek: true,
-          rubocop: true,
-          scss_lint: false,
-          git_hub: false,
+          circle_ci: false,
+          cli: false,
           code_climate: false,
           gemnasium: false,
-          circle_ci: false,
-          patreon: false
+          git_cop: true,
+          git_hub: false,
+          guard: true,
+          patreon: false,
+          pry: true,
+          rails: false,
+          reek: true,
+          rspec: true,
+          rubocop: true,
+          scss_lint: false,
+          security: true
         },
         publish: {
           sign: false
@@ -111,54 +111,18 @@ module Gemsmith
 
     desc "-g, [--generate=GEM]", "Generate new gem."
     map %w[-g --generate] => :generate
-    method_option :cli,
-                  desc: "Add CLI support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :cli)
-    method_option :rails,
-                  desc: "Add Rails support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :rails)
-    method_option :security,
-                  desc: "Add security support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :security)
-    method_option :pry,
-                  desc: "Add Pry support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :pry)
-    method_option :guard,
-                  desc: "Add Guard support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :guard)
     method_option :bundler_audit,
                   desc: "Add Bundler Audit support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :bundler_audit)
-    method_option :git_cop,
-                  desc: "Add Git Cop support.",
+    method_option :circle_ci,
+                  desc: "Add Circle CI support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:generate, :git_cop)
-    method_option :rspec,
-                  desc: "Add RSpec support.",
+                  default: configuration.to_h.dig(:generate, :circle_ci)
+    method_option :cli,
+                  desc: "Add CLI support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:generate, :rspec)
-    method_option :reek,
-                  desc: "Add Reek support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :reek)
-    method_option :rubocop,
-                  desc: "Add Rubocop support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :rubocop)
-    method_option :scss_lint,
-                  desc: "Add SCSS Lint support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :scss_lint)
-    method_option :git_hub,
-                  desc: "Add GitHub support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :git_hub)
+                  default: configuration.to_h.dig(:generate, :cli)
     method_option :code_climate,
                   desc: "Add Code Climate support.",
                   type: :boolean,
@@ -167,14 +131,50 @@ module Gemsmith
                   desc: "Add Gemnasium support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :gemnasium)
-    method_option :circle_ci,
-                  desc: "Add Circle CI support.",
+    method_option :git_cop,
+                  desc: "Add Git Cop support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:generate, :circle_ci)
+                  default: configuration.to_h.dig(:generate, :git_cop)
+    method_option :git_hub,
+                  desc: "Add GitHub support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :git_hub)
+    method_option :guard,
+                  desc: "Add Guard support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :guard)
     method_option :patreon,
                   desc: "Add Patreon support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :patreon)
+    method_option :pry,
+                  desc: "Add Pry support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :pry)
+    method_option :rails,
+                  desc: "Add Rails support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :rails)
+    method_option :reek,
+                  desc: "Add Reek support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :reek)
+    method_option :rspec,
+                  desc: "Add RSpec support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :rspec)
+    method_option :rubocop,
+                  desc: "Add Rubocop support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :rubocop)
+    method_option :scss_lint,
+                  desc: "Add SCSS Lint support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :scss_lint)
+    method_option :security,
+                  desc: "Add security support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :security)
     # rubocop:disable Metrics/AbcSize
     # :reek:TooManyStatements
     def generate name

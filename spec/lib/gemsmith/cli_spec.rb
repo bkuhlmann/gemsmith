@@ -24,21 +24,22 @@ RSpec.describe Gemsmith::CLI do
       let :options do
         [
           gem_name,
+          "--no-bundler-audit",
+          "--no-circle-ci",
           "--no-cli",
-          "--no-rails",
-          "--no-security",
-          "--no-pry",
-          "--no-guard",
-          "--no-git-cop",
-          "--no-rspec",
-          "--no-reek",
-          "--no-rubocop",
-          "--no-scss-lint",
-          "--no-git-hub",
           "--no-code-climate",
           "--no-gemnasium",
-          "--no-circle-ci",
-          "--no-patreon"
+          "--no-git-cop",
+          "--no-git-hub",
+          "--no-guard",
+          "--no-patreon",
+          "--no-pry",
+          "--no-rails",
+          "--no-reek",
+          "--no-rspec",
+          "--no-rubocop",
+          "--no-scss-lint",
+          "--no-security"
         ]
       end
 
@@ -109,20 +110,21 @@ RSpec.describe Gemsmith::CLI do
       let :options do
         [
           gem_name,
-          "--rails",
-          "--security",
-          "--pry",
-          "--guard",
-          "--git-cop",
-          "--rspec",
-          "--reek",
-          "--rubocop",
-          "--scss-lint",
-          "--git-hub",
+          "--bundler-audit",
+          "--circle-ci",
           "--code-climate",
           "--gemnasium",
-          "--circle-ci",
-          "--patreon"
+          "--git-cop",
+          "--git-hub",
+          "--guard",
+          "--patreon",
+          "--pry",
+          "--rails",
+          "--reek",
+          "--rspec",
+          "--rubocop",
+          "--scss-lint",
+          "--security"
         ]
       end
       let(:controllers_dir) { File.join gem_dir, "app", "controllers", gem_name }
@@ -264,22 +266,22 @@ RSpec.describe Gemsmith::CLI do
           rails: "5.1"
         },
         generate: {
-          cli: false,
-          rails: false,
-          security: true,
-          pry: true,
-          guard: true,
           bundler_audit: false,
-          git_cop: true,
-          rspec: true,
-          reek: true,
-          rubocop: true,
-          scss_lint: false,
-          git_hub: false,
+          circle_ci: false,
+          cli: false,
           code_climate: false,
           gemnasium: false,
-          circle_ci: false,
-          patreon: false
+          git_cop: true,
+          git_hub: false,
+          guard: true,
+          patreon: false,
+          pry: true,
+          rails: false,
+          reek: true,
+          rspec: true,
+          rubocop: true,
+          scss_lint: false,
+          security: true
         },
         publish: {
           sign: false

@@ -50,23 +50,23 @@ A command line interface for smithing new Ruby gems.
 - Uses [Milestoner](https://github.com/bkuhlmann/milestoner) for consistent project/gem versioning.
 - Uses [Pragmater](https://github.com/bkuhlmann/pragmater) for Ruby source pragma directives.
 - Uses [Tocer](https://github.com/bkuhlmann/tocer) for README table of contents generation.
-- Supports [Thor](https://github.com/erikhuda/thor).
-- Supports [Ruby on Rails](http://rubyonrails.org).
-- Supports [RubyGems Security](http://guides.rubygems.org/security).
-- Supports [Pry](http://pryrepl.org).
-- Supports [Guard](https://github.com/guard/guard).
 - Supports [Bundler Audit](https://github.com/rubysec/bundler-audit).
-- Supports [RSpec](http://rspec.info).
-- Supports [Git Cop](https://github.com/bkuhlmann/git-cop).
-- Supports [Reek](https://github.com/troessner/reek).
-- Supports [Rubocop](https://github.com/bbatsov/rubocop).
-- Supports [SCSS Lint](https://github.com/brigade/scss-lint).
-- Supports [GitHub](https://github.com).
+- Supports [Circle CI](https://circleci.com).
 - Supports [Code Climate](https://codeclimate.com).
 - Supports [Gemnasium](https://gemnasium.com).
-- Supports [Circle CI](https://circleci.com).
+- Supports [Git Cop](https://github.com/bkuhlmann/git-cop).
+- Supports [GitHub](https://github.com).
+- Supports [Guard](https://github.com/guard/guard).
 - Supports [Patreon](https://www.patreon.com).
-- Supports common settings and a structured layout for building new gems.
+- Supports [Pry](http://pryrepl.org).
+- Supports [Reek](https://github.com/troessner/reek).
+- Supports [RSpec](http://rspec.info).
+- Supports [Rubocop](https://github.com/bbatsov/rubocop).
+- Supports [Ruby on Rails](http://rubyonrails.org).
+- Supports [RubyGems Security](http://guides.rubygems.org/security).
+- Supports [SCSS Lint](https://github.com/brigade/scss-lint).
+- Supports [Thor](https://github.com/erikhuda/thor).
+- Supports common settings and a structured layout for building gems.
 - Supports publishing to public or private gem servers.
 - Provides common documentation:
   - [README](README.md)
@@ -137,22 +137,22 @@ The default configuration is as follows:
       :ruby: "<current Ruby version>"
       :rails: "5.1"
     :generate:
-      :cli: false
-      :rails: false
-      :security: true
-      :pry: true
-      :guard: true
       :bundler_audit: false
-      :git_cop: true
-      :rspec: true
-      :reek: true
-      :rubocop: true
-      :scss_lint: false
-      :git_hub: false
+      :circle_ci: false
+      :cli: false
       :code_climate: false
       :gemnasium: false
-      :circle_ci: false
+      :git_cop: true
+      :git_hub: false
+      :guard: true
       :patreon: false
+      :pry: true
+      :rails: false
+      :reek: true
+      :rspec: true
+      :rubocop: true
+      :scss_lint: false
+      :security: true
     :publish:
       :sign: false
 
@@ -197,29 +197,29 @@ From the command line, type: `gemsmith --help`
 
 For more gem generation options, type: `gemsmith --help --generate`
 
-    [--cli], [--no-cli]                      # Add CLI support.
-    [--rails], [--no-rails]                  # Add Rails support.
-    [--security], [--no-security]            # Add security support.
-                                             # Default: true
-    [--pry], [--no-pry]                      # Add Pry support.
-                                             # Default: true
-    [--guard], [--no-guard]                  # Add Guard support.
-                                             # Default: true
     [--bundler-audit], [--no-bundler-audit]  # Add Bundler Audit support.
+    [--circle-ci], [--no-circle-ci]          # Add Circle CI support.
+    [--cli], [--no-cli]                      # Add CLI support.
+    [--code-climate], [--no-code-climate]    # Add Code Climate support.
+    [--gemnasium], [--no-gemnasium]          # Add Gemnasium support.
     [--git-cop], [--no-git-cop]              # Add Git Cop support.
                                              # Default: true
-    [--rspec], [--no-rspec]                  # Add RSpec support.
+    [--git-hub], [--no-git-hub]              # Add GitHub support.
+    [--guard], [--no-guard]                  # Add Guard support.
                                              # Default: true
+    [--patreon], [--no-patreon]              # Add Patreon support.
+    [--pry], [--no-pry]                      # Add Pry support.
+                                             # Default: true
+    [--rails], [--no-rails]                  # Add Rails support.
     [--reek], [--no-reek]                    # Add Reek support.
+                                             # Default: true
+    [--rspec], [--no-rspec]                  # Add RSpec support.
                                              # Default: true
     [--rubocop], [--no-rubocop]              # Add Rubocop support.
                                              # Default: true
     [--scss-lint], [--no-scss-lint]          # Add SCSS Lint support.
-    [--git-hub], [--no-git-hub]              # Add GitHub support.
-    [--code-climate], [--no-code-climate]    # Add Code Climate support.
-    [--gemnasium], [--no-gemnasium]          # Add Gemnasium support.
-    [--circle-ci], [--no-circle-ci]          # Add Circle CI support.
-    [--patreon], [--no-patreon]              # Add Patreon support.
+    [--security], [--no-security]            # Add security support.
+                                             # Default: true
 
 ### Rake
 
