@@ -1,3 +1,12 @@
+# v10.4.0 (2017-09-23)
+
+- Added Bundler Audit support.
+- Updated CLI `--generate` options to be alpha-sorted.
+- Updated to Code Quality 1.3.0.
+- Updated to Rubocop 0.50.0.
+- Updated to Ruby 2.4.2.
+- Removed Pry State gem.
+
 # v10.3.0 (2017-08-20)
 
 - Fixed Rubocop gem dependency.
