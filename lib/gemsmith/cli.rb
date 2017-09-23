@@ -59,6 +59,7 @@ module Gemsmith
           security: true,
           pry: true,
           guard: true,
+          bundler_audit: false,
           git_cop: true,
           rspec: true,
           reek: true,
@@ -85,6 +86,7 @@ module Gemsmith
         Generators::Ruby,
         Generators::Rails,
         Generators::Rspec,
+        Generators::BundlerAudit,
         Generators::GitCop,
         Generators::Reek,
         Generators::Rubocop,
@@ -129,6 +131,10 @@ module Gemsmith
                   desc: "Add Guard support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :guard)
+    method_option :bundler_audit,
+                  desc: "Add Bundler Audit support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :bundler_audit)
     method_option :git_cop,
                   desc: "Add Git Cop support.",
                   type: :boolean,

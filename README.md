@@ -55,6 +55,7 @@ A command line interface for smithing new Ruby gems.
 - Supports [RubyGems Security](http://guides.rubygems.org/security).
 - Supports [Pry](http://pryrepl.org).
 - Supports [Guard](https://github.com/guard/guard).
+- Supports [Bundler Audit](https://github.com/rubysec/bundler-audit).
 - Supports [RSpec](http://rspec.info).
 - Supports [Git Cop](https://github.com/bkuhlmann/git-cop).
 - Supports [Reek](https://github.com/troessner/reek).
@@ -141,6 +142,7 @@ The default configuration is as follows:
       :security: true
       :pry: true
       :guard: true
+      :bundler_audit: false
       :git_cop: true
       :rspec: true
       :reek: true
@@ -195,28 +197,29 @@ From the command line, type: `gemsmith --help`
 
 For more gem generation options, type: `gemsmith --help --generate`
 
-    [--cli], [--no-cli]                    # Add CLI support.
-    [--rails], [--no-rails]                # Add Rails support.
-    [--security], [--no-security]          # Add security support.
-                                           # Default: true
-    [--pry], [--no-pry]                    # Add Pry support.
-                                           # Default: true
-    [--guard], [--no-guard]                # Add Guard support.
-                                           # Default: true
-    [--git-cop], [--no-git-cop]            # Add Git Cop support.
-                                           # Default: true
-    [--rspec], [--no-rspec]                # Add RSpec support.
-                                           # Default: true
-    [--reek], [--no-reek]                  # Add Reek support.
-                                           # Default: true
-    [--rubocop], [--no-rubocop]            # Add Rubocop support.
-                                           # Default: true
-    [--scss-lint], [--no-scss-lint]        # Add SCSS Lint support.
-    [--git-hub], [--no-git-hub]            # Add GitHub support.
-    [--code-climate], [--no-code-climate]  # Add Code Climate support.
-    [--gemnasium], [--no-gemnasium]        # Add Gemnasium support.
-    [--circle-ci], [--no-circle-ci]        # Add Circle CI support.
-    [--patreon], [--no-patreon]            # Add Patreon support.
+    [--cli], [--no-cli]                      # Add CLI support.
+    [--rails], [--no-rails]                  # Add Rails support.
+    [--security], [--no-security]            # Add security support.
+                                             # Default: true
+    [--pry], [--no-pry]                      # Add Pry support.
+                                             # Default: true
+    [--guard], [--no-guard]                  # Add Guard support.
+                                             # Default: true
+    [--bundler-audit], [--no-bundler-audit]  # Add Bundler Audit support.
+    [--git-cop], [--no-git-cop]              # Add Git Cop support.
+                                             # Default: true
+    [--rspec], [--no-rspec]                  # Add RSpec support.
+                                             # Default: true
+    [--reek], [--no-reek]                    # Add Reek support.
+                                             # Default: true
+    [--rubocop], [--no-rubocop]              # Add Rubocop support.
+                                             # Default: true
+    [--scss-lint], [--no-scss-lint]          # Add SCSS Lint support.
+    [--git-hub], [--no-git-hub]              # Add GitHub support.
+    [--code-climate], [--no-code-climate]    # Add Code Climate support.
+    [--gemnasium], [--no-gemnasium]          # Add Gemnasium support.
+    [--circle-ci], [--no-circle-ci]          # Add Circle CI support.
+    [--patreon], [--no-patreon]              # Add Patreon support.
 
 ### Rake
 
@@ -224,6 +227,7 @@ Once a gem skeleton has been created, the following tasks are available (i.e. `b
 -T`):
 
     rake build                 # Build example-0.1.0.gem package
+    rake bundle:audit          # Updates the ruby-advisory-db then runs bundle-audit
     rake clean                 # Clean gem artifacts
     rake code_quality          # Run code quality checks
     rake doc                   # Update README (table of contents)
@@ -234,6 +238,9 @@ Once a gem skeleton has been created, the following tasks are available (i.e. `b
     rake rubocop               # Run RuboCop
     rake rubocop:auto_correct  # Auto-correct RuboCop offenses
     rake spec                  # Run RSpec code examples
+
+*NOTE: Some tasks might differ depending on what options you enabled/disabled during gem
+generation.*
 
 When building/testing your gem locally, a typical workflow is:
 
