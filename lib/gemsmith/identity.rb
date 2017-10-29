@@ -12,7 +12,7 @@ module Gemsmith
     end
 
     def self.version
-      "10.4.0"
+      "10.4.1"
     end
 
     def self.version_label

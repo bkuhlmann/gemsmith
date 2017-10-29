@@ -1,3 +1,7 @@
+# v10.4.1 (2017-10-29)
+
+- Updated to Rubocop 0.51.0.
+
 # v10.4.0 (2017-09-23)
 
 - Added Bundler Audit support.
