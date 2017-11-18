@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "hirb", "~> 0.7"
   spec.add_development_dependency "pry", "~> 0.10"
   spec.add_development_dependency "pry-byebug", "~> 3.5"
-  spec.add_development_dependency "rake", "~> 12.0"
+  spec.add_development_dependency "rake", "~> 12.3"
   spec.add_development_dependency "reek", "~> 4.7"
   spec.add_development_dependency "rspec", "~> 3.7"
   spec.add_development_dependency "wirb", "~> 2.1"
