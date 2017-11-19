@@ -1,3 +1,8 @@
+# v10.4.2 (2017-11-19)
+
+- Updated to Git Cop 1.7.0.
+- Updated to Rake 12.3.0.
+
 # v10.4.1 (2017-10-29)
 
 - Updated to Rubocop 0.51.0.
