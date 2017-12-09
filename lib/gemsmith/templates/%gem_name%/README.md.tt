@@ -2,8 +2,9 @@
 
 [![Gem Version](https://badge.fury.io/rb/<%= config.dig(:gem, :name) %>.svg)](http://badge.fury.io/rb/<%= config.dig(:gem, :name) %>)
 <%- if config.dig(:generate, :code_climate) -%>
-[![Code Climate GPA](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>.svg)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
-[![Code Climate Coverage](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>/coverage.svg)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
+<!-- Replace <id> with Code Climate repository ID. Remove this comment afterwards. -->
+[![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/<id>/maintainability)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>/maintainability)
+[![Code Climate Test Coverage](https://api.codeclimate.com/v1/badges/<id>/test_coverage)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>/test_coverage)
 <%- end -%>
 <%- if config.dig(:generate, :gemnasium) -%>
 [![Gemnasium Status](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>.svg)](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
