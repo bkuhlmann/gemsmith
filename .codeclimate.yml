@@ -1,29 +1,40 @@
-prepare:
-  fetch:
-    - https://raw.githubusercontent.com/bkuhlmann/code_quality/master/configurations/rubocop/ruby.yml
-engines:
-  shellcheck:
-    enabled: true
-  reek:
-    enabled: true
-  rubocop:
-    enabled: true
-  scss-lint:
-    enabled: true
-  duplication:
-    enabled: true
+version: 2
+checks:
+  argument-count:
     config:
-      languages:
-      - ruby
-      - javascript
-ratings:
-  paths:
-  - "app/**/*"
-  - "bin/**/*"
-  - "lib/**/*"
-  - "**.rb"
-  - "**.js"
-exclude_paths:
-- "spec/**/*"
-- "vendor/**/*"
-- ".codeclimate.yml"
+      threshold: 3
+  complex-logic:
+    config:
+      threshold: 3
+  file-lines:
+    config:
+      threshold: 250
+  method-complexity:
+    config:
+      threshold: 3
+  method-count:
+    config:
+      threshold: 20
+  method-lines:
+    config:
+      threshold: 20
+  nested-control-flow:
+    config:
+      threshold: 3
+  return-statements:
+    config:
+      threshold: 3
+  similar-code:
+    enabled: false
+  identical-code:
+    config:
+      threshold: 3
+exclude_patterns:
+- "config/"
+- "db/"
+- "**/elm-stuff/"
+- "**/node_modules/"
+- "**/spec/"
+- "**/test/"
+- "**/tests/"
+- "**/vendor/"

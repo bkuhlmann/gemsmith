@@ -1,34 +1,40 @@
-prepare:
-  fetch:
-    - url: https://raw.githubusercontent.com/bkuhlmann/code_quality/v1.3.0/configurations/rubocop/ruby.yml
-      path: .rubocop-https---raw-githubusercontent-com-bkuhlmann-code-quality-v1-3-0-configurations-rubocop-ruby-yml
-<%- if config.dig(:generate, :rails) -%>
-    - url: https://raw.githubusercontent.com/bkuhlmann/code_quality/v1.3.0/configurations/rubocop/rails.yml
-      path: .rubocop-https---raw-githubusercontent-com-bkuhlmann-code-quality-v1-3-0-configurations-rubocop-rails-yml
-<%- end -%>
-engines:
-  shellcheck:
-    enabled: true
-  reek:
-    enabled: <%= config.dig :generate, :reek %>
-  rubocop:
-    enabled: <%= config.dig :generate, :rubocop %>
-  scss-lint:
-    enabled: <%= config.dig :generate, :scss_lint %>
-  duplication:
-    enabled: true
+version: 2
+checks:
+  argument-count:
     config:
-      languages:
-      - ruby
-      - javascript
-ratings:
-  paths:
-  - "app/**/*"
-  - "bin/**/*"
-  - "lib/**/*"
-  - "**.rb"
-  - "**.js"
-exclude_paths:
-- "spec/**/*"
-- "vendor/**/*"
-- ".codeclimate.yml"
+      threshold: 3
+  complex-logic:
+    config:
+      threshold: 3
+  file-lines:
+    config:
+      threshold: 250
+  method-complexity:
+    config:
+      threshold: 3
+  method-count:
+    config:
+      threshold: 20
+  method-lines:
+    config:
+      threshold: 20
+  nested-control-flow:
+    config:
+      threshold: 3
+  return-statements:
+    config:
+      threshold: 3
+  similar-code:
+    enabled: false
+  identical-code:
+    config:
+      threshold: 3
+exclude_patterns:
+- "config/"
+- "db/"
+- "**/elm-stuff/"
+- "**/node_modules/"
+- "**/spec/"
+- "**/test/"
+- "**/tests/"
+- "**/vendor/"
