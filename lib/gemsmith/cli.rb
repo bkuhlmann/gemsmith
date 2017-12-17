@@ -76,7 +76,9 @@ module Gemsmith
         }
       }
     end
+    # rubocop:enable Metrics/MethodLength
 
+    # rubocop:disable Metrics/MethodLength
     def self.generators
       [
         Generators::Gem,
@@ -100,6 +102,7 @@ module Gemsmith
         Generators::Git
       ]
     end
+    # rubocop:enable Metrics/MethodLength
 
     # Initialize.
     def initialize args = [], options = {}, config = {}
@@ -187,6 +190,7 @@ module Gemsmith
 
       say_status :info, "Gem generation finished.", :green
     end
+    # rubocop:enable Metrics/AbcSize
 
     desc "-o, [--open=GEM]", "Open a gem in default editor."
     map %w[-o --open] => :open
@@ -237,6 +241,7 @@ module Gemsmith
     attr_reader :configuration
 
     # :reek:FeatureEnvy
+    # rubocop:disable Metrics/MethodLength
     def setup_configuration name:, options: {}
       @configuration = configuration.to_h.merge(
         gem: {
@@ -251,6 +256,7 @@ module Gemsmith
         generate: options.symbolize_keys
       )
     end
+    # rubocop:enable Metrics/MethodLength
 
     def print_cli_and_rails_engine_option_error
       say_status :error,
@@ -259,4 +265,5 @@ module Gemsmith
                  :red
     end
   end
+  # rubocop:enable Metrics/ClassLength
 end

@@ -27,18 +27,21 @@ module Gemsmith
         cli.template "#{generator_root}/upgrade/upgrade_generator.rb.tt", configuration
         cli.template "#{generator_root}/upgrade/USAGE.tt", configuration
       end
+      # rubocop:enable Metrics/AbcSize
 
       def stub_assets
         cli.run %(printf "%s" > "#{gem_name}/app/assets/javascripts/#{gem_path}/application.js")
         cli.run %(printf "%s" > "#{gem_name}/app/assets/stylesheets/#{gem_path}/application.css")
       end
 
+      # rubocop:disable Metrics/AbcSize
       def remove_files
         cli.remove_file "#{gem_name}/app/helpers/#{gem_path}/application_helper.rb", configuration
         cli.remove_file "#{gem_name}/lib/#{gem_path}/version.rb", configuration
         cli.remove_file "#{gem_name}/MIT-LICENSE", configuration
         cli.remove_file "#{gem_name}/README.rdoc", configuration
       end
+      # rubocop:enable Metrics/AbcSize
 
       # :reek:TooManyStatements
       def run

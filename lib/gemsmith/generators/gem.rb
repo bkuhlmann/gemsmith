@@ -14,6 +14,7 @@ module Gemsmith
         cli.template "#{lib_gem_root}/identity.rb.tt", configuration
         cli.chmod "#{configuration.dig(:gem, :name)}/bin/setup", 0o755
       end
+      # rubocop:enable Metrics/AbcSize
     end
   end
 end

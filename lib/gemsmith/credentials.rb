@@ -65,6 +65,7 @@ module Gemsmith
       File.open(file_path, "w") { |file| file << YAML.dump(new_credentials) }
       FileUtils.chmod(0o600, file_path)
     end
+    # rubocop:enable Metrics/AbcSize
 
     private
 

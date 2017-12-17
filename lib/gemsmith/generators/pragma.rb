@@ -30,6 +30,7 @@ module Gemsmith
           **/*.rb
         ]
       end
+      # rubocop:enable Metrics/MethodLength
 
       def run
         Pragmater::Runner.new(

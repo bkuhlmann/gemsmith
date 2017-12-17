@@ -63,6 +63,8 @@ module Gemsmith
           publisher.publish
         end
       end
+      # rubocop:enable Metrics/AbcSize
+      # rubocop:enable Metrics/MethodLength
 
       private
 

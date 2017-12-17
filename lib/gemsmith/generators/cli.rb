@@ -13,6 +13,7 @@ module Gemsmith
         cli.template "%gem_name%/spec/lib/%gem_path%/cli_spec.rb.tt", configuration
         cli.chmod "#{gem_name}/bin/#{gem_name}", 0o755
       end
+      # rubocop:enable Metrics/AbcSize
     end
   end
 end

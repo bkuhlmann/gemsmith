@@ -31,6 +31,7 @@ module Gemsmith
         @shell = shell
         @kernel = kernel
       end
+      # rubocop:enable Metrics/ParameterLists
 
       # rubocop:disable Metrics/AbcSize
       def push
@@ -41,6 +42,7 @@ module Gemsmith
         status = kernel.system %(gem push "pkg/#{gem_spec.package_file_name}" #{options})
         process_push status
       end
+      # rubocop:enable Metrics/AbcSize
 
       def publish
         publisher.publish gem_spec.version_number, sign: signed?
