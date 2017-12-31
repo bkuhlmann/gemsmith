@@ -1,4 +1,4 @@
-$LOAD_PATH.push File.expand_path("../lib", __FILE__)
+$LOAD_PATH.append File.expand_path("../lib", __FILE__)
 require "<%= config.dig(:gem, :path) %>/identity"
 
 Gem::Specification.new do |spec|

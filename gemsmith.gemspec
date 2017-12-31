@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-$LOAD_PATH.push File.expand_path("../lib", __FILE__)
+$LOAD_PATH.append File.expand_path("../lib", __FILE__)
 require "gemsmith/identity"
 
 Gem::Specification.new do |spec|
