@@ -13,12 +13,7 @@ RSpec.describe Gemsmith::CLI do
   shared_examples_for "a generate command" do
     let(:gem_name) { "tester" }
     let(:gem_dir) { Pathname.new File.join(temp_dir, gem_name) }
-    let :files do
-      files = Pathname.glob("#{gem_dir}/**/*", File::FNM_DOTMATCH).select(&:file?)
-      files = files.map { |file| file.relative_path_from gem_dir }
-      files = files.reject { |file| file.to_s =~ %r(^(\.git\/.+|\.tags|\.rubocop-http.*)$) }
-      files.map(&:to_s)
-    end
+    let(:files) { Dir.chdir(gem_dir) { `git ls-files` }.split }
 
     context "with no options", :temp_dir do
       let :options do
@@ -131,8 +126,8 @@ RSpec.describe Gemsmith::CLI do
       let(:mailers_dir) { File.join gem_dir, "app", "mailers", gem_name }
       let(:models_dir) { File.join gem_dir, "app", "models", gem_name }
 
-      # FIX: This block should be removed once it is determined why `rails plugin new` doesn't run
-      # via the `Generators::Rails#create_engine` within this spec.
+      # FIX: Remove this before block once it is determined why `rails plugin new` doesn't run via
+      # the `Generators::Rails#create_engine` within this spec.
       before do
         FileUtils.mkdir_p controllers_dir
         FileUtils.touch File.join(controllers_dir, "application_controller.rb")
@@ -196,7 +191,7 @@ RSpec.describe Gemsmith::CLI do
       it "generates basic gem" do
         Dir.chdir temp_dir do
           cli
-          expect(files).to be_empty
+          expect(File.exist?(gem_dir)).to eq(false)
         end
       end
 
