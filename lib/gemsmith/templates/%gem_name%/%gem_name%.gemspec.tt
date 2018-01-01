@@ -10,7 +10,6 @@ Gem::Specification.new do |spec|
   spec.homepage = "<%= config.dig(:gem, :url) %>"
   spec.summary = ""
   spec.license = "MIT"
-
   <%- if config.dig(:generate, :security) -%>
   if File.exist?(Gem.default_key_path) && File.exist?(Gem.default_cert_path)
     spec.signing_key = Gem.default_key_path

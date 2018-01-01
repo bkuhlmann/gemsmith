@@ -1,3 +1,23 @@
+# v11.0.0 (2018-01-01)
+
+- Updated Bundler Audit option to be enabled by default.
+- Updated Code Climate badges.
+- Updated Code Climate configuration to Version 2.0.0.
+- Updated GitHub option to be enabled by default for gem generation.
+- Updated gem generation security option to be false by default.
+- Updated to Apache 2.0 license.
+- Updated to Pragmater 5.0.0.
+- Updated to Rubocop 0.52.0.
+- Updated to Ruby 2.4.3.
+- Updated to Ruby 2.5.0.
+- Removed Patreon support.
+- Removed SCSS Lint support.
+- Removed documentation for secure installs.
+- Removed empty gemspec fixture.
+- Refactored CLI spec to use Git file list.
+- Refactored code to use Ruby 2.5.0 `Array#append` syntax.
+- Refactored gem module formater to only strip prefixed newlines.
+
 # v10.4.2 (2017-11-19)
 
 - Updated to Git Cop 1.7.0.

@@ -131,14 +131,14 @@ The default configuration is as follows:
       :code_climate: false
       :gemnasium: false
       :git_cop: true
-      :git_hub: false
+      :git_hub: true
       :guard: true
       :pry: true
       :rails: false
       :reek: true
       :rspec: true
       :rubocop: true
-      :security: true
+      :security: false
     :publish:
       :sign: false
 
@@ -184,6 +184,7 @@ From the command line, type: `gemsmith --help`
 For more gem generation options, type: `gemsmith --help --generate`
 
     [--bundler-audit], [--no-bundler-audit]  # Add Bundler Audit support.
+                                             # Default: true
     [--circle-ci], [--no-circle-ci]          # Add Circle CI support.
     [--cli], [--no-cli]                      # Add CLI support.
     [--code-climate], [--no-code-climate]    # Add Code Climate support.
@@ -191,9 +192,9 @@ For more gem generation options, type: `gemsmith --help --generate`
     [--git-cop], [--no-git-cop]              # Add Git Cop support.
                                              # Default: true
     [--git-hub], [--no-git-hub]              # Add GitHub support.
+                                             # Default: true
     [--guard], [--no-guard]                  # Add Guard support.
                                              # Default: true
-    [--patreon], [--no-patreon]              # Add Patreon support.
     [--pry], [--no-pry]                      # Add Pry support.
                                              # Default: true
     [--rails], [--no-rails]                  # Add Rails support.
@@ -203,9 +204,7 @@ For more gem generation options, type: `gemsmith --help --generate`
                                              # Default: true
     [--rubocop], [--no-rubocop]              # Add Rubocop support.
                                              # Default: true
-    [--scss-lint], [--no-scss-lint]          # Add SCSS Lint support.
     [--security], [--no-security]            # Add security support.
-                                             # Default: true
 
 ### Rake
 
