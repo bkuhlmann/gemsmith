@@ -62,7 +62,6 @@ A command line interface for smithing new Ruby gems.
 - Supports [Rubocop](https://github.com/bbatsov/rubocop).
 - Supports [Ruby on Rails](http://rubyonrails.org).
 - Supports [RubyGems Security](http://guides.rubygems.org/security).
-- Supports [SCSS Lint](https://github.com/brigade/scss-lint).
 - Supports [Thor](https://github.com/erikhuda/thor).
 - Supports common settings and a structured layout for building gems.
 - Supports publishing to public or private gem servers.
@@ -139,7 +138,6 @@ The default configuration is as follows:
       :reek: true
       :rspec: true
       :rubocop: true
-      :scss_lint: false
       :security: true
     :publish:
       :sign: false

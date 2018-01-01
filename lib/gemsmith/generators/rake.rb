@@ -46,17 +46,12 @@ module Gemsmith
         configuration.dig(:generate, :rubocop) ? "rubocop" : ""
       end
 
-      def scss_lint_task
-        configuration.dig(:generate, :scss_lint) ? "scss_lint" : ""
-      end
-
       def code_quality_tasks
         [
           bundler_audit_task,
           git_cop_task,
           reek_task,
-          rubocop_task,
-          scss_lint_task
+          rubocop_task
         ].compress.join " "
       end
 

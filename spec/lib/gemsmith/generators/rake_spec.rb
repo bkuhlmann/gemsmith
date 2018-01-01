@@ -9,7 +9,6 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
   let(:generate_git_cop) { false }
   let(:generate_reek) { false }
   let(:generate_rubocop) { false }
-  let(:generate_scss_lint) { false }
 
   let :configuration do
     {
@@ -21,8 +20,7 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
         bundler_audit: generate_bundler_audit,
         git_cop: generate_git_cop,
         reek: generate_reek,
-        rubocop: generate_rubocop,
-        scss_lint: generate_scss_lint
+        rubocop: generate_rubocop
       }
     }
   end
@@ -67,25 +65,14 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
       end
     end
 
-    context "when only SCSS Lint is enabled" do
-      let(:generate_scss_lint) { true }
-
-      it "adds SCSS Lint task" do
-        expect(task).to eq(
-          %(\ndesc "Run code quality checks"\ntask code_quality: %i[scss_lint]\n)
-        )
-      end
-    end
-
     context "when all tasks are enabled" do
       let(:generate_bundler_audit) { true }
       let(:generate_git_cop) { true }
       let(:generate_reek) { true }
       let(:generate_rubocop) { true }
-      let(:generate_scss_lint) { true }
 
       it "adds all code quality tasks" do
-        tasks = "%i[bundle:audit git_cop reek rubocop scss_lint]"
+        tasks = "%i[bundle:audit git_cop reek rubocop]"
         expect(task).to eq(%(\ndesc "Run code quality checks"\ntask code_quality: #{tasks}\n))
       end
     end
@@ -145,7 +132,6 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
       let(:generate_git_cop) { true }
       let(:generate_reek) { true }
       let(:generate_rubocop) { true }
-      let(:generate_scss_lint) { true }
 
       it "adds code quality and default tasks", :aggregate_failures do
         expect(cli).to have_received(:append_to_file).with(

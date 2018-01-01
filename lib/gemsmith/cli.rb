@@ -67,7 +67,6 @@ module Gemsmith
           reek: true,
           rspec: true,
           rubocop: true,
-          scss_lint: false,
           security: true
         },
         publish: {
@@ -91,7 +90,6 @@ module Gemsmith
         Generators::GitCop,
         Generators::Reek,
         Generators::Rubocop,
-        Generators::SCSSLint,
         Generators::CodeClimate,
         Generators::Guard,
         Generators::CircleCI,
@@ -165,10 +163,6 @@ module Gemsmith
                   desc: "Add Rubocop support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :rubocop)
-    method_option :scss_lint,
-                  desc: "Add SCSS Lint support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :scss_lint)
     method_option :security,
                   desc: "Add security support.",
                   type: :boolean,

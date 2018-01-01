@@ -32,7 +32,6 @@ RSpec.describe Gemsmith::CLI do
           "--no-reek",
           "--no-rspec",
           "--no-rubocop",
-          "--no-scss-lint",
           "--no-security"
         ]
       end
@@ -116,7 +115,6 @@ RSpec.describe Gemsmith::CLI do
           "--reek",
           "--rspec",
           "--rubocop",
-          "--scss-lint",
           "--security"
         ]
       end
@@ -272,7 +270,6 @@ RSpec.describe Gemsmith::CLI do
           reek: true,
           rspec: true,
           rubocop: true,
-          scss_lint: false,
           security: true
         },
         publish: {
@@ -313,7 +310,6 @@ RSpec.describe Gemsmith::CLI do
         Gemsmith::Generators::Rspec,
         Gemsmith::Generators::Reek,
         Gemsmith::Generators::Rubocop,
-        Gemsmith::Generators::SCSSLint,
         Gemsmith::Generators::CodeClimate,
         Gemsmith::Generators::Guard,
         Gemsmith::Generators::CircleCI,
