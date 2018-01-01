@@ -54,7 +54,7 @@ module Gemsmith
           rails: "5.1"
         },
         generate: {
-          bundler_audit: false,
+          bundler_audit: true,
           circle_ci: false,
           cli: false,
           code_climate: false,
