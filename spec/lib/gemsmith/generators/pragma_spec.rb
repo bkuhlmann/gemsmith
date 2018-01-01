@@ -10,7 +10,7 @@ RSpec.describe Gemsmith::Generators::Pragma, :temp_dir do
   let(:gem_root) { File.join temp_dir, "tester" }
   let(:source_file) { Pathname "#{gem_root}/test.rb" }
 
-  let :whitelist do
+  let :includes do
     %w[
       **/*Gemfile
       **/*Guardfile
@@ -35,15 +35,15 @@ RSpec.describe Gemsmith::Generators::Pragma, :temp_dir do
     allow(Pragmater::Runner).to receive(:new).with(
       gem_root,
       comments: comments,
-      whitelist: whitelist
+      includes: includes
     ).and_return(pragmater)
     FileUtils.mkdir_p gem_root
     FileUtils.touch source_file
   end
 
-  describe "#whitelist" do
-    it "answers whitelist" do
-      expect(subject.whitelist).to contain_exactly(*whitelist)
+  describe "#includes" do
+    it "answers includes" do
+      expect(subject.includes).to contain_exactly(*includes)
     end
   end
 

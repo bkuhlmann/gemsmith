@@ -12,7 +12,7 @@ module Gemsmith
       end
 
       # rubocop:disable Metrics/MethodLength
-      def whitelist
+      def includes
         %W[
           **/*Gemfile
           **/*Guardfile
@@ -36,7 +36,7 @@ module Gemsmith
         Pragmater::Runner.new(
           gem_root,
           comments: self.class.comments,
-          whitelist: whitelist
+          includes: includes
         ).run action: :add
       end
     end
