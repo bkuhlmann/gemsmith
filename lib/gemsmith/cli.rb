@@ -67,7 +67,7 @@ module Gemsmith
           reek: true,
           rspec: true,
           rubocop: true,
-          security: true
+          security: false
         },
         publish: {
           sign: false

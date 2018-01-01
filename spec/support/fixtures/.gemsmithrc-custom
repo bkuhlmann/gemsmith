@@ -27,7 +27,7 @@
   :reek: false
   :rspec: false
   :rubocop: false
-  :security: false
+  :security: true
 :publish:
   :sign: true
 :github_user: "example"

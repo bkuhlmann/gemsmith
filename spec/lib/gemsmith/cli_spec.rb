@@ -272,7 +272,7 @@ RSpec.describe Gemsmith::CLI do
           reek: true,
           rspec: true,
           rubocop: true,
-          security: true
+          security: false
         },
         publish: {
           sign: false
