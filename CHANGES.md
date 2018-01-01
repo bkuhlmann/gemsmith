@@ -1,3 +1,7 @@
+# v11.0.1 (2018-01-01)
+
+- Fixed gemspec template dependencies.
+
 # v11.0.0 (2018-01-01)
 
 - Updated Bundler Audit option to be enabled by default.
