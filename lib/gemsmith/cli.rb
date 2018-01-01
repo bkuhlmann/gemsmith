@@ -62,7 +62,6 @@ module Gemsmith
           git_cop: true,
           git_hub: false,
           guard: true,
-          patreon: false,
           pry: true,
           rails: false,
           reek: true,
@@ -146,10 +145,6 @@ module Gemsmith
                   desc: "Add Guard support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :guard)
-    method_option :patreon,
-                  desc: "Add Patreon support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :patreon)
     method_option :pry,
                   desc: "Add Pry support.",
                   type: :boolean,

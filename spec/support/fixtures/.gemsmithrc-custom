@@ -14,17 +14,20 @@
   :ruby: "1.1.1"
   :rails: "2.2.2"
 :generate:
+  :bundler_audit: false
+  :circle_ci: true
   :cli: true
-  :rails: true
-  :security: false
-  :pry: false
-  :guard: false
-  :rspec: false
-  :rubocop: false
-  :git_hub: true
   :code_climate: true
   :gemnasium: true
-  :patreon: true
+  :git_cop: false
+  :git_hub: true
+  :guard: false
+  :pry: false
+  :rails: true
+  :reek: false
+  :rspec: false
+  :rubocop: false
+  :security: false
 :publish:
   :sign: true
 :github_user: "example"

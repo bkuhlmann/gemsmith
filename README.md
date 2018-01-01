@@ -5,7 +5,6 @@
 [![Code Climate Test Coverage](https://api.codeclimate.com/v1/badges/4fbf3375d2abb76a6f5d/test_coverage)](https://codeclimate.com/github/bkuhlmann/gemsmith/test_coverage)
 [![Gemnasium Status](https://gemnasium.com/bkuhlmann/gemsmith.svg)](https://gemnasium.com/bkuhlmann/gemsmith)
 [![Circle CI Status](https://circleci.com/gh/bkuhlmann/gemsmith.svg?style=svg)](https://circleci.com/gh/bkuhlmann/gemsmith)
-[![Patreon](https://img.shields.io/badge/patreon-donate-brightgreen.svg)](https://www.patreon.com/bkuhlmann)
 
 A command line interface for smithing new Ruby gems.
 
@@ -57,7 +56,6 @@ A command line interface for smithing new Ruby gems.
 - Supports [Git Cop](https://github.com/bkuhlmann/git-cop).
 - Supports [GitHub](https://github.com).
 - Supports [Guard](https://github.com/guard/guard).
-- Supports [Patreon](https://www.patreon.com).
 - Supports [Pry](http://pryrepl.org).
 - Supports [Reek](https://github.com/troessner/reek).
 - Supports [RSpec](http://rspec.info).
@@ -128,7 +126,7 @@ The default configuration is as follows:
       :ruby: "<current Ruby version>"
       :rails: "5.1"
     :generate:
-      :bundler_audit: false
+      :bundler_audit: true
       :circle_ci: false
       :cli: false
       :code_climate: false
@@ -136,7 +134,6 @@ The default configuration is as follows:
       :git_cop: true
       :git_hub: false
       :guard: true
-      :patreon: false
       :pry: true
       :rails: false
       :reek: true
