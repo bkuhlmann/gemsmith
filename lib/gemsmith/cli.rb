@@ -60,7 +60,7 @@ module Gemsmith
           code_climate: false,
           gemnasium: false,
           git_cop: true,
-          git_hub: false,
+          git_hub: true,
           guard: true,
           pry: true,
           rails: false,

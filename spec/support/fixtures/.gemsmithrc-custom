@@ -20,7 +20,7 @@
   :code_climate: true
   :gemnasium: true
   :git_cop: false
-  :git_hub: true
+  :git_hub: false
   :guard: false
   :pry: false
   :rails: true
