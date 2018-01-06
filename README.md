@@ -369,7 +369,7 @@ Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## License
 
-Copyright (c) 2011 [Alchemists](https://www.alchemists.io).
+Copyright 2011 [Alchemists](https://www.alchemists.io).
 Read [LICENSE](LICENSE.md) for details.
 
 ## History

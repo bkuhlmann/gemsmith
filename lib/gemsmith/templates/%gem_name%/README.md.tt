@@ -83,7 +83,7 @@ Read [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## License
 
-Copyright (c) <%= config.fetch :year %> [<%= config.dig :organization, :name %>](<%= config.dig :organization, :url %>).
+Copyright <%= config.fetch :year %> [<%= config.dig :organization, :name %>](<%= config.dig :organization, :url %>).
 Read [LICENSE](LICENSE.md) for details.
 
 ## History
