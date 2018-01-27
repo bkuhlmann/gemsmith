@@ -1,3 +1,11 @@
+# v11.1.0 (2018-01-27)
+
+- Fixed spec helper template.
+- Added Reek configuration file.
+- Updated README license information.
+- Updated initial Git commit message for gem generation.
+- Updated to Circle CI 2.0.0 configuration.
+
 # v11.0.1 (2018-01-01)
 
 - Fixed gemspec template dependencies.
