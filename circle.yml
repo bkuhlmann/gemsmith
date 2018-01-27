@@ -1,13 +1,39 @@
-machine:
-  environment:
-    EDITOR: vim
-dependencies:
-  pre:
-    - gem update --system
-    - gem update bundler
-    - gem install rails
-test:
-  override:
-    - bundle exec rake
-  post:
-    - bundle exec codeclimate-test-reporter
+version: 2
+jobs:
+  build:
+    working_directory: ~/project
+    docker:
+      - image: circleci/ruby:2.5.0
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          EDITOR: vim
+          RAILS_ENV: test
+    steps:
+      - checkout
+
+      - type: cache-restore
+        name: Bundler Cache Restore
+        key: bundle-{{ checksum "Gemfile" }}
+
+      - run:
+          name: Bundler Install
+          command: |
+            gem update --system
+            bundle check || bundle install
+            gem install rails
+
+      - type: cache-save
+        name: Bundler Cache Store
+        key: bundle-{{ checksum "Gemfile" }}
+        paths:
+          - vendor/bundle
+
+      - run:
+          name: Rake Run
+          command: bundle exec rake
+
+      - run:
+          name: Code Climate Analyze
+          command: bundle exec codeclimate-test-reporter
