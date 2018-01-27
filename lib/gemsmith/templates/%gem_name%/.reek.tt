@@ -1,0 +1,5 @@
+exclude_paths:
+  - tmp
+  - vendor
+IrresponsibleModule:
+  enabled: false

@@ -74,6 +74,7 @@ RSpec.describe Gemsmith::CLI do
 
             expect(files).to contain_exactly(
               ".gitignore",
+              ".reek",
               ".rubocop.yml",
               ".ruby-version",
               ".github/ISSUE_TEMPLATE.md",
@@ -144,6 +145,7 @@ RSpec.describe Gemsmith::CLI do
           expect(files).to contain_exactly(
             ".codeclimate.yml",
             ".gitignore",
+            ".reek",
             ".rubocop.yml",
             ".ruby-version",
             ".github/ISSUE_TEMPLATE.md",
@@ -227,7 +229,7 @@ RSpec.describe Gemsmith::CLI do
 
   describe ".source_root" do
     it "answers source root" do
-      expect(described_class.source_root).to include("gemsmith/lib/gemsmith/templates")
+      expect(described_class.source_root).to end_with("lib/gemsmith/templates")
     end
   end
 
