@@ -31,7 +31,7 @@ RSpec.describe Gemsmith::Generators::Git, :temp_dir do
     end
 
     it "creates initial commit" do
-      commit_subject = "Added Gemsmith files."
+      commit_subject = "Added Gemsmith skeleton."
       body = "Built with #{Gemsmith::Identity.version_label}."
 
       expect(subject).to have_received(:`).with(

@@ -10,7 +10,7 @@ module Gemsmith
 
       # :reek:TooManyStatements
       def create_repository
-        subject = "Added Gemsmith files."
+        subject = "Added Gemsmith skeleton."
         body = "Built with #{Identity.version_label}."
 
         Dir.chdir(gem_root) do
