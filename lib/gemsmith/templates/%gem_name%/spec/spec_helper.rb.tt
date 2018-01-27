@@ -8,7 +8,9 @@ SimpleCov.start
 require "pry"
 require "pry-byebug"
 <%- end -%>
-<%- unless config.dig(:generate, :rails) -%>require "<%= config.dig(:gem, :path) %>"<%- end -%>
+<%- unless config.dig(:generate, :rails) -%>
+require "<%= config.dig(:gem, :path) %>"
+<%- end -%>
 
 Dir[File.join(File.dirname(__FILE__), "support/shared_contexts/**/*.rb")].each do |file|
   require file
