@@ -3,7 +3,6 @@
 [![Gem Version](https://badge.fury.io/rb/gemsmith.svg)](http://badge.fury.io/rb/gemsmith)
 [![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/4fbf3375d2abb76a6f5d/maintainability)](https://codeclimate.com/github/bkuhlmann/gemsmith/maintainability)
 [![Code Climate Test Coverage](https://api.codeclimate.com/v1/badges/4fbf3375d2abb76a6f5d/test_coverage)](https://codeclimate.com/github/bkuhlmann/gemsmith/test_coverage)
-[![Gemnasium Status](https://gemnasium.com/bkuhlmann/gemsmith.svg)](https://gemnasium.com/bkuhlmann/gemsmith)
 [![Circle CI Status](https://circleci.com/gh/bkuhlmann/gemsmith.svg?style=svg)](https://circleci.com/gh/bkuhlmann/gemsmith)
 
 A command line interface for smithing new Ruby gems.
@@ -52,7 +51,6 @@ A command line interface for smithing new Ruby gems.
 - Supports [Bundler Audit](https://github.com/rubysec/bundler-audit).
 - Supports [Circle CI](https://circleci.com).
 - Supports [Code Climate](https://codeclimate.com).
-- Supports [Gemnasium](https://gemnasium.com).
 - Supports [Git Cop](https://github.com/bkuhlmann/git-cop).
 - Supports [GitHub](https://github.com).
 - Supports [Guard](https://github.com/guard/guard).
@@ -129,7 +127,6 @@ The default configuration is as follows:
       :circle_ci: false
       :cli: false
       :code_climate: false
-      :gemnasium: false
       :git_cop: true
       :git_hub: true
       :guard: true
@@ -188,7 +185,6 @@ For more gem generation options, type: `gemsmith --help --generate`
     [--circle-ci], [--no-circle-ci]          # Add Circle CI support.
     [--cli], [--no-cli]                      # Add CLI support.
     [--code-climate], [--no-code-climate]    # Add Code Climate support.
-    [--gemnasium], [--no-gemnasium]          # Add Gemnasium support.
     [--git-cop], [--no-git-cop]              # Add Git Cop support.
                                              # Default: true
     [--git-hub], [--no-git-hub]              # Add GitHub support.

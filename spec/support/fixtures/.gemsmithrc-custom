@@ -18,7 +18,6 @@
   :circle_ci: true
   :cli: true
   :code_climate: true
-  :gemnasium: true
   :git_cop: false
   :git_hub: false
   :guard: false

@@ -58,7 +58,6 @@ module Gemsmith
           circle_ci: false,
           cli: false,
           code_climate: false,
-          gemnasium: false,
           git_cop: true,
           git_hub: true,
           guard: true,
@@ -127,10 +126,6 @@ module Gemsmith
                   desc: "Add Code Climate support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :code_climate)
-    method_option :gemnasium,
-                  desc: "Add Gemnasium support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :gemnasium)
     method_option :git_cop,
                   desc: "Add Git Cop support.",
                   type: :boolean,

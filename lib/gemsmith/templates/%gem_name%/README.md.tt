@@ -6,9 +6,6 @@
 [![Code Climate Maintainability](https://api.codeclimate.com/v1/badges/<id>/maintainability)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>/maintainability)
 [![Code Climate Test Coverage](https://api.codeclimate.com/v1/badges/<id>/test_coverage)](https://codeclimate.com/github/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>/test_coverage)
 <%- end -%>
-<%- if config.dig(:generate, :gemnasium) -%>
-[![Gemnasium Status](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>.svg)](https://gemnasium.com/<%= config.fetch :github_user %>/<%= config.dig(:gem, :name) %>)
-<%- end -%>
 <%- if config.dig(:generate, :circle_ci) -%>
 [![Circle CI Status](https://circleci.com/gh/<%= config.fetch :github_user %>/<%= config.dig :gem, :name %>.svg?style=svg)](https://circleci.com/gh/<%= config.fetch :github_user %>/<%= config.dig :gem, :name %>)
 <%- end -%>
