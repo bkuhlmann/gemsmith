@@ -13,10 +13,8 @@ Gem::Specification.new do |spec|
   spec.summary = "A command line interface for smithing new Ruby gems."
   spec.license = "Apache-2.0"
 
-  if File.exist?(Gem.default_key_path) && File.exist?(Gem.default_cert_path)
-    spec.signing_key = Gem.default_key_path
-    spec.cert_chain = [Gem.default_cert_path]
-  end
+  spec.signing_key = Gem.default_key_path
+  spec.cert_chain = [Gem.default_cert_path]
 
   spec.required_ruby_version = "~> 2.5"
   spec.add_dependency "bundler", "~> 1.16"
