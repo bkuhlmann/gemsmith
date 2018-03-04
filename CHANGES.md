@@ -1,3 +1,11 @@
+# v11.2.0 (2018-03-04)
+
+- Fixed Rubocop Style/MissingElse issues.
+- Fixed gemspec issues with missing gem signing key/certificate.
+- Updated to Code Quality 2.0.0.
+- Removed Gemnasium support.
+- Removed secure install documentation from README template.
+
 # v11.1.0 (2018-01-27)
 
 - Fixed spec helper template.
