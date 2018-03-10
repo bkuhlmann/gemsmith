@@ -1,3 +1,12 @@
+# v11.3.0 (2018-03-10)
+
+- Added `--generate --engine` option.
+- Added `--generate --rails` deprecation warning.
+- Updated gem dependencies.
+- Updated to Code Quality 2.1.0.
+- Updated to Rubocop 0.53.0.
+- Refactored generate template method.
+
 # v11.2.0 (2018-03-04)
 
 - Fixed Rubocop Style/MissingElse issues.
