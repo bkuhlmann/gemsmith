@@ -148,7 +148,7 @@ module Gemsmith
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :pry)
     method_option :rails,
-                  desc: "Add Rails support.",
+                  desc: "DEPRECATED (Use --engine instead). Add Rails support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :rails)
     method_option :reek,
@@ -170,7 +170,11 @@ module Gemsmith
     # rubocop:disable Metrics/AbcSize
     # :reek:TooManyStatements
     def generate name
-      print_cli_and_rails_engine_option_error && return if options.cli? && (options.rails? || options.engine?)
+      rails = options.rails?
+      warn "[DEPRECATION]: --rails is deprecated, use --engine instead." if rails
+      print_cli_and_rails_engine_option_error && return if options.cli? && (
+        rails || options.engine?
+      )
 
       say_status :info, "Generating gem...", :green
 
