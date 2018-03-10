@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   <%- end -%>
 
   spec.required_ruby_version = "~> <%= config.dig(:versions, :ruby)[/\d+\.\d+/] %>"
-  <%- if config.dig(:generate, :rails) -%>
+  <%- if config.dig(:generate, :engine) || config.dig(:generate, :rails) -%>
   spec.add_dependency "rails", "~> <%= config.dig(:versions, :rails) %>"
   <%- end -%>
   <%- if config.dig(:generate, :cli) -%>
@@ -46,13 +46,13 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "reek", "~> 4.8"
   <%- end -%>
   <%- if config.dig(:generate, :rspec) -%>
-  spec.add_development_dependency "<%= config.dig(:generate, :rails) ? "rspec-rails" : "rspec" %>", "~> 3.7"
+  spec.add_development_dependency "<%= config.dig(:generate, :engine) || config.dig(:generate, :rails) ? "rspec-rails" : "rspec" %>", "~> 3.7"
   <%- end -%>
   <%- if config.dig(:generate, :rubocop) -%>
   spec.add_development_dependency "rubocop", "~> 0.53"
   <%- end -%>
 
-  <%- if config.dig(:generate, :rails) -%>
+  <%- if config.dig(:generate, :engine) || config.dig(:generate, :rails) -%>
   spec.files = Dir["app/**/*", "bin/**/*", "config/**/*", "lib/**/*", "vendor/**/*"]
   <%- else -%>
   spec.files = Dir["lib/**/*"]

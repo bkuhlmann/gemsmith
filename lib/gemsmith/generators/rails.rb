@@ -2,7 +2,7 @@
 
 module Gemsmith
   module Generators
-    # Generates Ruby on Rails support.
+    # Generates Ruby on Rails Engine support.
     class Rails < Base
       def rails?
         cli.run "command -v rails > /dev/null"
@@ -45,7 +45,7 @@ module Gemsmith
 
       # :reek:TooManyStatements
       def run
-        return unless configuration.dig(:generate, :rails)
+        return unless runnable?
 
         install_rails
         create_engine
@@ -55,6 +55,10 @@ module Gemsmith
       end
 
       private
+
+      def runnable?
+        configuration.dig(:generate, :engine) || configuration.dig(:generate, :rails)
+      end
 
       def engine_options
         "--skip-git " \

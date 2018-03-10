@@ -23,6 +23,7 @@ RSpec.describe Gemsmith::CLI do
           "--no-circle-ci",
           "--no-cli",
           "--no-code-climate",
+          "--no-engine",
           "--no-git-cop",
           "--no-git-hub",
           "--no-guard",
@@ -108,6 +109,7 @@ RSpec.describe Gemsmith::CLI do
           "--bundler-audit",
           "--circle-ci",
           "--code-climate",
+          "--engine",
           "--git-cop",
           "--git-hub",
           "--guard",
@@ -182,6 +184,7 @@ RSpec.describe Gemsmith::CLI do
         [
           gem_name,
           "--cli",
+          "--engine",
           "--rails"
         ]
       end
@@ -263,6 +266,7 @@ RSpec.describe Gemsmith::CLI do
           circle_ci: false,
           cli: false,
           code_climate: false,
+          engine: false,
           git_cop: true,
           git_hub: true,
           guard: true,

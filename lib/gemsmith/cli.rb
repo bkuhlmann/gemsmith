@@ -63,6 +63,7 @@ module Gemsmith
           guard: true,
           pry: true,
           rails: false,
+          engine: false,
           reek: true,
           rspec: true,
           rubocop: true,
@@ -126,6 +127,10 @@ module Gemsmith
                   desc: "Add Code Climate support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :code_climate)
+    method_option :engine,
+                  desc: "Add Rails Engine support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :engine)
     method_option :git_cop,
                   desc: "Add Git Cop support.",
                   type: :boolean,
@@ -165,7 +170,7 @@ module Gemsmith
     # rubocop:disable Metrics/AbcSize
     # :reek:TooManyStatements
     def generate name
-      print_cli_and_rails_engine_option_error && return if options.cli? && options.rails?
+      print_cli_and_rails_engine_option_error && return if options.cli? && (options.rails? || options.engine?)
 
       say_status :info, "Generating gem...", :green
 

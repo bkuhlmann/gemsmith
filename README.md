@@ -127,6 +127,7 @@ The default configuration is as follows:
       :circle_ci: false
       :cli: false
       :code_climate: false
+      :engine: false
       :git_cop: true
       :git_hub: true
       :guard: true
@@ -185,6 +186,7 @@ For more gem generation options, type: `gemsmith --help --generate`
     [--circle-ci], [--no-circle-ci]          # Add Circle CI support.
     [--cli], [--no-cli]                      # Add CLI support.
     [--code-climate], [--no-code-climate]    # Add Code Climate support.
+    [--engine], [--no-engine]                # Add Rails Engine support.
     [--git-cop], [--no-git-cop]              # Add Git Cop support.
                                              # Default: true
     [--git-hub], [--no-git-hub]              # Add GitHub support.

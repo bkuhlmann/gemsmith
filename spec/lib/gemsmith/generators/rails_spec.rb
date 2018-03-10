@@ -29,6 +29,7 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
 
   describe "install_rails" do
     let(:prompt) { "Ruby on Rails is not installed. Would you like it installed (y/n)?" }
+
     before do
       allow(subject).to receive(:rails?).and_return(rails)
       allow(cli).to receive(:yes?).with(prompt).and_return(create_rails)
@@ -158,6 +159,20 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
     end
 
     context "when enabled" do
+      let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {engine: true}} }
+
+      it "generates Rails support", :aggregate_failures do
+        subject.run
+
+        expect(subject).to have_received(:install_rails)
+        expect(subject).to have_received(:create_engine)
+        expect(subject).to have_received(:create_generator_files)
+        expect(subject).to have_received(:stub_assets)
+        expect(subject).to have_received(:remove_files)
+      end
+    end
+
+    context "when Rails enabled" do
       let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {rails: true}} }
 
       it "generates Rails support", :aggregate_failures do
@@ -172,6 +187,20 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
     end
 
     context "when disabled" do
+      let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {engine: false}} }
+
+      it "does not generate Rails support", :aggregate_failures do
+        subject.run
+
+        expect(subject).to_not have_received(:install_rails)
+        expect(subject).to_not have_received(:create_engine)
+        expect(subject).to_not have_received(:create_generator_files)
+        expect(subject).to_not have_received(:stub_assets)
+        expect(subject).to_not have_received(:remove_files)
+      end
+    end
+
+    context "when Rails disabled" do
       let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {rails: false}} }
 
       it "does not generate Rails support", :aggregate_failures do

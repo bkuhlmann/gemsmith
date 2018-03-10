@@ -29,7 +29,7 @@ module Gemsmith
       end
 
       def install_rails_helper
-        return unless configuration.dig(:generate, :rails)
+        return unless configuration.dig(:generate, :engine) || configuration.dig(:generate, :rails)
         cli.template("#{rspec_root}/rails_helper.rb.tt", configuration)
       end
     end
