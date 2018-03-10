@@ -43,13 +43,13 @@ Gem::Specification.new do |spec|
   <%- end -%>
   spec.add_development_dependency "rake", "~> 12.3"
   <%- if config.dig(:generate, :reek) -%>
-  spec.add_development_dependency "reek", "~> 4.7"
+  spec.add_development_dependency "reek", "~> 4.8"
   <%- end -%>
   <%- if config.dig(:generate, :rspec) -%>
   spec.add_development_dependency "<%= config.dig(:generate, :rails) ? "rspec-rails" : "rspec" %>", "~> 3.7"
   <%- end -%>
   <%- if config.dig(:generate, :rubocop) -%>
-  spec.add_development_dependency "rubocop", "~> 0.52"
+  spec.add_development_dependency "rubocop", "~> 0.53"
   <%- end -%>
 
   <%- if config.dig(:generate, :rails) -%>

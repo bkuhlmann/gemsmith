@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "milestoner", "~> 7.0"
   spec.add_dependency "pragmater", "~> 5.0"
   spec.add_dependency "refinements", "~> 5.0"
-  spec.add_dependency "rubocop", "~> 0.52"
+  spec.add_dependency "rubocop", "~> 0.53"
   spec.add_dependency "runcom", "~> 2.0"
   spec.add_dependency "thor", "~> 0.20"
   spec.add_dependency "tocer", "~> 7.0"
@@ -37,7 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry", "~> 0.10"
   spec.add_development_dependency "pry-byebug", "~> 3.5"
   spec.add_development_dependency "rake", "~> 12.3"
-  spec.add_development_dependency "reek", "~> 4.7"
+  spec.add_development_dependency "reek", "~> 4.8"
   spec.add_development_dependency "rspec", "~> 3.7"
   spec.add_development_dependency "wirb", "~> 2.1"
 
