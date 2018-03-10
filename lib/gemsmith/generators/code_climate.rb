@@ -6,8 +6,7 @@ module Gemsmith
     class CodeClimate < Base
       def run
         return unless configuration.dig(:generate, :code_climate)
-
-        cli.template "%gem_name%/.codeclimate.yml.tt", configuration
+        template "%gem_name%/.codeclimate.yml.tt"
       end
     end
   end

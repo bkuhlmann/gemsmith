@@ -5,7 +5,7 @@ module Gemsmith
     # Generates Ruby support.
     class Ruby < Base
       def run
-        cli.template "%gem_name%/.ruby-version.tt", configuration
+        template "%gem_name%/.ruby-version.tt"
       end
     end
   end

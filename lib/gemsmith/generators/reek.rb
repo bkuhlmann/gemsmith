@@ -9,7 +9,7 @@ module Gemsmith
 
         cli.uncomment_lines "#{gem_name}/Rakefile", /require.+reek.+/
         cli.uncomment_lines "#{gem_name}/Rakefile", /Reek.+/
-        cli.template "%gem_name%/.reek.tt", configuration
+        template "%gem_name%/.reek.tt"
       end
     end
   end

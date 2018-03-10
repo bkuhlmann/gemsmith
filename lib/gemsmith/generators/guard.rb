@@ -6,7 +6,7 @@ module Gemsmith
     class Guard < Base
       def run
         return unless configuration.dig(:generate, :guard)
-        cli.template "%gem_name%/Guardfile.tt", configuration
+        template "%gem_name%/Guardfile.tt"
       end
     end
   end

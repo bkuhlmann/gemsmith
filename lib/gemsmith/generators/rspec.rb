@@ -23,14 +23,14 @@ module Gemsmith
       end
 
       def install_templates
-        cli.template "#{rspec_root}/spec_helper.rb.tt", configuration
+        template "#{rspec_root}/spec_helper.rb.tt"
         install_rails_helper
-        cli.template "#{rspec_root}/support/shared_contexts/temp_dir.rb.tt", configuration
+        template "#{rspec_root}/support/shared_contexts/temp_dir.rb.tt"
       end
 
       def install_rails_helper
         return unless configuration.dig(:generate, :engine) || configuration.dig(:generate, :rails)
-        cli.template("#{rspec_root}/rails_helper.rb.tt", configuration)
+        template "#{rspec_root}/rails_helper.rb.tt"
       end
     end
   end

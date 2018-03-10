@@ -19,7 +19,7 @@ module Gemsmith
       end
 
       def run
-        cli.template "%gem_name%/Rakefile.tt", configuration
+        template "%gem_name%/Rakefile.tt"
         append_code_quality_task
         append_default_task
       end

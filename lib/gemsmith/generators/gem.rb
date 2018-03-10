@@ -4,17 +4,20 @@ module Gemsmith
   module Generators
     # Generates default gem support.
     class Gem < Base
-      # rubocop:disable Metrics/AbcSize
-      # :reek:TooManyStatements
       def run
-        cli.template "%gem_name%/bin/setup.tt", configuration
-        cli.template "%gem_name%/Gemfile.tt", configuration
-        cli.template "%gem_name%/%gem_name%.gemspec.tt", configuration
-        cli.template "#{lib_gem_root}.rb.tt", configuration
-        cli.template "#{lib_gem_root}/identity.rb.tt", configuration
+        create_files
         cli.chmod "#{configuration.dig(:gem, :name)}/bin/setup", 0o755
       end
-      # rubocop:enable Metrics/AbcSize
+
+      private
+
+      def create_files
+        template "%gem_name%/bin/setup.tt"
+        template "%gem_name%/Gemfile.tt"
+        template "%gem_name%/%gem_name%.gemspec.tt"
+        template "#{lib_gem_root}.rb.tt"
+        template "#{lib_gem_root}/identity.rb.tt"
+      end
     end
   end
 end

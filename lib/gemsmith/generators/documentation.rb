@@ -7,11 +7,11 @@ module Gemsmith
     # Generates documentation support.
     class Documentation < Base
       def create_files
-        cli.template "%gem_name%/README.md.tt", configuration
-        cli.template "%gem_name%/CONTRIBUTING.md.tt", configuration
-        cli.template "%gem_name%/CODE_OF_CONDUCT.md.tt", configuration
-        cli.template "%gem_name%/LICENSE.md.tt", configuration
-        cli.template "%gem_name%/CHANGES.md.tt", configuration
+        template "%gem_name%/README.md.tt"
+        template "%gem_name%/CONTRIBUTING.md.tt"
+        template "%gem_name%/CODE_OF_CONDUCT.md.tt"
+        template "%gem_name%/LICENSE.md.tt"
+        template "%gem_name%/CHANGES.md.tt"
       end
 
       def update_readme

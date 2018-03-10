@@ -39,6 +39,10 @@ module Gemsmith
       def gem_root
         File.join cli.destination_root, gem_name
       end
+
+      def template path
+        cli.template path, configuration
+      end
     end
   end
 end

@@ -5,7 +5,7 @@ module Gemsmith
     # Generates Git support.
     class Git < Base
       def create_ignore_file
-        cli.template "%gem_name%/.gitignore.tt", configuration
+        template "%gem_name%/.gitignore.tt"
       end
 
       # :reek:TooManyStatements

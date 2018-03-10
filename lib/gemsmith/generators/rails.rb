@@ -15,19 +15,17 @@ module Gemsmith
       end
 
       def create_engine
-        cli.template "#{LIB_ROOT}/%gem_path%/engine.rb.tt", configuration
+        template "#{LIB_ROOT}/%gem_path%/engine.rb.tt"
         cli.run "rails plugin new --skip #{configuration.dig :gem, :name} #{engine_options}"
       end
 
-      # rubocop:disable Metrics/AbcSize
       def create_generator_files
         cli.empty_directory "#{generator_root}/templates"
-        cli.template "#{generator_root}/install/install_generator.rb.tt", configuration
-        cli.template "#{generator_root}/install/USAGE.tt", configuration
-        cli.template "#{generator_root}/upgrade/upgrade_generator.rb.tt", configuration
-        cli.template "#{generator_root}/upgrade/USAGE.tt", configuration
+        template "#{generator_root}/install/install_generator.rb.tt"
+        template "#{generator_root}/install/USAGE.tt"
+        template "#{generator_root}/upgrade/upgrade_generator.rb.tt"
+        template "#{generator_root}/upgrade/USAGE.tt"
       end
-      # rubocop:enable Metrics/AbcSize
 
       def stub_assets
         cli.run %(printf "%s" > "#{gem_name}/app/assets/javascripts/#{gem_path}/application.js")
