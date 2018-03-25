@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler-audit", "~> 0.6"
   spec.add_development_dependency "climate_control", "~> 0.2"
   spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0"
-  spec.add_development_dependency "git-cop", "~> 2.0"
+  spec.add_development_dependency "git-cop", "~> 2.1"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   spec.add_development_dependency "hirb", "~> 0.7"
   spec.add_development_dependency "pry", "~> 0.10"
