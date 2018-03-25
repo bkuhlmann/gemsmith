@@ -11,13 +11,13 @@ RSpec.describe Gemsmith::Git, :temp_dir do
 
   describe ".config_value" do
     it "answers string value for valid key" do
-      ClimateControl.modify HOME: temp_dir do
+      ClimateControl.modify HOME: temp_dir.to_s do
         expect(described_class.config_value("user.name")).to eq("Test User")
       end
     end
 
     it "answers an empty string for invalid key" do
-      ClimateControl.modify HOME: temp_dir do
+      ClimateControl.modify HOME: temp_dir.to_s do
         expect(described_class.config_value("bogus.bogus")).to eq("")
       end
     end
@@ -31,7 +31,7 @@ RSpec.describe Gemsmith::Git, :temp_dir do
       end
 
       it "answers GitHub user" do
-        ClimateControl.modify HOME: temp_dir do
+        ClimateControl.modify HOME: temp_dir.to_s do
           expect(described_class.github_user).to eq("test")
         end
       end
@@ -39,7 +39,7 @@ RSpec.describe Gemsmith::Git, :temp_dir do
 
     context "when GitHub user doesn't exist" do
       it "answers empty string" do
-        ClimateControl.modify HOME: temp_dir do
+        ClimateControl.modify HOME: temp_dir.to_s do
           expect(described_class.github_user).to eq("")
         end
       end
@@ -56,7 +56,7 @@ RSpec.describe Gemsmith::Git, :temp_dir do
       end
 
       it "answers GitHub URL" do
-        ClimateControl.modify HOME: temp_dir do
+        ClimateControl.modify HOME: temp_dir.to_s do
           expect(described_class.github_url(project)).to eq("https://github.com/test/#{project}")
         end
       end
@@ -64,7 +64,7 @@ RSpec.describe Gemsmith::Git, :temp_dir do
 
     context "when GitHub user doesn't exist" do
       it "answers empty string" do
-        ClimateControl.modify HOME: temp_dir do
+        ClimateControl.modify HOME: temp_dir.to_s do
           expect(described_class.github_url(project)).to eq("")
         end
       end

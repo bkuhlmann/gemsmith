@@ -11,7 +11,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
 
   describe ".file_path" do
     it "answers credentials file path" do
-      ClimateControl.modify HOME: temp_dir do
+      ClimateControl.modify HOME: temp_dir.to_s do
         expect(described_class.file_path).to eq("#{temp_dir}/.gem/credentials")
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
 
       context "when key and value exist" do
         it "answers true" do
-          ClimateControl.modify HOME: temp_dir do
+          ClimateControl.modify HOME: temp_dir.to_s do
             expect(subject.valid?).to eq(true)
           end
         end
@@ -52,7 +52,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
         let(:test_credentials) { nil }
 
         it "answers false" do
-          ClimateControl.modify HOME: temp_dir do
+          ClimateControl.modify HOME: temp_dir.to_s do
             expect(subject.valid?).to eq(false)
           end
         end
@@ -62,7 +62,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
         let(:test_credentials) { described_class.default_key }
 
         it "answers false" do
-          ClimateControl.modify HOME: temp_dir do
+          ClimateControl.modify HOME: temp_dir.to_s do
             expect(subject.valid?).to eq(false)
           end
         end
@@ -72,7 +72,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
         let(:test_credentials) { {described_class.default_key => nil} }
 
         it "answers false" do
-          ClimateControl.modify HOME: temp_dir do
+          ClimateControl.modify HOME: temp_dir.to_s do
             expect(subject.valid?).to eq(false)
           end
         end
@@ -82,7 +82,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
         let(:test_credentials) { {described_class.default_key => ""} }
 
         it "answers false" do
-          ClimateControl.modify HOME: temp_dir do
+          ClimateControl.modify HOME: temp_dir.to_s do
             expect(subject.valid?).to eq(false)
           end
         end
@@ -91,7 +91,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
 
     context "when file doesn't exist" do
       it "answers false" do
-        ClimateControl.modify HOME: temp_dir do
+        ClimateControl.modify HOME: temp_dir.to_s do
           expect(subject.valid?).to eq(false)
         end
       end
@@ -106,7 +106,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
       end
 
       it "answers value" do
-        ClimateControl.modify HOME: temp_dir do
+        ClimateControl.modify HOME: temp_dir.to_s do
           expect(subject.value).to eq("test")
         end
       end
@@ -114,7 +114,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
 
     context "when credentials don't exist" do
       it "answers value" do
-        ClimateControl.modify HOME: temp_dir do
+        ClimateControl.modify HOME: temp_dir.to_s do
           expect(subject.value).to eq("")
         end
       end
@@ -143,7 +143,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
       let(:url) { "https://rubygems.org" }
 
       it "creates new credentials" do
-        ClimateControl.modify HOME: temp_dir do
+        ClimateControl.modify HOME: temp_dir.to_s do
           subject.create
           expect(loaded_credentials).to eq(rubygems_api_key: authorization)
         end
@@ -156,7 +156,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
       subject { described_class.new key: :basic, url: url, shell: shell }
 
       it "creates new credentials" do
-        ClimateControl.modify HOME: temp_dir do
+        ClimateControl.modify HOME: temp_dir.to_s do
           subject.create
           expect(loaded_credentials).to eq(basic: authorization)
         end
@@ -174,7 +174,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
       end
 
       it "appends new credentials" do
-        ClimateControl.modify HOME: temp_dir do
+        ClimateControl.modify HOME: temp_dir.to_s do
           subject.create
           expect(loaded_credentials).to eq(test: "test", rubygems_api_key: authorization)
         end
@@ -192,7 +192,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
       end
 
       it "does not modify existing credentials" do
-        ClimateControl.modify HOME: temp_dir do
+        ClimateControl.modify HOME: temp_dir.to_s do
           subject.create
           expect(loaded_credentials).to eq(rubygems_api_key: "test")
         end

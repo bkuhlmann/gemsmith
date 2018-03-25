@@ -68,7 +68,7 @@ RSpec.describe Gemsmith::CLI do
       end
 
       it "generates CLI gem" do
-        ClimateControl.modify XDG_CONFIG_HOME: temp_dir do
+        ClimateControl.modify XDG_CONFIG_HOME: temp_dir.to_s do
           Dir.chdir temp_dir do
             cli
 
@@ -292,7 +292,7 @@ RSpec.describe Gemsmith::CLI do
     end
 
     it "answers default settings" do
-      ClimateControl.modify XDG_CONFIG_HOME: temp_dir do
+      ClimateControl.modify XDG_CONFIG_HOME: temp_dir.to_s do
         Dir.chdir(temp_dir) do
           stub_const "RUBY_VERSION", "2.0.0"
           expect(described_class.configuration.to_h).to eq(defaults)

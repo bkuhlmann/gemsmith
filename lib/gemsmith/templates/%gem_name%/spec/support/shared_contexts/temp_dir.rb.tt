@@ -1,5 +1,5 @@
 RSpec.shared_context "Temporary Directory", :temp_dir do
-  let(:temp_dir) { File.join Bundler.root, "tmp", "rspec" }
+  let(:temp_dir) { Bundler.root.join "tmp", "rspec" }
 
   around do |example|
     FileUtils.mkdir_p temp_dir
