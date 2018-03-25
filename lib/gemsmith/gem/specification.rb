@@ -22,6 +22,8 @@ module Gemsmith
         specification.find_all_by_name name, requirement
       end
 
+      attr_reader :version
+
       def initialize file_path
         @file_path = file_path
         @spec = self.class.specification.load file_path
@@ -49,16 +51,8 @@ module Gemsmith
         spec.metadata.fetch("allowed_push_host") { self.class.default_gem_host }
       end
 
-      def version_number
-        version.to_s
-      end
-
-      def version_label
-        version.label
-      end
-
       def package_file_name
-        "#{name}-#{version_number}.gem"
+        "#{name}-#{version}.gem"
       end
 
       def package_path
@@ -67,7 +61,7 @@ module Gemsmith
 
       private
 
-      attr_reader :file_path, :spec, :version
+      attr_reader :file_path, :spec
 
       def validate
         return if spec.is_a?(self.class.specification)

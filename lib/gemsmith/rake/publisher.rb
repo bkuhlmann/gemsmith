@@ -45,7 +45,7 @@ module Gemsmith
       # rubocop:enable Metrics/AbcSize
 
       def publish
-        publisher.publish gem_spec.version_number, sign: signed?
+        publisher.publish gem_spec.version, sign: signed?
         push
       rescue Milestoner::Errors::Base => error
         shell.error error.message

@@ -44,7 +44,7 @@ module Gemsmith
       end
 
       def install gem_spec
-        gem_name = "#{gem_spec.name} #{gem_spec.version_number}"
+        gem_name = "#{gem_spec.name} #{gem_spec.version}"
 
         if kernel.system("gem install #{gem_spec.package_path}")
           shell.confirm "Installed: #{gem_name}."

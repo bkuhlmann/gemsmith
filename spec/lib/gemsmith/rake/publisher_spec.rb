@@ -114,13 +114,14 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   end
 
   describe "#publish" do
+    let(:version) { Versionaire::Version "0.1.0" }
     before { allow(subject).to receive(:push).and_return(true) }
 
     context "with unsigned version tag" do
       before { subject.publish }
 
       it "publishes unsigned gem" do
-        expect(publisher).to have_received(:publish).with("0.1.0", sign: false)
+        expect(publisher).to have_received(:publish).with(version, sign: false)
       end
 
       it "pushes gem" do
@@ -133,7 +134,7 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
       before { subject.publish }
 
       it "publishes signed gem" do
-        expect(publisher).to have_received(:publish).with("0.1.0", sign: true)
+        expect(publisher).to have_received(:publish).with(version, sign: true)
       end
 
       it "pushes gem" do

@@ -120,15 +120,9 @@ RSpec.describe Gemsmith::Gem::Specification do
     end
   end
 
-  describe "#version_number" do
-    it "answers version number" do
-      expect(subject.version_number).to eq("0.1.0")
-    end
-  end
-
-  describe "#version_label" do
-    it "answers version label" do
-      expect(subject.version_label).to eq("v0.1.0")
+  describe "#version" do
+    it "answers version" do
+      expect(subject.version).to eq(Versionaire::Version("0.1.0"))
     end
   end
 

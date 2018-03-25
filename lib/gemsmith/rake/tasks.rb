@@ -57,7 +57,7 @@ module Gemsmith
           builder.install gem_spec
         end
 
-        desc "Build, tag as #{gem_spec.version_label} (#{signed_label}), " \
+        desc "Build, tag as #{gem_spec.version} (#{signed_label}), " \
              "and push #{gem_package} to RubyGems"
         task publish: :build do
           publisher.publish
