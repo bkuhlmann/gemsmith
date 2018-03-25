@@ -13,6 +13,12 @@ Gem::Specification.new do |spec|
   spec.summary = "A command line interface for smithing new Ruby gems."
   spec.license = "Apache-2.0"
 
+  spec.metadata = {
+    "source_code_uri" => "https://github.com/bkuhlmann/gemsmith",
+    "changelog_uri" => "https://github.com/bkuhlmann/gemsmith/blob/master/CHANGES.md",
+    "bug_tracker_uri" => "https://github.com/bkuhlmann/gemsmith/issues"
+  }
+
   spec.signing_key = Gem.default_key_path
   spec.cert_chain = [Gem.default_cert_path]
 
@@ -21,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "milestoner", "~> 8.0"
   spec.add_dependency "pragmater", "~> 5.0"
   spec.add_dependency "refinements", "~> 5.0"
-  spec.add_dependency "rubocop", "~> 0.53"
+  spec.add_dependency "rubocop", "~> 0.54"
   spec.add_dependency "runcom", "~> 2.0"
   spec.add_dependency "thor", "~> 0.20"
   spec.add_dependency "tocer", "~> 7.0"
