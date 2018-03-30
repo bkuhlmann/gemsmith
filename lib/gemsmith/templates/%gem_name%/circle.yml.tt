@@ -13,22 +13,12 @@ jobs:
     steps:
       - checkout
 
-      - type: cache-restore
-        name: Bundler Cache Restore
-        key: bundle-{{ checksum "Gemfile" }}
-
       - run:
           name: Bundler Install
           command: |
             gem update --system
             bundle check || bundle install
             gem install rails
-
-      - type: cache-save
-        name: Bundler Cache Store
-        key: bundle-{{ checksum "Gemfile" }}
-        paths:
-          - vendor/bundle
 
       - run:
           name: Rake Run
