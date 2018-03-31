@@ -15,8 +15,8 @@ module Gemsmith
         template "%gem_name%/bin/setup.tt"
         template "%gem_name%/Gemfile.tt"
         template "%gem_name%/%gem_name%.gemspec.tt"
-        template "#{lib_gem_root}.rb.tt"
-        template "#{lib_gem_root}/identity.rb.tt"
+        template "#{LIB_ROOT_GEM}.rb.tt"
+        template "#{LIB_ROOT_GEM}/identity.rb.tt"
       end
     end
   end
