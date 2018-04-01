@@ -8,18 +8,18 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
   let(:kernel) { class_spy Kernel }
   subject { described_class.new tocer: tocer_class, kernel: kernel }
 
-  describe "#doc" do
+  describe "#toc" do
     let(:readme) { File.join Dir.pwd, "README.md" }
     before { allow(tocer_class).to receive(:new).with(readme).and_return(tocer) }
 
     it "updates README table of contents" do
-      subject.doc
+      subject.toc
       expect(tocer).to have_received(:write)
     end
 
     it "prints status message" do
-      result = -> { subject.doc }
-      expect(&result).to output("Updated gem documentation.\n").to_stdout
+      result = -> { subject.toc }
+      expect(&result).to output("Updated gem table of contents.\n").to_stdout
     end
   end
 

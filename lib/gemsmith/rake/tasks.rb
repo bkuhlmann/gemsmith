@@ -33,9 +33,9 @@ module Gemsmith
       # rubocop:disable Metrics/MethodLength
       # :reek:TooManyStatements
       def install
-        desc "Update README (table of contents)"
-        task :doc do
-          builder.doc
+        desc "Update Table of Contents (README)"
+        task :toc do
+          builder.toc
         end
 
         desc "Clean gem artifacts"
@@ -48,7 +48,7 @@ module Gemsmith
         end
 
         desc "Build #{gem_package} package"
-        task build: %i[clean doc validate] do
+        task build: %i[clean toc validate] do
           builder.build gem_spec
         end
 

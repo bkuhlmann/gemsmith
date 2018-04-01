@@ -22,10 +22,10 @@ RSpec.describe Gemsmith::Rake::Tasks do
   describe "#install" do
     before { subject.install }
 
-    context "rake doc" do
+    context "rake toc" do
       it "updates README" do
-        Rake::Task["doc"].invoke
-        expect(builder).to have_received(:doc)
+        Rake::Task["toc"].invoke
+        expect(builder).to have_received(:toc)
       end
     end
 
@@ -45,7 +45,7 @@ RSpec.describe Gemsmith::Rake::Tasks do
 
     context "rake build" do
       it "invokes prerequisites" do
-        expect(Rake::Task[:build].prerequisites).to contain_exactly("clean", "doc", "validate")
+        expect(Rake::Task[:build].prerequisites).to contain_exactly("clean", "toc", "validate")
       end
 
       it "builds gem package" do

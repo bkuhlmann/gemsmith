@@ -14,10 +14,10 @@ module Gemsmith
         @kernel = kernel
       end
 
-      def doc
+      def toc
         readme = File.join Dir.pwd, "README.md"
         tocer.new(readme).write
-        shell.confirm "Updated gem documentation."
+        shell.confirm "Updated gem table of contents."
       end
 
       def clean
