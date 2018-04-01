@@ -132,7 +132,6 @@ The default configuration is as follows:
       :git_hub: true
       :guard: true
       :pry: true
-      :rails: false
       :reek: true
       :rspec: true
       :rubocop: true
@@ -212,14 +211,14 @@ Once a gem skeleton has been created, the following tasks are available (i.e. `b
     rake bundle:audit          # Updates the ruby-advisory-db then runs bundle-audit
     rake clean                 # Clean gem artifacts
     rake code_quality          # Run code quality checks
-    rake doc                   # Update README (table of contents)
     rake git_cop               # Run Git Cop
     rake install               # Install example-0.1.0.gem package
-    rake publish               # Build, tag as v0.1.0 (unsigned), and push example-0.1.0.gem to RubyGems
+    rake publish               # Build, tag as 0.1.0 (unsigned), and push example-0.1.0.gem to RubyGems
     rake reek                  # Check for code smells
     rake rubocop               # Run RuboCop
     rake rubocop:auto_correct  # Auto-correct RuboCop offenses
     rake spec                  # Run RSpec code examples
+    rake toc                   # Update Table of Contents (README)
 
 *NOTE: Some tasks might differ depending on what options you enabled/disabled during gem
 generation.*

@@ -1,3 +1,18 @@
+# v12.0.0 (2018-04-01)
+
+- Added gemspec metadata for source, changes, and issue tracker URLs.
+- Updated to Git Cop 2.1.0.
+- Updated to Milestoner 8.0.0.
+- Updated to Refinements 5.1.0.
+- Updated to Ruby 2.5.1.
+- Updated to Runcom 3.0.0.
+- Removed Circle CI Bundler cache.
+- Removed `rake doc` task (use `rake toc` instead).
+- Removed deprecated `--generate --rails` option.
+- Refactored Rails generator as Engine generator.
+- Refactored base generator lib root for gem.
+- Refactored temp dir shared context as a pathname.
+
 # v11.3.0 (2018-03-10)
 
 - Added `--generate --engine` option.
