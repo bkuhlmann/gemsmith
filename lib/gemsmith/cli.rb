@@ -28,7 +28,7 @@ module Gemsmith
 
     # rubocop:disable Metrics/MethodLength
     def self.configuration
-      Runcom::Configuration.new project_name: Identity.name, defaults: {
+      Runcom::Configuration.new Identity.name, defaults: {
         year: Time.now.year,
         github_user: Git.github_user,
         gem: {
