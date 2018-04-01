@@ -305,7 +305,7 @@ RSpec.describe Gemsmith::CLI do
         Gemsmith::Generators::Rake,
         Gemsmith::Generators::CLI,
         Gemsmith::Generators::Ruby,
-        Gemsmith::Generators::Rails,
+        Gemsmith::Generators::Engine,
         Gemsmith::Generators::BundlerAudit,
         Gemsmith::Generators::GitCop,
         Gemsmith::Generators::Rspec,

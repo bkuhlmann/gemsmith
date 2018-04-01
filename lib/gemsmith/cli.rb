@@ -83,7 +83,7 @@ module Gemsmith
         Generators::Rake,
         Generators::CLI,
         Generators::Ruby,
-        Generators::Rails,
+        Generators::Engine,
         Generators::Rspec,
         Generators::BundlerAudit,
         Generators::GitCop,

@@ -3,7 +3,7 @@
 module Gemsmith
   module Generators
     # Generates Ruby on Rails Engine support.
-    class Rails < Base
+    class Engine < Base
       def rails?
         cli.run "command -v rails > /dev/null"
       end

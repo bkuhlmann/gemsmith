@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
+RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester", path: "tester"}} }
   subject { described_class.new cli, configuration: configuration }
