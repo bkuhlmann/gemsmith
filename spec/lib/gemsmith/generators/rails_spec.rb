@@ -72,7 +72,7 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
       expect(cli).to have_received(:template).with(template, configuration)
     end
 
-    it "generates Rails engine" do
+    it "generates engine" do
       command = "rails plugin new --skip tester"
       options = %w[
         --skip-git
@@ -158,7 +158,7 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
       allow(subject).to receive(:remove_files)
     end
 
-    context "when enabled" do
+    context "when engine enabled" do
       let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {engine: true}} }
 
       it "generates Rails support", :aggregate_failures do
@@ -172,36 +172,8 @@ RSpec.describe Gemsmith::Generators::Rails, :temp_dir do
       end
     end
 
-    context "when Rails enabled" do
-      let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {rails: true}} }
-
-      it "generates Rails support", :aggregate_failures do
-        subject.run
-
-        expect(subject).to have_received(:install_rails)
-        expect(subject).to have_received(:create_engine)
-        expect(subject).to have_received(:create_generator_files)
-        expect(subject).to have_received(:stub_assets)
-        expect(subject).to have_received(:remove_files)
-      end
-    end
-
-    context "when disabled" do
+    context "when engine disabled" do
       let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {engine: false}} }
-
-      it "does not generate Rails support", :aggregate_failures do
-        subject.run
-
-        expect(subject).to_not have_received(:install_rails)
-        expect(subject).to_not have_received(:create_engine)
-        expect(subject).to_not have_received(:create_generator_files)
-        expect(subject).to_not have_received(:stub_assets)
-        expect(subject).to_not have_received(:remove_files)
-      end
-    end
-
-    context "when Rails disabled" do
-      let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {rails: false}} }
 
       it "does not generate Rails support", :aggregate_failures do
         subject.run

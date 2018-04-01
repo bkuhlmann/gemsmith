@@ -1,5 +1,5 @@
 inherit_from:
   - https://raw.githubusercontent.com/bkuhlmann/code_quality/v2.1.0/configurations/rubocop/ruby.yml
-<%- if config.dig(:generate, :engine) || config.dig(:generate, :rails) -%>
+<%- if config.dig(:generate, :engine) -%>
   - https://raw.githubusercontent.com/bkuhlmann/code_quality/v2.1.0/configurations/rubocop/rails.yml
 <%- end -%>

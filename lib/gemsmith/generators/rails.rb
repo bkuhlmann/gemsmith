@@ -55,7 +55,7 @@ module Gemsmith
       private
 
       def runnable?
-        configuration.dig(:generate, :engine) || configuration.dig(:generate, :rails)
+        configuration.dig :generate, :engine
       end
 
       def engine_options

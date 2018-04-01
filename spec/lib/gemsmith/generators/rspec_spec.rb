@@ -12,8 +12,7 @@ RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
       },
       generate: {
         rspec: create_rspec,
-        engine: create_engine,
-        rails: create_rails
+        engine: create_engine
       }
     }
   end
@@ -52,16 +51,6 @@ RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
     context "when Engine support is enabled" do
       let(:create_rspec) { true }
       let(:create_engine) { true }
-
-      it "creates rails helper" do
-        template = "%gem_name%/spec/rails_helper.rb.tt"
-        expect(cli).to have_received(:template).with(template, configuration)
-      end
-    end
-
-    context "when Rails support is enabled" do
-      let(:create_rspec) { true }
-      let(:create_rails) { true }
 
       it "creates rails helper" do
         template = "%gem_name%/spec/rails_helper.rb.tt"

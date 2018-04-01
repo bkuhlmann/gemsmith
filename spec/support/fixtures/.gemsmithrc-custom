@@ -23,7 +23,6 @@
   :git_hub: false
   :guard: false
   :pry: false
-  :rails: true
   :reek: false
   :rspec: false
   :rubocop: false

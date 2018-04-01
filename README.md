@@ -195,7 +195,6 @@ For more gem generation options, type: `gemsmith --help --generate`
                                              # Default: true
     [--pry], [--no-pry]                      # Add Pry support.
                                              # Default: true
-    [--rails], [--no-rails]                  # DEPRECATED (Use --engine instead). Add Rails support.
     [--reek], [--no-reek]                    # Add Reek support.
                                              # Default: true
     [--rspec], [--no-rspec]                  # Add RSpec support.

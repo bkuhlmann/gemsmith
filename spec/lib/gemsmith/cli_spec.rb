@@ -28,7 +28,6 @@ RSpec.describe Gemsmith::CLI do
           "--no-git-hub",
           "--no-guard",
           "--no-pry",
-          "--no-rails",
           "--no-reek",
           "--no-rspec",
           "--no-rubocop",
@@ -114,7 +113,6 @@ RSpec.describe Gemsmith::CLI do
           "--git-hub",
           "--guard",
           "--pry",
-          "--rails",
           "--reek",
           "--rspec",
           "--rubocop",
@@ -184,8 +182,7 @@ RSpec.describe Gemsmith::CLI do
         [
           gem_name,
           "--cli",
-          "--engine",
-          "--rails"
+          "--engine"
         ]
       end
 
@@ -271,7 +268,6 @@ RSpec.describe Gemsmith::CLI do
           git_hub: true,
           guard: true,
           pry: true,
-          rails: false,
           reek: true,
           rspec: true,
           rubocop: true,
