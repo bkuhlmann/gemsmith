@@ -1,4 +1,4 @@
-# v12.0.0 (2018-04-01)
+# 12.0.0 (2018-04-01)
 
 - Added gemspec metadata for source, changes, and issue tracker URLs.
 - Updated to Git Cop 2.1.0.
@@ -13,7 +13,7 @@
 - Refactored base generator lib root for gem.
 - Refactored temp dir shared context as a pathname.
 
-# v11.3.0 (2018-03-10)
+# 11.3.0 (2018-03-10)
 
 - Added `--generate --engine` option.
 - Added `--generate --rails` deprecation warning.
@@ -22,7 +22,7 @@
 - Updated to Rubocop 0.53.0.
 - Refactored generate template method.
 
-# v11.2.0 (2018-03-04)
+# 11.2.0 (2018-03-04)
 
 - Fixed Rubocop Style/MissingElse issues.
 - Fixed gemspec issues with missing gem signing key/certificate.
@@ -30,7 +30,7 @@
 - Removed Gemnasium support.
 - Removed secure install documentation from README template.
 
-# v11.1.0 (2018-01-27)
+# 11.1.0 (2018-01-27)
 
 - Fixed spec helper template.
 - Added Reek configuration file.
@@ -38,11 +38,11 @@
 - Updated initial Git commit message for gem generation.
 - Updated to Circle CI 2.0.0 configuration.
 
-# v11.0.1 (2018-01-01)
+# 11.0.1 (2018-01-01)
 
 - Fixed gemspec template dependencies.
 
-# v11.0.0 (2018-01-01)
+# 11.0.0 (2018-01-01)
 
 - Updated Bundler Audit option to be enabled by default.
 - Updated Code Climate badges.
@@ -62,16 +62,16 @@
 - Refactored code to use Ruby 2.5.0 `Array#append` syntax.
 - Refactored gem module formater to only strip prefixed newlines.
 
-# v10.4.2 (2017-11-19)
+# 10.4.2 (2017-11-19)
 
 - Updated to Git Cop 1.7.0.
 - Updated to Rake 12.3.0.
 
-# v10.4.1 (2017-10-29)
+# 10.4.1 (2017-10-29)
 
 - Updated to Rubocop 0.51.0.
 
-# v10.4.0 (2017-09-23)
+# 10.4.0 (2017-09-23)
 
 - Added Bundler Audit support.
 - Updated CLI `--generate` options to be alpha-sorted.
@@ -80,7 +80,7 @@
 - Updated to Ruby 2.4.2.
 - Removed Pry State gem.
 
-# v10.3.0 (2017-08-20)
+# 10.3.0 (2017-08-20)
 
 - Fixed Rubocop gem dependency.
 - Added dynamic formatting of RSpec output.
@@ -88,18 +88,18 @@
 - Updated to Git Cop 1.3.0.
 - Updated to Runcom 1.3.0.
 
-# v10.2.0 (2017-07-16)
+# 10.2.0 (2017-07-16)
 
 - Added Gemsmith version to gem skeleton commit message.
 - Updated gem dependencies.
 
-# v10.1.0 (2017-06-28)
+# 10.1.0 (2017-06-28)
 
 - Updated CONTRIBUTING documentation.
 - Updated GitHub templates.
 - Updated gem dependencies.
 
-# v10.0.0 (2017-06-18)
+# 10.0.0 (2017-06-18)
 
 - Fixed Reek DuplicateMethodCall issues.
 - Fixed Reek UtilityFunction issues.
@@ -119,7 +119,7 @@
 - Refactored Reek issues.
 - Refactored pragma generator to use runner.
 
-# v9.6.0 (2017-05-27)
+# 9.6.0 (2017-05-27)
 
 - Fixed Reek InstanceVariableAssumption issues.
 - Fixed alignment with spec return statements.
@@ -128,19 +128,19 @@
 - Updated to Code Quality 1.1.0.
 - Updated to Rubocop 0.49.0.
 
-# v9.5.0 (2017-05-07)
+# 9.5.0 (2017-05-07)
 
 - Added Rails 5.1.0 support.
 - Updated Code Climate configuration.
 - Updated Rubocop configuration.
 - Updated gem dependencies.
 
-# v9.4.0 (2017-04-23)
+# 9.4.0 (2017-04-23)
 
 - Fixed Open SSL namespace issues.
 - Fixed issue with gem credentials password prompt not being masked.
 
-# v9.3.0 (2017-04-01)
+# 9.3.0 (2017-04-01)
 
 - Fixed OpenSSL requirement.
 - Fixed aggressive pragma auto-correction for gem generation.
@@ -150,7 +150,7 @@
 - Updated to Ruby 2.4.1.
 - Refactored gem root to base generator.
 
-# v9.2.0 (2017-02-11)
+# 9.2.0 (2017-02-11)
 
 - Fixed Rubocop Style/CollectionMethods issues.
 - Fixed Rubocop Style/FirstMethodArgumentLineBreak issues.
@@ -160,7 +160,7 @@
 - Updated gemspec template to latest Thor+ and Runcom versions.
 - Updated to Code Quality 0.3.0.
 
-# v9.1.0 (2017-02-05)
+# 9.1.0 (2017-02-05)
 
 - Fixed Travis CI configuration to not update gems.
 - Added `tmp` directory to Git ignore template.
@@ -171,7 +171,7 @@
 - Removed Code Climate code comment checks.
 - Removed `.bundle` directory from `.gitignore`.
 
-# v9.0.0 (2017-01-22)
+# 9.0.0 (2017-01-22)
 
 - Fixed Rails Engine JavaScript and stylesheet templates.
 - Fixed aggressive Rubocop auto-correction for gem generation.
@@ -188,7 +188,7 @@
 - Removed Rubocop Style/Documentation check.
 - Refactored gem path access to base generator.
 
-# v8.2.0 (2016-12-18)
+# 8.2.0 (2016-12-18)
 
 - Fixed Rakefile support for RSpec, Reek, Rubocop, and SCSS Lint.
 - Added `Gemfile.lock` to `.gitignore`.
@@ -199,7 +199,7 @@
 - Updated to Ruby 2.3.3.
 - Refactored gem name to base generator.
 
-# v8.1.0 (2016-11-13)
+# 8.1.0 (2016-11-13)
 
 - Fixed Rake Publisher not loading Gemsmith configuration properly.
 - Updated CLI template to not use gem namespace for identity.
@@ -208,7 +208,7 @@
 - Refactored source requirements.
 - Refactored symbolization of Thor option keys.
 
-# v8.0.0 (2016-11-12)
+# 8.0.0 (2016-11-12)
 
 - Fixed Bash script header to dynamically load correct environment.
 - Fixed CLI class method evaluation.
@@ -305,7 +305,7 @@
 - Refactored generators to use `#run` instead of `#create`.
 - Refactored skeletons as generators.
 
-# v7.7.0 (2016-05-15)
+# 7.7.0 (2016-05-15)
 
 - Fixed Rubocop array style issues in gem templates.
 - Fixed gem name/class snakecase/camelcase issues.
@@ -321,7 +321,7 @@
 - Removed unused Pry gems.
 - Refactored gem specification to use gem requirement.
 
-# v7.6.0 (2016-04-24)
+# 7.6.0 (2016-04-24)
 
 - Fixed Rubocop issues with CLI array options.
 - Added Refinements gem.
@@ -332,7 +332,7 @@
 - Removed gem aid.
 - Removed gem label from CLI edit and version descriptions.
 
-# v7.5.0 (2016-04-03)
+# 7.5.0 (2016-04-03)
 
 - Fixed README gem credential documentation typos.
 - Added --generate (-g) command.
@@ -340,7 +340,7 @@
 - Added default GitHub key configuration to README.
 - Updated GitHub issue and pull request skeleton templates.
 
-# v7.4.0 (2016-03-13)
+# 7.4.0 (2016-03-13)
 
 - Added RubyGems authenticator.
 - Added a basic authenticator.
@@ -358,7 +358,7 @@
 - Refactored gem specification as an aid.
 - Refactored gem specification error class.
 
-# v7.3.0 (2016-02-29)
+# 7.3.0 (2016-02-29)
 
 - Added README Screencasts section.
 - Added README documentation for private gem servers.
@@ -369,7 +369,7 @@
 - Updated Rake release to tag and push gem to remote server.
 - Updated `rake release` to use custom release process.
 
-# v7.2.0 (2016-02-20)
+# 7.2.0 (2016-02-20)
 
 - Fixed Rubocop Rails configuration.
 - Fixed contributing guideline links.
@@ -384,13 +384,13 @@
 - Added shell setup script to gem skeleton creation.
 - Updated to Code of Conduct, Version 1.4.0.
 
-# v7.1.0 (2016-01-20)
+# 7.1.0 (2016-01-20)
 
 - Fixed README template documentation for gem certificate.
 - Fixed gem secure install issues.
 - Removed frozen string literal from Rake files.
 
-# v7.0.0 (2016-01-17)
+# 7.0.0 (2016-01-17)
 
 - Fixed spec formatting (minor).
 - Added IRB console Rake task support.
@@ -400,7 +400,7 @@
 - Removed Ruby 2.1.x and 2.2.x support.
 - Refactored templates to use `Hash#dig`.
 
-# v6.2.0 (2015-12-02)
+# 6.2.0 (2015-12-02)
 
 - Fixed CLI long form command usage documentation.
 - Added Milestoner and Tocer gems to README feature list.
@@ -409,14 +409,14 @@
 - Removed invalid gem promotion links from README.
 - Update README URLs based on HTTP redirects.
 
-# v6.1.0 (2015-11-27)
+# 6.1.0 (2015-11-27)
 
 - Fixed bug where Git tags were not being pushed to remote.
 - Added CLI info message when opening a gem.
 - Added CLI info message when reading a gem.
 - Added asciinema screencast to README features.
 
-# v6.0.0 (2015-11-25)
+# 6.0.0 (2015-11-25)
 
 - Fixed README template so Gemfile setup is available for non-CLI skeletons.
 - Fixed README test command instructions.
@@ -453,14 +453,14 @@
 - Refactored RSpec Pry support as an extension.
 - Refactored Rake tasks to standard location.
 
-# v5.6.0 (2015-09-27)
+# 5.6.0 (2015-09-27)
 
 - Fixed RSpec example status persistence file path.
 - Fixed RSpec temp dir cleanup.
 - Fixed gem identity module description.
 - Added Milestoner support.
 
-# v5.5.0 (2015-09-16)
+# 5.5.0 (2015-09-16)
 
 - Updated --edit option to include gem name in description.
 - Updated Rubocop Style/PercentLiteralDelimiters setting.
@@ -475,7 +475,7 @@
 - Removed Ruby on Rails dependency.
 - Removed email notifications for Travis CI skeletons.
 
-# v5.4.0 (2015-08-30)
+# 5.4.0 (2015-08-30)
 
 - Fixed Rails RSpec spec helper configuration.
 - Removed Rails .gitignore file generation.
@@ -496,7 +496,7 @@
     - rake rubocop:auto_correct  # Auto-correct RuboCop offenses
     - rake spec                  # Run RSpec code examples
 
-# v5.3.0 (2015-08-02)
+# 5.3.0 (2015-08-02)
 
 - Fixed bug where --no-security option would add security text to README.md.
 - Updated to Code of Conduct 1.2.0.
@@ -506,13 +506,13 @@
 - Added project name to README.
 - Added table of contents to README.
 
-# v5.2.0 (2015-07-19)
+# 5.2.0 (2015-07-19)
 
 - Fixed bug with class name not being generated for gemspec name properly.
 - Fixed install of missing identity template.
 - Fixed invalid install of RSpec garbage collection template.
 
-# v5.1.0 (2015-07-05)
+# 5.1.0 (2015-07-05)
 
 - Removed JRuby support (no longer officially supported).
 - Fixed secure gem installs (new cert has 10 year lifespan).
@@ -520,7 +520,7 @@
 - Added CLI process title support.
 - Added code of conduct documentation.
 
-# v5.0.0 (2015-01-01)
+# 5.0.0 (2015-01-01)
 
 - Removed Ruby 2.0.0 support.
 - Removed Rubinius support.
@@ -534,25 +534,25 @@
 - Added Ruby 2.2.0 support.
 - Added Rails 4.2.x support.
 
-# v4.3.0 (2014-10-22)
+# 4.3.0 (2014-10-22)
 
 - Updated to Thor+ 1.7.x.
 - Updated gemspec author email address.
 
-# v4.2.0 (2014-09-21)
+# 4.2.0 (2014-09-21)
 
 - Updated to Ruby 2.1.3.
 - Updated Code Climate to run only if environment variable is present.
 - Added the Guard Terminal Notifier gem.
 - Refactored RSpec setup and support files.
 
-# v4.1.0 (2014-08-10)
+# 4.1.0 (2014-08-10)
 
 - Updated --rails flag of --create option to support full Rails Engine template creation.
 - Updated RSpec config to verify partial doubles.
 - Updated gemspec to add security keys unless in a CI environment.
 
-# v4.0.0 (2014-08-03)
+# 4.0.0 (2014-08-03)
 
 - Removed Coveralls support.
 - Removed Ruby version patch support.
@@ -569,19 +569,19 @@
 - Added authors array to gemspec.
 - Added Guardfile generation for the --guard option.
 
-# v3.2.0 (2014-07-06)
+# 3.2.0 (2014-07-06)
 
 - Added Code Climate test coverage support.
 - Updated to Ruby 2.1.2.
 - Updated gem-public.pem for gem install certificate chain.
 
-# v3.1.0 (2014-04-16)
+# 3.1.0 (2014-04-16)
 
 - Updated to Thor 0.19.x.
 - Updated to Thor+ 1.5.x.
 - Updated RSpec helper to disable GC for all specs in order to improve performance.
 
-# v3.0.0 (2014-03-25)
+# 3.0.0 (2014-03-25)
 
 - Removed the pry-vterm_aliases gem.
 - Updated to MRI 2.1.1.
@@ -593,11 +593,11 @@
 - Added security support (including customization) of gem signing key and cert chain.
 - Added JRuby and Rubinius support to gem skeleton generation.
 
-# v2.4.0 (2014-02-15)
+# 2.4.0 (2014-02-15)
 
 - Added JRuby and Rubinius VM support.
 
-# v2.3.0 (2014-01-26)
+# 2.3.0 (2014-01-26)
 
 - Added gem certificate information to the README security section.
 - Updated new skeleton Git commit message.
@@ -605,7 +605,7 @@
 - Updated gem option descriptions.
 - Updated gemspec homepage URL to use GitHub project URL.
 
-# v2.2.0 (2013-12-28)
+# 2.2.0 (2013-12-28)
 
 - Fixed long-form commands to use "--" prefix. Example: --example.
 - Fixed Ruby Gem certificate requirements for package building.
@@ -620,7 +620,7 @@
 - Added public cert for secure install of gem.
 - Added Pry plugin requirements to RSpec spec helper.
 
-# v2.1.0 (2013-06-15)
+# 2.1.0 (2013-06-15)
 
 - Removed Rails 3.0.x and 3.1.x template support.
 - Removed the CHANGELOG documentation from gem install.
@@ -642,7 +642,7 @@
 - Switched to using relative source tree structures for templates so that destination reflects source.
 - Refactored the code for opening and reading a gem.
 
-# v2.0.0 (2013-03-17)
+# 2.0.0 (2013-03-17)
 
 - Added Railtie best practices to README.
 - Added Guard support.
@@ -658,14 +658,14 @@
 - Added Guard support to gem generation.
 - Upgraded to Ruby 2.0.0.
 
-# v1.5.0 (2012-05-19)
+# 1.5.0 (2012-05-19)
 
 - Added auto-linking to GitHub Issues via README template.
 - Relaxed Rails gem settings to 3.x.x.
 - Switched gem dependency to Thor 0.x.x range.
 - Switched gem dependency to Thor+ 0.x.x range.
 
-# v1.4.0 (2012-01-29)
+# 1.4.0 (2012-01-29)
 
 - Added Travis CI templates for Rails build matrix that can support multiple version tests.
 - Added vendor files to gemspec template so they are included when building a new gem (especially Rails related).
@@ -673,7 +673,7 @@
 - Modified the RSpec development dependency so that if Rails is detected, the rspec-rails gem is included instead.
 - Changed the Rails default version to 3.2.0.
 
-# v1.3.0 (2012-01-14)
+# 1.3.0 (2012-01-14)
 
 - Specified Thor+ 0.2.x version dependency.
 - Added Travis CI support.
@@ -688,7 +688,7 @@
 - Moved documentation files to the extra_rdoc_files option for gem specifications
 - Removed the packaging of test files.
 
-# v1.2.0 (2012-01-02)
+# 1.2.0 (2012-01-02)
 
 - Updated README and README template with new layout for test instructions.
 - Upgraded to Thor+ 0.2.0 and removed the settings_file, settings, and load_settings methods.
@@ -697,7 +697,7 @@
 - Added the ruby warning and encoding option formats to the binary template.
 - Removed the do block from RSpec template so that initial tests show pending instead of successful results.
 
-# v1.1.0 (2011-11-20)
+# 1.1.0 (2011-11-20)
 
 - Fixed bug where args, options, and config were not being passed to super for CLI initialize for gem and gem template generation.
 - Updated gemspec settings and removed rubygem requirements from spec helper.
@@ -707,7 +707,7 @@
 - Added RSpec documentation to README and README template.
 - Added Tests, Contributions, and Credits section to README and README template.
 
-# v1.0.0 (2011-10-29)
+# 1.0.0 (2011-10-29)
 
 - Upgraded to Ruby 1.9 and added Ruby 1.9 requirements.
 - Upgraded Rails defaults to 3.1.x.
@@ -723,7 +723,7 @@
 - Added requirements and includes for the Thor+ gem when generating binary-enabled gem skeletons.
 - Added the YAML requirement to the CLI template.
 
-# v0.5.0 (2011-08-27)
+# 0.5.0 (2011-08-27)
 
 - Fixed bug with wrong definition of ActionView instance method include for main gem template.
 - Changed the ActionView template behavior so that instance methods are auto-included.
@@ -733,7 +733,7 @@
 - Made the module namespace optional when building gems specifically for Rails.
 - Relabeled the TODO helper text for all templates.
 
-# v0.4.0 (2011-07-31)
+# 0.4.0 (2011-07-31)
 
 - Fixed bug with options not being supplied as second argument to write_inheritable_attribute for ActionController and ActiveRecord class method templates.
 - Changed the -R option to -r for Rails and added the -s option for RSpec.
@@ -743,7 +743,7 @@
 - Moved desc method next to execution method for both the install and upgrade generator templates.
 - Removed the banners from the install and upgrade generator templates since this is auto-generated by Thor.
 
-# v0.3.0 (2011-07-10)
+# 0.3.0 (2011-07-10)
 
 - Added Best Practices section to the README.
 - Added the -e (edit) option for editing gem settings in default editor.
@@ -756,7 +756,7 @@
 - Added "Built with Gemsmith" to README template.
 - Updated README template so that Gemfile mention is only provided when Rails is enabled.
 
-# v0.2.0 (2011-06-12)
+# 0.2.0 (2011-06-12)
 
 - Fixed typo in upgrade generator doc.
 - Fixed README typo with command line options.
@@ -773,6 +773,6 @@
 - Updated the gem description.
 - Updated the documentation to include Bundler rake tasks.
 
-# v0.1.0 (2011-06-04)
+# 0.1.0 (2011-06-04)
 
 - Initial version.
