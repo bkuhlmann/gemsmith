@@ -338,7 +338,9 @@ of your gem, you'll be prompted for the missing credentials.
 Once your gem is released, you might want to let the world know about your accomplishment:
 
 - [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code)
+- [Ruby Community](https://www.ruby-lang.org/en/community)
 - [RubyFlow](http://www.rubyflow.com)
+- [Ruby Devs Slack](https://rubydevs.herokuapp.com)
 
 ## Troubleshooting
 

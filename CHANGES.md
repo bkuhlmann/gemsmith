@@ -1,3 +1,13 @@
+# 12.1.0 (2018-05-01)
+
+- Added Runcom examples for project specific usage.
+- Updated README screencast.
+- Updated project changes to use semantic versions.
+- Updated to Milestoner 8.2.0.
+- Updated to Pragmater 5.2.0.
+- Updated to Refinements 5.2.0.
+- Updated to Runcom 3.1.0.
+
 # 12.0.0 (2018-04-01)
 
 - Added gemspec metadata for source, changes, and issue tracker URLs.
