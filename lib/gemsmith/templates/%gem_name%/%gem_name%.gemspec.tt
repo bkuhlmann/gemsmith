@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", "~> <%= config.dig(:versions, :rails) %>"
   <%- end -%>
   <%- if config.dig(:generate, :cli) -%>
-  spec.add_dependency "runcom", "~> 3.0"
+  spec.add_dependency "runcom", "~> 3.1"
   spec.add_dependency "thor", "~> 0.20"
   <%- end -%>
   <%- if config.dig(:generate, :bundler_audit) -%>
