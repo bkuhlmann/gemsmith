@@ -19,7 +19,7 @@ RSpec.describe Gemsmith::Generators::Reek, :temp_dir do
       end
 
       it "creates configuration file" do
-        expect(cli).to have_received(:template).with("%gem_name%/.reek.tt", configuration)
+        expect(cli).to have_received(:template).with("%gem_name%/.reek.yml.tt", configuration)
       end
     end
 

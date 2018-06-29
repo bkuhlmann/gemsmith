@@ -73,7 +73,7 @@ RSpec.describe Gemsmith::CLI do
 
             expect(files).to contain_exactly(
               ".gitignore",
-              ".reek",
+              ".reek.yml",
               ".rubocop.yml",
               ".ruby-version",
               ".github/ISSUE_TEMPLATE.md",
@@ -143,7 +143,7 @@ RSpec.describe Gemsmith::CLI do
           expect(files).to contain_exactly(
             ".codeclimate.yml",
             ".gitignore",
-            ".reek",
+            ".reek.yml",
             ".rubocop.yml",
             ".ruby-version",
             ".github/ISSUE_TEMPLATE.md",
