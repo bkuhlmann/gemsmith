@@ -626,7 +626,7 @@
 - Updated to Ruby 2.1.0.
 - Updated the ignoring of signing a gem when building in a Travis CI environment.
 - Updated public gem certificate to be referenced from a central server.
-- Added a Versioning section to the README as defined here: http://semver.org.
+- Added a Versioning section to the README as defined here: https://semver.org.
 - Added public cert for secure install of gem.
 - Added Pry plugin requirements to RSpec spec helper.
 
