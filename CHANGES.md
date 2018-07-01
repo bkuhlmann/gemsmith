@@ -1,3 +1,11 @@
+# 12.2.0 (2018-07-01)
+
+- Fixed Rubocop Style/UnneededCondition issue.
+- Updated Semantic Versioning links to be HTTPS.
+- Updated to Reek 5.0.
+- Updated to Rubocop 0.57.0.
+- Updated to Versionaire 6.0.0.
+
 # 12.1.0 (2018-05-01)
 
 - Added Runcom examples for project specific usage.
