@@ -19,9 +19,9 @@
 
 ## Requirements
 
-0. [Ruby <%= config.dig(:versions, :ruby) %>](https://www.ruby-lang.org)
+1. [Ruby <%= config.dig(:versions, :ruby) %>](https://www.ruby-lang.org)
 <%- if config.dig(:generate, :engine) -%>
-0. [Ruby on Rails](http://rubyonrails.org)
+1. [Ruby on Rails](http://rubyonrails.org)
 <%- end -%>
 
 ## Setup

@@ -78,10 +78,10 @@ A command line interface for smithing new Ruby gems.
 
 ## Requirements
 
-0. A UNIX-based system.
-0. [Ruby 2.5.x](https://www.ruby-lang.org).
-0. [RubyGems](https://rubygems.org).
-0. [Bundler](https://github.com/bundler/bundler).
+1. A UNIX-based system.
+1. [Ruby 2.5.x](https://www.ruby-lang.org).
+1. [RubyGems](https://rubygems.org).
+1. [Bundler](https://github.com/bundler/bundler).
 
 ## Setup
 
@@ -226,9 +226,9 @@ generation.*
 
 When building/testing your gem locally, a typical workflow is:
 
-0. `bundle exec rake install`
-0. Test your gem locally.
-0. Repeat until satisfied.
+1. `bundle exec rake install`
+1. Test your gem locally.
+1. Repeat until satisfied.
 
 When satified with your gem, builds are green, and ready to publish, run:
 
