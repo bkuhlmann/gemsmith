@@ -1,3 +1,9 @@
+# 12.3.0 (2018-08-06)
+
+- Fixed Markdown ordered list numbering.
+- Updated to RSpec 3.8.0.
+- Updated to Rubocop 0.58.0.
+
 # 12.2.0 (2018-07-01)
 
 - Fixed Rubocop Style/UnneededCondition issue.
