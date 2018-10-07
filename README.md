@@ -340,6 +340,7 @@ Once your gem is released, you might want to let the world know about your accom
 - [How to Spread the Word About Your Code](https://hacks.mozilla.org/2013/05/how-to-spread-the-word-about-your-code)
 - [Ruby Community](https://www.ruby-lang.org/en/community)
 - [RubyFlow](http://www.rubyflow.com)
+- [RubyDaily](http://rubydaily.org)
 - [Ruby Devs Slack](https://rubydevs.herokuapp.com)
 
 ## Troubleshooting
