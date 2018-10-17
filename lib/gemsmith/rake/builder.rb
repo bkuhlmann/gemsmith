@@ -27,6 +27,7 @@ module Gemsmith
 
       def validate
         return if `git status --porcelain`.empty?
+
         shell.error "Build failed: Gem has uncommitted changes."
         kernel.exit 1
       end

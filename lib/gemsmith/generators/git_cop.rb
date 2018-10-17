@@ -6,6 +6,7 @@ module Gemsmith
     class GitCop < Base
       def run
         return unless configuration.dig(:generate, :git_cop)
+
         cli.uncomment_lines "#{gem_name}/Rakefile", %r(require.+git\/cop.+)
       end
     end

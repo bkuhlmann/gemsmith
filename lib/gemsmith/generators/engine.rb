@@ -11,6 +11,7 @@ module Gemsmith
       def install_rails
         return if rails?
         return unless cli.yes?("Ruby on Rails is not installed. Would you like it installed (y/n)?")
+
         cli.run "gem install rails"
       end
 

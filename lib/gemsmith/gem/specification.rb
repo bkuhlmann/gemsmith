@@ -65,6 +65,7 @@ module Gemsmith
 
       def validate
         return if spec.is_a?(self.class.specification)
+
         fail(Errors::Specification, %(Unknown gem specification: "#{file_path}".))
       end
     end

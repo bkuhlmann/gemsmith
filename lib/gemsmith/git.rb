@@ -13,6 +13,7 @@ module Gemsmith
 
     def self.github_url project
       return "" if github_user.empty?
+
       "https://github.com/#{github_user}/#{project}"
     end
   end

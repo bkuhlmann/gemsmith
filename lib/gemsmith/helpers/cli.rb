@@ -34,6 +34,7 @@ module Gemsmith
 
       def inspect_gem specification, method
         return unless specification
+
         Gem::Inspector.new.public_send method, Gem::Specification.new(specification.spec_file)
       rescue Versionaire::Errors::Conversion => error
         say_status :error, error.message, :red

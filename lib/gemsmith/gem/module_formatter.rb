@@ -35,6 +35,7 @@ module Gemsmith
       def body content
         content.lstrip.split("\n").reduce "" do |body, line|
           next "#{body}\n" if line.blank?
+
           body + "#{self.class.indent depth + 1}#{line.gsub(/^\s{2}/, "")}\n"
         end
       end
