@@ -3,3 +3,8 @@ inherit_from:
 <%- if config.dig(:generate, :engine) -%>
   - https://raw.githubusercontent.com/bkuhlmann/code_quality/2.5.0/configurations/rubocop/rails.yml
 <%- end -%>
+
+<%- if config.dig(:generate, :cli) -%>
+Lint/Void:
+  CheckForMethodsWithNoSideEffects: false
+<%- end -%>
