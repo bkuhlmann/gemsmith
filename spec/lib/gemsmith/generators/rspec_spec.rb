@@ -28,8 +28,11 @@ RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
     context "when enabled" do
       let(:create_rspec) { true }
 
-      it "enables Rakefile RSpec support" do
+      it "uncomments Rakefile requirement" do
         expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /require.+rspec.+/)
+      end
+
+      it "uncomments Rakefile execution" do
         expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /RSpec.+/)
       end
 

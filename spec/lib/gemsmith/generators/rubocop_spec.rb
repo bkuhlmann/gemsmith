@@ -14,8 +14,11 @@ RSpec.describe Gemsmith::Generators::Rubocop, :temp_dir do
     context "when enabled" do
       let(:create_rubocop) { true }
 
-      it "enables Rakefile Rubocop support" do
+      it "uncomments Rakefile requirement" do
         expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /require.+rubocop.+/)
+      end
+
+      it "uncomments Rakefile execution" do
         expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /RuboCop.+/)
       end
 

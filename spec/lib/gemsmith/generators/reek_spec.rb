@@ -14,8 +14,11 @@ RSpec.describe Gemsmith::Generators::Reek, :temp_dir do
     context "when enabled" do
       let(:create_reek) { true }
 
-      it "uncomments Rakefile" do
+      it "uncomments Rakefile requirement" do
         expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /require.+reek.+/)
+      end
+
+      it "uncomments Rakefile execution" do
         expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /Reek.+/)
       end
 
