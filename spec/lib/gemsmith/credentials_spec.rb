@@ -35,66 +35,61 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
   end
 
   describe "#valid?" do
-    context "when file exists" do
-      before do
-        FileUtils.mkdir test_credentials_dir
-        File.open(test_credentials_path, "w") { |file| file << YAML.dump(test_credentials) }
-      end
+    before do
+      FileUtils.mkdir test_credentials_dir
+      File.open(test_credentials_path, "w") { |file| file << YAML.dump(test_credentials) }
+    end
 
-      context "when key and value exist" do
-        it "answers true" do
-          ClimateControl.modify HOME: temp_dir.to_s do
-            expect(credentials.valid?).to eq(true)
-          end
-        end
-      end
-
-      context "when key is missing" do
-        let(:test_credentials) { nil }
-
-        it "answers false" do
-          ClimateControl.modify HOME: temp_dir.to_s do
-            expect(credentials.valid?).to eq(false)
-          end
-        end
-      end
-
-      context "when value is missing" do
-        let(:test_credentials) { described_class.default_key }
-
-        it "answers false" do
-          ClimateControl.modify HOME: temp_dir.to_s do
-            expect(credentials.valid?).to eq(false)
-          end
-        end
-      end
-
-      context "when value is nil" do
-        let(:test_credentials) { {described_class.default_key => nil} }
-
-        it "answers false" do
-          ClimateControl.modify HOME: temp_dir.to_s do
-            expect(credentials.valid?).to eq(false)
-          end
-        end
-      end
-
-      context "when value is blank" do
-        let(:test_credentials) { {described_class.default_key => ""} }
-
-        it "answers false" do
-          ClimateControl.modify HOME: temp_dir.to_s do
-            expect(credentials.valid?).to eq(false)
-          end
-        end
+    it "answers true when file, key, and value exist" do
+      ClimateControl.modify HOME: temp_dir.to_s do
+        expect(credentials.valid?).to eq(true)
       end
     end
 
-    context "when file doesn't exist" do
+    context "when file exists and key is missing" do
+      let(:test_credentials) { nil }
+
       it "answers false" do
         ClimateControl.modify HOME: temp_dir.to_s do
           expect(credentials.valid?).to eq(false)
         end
+      end
+    end
+
+    context "when file exists and value is missing" do
+      let(:test_credentials) { described_class.default_key }
+
+      it "answers false" do
+        ClimateControl.modify HOME: temp_dir.to_s do
+          expect(credentials.valid?).to eq(false)
+        end
+      end
+    end
+
+    context "when file exists and value is nil" do
+      let(:test_credentials) { {described_class.default_key => nil} }
+
+      it "answers false" do
+        ClimateControl.modify HOME: temp_dir.to_s do
+          expect(credentials.valid?).to eq(false)
+        end
+      end
+    end
+
+    context "when file exists and value is blank" do
+      let(:test_credentials) { {described_class.default_key => ""} }
+
+      it "answers false" do
+        ClimateControl.modify HOME: temp_dir.to_s do
+          expect(credentials.valid?).to eq(false)
+        end
+      end
+    end
+
+    it "answers false when file doesn't exist" do
+      FileUtils.rm_rf test_credentials_dir
+      ClimateControl.modify HOME: temp_dir.to_s do
+        expect(credentials.valid?).to eq(false)
       end
     end
   end
