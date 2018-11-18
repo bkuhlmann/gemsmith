@@ -30,11 +30,7 @@ RSpec.describe Gemsmith::Generators::GitHub, :temp_dir do
     context "when disabled" do
       let(:create_git_hub) { false }
 
-      it "creates issues template" do
-        expect(cli).not_to have_received(:template)
-      end
-
-      it "creates pull request template" do
+      it "does not create issue or pull request templates" do
         expect(cli).not_to have_received(:template)
       end
     end
