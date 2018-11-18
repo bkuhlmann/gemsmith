@@ -7,7 +7,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
 
   let(:test_credentials_dir) { File.join temp_dir, ".gem" }
   let(:test_credentials_path) { File.join test_credentials_dir, "credentials" }
-  let(:test_credentials) { {described_class.default_key => "test"} }
+  let(:test_credentials) { {described_class::DEFAULT_KEY => "test"} }
   let(:loaded_credentials) { YAML.load_file test_credentials_path }
 
   describe ".file_path" do
@@ -57,7 +57,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
     end
 
     context "when file exists and value is missing" do
-      let(:test_credentials) { described_class.default_key }
+      let(:test_credentials) { described_class::DEFAULT_KEY }
 
       it "answers false" do
         ClimateControl.modify HOME: temp_dir.to_s do
@@ -67,7 +67,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
     end
 
     context "when file exists and value is nil" do
-      let(:test_credentials) { {described_class.default_key => nil} }
+      let(:test_credentials) { {described_class::DEFAULT_KEY => nil} }
 
       it "answers false" do
         ClimateControl.modify HOME: temp_dir.to_s do
@@ -77,7 +77,7 @@ RSpec.describe Gemsmith::Credentials, :temp_dir do
     end
 
     context "when file exists and value is blank" do
-      let(:test_credentials) { {described_class.default_key => ""} }
+      let(:test_credentials) { {described_class::DEFAULT_KEY => ""} }
 
       it "answers false" do
         ClimateControl.modify HOME: temp_dir.to_s do

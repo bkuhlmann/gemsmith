@@ -64,7 +64,7 @@ module Gemsmith
       end
 
       def translate_key key
-        key == credentials.default_key ? :rubygems : key
+        key == credentials::DEFAULT_KEY ? :rubygems : key
       end
 
       def process_push status
