@@ -10,7 +10,7 @@ RSpec.describe Gemsmith::Authenticators::RubyGems do
   let(:client) { instance_spy Net::HTTP }
   let(:request) { instance_spy Net::HTTP::Get }
   let(:api_key) { "b656c8cfc5b9d6d661520345b956cb16" }
-  let(:response) { double :response, body: api_key }
+  let(:response) { instance_spy Net::HTTPResponse, body: api_key }
 
   before do
     allow(client).to receive(:request).with(request).and_return(response)
