@@ -66,16 +66,8 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
   end
 
   describe "#create_engine" do
-    before { engine.create_engine }
-
-    it "creates engine file" do
-      template = "%gem_name%/lib/%gem_path%/engine.rb.tt"
-      expect(cli).to have_received(:template).with(template, configuration)
-    end
-
-    it "generates engine" do
-      command = "rails plugin new --skip tester"
-      options = %w[
+    let :options do
+      %w[
         --skip-git
         --skip-bundle
         --skip-keeps
@@ -85,6 +77,17 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
         --mountable
         --dummy-path=spec/dummy
       ]
+    end
+
+    before { engine.create_engine }
+
+    it "creates engine file" do
+      template = "%gem_name%/lib/%gem_path%/engine.rb.tt"
+      expect(cli).to have_received(:template).with(template, configuration)
+    end
+
+    it "generates engine" do
+      command = "rails plugin new --skip tester"
       command_and_options = %(#{command} #{options.join " "})
 
       expect(cli).to have_received(:run).with(command_and_options)

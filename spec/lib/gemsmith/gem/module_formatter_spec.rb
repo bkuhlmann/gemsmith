@@ -28,38 +28,42 @@ RSpec.describe Gemsmith::Gem::ModuleFormatter do
 
   describe "#render" do
     context "with single module" do
-      it "renders single module" do
-        text = "module Example\n" \
-               "  def example_1\n" \
-               "    1\n" \
-               "  end\n\n" \
-               "  def example_2\n" \
-               "    2\n" \
-               "  end\n" \
-               "end"
+      let :expected_content do
+        "module Example\n" \
+        "  def example_1\n" \
+        "    1\n" \
+        "  end\n\n" \
+        "  def example_2\n" \
+        "    2\n" \
+        "  end\n" \
+        "end"
+      end
 
-        expect(module_formatter.render(content)).to eq(text)
+      it "renders single module" do
+        expect(module_formatter.render(content)).to eq(expected_content)
       end
     end
 
     context "with multiple modules" do
       let(:name) { "One::Two::Three" }
 
-      it "renders nested modules" do
-        text = "module One\n" \
-               "  module Two\n" \
-               "    module Three\n" \
-               "      def example_1\n" \
-               "        1\n" \
-               "      end\n\n" \
-               "      def example_2\n" \
-               "        2\n" \
-               "      end\n" \
-               "    end\n" \
-               "  end\n" \
-               "end"
+      let :expected_content do
+        "module One\n" \
+        "  module Two\n" \
+        "    module Three\n" \
+        "      def example_1\n" \
+        "        1\n" \
+        "      end\n\n" \
+        "      def example_2\n" \
+        "        2\n" \
+        "      end\n" \
+        "    end\n" \
+        "  end\n" \
+        "end"
+      end
 
-        expect(module_formatter.render(content)).to eq(text)
+      it "renders nested modules" do
+        expect(module_formatter.render(content)).to eq(expected_content)
       end
     end
 
@@ -73,17 +77,19 @@ RSpec.describe Gemsmith::Gem::ModuleFormatter do
         "  end\n"
       end
 
-      it "removes carriage return" do
-        text = "module Example\n" \
-               "  def example_1\n" \
-               "    1\n" \
-               "  end\n\n" \
-               "  def example_2\n" \
-               "    2\n" \
-               "  end\n" \
-               "end"
+      let :expected_content do
+        "module Example\n" \
+        "  def example_1\n" \
+        "    1\n" \
+        "  end\n\n" \
+        "  def example_2\n" \
+        "    2\n" \
+        "  end\n" \
+        "end"
+      end
 
-        expect(module_formatter.render(content)).to eq(text)
+      it "removes carriage return" do
+        expect(module_formatter.render(content)).to eq(expected_content)
       end
     end
   end

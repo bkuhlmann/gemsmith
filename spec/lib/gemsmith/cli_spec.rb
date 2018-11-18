@@ -36,25 +36,28 @@ RSpec.describe Gemsmith::CLI do
         ]
       end
 
+      let :expected_files do
+        [
+          ".gitignore",
+          ".ruby-version",
+          "bin/setup",
+          "lib/tester/identity.rb",
+          "lib/tester.rb",
+          "CHANGES.md",
+          "CODE_OF_CONDUCT.md",
+          "CONTRIBUTING.md",
+          "Gemfile",
+          "LICENSE.md",
+          "README.md",
+          "Rakefile",
+          "tester.gemspec"
+        ]
+      end
+
       it "generates basic gem" do
         Dir.chdir temp_dir do
           cli
-
-          expect(files).to contain_exactly(
-            ".gitignore",
-            ".ruby-version",
-            "bin/setup",
-            "lib/tester/identity.rb",
-            "lib/tester.rb",
-            "CHANGES.md",
-            "CODE_OF_CONDUCT.md",
-            "CONTRIBUTING.md",
-            "Gemfile",
-            "LICENSE.md",
-            "README.md",
-            "Rakefile",
-            "tester.gemspec"
-          )
+          expect(files).to contain_exactly(*expected_files)
         end
       end
     end
@@ -67,36 +70,39 @@ RSpec.describe Gemsmith::CLI do
         ]
       end
 
+      let :expected_files do
+        [
+          ".gitignore",
+          ".reek.yml",
+          ".rubocop.yml",
+          ".ruby-version",
+          ".github/ISSUE_TEMPLATE.md",
+          ".github/PULL_REQUEST_TEMPLATE.md",
+          "bin/setup",
+          "bin/tester",
+          "lib/tester/identity.rb",
+          "lib/tester/cli.rb",
+          "lib/tester.rb",
+          "spec/lib/tester/cli_spec.rb",
+          "spec/support/shared_contexts/temp_dir.rb",
+          "spec/spec_helper.rb",
+          "CHANGES.md",
+          "CODE_OF_CONDUCT.md",
+          "CONTRIBUTING.md",
+          "Gemfile",
+          "Guardfile",
+          "LICENSE.md",
+          "README.md",
+          "Rakefile",
+          "tester.gemspec"
+        ]
+      end
+
       it "generates CLI gem" do
         ClimateControl.modify XDG_CONFIG_HOME: temp_dir.to_s do
           Dir.chdir temp_dir do
             cli
-
-            expect(files).to contain_exactly(
-              ".gitignore",
-              ".reek.yml",
-              ".rubocop.yml",
-              ".ruby-version",
-              ".github/ISSUE_TEMPLATE.md",
-              ".github/PULL_REQUEST_TEMPLATE.md",
-              "bin/setup",
-              "bin/tester",
-              "lib/tester/identity.rb",
-              "lib/tester/cli.rb",
-              "lib/tester.rb",
-              "spec/lib/tester/cli_spec.rb",
-              "spec/support/shared_contexts/temp_dir.rb",
-              "spec/spec_helper.rb",
-              "CHANGES.md",
-              "CODE_OF_CONDUCT.md",
-              "CONTRIBUTING.md",
-              "Gemfile",
-              "Guardfile",
-              "LICENSE.md",
-              "README.md",
-              "Rakefile",
-              "tester.gemspec"
-            )
+            expect(files).to contain_exactly(*expected_files)
           end
         end
       end
@@ -120,9 +126,46 @@ RSpec.describe Gemsmith::CLI do
           "--security"
         ]
       end
+
       let(:controllers_dir) { File.join gem_dir, "app", "controllers", gem_name }
       let(:mailers_dir) { File.join gem_dir, "app", "mailers", gem_name }
       let(:models_dir) { File.join gem_dir, "app", "models", gem_name }
+
+      let :expected_files do
+        [
+          ".codeclimate.yml",
+          ".gitignore",
+          ".reek.yml",
+          ".rubocop.yml",
+          ".ruby-version",
+          ".github/ISSUE_TEMPLATE.md",
+          ".github/PULL_REQUEST_TEMPLATE.md",
+          "bin/setup",
+          "app/controllers/tester/application_controller.rb",
+          "app/mailers/tester/application_mailer.rb",
+          "app/models/tester/application_record.rb",
+          "lib/generators/tester/install/USAGE",
+          "lib/generators/tester/install/install_generator.rb",
+          "lib/generators/tester/upgrade/USAGE",
+          "lib/generators/tester/upgrade/upgrade_generator.rb",
+          "lib/tester/engine.rb",
+          "lib/tester/identity.rb",
+          "lib/tester.rb",
+          "spec/support/shared_contexts/temp_dir.rb",
+          "spec/rails_helper.rb",
+          "spec/spec_helper.rb",
+          "CHANGES.md",
+          "CODE_OF_CONDUCT.md",
+          "circle.yml",
+          "CONTRIBUTING.md",
+          "Gemfile",
+          "Guardfile",
+          "LICENSE.md",
+          "Rakefile",
+          "README.md",
+          "tester.gemspec"
+        ]
+      end
 
       # FIX: Remove this before block once it is determined why `rails plugin new` doesn't run via
       # the `Generators::Rails#create_engine` within this spec.
@@ -140,40 +183,7 @@ RSpec.describe Gemsmith::CLI do
       it "generates full gem" do
         Dir.chdir temp_dir do
           cli
-
-          expect(files).to contain_exactly(
-            ".codeclimate.yml",
-            ".gitignore",
-            ".reek.yml",
-            ".rubocop.yml",
-            ".ruby-version",
-            ".github/ISSUE_TEMPLATE.md",
-            ".github/PULL_REQUEST_TEMPLATE.md",
-            "bin/setup",
-            "app/controllers/tester/application_controller.rb",
-            "app/mailers/tester/application_mailer.rb",
-            "app/models/tester/application_record.rb",
-            "lib/generators/tester/install/USAGE",
-            "lib/generators/tester/install/install_generator.rb",
-            "lib/generators/tester/upgrade/USAGE",
-            "lib/generators/tester/upgrade/upgrade_generator.rb",
-            "lib/tester/engine.rb",
-            "lib/tester/identity.rb",
-            "lib/tester.rb",
-            "spec/support/shared_contexts/temp_dir.rb",
-            "spec/rails_helper.rb",
-            "spec/spec_helper.rb",
-            "CHANGES.md",
-            "CODE_OF_CONDUCT.md",
-            "circle.yml",
-            "CONTRIBUTING.md",
-            "Gemfile",
-            "Guardfile",
-            "LICENSE.md",
-            "Rakefile",
-            "README.md",
-            "tester.gemspec"
-          )
+          expect(files).to contain_exactly(*expected_files)
         end
       end
     end
@@ -299,8 +309,8 @@ RSpec.describe Gemsmith::CLI do
   end
 
   describe ".generators" do
-    it "answers gem generators" do
-      expect(described_class.generators).to contain_exactly(
+    let :expected_generators do
+      [
         Gemsmith::Generators::Gem,
         Gemsmith::Generators::Documentation,
         Gemsmith::Generators::Rake,
@@ -319,7 +329,11 @@ RSpec.describe Gemsmith::CLI do
         Gemsmith::Generators::Git,
         Gemsmith::Generators::Pragma,
         Gemsmith::Generators::GitHub
-      )
+      ]
+    end
+
+    it "answers gem generators" do
+      expect(described_class.generators).to contain_exactly(*expected_generators)
     end
   end
 
