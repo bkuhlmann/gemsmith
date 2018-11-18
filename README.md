@@ -57,7 +57,8 @@ A command line interface for smithing new Ruby gems.
 - Supports [Pry](http://pryrepl.org).
 - Supports [Reek](https://github.com/troessner/reek).
 - Supports [RSpec](http://rspec.info).
-- Supports [Rubocop](https://github.com/bbatsov/rubocop).
+- Supports [Rubocop](https://github.com/rubocop-hq/rubocop).
+- Supports [Rubocop RSpec](https://github.com/rubocop-hq/rubocop-rspec).
 - Supports [Ruby on Rails](http://rubyonrails.org).
 - Supports [RubyGems Security](http://guides.rubygems.org/security).
 - Supports [Thor](https://github.com/erikhuda/thor).

@@ -1,3 +1,25 @@
+# 12.4.0 (2018-11-18)
+
+- Fixed Layout/EmptyLineAfterGuardClause cop issues.
+- Fixed Rubocop RSpec/ContextWording issues.
+- Fixed Rubocop RSpec/EmptyLineAfterFinalLet issues.
+- Fixed Rubocop RSpec/ExampleLength issues.
+- Fixed Rubocop RSpec/MultipleExpectations issues.
+- Fixed Rubocop RSpec/NamedSubject issues.
+- Fixed Rubocop RSpec/NestedGroups issues.
+- Fixed Rubocop RSpec/RepeatedExample issues.
+- Fixed Rubocop RSpec/SubjectStub issues.
+- Fixed Rubocop RSpec/VerifiedDoubles issue.
+- Added Rubocop RSpec gem.
+- Added RubyDaily to README promotional links.
+- Updated to Code Quality 2.5.0.
+- Updated to Contributor Covenant Code of Conduct 1.4.1.
+- Updated to Rubocop 0.60.0.
+- Updated to Ruby 2.5.2.
+- Updated to Ruby 2.5.3.
+- Removed Rubocop Lint/Void CheckForMethodsWithNoSideEffects check.
+- Refactored credentials implementation.
+
 # 12.3.0 (2018-08-06)
 
 - Fixed Markdown ordered list numbering.
