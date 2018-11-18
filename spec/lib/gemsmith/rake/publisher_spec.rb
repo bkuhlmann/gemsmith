@@ -3,6 +3,14 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
+  subject(:publisher) do
+    described_class.new gem_spec: gem_spec,
+                        gem_config: gem_config,
+                        publisher: milestone_publisher,
+                        shell: shell,
+                        kernel: kernel
+  end
+
   let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
   let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
   let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_path }
@@ -15,16 +23,10 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
                  url: gem_spec.allowed_push_host
   end
 
-  let(:publisher) { instance_spy Milestoner::Publisher }
+  let(:milestone_publisher) { instance_spy Milestoner::Publisher }
   let(:shell) { instance_spy Bundler::UI::Shell }
   let(:kernel) { class_spy Kernel }
-  subject do
-    described_class.new gem_spec: gem_spec,
-                        gem_config: gem_config,
-                        publisher: publisher,
-                        shell: shell,
-                        kernel: kernel
-  end
+
   before { allow(Gemsmith::Credentials).to receive(:new).and_return(credentials) }
 
   describe ".gem_spec_path" do
@@ -50,12 +52,12 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
       end
 
       it "pushes gem to gem server" do
-        subject.push
+        publisher.push
         expect(kernel).to have_received(:system).with(command)
       end
 
       it "prints successful gem push message" do
-        subject.push
+        publisher.push
         output = "Pushed tester-0.1.0.gem to https://rubygems.org."
         expect(shell).to have_received(:confirm).with(output)
       end
@@ -76,12 +78,12 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
       end
 
       it "pushes gem to gem server" do
-        subject.push
+        publisher.push
         expect(kernel).to have_received(:system).with(command)
       end
 
       it "prints successful gem push message" do
-        subject.push
+        publisher.push
         output = "Pushed tester-0.1.0.gem to https://www.test.com."
 
         expect(shell).to have_received(:confirm).with(output)
@@ -96,11 +98,14 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
     end
 
     context "when push fails" do
-      subject { described_class.new gem_spec: gem_spec, publisher: publisher, shell: shell }
+      subject :publisher do
+        described_class.new gem_spec: gem_spec, publisher: milestone_publisher, shell: shell
+      end
+
       before { allow(Kernel).to receive(:system).and_return(false) }
 
       it "prints failure message" do
-        subject.push
+        publisher.push
         message = "Failed pushing tester-0.1.0.gem to https://rubygems.org. " \
                   "Check gemspec and gem credential settings."
 
@@ -108,44 +113,46 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
       end
 
       it "answers false" do
-        expect(subject.push).to eq(false)
+        expect(publisher.push).to eq(false)
       end
     end
   end
 
   describe "#publish" do
     let(:version) { Versionaire::Version "0.1.0" }
-    before { allow(subject).to receive(:push).and_return(true) }
+
+    before { allow(publisher).to receive(:push).and_return(true) }
 
     context "with unsigned version tag" do
-      before { subject.publish }
+      before { publisher.publish }
 
       it "publishes unsigned gem" do
-        expect(publisher).to have_received(:publish).with(version, sign: false)
+        expect(milestone_publisher).to have_received(:publish).with(version, sign: false)
       end
 
       it "pushes gem" do
-        expect(subject).to have_received(:push)
+        expect(publisher).to have_received(:push)
       end
     end
 
     context "with signed version tag" do
       let(:signed) { true }
-      before { subject.publish }
+
+      before { publisher.publish }
 
       it "publishes signed gem" do
-        expect(publisher).to have_received(:publish).with(version, sign: true)
+        expect(milestone_publisher).to have_received(:publish).with(version, sign: true)
       end
 
       it "pushes gem" do
-        expect(subject).to have_received(:push)
+        expect(publisher).to have_received(:push)
       end
     end
 
     context "with Milestoner error" do
       before do
-        allow(publisher).to receive(:publish).and_raise(Milestoner::Errors::Base, "test")
-        Dir.chdir(temp_dir) { subject.publish }
+        allow(milestone_publisher).to receive(:publish).and_raise(Milestoner::Errors::Base, "test")
+        Dir.chdir(temp_dir) { publisher.publish }
       end
 
       it "prints error" do
@@ -153,7 +160,7 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
       end
 
       it "does not push gem" do
-        expect(subject).to_not have_received(:push)
+        expect(publisher).not_to have_received(:push)
       end
     end
   end
@@ -161,7 +168,7 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   describe "#sign" do
     context "when gem configuration enables version signing" do
       it "answers false" do
-        expect(subject.signed?).to eq(false)
+        expect(publisher.signed?).to eq(false)
       end
     end
 
@@ -169,7 +176,7 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
       let(:signed) { true }
 
       it "answers true" do
-        expect(subject.signed?).to eq(true)
+        expect(publisher.signed?).to eq(true)
       end
     end
   end

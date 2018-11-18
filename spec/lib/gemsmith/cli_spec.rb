@@ -3,12 +3,13 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::CLI do
-  let(:options) { [] }
-  let(:command_line) { Array(command).concat options }
-  let :cli do
+  subject :cli do
     load "gemsmith/cli.rb" # Ensures clean Thor `.method_option` evaluation per spec.
     described_class.start command_line
   end
+
+  let(:options) { [] }
+  let(:command_line) { Array(command).concat options }
 
   shared_examples_for "a generate command" do
     let(:gem_name) { "tester" }
@@ -324,66 +325,79 @@ RSpec.describe Gemsmith::CLI do
 
   describe "--generate" do
     let(:command) { "--generate" }
+
     it_behaves_like "a generate command"
   end
 
   describe "-g" do
     let(:command) { "-g" }
+
     it_behaves_like "a generate command"
   end
 
   describe "--open" do
     let(:command) { "--open" }
+
     it "behaves like an open command"
   end
 
   describe "-o" do
     let(:command) { "-o" }
+
     it "behaves like an open command"
   end
 
   describe "--read" do
     let(:command) { "--read" }
+
     it "behaves like a read command"
   end
 
   describe "-r" do
     let(:command) { "-r" }
+
     it "behaves like a read command"
   end
 
   describe "--config" do
     let(:command) { "--config" }
+
     it_behaves_like "a config command"
   end
 
   describe "-c" do
     let(:command) { "-c" }
+
     it_behaves_like "a config command"
   end
 
   describe "--version" do
     let(:command) { "--version" }
+
     it_behaves_like "a version command"
   end
 
   describe "-v" do
     let(:command) { "-v" }
+
     it_behaves_like "a version command"
   end
 
   describe "--help" do
     let(:command) { "--help" }
+
     it_behaves_like "a help command"
   end
 
   describe "-h" do
     let(:command) { "-h" }
+
     it_behaves_like "a help command"
   end
 
   context "with no command" do
     let(:command) { nil }
+
     it_behaves_like "a help command"
   end
 end

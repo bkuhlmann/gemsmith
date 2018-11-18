@@ -3,9 +3,10 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
+  subject(:engine) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester", path: "tester"}} }
-  subject { described_class.new cli, configuration: configuration }
 
   describe "#rails?" do
     let(:command) { "command -v rails > /dev/null" }
@@ -14,7 +15,7 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
       before { allow(cli).to receive(:run).with(command).and_return(true) }
 
       it "answers true" do
-        expect(subject.rails?).to eq(true)
+        expect(engine.rails?).to eq(true)
       end
     end
 
@@ -22,7 +23,7 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
       before { allow(cli).to receive(:run).with(command).and_return(false) }
 
       it "answers false" do
-        expect(subject.rails?).to eq(false)
+        expect(engine.rails?).to eq(false)
       end
     end
   end
@@ -31,7 +32,7 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
     let(:prompt) { "Ruby on Rails is not installed. Would you like it installed (y/n)?" }
 
     before do
-      allow(subject).to receive(:rails?).and_return(rails)
+      allow(engine).to receive(:rails?).and_return(rails)
       allow(cli).to receive(:yes?).with(prompt).and_return(create_rails)
     end
 
@@ -40,7 +41,7 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
       let(:create_rails) { false }
 
       it "does not install Rails" do
-        expect(cli).to_not have_received(:run)
+        expect(cli).not_to have_received(:run)
       end
     end
 
@@ -49,7 +50,7 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
       let(:create_rails) { false }
 
       it "does not install Rails" do
-        expect(cli).to_not have_received(:run)
+        expect(cli).not_to have_received(:run)
       end
     end
 
@@ -58,14 +59,14 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
       let(:create_rails) { true }
 
       it "does not install Rails" do
-        subject.install_rails
+        engine.install_rails
         expect(cli).to have_received(:run).with("gem install rails")
       end
     end
   end
 
   describe "#create_engine" do
-    before { subject.create_engine }
+    before { engine.create_engine }
 
     it "creates engine file" do
       template = "%gem_name%/lib/%gem_path%/engine.rb.tt"
@@ -91,7 +92,7 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
   end
 
   describe "#create_generator_files" do
-    before { subject.create_generator_files }
+    before { engine.create_generator_files }
 
     it "creates install generator script" do
       template = "%gem_name%/lib/generators/%gem_path%/install/install_generator.rb.tt"
@@ -115,7 +116,7 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
   end
 
   describe "#stub_assets" do
-    before { subject.stub_assets }
+    before { engine.stub_assets }
 
     it "stubs JavaScript application file" do
       command = %(printf "%s" > "tester/app/assets/javascripts/tester/application.js")
@@ -129,7 +130,7 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
   end
 
   describe "#remove_files" do
-    before { subject.remove_files }
+    before { engine.remove_files }
 
     it "removes generated application helper file" do
       file = "tester/app/helpers/tester/application_helper.rb"
@@ -151,24 +152,24 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
 
   describe "#run" do
     before do
-      allow(subject).to receive(:install_rails)
-      allow(subject).to receive(:create_engine)
-      allow(subject).to receive(:create_generator_files)
-      allow(subject).to receive(:stub_assets)
-      allow(subject).to receive(:remove_files)
+      allow(engine).to receive(:install_rails)
+      allow(engine).to receive(:create_engine)
+      allow(engine).to receive(:create_generator_files)
+      allow(engine).to receive(:stub_assets)
+      allow(engine).to receive(:remove_files)
     end
 
     context "when engine enabled" do
       let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {engine: true}} }
 
       it "generates Rails support", :aggregate_failures do
-        subject.run
+        engine.run
 
-        expect(subject).to have_received(:install_rails)
-        expect(subject).to have_received(:create_engine)
-        expect(subject).to have_received(:create_generator_files)
-        expect(subject).to have_received(:stub_assets)
-        expect(subject).to have_received(:remove_files)
+        expect(engine).to have_received(:install_rails)
+        expect(engine).to have_received(:create_engine)
+        expect(engine).to have_received(:create_generator_files)
+        expect(engine).to have_received(:stub_assets)
+        expect(engine).to have_received(:remove_files)
       end
     end
 
@@ -176,13 +177,13 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
       let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {engine: false}} }
 
       it "does not generate Rails support", :aggregate_failures do
-        subject.run
+        engine.run
 
-        expect(subject).to_not have_received(:install_rails)
-        expect(subject).to_not have_received(:create_engine)
-        expect(subject).to_not have_received(:create_generator_files)
-        expect(subject).to_not have_received(:stub_assets)
-        expect(subject).to_not have_received(:remove_files)
+        expect(engine).not_to have_received(:install_rails)
+        expect(engine).not_to have_received(:create_engine)
+        expect(engine).not_to have_received(:create_generator_files)
+        expect(engine).not_to have_received(:stub_assets)
+        expect(engine).not_to have_received(:remove_files)
       end
     end
   end

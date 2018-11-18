@@ -3,12 +3,13 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::BundlerAudit, :temp_dir do
+  subject(:bundler_audit) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}, generate: {bundler_audit: add_bundler_audit}} }
-  subject { described_class.new cli, configuration: configuration }
 
   describe "#run" do
-    before { subject.run }
+    before { bundler_audit.run }
 
     context "when enabled" do
       let(:add_bundler_audit) { true }
@@ -26,7 +27,7 @@ RSpec.describe Gemsmith::Generators::BundlerAudit, :temp_dir do
       let(:add_bundler_audit) { false }
 
       it "does not uncomment lines" do
-        expect(cli).to_not have_received(:uncomment_lines)
+        expect(cli).not_to have_received(:uncomment_lines)
       end
     end
   end

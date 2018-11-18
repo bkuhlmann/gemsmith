@@ -3,12 +3,13 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::GitCop, :temp_dir do
+  subject(:git_cop) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}, generate: {git_cop: create_git_cop}} }
-  subject { described_class.new cli, configuration: configuration }
 
   describe "#run" do
-    before { subject.run }
+    before { git_cop.run }
 
     context "when enabled" do
       let(:create_git_cop) { true }
@@ -25,7 +26,7 @@ RSpec.describe Gemsmith::Generators::GitCop, :temp_dir do
       let(:create_git_cop) { false }
 
       it "does not uncomment lines" do
-        expect(cli).to_not have_received(:uncomment_lines)
+        expect(cli).not_to have_received(:uncomment_lines)
       end
     end
   end

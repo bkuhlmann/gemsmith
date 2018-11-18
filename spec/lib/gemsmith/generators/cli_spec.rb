@@ -3,12 +3,13 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::CLI, :temp_dir do
+  subject(:cli_generator) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}, generate: {cli: create_cli}} }
-  subject { described_class.new cli, configuration: configuration }
 
   describe "#run" do
-    before { subject.run }
+    before { cli_generator.run }
 
     context "when enabled" do
       let(:create_cli) { true }
@@ -38,7 +39,7 @@ RSpec.describe Gemsmith::Generators::CLI, :temp_dir do
       let(:create_cli) { false }
 
       it "does not create files" do
-        expect(cli).to_not have_received(:template)
+        expect(cli).not_to have_received(:template)
       end
     end
   end

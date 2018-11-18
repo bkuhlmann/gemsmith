@@ -3,22 +3,24 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
+  subject(:builder) { described_class.new tocer: tocer_class, kernel: kernel }
+
   let(:tocer_class) { class_spy Tocer::Writer }
   let(:tocer) { instance_spy Tocer::Writer }
   let(:kernel) { class_spy Kernel }
-  subject { described_class.new tocer: tocer_class, kernel: kernel }
 
   describe "#toc" do
     let(:readme) { File.join Dir.pwd, "README.md" }
+
     before { allow(tocer_class).to receive(:new).with(readme).and_return(tocer) }
 
     it "updates README table of contents" do
-      subject.toc
+      builder.toc
       expect(tocer).to have_received(:write)
     end
 
     it "prints status message" do
-      result = -> { subject.toc }
+      result = -> { builder.toc }
       expect(&result).to output("Updated gem table of contents.\n").to_stdout
     end
   end
@@ -33,12 +35,12 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
     end
 
     it "removes previously built gem artifacts" do
-      Dir.chdir(temp_dir) { subject.clean }
+      Dir.chdir(temp_dir) { builder.clean }
       expect(File.exist?(gem_file)).to eq(false)
     end
 
     it "prints status message" do
-      result = -> { Dir.chdir(temp_dir) { subject.clean } }
+      result = -> { Dir.chdir(temp_dir) { builder.clean } }
       expect(&result).to output("Cleaned gem artifacts.\n").to_stdout
     end
   end
@@ -61,14 +63,14 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
 
       it "prints build error" do
         Dir.chdir temp_dir do
-          result = -> { subject.validate }
+          result = -> { builder.validate }
           expect(&result).to output("Build failed: Gem has uncommitted changes.\n").to_stdout
         end
       end
 
       it "exits with error" do
         Dir.chdir temp_dir do
-          subject.validate
+          builder.validate
           expect(kernel).to have_received(:exit).with(1)
         end
       end
@@ -77,15 +79,15 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
     context "without Git changes" do
       it "does not print output" do
         Dir.chdir temp_dir do
-          result = -> { subject.validate }
-          expect(&result).to_not output.to_stdout
+          result = -> { builder.validate }
+          expect(&result).not_to output.to_stdout
         end
       end
 
       it "does not exit" do
         Dir.chdir temp_dir do
-          subject.validate
-          expect(kernel).to_not have_received(:exit)
+          builder.validate
+          expect(kernel).not_to have_received(:exit)
         end
       end
     end
@@ -96,21 +98,22 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
     let(:gem_spec_fixture_file) { File.join fixtures_dir, "tester-valid.gemspec" }
     let(:gem_spec_file) { File.join temp_dir, "tester.gemspec" }
     let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_file }
+
     before { FileUtils.cp gem_spec_fixture_file, gem_spec_file }
 
     context "when success" do
-      subject { described_class.new tocer: tocer_class }
+      subject(:builder) { described_class.new tocer: tocer_class }
 
       it "builds gem package" do
         Dir.chdir(temp_dir) do
-          subject.build gem_spec
+          builder.build gem_spec
           expect(File.exist?("pkg/tester-0.1.0.gem")).to eq(true)
         end
       end
 
       it "prints package built successfully" do
         Dir.chdir(temp_dir) do
-          result = -> { subject.build gem_spec }
+          result = -> { builder.build gem_spec }
           expect(&result).to output("Built: pkg/tester-0.1.0.gem.\n").to_stdout
         end
       end
@@ -121,14 +124,14 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
 
       it "does not build gem package" do
         Dir.chdir(temp_dir) do
-          subject.build gem_spec
+          builder.build gem_spec
           expect(File.exist?("pkg/tester-0.1.0.gem")).to eq(false)
         end
       end
 
       it "prints error message" do
         Dir.chdir(temp_dir) do
-          result = -> { subject.build gem_spec }
+          result = -> { builder.build gem_spec }
           expect(&result).to output("Unable to build: pkg/tester-0.1.0.gem.\n").to_stdout
         end
       end
@@ -144,7 +147,7 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
       let(:kernel) { class_spy Kernel, system: true }
 
       it "prints gem was installed" do
-        result = -> { subject.install gem_spec }
+        result = -> { builder.install gem_spec }
         expect(&result).to output("Installed: tester 0.1.0.\n").to_stdout
       end
     end
@@ -153,7 +156,7 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
       let(:kernel) { class_spy Kernel, system: false }
 
       it "prints gem was installed" do
-        result = -> { subject.install gem_spec }
+        result = -> { builder.install gem_spec }
         expect(&result).to output("Unable to install: tester 0.1.0.\n").to_stdout
       end
     end

@@ -3,12 +3,13 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::Guard, :temp_dir do
+  subject(:guard) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}, generate: {guard: create_guard}} }
-  subject { described_class.new cli, configuration: configuration }
 
   describe "#run" do
-    before { subject.run }
+    before { guard.run }
 
     context "when enabled" do
       let(:create_guard) { true }
@@ -22,7 +23,7 @@ RSpec.describe Gemsmith::Generators::Guard, :temp_dir do
       let(:create_guard) { false }
 
       it "does not create Guardfile" do
-        expect(cli).to_not have_received(:template)
+        expect(cli).not_to have_received(:template)
       end
     end
   end

@@ -3,12 +3,13 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::Documentation, :temp_dir do
+  subject(:documentation) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}} }
-  subject { described_class.new cli, configuration: configuration }
 
   describe "#create_files" do
-    before { subject.create_files }
+    before { documentation.create_files }
 
     it "creates readme" do
       expect(cli).to have_received(:template).with("%gem_name%/README.md.tt", configuration)
@@ -37,9 +38,10 @@ RSpec.describe Gemsmith::Generators::Documentation, :temp_dir do
   describe "#update_readme" do
     let(:tocer) { instance_spy Tocer::Writer }
     let(:file) { File.join cli.destination_root, cli.gem_name, "README.md" }
+
     before do
       allow(Tocer::Writer).to receive(:new).and_return(tocer)
-      subject.update_readme
+      documentation.update_readme
     end
 
     it "updates readme" do
@@ -49,18 +51,18 @@ RSpec.describe Gemsmith::Generators::Documentation, :temp_dir do
 
   describe "#run" do
     before do
-      allow(subject).to receive(:create_files)
-      allow(subject).to receive(:update_readme)
+      allow(documentation).to receive(:create_files)
+      allow(documentation).to receive(:update_readme)
     end
 
     it "creates files" do
-      subject.run
-      expect(subject).to have_received(:create_files)
+      documentation.run
+      expect(documentation).to have_received(:create_files)
     end
 
     it "creates updates readme" do
-      subject.run
-      expect(subject).to have_received(:update_readme)
+      documentation.run
+      expect(documentation).to have_received(:update_readme)
     end
   end
 end

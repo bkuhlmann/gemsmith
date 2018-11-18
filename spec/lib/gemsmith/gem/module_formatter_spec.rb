@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Gem::ModuleFormatter do
+  subject(:module_formatter) { described_class.new name }
+
   let(:name) { "Example" }
 
   let :content do
@@ -13,8 +15,6 @@ RSpec.describe Gemsmith::Gem::ModuleFormatter do
     "    2\n" \
     "  end\n"
   end
-
-  subject { described_class.new name }
 
   describe ".indent" do
     it "answers default indentation" do
@@ -38,7 +38,7 @@ RSpec.describe Gemsmith::Gem::ModuleFormatter do
                "  end\n" \
                "end"
 
-        expect(subject.render(content)).to eq(text)
+        expect(module_formatter.render(content)).to eq(text)
       end
     end
 
@@ -59,7 +59,7 @@ RSpec.describe Gemsmith::Gem::ModuleFormatter do
                "  end\n" \
                "end"
 
-        expect(subject.render(content)).to eq(text)
+        expect(module_formatter.render(content)).to eq(text)
       end
     end
 
@@ -83,7 +83,7 @@ RSpec.describe Gemsmith::Gem::ModuleFormatter do
                "  end\n" \
                "end"
 
-        expect(subject.render(content)).to eq(text)
+        expect(module_formatter.render(content)).to eq(text)
       end
     end
   end

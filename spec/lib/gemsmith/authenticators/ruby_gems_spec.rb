@@ -3,13 +3,14 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Authenticators::RubyGems do
+  subject(:ruby_gems) { described_class.new login, password }
+
   let(:login) { "admin" }
   let(:password) { "open_sesame" }
   let(:client) { instance_spy Net::HTTP }
   let(:request) { instance_spy Net::HTTP::Get }
   let(:api_key) { "b656c8cfc5b9d6d661520345b956cb16" }
   let(:response) { double :response, body: api_key }
-  subject { described_class.new login, password }
 
   before do
     allow(client).to receive(:request).with(request).and_return(response)
@@ -18,7 +19,7 @@ RSpec.describe Gemsmith::Authenticators::RubyGems do
   end
 
   describe "#initialize" do
-    before { subject }
+    before { ruby_gems }
 
     it "uses SSL encryption" do
       expect(client).to have_received(:use_ssl=).with(true)
@@ -31,12 +32,12 @@ RSpec.describe Gemsmith::Authenticators::RubyGems do
 
   describe "#authorization" do
     it "uses HTTP Basic authentication" do
-      subject.authorization
+      ruby_gems.authorization
       expect(request).to have_received(:basic_auth).with(login, password)
     end
 
     it "answers API key" do
-      expect(subject.authorization).to eq(api_key)
+      expect(ruby_gems.authorization).to eq(api_key)
     end
   end
 end

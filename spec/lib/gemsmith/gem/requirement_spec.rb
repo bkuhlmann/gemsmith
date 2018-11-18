@@ -3,7 +3,7 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Gem::Requirement do
-  subject { described_class.new }
+  subject(:requirement) { described_class.new }
 
   describe ".version_segments" do
     context "with one segment" do
@@ -46,7 +46,7 @@ RSpec.describe Gemsmith::Gem::Requirement do
       it "does not fail with error" do
         described_class.operators.each do |operator|
           result = -> { described_class.new operator: operator }
-          expect(&result).to_not raise_error
+          expect(&result).not_to raise_error
         end
       end
     end
@@ -64,16 +64,17 @@ RSpec.describe Gemsmith::Gem::Requirement do
   describe "#operator" do
     context "with default settings" do
       it "answers default operator" do
-        expect(subject.operator).to eq(">=")
+        expect(requirement.operator).to eq(">=")
       end
     end
 
     context "with custom settings" do
+      subject(:requirement) { described_class.new operator: operator }
+
       let(:operator) { "~>" }
-      subject { described_class.new operator: operator }
 
       it "answers custom operator" do
-        expect(subject.operator).to eq(operator)
+        expect(requirement.operator).to eq(operator)
       end
     end
   end
@@ -81,16 +82,17 @@ RSpec.describe Gemsmith::Gem::Requirement do
   describe "#raw_version" do
     context "with default settings" do
       it "answers default version string" do
-        expect(subject.raw_version).to eq("0")
+        expect(requirement.raw_version).to eq("0")
       end
     end
 
     context "with custom settings" do
+      subject(:requirement) { described_class.new raw_version: raw_version }
+
       let(:raw_version) { "1.2" }
-      subject { described_class.new raw_version: raw_version }
 
       it "answrs custom version string" do
-        expect(subject.raw_version).to eq(raw_version)
+        expect(requirement.raw_version).to eq(raw_version)
       end
     end
   end
@@ -98,16 +100,17 @@ RSpec.describe Gemsmith::Gem::Requirement do
   describe "#version" do
     context "with default settings" do
       it "answers default version" do
-        expect(subject.version).to eq(Versionaire::Version.new)
+        expect(requirement.version).to eq(Versionaire::Version.new)
       end
     end
 
     context "with custom settings" do
+      subject(:requirement) { described_class.new raw_version: "1.2" }
+
       let(:version) { Versionaire::Version "1.2.0" }
-      subject { described_class.new raw_version: "1.2" }
 
       it "answers custom version" do
-        expect(subject.version).to eq(version)
+        expect(requirement.version).to eq(version)
       end
     end
   end
@@ -115,15 +118,15 @@ RSpec.describe Gemsmith::Gem::Requirement do
   describe "#version_segments" do
     context "with default settings" do
       it "answers array of default version segments" do
-        expect(subject.version_segments).to contain_exactly(0)
+        expect(requirement.version_segments).to contain_exactly(0)
       end
     end
 
     context "with custom settings" do
-      subject { described_class.new raw_version: "1.2.3" }
+      subject(:requirement) { described_class.new raw_version: "1.2.3" }
 
       it "answers array of custom version segments" do
-        expect(subject.version_segments).to contain_exactly(1, 2, 3)
+        expect(requirement.version_segments).to contain_exactly(1, 2, 3)
       end
     end
   end
@@ -131,15 +134,15 @@ RSpec.describe Gemsmith::Gem::Requirement do
   describe "#to_s" do
     context "with default settings" do
       it "answers default string representation" do
-        expect(subject.to_s).to eq(">= 0.0.0")
+        expect(requirement.to_s).to eq(">= 0.0.0")
       end
     end
 
     context "with custom settings" do
-      subject { described_class.new raw_version: "1.2.3" }
+      subject(:requirement) { described_class.new raw_version: "1.2.3" }
 
       it "answers custom string representation" do
-        expect(subject.to_s).to eq(">= 1.2.3")
+        expect(requirement.to_s).to eq(">= 1.2.3")
       end
     end
   end

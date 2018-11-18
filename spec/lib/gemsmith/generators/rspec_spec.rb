@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
+  subject(:rspec) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
 
   let :configuration do
@@ -17,12 +19,11 @@ RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
     }
   end
 
-  subject { described_class.new cli, configuration: configuration }
-
   describe "#run" do
     let(:create_rails) { false }
     let(:create_engine) { false }
-    before { subject.run }
+
+    before { rspec.run }
 
     context "when enabled" do
       let(:create_rspec) { true }
@@ -39,7 +40,7 @@ RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
 
       it "does not create rails helper" do
         template = "%gem_name%/spec/rails_helper.rb.tt"
-        expect(cli).to_not have_received(:template).with(template, configuration)
+        expect(cli).not_to have_received(:template).with(template, configuration)
       end
 
       it "creates shared contexts" do
@@ -62,11 +63,11 @@ RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
       let(:create_rspec) { false }
 
       it "does not uncomment lines" do
-        expect(cli).to_not have_received(:uncomment_lines)
+        expect(cli).not_to have_received(:uncomment_lines)
       end
 
       it "does not create files" do
-        expect(cli).to_not have_received(:template)
+        expect(cli).not_to have_received(:template)
       end
     end
   end

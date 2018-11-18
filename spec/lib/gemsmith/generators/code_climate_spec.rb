@@ -3,12 +3,13 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::CodeClimate, :temp_dir do
+  subject(:code_climate) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}, generate: {code_climate: create_code_climate}} }
-  subject { described_class.new cli, configuration: configuration }
 
   describe "#run" do
-    before { subject.run }
+    before { code_climate.run }
 
     context "when enabled" do
       let(:create_code_climate) { true }
@@ -25,7 +26,7 @@ RSpec.describe Gemsmith::Generators::CodeClimate, :temp_dir do
       let(:create_code_climate) { false }
 
       it "does not create configuration file" do
-        expect(cli).to_not have_received(:template)
+        expect(cli).not_to have_received(:template)
       end
     end
   end

@@ -3,8 +3,9 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::Base do
+  subject(:base) { described_class.new cli }
+
   let(:cli) { instance_spy Gemsmith::CLI }
-  subject { described_class.new cli }
 
   describe ".run" do
     it "initializes instance and runs it" do
@@ -19,7 +20,7 @@ RSpec.describe Gemsmith::Generators::Base do
 
   describe "#run" do
     it "fails due to not being implemented yet" do
-      result = -> { subject.run }
+      result = -> { base.run }
 
       expect(&result).to raise_error(
         NotImplementedError,

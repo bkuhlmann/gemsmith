@@ -3,14 +3,17 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Rake::Tasks do
+  subject(:tasks) { described_class.new gem_spec: gem_spec, builder: builder, publisher: publisher }
+
   let(:gem_spec) { instance_spy Gemsmith::Gem::Specification }
   let(:builder) { instance_spy Gemsmith::Rake::Builder }
   let(:publisher) { instance_spy Gemsmith::Rake::Publisher }
-  subject { described_class.new gem_spec: gem_spec, builder: builder, publisher: publisher }
+
   before { Rake::Task.clear }
 
   describe ".setup" do
-    let(:tasks) { instance_spy described_class }
+    subject(:tasks) { instance_spy described_class }
+
     before { allow(described_class).to receive(:new).and_return(tasks) }
 
     it "installs rake tasks" do
@@ -20,7 +23,7 @@ RSpec.describe Gemsmith::Rake::Tasks do
   end
 
   describe "#install" do
-    before { subject.install }
+    before { tasks.install }
 
     context "rake toc" do
       it "updates README" do

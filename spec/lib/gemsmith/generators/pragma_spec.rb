@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::Pragma, :temp_dir do
+  subject(:pragma) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}} }
   let(:comments) { ["# frozen_string_literal: true"] }
@@ -29,8 +31,6 @@ RSpec.describe Gemsmith::Generators::Pragma, :temp_dir do
     ]
   end
 
-  subject { described_class.new cli, configuration: configuration }
-
   before do
     allow(Pragmater::Runner).to receive(:new).with(
       gem_root,
@@ -43,12 +43,12 @@ RSpec.describe Gemsmith::Generators::Pragma, :temp_dir do
 
   describe "#includes" do
     it "answers includes" do
-      expect(subject.includes).to contain_exactly(*includes)
+      expect(pragma.includes).to contain_exactly(*includes)
     end
   end
 
   describe "#run" do
-    before { subject.run }
+    before { pragma.run }
 
     it "updates files" do
       expect(pragmater).to have_received(:run).with(action: :add)

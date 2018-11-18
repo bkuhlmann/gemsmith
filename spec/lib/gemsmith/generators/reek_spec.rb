@@ -3,12 +3,13 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::Reek, :temp_dir do
+  subject(:reek) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}, generate: {reek: create_reek}} }
-  subject { described_class.new cli, configuration: configuration }
 
   describe "#run" do
-    before { subject.run }
+    before { reek.run }
 
     context "when enabled" do
       let(:create_reek) { true }
@@ -27,11 +28,11 @@ RSpec.describe Gemsmith::Generators::Reek, :temp_dir do
       let(:create_reek) { false }
 
       it "does not uncomment Rakefile" do
-        expect(cli).to_not have_received(:uncomment_lines)
+        expect(cli).not_to have_received(:uncomment_lines)
       end
 
       it "does not create configuration file" do
-        expect(cli).to_not have_received(:template)
+        expect(cli).not_to have_received(:template)
       end
     end
   end

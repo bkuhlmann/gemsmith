@@ -3,12 +3,13 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::Rubocop, :temp_dir do
+  subject(:rubocop) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}, generate: {rubocop: create_rubocop}} }
-  subject { described_class.new cli, configuration: configuration }
 
   describe "#run" do
-    before { subject.run }
+    before { rubocop.run }
 
     context "when enabled" do
       let(:create_rubocop) { true }
@@ -33,15 +34,15 @@ RSpec.describe Gemsmith::Generators::Rubocop, :temp_dir do
       let(:create_rubocop) { false }
 
       it "does not uncomment lines" do
-        expect(cli).to_not have_received(:uncomment_lines)
+        expect(cli).not_to have_received(:uncomment_lines)
       end
 
       it "does not create configuration file" do
-        expect(cli).to_not have_received(:template)
+        expect(cli).not_to have_received(:template)
       end
 
       it "does run rubocop autocorrect" do
-        expect(cli).to_not have_received(:run)
+        expect(cli).not_to have_received(:run)
       end
     end
   end

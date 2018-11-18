@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
+  subject(:rake) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:generate_rspec) { false }
   let(:generate_bundler_audit) { false }
@@ -26,10 +28,9 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
   end
 
   let(:rakefile) { File.join temp_dir, "Rakefile" }
-  subject { described_class.new cli, configuration: configuration }
 
   describe "generate_code_quality_task" do
-    let(:task) { subject.generate_code_quality_task }
+    let(:task) { rake.generate_code_quality_task }
 
     context "when only Bundler Audit is enabled" do
       let(:generate_bundler_audit) { true }
@@ -85,7 +86,7 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
   end
 
   describe "generate_default_task" do
-    let(:task) { subject.generate_default_task }
+    let(:task) { rake.generate_default_task }
 
     context "when any code quality task is enabled" do
       let(:generate_reek) { true }
@@ -120,7 +121,7 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
   end
 
   describe "#run" do
-    before { subject.run }
+    before { rake.run }
 
     it "creates Rakefile" do
       expect(cli).to have_received(:template).with("%gem_name%/Rakefile.tt", configuration)
@@ -136,19 +137,19 @@ RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
       it "adds code quality and default tasks", :aggregate_failures do
         expect(cli).to have_received(:append_to_file).with(
           "%gem_name%/Rakefile",
-          subject.generate_code_quality_task
+          rake.generate_code_quality_task
         )
 
         expect(cli).to have_received(:append_to_file).with(
           "%gem_name%/Rakefile",
-          subject.generate_default_task
+          rake.generate_default_task
         )
       end
     end
 
     context "when no tasks are enabled" do
       it "adds code quality and default tasks" do
-        expect(cli).to_not have_received(:append_to_file)
+        expect(cli).not_to have_received(:append_to_file)
       end
     end
   end

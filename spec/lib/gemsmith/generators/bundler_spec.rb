@@ -3,17 +3,19 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::Bundler, :temp_dir do
+  subject(:bundler) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}} }
   let(:gem_root) { File.join temp_dir, "tester" }
-  subject { described_class.new cli, configuration: configuration }
+
   before do
     FileUtils.mkdir_p gem_root
-    allow(subject).to receive(:`)
+    allow(bundler).to receive(:`)
   end
 
   describe "#run" do
-    before { subject.run }
+    before { bundler.run }
 
     it "prints gem dependencies are being installed" do
       expect(cli).to have_received(:say_status).with(
@@ -24,7 +26,7 @@ RSpec.describe Gemsmith::Generators::Bundler, :temp_dir do
     end
 
     it "creates Gemfile.lock" do
-      expect(subject).to have_received(:`).with("bundle install")
+      expect(bundler).to have_received(:`).with("bundle install")
     end
   end
 end

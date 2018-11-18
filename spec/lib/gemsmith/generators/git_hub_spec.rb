@@ -3,12 +3,13 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Generators::GitHub, :temp_dir do
+  subject(:git_hub) { described_class.new cli, configuration: configuration }
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}, generate: {git_hub: create_git_hub}} }
-  subject { described_class.new cli, configuration: configuration }
 
   describe "#run" do
-    before { subject.run }
+    before { git_hub.run }
 
     context "when enabled" do
       let(:create_git_hub) { true }
@@ -30,11 +31,11 @@ RSpec.describe Gemsmith::Generators::GitHub, :temp_dir do
       let(:create_git_hub) { false }
 
       it "creates issues template" do
-        expect(cli).to_not have_received(:template)
+        expect(cli).not_to have_received(:template)
       end
 
       it "creates pull request template" do
-        expect(cli).to_not have_received(:template)
+        expect(cli).not_to have_received(:template)
       end
     end
   end
