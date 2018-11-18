@@ -1,5 +1,6 @@
 inherit_from:
   - https://raw.githubusercontent.com/bkuhlmann/code_quality/master/configurations/rubocop/ruby.yml
+  - https://raw.githubusercontent.com/bkuhlmann/code_quality/master/configurations/rubocop/rspec.yml
 
 Lint/Void:
   CheckForMethodsWithNoSideEffects: false

@@ -57,6 +57,9 @@ Gem::Specification.new do |spec|
   <%- if config.dig(:generate, :rubocop) -%>
   spec.add_development_dependency "rubocop", "~> 0.60"
   <%- end -%>
+  <%- if config.dig(:generate, :rubocop) && config.dig(:generate, :rspec) -%>
+  spec.add_development_dependency "rubocop-rspec", "~> 1.30"
+  <%- end -%>
 
   <%- if config.dig(:generate, :engine) -%>
   spec.files = Dir["app/**/*", "bin/**/*", "config/**/*", "lib/**/*", "vendor/**/*"]
