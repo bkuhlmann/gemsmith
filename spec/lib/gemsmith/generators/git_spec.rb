@@ -11,7 +11,10 @@ RSpec.describe Gemsmith::Generators::Git, :temp_dir do
 
   before do
     FileUtils.mkdir gem_dir
+
+    # rubocop:disable RSpec/SubjectStub
     allow(git).to receive(:`)
+    # rubocop:enable RSpec/SubjectStub
   end
 
   describe "#create_ignore_file" do
@@ -44,8 +47,10 @@ RSpec.describe Gemsmith::Generators::Git, :temp_dir do
 
   describe "#run" do
     before do
+      # rubocop:disable RSpec/SubjectStub
       allow(git).to receive(:create_ignore_file)
       allow(git).to receive(:create_repository)
+      # rubocop:enable RSpec/SubjectStub
     end
 
     it "generates Git support", :aggregate_failures do

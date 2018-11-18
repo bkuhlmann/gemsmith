@@ -32,7 +32,10 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
     let(:prompt) { "Ruby on Rails is not installed. Would you like it installed (y/n)?" }
 
     before do
+      # rubocop:disable RSpec/SubjectStub
       allow(engine).to receive(:rails?).and_return(rails)
+      # rubocop:enable RSpec/SubjectStub
+
       allow(cli).to receive(:yes?).with(prompt).and_return(create_rails)
     end
 
@@ -155,11 +158,13 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
 
   describe "#run" do
     before do
+      # rubocop:disable RSpec/SubjectStub
       allow(engine).to receive(:install_rails)
       allow(engine).to receive(:create_engine)
       allow(engine).to receive(:create_generator_files)
       allow(engine).to receive(:stub_assets)
       allow(engine).to receive(:remove_files)
+      # rubocop:enable RSpec/SubjectStub
     end
 
     context "when engine enabled" do

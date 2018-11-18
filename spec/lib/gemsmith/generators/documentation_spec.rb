@@ -51,8 +51,10 @@ RSpec.describe Gemsmith::Generators::Documentation, :temp_dir do
 
   describe "#run" do
     before do
+      # rubocop:disable RSpec/SubjectStub
       allow(documentation).to receive(:create_files)
       allow(documentation).to receive(:update_readme)
+      # rubocop:enable RSpec/SubjectStub
     end
 
     it "creates files" do

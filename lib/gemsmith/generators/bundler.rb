@@ -7,7 +7,7 @@ module Gemsmith
       def run
         Dir.chdir(gem_root) do
           cli.say_status :info, "Installing gem dependencies...", :green
-          `bundle install`
+          cli.run "bundle install"
         end
       end
     end

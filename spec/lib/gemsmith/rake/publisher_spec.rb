@@ -121,7 +121,9 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   describe "#publish" do
     let(:version) { Versionaire::Version "0.1.0" }
 
+    # rubocop:disable RSpec/SubjectStub
     before { allow(publisher).to receive(:push).and_return(true) }
+    # rubocop:enable RSpec/SubjectStub
 
     context "with unsigned version tag" do
       before { publisher.publish }

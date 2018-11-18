@@ -9,10 +9,7 @@ RSpec.describe Gemsmith::Generators::Bundler, :temp_dir do
   let(:configuration) { {gem: {name: "tester"}} }
   let(:gem_root) { File.join temp_dir, "tester" }
 
-  before do
-    FileUtils.mkdir_p gem_root
-    allow(bundler).to receive(:`)
-  end
+  before { FileUtils.mkdir_p gem_root }
 
   describe "#run" do
     before { bundler.run }
@@ -26,7 +23,7 @@ RSpec.describe Gemsmith::Generators::Bundler, :temp_dir do
     end
 
     it "creates Gemfile.lock" do
-      expect(bundler).to have_received(:`).with("bundle install")
+      expect(cli).to have_received(:run).with("bundle install")
     end
   end
 end
