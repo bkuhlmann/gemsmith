@@ -41,12 +41,21 @@ jobs:
         paths:
           - ../ruby-$CI_RUBY_VERSION
 
+      - type: cache-restore
+        name: Bundler Restore
+        key: bundler-{{checksum "<%= config.dig(:gem, :name) %>.gemspec"}}
+
       - run:
           name: Bundler Install
           command: |
             gem update --system
-            bundle check || bundle install
-            gem install rails
+            bundle install --path vendor/bundle
+
+      - type: cache-save
+        name: Bundler Store
+        key: bundler-{{checksum "<%= config.dig(:gem, :name) %>.gemspec"}}
+        paths:
+          - vendor/bundle
 
       - run:
           name: Rake Run
