@@ -80,7 +80,7 @@ A command line interface for smithing new Ruby gems.
 ## Requirements
 
 1. A UNIX-based system.
-1. [Ruby 2.5.x](https://www.ruby-lang.org).
+1. [Ruby 2.6.x](https://www.ruby-lang.org).
 1. [RubyGems](https://rubygems.org).
 1. [Bundler](https://github.com/bundler/bundler).
 

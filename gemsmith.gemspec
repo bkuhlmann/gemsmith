@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = "~> 2.6"
   spec.add_dependency "bundler", "~> 1.16"
   spec.add_dependency "milestoner", "~> 8.3"
-  spec.add_dependency "pragmater", "~> 5.2"
+  spec.add_dependency "pragmater", "~> 6.0"
   spec.add_dependency "refinements", "~> 6.0"
   spec.add_dependency "rubocop", "~> 0.62"
   spec.add_dependency "runcom", "~> 4.0"
