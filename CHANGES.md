@@ -1,3 +1,21 @@
+# 13.0.0 (2019-01-01)
+
+- Fixed Circle CI cache for Ruby version.
+- Added Circle CI Bundler cache.
+- Updated Circle CI Code Climate test reporting.
+- Updated README promotion links.
+- Updated to Code Quality 3.0.0.
+- Updated to Git Cop 3.0.0.
+- Updated to Milestoner 9.0.0.
+- Updated to Pragmater 6.0.0.
+- Updated to Refinements 6.0.0.
+- Updated to Rubocop 0.62.0.
+- Updated to Ruby 2.6.0.
+- Updated to Runcom 4.0.0.
+- Updated to Tocer 8.0.0.
+- Updated to Versionaire 7.0.0.
+- Removed Bundler dependency.
+
 # 12.4.0 (2018-11-18)
 
 - Fixed Layout/EmptyLineAfterGuardClause cop issues.
