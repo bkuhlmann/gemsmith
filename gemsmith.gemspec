@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "runcom", "~> 4.0"
   spec.add_dependency "thor", "~> 0.20"
   spec.add_dependency "tocer", "~> 7.1"
-  spec.add_dependency "versionaire", "~> 6.0"
+  spec.add_dependency "versionaire", "~> 7.0"
   spec.add_development_dependency "awesome_print", "~> 1.8"
   spec.add_development_dependency "bond", "~> 0.5"
   spec.add_development_dependency "bundler-audit", "~> 0.6"
