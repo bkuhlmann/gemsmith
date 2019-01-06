@@ -99,8 +99,7 @@ This gem can be configured via a global configuration:
     ~/.config/gemsmith/configuration.yml
 
 It can also be configured via [XDG environment variables](https://github.com/bkuhlmann/runcom#xdg)
-as provided by the [Runcom](https://github.com/bkuhlmann/runcom) gem. Check out the [Runcom
-Examples](https://github.com/bkuhlmann/runcom#examples) for project specific usage.
+as provided by the [Runcom](https://github.com/bkuhlmann/runcom) gem.
 
 The default configuration is as follows:
 
