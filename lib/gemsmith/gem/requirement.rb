@@ -45,7 +45,7 @@ module Gemsmith
 
       def validate!
         operators = self.class.operators
-        return true if operators.include?(operator)
+        return true if operators.include? operator
 
         fail Errors::RequirementOperator,
              %(Invalid gem requirement operator. Use: #{operators.join ", "}.)

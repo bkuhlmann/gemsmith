@@ -5,7 +5,7 @@ module Gemsmith
     # Generates Code Climate support.
     class CodeClimate < Base
       def run
-        return unless configuration.dig(:generate, :code_climate)
+        return unless configuration.dig :generate, :code_climate
 
         template "%gem_name%/.codeclimate.yml.tt"
       end

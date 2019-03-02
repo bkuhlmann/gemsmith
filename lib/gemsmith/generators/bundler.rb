@@ -5,7 +5,7 @@ module Gemsmith
     # Generates Bundler support.
     class Bundler < Base
       def run
-        Dir.chdir(gem_root) do
+        Dir.chdir gem_root do
           cli.say_status :info, "Installing gem dependencies...", :green
           cli.run "bundle install"
         end

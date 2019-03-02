@@ -5,7 +5,7 @@ module Gemsmith
     # Generates Rubocop support.
     class Rubocop < Base
       def run
-        return unless configuration.dig(:generate, :rubocop)
+        return unless configuration.dig :generate, :rubocop
 
         cli.uncomment_lines "#{gem_name}/Rakefile", /require.+rubocop.+/
         cli.uncomment_lines "#{gem_name}/Rakefile", /RuboCop.+/

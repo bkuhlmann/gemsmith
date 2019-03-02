@@ -185,7 +185,7 @@ module Gemsmith
     desc "-r, [--read=GEM]", "Open a gem in default browser."
     map %w[-r --read] => :read
     def read name
-      say_status :error, "Gem home page is not defined.", :red unless process_gem(name, "visit")
+      say_status :error, "Gem home page is not defined.", :red unless process_gem name, "visit"
     end
 
     desc "-c, [--config]", "Manage gem configuration."
@@ -204,7 +204,7 @@ module Gemsmith
       if options.edit? then `#{ENV["EDITOR"]} #{path}`
       elsif options.info?
         path ? say(path) : say("Configuration doesn't exist.")
-      else help(:config)
+      else help :config
       end
     end
 

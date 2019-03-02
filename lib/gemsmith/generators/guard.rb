@@ -5,7 +5,7 @@ module Gemsmith
     # Generates Guard support.
     class Guard < Base
       def run
-        return unless configuration.dig(:generate, :guard)
+        return unless configuration.dig :generate, :guard
 
         template "%gem_name%/Guardfile.tt"
       end

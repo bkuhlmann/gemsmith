@@ -13,7 +13,7 @@ module Gemsmith
         subject = "Added Gemsmith skeleton."
         body = "Built with #{Identity.version_label}."
 
-        Dir.chdir(gem_root) do
+        Dir.chdir gem_root do
           `git init`
           `git add .`
           `git commit --all --no-verify --message "#{subject}" --message "#{body}"`

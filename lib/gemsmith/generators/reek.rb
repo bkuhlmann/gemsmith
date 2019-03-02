@@ -5,7 +5,7 @@ module Gemsmith
     # Generates Reek support.
     class Reek < Base
       def run
-        return unless configuration.dig(:generate, :reek)
+        return unless configuration.dig :generate, :reek
 
         cli.uncomment_lines "#{gem_name}/Rakefile", /require.+reek.+/
         cli.uncomment_lines "#{gem_name}/Rakefile", /Reek.+/

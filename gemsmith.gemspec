@@ -47,7 +47,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "simplecov", "~> 0.13"
   spec.add_development_dependency "wirb", "~> 2.1"
 
-  spec.files = Dir.glob("lib/**/*", File::FNM_DOTMATCH)
+  spec.files = Dir.glob "lib/**/*", File::FNM_DOTMATCH
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
   spec.executables << "gemsmith"
   spec.require_paths = ["lib"]

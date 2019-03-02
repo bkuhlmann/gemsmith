@@ -64,9 +64,9 @@ module Gemsmith
       attr_reader :file_path, :spec
 
       def validate
-        return if spec.is_a?(self.class.specification)
+        return if spec.is_a? self.class.specification
 
-        fail(Errors::Specification, %(Unknown gem specification: "#{file_path}".))
+        fail Errors::Specification, %(Unknown gem specification: "#{file_path}".)
       end
     end
   end

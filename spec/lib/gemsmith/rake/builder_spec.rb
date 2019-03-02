@@ -105,14 +105,14 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
       subject(:builder) { described_class.new tocer: tocer_class }
 
       it "builds gem package" do
-        Dir.chdir(temp_dir) do
+        Dir.chdir temp_dir do
           builder.build gem_spec
           expect(File.exist?("pkg/tester-0.1.0.gem")).to eq(true)
         end
       end
 
       it "prints package built successfully" do
-        Dir.chdir(temp_dir) do
+        Dir.chdir temp_dir do
           result = -> { builder.build gem_spec }
           expect(&result).to output("Built: pkg/tester-0.1.0.gem.\n").to_stdout
         end
@@ -123,14 +123,14 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
       let(:kernel) { class_spy Kernel, system: false }
 
       it "does not build gem package" do
-        Dir.chdir(temp_dir) do
+        Dir.chdir temp_dir do
           builder.build gem_spec
           expect(File.exist?("pkg/tester-0.1.0.gem")).to eq(false)
         end
       end
 
       it "prints error message" do
-        Dir.chdir(temp_dir) do
+        Dir.chdir temp_dir do
           result = -> { builder.build gem_spec }
           expect(&result).to output("Unable to build: pkg/tester-0.1.0.gem.\n").to_stdout
         end

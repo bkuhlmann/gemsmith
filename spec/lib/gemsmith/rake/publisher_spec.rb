@@ -3,7 +3,7 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
-  subject(:publisher) do
+  subject :publisher do
     described_class.new gem_spec: gem_spec,
                         gem_config: gem_config,
                         publisher: milestone_publisher,

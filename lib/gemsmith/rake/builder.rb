@@ -35,7 +35,7 @@ module Gemsmith
       def build gem_spec
         path = gem_spec.package_path
 
-        if kernel.system("gem build #{gem_spec.name}.gemspec")
+        if kernel.system "gem build #{gem_spec.name}.gemspec"
           FileUtils.mkdir_p "pkg"
           FileUtils.mv gem_spec.package_file_name, path
           shell.confirm "Built: #{path}."
@@ -47,7 +47,7 @@ module Gemsmith
       def install gem_spec
         gem_name = "#{gem_spec.name} #{gem_spec.version}"
 
-        if kernel.system("gem install #{gem_spec.package_path}")
+        if kernel.system "gem install #{gem_spec.package_path}"
           shell.confirm "Installed: #{gem_name}."
         else
           shell.error "Unable to install: #{gem_name}."

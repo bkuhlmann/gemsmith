@@ -6,7 +6,7 @@ module Gemsmith
     class Gem < Base
       def run
         create_files
-        cli.chmod "#{configuration.dig(:gem, :name)}/bin/setup", 0o755
+        cli.chmod "#{configuration.dig :gem, :name}/bin/setup", 0o755
       end
 
       private

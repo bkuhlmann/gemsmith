@@ -5,7 +5,7 @@ module Gemsmith
     # Generates RSpec support.
     class Rspec < Base
       def run
-        return unless configuration.dig(:generate, :rspec)
+        return unless configuration.dig :generate, :rspec
 
         uncomment_lines
         install_templates
@@ -29,7 +29,7 @@ module Gemsmith
       end
 
       def install_rails_helper
-        return unless configuration.dig(:generate, :engine)
+        return unless configuration.dig :generate, :engine
 
         template "#{rspec_root}/rails_helper.rb.tt"
       end

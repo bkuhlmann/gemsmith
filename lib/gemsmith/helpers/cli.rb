@@ -24,7 +24,7 @@ module Gemsmith
 
         answer = answer.to_i
 
-        if (1..gems.size).cover?(answer)
+        if (1..gems.size).cover? answer
           Gem::Specification.find name, gems[answer - 1].version.version
         else
           say_status :error, "Invalid option: #{answer}", :red
@@ -51,7 +51,7 @@ module Gemsmith
           print_gems specs
           inspect_gem pick_gem(specs, name), method
         else
-          say_status(:error, "Unable to find gem: #{name}.", :red) and ""
+          say_status :error, "Unable to find gem: #{name}.", :red and ""
         end
       end
     end
