@@ -25,18 +25,20 @@ require "runcom"
     method_option :edit,
                   aliases: "-e",
                   desc: "Edit gem configuration.",
-                  type: :boolean, default: false
+                  type: :boolean,
+                  default: false
     method_option :info,
                   aliases: "-i",
                   desc: "Print gem configuration.",
-                  type: :boolean, default: false
+                  type: :boolean,
+                  default: false
     def config
       path = configuration.path
 
       if options.edit? then `#{ENV["EDITOR"]} #{path}`
       elsif options.info?
         path ? say(path) : say("Configuration doesn't exist.")
-      else help(:config)
+      else help :config
       end
     end
 
