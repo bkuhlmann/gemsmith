@@ -28,50 +28,51 @@ module Gemsmith
 
     # rubocop:disable Metrics/MethodLength
     def self.configuration
-      Runcom::Config.new Identity.name, defaults: {
-        year: Time.now.year,
-        github_user: Git.github_user,
-        gem: {
-          label: "Undefined",
-          name: "undefined",
-          path: "undefined",
-          class: "Undefined",
-          platform: "Gem::Platform::RUBY",
-          url: Git.github_url("undefined"),
-          license: "MIT"
-        },
-        author: {
-          name: Git.config_value("user.name"),
-          email: Git.config_value("user.email"),
-          url: ""
-        },
-        organization: {
-          name: "",
-          url: ""
-        },
-        versions: {
-          ruby: RUBY_VERSION,
-          rails: "5.1"
-        },
-        generate: {
-          bundler_audit: true,
-          circle_ci: false,
-          cli: false,
-          code_climate: false,
-          git_cop: true,
-          git_hub: true,
-          guard: true,
-          pry: true,
-          engine: false,
-          reek: true,
-          rspec: true,
-          rubocop: true,
-          security: false
-        },
-        publish: {
-          sign: false
-        }
-      }
+      Runcom::Config.new Identity.name,
+                         defaults: {
+                           year: Time.now.year,
+                           github_user: Git.github_user,
+                           gem: {
+                             label: "Undefined",
+                             name: "undefined",
+                             path: "undefined",
+                             class: "Undefined",
+                             platform: "Gem::Platform::RUBY",
+                             url: Git.github_url("undefined"),
+                             license: "MIT"
+                           },
+                           author: {
+                             name: Git.config_value("user.name"),
+                             email: Git.config_value("user.email"),
+                             url: ""
+                           },
+                           organization: {
+                             name: "",
+                             url: ""
+                           },
+                           versions: {
+                             ruby: RUBY_VERSION,
+                             rails: "5.1"
+                           },
+                           generate: {
+                             bundler_audit: true,
+                             circle_ci: false,
+                             cli: false,
+                             code_climate: false,
+                             git_cop: true,
+                             git_hub: true,
+                             guard: true,
+                             pry: true,
+                             engine: false,
+                             reek: true,
+                             rspec: true,
+                             rubocop: true,
+                             security: false
+                           },
+                           publish: {
+                             sign: false
+                           }
+                         }
     end
     # rubocop:enable Metrics/MethodLength
 
@@ -193,11 +194,13 @@ module Gemsmith
     method_option :edit,
                   aliases: "-e",
                   desc: "Edit gem configuration.",
-                  type: :boolean, default: false
+                  type: :boolean,
+                  default: false
     method_option :info,
                   aliases: "-i",
                   desc: "Print gem configuration.",
-                  type: :boolean, default: false
+                  type: :boolean,
+                  default: false
     def config
       path = configuration.path
 
