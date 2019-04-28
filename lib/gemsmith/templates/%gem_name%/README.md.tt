@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="<%= config.dig(:gem, :name) %>.png" alt="<%= config.dig(:gem, :label) %> Icon"/>
+</p>
+
 # <%= config.dig(:gem, :label) %>
 
 [![Gem Version](https://badge.fury.io/rb/<%= config.dig(:gem, :name) %>.svg)](http://badge.fury.io/rb/<%= config.dig(:gem, :name) %>)

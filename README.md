@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="gemsmith.png" alt="Gemsmith Icon"/>
+</p>
+
 # Gemsmith
 
 [![Gem Version](https://badge.fury.io/rb/gemsmith.svg)](http://badge.fury.io/rb/gemsmith)
