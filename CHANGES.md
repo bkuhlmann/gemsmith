@@ -1,3 +1,14 @@
+# 13.4.0 (2019-05-01)
+
+- Fixed Rubocop layout issues.
+- Added Rubocop Performance gem.
+- Added Ruby warnings to RSpec helper.
+- Added project icon to README.
+- Updated RSpec helper to verify constant names.
+- Updated to Code Quality 4.0.0.
+- Updated to Rubocop 0.67.0.
+- Updated to Ruby 2.6.3.
+
 # 13.3.0 (2019-04-01)
 
 - Updated to Code Quality 3.2.0.
