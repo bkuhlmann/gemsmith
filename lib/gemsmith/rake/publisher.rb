@@ -33,16 +33,13 @@ module Gemsmith
       end
       # rubocop:enable Metrics/ParameterLists
 
-      # rubocop:disable Metrics/AbcSize
       def push
-        creds = credentials.new key: gem_spec.allowed_push_key.to_sym, url: gem_host
-        creds.create
-
-        options = %(--key "#{translate_key creds.key}" --host "#{gem_host}")
-        status = kernel.system %(gem push "pkg/#{gem_spec.package_file_name}" #{options})
-        process_push status
+        credentials.new(key: gem_spec.allowed_push_key.to_sym, url: gem_host)
+                   .tap(&:create)
+                   .then { |creds| %(--key "#{translate_key creds.key}" --host "#{gem_host}") }
+                   .then { |options| execute_push options }
+                   .then { |status| output_push status }
       end
-      # rubocop:enable Metrics/AbcSize
 
       def publish
         publisher.publish gem_spec.version, sign: signed?
@@ -67,7 +64,11 @@ module Gemsmith
         key == credentials::DEFAULT_KEY ? :rubygems : key
       end
 
-      def process_push status
+      def execute_push options
+        kernel.system %(gem push "pkg/#{gem_spec.package_file_name}" #{options})
+      end
+
+      def output_push status
         package = gem_spec.package_file_name
 
         if status
