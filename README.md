@@ -286,11 +286,8 @@ To create a certificate for your gems, run the following:
 The resulting `*.pem` key files can be referenced via the `:private_key:` and `:public_key:` keys
 within the `~/.gemsmithrc` file.
 
-To learn more about gem certificates, read the following:
-
-- [RubyGems](http://guides.rubygems.org/security/#building_gems)
-- [A Practical Guide to Using Signed Ruby Gems - Part 1: Bundler](http://blog.meldium.com/home/2013/3/3/signed-rubygems-part)
-- [A Practical Guide to Using Signed Ruby Gems - Part 2: Heroku](http://blog.meldium.com/home/2013/3/6/signed-gems-on-heroku)
+To learn more about gem certificates, read about RubyGems
+[Security](http://guides.rubygems.org/security).
 
 ## Private Gem Servers
 
