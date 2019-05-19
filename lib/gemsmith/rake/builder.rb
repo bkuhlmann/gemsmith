@@ -15,8 +15,9 @@ module Gemsmith
       end
 
       def toc
-        readme = File.join Dir.pwd, "README.md"
-        tocer.new(readme).write
+        File.join(Dir.pwd, "README.md")
+            .then { |readme| tocer.new(readme).write }
+
         shell.confirm "Updated gem table of contents."
       end
 
