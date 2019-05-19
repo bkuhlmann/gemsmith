@@ -222,6 +222,24 @@ RSpec.describe Gemsmith::CLI do
     end
   end
 
+  shared_examples_for "an open command" do
+    let(:options) { %w[gemsmith_test] }
+
+    it "attempts to open gem" do
+      result = -> { cli }
+      expect(&result).not_to raise_error
+    end
+  end
+
+  shared_examples_for "a read command" do
+    let(:options) { %w[gemsmith_test] }
+
+    it "attempts to read gem" do
+      result = -> { cli }
+      expect(&result).not_to raise_error
+    end
+  end
+
   shared_examples_for "a version command" do
     it "prints version" do
       result = -> { cli }
@@ -352,25 +370,25 @@ RSpec.describe Gemsmith::CLI do
   describe "--open" do
     let(:command) { "--open" }
 
-    it "behaves like an open command"
+    it_behaves_like "an open command"
   end
 
   describe "-o" do
     let(:command) { "-o" }
 
-    it "behaves like an open command"
+    it_behaves_like "an open command"
   end
 
   describe "--read" do
     let(:command) { "--read" }
 
-    it "behaves like a read command"
+    it_behaves_like "a read command"
   end
 
   describe "-r" do
     let(:command) { "-r" }
 
-    it "behaves like a read command"
+    it_behaves_like "a read command"
   end
 
   describe "--config" do
