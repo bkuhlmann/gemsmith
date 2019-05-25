@@ -18,5 +18,9 @@ module Gemsmith
     def self.version_label
       "#{label} #{version}"
     end
+
+    def self.url
+      "https://github.com/bkuhlmann/gemsmith"
+    end
   end
 end
