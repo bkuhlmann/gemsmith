@@ -1,3 +1,27 @@
+# 13.5.0 (2019-06-01)
+
+- Fixed RSpec/ContextWording issues.
+- Fixed Rake publisher Rubocop Metrics/AbcSize issue.
+- Fixed gem certificate security links.
+- Added CLI specs for reading and opening gem.
+- Added Gemsmith URL to gem skeleton comment.
+- Added Reek configuration.
+- Added gem identity URL.
+- Updated contributing documentation.
+- Updated to Git Cop 3.5.0.
+- Updated to Milestoner 9.3.0.
+- Updated to Pragmater 6.3.0.
+- Updated to Pry 0.12.0.
+- Updated to Pry Byebug 3.7.0.
+- Updated to Reek 5.4.0.
+- Updated to Rubocop 0.69.0.
+- Updated to Rubocop Performance 1.3.0.
+- Updated to Rubocop RSpec 1.33.0.
+- Updated to Runcom 5.0.0.
+- Updated to SimpleCov 0.16.1.
+- Updated to Tocer 9.0.0.
+- Refactored implementation to use imperative processing.
+
 # 13.4.0 (2019-05-01)
 
 - Fixed Rubocop layout issues.
