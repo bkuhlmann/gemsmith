@@ -16,7 +16,7 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
 
     it "updates README table of contents" do
       builder.toc
-      expect(tocer).to have_received(:write)
+      expect(tocer).to have_received(:call)
     end
 
     it "prints status message" do

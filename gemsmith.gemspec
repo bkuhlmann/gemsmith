@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rubocop", "~> 0.69"
   spec.add_dependency "runcom", "~> 5.0"
   spec.add_dependency "thor", "~> 0.20"
-  spec.add_dependency "tocer", "~> 8.0"
+  spec.add_dependency "tocer", "~> 9.0"
   spec.add_dependency "versionaire", "~> 7.2"
   spec.add_development_dependency "awesome_print", "~> 1.8"
   spec.add_development_dependency "bond", "~> 0.5"

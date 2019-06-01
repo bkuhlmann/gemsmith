@@ -45,7 +45,7 @@ RSpec.describe Gemsmith::Generators::Documentation, :temp_dir do
     end
 
     it "updates readme" do
-      expect(tocer).to have_received(:write)
+      expect(tocer).to have_received(:call)
     end
   end
 
