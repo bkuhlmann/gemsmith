@@ -3,27 +3,9 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
-  subject(:builder) { described_class.new tocer: tocer_class, kernel: kernel }
+  subject(:builder) { described_class.new kernel: kernel }
 
-  let(:tocer_class) { class_spy Tocer::Writer }
-  let(:tocer) { instance_spy Tocer::Writer }
   let(:kernel) { class_spy Kernel }
-
-  describe "#toc" do
-    let(:readme) { File.join Dir.pwd, "README.md" }
-
-    before { allow(tocer_class).to receive(:new).with(readme).and_return(tocer) }
-
-    it "updates README table of contents" do
-      builder.toc
-      expect(tocer).to have_received(:call)
-    end
-
-    it "prints status message" do
-      result = -> { builder.toc }
-      expect(&result).to output("Updated gem table of contents.\n").to_stdout
-    end
-  end
 
   describe "#clean" do
     let(:package_dir) { File.join temp_dir, "pkg" }
@@ -102,7 +84,7 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
     before { FileUtils.cp gem_spec_fixture_file, gem_spec_file }
 
     context "when success" do
-      subject(:builder) { described_class.new tocer: tocer_class }
+      subject(:builder) { described_class.new }
 
       it "builds gem package" do
         Dir.chdir temp_dir do

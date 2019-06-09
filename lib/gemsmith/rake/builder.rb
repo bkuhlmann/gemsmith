@@ -2,23 +2,14 @@
 
 require "bundler/ui/shell"
 require "fileutils"
-require "tocer"
 
 module Gemsmith
   module Rake
     # Provides gem build functionality. Meant to be wrapped in Rake tasks.
     class Builder
-      def initialize tocer: Tocer::Writer, shell: Bundler::UI::Shell.new, kernel: Kernel
-        @tocer = tocer
+      def initialize shell: Bundler::UI::Shell.new, kernel: Kernel
         @shell = shell
         @kernel = kernel
-      end
-
-      def toc
-        File.join(Dir.pwd, "README.md")
-            .then { |readme| tocer.new(readme).call }
-
-        shell.confirm "Updated gem table of contents."
       end
 
       def clean
@@ -57,7 +48,7 @@ module Gemsmith
 
       private
 
-      attr_reader :tocer, :shell, :kernel
+      attr_reader :shell, :kernel
     end
   end
 end
