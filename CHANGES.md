@@ -1,3 +1,13 @@
+# 13.6.0 (2019-06-09)
+
+- Updated Rake tasks to include Tocer tasks.
+- Updated XDG documentation to reference XDG gem.
+- Updated to Code Quality 4.1.0.
+- Updated to Tocer 9.1.0.
+- Removed Tocer from Builder.
+- Refactored RSpec helper support requirements.
+- Refactored documentation generator readme update.
+
 # 13.5.0 (2019-06-01)
 
 - Fixed RSpec/ContextWording issues.
