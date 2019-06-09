@@ -9,9 +9,7 @@ require "gemsmith"
 
 SimpleCov.start
 
-Dir[File.join(File.dirname(__FILE__), "support/shared_contexts/**/*.rb")].each do |file|
-  require file
-end
+Dir[File.join(__dir__, "support", "shared_contexts", "**/*.rb")].each(&method(:require))
 
 RSpec.configure do |config|
   config.color = true
