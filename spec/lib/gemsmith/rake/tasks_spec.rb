@@ -25,11 +25,15 @@ RSpec.describe Gemsmith::Rake::Tasks do
   describe "#install" do
     before { tasks.install }
 
-    context "with toc task" do
-      it "updates README" do
-        Rake::Task["toc"].invoke
-        expect(builder).to have_received(:toc)
-      end
+    it "defines all tasks" do
+      expect(Rake::Task.tasks.map(&:name)).to contain_exactly(
+        "toc",
+        "clean",
+        "validate",
+        "build",
+        "install",
+        "publish"
+      )
     end
 
     context "with clean task" do

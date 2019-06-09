@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rake"
+require "tocer/rake/tasks"
 require "gemsmith/gem/specification"
 require "gemsmith/errors/base"
 require "gemsmith/errors/specification"
@@ -33,10 +34,7 @@ module Gemsmith
       # rubocop:disable Metrics/MethodLength
       # :reek:TooManyStatements
       def install
-        desc "Update Table of Contents (README)"
-        task :toc do
-          builder.toc
-        end
+        Tocer::Rake::Tasks.setup
 
         desc "Clean gem artifacts"
         task :clean do
