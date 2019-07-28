@@ -15,15 +15,16 @@ module Gemsmith
         remove_files
       end
 
-      def rails?
-        cli.run "command -v rails > /dev/null"
+      private
+
+      def runnable?
+        configuration.dig :generate, :engine
       end
 
       def install_rails
-        return if rails?
-        return unless cli.yes? "Ruby on Rails is not installed. Would you like it installed (y/n)?"
+        return if cli.run "command -v rails > /dev/null"
 
-        cli.run "gem install rails"
+        cli.run "gem install rails" if cli.yes? "Would you like to install Ruby on Rails (y/n)?"
       end
 
       def create_engine
@@ -52,12 +53,6 @@ module Gemsmith
         cli.remove_file "#{gem_name}/README.rdoc", configuration
       end
       # rubocop:enable Metrics/AbcSize
-
-      private
-
-      def runnable?
-        configuration.dig :generate, :engine
-      end
 
       def engine_options
         "--skip-git " \

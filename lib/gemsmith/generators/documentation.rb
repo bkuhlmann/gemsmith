@@ -11,6 +11,8 @@ module Gemsmith
         update_readme
       end
 
+      private
+
       def create_files
         template "%gem_name%/README.md.tt"
         template "%gem_name%/CONTRIBUTING.md.tt"

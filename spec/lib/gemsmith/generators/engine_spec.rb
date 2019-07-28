@@ -8,67 +8,7 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester", path: "tester"}} }
 
-  describe "#rails?" do
-    let(:command) { "command -v rails > /dev/null" }
-
-    context "when Rails exists" do
-      before { allow(cli).to receive(:run).with(command).and_return(true) }
-
-      it "answers true" do
-        expect(engine.rails?).to eq(true)
-      end
-    end
-
-    context "when Rails doesn't exist" do
-      before { allow(cli).to receive(:run).with(command).and_return(false) }
-
-      it "answers false" do
-        expect(engine.rails?).to eq(false)
-      end
-    end
-  end
-
-  describe "install_rails" do
-    let(:prompt) { "Ruby on Rails is not installed. Would you like it installed (y/n)?" }
-
-    before do
-      # rubocop:disable RSpec/SubjectStub
-      allow(engine).to receive(:rails?).and_return(rails)
-      # rubocop:enable RSpec/SubjectStub
-
-      allow(cli).to receive(:yes?).with(prompt).and_return(create_rails)
-    end
-
-    context "when Rails exists" do
-      let(:rails) { true }
-      let(:create_rails) { false }
-
-      it "does not install Rails" do
-        expect(cli).not_to have_received(:run)
-      end
-    end
-
-    context "when Rails does not exist and Rails install is aborted" do
-      let(:rails) { false }
-      let(:create_rails) { false }
-
-      it "does not install Rails" do
-        expect(cli).not_to have_received(:run)
-      end
-    end
-
-    context "when Rails does not exist and Rails install is accepted" do
-      let(:rails) { false }
-      let(:create_rails) { true }
-
-      it "does not install Rails" do
-        engine.install_rails
-        expect(cli).to have_received(:run).with("gem install rails")
-      end
-    end
-  end
-
-  describe "#create_engine" do
+  describe "#run" do
     let :options do
       %w[
         --skip-git
@@ -82,116 +22,228 @@ RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
       ]
     end
 
-    before { engine.create_engine }
-
-    it "creates engine file" do
-      template = "%gem_name%/lib/%gem_path%/engine.rb.tt"
-      expect(cli).to have_received(:template).with(template, configuration)
-    end
-
-    it "generates engine" do
-      command = "rails plugin new --skip tester"
-      command_and_options = %(#{command} #{options.join " "})
-
-      expect(cli).to have_received(:run).with(command_and_options)
-    end
-  end
-
-  describe "#create_generator_files" do
-    before { engine.create_generator_files }
-
-    it "creates install generator script" do
-      template = "%gem_name%/lib/generators/%gem_path%/install/install_generator.rb.tt"
-      expect(cli).to have_received(:template).with(template, configuration)
-    end
-
-    it "creates install generator usage documentation" do
-      template = "%gem_name%/lib/generators/%gem_path%/install/USAGE.tt"
-      expect(cli).to have_received(:template).with(template, configuration)
-    end
-
-    it "creates upgrade generator script" do
-      template = "%gem_name%/lib/generators/%gem_path%/upgrade/upgrade_generator.rb.tt"
-      expect(cli).to have_received(:template).with(template, configuration)
-    end
-
-    it "creates upgrade generator usage documentation" do
-      template = "%gem_name%/lib/generators/%gem_path%/upgrade/USAGE.tt"
-      expect(cli).to have_received(:template).with(template, configuration)
-    end
-  end
-
-  describe "#stub_assets" do
-    before { engine.stub_assets }
-
-    it "stubs JavaScript application file" do
-      command = %(printf "%s" > "tester/app/assets/javascripts/tester/application.js")
-      expect(cli).to have_received(:run).with(command)
-    end
-
-    it "stubs stylesheet application file" do
-      command = %(printf "%s" > "tester/app/assets/stylesheets/tester/application.css")
-      expect(cli).to have_received(:run).with(command)
-    end
-  end
-
-  describe "#remove_files" do
-    before { engine.remove_files }
-
-    it "removes generated application helper file" do
-      file = "tester/app/helpers/tester/application_helper.rb"
-      expect(cli).to have_received(:remove_file).with(file, configuration)
-    end
-
-    it "removes generated version file" do
-      expect(cli).to have_received(:remove_file).with("tester/lib/tester/version.rb", configuration)
-    end
-
-    it "removes generated license file" do
-      expect(cli).to have_received(:remove_file).with("tester/MIT-LICENSE", configuration)
-    end
-
-    it "removes generated readme file" do
-      expect(cli).to have_received(:remove_file).with("tester/README.rdoc", configuration)
-    end
-  end
-
-  describe "#run" do
-    before do
-      # rubocop:disable RSpec/SubjectStub
-      allow(engine).to receive(:install_rails)
-      allow(engine).to receive(:create_engine)
-      allow(engine).to receive(:create_generator_files)
-      allow(engine).to receive(:stub_assets)
-      allow(engine).to receive(:remove_files)
-      # rubocop:enable RSpec/SubjectStub
-    end
-
-    context "when engine enabled" do
+    context "when engine is enabled" do
       let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {engine: true}} }
 
-      it "generates Rails support", :aggregate_failures do
+      it "does not install Rails when Rails exists" do
+        allow(cli).to receive(:run).and_return(true)
         engine.run
 
-        expect(engine).to have_received(:install_rails)
-        expect(engine).to have_received(:create_engine)
-        expect(engine).to have_received(:create_generator_files)
-        expect(engine).to have_received(:stub_assets)
-        expect(engine).to have_received(:remove_files)
+        expect(cli).not_to have_received(:run).with("gem install rails")
+      end
+
+      it "does not install Rails when Rails isn't found and Rails install is aborted" do
+        allow(cli).to receive(:run).and_return(false)
+        allow(cli).to receive(:yes?).and_return(false)
+        engine.run
+
+        expect(cli).not_to have_received(:run).with("gem install rails")
+      end
+
+      it "installs Rails when Rails isn't found and install is accepted" do
+        allow(cli).to receive(:run).and_return(false)
+        allow(cli).to receive(:yes?).and_return(true)
+        engine.run
+
+        expect(cli).to have_received(:run).with("gem install rails")
+      end
+
+      it "creates engine file" do
+        engine.run
+
+        expect(cli).to have_received(:template).with(
+          "%gem_name%/lib/%gem_path%/engine.rb.tt",
+          configuration
+        )
+      end
+
+      it "generates engine" do
+        engine.run
+
+        expect(cli).to have_received(:run).with(
+          %(rails plugin new --skip tester #{options.join " "})
+        )
+      end
+
+      it "creates install generator script" do
+        engine.run
+
+        expect(cli).to have_received(:template).with(
+          "%gem_name%/lib/generators/%gem_path%/install/install_generator.rb.tt",
+          configuration
+        )
+      end
+
+      it "creates install generator usage documentation" do
+        engine.run
+
+        expect(cli).to have_received(:template).with(
+          "%gem_name%/lib/generators/%gem_path%/install/USAGE.tt",
+          configuration
+        )
+      end
+
+      it "creates upgrade generator script" do
+        engine.run
+
+        expect(cli).to have_received(:template).with(
+          "%gem_name%/lib/generators/%gem_path%/upgrade/upgrade_generator.rb.tt",
+          configuration
+        )
+      end
+
+      it "creates upgrade generator usage documentation" do
+        engine.run
+
+        expect(cli).to have_received(:template).with(
+          "%gem_name%/lib/generators/%gem_path%/upgrade/USAGE.tt",
+          configuration
+        )
+      end
+
+      it "stubs JavaScript application file" do
+        engine.run
+
+        expect(cli).to have_received(:run).with(
+          %(printf "%s" > "tester/app/assets/javascripts/tester/application.js")
+        )
+      end
+
+      it "stubs stylesheet application file" do
+        engine.run
+
+        expect(cli).to have_received(:run).with(
+          %(printf "%s" > "tester/app/assets/stylesheets/tester/application.css")
+        )
+      end
+
+      it "removes application helper file" do
+        engine.run
+
+        expect(cli).to have_received(:remove_file).with(
+          "tester/app/helpers/tester/application_helper.rb",
+          configuration
+        )
+      end
+
+      it "removes version file" do
+        engine.run
+
+        expect(cli).to have_received(:remove_file).with(
+          "tester/lib/tester/version.rb",
+          configuration
+        )
+      end
+
+      it "removes license file" do
+        engine.run
+        expect(cli).to have_received(:remove_file).with("tester/MIT-LICENSE", configuration)
+      end
+
+      it "removes readme file" do
+        engine.run
+        expect(cli).to have_received(:remove_file).with("tester/README.rdoc", configuration)
       end
     end
 
-    context "when engine disabled" do
+    context "when engine is disabled" do
       let(:configuration) { {gem: {name: "tester", path: "tester"}, generate: {engine: false}} }
 
-      it "does not generate Rails support", :aggregate_failures do
+      it "does not creates engine file" do
         engine.run
 
-        expect(engine).not_to have_received(:install_rails)
-        expect(engine).not_to have_received(:create_engine)
-        expect(engine).not_to have_received(:create_generator_files)
-        expect(engine).not_to have_received(:stub_assets)
-        expect(engine).not_to have_received(:remove_files)
+        expect(cli).not_to have_received(:template).with(
+          "%gem_name%/lib/%gem_path%/engine.rb.tt",
+          configuration
+        )
+      end
+
+      it "does not generate engine" do
+        engine.run
+
+        expect(cli).not_to have_received(:run).with(
+          %(rails plugin new --skip tester #{options.join " "})
+        )
+      end
+
+      it "does not create install generator script" do
+        engine.run
+
+        expect(cli).not_to have_received(:template).with(
+          "%gem_name%/lib/generators/%gem_path%/install/install_generator.rb.tt",
+          configuration
+        )
+      end
+
+      it "does not create install generator usage documentation" do
+        engine.run
+
+        expect(cli).not_to have_received(:template).with(
+          "%gem_name%/lib/generators/%gem_path%/install/USAGE.tt",
+          configuration
+        )
+      end
+
+      it "does not create upgrade generator script" do
+        engine.run
+
+        expect(cli).not_to have_received(:template).with(
+          "%gem_name%/lib/generators/%gem_path%/upgrade/upgrade_generator.rb.tt",
+          configuration
+        )
+      end
+
+      it "does not create upgrade generator usage documentation" do
+        engine.run
+
+        expect(cli).not_to have_received(:template).with(
+          "%gem_name%/lib/generators/%gem_path%/upgrade/USAGE.tt",
+          configuration
+        )
+      end
+
+      it "does not stub JavaScript application file" do
+        engine.run
+
+        expect(cli).not_to have_received(:run).with(
+          %(printf "%s" > "tester/app/assets/javascripts/tester/application.js")
+        )
+      end
+
+      it "does not stub stylesheet application file" do
+        engine.run
+
+        expect(cli).not_to have_received(:run).with(
+          %(printf "%s" > "tester/app/assets/stylesheets/tester/application.css")
+        )
+      end
+
+      it "does not remove application helper file" do
+        engine.run
+
+        expect(cli).not_to have_received(:remove_file).with(
+          "tester/app/helpers/tester/application_helper.rb",
+          configuration
+        )
+      end
+
+      it "does not removes version file" do
+        engine.run
+
+        expect(cli).not_to have_received(:remove_file).with(
+          "tester/lib/tester/version.rb",
+          configuration
+        )
+      end
+
+      it "does not remove license file" do
+        engine.run
+        expect(cli).not_to have_received(:remove_file).with("tester/MIT-LICENSE", configuration)
+      end
+
+      it "does not remove readme file" do
+        engine.run
+        expect(cli).not_to have_received(:remove_file).with("tester/README.rdoc", configuration)
       end
     end
   end

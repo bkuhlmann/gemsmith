@@ -45,19 +45,17 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
     end
   end
 
-  describe "#push" do
+  shared_examples_for "push" do
     shared_examples_for "a default setup" do
       let :command do
         %(gem push "pkg/tester-0.1.0.gem" --key "rubygems" --host "https://rubygems.org")
       end
 
       it "pushes gem to gem server" do
-        publisher.push
         expect(kernel).to have_received(:system).with(command)
       end
 
       it "prints successful gem push message" do
-        publisher.push
         output = "Pushed tester-0.1.0.gem to https://rubygems.org."
         expect(shell).to have_received(:confirm).with(output)
       end
@@ -78,12 +76,10 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
       end
 
       it "pushes gem to gem server" do
-        publisher.push
         expect(kernel).to have_received(:system).with(command)
       end
 
       it "prints successful gem push message" do
-        publisher.push
         output = "Pushed tester-0.1.0.gem to https://www.test.com."
 
         expect(shell).to have_received(:confirm).with(output)
@@ -105,12 +101,25 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
       before { allow(Kernel).to receive(:system).and_return(false) }
 
       it "prints failure message" do
-        publisher.push
         message = "Failed pushing tester-0.1.0.gem to https://rubygems.org. " \
                   "Check gemspec and gem credential settings."
 
         expect(shell).to have_received(:error).with(message)
       end
+    end
+  end
+
+  describe "#push" do
+    before { publisher.push }
+
+    it_behaves_like "push"
+
+    context "when push fails" do
+      subject :publisher do
+        described_class.new gem_spec: gem_spec, publisher: milestone_publisher, shell: shell
+      end
+
+      before { allow(Kernel).to receive(:system).and_return(false) }
 
       it "answers false" do
         expect(publisher.push).to eq(false)
@@ -121,10 +130,6 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
   describe "#publish" do
     let(:version) { Versionaire::Version "0.1.0" }
 
-    # rubocop:disable RSpec/SubjectStub
-    before { allow(publisher).to receive(:push).and_return(true) }
-    # rubocop:enable RSpec/SubjectStub
-
     context "with unsigned version tag" do
       before { publisher.publish }
 
@@ -132,9 +137,7 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
         expect(milestone_publisher).to have_received(:publish).with(version, sign: false)
       end
 
-      it "pushes gem" do
-        expect(publisher).to have_received(:push)
-      end
+      it_behaves_like "push"
     end
 
     context "with signed version tag" do
@@ -146,9 +149,7 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
         expect(milestone_publisher).to have_received(:publish).with(version, sign: true)
       end
 
-      it "pushes gem" do
-        expect(publisher).to have_received(:push)
-      end
+      it_behaves_like "push"
     end
 
     context "with Milestoner error" do
@@ -162,7 +163,7 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
       end
 
       it "does not push gem" do
-        expect(publisher).not_to have_received(:push)
+        expect(kernel).not_to have_received(:system)
       end
     end
   end
