@@ -13,10 +13,6 @@ module Gemsmith
 
       private
 
-      def rspec_root
-        "%gem_name%/spec"
-      end
-
       def uncomment_lines
         cli.uncomment_lines "#{gem_name}/Rakefile", /require.+rspec.+/
         cli.uncomment_lines "#{gem_name}/Rakefile", /RSpec.+/
@@ -26,6 +22,10 @@ module Gemsmith
         template "#{rspec_root}/spec_helper.rb.tt"
         install_rails_helper
         template "#{rspec_root}/support/shared_contexts/temp_dir.rb.tt"
+      end
+
+      def rspec_root
+        "%gem_name%/spec"
       end
 
       def install_rails_helper

@@ -4,6 +4,11 @@ module Gemsmith
   module Generators
     # Generates Git support.
     class Git < Base
+      def run
+        create_ignore_file
+        create_repository
+      end
+
       def create_ignore_file
         template "%gem_name%/.gitignore.tt"
       end
@@ -11,11 +16,6 @@ module Gemsmith
       def create_repository
         create_commit "Added gem skeleton.",
                       "Built with [#{Identity.label}](#{Identity.url}) #{Identity.version}."
-      end
-
-      def run
-        create_ignore_file
-        create_repository
       end
 
       private

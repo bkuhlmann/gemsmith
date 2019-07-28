@@ -7,13 +7,13 @@ module Gemsmith
       LIB_ROOT = File.join("%gem_name%", "lib").freeze
       LIB_ROOT_GEM = File.join(LIB_ROOT, "%gem_path%").freeze
 
+      def self.run cli, configuration: {}
+        new(cli, configuration: configuration).run
+      end
+
       def initialize cli, configuration: {}
         @cli = cli
         @configuration = configuration
-      end
-
-      def self.run cli, configuration: {}
-        new(cli, configuration: configuration).run
       end
 
       def run

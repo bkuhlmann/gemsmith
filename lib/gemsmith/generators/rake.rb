@@ -8,6 +8,12 @@ module Gemsmith
     class Rake < Base
       using Refinements::Arrays
 
+      def run
+        template "%gem_name%/Rakefile.tt"
+        append_code_quality_task
+        append_default_task
+      end
+
       def generate_code_quality_task
         return "" if code_quality_tasks.empty?
 
@@ -18,12 +24,6 @@ module Gemsmith
         return "" if default_task.empty?
 
         %(\ntask default: %i[#{default_task}]\n)
-      end
-
-      def run
-        template "%gem_name%/Rakefile.tt"
-        append_code_quality_task
-        append_default_task
       end
 
       private

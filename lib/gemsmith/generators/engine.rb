@@ -4,6 +4,17 @@ module Gemsmith
   module Generators
     # Generates Ruby on Rails Engine support.
     class Engine < Base
+      # :reek:TooManyStatements
+      def run
+        return unless runnable?
+
+        install_rails
+        create_engine
+        create_generator_files
+        stub_assets
+        remove_files
+      end
+
       def rails?
         cli.run "command -v rails > /dev/null"
       end
@@ -41,17 +52,6 @@ module Gemsmith
         cli.remove_file "#{gem_name}/README.rdoc", configuration
       end
       # rubocop:enable Metrics/AbcSize
-
-      # :reek:TooManyStatements
-      def run
-        return unless runnable?
-
-        install_rails
-        create_engine
-        create_generator_files
-        stub_assets
-        remove_files
-      end
 
       private
 

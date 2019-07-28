@@ -7,8 +7,14 @@ module Gemsmith
   module Generators
     # Formats pragma comments in source files.
     class Pragma < Base
-      def self.comments
-        ["# frozen_string_literal: true"]
+      DEFAULT_COMMENTS = ["# frozen_string_literal: true"].freeze
+
+      def run
+        Pragmater::Runner.new(
+          gem_root,
+          comments: DEFAULT_COMMENTS,
+          includes: includes
+        ).run action: :add
       end
 
       # rubocop:disable Metrics/MethodLength
@@ -31,14 +37,6 @@ module Gemsmith
         ]
       end
       # rubocop:enable Metrics/MethodLength
-
-      def run
-        Pragmater::Runner.new(
-          gem_root,
-          comments: self.class.comments,
-          includes: includes
-        ).run action: :add
-      end
     end
   end
 end
