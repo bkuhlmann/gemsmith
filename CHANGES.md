@@ -1,3 +1,10 @@
+# 13.7.0 (2019-08-01)
+
+- Fixed Rubocop RSpec/SubjectStub issues.
+- Updated to Rubocop 0.73.0.
+- Updated to Rubocop Performance 1.4.0.
+- Refactored generator run method as first method defined.
+
 # 13.6.0 (2019-06-09)
 
 - Updated Rake tasks to include Tocer tasks.
