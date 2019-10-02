@@ -44,7 +44,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry", "~> 0.12"
   spec.add_development_dependency "pry-byebug", "~> 3.7"
   <%- end -%>
-  spec.add_development_dependency "rake", "~> 12.3"
+  spec.add_development_dependency "rake", "~> 13.0"
   <%- if config.dig(:generate, :reek) -%>
   spec.add_development_dependency "reek", "~> 5.4"
   <%- end -%>
