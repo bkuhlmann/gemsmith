@@ -54,6 +54,7 @@ Gem::Specification.new do |spec|
   <%- if config.dig(:generate, :rubocop) -%>
   spec.add_development_dependency "rubocop", "~> 0.75"
   spec.add_development_dependency "rubocop-performance", "~> 1.4"
+  spec.add_development_dependency "rubocop-rake", "~> 0.3"
   <%- end -%>
   <%- if config.dig(:generate, :rubocop) && config.dig(:generate, :rspec) -%>
   spec.add_development_dependency "rubocop-rspec", "~> 1.33"
