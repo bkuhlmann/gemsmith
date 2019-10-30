@@ -89,13 +89,13 @@ module Gemsmith
         Generators::BundlerAudit,
         Generators::GitCop,
         Generators::Reek,
-        Generators::Rubocop,
         Generators::CodeClimate,
         Generators::Guard,
         Generators::CircleCI,
         Generators::Bundler,
         Generators::GitHub,
         Generators::Pragma,
+        Generators::Rubocop,
         Generators::Git
       ]
     end

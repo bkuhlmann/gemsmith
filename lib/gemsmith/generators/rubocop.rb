@@ -10,7 +10,7 @@ module Gemsmith
         cli.uncomment_lines "#{gem_name}/Rakefile", /require.+rubocop.+/
         cli.uncomment_lines "#{gem_name}/Rakefile", /RuboCop.+/
         template "%gem_name%/.rubocop.yml.tt"
-        cli.run "bundle exec rubocop --auto-correct #{gem_name} > /dev/null"
+        cli.run "cd #{gem_name} && bundle exec rubocop --auto-correct > /dev/null"
       end
     end
   end

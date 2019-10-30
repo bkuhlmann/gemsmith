@@ -28,7 +28,7 @@ RSpec.describe Gemsmith::Generators::Rubocop, :temp_dir do
 
       it "runs rubocop" do
         expect(cli).to have_received(:run).with(
-          "bundle exec rubocop --auto-correct tester > /dev/null"
+          "cd tester && bundle exec rubocop --auto-correct > /dev/null"
         )
       end
     end
