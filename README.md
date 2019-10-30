@@ -79,7 +79,7 @@ A command line interface for smithing new Ruby gems.
 
 ## Screencasts
 
-[![asciicast](https://asciinema.org/a/263058.svg)](https://asciinema.org/a/263058)
+[![asciicast](https://asciinema.org/a/277820.svg)](https://asciinema.org/a/277820)
 
 ## Requirements
 
