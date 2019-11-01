@@ -1,3 +1,15 @@
+# 13.7.2 (2019-11-01)
+
+- Fixed Rubocop generator auto correction.
+- Added Rubocop Rake support.
+- Updated README screencast.
+- Updated to Code Quality 4.1.2.
+- Updated to RSpec 3.9.0.
+- Updated to Rake 13.0.0.
+- Updated to Rubocop 0.75.0.
+- Updated to Rubocop 0.76.0.
+- Updated to Ruby 2.6.5.
+
 # 13.7.1 (2019-09-01)
 
 - Fixed CLI spec template to account for special characters in gem labels.
