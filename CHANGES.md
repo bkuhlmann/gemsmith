@@ -1,3 +1,11 @@
+# 13.8.0 (2019-12-08)
+
+- Updated to Code Quality 4.2.0.
+- Updated to Rubocop 0.77.0.
+- Updated to Rubocop Performance 1.5.0.
+- Updated to Rubocop RSpec 1.37.0.
+- Updated to Rubocop Rake 0.5.0.
+
 # 13.7.2 (2019-11-01)
 
 - Fixed Rubocop generator auto correction.
