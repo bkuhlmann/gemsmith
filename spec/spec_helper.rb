@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
+
 require "simplecov"
+SimpleCov.start
+
 require "pry"
 require "pry-byebug"
 require "climate_control"
 require "gemsmith"
-
-SimpleCov.start
 
 Dir[File.join(__dir__, "support", "shared_contexts", "**/*.rb")].each(&method(:require))
 
