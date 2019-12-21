@@ -67,6 +67,7 @@ module Gemsmith
                              reek: true,
                              rspec: true,
                              rubocop: true,
+                             simple_cov: true,
                              security: false
                            },
                            publish: {
@@ -159,6 +160,10 @@ module Gemsmith
                   desc: "Add Rubocop support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :rubocop)
+    method_option :simple_cov,
+                  desc: "Add SimpleCov support.",
+                  type: :boolean,
+                  default: configuration.to_h.dig(:generate, :simple_cov)
     method_option :security,
                   desc: "Add security support.",
                   type: :boolean,

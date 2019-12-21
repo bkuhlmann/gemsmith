@@ -65,6 +65,7 @@ A command line interface for smithing new Ruby gems.
 - Supports [Rubocop RSpec](https://github.com/rubocop-hq/rubocop-rspec).
 - Supports [Ruby on Rails](http://rubyonrails.org).
 - Supports [RubyGems Security](http://guides.rubygems.org/security).
+- Supports [SimpleCov](https://github.com/colszowka/simplecov).
 - Supports [Thor](https://github.com/erikhuda/thor).
 - Supports common settings and a structured layout for building gems.
 - Supports publishing to public or private gem servers.
@@ -139,6 +140,7 @@ The default configuration is as follows:
       :reek: true
       :rspec: true
       :rubocop: true
+      :simple_cov: true
       :security: false
     :publish:
       :sign: false

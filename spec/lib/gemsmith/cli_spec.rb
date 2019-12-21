@@ -32,6 +32,7 @@ RSpec.describe Gemsmith::CLI do
           "--no-reek",
           "--no-rspec",
           "--no-rubocop",
+          "--no-simple-cov",
           "--no-security"
         ]
       end
@@ -123,6 +124,7 @@ RSpec.describe Gemsmith::CLI do
           "--reek",
           "--rspec",
           "--rubocop",
+          "--simple-cov",
           "--security"
         ]
       end
@@ -300,6 +302,7 @@ RSpec.describe Gemsmith::CLI do
           reek: true,
           rspec: true,
           rubocop: true,
+          simple_cov: true,
           security: false
         },
         publish: {
