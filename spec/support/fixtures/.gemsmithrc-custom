@@ -19,7 +19,7 @@
   :cli: true
   :engine: true
   :git_cop: false
-  :git_hub: false
+  :git_hub: true
   :guard: false
   :pry: false
   :reek: false

@@ -59,7 +59,7 @@ module Gemsmith
                              circle_ci: false,
                              cli: false,
                              git_cop: true,
-                             git_hub: true,
+                             git_hub: false,
                              guard: true,
                              pry: true,
                              engine: false,
