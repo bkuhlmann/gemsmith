@@ -23,7 +23,6 @@ RSpec.describe Gemsmith::CLI do
           "--no-bundler-audit",
           "--no-circle-ci",
           "--no-cli",
-          "--no-code-climate",
           "--no-engine",
           "--no-git-cop",
           "--no-git-hub",
@@ -115,7 +114,6 @@ RSpec.describe Gemsmith::CLI do
           gem_name,
           "--bundler-audit",
           "--circle-ci",
-          "--code-climate",
           "--engine",
           "--git-cop",
           "--git-hub",
@@ -135,7 +133,6 @@ RSpec.describe Gemsmith::CLI do
 
       let :expected_files do
         [
-          ".codeclimate.yml",
           ".gitignore",
           ".reek.yml",
           ".rubocop.yml",
@@ -293,7 +290,6 @@ RSpec.describe Gemsmith::CLI do
           bundler_audit: true,
           circle_ci: false,
           cli: false,
-          code_climate: false,
           engine: false,
           git_cop: true,
           git_hub: true,
@@ -343,7 +339,6 @@ RSpec.describe Gemsmith::CLI do
         Gemsmith::Generators::Rspec,
         Gemsmith::Generators::Reek,
         Gemsmith::Generators::Rubocop,
-        Gemsmith::Generators::CodeClimate,
         Gemsmith::Generators::Guard,
         Gemsmith::Generators::CircleCI,
         Gemsmith::Generators::Bundler,

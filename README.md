@@ -54,7 +54,6 @@ A command line interface for smithing new Ruby gems.
 - Uses [Tocer](https://github.com/bkuhlmann/tocer) for README table of contents generation.
 - Supports [Bundler Audit](https://github.com/rubysec/bundler-audit).
 - Supports [Circle CI](https://circleci.com).
-- Supports [Code Climate](https://codeclimate.com).
 - Supports [Git Cop](https://github.com/bkuhlmann/git-cop).
 - Supports [GitHub](https://github.com).
 - Supports [Guard](https://github.com/guard/guard).
@@ -131,7 +130,6 @@ The default configuration is as follows:
       :bundler_audit: true
       :circle_ci: false
       :cli: false
-      :code_climate: false
       :engine: false
       :git_cop: true
       :git_hub: true
@@ -190,7 +188,6 @@ For more gem generation options, type: `gemsmith --help --generate`
                                              # Default: true
     [--circle-ci], [--no-circle-ci]          # Add Circle CI support.
     [--cli], [--no-cli]                      # Add CLI support.
-    [--code-climate], [--no-code-climate]    # Add Code Climate support.
     [--engine], [--no-engine]                # Add Rails Engine support.
     [--git-cop], [--no-git-cop]              # Add Git Cop support.
                                              # Default: true

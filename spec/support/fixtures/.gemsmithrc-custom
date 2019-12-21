@@ -17,7 +17,6 @@
   :bundler_audit: false
   :circle_ci: true
   :cli: true
-  :code_climate: true
   :engine: true
   :git_cop: false
   :git_hub: false

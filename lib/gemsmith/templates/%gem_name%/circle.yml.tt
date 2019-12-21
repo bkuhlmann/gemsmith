@@ -57,21 +57,7 @@ jobs:
         paths:
           - vendor/bundle
 
-<%- if config.dig(:generate, :code_climate) -%>
-      - run:
-          name: Code Climate Install
-          command: |
-            curl --location https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-<%- end -%>
-
       - run:
           name: Build
           command: |
-<%- if config.dig(:generate, :code_climate) -%>
-            ./cc-test-reporter before-build
-<%- end -%>
             bundle exec rake
-<%- if config.dig(:generate, :code_climate) -%>
-            ./cc-test-reporter after-build --coverage-input-type simplecov --exit-code $?
-<%- end -%>

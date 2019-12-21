@@ -58,7 +58,6 @@ module Gemsmith
                              bundler_audit: true,
                              circle_ci: false,
                              cli: false,
-                             code_climate: false,
                              git_cop: true,
                              git_hub: true,
                              guard: true,
@@ -90,7 +89,6 @@ module Gemsmith
         Generators::BundlerAudit,
         Generators::GitCop,
         Generators::Reek,
-        Generators::CodeClimate,
         Generators::Guard,
         Generators::CircleCI,
         Generators::Bundler,
@@ -124,10 +122,6 @@ module Gemsmith
                   desc: "Add CLI support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :cli)
-    method_option :code_climate,
-                  desc: "Add Code Climate support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :code_climate)
     method_option :engine,
                   desc: "Add Rails Engine support.",
                   type: :boolean,
