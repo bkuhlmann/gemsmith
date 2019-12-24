@@ -1,0 +1,11 @@
+#! /usr/bin/env ruby
+
+require "bundler/setup"
+require "<%= config.dig :gem, :path %>"
+<%- if config.dig(:generate, :pry) -%>
+require "pry"
+require "pry-byebug"
+<%- end -%>
+require "irb"
+
+IRB.start __FILE__

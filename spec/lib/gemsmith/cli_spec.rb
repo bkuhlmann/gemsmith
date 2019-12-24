@@ -40,6 +40,7 @@ RSpec.describe Gemsmith::CLI do
         [
           ".gitignore",
           ".ruby-version",
+          "bin/console",
           "bin/setup",
           "lib/tester/identity.rb",
           "lib/tester.rb",
@@ -76,6 +77,7 @@ RSpec.describe Gemsmith::CLI do
           ".reek.yml",
           ".rubocop.yml",
           ".ruby-version",
+          "bin/console",
           "bin/setup",
           "bin/tester",
           "lib/tester/identity.rb",
@@ -137,6 +139,7 @@ RSpec.describe Gemsmith::CLI do
           ".ruby-version",
           ".github/ISSUE_TEMPLATE.md",
           ".github/PULL_REQUEST_TEMPLATE.md",
+          "bin/console",
           "bin/setup",
           "app/controllers/tester/application_controller.rb",
           "app/mailers/tester/application_mailer.rb",

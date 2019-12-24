@@ -11,8 +11,20 @@ RSpec.describe Gemsmith::Generators::Gem, :temp_dir do
   describe "#run" do
     before { gem_generator.run }
 
+    it "creates console script" do
+      expect(cli).to have_received(:template).with("%gem_name%/bin/console.tt", configuration)
+    end
+
     it "creates setup script" do
       expect(cli).to have_received(:template).with("%gem_name%/bin/setup.tt", configuration)
+    end
+
+    it "sets excecutable file permission for console script" do
+      expect(cli).to have_received(:chmod).with("tester/bin/console", 0o755)
+    end
+
+    it "sets excecutable file permission for setup script" do
+      expect(cli).to have_received(:chmod).with("tester/bin/setup", 0o755)
     end
 
     it "creates Gemfile" do
@@ -35,10 +47,6 @@ RSpec.describe Gemsmith::Generators::Gem, :temp_dir do
         "%gem_name%/lib/%gem_path%/identity.rb.tt",
         configuration
       )
-    end
-
-    it "sets excecutable file permission for setup script" do
-      expect(cli).to have_received(:chmod).with("tester/bin/setup", 0o755)
     end
   end
 end
