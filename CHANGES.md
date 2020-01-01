@@ -1,3 +1,25 @@
+# 14.0.0 (2020-01-01)
+
+- Fixed SimpleCov setup in RSpec spec helper
+- Added SimpleCov generate option
+- Added gem console
+- Added setup script
+- Updated GitHub generate option to be disabled by default
+- Updated to Code Quality 4.3.0
+- Updated to Git Cop 4.0.0
+- Updated to Milestoner 10.0.0
+- Updated to Pragmater 7.0.0
+- Updated to Refinments 7.0.0
+- Updated to Rubocop 0.78.0
+- Updated to Ruby 2.7.0
+- Updated to Runcom 6.0.0
+- Updated to SimpleCov 0.17.0
+- Updated to Tocer 10.0.0
+- Updated to Versionaire 8.0.0
+- Removed Code Climate generate option
+- Removed unnecessary Bash script documentation
+- Removed unused development dependencies
+
 # 13.8.0 (2019-12-08)
 
 - Updated to Code Quality 4.2.0.
