@@ -13,7 +13,7 @@ module Gemsmith
       end
 
       def self.version_segments version
-        String(version).split(Versionaire::VERSION_DELIMITER).map(&:to_i)
+        String(version).split(Versionaire::DELIMITER).map(&:to_i)
       end
 
       def self.for object
