@@ -10,7 +10,7 @@ require "runcom"
     package_name Identity.version_label
 
     def self.configuration
-      Runcom::Config.new Identity.name
+      Runcom::Config.new "#{Identity.name}/configuration.yml"
     end
 
     def initialize args = [], options = {}, config = {}
