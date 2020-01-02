@@ -1,3 +1,8 @@
+# 14.0.1 (2020-01-02)
+
+- Fixed loading of configuration file
+- Updated README project requirements
+
 # 14.0.0 (2020-01-01)
 
 - Fixed SimpleCov setup in RSpec spec helper
