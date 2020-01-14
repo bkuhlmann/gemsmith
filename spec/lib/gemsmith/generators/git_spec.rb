@@ -29,7 +29,7 @@ RSpec.describe Gemsmith::Generators::Git, :temp_dir do
     end
 
     it "creates initial commit" do
-      commit_subject = "Added gem skeleton."
+      commit_subject = "Added gem skeleton"
       body = "Built with [Gemsmith](https://github.com/bkuhlmann/gemsmith) " \
              "#{Gemsmith::Identity.version}."
 
