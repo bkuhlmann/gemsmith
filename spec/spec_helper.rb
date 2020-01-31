@@ -3,7 +3,7 @@
 require "bundler/setup"
 
 require "simplecov"
-SimpleCov.start
+SimpleCov.start { enable_coverage :branch }
 
 require "pry"
 require "pry-byebug"

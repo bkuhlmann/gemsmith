@@ -2,7 +2,7 @@ require "bundler/setup"
 
 <%- if config.dig(:generate, :simple_cov) -%>
 require "simplecov"
-SimpleCov.start
+SimpleCov.start { enable_coverage :branch }
 <%- end -%>
 
 <%- if config.dig(:generate, :pry) -%>
