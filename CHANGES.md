@@ -1,3 +1,10 @@
+# 14.0.2 (2020-02-01)
+
+- Fixed Git commit subject for gem generation
+- Updated to Reek 5.6.0
+- Updated to Rubocop 0.79.0
+- Updated to SimpleCov 0.18.0
+
 # 14.0.1 (2020-01-02)
 
 - Fixed loading of configuration file
