@@ -26,7 +26,7 @@ module Gemsmith
 
       def create_repository
         create_commit "Added gem skeleton",
-                      "Built with [#{Identity.label}](#{Identity.url}) #{Identity.version}."
+                      "Built with [#{Identity::LABEL}](#{Identity::URL}) #{Identity::VERSION}."
       end
 
       def create_commit subject, body

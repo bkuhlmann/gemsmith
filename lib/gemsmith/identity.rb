@@ -3,24 +3,10 @@
 module Gemsmith
   # Gem identity information.
   module Identity
-    def self.name
-      "gemsmith"
-    end
-
-    def self.label
-      "Gemsmith"
-    end
-
-    def self.version
-      "14.0.2"
-    end
-
-    def self.version_label
-      "#{label} #{version}"
-    end
-
-    def self.url
-      "https://github.com/bkuhlmann/gemsmith"
-    end
+    NAME = "gemsmith"
+    LABEL = "Gemsmith"
+    VERSION = "14.0.2"
+    VERSION_LABEL = "#{LABEL} #{VERSION}"
+    URL = "https://github.com/bkuhlmann/gemsmith"
   end
 end

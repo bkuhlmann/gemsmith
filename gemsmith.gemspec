@@ -3,12 +3,12 @@
 require_relative "lib/gemsmith/identity"
 
 Gem::Specification.new do |spec|
-  spec.name = Gemsmith::Identity.name
-  spec.version = Gemsmith::Identity.version
+  spec.name = Gemsmith::Identity::NAME
+  spec.version = Gemsmith::Identity::VERSION
   spec.platform = Gem::Platform::RUBY
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]
-  spec.homepage = Gemsmith::Identity.url
+  spec.homepage = Gemsmith::Identity::URL
   spec.summary = "A command line interface for smithing new Ruby gems."
   spec.license = "Apache-2.0"
 

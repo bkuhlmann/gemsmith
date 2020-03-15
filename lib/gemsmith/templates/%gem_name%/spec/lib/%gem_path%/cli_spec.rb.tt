@@ -19,7 +19,7 @@ RSpec.describe <%= config.dig(:gem, :class) %>::CLI do
   shared_examples_for "a version command" do
     it "prints version" do
       result = -> { cli }
-      pattern = /#{Regexp.escape <%= config.dig(:gem, :class) %>::Identity.version_label}\n/
+      pattern = /#{Regexp.escape <%= config.dig(:gem, :class) %>::Identity::VERSION_LABEL}\n/
 
       expect(result).to output(pattern).to_stdout
     end
@@ -28,7 +28,7 @@ RSpec.describe <%= config.dig(:gem, :class) %>::CLI do
   shared_examples_for "a help command" do
     it "prints usage" do
       result = -> { cli }
-      pattern = /#{Regexp.escape <%= config.dig(:gem, :class) %>::Identity.version_label}\scommands:\n/
+      pattern = /#{Regexp.escape <%= config.dig(:gem, :class) %>::Identity::VERSION_LABEL}\scommands:\n/
 
       expect(result).to output(pattern).to_stdout
     end

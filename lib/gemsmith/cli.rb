@@ -19,7 +19,7 @@ module Gemsmith
     using Refinements::Strings
     using Refinements::Hashes
 
-    package_name Identity.version_label
+    package_name Identity::VERSION_LABEL
 
     # Overwrites Thor's template source root.
     def self.source_root
@@ -28,7 +28,7 @@ module Gemsmith
 
     # rubocop:disable Metrics/MethodLength
     def self.configuration
-      Runcom::Config.new "#{Identity.name}/configuration.yml",
+      Runcom::Config.new "#{Identity::NAME}/configuration.yml",
                          defaults: {
                            year: Time.now.year,
                            github_user: Git.github_user,
@@ -213,7 +213,7 @@ module Gemsmith
     desc "-v, [--version]", "Show gem version."
     map %w[-v --version] => :version
     def version
-      say Identity.version_label
+      say Identity::VERSION_LABEL
     end
 
     desc "-h, [--help=COMMAND]", "Show this message or get help for a command."
