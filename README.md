@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="gemsmith.png" alt="Gemsmith Icon"/>
+  <img src="https://www.alchemists.io/images/projects/gemsmith/icon.png" alt="Gemsmith Icon"/>
 </p>
 
 # Gemsmith
