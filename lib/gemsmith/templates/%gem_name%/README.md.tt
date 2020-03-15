@@ -25,6 +25,8 @@
 
 ## Setup
 
+### Production
+
 To install, run:
 
     gem install <%= config.dig(:gem, :name) %>
@@ -34,6 +36,18 @@ Add the following to your Gemfile:
 
     gem "<%= config.dig(:gem, :name) %>"
 <%- end -%>
+
+### Development
+
+To contribute, run:
+
+    git clone https://github.com/<%= config.dig(:github_user) %>/<%= config.dig(:gem, :name) %>.git
+    cd <%= config.dig(:gem, :name) %>
+    bin/setup
+
+You can also use the IRB console for direct access to all objects:
+
+    bin/console
 
 ## Usage
 

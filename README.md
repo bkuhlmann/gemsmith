@@ -17,12 +17,13 @@ A command line interface for smithing new Ruby gems.
   - [Screencasts](#screencasts)
   - [Requirements](#requirements)
   - [Setup](#setup)
-    - [Install](#install)
-    - [Configuration](#configuration)
-    - [Existing Gems](#existing-gems)
+    - [Production](#production)
+    - [Development](#development)
   - [Usage](#usage)
     - [Command Line Interface (CLI)](#command-line-interface-cli)
     - [Rake](#rake)
+    - [Configuration](#configuration)
+    - [Existing Gems](#existing-gems)
   - [Tests](#tests)
   - [Security](#security)
     - [Git Signing Key](#git-signing-key)
@@ -88,11 +89,90 @@ A command line interface for smithing new Ruby gems.
 
 ## Setup
 
-### Install
+### Production
 
-Type the following to install:
+To install, run:
 
     gem install gemsmith
+
+### Development
+
+To contribute, run:
+
+    git clone https://github.com/bkuhlmann/gemsmith.git
+    cd gemsmith
+    bin/setup
+
+You can also use the IRB console for direct access to all objects:
+
+    bin/console
+
+## Usage
+
+### Command Line Interface (CLI)
+
+From the command line, type: `gemsmith --help`
+
+    gemsmith -c, [--config]        # Manage gem configuration.
+    gemsmith -g, [--generate=GEM]  # Generate new gem.
+    gemsmith -h, [--help=COMMAND]  # Show this message or get help for a command.
+    gemsmith -o, [--open=GEM]      # Open a gem in default editor.
+    gemsmith -r, [--read=GEM]      # Open a gem in default browser.
+    gemsmith -v, [--version]       # Show gem version.
+
+For more gem generation options, type: `gemsmith --help --generate`
+
+    [--bundler-audit], [--no-bundler-audit]  # Add Bundler Audit support.
+                                             # Default: true
+    [--circle-ci], [--no-circle-ci]          # Add Circle CI support.
+    [--cli], [--no-cli]                      # Add CLI support.
+    [--engine], [--no-engine]                # Add Rails Engine support.
+    [--git-cop], [--no-git-cop]              # Add Git Cop support.
+                                             # Default: true
+    [--git-hub], [--no-git-hub]              # Add GitHub support.
+                                             # Default: true
+    [--guard], [--no-guard]                  # Add Guard support.
+                                             # Default: true
+    [--pry], [--no-pry]                      # Add Pry support.
+                                             # Default: true
+    [--reek], [--no-reek]                    # Add Reek support.
+                                             # Default: true
+    [--rspec], [--no-rspec]                  # Add RSpec support.
+                                             # Default: true
+    [--rubocop], [--no-rubocop]              # Add Rubocop support.
+                                             # Default: true
+    [--security], [--no-security]            # Add security support.
+
+### Rake
+
+Once a gem skeleton has been created, the following tasks are available (i.e. `bundle exec rake
+-T`):
+
+    rake build                 # Build example-0.1.0.gem package
+    rake bundle:audit          # Updates the ruby-advisory-db then runs bundle-audit
+    rake clean                 # Clean gem artifacts
+    rake code_quality          # Run code quality checks
+    rake git_cop               # Run Git Cop
+    rake install               # Install example-0.1.0.gem package
+    rake publish               # Build, tag as 0.1.0 (unsigned), and push example-0.1.0.gem to RubyGems
+    rake reek                  # Check for code smells
+    rake rubocop               # Run RuboCop
+    rake rubocop:auto_correct  # Auto-correct RuboCop offenses
+    rake spec                  # Run RSpec code examples
+    rake toc                   # Update Table of Contents (README)
+
+*NOTE: Some tasks might differ depending on what options you enabled/disabled during gem
+generation.*
+
+When building/testing your gem locally, a typical workflow is:
+
+1. `bundle exec rake install`
+1. Test your gem locally.
+1. Repeat until satisfied.
+
+When satified with your gem, builds are green, and ready to publish, run:
+
+    bundle exec rake publish
 
 ### Configuration
 
@@ -166,73 +246,6 @@ Replace or add a modified version of the following to your gem's `Rakefile`:
 *NOTE: Ensure `require "bundler/gem_tasks"` is removed as Gemsmith replaces Bundler functionality.*
 
 With those changes, you can leverage the benefits of Gemsmith within your existing gem.
-
-## Usage
-
-### Command Line Interface (CLI)
-
-From the command line, type: `gemsmith --help`
-
-    gemsmith -c, [--config]        # Manage gem configuration.
-    gemsmith -g, [--generate=GEM]  # Generate new gem.
-    gemsmith -h, [--help=COMMAND]  # Show this message or get help for a command.
-    gemsmith -o, [--open=GEM]      # Open a gem in default editor.
-    gemsmith -r, [--read=GEM]      # Open a gem in default browser.
-    gemsmith -v, [--version]       # Show gem version.
-
-For more gem generation options, type: `gemsmith --help --generate`
-
-    [--bundler-audit], [--no-bundler-audit]  # Add Bundler Audit support.
-                                             # Default: true
-    [--circle-ci], [--no-circle-ci]          # Add Circle CI support.
-    [--cli], [--no-cli]                      # Add CLI support.
-    [--engine], [--no-engine]                # Add Rails Engine support.
-    [--git-cop], [--no-git-cop]              # Add Git Cop support.
-                                             # Default: true
-    [--git-hub], [--no-git-hub]              # Add GitHub support.
-                                             # Default: true
-    [--guard], [--no-guard]                  # Add Guard support.
-                                             # Default: true
-    [--pry], [--no-pry]                      # Add Pry support.
-                                             # Default: true
-    [--reek], [--no-reek]                    # Add Reek support.
-                                             # Default: true
-    [--rspec], [--no-rspec]                  # Add RSpec support.
-                                             # Default: true
-    [--rubocop], [--no-rubocop]              # Add Rubocop support.
-                                             # Default: true
-    [--security], [--no-security]            # Add security support.
-
-### Rake
-
-Once a gem skeleton has been created, the following tasks are available (i.e. `bundle exec rake
--T`):
-
-    rake build                 # Build example-0.1.0.gem package
-    rake bundle:audit          # Updates the ruby-advisory-db then runs bundle-audit
-    rake clean                 # Clean gem artifacts
-    rake code_quality          # Run code quality checks
-    rake git_cop               # Run Git Cop
-    rake install               # Install example-0.1.0.gem package
-    rake publish               # Build, tag as 0.1.0 (unsigned), and push example-0.1.0.gem to RubyGems
-    rake reek                  # Check for code smells
-    rake rubocop               # Run RuboCop
-    rake rubocop:auto_correct  # Auto-correct RuboCop offenses
-    rake spec                  # Run RSpec code examples
-    rake toc                   # Update Table of Contents (README)
-
-*NOTE: Some tasks might differ depending on what options you enabled/disabled during gem
-generation.*
-
-When building/testing your gem locally, a typical workflow is:
-
-1. `bundle exec rake install`
-1. Test your gem locally.
-1. Repeat until satisfied.
-
-When satified with your gem, builds are green, and ready to publish, run:
-
-    bundle exec rake publish
 
 ## Tests
 
