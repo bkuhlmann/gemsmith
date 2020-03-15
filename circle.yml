@@ -59,14 +59,5 @@ jobs:
           - vendor/bundle
 
       - run:
-          name: Code Climate Install
-          command: |
-            curl --location https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-
-      - run:
           name: Build
-          command: |
-            ./cc-test-reporter before-build
-            bundle exec rake
-            ./cc-test-reporter after-build --coverage-input-type simplecov --exit-code $?
+          command: bundle exec rake
