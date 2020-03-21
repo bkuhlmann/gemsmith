@@ -1,0 +1,415 @@
+:toc: macro
+:toclevels: 5
+:figure-caption!:
+
+= Gemsmith
+
+[link=http://badge.fury.io/rb/gemsmith]
+image::https://badge.fury.io/rb/gemsmith.svg[Gem Version]
+[link=https://circleci.com/gh/bkuhlmann/gemsmith]
+image::https://circleci.com/gh/bkuhlmann/gemsmith.svg?style=svg[Circle CI Status]
+
+A command line interface for smithing new Ruby gems.
+
+toc::[]
+
+== Features
+
+* Builds a gem skeleton with enhanced Bundler functionality.
+* Uses link:https://www.alchemists.io/projects/refinements[Refinements] Ruby core library enhancements.
+* Uses link:https://www.alchemists.io/projects/versionaire[Versionaire] for semantic versioning.
+* Uses link:https://www.alchemists.io/projects/runcom[Runcom] for resource configuration management.
+* Uses link:https://www.alchemists.io/projects/milestoner[Milestoner] for consistent project/gem versioning.
+* Uses link:https://www.alchemists.io/projects/pragmater[Pragmater] for Ruby source pragma directives.
+* Uses link:https://www.alchemists.io/projects/tocer[Tocer] for README table of contents generation.
+* Supports link:https://github.com/rubysec/bundler-audit[Bundler Audit].
+* Supports link:https://circleci.com[Circle CI].
+* Supports link:https://www.alchemists.io/projects/git-cop[Git Cop].
+* Supports link:https://github.com[GitHub].
+* Supports link:https://github.com/guard/guard[Guard].
+* Supports link:http://pryrepl.org[Pry].
+* Supports link:https://github.com/troessner/reek[Reek].
+* Supports link:https://rspec.info[RSpec].
+* Supports link:https://github.com/rubocop-hq/rubocop[Rubocop].
+* Supports link:https://github.com/rubocop-hq/rubocop-rspec[Rubocop RSpec].
+* Supports link:http://rubyonrails.org[Ruby on Rails].
+* Supports link:https://guides.rubygems.org/security[RubyGems Security].
+* Supports link:https://github.com/colszowka/simplecov[SimpleCov].
+* Supports link:https://github.com/erikhuda/thor[Thor].
+* Supports common settings and a structured layout for building gems.
+* Supports publishing to public or private gem servers.
+* Provides common documentation:
+** README
+** CHANGES
+** CONTRIBUTING
+** CODE OF CONDUCT
+** LICENSE
+* Aids in viewing source code of semantically versioned gems within your favorite editor.
+* Aids in viewing documentation of semantically versioned within your default browser.
+
+== Screencasts
+
+[link=https://www.alchemists.io/screencasts/gemsmith.html]
+image::https://www.alchemists.io/images/screencasts/gemsmith.png[Screencast]
+
+== Requirements
+
+. A UNIX-based system.
+. link:https://www.ruby-lang.org[Ruby 2.7.x].
+. link:https://rubygems.org[RubyGems].
+. link:https://github.com/bundler/bundler[Bundler].
+
+== Setup
+
+=== Production
+
+To install, run:
+
+[source,bash]
+----
+gem install gemsmith
+----
+
+=== Development
+
+To contribute, run:
+
+[source,bash]
+----
+git clone https://github.com/bkuhlmann/gemsmith.git
+cd gemsmith
+bin/setup
+----
+
+You can also use the IRB console for direct access to all objects:
+
+[source,bash]
+----
+bin/console
+----
+
+== Usage
+
+=== Command Line Interface (CLI)
+
+From the command line, type: `gemsmith --help`
+
+....
+gemsmith -c, [--config]        # Manage gem configuration.
+gemsmith -g, [--generate=GEM]  # Generate new gem.
+gemsmith -h, [--help=COMMAND]  # Show this message or get help for a command.
+gemsmith -o, [--open=GEM]      # Open a gem in default editor.
+gemsmith -r, [--read=GEM]      # Open a gem in default browser.
+gemsmith -v, [--version]       # Show gem version.
+....
+
+For more gem generation options, type: `gemsmith --help --generate`
+
+....
+[--bundler-audit], [--no-bundler-audit]  # Add Bundler Audit support.
+                                         # Default: true
+[--circle-ci], [--no-circle-ci]          # Add Circle CI support.
+[--cli], [--no-cli]                      # Add CLI support.
+[--engine], [--no-engine]                # Add Rails Engine support.
+[--git-cop], [--no-git-cop]              # Add Git Cop support.
+                                         # Default: true
+[--git-hub], [--no-git-hub]              # Add GitHub support.
+                                         # Default: true
+[--guard], [--no-guard]                  # Add Guard support.
+                                         # Default: true
+[--pry], [--no-pry]                      # Add Pry support.
+                                         # Default: true
+[--reek], [--no-reek]                    # Add Reek support.
+                                         # Default: true
+[--rspec], [--no-rspec]                  # Add RSpec support.
+                                         # Default: true
+[--rubocop], [--no-rubocop]              # Add Rubocop support.
+                                         # Default: true
+[--security], [--no-security]            # Add security support.
+....
+
+=== Rake
+
+Once a gem skeleton has been created, the following tasks are available (i.e. `bundle exec rake
+-T`):
+
+....
+rake build                 # Build example-0.1.0.gem package
+rake bundle:audit          # Updates the ruby-advisory-db then runs bundle-audit
+rake clean                 # Clean gem artifacts
+rake code_quality          # Run code quality checks
+rake git_cop               # Run Git Cop
+rake install               # Install example-0.1.0.gem package
+rake publish               # Build, tag as 0.1.0 (unsigned), and push example-0.1.0.gem to RubyGems
+rake reek                  # Check for code smells
+rake rubocop               # Run RuboCop
+rake rubocop:auto_correct  # Auto-correct RuboCop offenses
+rake spec                  # Run RSpec code examples
+rake toc                   # Update Table of Contents (README)
+....
+
+_NOTE: Some tasks might differ depending on what options you enabled/disabled during gem
+generation._
+
+When building/testing your gem locally, a typical workflow is:
+
+. `bundle exec rake install`
+. Test your gem locally.
+. Repeat until satisfied.
+
+When satified with your gem, builds are green, and ready to publish, run:
+
+....
+bundle exec rake publish
+....
+
+=== Configuration
+
+This gem can be configured via a global configuration:
+
+....
+$HOME/.config/gemsmith/configuration.yml
+....
+
+It can also be configured via link:https://www.alchemists.io/projects/xdg[XDG] environment variables.
+
+The default configuration is as follows:
+
+[source,yaml]
+----
+:year: <current year>
+:github_user: "<Git config GitHub user>",
+:gem:
+  :label: "Undefined"
+  :name: "undefined"
+  :path: "undefined"
+  :class: "Undefined"
+  :platform: "Gem::Platform::RUBY"
+  :url: "https://github.com/<author>/<gem name>"
+  :license: "MIT"
+:author:
+  :name: "<Git config user name>"
+  :email: "<Git config user email>"
+  :url: ""
+:organization:
+  :name: ""
+  :url: ""
+:versions:
+  :ruby: "<current Ruby version>"
+  :rails: "5.1"
+:generate:
+  :bundler_audit: true
+  :circle_ci: false
+  :cli: false
+  :engine: false
+  :git_cop: true
+  :git_hub: true
+  :guard: true
+  :pry: true
+  :reek: true
+  :rspec: true
+  :rubocop: true
+  :simple_cov: true
+  :security: false
+:publish:
+  :sign: false
+----
+
+Feel free to take this default configuration, modify, and save as your own custom
+`configuration.yml`.
+
+=== Existing Gems
+
+If you have gems that were not originally crafted by Gemsmith, you can add Gemsmith support to them
+by modifying the following files:
+
+Add the following to your gem's `.gemspec` file:
+
+[source,ruby]
+----
+spec.add_development_dependency "gemsmith"
+----
+
+Replace or add a modified version of the following to your gem's `Rakefile`:
+
+[source,ruby]
+----
+# frozen_string_literal: true
+
+begin
+  require "gemsmith/rake/setup"
+rescue LoadError => error
+  puts error.message
+end
+----
+
+_NOTE: Ensure `require "bundler/gem_tasks"` is removed as Gemsmith replaces Bundler functionality._
+
+With those changes, you can leverage the benefits of Gemsmith within your existing gem.
+
+== Tests
+
+To test, run:
+
+[source,bash]
+----
+bundle exec rake
+----
+
+== Security
+
+=== Git Signing Key
+
+To securely sign your Git tags, install and configure link:https://www.gnupg.org[GPG]:
+
+[source,bash]
+----
+brew install gpg
+gpg --gen-key
+----
+
+When creating your GPG key, choose these settings:
+
+* Key kind: RSA and RSA (default)
+* Key size: 4096
+* Key validity: 0
+* Real Name: `<your name>`
+* Email: `<your email>`
+* Passphrase: `<your passphrase>`
+
+To obtain your key, run the following and take the part after the forward slash:
+
+[source,bash]
+----
+gpg --list-keys | grep pub
+----
+
+Add your key to your global Git configuration in the `[user]` section. Example:
+
+....
+[user]
+  signingkey = <your GPG key>
+....
+
+Now, when publishing your gems with Gemsmith (i.e. `bundle exec rake publish`), signing of your Git
+tag will happen automatically. You will be prompted for the GPG Passphrase each time but that is to
+be expected.
+
+=== Gem Certificates
+
+To create a certificate for your gems, run the following:
+
+[source,bash]
+----
+cd ~/.ssh
+gem cert --build you@example.com
+chmod 600 gem-*.pem
+----
+
+The resulting `.pem` key files can be referenced via the `:private_key:` and `:public_key:` keys
+within the `$HOME/.gemsmithrc` file.
+
+To learn more about gem certificates, read about RubyGems
+link:https://guides.rubygems.org/security[Security].
+
+== Private Gem Servers
+
+By default, the following Rake task will publish your gem to link:https://rubygems.org[RubyGems]:
+
+[source,bash]
+----
+bundle exec rake publish
+----
+
+You can change this behavior by adding metadata to your gemspec that will allow the Rake tasks,
+mentioned above, to publish your gem to an alternate/private gem server instead. This can be done by
+updating your gem specification and RubyGems credentials.
+
+=== Gem Specification Metadata
+
+Add the following metadata to your gemspec:
+
+[source,ruby]
+----
+Gem::Specification.new do |spec|
+  spec.metadata = {
+    "allowed_push_key" => "example_key",
+    "allowed_push_host" => "https://gems.example.com"
+  }
+end
+----
+
+The gemspec metadata keys and values _must_ be strings per the
+link:https://guides.rubygems.org/specification-reference/#metadata[RubyGems Specification]. Each key
+represents the following:
+
+* `allowed_push_key`: Provides a reference (look up) to the key defined the RubyGems credentials
+  file so that sensitive credentials are not used within your gemspec.
+* `allowed_push_host`: Provides the URL of the private gem server to push your gem to.
+
+=== Gem Credentials
+
+With your gem specification metadata established, you are ready to publish your gem to a public or
+private server. If this is your first time publishing a gem and no gem credentials have been
+configured, you'll be prompted for them. Gem credentials are stored in the RubyGems
+`$HOME/.gem/credentials` file. From this point forward, future gem publishing will use your stored
+credentials instead. Multiple credentials can be stored in the `$HOME/.gem/credentials` file.
+Example:
+
+[source,yaml]
+----
+:rubygems_api_key: 2a0b460650e67d9b85a60e183defa376
+:example_key: "Basic dXNlcjpwYXNzd29yZA=="
+----
+
+Should you need to delete a credential (due to a bad login/password for example), you can open the
+`$HOME/.gem/credentials` in your default editor and remove the line(s) you don't need. Upon next
+publish of your gem, you'll be prompted for the missing credentials.
+
+== Promotion
+
+Once your gem is released, let the world know about your accomplishment by posting an update to
+these sites:
+
+* link:http://www.rubyflow.com[RubyFlow]
+* link:https://ruby.libhunt.com[Ruby Library Hunt]
+* link:http://rubydaily.org[RubyDaily]
+* link:https://awesome-ruby.com[Awesome Ruby]
+* link:https://www.ruby-toolbox.com[Ruby Toolbox]
+* link:https://www.ruby-lang.org/en/community[Ruby Community]
+
+== Troubleshooting
+
+When running `bundle exec rake install` or `bundle exec rake publish` with modified, staged, or
+uncommitted Git changes, the rake task will throw an error to this effect. When this occurs, it is
+recommended that you commit your changes or link:https://git-scm.com/docs/git-stash[stash] them
+before proceeding.
+
+== Versioning
+
+Read link:https://semver.org[Semantic Versioning] for details. Briefly, it means:
+
+* Major (X.y.z) - Incremented for any backwards incompatible public API changes.
+* Minor (x.Y.z) - Incremented for new, backwards compatible, public API enhancements/fixes.
+* Patch (x.y.Z) - Incremented for small, backwards compatible, bug fixes.
+
+== Code of Conduct
+
+Please note that this project is released with a link:CODE_OF_CONDUCT.adoc[CODE OF CONDUCT]. By
+participating in this project you agree to abide by its terms.
+
+== Contributions
+
+Read link:CONTRIBUTING.adoc[CONTRIBUTING] for details.
+
+== License
+
+Read link:LICENSE.adoc[LICENSE] for details.
+
+== History
+
+Read link:CHANGES.adoc[CHANGES] for details.
+
+== Credits
+
+Engineered by link:https://www.alchemists.io/team/brooke_kuhlmann.html[Brooke Kuhlmann].
