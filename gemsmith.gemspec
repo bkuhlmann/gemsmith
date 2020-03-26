@@ -8,14 +8,15 @@ Gem::Specification.new do |spec|
   spec.platform = Gem::Platform::RUBY
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]
-  spec.homepage = Gemsmith::Identity::URL
+  spec.homepage = "https://www.alchemists.io/projects/gemsmith"
   spec.summary = "A command line interface for smithing new Ruby gems."
   spec.license = "Apache-2.0"
 
   spec.metadata = {
-    "source_code_uri" => "https://github.com/bkuhlmann/gemsmith",
-    "changelog_uri" => "https://github.com/bkuhlmann/gemsmith/blob/master/CHANGES.md",
-    "bug_tracker_uri" => "https://github.com/bkuhlmann/gemsmith/issues"
+    "bug_tracker_uri" => "https://github.com/bkuhlmann/gemsmith/issues",
+    "changelog_uri" => "https://www.alchemists.io/projects/gemsmith/changes.html",
+    "documentation_uri" => "https://www.alchemists.io/projects/gemsmith",
+    "source_code_uri" => "https://github.com/bkuhlmann/gemsmith"
   }
 
   spec.signing_key = Gem.default_key_path
