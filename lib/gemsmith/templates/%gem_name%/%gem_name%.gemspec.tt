@@ -45,7 +45,7 @@ Gem::Specification.new do |spec|
   <%- end -%>
   spec.add_development_dependency "rake", "~> 13.0"
   <%- if config.dig(:generate, :reek) -%>
-  spec.add_development_dependency "reek", "~> 5.6"
+  spec.add_development_dependency "reek", "~> 6.0"
   <%- end -%>
   <%- if config.dig(:generate, :rspec) -%>
   spec.add_development_dependency "<%= config.dig(:generate, :engine) ? "rspec-rails" : "rspec" %>", "~> 3.9"
