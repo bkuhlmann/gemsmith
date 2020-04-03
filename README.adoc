@@ -49,7 +49,7 @@ toc::[]
 
 == Screencasts
 
-[link=https://www.alchemists.io/screencasts/gemsmith.html]
+[link=https://www.alchemists.io/screencasts/gemsmith]
 image::https://www.alchemists.io/images/screencasts/gemsmith/cover-original.png[Screencast,role=focal_point]
 
 == Requirements
