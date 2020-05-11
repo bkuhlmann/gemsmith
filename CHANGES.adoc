@@ -1,5 +1,11 @@
 = Changes
 
+== 14.1.1 (2020-05-11)
+
+- Updated README credit URL
+- Updated README screencast URL
+- Updated to Code Quality 4.5.0
+
 == 14.1.0 (2020-04-01)
 
 - Added README production and development setup instructions
