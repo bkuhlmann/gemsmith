@@ -178,7 +178,7 @@ The default configuration is as follows:
 [source,yaml]
 ----
 :year: <current year>
-:github_user: "<Git config GitHub user>",
+:github_user: "<Git config GitHub user>"
 :gem:
   :label: "Undefined"
   :name: "undefined"
