@@ -1,5 +1,14 @@
 = Changes
 
+== 14.1.2 (2020-05-21)
+
+- Fixed README YAML typo with errant comma
+- Updated Pry gem dependencies
+- Updated Rubocop gem dependencies
+- Updated to Code Quality 4.6.0
+- Updated to Code Quality 4.7.0
+- Updated to Refinements 7.4.0
+
 == 14.1.1 (2020-05-11)
 
 - Updated README credit URL
