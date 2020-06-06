@@ -10,7 +10,7 @@ RSpec.describe Gemsmith::Authenticators::Basic do
 
   describe "#authorization" do
     it "answers HTTP header authorization" do
-      expect(basic.authorization).to match(/Basic\s[0-9a-zA-Z]{23}\=/)
+      expect(basic.authorization).to match(/Basic\s[0-9a-zA-Z]{23}=/)
     end
   end
 end

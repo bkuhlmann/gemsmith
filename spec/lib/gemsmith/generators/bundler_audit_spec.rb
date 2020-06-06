@@ -17,12 +17,12 @@ RSpec.describe Gemsmith::Generators::BundlerAudit, :temp_dir do
       it "uncomments Rakefile requirement" do
         expect(cli).to have_received(:uncomment_lines).with(
           "tester/Rakefile",
-          %r(require.+bundler\/audit.+)
+          %r(require.+bundler/audit.+)
         )
       end
 
       it "uncomments Rakefile execution" do
-        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /Bundler\:\:Audit.+/)
+        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /Bundler::Audit.+/)
       end
     end
 

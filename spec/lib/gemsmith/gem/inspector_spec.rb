@@ -21,7 +21,7 @@ RSpec.describe Gemsmith::Gem::Inspector do
   describe "#edit" do
     it "edits gem source code" do
       inspector.edit specification
-      expect(shell).to have_received(:capture2).with(described_class.editor, /.+tester\-0\.1\.0/)
+      expect(shell).to have_received(:capture2).with(described_class.editor, /.+tester-0\.1\.0/)
     end
   end
 

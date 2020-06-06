@@ -17,7 +17,7 @@ RSpec.describe Gemsmith::Generators::GitCop, :temp_dir do
       it "enables Rakefile Git Cop support" do
         expect(cli).to have_received(:uncomment_lines).with(
           "tester/Rakefile",
-          %r(require.+git\/cop.+)
+          %r(require.+git/cop.+)
         )
       end
     end

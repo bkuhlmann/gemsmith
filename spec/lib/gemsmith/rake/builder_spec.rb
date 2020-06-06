@@ -46,7 +46,7 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
       it "prints build error" do
         Dir.chdir temp_dir do
           result = -> { builder.validate }
-          expect(&result).to output(/Build\sfailed\:\sGem\shas\suncommitted\schanges\.\n/).to_stderr
+          expect(&result).to output(/Build\sfailed:\sGem\shas\suncommitted\schanges\.\n/).to_stderr
         end
       end
 
@@ -96,7 +96,7 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
       it "prints package built successfully" do
         Dir.chdir temp_dir do
           result = -> { builder.build gem_spec }
-          expect(&result).to output(%r(Built\:\spkg/tester\-0\.1\.0\.gem\.\n)).to_stdout
+          expect(&result).to output(%r(Built:\spkg/tester-0\.1\.0\.gem\.\n)).to_stdout
         end
       end
     end
@@ -114,7 +114,7 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
       it "prints error message" do
         Dir.chdir temp_dir do
           result = -> { builder.build gem_spec }
-          expect(&result).to output(%r(Unable\sto\sbuild\:\spkg/tester\-0\.1\.0\.gem\.\n)).to_stderr
+          expect(&result).to output(%r(Unable\sto\sbuild:\spkg/tester-0\.1\.0\.gem\.\n)).to_stderr
         end
       end
     end
@@ -139,7 +139,7 @@ RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
 
       it "prints gem wasn't installed" do
         result = -> { builder.install gem_spec }
-        expect(&result).to output(/Unable\sto\sinstall\:\stester\s0\.1\.0\.\n/).to_stderr
+        expect(&result).to output(/Unable\sto\sinstall:\stester\s0\.1\.0\.\n/).to_stderr
       end
     end
   end

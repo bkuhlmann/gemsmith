@@ -7,8 +7,8 @@ module Gemsmith
       def run
         return unless configuration.dig :generate, :bundler_audit
 
-        cli.uncomment_lines "#{gem_name}/Rakefile", %r(require.+bundler\/audit.+)
-        cli.uncomment_lines "#{gem_name}/Rakefile", /Bundler\:\:Audit.+/
+        cli.uncomment_lines "#{gem_name}/Rakefile", %r(require.+bundler/audit.+)
+        cli.uncomment_lines "#{gem_name}/Rakefile", /Bundler::Audit.+/
       end
     end
   end
