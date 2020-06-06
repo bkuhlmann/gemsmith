@@ -7,6 +7,6 @@ module Gemsmith
     LABEL = "Gemsmith"
     VERSION = "14.1.2"
     VERSION_LABEL = "#{LABEL} #{VERSION}"
-    URL = "https://github.com/bkuhlmann/gemsmith"
+    URL = "https://www.alchemists.io/projects/gemsmith"
   end
 end
