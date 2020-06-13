@@ -140,14 +140,14 @@ rake build                 # Build example-0.1.0.gem package
 rake bundle:audit          # Updates the ruby-advisory-db then runs bundle-audit
 rake clean                 # Clean gem artifacts
 rake code_quality          # Run code quality checks
-rake git_cop               # Run Git Cop
+rake git_lint              # Run Git Lint
 rake install               # Install example-0.1.0.gem package
 rake publish               # Build, tag as 0.1.0 (unsigned), and push example-0.1.0.gem to RubyGems
 rake reek                  # Check for code smells
 rake rubocop               # Run RuboCop
 rake rubocop:auto_correct  # Auto-correct RuboCop offenses
 rake spec                  # Run RSpec code examples
-rake toc                   # Update Table of Contents (README)
+rake toc[label,includes]   # Add/Update Table of Contents (README)
 ....
 
 _NOTE: Some tasks might differ depending on what options you enabled/disabled during gem
