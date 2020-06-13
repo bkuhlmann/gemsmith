@@ -336,6 +336,7 @@ RSpec.describe Gemsmith::CLI do
         Gemsmith::Generators::Ruby,
         Gemsmith::Generators::Engine,
         Gemsmith::Generators::BundlerAudit,
+        Gemsmith::Generators::GitCop,
         Gemsmith::Generators::GitLint,
         Gemsmith::Generators::Rspec,
         Gemsmith::Generators::Reek,

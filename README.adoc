@@ -111,10 +111,10 @@ For more gem generation options, type: `gemsmith --help --generate`
 [--circle-ci], [--no-circle-ci]          # Add Circle CI support.
 [--cli], [--no-cli]                      # Add CLI support.
 [--engine], [--no-engine]                # Add Rails Engine support.
-[--git-cop], [--no-git-cop]              # Add Git Cop support.
+[--git-cop], [--no-git-cop]              # Add Git Cop support. DEPRECATED: Use Git Lint instead.
+[--git-lint], [--no-git-lint]            # Add Git Lint support.
                                          # Default: true
 [--git-hub], [--no-git-hub]              # Add GitHub support.
-                                         # Default: true
 [--guard], [--no-guard]                  # Add Guard support.
                                          # Default: true
 [--pry], [--no-pry]                      # Add Pry support.
@@ -124,6 +124,8 @@ For more gem generation options, type: `gemsmith --help --generate`
 [--rspec], [--no-rspec]                  # Add RSpec support.
                                          # Default: true
 [--rubocop], [--no-rubocop]              # Add Rubocop support.
+                                         # Default: true
+[--simple-cov], [--no-simple-cov]        # Add SimpleCov support.
                                          # Default: true
 [--security], [--no-security]            # Add security support.
 ....
