@@ -58,7 +58,7 @@ module Gemsmith
                              bundler_audit: true,
                              circle_ci: false,
                              cli: false,
-                             git_cop: true,
+                             git_lint: true,
                              git_hub: false,
                              guard: true,
                              pry: true,
@@ -87,7 +87,7 @@ module Gemsmith
         Generators::Engine,
         Generators::Rspec,
         Generators::BundlerAudit,
-        Generators::GitCop,
+        Generators::GitLint,
         Generators::Reek,
         Generators::Guard,
         Generators::CircleCI,
@@ -126,10 +126,10 @@ module Gemsmith
                   desc: "Add Rails Engine support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :engine)
-    method_option :git_cop,
-                  desc: "Add Git Cop support.",
+    method_option :git_lint,
+                  desc: "Add Git Lint support.",
                   type: :boolean,
-                  default: configuration.to_h.dig(:generate, :git_cop)
+                  default: configuration.to_h.dig(:generate, :git_lint)
     method_option :git_hub,
                   desc: "Add GitHub support.",
                   type: :boolean,

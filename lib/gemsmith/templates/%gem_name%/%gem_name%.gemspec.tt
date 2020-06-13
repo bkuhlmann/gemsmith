@@ -33,8 +33,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler-audit", "~> 0.6"
   <%- end -%>
   spec.add_development_dependency "gemsmith", "~> <%= Gemsmith::Identity::VERSION[/\d+\.\d+/] %>"
-  <%- if config.dig(:generate, :git_cop) -%>
-  spec.add_development_dependency "git-cop", "~> 4.0"
+  <%- if config.dig(:generate, :git_lint) -%>
+  spec.add_development_dependency "git-lint", "~> 1.0"
   <%- end -%>
   <%- if config.dig(:generate, :guard) -%>
   spec.add_development_dependency "guard-rspec", "~> 4.7"

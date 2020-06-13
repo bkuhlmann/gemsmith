@@ -24,7 +24,7 @@ toc::[]
 * Uses link:https://www.alchemists.io/projects/tocer[Tocer] for README table of contents generation.
 * Supports link:https://github.com/rubysec/bundler-audit[Bundler Audit].
 * Supports link:https://circleci.com[Circle CI].
-* Supports link:https://www.alchemists.io/projects/git-cop[Git Cop].
+* Supports link:https://www.alchemists.io/projects/git-lint[Git Lint].
 * Supports link:https://github.com[GitHub].
 * Supports link:https://github.com/guard/guard[Guard].
 * Supports link:http://pryrepl.org[Pry].
@@ -202,7 +202,7 @@ The default configuration is as follows:
   :circle_ci: false
   :cli: false
   :engine: false
-  :git_cop: true
+  :git_lint: true
   :git_hub: true
   :guard: true
   :pry: true

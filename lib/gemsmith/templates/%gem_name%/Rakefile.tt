@@ -1,7 +1,7 @@
 begin
   require "gemsmith/rake/setup"
   # require "bundler/audit/task"
-  # require "git/cop/rake/setup"
+  # require "git/lint/rake/setup"
   # require "rspec/core/rake_task"
   # require "reek/rake/task"
   # require "rubocop/rake_task"

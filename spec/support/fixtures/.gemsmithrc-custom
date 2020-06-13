@@ -18,7 +18,7 @@
   :circle_ci: true
   :cli: true
   :engine: true
-  :git_cop: false
+  :git_lint: false
   :git_hub: true
   :guard: false
   :pry: false

@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "versionaire", "~> 8.0"
   spec.add_development_dependency "bundler-audit", "~> 0.6"
   spec.add_development_dependency "climate_control", "~> 0.2"
-  spec.add_development_dependency "git-cop", "~> 4.0"
+  spec.add_development_dependency "git-lint", "~> 1.0"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   spec.add_development_dependency "pry", "~> 0.13"
   spec.add_development_dependency "pry-byebug", "~> 3.9"
