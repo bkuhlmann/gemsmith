@@ -1,20 +1,16 @@
 # frozen_string_literal: true
 
-begin
-  require "bundler/audit/task"
-  require "gemsmith/rake/setup"
-  require "git/lint/rake/setup"
-  require "rspec/core/rake_task"
-  require "reek/rake/task"
-  require "rubocop/rake_task"
+require "bundler/audit/task"
+require "gemsmith/rake/setup"
+require "git/lint/rake/setup"
+require "rspec/core/rake_task"
+require "reek/rake/task"
+require "rubocop/rake_task"
 
-  Bundler::Audit::Task.new
-  RSpec::Core::RakeTask.new :spec
-  Reek::Rake::Task.new
-  RuboCop::RakeTask.new
-rescue LoadError => error
-  puts error.message
-end
+Bundler::Audit::Task.new
+RSpec::Core::RakeTask.new :spec
+Reek::Rake::Task.new
+RuboCop::RakeTask.new
 
 desc "Run code quality checks"
 task code_quality: %i[bundle:audit git_lint reek rubocop]
