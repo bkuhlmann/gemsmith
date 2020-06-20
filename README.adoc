@@ -32,7 +32,7 @@ toc::[]
 * Supports link:https://rspec.info[RSpec].
 * Supports link:https://github.com/rubocop-hq/rubocop[Rubocop].
 * Supports link:https://github.com/rubocop-hq/rubocop-rspec[Rubocop RSpec].
-* Supports link:http://rubyonrails.org[Ruby on Rails].
+* Supports link:https://rubyonrails.org[Ruby on Rails].
 * Supports link:https://guides.rubygems.org/security[RubyGems Security].
 * Supports link:https://github.com/colszowka/simplecov[SimpleCov].
 * Supports link:https://github.com/erikhuda/thor[Thor].
@@ -55,7 +55,7 @@ image::https://www.alchemists.io/images/screencasts/gemsmith/cover-original.png[
 == Requirements
 
 . A UNIX-based system.
-. link:https://www.ruby-lang.org[Ruby 2.7.x].
+. link:https://www.ruby-lang.org[Ruby].
 . link:https://rubygems.org[RubyGems].
 . link:https://github.com/bundler/bundler[Bundler].
 
