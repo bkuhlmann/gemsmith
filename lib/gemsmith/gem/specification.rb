@@ -44,11 +44,11 @@ module Gemsmith
       end
 
       def allowed_push_key
-        spec.metadata.fetch("allowed_push_key") { "rubygems_api_key" }
+        spec.metadata.fetch "allowed_push_key", "rubygems_api_key"
       end
 
       def allowed_push_host
-        spec.metadata.fetch("allowed_push_host") { self.class.default_gem_host }
+        spec.metadata.fetch "allowed_push_host", self.class.default_gem_host
       end
 
       def package_file_name
