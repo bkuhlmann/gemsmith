@@ -14,12 +14,8 @@ RSpec.describe Gemsmith::Generators::Reek, :temp_dir do
     context "when enabled" do
       let(:create_reek) { true }
 
-      it "uncomments Rakefile requirement" do
-        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /require.+reek.+/)
-      end
-
-      it "uncomments Rakefile execution" do
-        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /Reek.+/)
+      it "does not remove Rakefile lines" do
+        expect(cli).not_to have_received(:gsub_file)
       end
 
       it "creates configuration file" do
@@ -30,8 +26,12 @@ RSpec.describe Gemsmith::Generators::Reek, :temp_dir do
     context "when disabled" do
       let(:create_reek) { false }
 
-      it "does not uncomment Rakefile" do
-        expect(cli).not_to have_received(:uncomment_lines)
+      it "removes Rakefile requirement" do
+        expect(cli).to have_received(:gsub_file).with("tester/Rakefile", /require.+reek.+\n/, "")
+      end
+
+      it "removes Rakefile task" do
+        expect(cli).to have_received(:gsub_file).with("tester/Rakefile", /Reek.+\n/, "")
       end
 
       it "does not create configuration file" do

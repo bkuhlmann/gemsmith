@@ -5,9 +5,9 @@ module Gemsmith
     # Generates Git Lint support.
     class GitLint < Base
       def run
-        return unless configuration.dig :generate, :git_lint
+        return if configuration.dig :generate, :git_lint
 
-        cli.uncomment_lines "#{gem_name}/Rakefile", %r(require.+git/lint.+)
+        cli.gsub_file "#{gem_name}/Rakefile", %r(require.+git/lint.+\n), ""
       end
     end
   end

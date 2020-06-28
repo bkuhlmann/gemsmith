@@ -14,19 +14,20 @@ RSpec.describe Gemsmith::Generators::GitLint, :temp_dir do
     context "when enabled" do
       let(:create_git_lint) { true }
 
-      it "enables Rakefile Git Cop support" do
-        expect(cli).to have_received(:uncomment_lines).with(
-          "tester/Rakefile",
-          %r(require.+git/lint.+)
-        )
+      it "does not remove Rakefile lines" do
+        expect(cli).not_to have_received(:gsub_file)
       end
     end
 
     context "when disabled" do
       let(:create_git_lint) { false }
 
-      it "does not uncomment lines" do
-        expect(cli).not_to have_received(:uncomment_lines)
+      it "removes Rakefile requirement" do
+        expect(cli).to have_received(:gsub_file).with(
+          "tester/Rakefile",
+          %r(require.+git/lint.+\n),
+          ""
+        )
       end
     end
   end

@@ -28,12 +28,8 @@ RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
     context "when enabled" do
       let(:create_rspec) { true }
 
-      it "uncomments Rakefile requirement" do
-        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /require.+rspec.+/)
-      end
-
-      it "uncomments Rakefile execution" do
-        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /RSpec.+/)
+      it "does not remove Rakefile lines" do
+        expect(cli).not_to have_received(:gsub_file)
       end
 
       it "creates spec helper" do
@@ -65,11 +61,15 @@ RSpec.describe Gemsmith::Generators::Rspec, :temp_dir do
     context "when disabled" do
       let(:create_rspec) { false }
 
-      it "does not uncomment lines" do
-        expect(cli).not_to have_received(:uncomment_lines)
+      it "removes Rakefile requirement" do
+        expect(cli).to have_received(:gsub_file).with("tester/Rakefile", /require.+rspec.+\n/, "")
       end
 
-      it "does not create files" do
+      it "removes Rakefile task" do
+        expect(cli).to have_received(:gsub_file).with("tester/Rakefile", /RSpec.+\n/, "")
+      end
+
+      it "does install templates" do
         expect(cli).not_to have_received(:template)
       end
     end

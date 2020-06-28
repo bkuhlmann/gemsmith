@@ -14,12 +14,8 @@ RSpec.describe Gemsmith::Generators::Rubocop, :temp_dir do
     context "when enabled" do
       let(:create_rubocop) { true }
 
-      it "uncomments Rakefile requirement" do
-        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /require.+rubocop.+/)
-      end
-
-      it "uncomments Rakefile execution" do
-        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /RuboCop.+/)
+      it "does not remove Rakefile lines" do
+        expect(cli).not_to have_received(:gsub_file)
       end
 
       it "creates configuration file" do
@@ -36,8 +32,12 @@ RSpec.describe Gemsmith::Generators::Rubocop, :temp_dir do
     context "when disabled" do
       let(:create_rubocop) { false }
 
-      it "does not uncomment lines" do
-        expect(cli).not_to have_received(:uncomment_lines)
+      it "removes Rakefile requirement" do
+        expect(cli).to have_received(:gsub_file).with("tester/Rakefile", /require.+rubocop.+\n/, "")
+      end
+
+      it "removes Rakefile task" do
+        expect(cli).to have_received(:gsub_file).with("tester/Rakefile", /RuboCop.+\n/, "")
       end
 
       it "does not create configuration file" do

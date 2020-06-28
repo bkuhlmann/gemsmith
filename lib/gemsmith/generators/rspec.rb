@@ -5,17 +5,18 @@ module Gemsmith
     # Generates RSpec support.
     class Rspec < Base
       def run
-        return unless configuration.dig :generate, :rspec
-
-        uncomment_lines
-        install_templates
+        if configuration.dig :generate, :rspec
+          install_templates
+        else
+          remove_rake_lines
+        end
       end
 
       private
 
-      def uncomment_lines
-        cli.uncomment_lines "#{gem_name}/Rakefile", /require.+rspec.+/
-        cli.uncomment_lines "#{gem_name}/Rakefile", /RSpec.+/
+      def remove_rake_lines
+        cli.gsub_file "#{gem_name}/Rakefile", /require.+rspec.+\n/, ""
+        cli.gsub_file "#{gem_name}/Rakefile", /RSpec.+\n/, ""
       end
 
       def install_templates

@@ -5,10 +5,10 @@ module Gemsmith
     # Generates Bundler Audit support.
     class BundlerAudit < Base
       def run
-        return unless configuration.dig :generate, :bundler_audit
+        return if configuration.dig :generate, :bundler_audit
 
-        cli.uncomment_lines "#{gem_name}/Rakefile", %r(require.+bundler/audit.+)
-        cli.uncomment_lines "#{gem_name}/Rakefile", /Bundler::Audit.+/
+        cli.gsub_file "#{gem_name}/Rakefile", %r(require.+bundler/audit.+\n), ""
+        cli.gsub_file "#{gem_name}/Rakefile", /Bundler::Audit.+\n/, ""
       end
     end
   end

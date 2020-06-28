@@ -14,23 +14,24 @@ RSpec.describe Gemsmith::Generators::BundlerAudit, :temp_dir do
     context "when enabled" do
       let(:add_bundler_audit) { true }
 
-      it "uncomments Rakefile requirement" do
-        expect(cli).to have_received(:uncomment_lines).with(
-          "tester/Rakefile",
-          %r(require.+bundler/audit.+)
-        )
-      end
-
-      it "uncomments Rakefile execution" do
-        expect(cli).to have_received(:uncomment_lines).with("tester/Rakefile", /Bundler::Audit.+/)
+      it "does not remove Rakefile lines" do
+        expect(cli).not_to have_received(:gsub_file)
       end
     end
 
     context "when disabled" do
       let(:add_bundler_audit) { false }
 
-      it "does not uncomment lines" do
-        expect(cli).not_to have_received(:uncomment_lines)
+      it "removes Rakefile requirement" do
+        expect(cli).to have_received(:gsub_file).with(
+          "tester/Rakefile",
+          %r(require.+bundler/audit.+\n),
+          ""
+        )
+      end
+
+      it "removes Rakefile task" do
+        expect(cli).to have_received(:gsub_file).with("tester/Rakefile", /Bundler::Audit.+\n/, "")
       end
     end
   end
