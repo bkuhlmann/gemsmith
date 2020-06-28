@@ -1,47 +1,57 @@
 = Changes
 
+== 14.3.0 (2020-06-28)
+
+* Fixed README template history link
+* Fixed Style/RedundantFetchBlock issue with gem specification
+* Fixed project requirements
+* Updated README Rake documentation
+* Updated Rakefile generation to remove unnecessary lines
+* Updated to Code Quality 4.9.0
+* Refactored Rakefile requirements
+
 == 14.2.0 (2020-06-13)
 
-- Fixed CHANGES template to mention implementation
-- Added Git Cop deprecation warning
-- Updated GitHub templates
-- Updated to Git Lint 1.0.0
+* Fixed CHANGES template to mention implementation
+* Added Git Cop deprecation warning
+* Updated GitHub templates
+* Updated to Git Lint 1.0.0
 
 == 14.1.3 (2020-06-06)
 
-- Fixed Style/RedundantRegexpEscape issues
-- Updated gem identity URL
-- Updated to Code Quality 4.8.0
+* Fixed Style/RedundantRegexpEscape issues
+* Updated gem identity URL
+* Updated to Code Quality 4.8.0
 
 == 14.1.2 (2020-05-21)
 
-- Fixed README YAML typo with errant comma
-- Updated Pry gem dependencies
-- Updated Rubocop gem dependencies
-- Updated to Code Quality 4.6.0
-- Updated to Code Quality 4.7.0
-- Updated to Refinements 7.4.0
+* Fixed README YAML typo with errant comma
+* Updated Pry gem dependencies
+* Updated Rubocop gem dependencies
+* Updated to Code Quality 4.6.0
+* Updated to Code Quality 4.7.0
+* Updated to Refinements 7.4.0
 
 == 14.1.1 (2020-05-11)
 
-- Updated README credit URL
-- Updated README screencast URL
-- Updated to Code Quality 4.5.0
+* Updated README credit URL
+* Updated README screencast URL
+* Updated to Code Quality 4.5.0
 
 == 14.1.0 (2020-04-01)
 
-- Added README production and development setup instructions
-- Updated README screencast to use larger image
-- Updated documentation to ASCII Doc format
-- Updated gem identity to use constants
-- Updated gemspec URLs
-- Updated gemspec to require relative path
-- Updated to Code Quality 4.4.0
-- Updated to Code of Conduct 2.0.0
-- Updated to Reek 6.0.0
-- Updated to Ruby 2.7.1
-- Removed Code Climate support
-- Removed README images
+* Added README production and development setup instructions
+* Updated README screencast to use larger image
+* Updated documentation to ASCII Doc format
+* Updated gem identity to use constants
+* Updated gemspec URLs
+* Updated gemspec to require relative path
+* Updated to Code Quality 4.4.0
+* Updated to Code of Conduct 2.0.0
+* Updated to Reek 6.0.0
+* Updated to Ruby 2.7.1
+* Removed Code Climate support
+* Removed README images
 
 == 14.0.2 (2020-02-01)
 
