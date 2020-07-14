@@ -1,5 +1,11 @@
 = Changes
 
+== 14.4.0 (2020-07-13)
+
+* Fixed Rubocop Lint/NonDeterministicRequireOrder issues
+* Fixed Rubocop Style/FrozenStringLiteralComment issue
+* Updated to Code Quality 4.10.0
+
 == 14.3.0 (2020-06-28)
 
 * Fixed README template history link
