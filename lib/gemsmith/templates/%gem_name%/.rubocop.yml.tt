@@ -1,12 +1,12 @@
 inherit_from:
-  - https://raw.githubusercontent.com/bkuhlmann/code_quality/4.9.0/configurations/rubocop/ruby.yml
-  - https://raw.githubusercontent.com/bkuhlmann/code_quality/4.9.0/configurations/rubocop/rake.yml
-  - https://raw.githubusercontent.com/bkuhlmann/code_quality/4.9.0/configurations/rubocop/performance.yml
+  - https://raw.githubusercontent.com/bkuhlmann/code_quality/4.10.0/configurations/rubocop/ruby.yml
+  - https://raw.githubusercontent.com/bkuhlmann/code_quality/4.10.0/configurations/rubocop/rake.yml
+  - https://raw.githubusercontent.com/bkuhlmann/code_quality/4.10.0/configurations/rubocop/performance.yml
 <%- if config.dig(:generate, :rspec) -%>
-  - https://raw.githubusercontent.com/bkuhlmann/code_quality/4.9.0/configurations/rubocop/rspec.yml
+  - https://raw.githubusercontent.com/bkuhlmann/code_quality/4.10.0/configurations/rubocop/rspec.yml
 <%- end -%>
 <%- if config.dig(:generate, :engine) -%>
-  - https://raw.githubusercontent.com/bkuhlmann/code_quality/4.9.0/configurations/rubocop/rails.yml
+  - https://raw.githubusercontent.com/bkuhlmann/code_quality/4.10.0/configurations/rubocop/rails.yml
 <%- end -%>
 
 <%- if config.dig(:generate, :cli) -%>
