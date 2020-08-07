@@ -1,5 +1,13 @@
 = Changes
 
+== 14.5.0 (2020-08-07)
+
+- Fixed Gemspec/RequiredRubyVersion fixture issues
+- Fixed Metrics/AbcSize for CLI
+- Updated README screencast cover to SVG format
+- Updated to Code Quality 4.11.0
+- Updated to Rubocop 0.89.0
+
 == 14.4.0 (2020-07-13)
 
 * Fixed Rubocop Lint/NonDeterministicRequireOrder issues
