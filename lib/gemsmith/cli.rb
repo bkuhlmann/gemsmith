@@ -167,7 +167,6 @@ module Gemsmith
                   desc: "Add security support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :security)
-    # rubocop:disable Metrics/AbcSize
     # :reek:TooManyStatements
     def generate name
       print_cli_and_rails_engine_option_error && return if options.cli? && options.engine?
@@ -179,7 +178,6 @@ module Gemsmith
 
       say_status :info, "Gem generation finished.", :green
     end
-    # rubocop:enable Metrics/AbcSize
 
     desc "-o, [--open=GEM]", "Open a gem in default editor."
     map %w[-o --open] => :open
