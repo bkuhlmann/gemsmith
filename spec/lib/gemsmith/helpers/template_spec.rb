@@ -47,9 +47,4 @@ RSpec.describe Gemsmith::Helpers::Template do
       expect(template.rails_version).to eq("5.0.0")
     end
   end
-
-  describe "#render_namespace" do
-    it "renders with block"
-    it "renders without block"
-  end
 end
