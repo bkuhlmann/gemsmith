@@ -32,8 +32,9 @@ RSpec.describe Gemsmith::Generators::Pragma, :temp_dir do
   end
 
   before do
-    allow(Pragmater::Runner).to receive(:new).with(
-      gem_root,
+    allow(Pragmater::Runner).to receive(:for).with(
+      action: :insert,
+      root_dir: gem_root,
       comments: comments,
       includes: includes
     ).and_return(pragmater)
@@ -51,7 +52,7 @@ RSpec.describe Gemsmith::Generators::Pragma, :temp_dir do
     before { pragma.run }
 
     it "updates files" do
-      expect(pragmater).to have_received(:run).with(action: :add)
+      expect(pragmater).to have_received(:call)
     end
   end
 end

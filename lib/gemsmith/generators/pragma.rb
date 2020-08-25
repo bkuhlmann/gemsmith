@@ -10,11 +10,7 @@ module Gemsmith
       DEFAULT_COMMENTS = ["# frozen_string_literal: true"].freeze
 
       def run
-        Pragmater::Runner.new(
-          gem_root,
-          comments: DEFAULT_COMMENTS,
-          includes: includes
-        ).run action: :add
+        Pragmater::Runner.for(**attributes).call
       end
 
       # rubocop:disable Metrics/MethodLength
@@ -37,6 +33,17 @@ module Gemsmith
         ]
       end
       # rubocop:enable Metrics/MethodLength
+
+      private
+
+      def attributes
+        {
+          action: :insert,
+          root_dir: gem_root,
+          comments: DEFAULT_COMMENTS,
+          includes: includes
+        }
+      end
     end
   end
 end
