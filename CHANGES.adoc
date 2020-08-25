@@ -1,12 +1,19 @@
 = Changes
 
+== 14.6.0 (2020-08-25)
+
+* Added Guard and Rubocop binstubs
+* Added Rubocop RSpec/MultipleMemoizedHelpers configuration
+* Updated to Pragmater 8.0.0
+* Removed unused template helper specs
+
 == 14.5.0 (2020-08-07)
 
-- Fixed Gemspec/RequiredRubyVersion fixture issues
-- Fixed Metrics/AbcSize for CLI
-- Updated README screencast cover to SVG format
-- Updated to Code Quality 4.11.0
-- Updated to Rubocop 0.89.0
+* Fixed Gemspec/RequiredRubyVersion fixture issues
+* Fixed Metrics/AbcSize for CLI
+* Updated README screencast cover to SVG format
+* Updated to Code Quality 4.11.0
+* Updated to Rubocop 0.89.0
 
 == 14.4.0 (2020-07-13)
 
