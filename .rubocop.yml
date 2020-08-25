@@ -9,3 +9,5 @@ Gemspec/RequiredRubyVersion:
     - "spec/support/fixtures/*.gemspec"
 Lint/Void:
   CheckForMethodsWithNoSideEffects: false
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
