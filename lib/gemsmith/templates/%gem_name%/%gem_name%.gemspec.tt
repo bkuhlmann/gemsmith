@@ -59,7 +59,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop-rspec", "~> 1.39"
   <%- end -%>
   <%- if config.dig(:generate, :simple_cov) -%>
-  spec.add_development_dependency "simplecov", "~> 0.18"
+  spec.add_development_dependency "simplecov", "~> 0.19"
   <%- end -%>
 
   <%- if config.dig(:generate, :engine) -%>

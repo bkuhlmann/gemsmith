@@ -34,7 +34,7 @@ toc::[]
 * Supports link:https://github.com/rubocop-hq/rubocop-rspec[Rubocop RSpec].
 * Supports link:https://rubyonrails.org[Ruby on Rails].
 * Supports link:https://guides.rubygems.org/security[RubyGems Security].
-* Supports link:https://github.com/colszowka/simplecov[SimpleCov].
+* Supports link:https://github.com/simplecov-ruby/simplecov[SimpleCov].
 * Supports link:https://github.com/erikhuda/thor[Thor].
 * Supports common settings and a structured layout for building gems.
 * Supports publishing to public or private gem servers.
