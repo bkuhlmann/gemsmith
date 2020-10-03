@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]
   spec.homepage = "https://www.alchemists.io/projects/gemsmith"
-  spec.summary = "A command line interface for smithing new Ruby gems."
+  spec.summary = "A command line interface for smithing Ruby gems."
   spec.license = "Apache-2.0"
 
   spec.metadata = {
