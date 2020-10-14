@@ -9,7 +9,7 @@ image::https://badge.fury.io/rb/gemsmith.svg[Gem Version]
 [link=https://circleci.com/gh/bkuhlmann/gemsmith]
 image::https://circleci.com/gh/bkuhlmann/gemsmith.svg?style=svg[Circle CI Status]
 
-A command line interface for smithing new Ruby gems.
+A command line interface for smithing Ruby gems.
 
 toc::[]
 
@@ -62,31 +62,11 @@ image::https://www.alchemists.io/images/screencasts/gemsmith/cover.svg[Screencas
 
 == Setup
 
-=== Production
-
 To install, run:
 
 [source,bash]
 ----
 gem install gemsmith
-----
-
-=== Development
-
-To contribute, run:
-
-[source,bash]
-----
-git clone https://github.com/bkuhlmann/gemsmith.git
-cd gemsmith
-bin/setup
-----
-
-You can also use the IRB console for direct access to all objects:
-
-[source,bash]
-----
-bin/console
 ----
 
 == Usage
@@ -250,15 +230,6 @@ _NOTE: Ensure `require "bundler/gem_tasks"` is removed as Gemsmith replaces Bund
 
 With those changes, you can leverage the benefits of Gemsmith within your existing gem.
 
-== Tests
-
-To test, run:
-
-[source,bash]
-----
-bundle exec rake
-----
-
 == Security
 
 === Git Signing Key
@@ -387,6 +358,33 @@ When running `bundle exec rake install` or `bundle exec rake publish` with modif
 uncommitted Git changes, the rake task will throw an error to this effect. When this occurs, it is
 recommended that you commit your changes or link:https://git-scm.com/docs/git-stash[stash] them
 before proceeding.
+
+== Development
+
+To contribute, run:
+
+[source,bash]
+----
+git clone https://github.com/bkuhlmann/gemsmith.git
+cd gemsmith
+bin/setup
+----
+
+You can also use the IRB console for direct access to all objects:
+
+[source,bash]
+----
+bin/console
+----
+
+== Tests
+
+To test, run:
+
+[source,bash]
+----
+bundle exec rake
+----
 
 == Versioning
 
