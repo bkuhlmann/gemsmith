@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "tocer", "~> 10.0"
   spec.add_dependency "versionaire", "~> 8.0"
   spec.add_development_dependency "bundler-audit", "~> 0.6"
+  spec.add_development_dependency "bundler-leak", "~> 0.2"
   spec.add_development_dependency "climate_control", "~> 0.2"
   spec.add_development_dependency "git-lint", "~> 1.0"
   spec.add_development_dependency "guard-rspec", "~> 4.7"
