@@ -15,11 +15,11 @@ module Gemsmith
       end
 
       def edit specification
-        shell.capture2 self.class.editor, specification.path
+        shell.capture3 self.class.editor, specification.path
       end
 
       def visit specification
-        shell.capture2 "open", specification.homepage_url
+        shell.capture3 "open", specification.homepage_url
       end
 
       private
