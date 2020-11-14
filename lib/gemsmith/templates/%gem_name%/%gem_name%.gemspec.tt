@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor", "~> 0.20"
   <%- end -%>
   <%- if config.dig(:generate, :bundler_audit) -%>
-  spec.add_development_dependency "bundler-audit", "~> 0.6"
+  spec.add_development_dependency "bundler-audit", "~> 0.7"
   <%- end -%>
   spec.add_development_dependency "gemsmith", "~> <%= Gemsmith::Identity::VERSION[/\d+\.\d+/] %>"
   <%- if config.dig(:generate, :git_lint) -%>
