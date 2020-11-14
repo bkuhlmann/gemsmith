@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "milestoner", "~> 10.0"
   spec.add_dependency "pragmater", "~> 8.0"
   spec.add_dependency "refinements", "~> 7.11"
-  spec.add_dependency "rubocop", "~> 0.89"
+  spec.add_dependency "rubocop", "~> 1.3"
   spec.add_dependency "runcom", "~> 6.0"
   spec.add_dependency "thor", "~> 0.20"
   spec.add_dependency "tocer", "~> 10.0"
@@ -41,9 +41,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "reek", "~> 6.0"
   spec.add_development_dependency "rspec", "~> 3.9"
-  spec.add_development_dependency "rubocop-performance", "~> 1.5"
+  spec.add_development_dependency "rubocop-performance", "~> 1.8"
   spec.add_development_dependency "rubocop-rake", "~> 0.5"
-  spec.add_development_dependency "rubocop-rspec", "~> 1.39"
+  spec.add_development_dependency "rubocop-rspec", "~> 2.0"
   spec.add_development_dependency "simplecov", "~> 0.19"
 
   spec.files = Dir.glob "lib/**/*", File::FNM_DOTMATCH
