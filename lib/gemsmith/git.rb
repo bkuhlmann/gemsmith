@@ -2,6 +2,7 @@
 
 module Gemsmith
   # A thin wrapper to Git.
+  # rubocop:disable Style/StaticClass
   class Git
     def self.config_value key
       `git config #{key}`.chomp
@@ -17,4 +18,5 @@ module Gemsmith
       "https://github.com/#{github_user}/#{project}"
     end
   end
+  # rubocop:enable Style/StaticClass
 end
