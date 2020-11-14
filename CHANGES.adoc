@@ -1,5 +1,23 @@
 = Changes
 
+== 14.8.0 (2020-11-14)
+
+* Fixed Rubocop Style/StaticClass for Git
+* Fixed Rubocop Style/StaticClass issues with capture2
+* Added Alchemists style guide badge
+* Added Bundler Leak development dependency
+* Updated Rubocop gems
+* Updated project documentation to conform to Rubysmith template
+* Updated to Bundler Audit 0.7.0
+* Updated to Code Quality master branch
+* Updated to Milestoner 10.4.0
+* Updated to Pragmater 8.1.0
+* Updated to RSpec 3.10.0
+* Updated to Refinements 7.14.0
+* Updated to Runcom 6.4.0
+* Updated to Tocer 10.4.0
+* Updated to Versionaire 8.4.0
+
 == 14.7.0 (2020-10-11)
 
 * Fixed CHANGES template to use proper prefix for initial message
