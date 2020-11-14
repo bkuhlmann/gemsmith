@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.cert_chain = [Gem.default_cert_path]
 
   spec.required_ruby_version = "~> 2.7"
-  spec.add_dependency "milestoner", "~> 10.0"
+  spec.add_dependency "milestoner", "~> 10.4"
   spec.add_dependency "pragmater", "~> 8.1"
   spec.add_dependency "refinements", "~> 7.14"
   spec.add_dependency "rubocop", "~> 1.3"
