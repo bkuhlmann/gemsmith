@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   <%- end -%>
   spec.add_development_dependency "gemsmith", "~> <%= Gemsmith::Identity::VERSION[/\d+\.\d+/] %>"
   <%- if config.dig(:generate, :git_lint) -%>
-  spec.add_development_dependency "git-lint", "~> 1.0"
+  spec.add_development_dependency "git-lint", "~> 1.3"
   <%- end -%>
   <%- if config.dig(:generate, :guard) -%>
   spec.add_development_dependency "guard-rspec", "~> 4.7"
