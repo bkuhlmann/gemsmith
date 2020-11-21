@@ -1,5 +1,14 @@
 = Changes
 
+== 14.9.0 (2020-11-21)
+
+* Fixed Rubocop Performance/BlockGivenWithExplicitBlock issue
+* Fixed Rubocop Performance/ConstantRegexp issues
+* Fixed Rubocop Performance/MethodObjectAsBlock issues
+* Updated to Gemsmith 14.8.0
+* Updated to Git Lint 1.3.0
+* Updated to Refinements 7.15.1
+
 == 14.8.0 (2020-11-14)
 
 * Fixed Rubocop Style/StaticClass for Git
