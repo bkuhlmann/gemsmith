@@ -22,7 +22,7 @@ module Gemsmith
       end
 
       def render_namespace &block
-        body = capture(&block) if block_given?
+        body = capture(&block) if block
         concat Gem::ModuleFormatter.new(gem_class).render(body)
       end
     end
