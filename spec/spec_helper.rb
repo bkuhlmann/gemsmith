@@ -10,7 +10,7 @@ require "pry-byebug"
 require "climate_control"
 require "gemsmith"
 
-Dir[File.join(__dir__, "support", "shared_contexts", "**/*.rb")].sort.each(&method(:require))
+Dir[File.join(__dir__, "support", "shared_contexts", "**/*.rb")].sort.each { |path| require path }
 
 RSpec.configure do |config|
   config.color = true
