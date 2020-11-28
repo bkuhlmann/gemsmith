@@ -19,7 +19,7 @@ module Gemsmith
       def self.for object
         case object
           when String
-            operator, version = object.split " "
+            operator, version = object.split
             new operator: operator, raw_version: version
           else
             fail Errors::RequirementConversion,
