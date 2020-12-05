@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor", "~> 0.20"
   spec.add_dependency "tocer", "~> 10.4"
   spec.add_dependency "versionaire", "~> 8.4"
+  spec.add_development_dependency "amazing_print", "~> 1.2"
   spec.add_development_dependency "bundler-audit", "~> 0.7"
   spec.add_development_dependency "bundler-leak", "~> 0.2"
   spec.add_development_dependency "climate_control", "~> 0.2"
