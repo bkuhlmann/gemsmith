@@ -2,9 +2,9 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
+Bundler.require :tools
+
 require "gemsmith"
-require "pry"
-require "pry-byebug"
 require "irb"
 
 IRB.start __FILE__

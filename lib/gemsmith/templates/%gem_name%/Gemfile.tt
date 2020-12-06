@@ -1,2 +1,47 @@
 source "https://rubygems.org"
+
 gemspec
+
+group :code_quality do
+  <%- if config.dig(:generate, :bundler_audit) -%>
+  gem "bundler-audit", "~> 0.7"
+  <%- end -%>
+  <%- if config.dig(:generate, :git_lint) -%>
+  gem "git-lint", "~> 1.3"
+  <%- end -%>
+  <%- if config.dig(:generate, :reek) -%>
+  gem "reek", "~> 6.0"
+  <%- end -%>
+  <%- if config.dig(:generate, :rubocop) -%>
+  gem "rubocop", "~> 1.5"
+  gem "rubocop-performance", "~> 1.8"
+  gem "rubocop-rake", "~> 0.5"
+  <%- end -%>
+  <%- if config.dig(:generate, :rubocop) && config.dig(:generate, :rspec) -%>
+  gem "rubocop-rspec", "~> 2.0"
+  <%- end -%>
+end
+
+group :development do
+  gem "gemsmith", "~> <%= Gemsmith::Identity::VERSION[/\d+\.\d+/] %>"
+  <%- if config.dig(:generate, :guard) -%>
+  gem "guard-rspec", "~> 4.7", require: false
+  <%- end -%>
+  gem "rake", "~> 13.0"
+end
+
+group :test do
+  <%- if config.dig(:generate, :rspec) -%>
+  gem "<%= config.dig(:generate, :engine) ? "rspec-rails" : "rspec" %>", "~> 3.9"
+  <%- end -%>
+  <%- if config.dig(:generate, :simple_cov) -%>
+  gem "simplecov", "~> 0.20"
+  <%- end -%>
+end
+
+group :tools do
+  <%- if config.dig(:generate, :pry) -%>
+  gem "pry", "~> 0.13"
+  gem "pry-byebug", "~> 3.9"
+  <%- end -%>
+end

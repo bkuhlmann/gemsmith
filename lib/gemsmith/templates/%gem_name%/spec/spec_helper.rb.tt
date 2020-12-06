@@ -1,14 +1,11 @@
 require "bundler/setup"
+Bundler.require :test, :tools
 
 <%- if config.dig(:generate, :simple_cov) -%>
 require "simplecov"
 SimpleCov.start { enable_coverage :branch }
 <%- end -%>
 
-<%- if config.dig(:generate, :pry) -%>
-require "pry"
-require "pry-byebug"
-<%- end -%>
 <%- unless config.dig(:generate, :engine) -%>
 require "<%= config.dig(:gem, :path) %>"
 <%- end -%>

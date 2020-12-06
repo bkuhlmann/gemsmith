@@ -29,38 +29,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "runcom", "~> 6.4"
   spec.add_dependency "thor", "~> 0.20"
   <%- end -%>
-  <%- if config.dig(:generate, :bundler_audit) -%>
-  spec.add_development_dependency "bundler-audit", "~> 0.7"
-  <%- end -%>
-  spec.add_development_dependency "gemsmith", "~> <%= Gemsmith::Identity::VERSION[/\d+\.\d+/] %>"
-  <%- if config.dig(:generate, :git_lint) -%>
-  spec.add_development_dependency "git-lint", "~> 1.3"
-  <%- end -%>
-  <%- if config.dig(:generate, :guard) -%>
-  spec.add_development_dependency "guard-rspec", "~> 4.7"
-  <%- end -%>
-  <%- if config.dig(:generate, :pry) -%>
-  spec.add_development_dependency "pry", "~> 0.13"
-  spec.add_development_dependency "pry-byebug", "~> 3.9"
-  <%- end -%>
-  spec.add_development_dependency "rake", "~> 13.0"
-  <%- if config.dig(:generate, :reek) -%>
-  spec.add_development_dependency "reek", "~> 6.0"
-  <%- end -%>
-  <%- if config.dig(:generate, :rspec) -%>
-  spec.add_development_dependency "<%= config.dig(:generate, :engine) ? "rspec-rails" : "rspec" %>", "~> 3.9"
-  <%- end -%>
-  <%- if config.dig(:generate, :rubocop) -%>
-  spec.add_development_dependency "rubocop", "~> 1.3"
-  spec.add_development_dependency "rubocop-performance", "~> 1.8"
-  spec.add_development_dependency "rubocop-rake", "~> 0.5"
-  <%- end -%>
-  <%- if config.dig(:generate, :rubocop) && config.dig(:generate, :rspec) -%>
-  spec.add_development_dependency "rubocop-rspec", "~> 2.0"
-  <%- end -%>
-  <%- if config.dig(:generate, :simple_cov) -%>
-  spec.add_development_dependency "simplecov", "~> 0.19"
-  <%- end -%>
 
   <%- if config.dig(:generate, :engine) -%>
   spec.files = Dir["app/**/*", "bin/**/*", "config/**/*", "lib/**/*", "vendor/**/*"]

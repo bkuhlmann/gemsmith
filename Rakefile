@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "bundler/setup"
 require "bundler/audit/task"
 require "bundler/plumber/task"
 require "gemsmith/rake/setup"
