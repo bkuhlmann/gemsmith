@@ -1,5 +1,12 @@
 = Changes
 
+== 14.10.0 (2020-12-06)
+
+* Fixed Rubocop Style/RedundantArgument issue
+* Added Amazing Print
+* Added Gemfile groups
+* Updated to Refinements 7.16.0
+
 == 14.9.0 (2020-11-21)
 
 * Fixed Rubocop Performance/BlockGivenWithExplicitBlock issue
