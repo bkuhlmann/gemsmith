@@ -7,6 +7,7 @@ require "simplecov"
 SimpleCov.start { enable_coverage :branch }
 
 require "gemsmith"
+require "climate_control"
 
 using Refinements::Pathnames
 
