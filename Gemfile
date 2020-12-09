@@ -13,6 +13,7 @@ group :code_quality do
   gem "rubocop-performance", "~> 1.9"
   gem "rubocop-rake", "~> 0.5"
   gem "rubocop-rspec", "~> 2.0"
+  gem "simplecov", "~> 0.20"
 end
 
 group :development do
@@ -23,7 +24,6 @@ end
 group :test do
   gem "climate_control", "~> 0.2"
   gem "rspec", "~> 3.10"
-  gem "simplecov", "~> 0.20"
 end
 
 group :tools do

@@ -20,6 +20,9 @@ group :code_quality do
   <%- if config.dig(:generate, :rubocop) && config.dig(:generate, :rspec) -%>
   gem "rubocop-rspec", "~> 2.0"
   <%- end -%>
+  <%- if config.dig(:generate, :simple_cov) -%>
+  gem "simplecov", "~> 0.20"
+  <%- end -%>
 end
 
 group :development do
@@ -33,9 +36,6 @@ end
 group :test do
   <%- if config.dig(:generate, :rspec) -%>
   gem "<%= config.dig(:generate, :engine) ? "rspec-rails" : "rspec" %>", "~> 3.9"
-  <%- end -%>
-  <%- if config.dig(:generate, :simple_cov) -%>
-  gem "simplecov", "~> 0.20"
   <%- end -%>
 end
 
