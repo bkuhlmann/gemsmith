@@ -27,13 +27,13 @@ end
 
 group :development do
   gem "gemsmith", "~> <%= Gemsmith::Identity::VERSION[/\d+\.\d+/] %>"
-  <%- if config.dig(:generate, :guard) -%>
-  gem "guard-rspec", "~> 4.7", require: false
-  <%- end -%>
   gem "rake", "~> 13.0"
 end
 
 group :test do
+  <%- if config.dig(:generate, :guard) -%>
+  gem "guard-rspec", "~> 4.7", require: false
+  <%- end -%>
   <%- if config.dig(:generate, :rspec) -%>
   gem "<%= config.dig(:generate, :engine) ? "rspec-rails" : "rspec" %>", "~> 3.9"
   <%- end -%>
