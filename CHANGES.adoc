@@ -1,5 +1,12 @@
 = Changes
 
+== 14.10.1 (2020-12-10)
+
+* Fixed RSpec helper to include climate control
+* Fixed spec helper to only require tools
+* Updated Gemfile to put Guard RSpec in test group
+* Updated Gemfile to put SimpleCov in code quality group
+
 == 14.10.0 (2020-12-06)
 
 * Fixed Rubocop Style/RedundantArgument issue
