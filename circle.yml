@@ -60,4 +60,6 @@ jobs:
 
       - run:
           name: Build
-          command: bundle exec rake
+          command: |
+            sed -i 's/ rubycritic//g' Rakefile
+            bundle exec rake
