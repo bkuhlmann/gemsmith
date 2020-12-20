@@ -51,6 +51,7 @@ jobs:
             gem update --system
             bundle config set path "vendor/bundle"
             gem install rails
+            bundle install
 
       - type: cache-save
         name: Bundler Store
