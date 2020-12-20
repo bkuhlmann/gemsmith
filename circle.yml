@@ -49,7 +49,7 @@ jobs:
           name: Bundler Install
           command: |
             gem update --system
-            bundle install --path vendor/bundle
+            bundle config set path "vendor/bundle"
             gem install rails
 
       - type: cache-save
