@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "runcom", "~> 6.4"
   spec.add_dependency "thor", "~> 0.20"
   spec.add_dependency "tocer", "~> 10.4"
-  spec.add_dependency "versionaire", "~> 8.4"
+  spec.add_dependency "versionaire", "~> 8.7"
 
   spec.files = Dir.glob "lib/**/*", File::FNM_DOTMATCH
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
