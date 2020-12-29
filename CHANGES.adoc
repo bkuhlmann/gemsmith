@@ -1,5 +1,16 @@
 = Changes
 
+== 14.11.0 (2020-12-28)
+
+- Fixed Circle CI configuration for Bundler config path
+- Added Circle CI explicit Bundle install configuration
+- Added RubyCritic
+- Added RubyCritic configuration
+- Updated Circle CI configuration to skip RubyCritic
+- Updated to Refinements 7.18.0
+- Updated to Versionaire 8.7.0
+- Removed RubyGems requirement from binstubs
+
 == 14.10.1 (2020-12-10)
 
 * Fixed RSpec helper to include climate control
