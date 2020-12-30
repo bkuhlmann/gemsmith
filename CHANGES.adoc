@@ -1,15 +1,26 @@
 = Changes
 
+== 15.0.0 (2020-12-28)
+
+* Updated to Git Lint 2.0.0 - Brooke Kuhlmann
+* Updated to Milestoner 11.0.0 - Brooke Kuhlmann
+* Updated to Pragmater 9.0.0 - Brooke Kuhlmann
+* Updated to Refinements 8.0.0 - Brooke Kuhlmann
+* Updated to Ruby 3.0.0 - Brooke Kuhlmann
+* Updated to Runcom 7.0.0 - Brooke Kuhlmann
+* Updated to Tocer 11.0.0 - Brooke Kuhlmann
+* Updated to Versionaire 9.0.0 - Brooke Kuhlmann
+
 == 14.11.0 (2020-12-28)
 
-- Fixed Circle CI configuration for Bundler config path
-- Added Circle CI explicit Bundle install configuration
-- Added RubyCritic
-- Added RubyCritic configuration
-- Updated Circle CI configuration to skip RubyCritic
-- Updated to Refinements 7.18.0
-- Updated to Versionaire 8.7.0
-- Removed RubyGems requirement from binstubs
+* Fixed Circle CI configuration for Bundler config path
+* Added Circle CI explicit Bundle install configuration
+* Added RubyCritic
+* Added RubyCritic configuration
+* Updated Circle CI configuration to skip RubyCritic
+* Updated to Refinements 7.18.0
+* Updated to Versionaire 8.7.0
+* Removed RubyGems requirement from binstubs
 
 == 14.10.1 (2020-12-10)
 
