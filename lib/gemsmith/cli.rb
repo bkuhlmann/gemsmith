@@ -55,7 +55,7 @@ module Gemsmith
                            },
                            versions: {
                              ruby: RUBY_VERSION,
-                             rails: "5.1"
+                             rails: "6.1"
                            },
                            generate: {
                              bundler_audit: true,
