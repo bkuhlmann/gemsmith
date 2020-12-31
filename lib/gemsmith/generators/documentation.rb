@@ -22,8 +22,7 @@ module Gemsmith
       end
 
       def update_readme
-        File.join(gem_root, "README.md")
-            .then { |readme| Tocer::Writer.new(readme).call }
+        gem_root.join("README.md").then { |path| Tocer::Writer.new(path).call }
       end
     end
   end

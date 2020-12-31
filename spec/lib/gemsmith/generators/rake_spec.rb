@@ -29,7 +29,7 @@ RSpec.describe Gemsmith::Generators::Rake do
     }
   end
 
-  let(:rakefile) { File.join temp_dir, "Rakefile" }
+  let(:rakefile) { temp_dir.join "Rakefile" }
 
   describe "generate_code_quality_task" do
     let(:task) { rake.generate_code_quality_task }

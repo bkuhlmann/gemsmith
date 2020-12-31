@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "milestoner"
+require "refinements/pathnames"
 require "gemsmith/identity"
 require "gemsmith/credentials"
 require "gemsmith/cli"
@@ -10,13 +11,15 @@ module Gemsmith
     # Provides gem release functionality. Meant to be wrapped in Rake tasks.
     # :reek:TooManyInstanceVariables
     class Publisher
+      using Refinements::Pathnames
+
       def self.gem_spec_path
-        String Dir["#{Dir.pwd}/*.gemspec"].first
+        Pathname.pwd.files("*.gemspec").first.to_s
       end
 
       # rubocop:disable Metrics/ParameterLists
       # :reek:LongParameterList
-      def initialize gem_spec: Gemsmith::Gem::Specification.new(self.class.gem_spec_path),
+      def initialize gem_spec: Gemsmith::Gem::Specification.new(self.class.gem_spec_path.to_s),
                      gem_config: Gemsmith::CLI.configuration.to_h,
                      credentials: Gemsmith::Credentials,
                      publisher: Milestoner::Publisher.new,

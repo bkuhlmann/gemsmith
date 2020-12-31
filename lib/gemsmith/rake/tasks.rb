@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rake"
+require "refinements/pathnames"
 require "tocer/rake/tasks"
 require "gemsmith/gem/specification"
 require "gemsmith/errors/base"
@@ -14,15 +15,17 @@ module Gemsmith
     class Tasks
       include ::Rake::DSL
 
+      using Refinements::Pathnames
+
       def self.default_gem_spec
-        Dir.glob("#{Dir.pwd}/*.gemspec").first
+        Pathname.pwd.files("*.gemspec").first
       end
 
       def self.setup
         new.install
       end
 
-      def initialize gem_spec: Gem::Specification.new(self.class.default_gem_spec),
+      def initialize gem_spec: Gem::Specification.new(self.class.default_gem_spec.to_s),
                      builder: Rake::Builder.new,
                      publisher: Rake::Publisher.new
         @gem_spec = gem_spec

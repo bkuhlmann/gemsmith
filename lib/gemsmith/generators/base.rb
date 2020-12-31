@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+require "pathname"
+
 module Gemsmith
   module Generators
     # Abstract class from which all generators inherit from.
     class Base
-      LIB_ROOT = File.join("%gem_name%", "lib").freeze
-      LIB_ROOT_GEM = File.join(LIB_ROOT, "%gem_path%").freeze
+      LIB_ROOT = Pathname("%gem_name%/lib").freeze
+      LIB_ROOT_GEM = LIB_ROOT.join("%gem_path%").freeze
 
       def self.run cli, configuration: {}
         new(cli, configuration: configuration).run
@@ -33,7 +35,7 @@ module Gemsmith
       end
 
       def gem_root
-        File.join cli.destination_root, gem_name
+        Pathname(cli.destination_root).join gem_name
       end
 
       def template path

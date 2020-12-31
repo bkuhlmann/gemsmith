@@ -1,7 +1,9 @@
+require "pathname"
+
 <% render_namespace do %>
   # Generator for installing new files.
   class InstallGenerator < Rails::Generators::Base
-    source_root File.join(File.dirname(__FILE__), "..", "templates")
+    source_root Pathname(__dir__).join("../templates")
 
     desc "Installs additional <%= config.dig(:gem, :label) %> resources."
     def install

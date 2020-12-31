@@ -8,6 +8,7 @@ require "refinements/hashes"
 require "runcom"
 require "gemsmith/helpers/cli"
 require "gemsmith/helpers/template"
+require "pathname"
 
 module Gemsmith
   # The Command Line Interface (CLI) for the gem.
@@ -24,7 +25,7 @@ module Gemsmith
 
     # Overwrites Thor's template source root.
     def self.source_root
-      File.expand_path File.join(File.dirname(__FILE__), "templates")
+      Pathname(__dir__).join("templates").freeze
     end
 
     # rubocop:disable Metrics/MethodLength

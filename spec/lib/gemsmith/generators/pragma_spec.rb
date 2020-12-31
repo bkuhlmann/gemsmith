@@ -11,7 +11,7 @@ RSpec.describe Gemsmith::Generators::Pragma do
   let(:configuration) { {gem: {name: "tester"}} }
   let(:comments) { ["# frozen_string_literal: true"] }
   let(:pragmater) { instance_spy Pragmater::Runner }
-  let(:gem_root) { File.join temp_dir, "tester" }
+  let(:gem_root) { temp_dir.join "tester" }
   let(:source_file) { Pathname "#{gem_root}/test.rb" }
 
   let :includes do

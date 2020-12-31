@@ -1,7 +1,7 @@
 <% render_namespace do %>
   # Generator for updating existing files.
   class UpgradeGenerator < Rails::Generators::Base
-    source_root File.join(File.dirname(__FILE__), "..", "templates")
+    source_root Pathname(__dir__).join("../templates")
 
     desc "Upgrades previously installed <%= config.dig(:gem, :label) %> resources."
     def upgrade

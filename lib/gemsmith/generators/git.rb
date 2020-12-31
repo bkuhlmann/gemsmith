@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 require "open3"
+require "refinements/pathnames"
 
 module Gemsmith
   module Generators
     # Generates Git support.
     class Git < Base
+      using Refinements::Pathnames
+
       def initialize cli, configuration: {}, shell: Open3
         super cli, configuration: configuration
         @shell = shell
@@ -31,7 +34,7 @@ module Gemsmith
       end
 
       def create_commit subject, body
-        Dir.chdir gem_root do
+        gem_root.change_dir do
           shell.capture3 "git init"
           shell.capture3 "git add ."
           shell.capture3 %(git commit --all --no-verify --message "#{subject}" --message "#{body}")

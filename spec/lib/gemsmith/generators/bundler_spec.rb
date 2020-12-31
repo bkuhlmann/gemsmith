@@ -9,7 +9,7 @@ RSpec.describe Gemsmith::Generators::Bundler do
 
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}} }
-  let(:gem_root) { File.join temp_dir, "tester" }
+  let(:gem_root) { temp_dir.join "tester" }
 
   before { FileUtils.mkdir_p gem_root }
 

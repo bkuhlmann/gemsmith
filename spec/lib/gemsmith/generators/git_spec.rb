@@ -10,7 +10,7 @@ RSpec.describe Gemsmith::Generators::Git do
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}} }
   let(:shell) { class_spy Open3 }
-  let(:gem_dir) { File.join temp_dir, configuration.dig(:gem, :name) }
+  let(:gem_dir) { temp_dir.join configuration.dig(:gem, :name) }
 
   describe "#run" do
     before do

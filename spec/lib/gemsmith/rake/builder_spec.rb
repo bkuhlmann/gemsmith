@@ -7,31 +7,27 @@ RSpec.describe Gemsmith::Rake::Builder do
 
   include_context "with temporary directory"
 
+  using Refinements::Pathnames
+
   let(:kernel) { class_spy Kernel }
 
   describe "#clean" do
-    let(:package_dir) { File.join temp_dir, "pkg" }
-    let(:gem_file) { File.join package_dir, "test-0.1.0.gem" }
-
-    before do
-      FileUtils.mkdir_p package_dir
-      FileUtils.touch gem_file
-    end
-
     it "removes previously built gem artifacts" do
-      Dir.chdir(temp_dir) { builder.clean }
-      expect(File.exist?(gem_file)).to eq(false)
+      gem_file = temp_dir.join("pkg").make_dir.join("test-0.1.0.gem").touch
+      temp_dir.change_dir { builder.clean }
+
+      expect(gem_file.exist?).to eq(false)
     end
 
     it "prints status message" do
-      result = -> { Dir.chdir(temp_dir) { builder.clean } }
+      result = -> { temp_dir.change_dir { builder.clean } }
       expect(&result).to output("Cleaned gem artifacts.\n").to_stdout
     end
   end
 
   describe "#validate" do
     before do
-      Dir.chdir temp_dir do
+      temp_dir.change_dir do
         `git init`
         `git config --local user.name "Testy Tester"`
         `git config --local user.email "tester@example.com"`
@@ -43,17 +39,17 @@ RSpec.describe Gemsmith::Rake::Builder do
     end
 
     context "with Git changes" do
-      before { Dir.chdir(temp_dir) { `touch extra.txt` } }
+      before { temp_dir.change_dir { `touch extra.txt` } }
 
       it "prints build error" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           result = -> { builder.validate }
           expect(&result).to output(/Build\sfailed:\sGem\shas\suncommitted\schanges\.\n/).to_stderr
         end
       end
 
       it "exits with error" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           builder.validate
           expect(kernel).to have_received(:exit).with(1)
         end
@@ -62,14 +58,14 @@ RSpec.describe Gemsmith::Rake::Builder do
 
     context "without Git changes" do
       it "does not print output" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           result = -> { builder.validate }
           expect(&result).not_to output.to_stdout
         end
       end
 
       it "does not exit" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           builder.validate
           expect(kernel).not_to have_received(:exit)
         end
@@ -78,9 +74,9 @@ RSpec.describe Gemsmith::Rake::Builder do
   end
 
   describe "#build" do
-    let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
-    let(:gem_spec_fixture_file) { File.join fixtures_dir, "tester-valid.gemspec" }
-    let(:gem_spec_file) { File.join temp_dir, "tester.gemspec" }
+    let(:fixtures_dir) { Bundler.root.join "spec", "support", "fixtures" }
+    let(:gem_spec_fixture_file) { fixtures_dir.join "tester-valid.gemspec" }
+    let(:gem_spec_file) { temp_dir.join "tester.gemspec" }
     let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_file }
 
     before { FileUtils.cp gem_spec_fixture_file, gem_spec_file }
@@ -89,14 +85,14 @@ RSpec.describe Gemsmith::Rake::Builder do
       subject(:builder) { described_class.new }
 
       it "builds gem package" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           builder.build gem_spec
-          expect(File.exist?("pkg/tester-0.1.0.gem")).to eq(true)
+          expect(Pathname("pkg/tester-0.1.0.gem").exist?).to eq(true)
         end
       end
 
       it "prints package built successfully" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           result = -> { builder.build gem_spec }
           expect(&result).to output(%r(Built:\spkg/tester-0\.1\.0\.gem\.\n)).to_stdout
         end
@@ -107,14 +103,14 @@ RSpec.describe Gemsmith::Rake::Builder do
       let(:kernel) { class_spy Kernel, system: false }
 
       it "does not build gem package" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           builder.build gem_spec
-          expect(File.exist?("pkg/tester-0.1.0.gem")).to eq(false)
+          expect(Pathname("pkg/tester-0.1.0.gem").exist?).to eq(false)
         end
       end
 
       it "prints error message" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           result = -> { builder.build gem_spec }
           expect(&result).to output(%r(Unable\sto\sbuild:\spkg/tester-0\.1\.0\.gem\.\n)).to_stderr
         end
@@ -123,8 +119,8 @@ RSpec.describe Gemsmith::Rake::Builder do
   end
 
   describe "#install" do
-    let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
-    let(:gem_spec_fixture_file) { File.join fixtures_dir, "tester-valid.gemspec" }
+    let(:fixtures_dir) { Bundler.root.join "spec", "support", "fixtures" }
+    let(:gem_spec_fixture_file) { fixtures_dir.join "tester-valid.gemspec" }
     let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_fixture_file }
 
     context "when success" do

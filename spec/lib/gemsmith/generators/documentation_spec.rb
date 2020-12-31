@@ -12,7 +12,7 @@ RSpec.describe Gemsmith::Generators::Documentation do
 
   describe "#run" do
     let(:tocer) { instance_spy Tocer::Writer }
-    let(:file) { File.join cli.destination_root, cli.gem_name, "README.md" }
+    let(:file) { cli.destination_root.join cli.gem_name, "README.md" }
 
     before do
       allow(Tocer::Writer).to receive(:new).and_return(tocer)

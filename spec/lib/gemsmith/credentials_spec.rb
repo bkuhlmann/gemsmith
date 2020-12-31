@@ -7,15 +7,16 @@ RSpec.describe Gemsmith::Credentials do
 
   include_context "with temporary directory"
 
-  let(:test_credentials_dir) { File.join temp_dir, ".gem" }
-  let(:test_credentials_path) { File.join test_credentials_dir, "credentials" }
+  using Refinements::Pathnames
+
+  let(:test_credentials_path) { temp_dir.join(".gem").make_dir.join "credentials" }
   let(:test_credentials) { {described_class::DEFAULT_KEY => "test"} }
   let(:loaded_credentials) { YAML.load_file test_credentials_path }
 
   describe ".file_path" do
     it "answers credentials file path" do
       ClimateControl.modify HOME: temp_dir.to_s do
-        expect(described_class.file_path).to eq("#{temp_dir}/.gem/credentials")
+        expect(described_class.file_path).to eq(temp_dir.join(".gem/credentials"))
       end
     end
   end
@@ -37,10 +38,7 @@ RSpec.describe Gemsmith::Credentials do
   end
 
   describe "#valid?" do
-    before do
-      FileUtils.mkdir test_credentials_dir
-      File.open(test_credentials_path, "w") { |file| file << YAML.dump(test_credentials) }
-    end
+    before { test_credentials_path.write YAML.dump(test_credentials) }
 
     it "answers true when file, key, and value exist" do
       ClimateControl.modify HOME: temp_dir.to_s do
@@ -89,7 +87,8 @@ RSpec.describe Gemsmith::Credentials do
     end
 
     it "answers false when file doesn't exist" do
-      FileUtils.rm_rf test_credentials_dir
+      test_credentials_path.delete
+
       ClimateControl.modify HOME: temp_dir.to_s do
         expect(credentials.valid?).to eq(false)
       end
@@ -98,10 +97,7 @@ RSpec.describe Gemsmith::Credentials do
 
   describe "#value" do
     context "when credentials exist" do
-      before do
-        FileUtils.mkdir test_credentials_dir
-        File.open(test_credentials_path, "w") { |file| file << YAML.dump(test_credentials) }
-      end
+      before { test_credentials_path.write YAML.dump(test_credentials) }
 
       it "answers value" do
         ClimateControl.modify HOME: temp_dir.to_s do
@@ -169,10 +165,7 @@ RSpec.describe Gemsmith::Credentials do
       let(:url) { "https://rubygems.org" }
       let(:test_credentials) { {test: "test"} }
 
-      before do
-        FileUtils.mkdir test_credentials_dir
-        File.open(test_credentials_path, "w") { |file| file << YAML.dump(test_credentials) }
-      end
+      before { test_credentials_path.write YAML.dump(test_credentials) }
 
       it "appends new credentials" do
         ClimateControl.modify HOME: temp_dir.to_s do
@@ -187,10 +180,7 @@ RSpec.describe Gemsmith::Credentials do
       let(:url) { "https://rubygems.org" }
       let(:test_credentials) { {rubygems_api_key: "test"} }
 
-      before do
-        FileUtils.mkdir test_credentials_dir
-        File.open(test_credentials_path, "w") { |file| file << YAML.dump(test_credentials) }
-      end
+      before { test_credentials_path.write YAML.dump(test_credentials) }
 
       it "does not modify existing credentials" do
         ClimateControl.modify HOME: temp_dir.to_s do

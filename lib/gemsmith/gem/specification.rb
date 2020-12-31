@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "pathname"
 require "versionaire"
 
 module Gemsmith
@@ -26,7 +27,7 @@ module Gemsmith
 
       def initialize file_path
         @file_path = file_path
-        @spec = self.class.specification.load file_path
+        @spec = self.class.specification.load file_path.to_s
         validate
         @version = Versionaire::Version @spec.version.to_s
       end
@@ -56,7 +57,7 @@ module Gemsmith
       end
 
       def package_path
-        File.join "pkg", package_file_name
+        Pathname("pkg").join package_file_name
       end
 
       private

@@ -13,9 +13,11 @@ RSpec.describe Gemsmith::Rake::Publisher do
 
   include_context "with temporary directory"
 
-  let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
-  let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
-  let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_path }
+  using Refinements::Pathnames
+
+  let(:fixtures_dir) { Bundler.root.join "spec", "support", "fixtures" }
+  let(:gem_spec_path) { fixtures_dir.join "tester-no_metadata.gemspec" }
+  let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_path.to_s }
   let(:signed) { false }
   let(:gem_config) { {gem: {name: "tester"}, publish: {sign: signed}} }
 
@@ -40,7 +42,7 @@ RSpec.describe Gemsmith::Rake::Publisher do
 
     context "without gemspec" do
       it "an empty string" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           expect(described_class.gem_spec_path).to eq("")
         end
       end
@@ -64,14 +66,14 @@ RSpec.describe Gemsmith::Rake::Publisher do
     end
 
     context "with RubyGems gemspec metadata" do
-      let(:gem_spec_path) { File.join fixtures_dir, "tester-only_ruby_gems_metadata.gemspec" }
+      let(:gem_spec_path) { fixtures_dir.join "tester-only_ruby_gems_metadata.gemspec" }
       let(:pushed) { true }
 
       it_behaves_like "a default setup"
     end
 
     context "with custom gemspec metadata" do
-      let(:gem_spec_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
+      let(:gem_spec_path) { fixtures_dir.join "tester-custom_metadata.gemspec" }
       let(:pushed) { true }
       let :command do
         %(gem push "pkg/tester-0.1.0.gem" --key "test" --host "https://www.test.com")
@@ -89,7 +91,7 @@ RSpec.describe Gemsmith::Rake::Publisher do
     end
 
     context "without gemspec metadata" do
-      let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }
+      let(:gem_spec_path) { fixtures_dir.join "tester-no_metadata.gemspec" }
       let(:pushed) { true }
 
       it_behaves_like "a default setup"
@@ -157,7 +159,7 @@ RSpec.describe Gemsmith::Rake::Publisher do
     context "with Milestoner error" do
       before do
         allow(milestone_publisher).to receive(:publish).and_raise(Milestoner::Errors::Base, "test")
-        Dir.chdir(temp_dir) { publisher.publish }
+        temp_dir.change_dir { publisher.publish }
       end
 
       it "prints error" do

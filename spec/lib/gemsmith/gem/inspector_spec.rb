@@ -5,10 +5,14 @@ require "spec_helper"
 RSpec.describe Gemsmith::Gem::Inspector do
   subject(:inspector) { described_class.new shell: shell }
 
-  let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
-  let(:specification_path) { File.join fixtures_dir, "tester-homepage_url.gemspec" }
-  let(:specification) { Gemsmith::Gem::Specification.new specification_path }
   let(:shell) { class_spy Open3 }
+
+  let :specification do
+    Bundler.root
+           .join("spec/support/fixtures/tester-homepage_url.gemspec")
+           .to_s
+           .then { |path| Gemsmith::Gem::Specification.new path }
+  end
 
   describe ".editor" do
     it "answers current editor/IDE for editing source code" do

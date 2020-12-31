@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "refinements/pathnames"
 
 RSpec.describe Gemsmith::CLI do
   subject :cli do
@@ -18,8 +17,8 @@ RSpec.describe Gemsmith::CLI do
 
   shared_examples_for "a generate command" do
     let(:gem_name) { "tester" }
-    let(:gem_dir) { Pathname.new File.join(temp_dir, gem_name) }
-    let(:files) { Dir.chdir(gem_dir) { `git ls-files` }.split }
+    let(:gem_dir) { temp_dir.join gem_name }
+    let(:files) { gem_dir.change_dir { `git ls-files` }.split }
 
     context "with no options" do
       let :options do
@@ -61,7 +60,7 @@ RSpec.describe Gemsmith::CLI do
       end
 
       it "generates basic gem" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           cli
           expect(files).to contain_exactly(*expected_files)
         end
@@ -105,7 +104,7 @@ RSpec.describe Gemsmith::CLI do
 
       it "generates CLI gem" do
         ClimateControl.modify XDG_CONFIG_HOME: temp_dir.to_s do
-          Dir.chdir temp_dir do
+          temp_dir.change_dir do
             cli
             expect(files).to contain_exactly(*expected_files)
           end
@@ -132,9 +131,9 @@ RSpec.describe Gemsmith::CLI do
         ]
       end
 
-      let(:controllers_dir) { File.join gem_dir, "app", "controllers", gem_name }
-      let(:mailers_dir) { File.join gem_dir, "app", "mailers", gem_name }
-      let(:models_dir) { File.join gem_dir, "app", "models", gem_name }
+      let(:controllers_dir) { gem_dir.join "app", "controllers", gem_name }
+      let(:mailers_dir) { gem_dir.join "app", "mailers", gem_name }
+      let(:models_dir) { gem_dir.join "app", "models", gem_name }
 
       let :expected_files do
         [
@@ -175,18 +174,13 @@ RSpec.describe Gemsmith::CLI do
       # FIX: Remove this before block once it is determined why `rails plugin new` doesn't run via
       # the `Generators::Rails#create_engine` within this spec.
       before do
-        FileUtils.mkdir_p controllers_dir
-        FileUtils.touch File.join(controllers_dir, "application_controller.rb")
-
-        FileUtils.mkdir_p mailers_dir
-        FileUtils.touch File.join(mailers_dir, "application_mailer.rb")
-
-        FileUtils.mkdir_p models_dir
-        FileUtils.touch File.join(models_dir, "application_record.rb")
+        controllers_dir.make_path.join("application_controller.rb").touch
+        mailers_dir.make_path.join("application_mailer.rb").touch
+        models_dir.make_path.join("application_record.rb").touch
       end
 
       it "generates full gem" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           cli
           expect(files).to contain_exactly(*expected_files)
         end
@@ -203,14 +197,14 @@ RSpec.describe Gemsmith::CLI do
       end
 
       it "generates basic gem" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           cli
-          expect(File.exist?(gem_dir)).to eq(false)
+          expect(gem_dir.exist?).to eq(false)
         end
       end
 
       it "prints error message" do
-        Dir.chdir temp_dir do
+        temp_dir.change_dir do
           result = -> { cli }
           expect(&result).to output(/.+is\snot\sallowed.+/).to_stdout
         end
@@ -261,7 +255,7 @@ RSpec.describe Gemsmith::CLI do
 
   describe ".source_root" do
     it "answers source root" do
-      expect(described_class.source_root).to end_with("lib/gemsmith/templates")
+      expect(described_class.source_root.to_s).to end_with("lib/gemsmith/templates")
     end
   end
 

@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
+require "refinements/pathnames"
+
 module Gemsmith
   module Generators
     # Generates Bundler support.
     class Bundler < Base
+      using Refinements::Pathnames
+
       def run
-        Dir.chdir gem_root do
+        gem_root.change_dir do
           cli.say_status :info, "Installing gem dependencies...", :green
           cli.run "bundle install"
         end

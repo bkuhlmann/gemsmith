@@ -5,8 +5,8 @@ require "spec_helper"
 RSpec.describe Gemsmith::Gem::Specification do
   subject(:specification) { described_class.new file_path }
 
-  let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
-  let(:file_path) { File.join fixtures_dir, "tester-valid.gemspec" }
+  let(:fixtures_dir) { Bundler.root.join "spec", "support", "fixtures" }
+  let(:file_path) { fixtures_dir.join "tester-valid.gemspec" }
 
   describe ".find" do
     let(:gem_specification) { class_spy ::Gem::Specification }
@@ -50,7 +50,7 @@ RSpec.describe Gemsmith::Gem::Specification do
     end
 
     context "with empty gem specification" do
-      let(:file_path) { File.join fixtures_dir, "empty.gemspec" }
+      let(:file_path) { fixtures_dir.join "empty.gemspec" }
 
       it "raises unknown gem specification error" do
         init = -> { described_class.new file_path }
@@ -79,7 +79,7 @@ RSpec.describe Gemsmith::Gem::Specification do
 
   describe "#homepage_url" do
     context "with homepage URL" do
-      let(:file_path) { File.join fixtures_dir, "tester-homepage_url.gemspec" }
+      let(:file_path) { fixtures_dir.join "tester-homepage_url.gemspec" }
 
       it "URL" do
         expect(specification.homepage_url).to eq("https://www.example.com")
@@ -95,7 +95,7 @@ RSpec.describe Gemsmith::Gem::Specification do
 
   describe "#allowed_push_key" do
     context "with custom gemspec metadata" do
-      let(:file_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
+      let(:file_path) { fixtures_dir.join "tester-custom_metadata.gemspec" }
 
       it "answers custom key" do
         expect(specification.allowed_push_key).to eq("test")
@@ -111,7 +111,7 @@ RSpec.describe Gemsmith::Gem::Specification do
 
   describe "#allowed_push_host" do
     context "with custom gemspec metadata" do
-      let(:file_path) { File.join fixtures_dir, "tester-custom_metadata.gemspec" }
+      let(:file_path) { fixtures_dir.join "tester-custom_metadata.gemspec" }
 
       it "answers custom host" do
         expect(specification.allowed_push_host).to eq("https://www.test.com")
@@ -139,7 +139,7 @@ RSpec.describe Gemsmith::Gem::Specification do
 
   describe "#package_path" do
     it "answers relative package path" do
-      expect(specification.package_path).to eq("pkg/tester-0.1.0.gem")
+      expect(specification.package_path).to eq(Pathname("pkg/tester-0.1.0.gem"))
     end
   end
 end

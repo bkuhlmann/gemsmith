@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "yaml"
-require "fileutils"
+require "refinements/pathnames"
 require "gemsmith/authenticators/basic"
 require "gemsmith/authenticators/ruby_gems"
 
@@ -11,10 +11,12 @@ module Gemsmith
     DEFAULT_KEY = :rubygems_api_key
     DEFAULT_URL = "https://rubygems.org"
 
+    using Refinements::Pathnames
+
     attr_reader :key, :url
 
     def self.file_path
-      File.join ENV.fetch("HOME"), ".gem", "credentials"
+      Pathname(ENV.fetch("HOME")).join ".gem", "credentials"
     end
 
     def self.authenticators
@@ -52,7 +54,7 @@ module Gemsmith
     attr_reader :credentials, :shell
 
     def exist?
-      File.exist? self.class.file_path
+      self.class.file_path.exist?
     end
 
     def read
@@ -62,11 +64,11 @@ module Gemsmith
     end
 
     def write
-      file_path = self.class.file_path
-
-      FileUtils.mkdir_p File.dirname file_path
-      File.open(file_path, "w") { |file| file << YAML.dump(update) }
-      FileUtils.chmod 0o600, file_path
+      self.class
+          .file_path
+          .tap { |path| path.parent.make_path }
+          .write(YAML.dump(update))
+          .chmod 0o600
     end
 
     def update
