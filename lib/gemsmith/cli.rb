@@ -91,7 +91,6 @@ module Gemsmith
         Generators::Engine,
         Generators::Rspec,
         Generators::BundlerAudit,
-        Generators::GitCop,
         Generators::GitLint,
         Generators::Reek,
         Generators::Guard,
@@ -131,10 +130,6 @@ module Gemsmith
                   desc: "Add Rails Engine support.",
                   type: :boolean,
                   default: configuration.to_h.dig(:generate, :engine)
-    method_option :git_cop,
-                  desc: "Add Git Cop support. DEPRECATED: Use Git Lint instead.",
-                  type: :boolean,
-                  default: false
     method_option :git_lint,
                   desc: "Add Git Lint support.",
                   type: :boolean,

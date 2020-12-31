@@ -94,7 +94,6 @@ For more gem generation options, type: `gemsmith --help --generate`
 [--circle-ci], [--no-circle-ci]          # Add Circle CI support.
 [--cli], [--no-cli]                      # Add CLI support.
 [--engine], [--no-engine]                # Add Rails Engine support.
-[--git-cop], [--no-git-cop]              # Add Git Cop support. DEPRECATED: Use Git Lint instead.
 [--git-lint], [--no-git-lint]            # Add Git Lint support.
                                          # Default: true
 [--git-hub], [--no-git-hub]              # Add GitHub support.
