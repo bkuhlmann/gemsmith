@@ -11,10 +11,6 @@ require "git_plus/spec/shared_contexts/git_repo"
 require "climate_control"
 require "gemsmith"
 
-using Refinements::Pathnames
-
-Pathname.require_tree __dir__, "support/shared_contexts/**/*.rb"
-
 RSpec.configure do |config|
   config.color = true
   config.disable_monkey_patching!
