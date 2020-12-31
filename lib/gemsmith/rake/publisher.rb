@@ -3,7 +3,6 @@
 require "milestoner"
 require "gemsmith/identity"
 require "gemsmith/credentials"
-require "gemsmith/git"
 require "gemsmith/cli"
 
 module Gemsmith

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "gemsmith/identity"
-require "gemsmith/git"
 require "gemsmith/credentials"
 require "gemsmith/errors/base"
 require "gemsmith/errors/requirement_conversion"
