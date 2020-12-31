@@ -6,8 +6,10 @@ Bundler.require :tools
 require "simplecov"
 SimpleCov.start { enable_coverage :branch }
 
-require "gemsmith"
+require "git_plus/spec/shared_contexts/temp_dir"
+require "git_plus/spec/shared_contexts/git_repo"
 require "climate_control"
+require "gemsmith"
 
 using Refinements::Pathnames
 
