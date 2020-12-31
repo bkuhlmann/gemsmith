@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "git_plus"
 require "thor"
 require "thor/actions"
 require "refinements/strings"
@@ -28,22 +29,24 @@ module Gemsmith
 
     # rubocop:disable Metrics/MethodLength
     def self.configuration
+      repository = GitPlus::Repository.new
+
       Runcom::Config.new "#{Identity::NAME}/configuration.yml",
                          defaults: {
                            year: Time.now.year,
-                           github_user: Git.github_user,
+                           github_user: repository.config_get("github.user"),
                            gem: {
                              label: "Undefined",
                              name: "undefined",
                              path: "undefined",
                              class: "Undefined",
                              platform: "Gem::Platform::RUBY",
-                             url: Git.github_url("undefined"),
+                             url: "",
                              license: "MIT"
                            },
                            author: {
-                             name: Git.config_value("user.name"),
-                             email: Git.config_value("user.email"),
+                             name: repository.config_get("user.name"),
+                             email: repository.config_get("user.email"),
                              url: ""
                            },
                            organization: {
@@ -232,6 +235,8 @@ module Gemsmith
     # :reek:FeatureEnvy
     # rubocop:disable Metrics/MethodLength
     def setup_configuration name:, options: {}
+      repository = GitPlus::Repository.new
+
       @configuration = configuration.to_h.merge(
         gem: {
           label: name.titleize,
@@ -239,7 +244,7 @@ module Gemsmith
           path: name.snakecase,
           class: name.camelcase,
           platform: "Gem::Platform::RUBY",
-          url: Git.github_url(name),
+          url: %(https://github.com/#{repository.config_get "github.user"}/#{name}),
           license: "MIT"
         },
         generate: options.symbolize_keys

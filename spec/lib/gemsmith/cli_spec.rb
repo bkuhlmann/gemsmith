@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require "refinements/pathnames"
 
 RSpec.describe Gemsmith::CLI do
   subject :cli do
@@ -8,7 +9,9 @@ RSpec.describe Gemsmith::CLI do
     described_class.start command_line
   end
 
-  include_context "with temporary directory"
+  include_context "with Git repository"
+
+  using Refinements::Pathnames
 
   let(:options) { [] }
   let(:command_line) { Array(command).concat options }
@@ -266,18 +269,18 @@ RSpec.describe Gemsmith::CLI do
     let :defaults do
       {
         year: Time.now.year,
-        github_user: "tester",
+        github_user: "test",
         gem: {
           label: "Undefined",
           name: "undefined",
           path: "undefined",
           class: "Undefined",
           platform: "Gem::Platform::RUBY",
-          url: "https://github.com/tester/undefined",
+          url: "",
           license: "MIT"
         },
         author: {
-          name: "Test",
+          name: "Test User",
           email: "test@example.com",
           url: ""
         },
@@ -286,7 +289,7 @@ RSpec.describe Gemsmith::CLI do
           url: ""
         },
         versions: {
-          ruby: "2.0.0",
+          ruby: ENV["RUBY_VERSION"],
           rails: "5.1"
         },
         generate: {
@@ -310,18 +313,10 @@ RSpec.describe Gemsmith::CLI do
       }
     end
 
-    before do
-      allow(Gemsmith::Git).to receive(:config_value).with("github.user").and_return("tester")
-      allow(Gemsmith::Git).to receive(:config_value).with("user.name").and_return("Test")
-      allow(Gemsmith::Git).to receive(:config_value)
-        .with("user.email")
-        .and_return("test@example.com")
-    end
-
     it "answers default settings" do
-      ClimateControl.modify XDG_CONFIG_HOME: temp_dir.to_s do
-        Dir.chdir temp_dir do
-          stub_const "RUBY_VERSION", "2.0.0"
+      ClimateControl.modify XDG_CONFIG_HOME: git_repo_dir.to_s do
+        git_repo_dir.change_dir do
+          `git config --add github.user test`
           expect(described_class.configuration.to_h).to eq(defaults)
         end
       end
