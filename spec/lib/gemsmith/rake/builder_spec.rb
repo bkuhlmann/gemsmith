@@ -2,8 +2,10 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::Rake::Builder, :temp_dir do
+RSpec.describe Gemsmith::Rake::Builder do
   subject(:builder) { described_class.new kernel: kernel }
+
+  include_context "with temporary directory"
 
   let(:kernel) { class_spy Kernel }
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_context "with temporary directory", :temp_dir do
+RSpec.shared_context "with temporary directory" do
   let(:temp_dir) { Bundler.root.join "tmp", "rspec" }
 
   around do |example|

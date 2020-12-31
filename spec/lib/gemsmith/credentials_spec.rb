@@ -2,8 +2,10 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::Credentials, :temp_dir do
+RSpec.describe Gemsmith::Credentials do
   subject(:credentials) { described_class.new }
+
+  include_context "with temporary directory"
 
   let(:test_credentials_dir) { File.join temp_dir, ".gem" }
   let(:test_credentials_path) { File.join test_credentials_dir, "credentials" }

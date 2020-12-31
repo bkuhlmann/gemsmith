@@ -2,8 +2,10 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::Generators::CircleCI, :temp_dir do
+RSpec.describe Gemsmith::Generators::CircleCI do
   subject(:circle_ci) { described_class.new cli, configuration: configuration }
+
+  include_context "with temporary directory"
 
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}, generate: {circle_ci: create_circle_ci}} }

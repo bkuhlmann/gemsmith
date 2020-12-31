@@ -2,8 +2,10 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::Generators::Engine, :temp_dir do
+RSpec.describe Gemsmith::Generators::Engine do
   subject(:engine) { described_class.new cli, configuration: configuration }
+
+  include_context "with temporary directory"
 
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester", path: "tester"}} }

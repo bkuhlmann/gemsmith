@@ -2,8 +2,10 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::Generators::GitHub, :temp_dir do
+RSpec.describe Gemsmith::Generators::GitHub do
   subject(:git_hub) { described_class.new cli, configuration: configuration }
+
+  include_context "with temporary directory"
 
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}, generate: {git_hub: create_git_hub}} }

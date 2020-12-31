@@ -2,8 +2,10 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::Generators::Rake, :temp_dir do
+RSpec.describe Gemsmith::Generators::Rake do
   subject(:rake) { described_class.new cli, configuration: configuration }
+
+  include_context "with temporary directory"
 
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:generate_rspec) { false }

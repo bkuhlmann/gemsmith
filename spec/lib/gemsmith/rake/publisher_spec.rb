@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
+RSpec.describe Gemsmith::Rake::Publisher do
   subject :publisher do
     described_class.new gem_spec: gem_spec,
                         gem_config: gem_config,
@@ -10,6 +10,8 @@ RSpec.describe Gemsmith::Rake::Publisher, :temp_dir do
                         shell: shell,
                         kernel: kernel
   end
+
+  include_context "with temporary directory"
 
   let(:fixtures_dir) { File.join File.dirname(__FILE__), "..", "..", "..", "support", "fixtures" }
   let(:gem_spec_path) { File.join fixtures_dir, "tester-no_metadata.gemspec" }

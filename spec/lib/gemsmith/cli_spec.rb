@@ -8,6 +8,8 @@ RSpec.describe Gemsmith::CLI do
     described_class.start command_line
   end
 
+  include_context "with temporary directory"
+
   let(:options) { [] }
   let(:command_line) { Array(command).concat options }
 
@@ -16,7 +18,7 @@ RSpec.describe Gemsmith::CLI do
     let(:gem_dir) { Pathname.new File.join(temp_dir, gem_name) }
     let(:files) { Dir.chdir(gem_dir) { `git ls-files` }.split }
 
-    context "with no options", :temp_dir do
+    context "with no options" do
       let :options do
         [
           gem_name,
@@ -63,7 +65,7 @@ RSpec.describe Gemsmith::CLI do
       end
     end
 
-    context "with CLI option only", :temp_dir do
+    context "with CLI option only" do
       let :options do
         [
           gem_name,
@@ -108,7 +110,7 @@ RSpec.describe Gemsmith::CLI do
       end
     end
 
-    context "with all options (minus CLI)", :temp_dir do
+    context "with all options (minus CLI)" do
       let :options do
         [
           gem_name,
@@ -188,7 +190,7 @@ RSpec.describe Gemsmith::CLI do
       end
     end
 
-    context "with CLI and Rails Engine options only", :temp_dir do
+    context "with CLI and Rails Engine options only" do
       let :options do
         [
           gem_name,
@@ -213,7 +215,7 @@ RSpec.describe Gemsmith::CLI do
     end
   end
 
-  shared_examples_for "a config command", :temp_dir do
+  shared_examples_for "a config command" do
     context "with no options" do
       it "prints help text" do
         result = -> { cli }
@@ -260,7 +262,7 @@ RSpec.describe Gemsmith::CLI do
     end
   end
 
-  describe ".configuration", :temp_dir do
+  describe ".configuration" do
     let :defaults do
       {
         year: Time.now.year,
