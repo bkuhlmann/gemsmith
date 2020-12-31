@@ -11,9 +11,10 @@ Gem::Specification.new do |spec|
   spec.license = "MIT"
 
   spec.metadata = {
-    "source_code_uri" => "<%= config.dig(:gem, :url) %>",
+    "bug_tracker_uri" => "<%= config.dig(:gem, :url) %>/issues",
     "changelog_uri" => "<%= config.dig(:gem, :url) %>/blob/master/CHANGES.md",
-    "bug_tracker_uri" => "<%= config.dig(:gem, :url) %>/issues"
+    "documentation_uri" => "<%= config.dig(:gem, :url) %>",
+    "source_code_uri" => "<%= config.dig(:gem, :url) %>"
   }
 
   <%- if config.dig(:generate, :security) -%>
