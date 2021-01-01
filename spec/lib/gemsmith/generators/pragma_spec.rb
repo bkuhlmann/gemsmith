@@ -7,6 +7,8 @@ RSpec.describe Gemsmith::Generators::Pragma do
 
   include_context "with temporary directory"
 
+  using Refinements::Pathnames
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}} }
   let(:comments) { ["# frozen_string_literal: true"] }
@@ -40,8 +42,9 @@ RSpec.describe Gemsmith::Generators::Pragma do
       comments: comments,
       includes: includes
     ).and_return(pragmater)
-    FileUtils.mkdir_p gem_root
-    FileUtils.touch source_file
+
+    gem_root.make_path
+    source_file.touch
   end
 
   describe "#includes" do

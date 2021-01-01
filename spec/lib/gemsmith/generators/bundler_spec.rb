@@ -7,14 +7,17 @@ RSpec.describe Gemsmith::Generators::Bundler do
 
   include_context "with temporary directory"
 
+  using Refinements::Pathnames
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}} }
   let(:gem_root) { temp_dir.join "tester" }
 
-  before { FileUtils.mkdir_p gem_root }
-
   describe "#run" do
-    before { bundler.run }
+    before do
+      gem_root.make_path
+      bundler.run
+    end
 
     it "prints gem dependencies are being installed" do
       expect(cli).to have_received(:say_status).with(

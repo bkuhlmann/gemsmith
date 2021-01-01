@@ -7,6 +7,8 @@ RSpec.describe Gemsmith::Generators::Git do
 
   include_context "with temporary directory"
 
+  using Refinements::Pathnames
+
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:configuration) { {gem: {name: "tester"}} }
   let(:shell) { class_spy Open3 }
@@ -14,7 +16,7 @@ RSpec.describe Gemsmith::Generators::Git do
 
   describe "#run" do
     before do
-      FileUtils.mkdir gem_dir
+      gem_dir.make_path
       git.run
     end
 

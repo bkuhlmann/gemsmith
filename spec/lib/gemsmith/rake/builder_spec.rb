@@ -79,7 +79,7 @@ RSpec.describe Gemsmith::Rake::Builder do
     let(:gem_spec_file) { temp_dir.join "tester.gemspec" }
     let(:gem_spec) { Gemsmith::Gem::Specification.new gem_spec_file }
 
-    before { FileUtils.cp gem_spec_fixture_file, gem_spec_file }
+    before { gem_spec_fixture_file.copy gem_spec_file }
 
     context "when success" do
       subject(:builder) { described_class.new }

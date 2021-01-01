@@ -1,19 +1,22 @@
 # frozen_string_literal: true
 
 require "bundler/ui/shell"
-require "fileutils"
+require "refinements/pathnames"
 
 module Gemsmith
   module Rake
     # Provides gem build functionality. Meant to be wrapped in Rake tasks.
     class Builder
-      def initialize shell: Bundler::UI::Shell.new, kernel: Kernel
+      using Refinements::Pathnames
+
+      def initialize root: Pathname("pkg"), shell: Bundler::UI::Shell.new, kernel: Kernel
+        @root = root
         @shell = shell
         @kernel = kernel
       end
 
       def clean
-        FileUtils.rm_rf "pkg"
+        root.remove_tree
         shell.confirm "Cleaned gem artifacts."
       end
 
@@ -28,8 +31,8 @@ module Gemsmith
         path = gem_spec.package_path
 
         if kernel.system "gem build #{gem_spec.name}.gemspec"
-          FileUtils.mkdir_p "pkg"
-          FileUtils.mv gem_spec.package_file_name, path
+          root.make_path
+          Pathname(gem_spec.package_file_name).copy path
           shell.confirm "Built: #{path}."
         else
           shell.error "Unable to build: #{path}."
@@ -48,7 +51,7 @@ module Gemsmith
 
       private
 
-      attr_reader :shell, :kernel
+      attr_reader :root, :shell, :kernel
     end
   end
 end
