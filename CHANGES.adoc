@@ -1,5 +1,20 @@
 = Changes
 
+== 15.1.0 (2021-01-01)
+
+* Added Git+ dependency - Brooke Kuhlmann
+* Added documentation URI to gemspec template - Brooke Kuhlmann
+* Updated CLI configuration to default to Rails 6.1.0 - Brooke Kuhlmann
+* Updated CLI to use Git+ - Brooke Kuhlmann
+* Updated RSpec helper to use Git+ shared contexts - Brooke Kuhlmann
+* Removed Git implementation - Brooke Kuhlmann
+* Removed RSpec shared contexts - Brooke Kuhlmann
+* Removed Ruby experimental feature disablement - Brooke Kuhlmann
+* Removed deprecated Git Cop support - Brooke Kuhlmann
+* Refactored RSpec temporary directory shared context - Brooke Kuhlmann
+* Refactored file utils to leverage pathnames instead - Brooke Kuhlmann
+* Refactored implementation to use pathnames - Brooke Kuhlmann
+
 == 15.0.0 (2020-12-28)
 
 * Updated to Git Lint 2.0.0 - Brooke Kuhlmann
