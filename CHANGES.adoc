@@ -1,5 +1,10 @@
 = Changes
 
+== 15.1.1 (2021-01-03)
+
+- Updated to Git+ 0.2.0 - Brooke Kuhlmann
+- Updated to Milestoner 11.1.0 - Brooke Kuhlmann
+
 == 15.1.0 (2021-01-01)
 
 * Added Git+ dependency - Brooke Kuhlmann
