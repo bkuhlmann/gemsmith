@@ -1,9 +1,15 @@
 = Changes
 
+== 15.2.0 (2021-01-24)
+
+* Updated Circle CI template to 2.1.0 syntax - Brooke Kuhlmann
+* Updated to Circle CI 2.1.0 - Brooke Kuhlmann
+* Updated to Rubocop 1.8.0 - Brooke Kuhlmann
+
 == 15.1.1 (2021-01-03)
 
-- Updated to Git+ 0.2.0 - Brooke Kuhlmann
-- Updated to Milestoner 11.1.0 - Brooke Kuhlmann
+* Updated to Git+ 0.2.0 - Brooke Kuhlmann
+* Updated to Milestoner 11.1.0 - Brooke Kuhlmann
 
 == 15.1.0 (2021-01-01)
 
