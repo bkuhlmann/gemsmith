@@ -17,7 +17,9 @@ RSpec.describe Gemsmith::Generators::CircleCI do
       let(:create_circle_ci) { true }
 
       it "creates Circle CI config" do
-        expect(cli).to have_received(:template).with("%gem_name%/circle.yml.tt", configuration)
+        expect(cli).to have_received(:template).with(
+          "%gem_name%/.circleci/config.yml.tt", configuration
+        )
       end
     end
 

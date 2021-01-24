@@ -7,7 +7,7 @@ module Gemsmith
       def run
         return unless configuration.dig :generate, :circle_ci
 
-        template "%gem_name%/circle.yml.tt"
+        template "%gem_name%/.circleci/config.yml.tt"
       end
     end
   end
