@@ -11,6 +11,9 @@ require "git_plus/spec/shared_contexts/git_repo"
 require "climate_control"
 require "gemsmith"
 
+GC.auto_compact = true
+GC.verify_compaction_references double_heap: true, toward: :empty
+
 RSpec.configure do |config|
   config.color = true
   config.disable_monkey_patching!
