@@ -9,7 +9,7 @@ group :code_quality do
   gem "bundler-leak", "~> 0.2"
   gem "git-lint", "~> 2.0"
   gem "reek", "~> 6.0"
-  gem "rubocop", "~> 1.8"
+  gem "rubocop", "~> 1.10"
   gem "rubocop-performance", "~> 1.9"
   gem "rubocop-rake", "~> 0.5"
   gem "rubocop-rspec", "~> 2.0"

@@ -13,7 +13,7 @@ group :code_quality do
   gem "reek", "~> 6.0"
   <%- end -%>
   <%- if config.dig(:generate, :rubocop) -%>
-  gem "rubocop", "~> 1.8"
+  gem "rubocop", "~> 1.10"
   gem "rubocop-performance", "~> 1.8"
   gem "rubocop-rake", "~> 0.5"
   <%- end -%>
