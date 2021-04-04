@@ -1,5 +1,13 @@
 = Changes
 
+== 15.3.0 (2021-04-04)
+
+* Added Ruby garbage collection compaction - Brooke Kuhlmann
+* Updated Code Quality URLs - Brooke Kuhlmann
+* Updated to Docker Alpine Ruby image - Brooke Kuhlmann
+* Updated to Git+ 0.4.0 - Brooke Kuhlmann
+* Updated to Rubocop 1.10.0 - Brooke Kuhlmann
+
 == 15.2.0 (2021-01-24)
 
 * Updated Circle CI template to 2.1.0 syntax - Brooke Kuhlmann
