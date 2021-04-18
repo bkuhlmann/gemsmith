@@ -5,7 +5,7 @@ module Gemsmith
   module Identity
     NAME = "gemsmith"
     LABEL = "Gemsmith"
-    VERSION = "15.3.0"
+    VERSION = "15.4.0"
     VERSION_LABEL = "#{LABEL} #{VERSION}"
     URL = "https://www.alchemists.io/projects/gemsmith"
   end

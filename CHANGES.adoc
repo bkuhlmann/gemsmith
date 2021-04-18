@@ -1,5 +1,10 @@
 = Changes
 
+== 15.4.0 (2021-04-18)
+
+* Updated to Ruby 3.0.1 - Brooke Kuhlmann
+* Updated to Tocer 12.0.0 - Brooke Kuhlmann
+
 == 15.3.0 (2021-04-04)
 
 * Added Ruby garbage collection compaction - Brooke Kuhlmann
