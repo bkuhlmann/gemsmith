@@ -6,12 +6,19 @@ module Gemsmith
   module Generators
     # Generates documentation support.
     class Documentation < Base
+      def initialize cli, configuration: {}, writer: Tocer::Writer.new
+        super cli, configuration: configuration
+        @writer = writer
+      end
+
       def run
         create_files
         update_readme
       end
 
       private
+
+      attr_reader :writer
 
       def create_files
         template "%gem_name%/README.md.tt"
@@ -22,7 +29,7 @@ module Gemsmith
       end
 
       def update_readme
-        gem_root.join("README.md").then { |path| Tocer::Writer.new(path).call }
+        gem_root.join("README.md").then { |path| writer.call path }
       end
     end
   end

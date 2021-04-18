@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rubocop", "~> 1.10"
   spec.add_dependency "runcom", "~> 7.0"
   spec.add_dependency "thor", "~> 0.20"
-  spec.add_dependency "tocer", "~> 11.0"
+  spec.add_dependency "tocer", "~> 12.0"
   spec.add_dependency "versionaire", "~> 9.0"
 
   spec.files = Dir.glob "lib/**/*", File::FNM_DOTMATCH
