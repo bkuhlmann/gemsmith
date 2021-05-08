@@ -49,12 +49,7 @@ module Gemsmith
       end
 
       def code_quality_tasks
-        [
-          bundler_audit_task,
-          git_lint_task,
-          reek_task,
-          rubocop_task
-        ].compress.join " "
+        [bundler_audit_task, git_lint_task, reek_task, rubocop_task].compress.join " "
       end
 
       def code_quality_task

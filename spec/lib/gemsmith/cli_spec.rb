@@ -18,7 +18,10 @@ RSpec.describe Gemsmith::CLI do
   shared_examples_for "a generate command" do
     let(:gem_name) { "tester" }
     let(:gem_dir) { temp_dir.join gem_name }
-    let(:files) { gem_dir.change_dir { `git ls-files` }.split }
+    let :files do
+      gem_dir.change_dir { `git ls-files` }
+             .split
+    end
 
     context "with no options" do
       let :options do

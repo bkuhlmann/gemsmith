@@ -42,9 +42,7 @@ RSpec.describe Gemsmith::Rake::Publisher do
 
     context "without gemspec" do
       it "an empty string" do
-        temp_dir.change_dir do
-          expect(described_class.gem_spec_path).to eq("")
-        end
+        temp_dir.change_dir { expect(described_class.gem_spec_path).to eq("") }
       end
     end
   end
