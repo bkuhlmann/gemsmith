@@ -1,5 +1,14 @@
 = Changes
 
+== 15.5.0 (2021-06-06)
+
+* Fixed RSpec helper to load Refinements - Brooke Kuhlmann
+* Fixed Rubocop Layout/RedundantLineBreak issues - Brooke Kuhlmann
+* Added Zeitwerk gem - Brooke Kuhlmann
+* Added Zeitwerk loader - Brooke Kuhlmann
+* Updated to Milestoner 12.0.0 - Brooke Kuhlmann
+* Updated to Rubocop 1.14.0 - Brooke Kuhlmann
+
 == 15.4.0 (2021-04-18)
 
 * Updated to Ruby 3.0.1 - Brooke Kuhlmann
