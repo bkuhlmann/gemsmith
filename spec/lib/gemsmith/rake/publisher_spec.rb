@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Rake::Publisher do
+  using Refinements::Structs
+
   subject :publisher do
     described_class.new gem_spec: gem_spec,
                         gem_config: gem_config,
@@ -27,7 +29,7 @@ RSpec.describe Gemsmith::Rake::Publisher do
                  url: gem_spec.allowed_push_host
   end
 
-  let(:milestone_publisher) { instance_spy Milestoner::Publisher }
+  let(:milestone_publisher) { instance_spy Milestoner::Tags::Publisher }
   let(:shell) { instance_spy Bundler::UI::Shell }
   let(:kernel) { class_spy Kernel }
 
@@ -136,7 +138,9 @@ RSpec.describe Gemsmith::Rake::Publisher do
       before { publisher.publish }
 
       it "publishes unsigned gem" do
-        expect(milestone_publisher).to have_received(:publish).with(version, sign: false)
+        expect(milestone_publisher).to have_received(:call).with(
+          Milestoner::Container[:configuration].merge(git_tag_version: version, git_tag_sign: false)
+        )
       end
 
       it_behaves_like "push"
@@ -148,7 +152,9 @@ RSpec.describe Gemsmith::Rake::Publisher do
       before { publisher.publish }
 
       it "publishes signed gem" do
-        expect(milestone_publisher).to have_received(:publish).with(version, sign: true)
+        expect(milestone_publisher).to have_received(:call).with(
+          Milestoner::Container[:configuration].merge(git_tag_version: version, git_tag_sign: true)
+        )
       end
 
       it_behaves_like "push"
@@ -156,7 +162,7 @@ RSpec.describe Gemsmith::Rake::Publisher do
 
     context "with Milestoner error" do
       before do
-        allow(milestone_publisher).to receive(:publish).and_raise(Milestoner::Errors::Base, "test")
+        allow(milestone_publisher).to receive(:call).and_raise(Milestoner::Error, "test")
         temp_dir.change_dir { publisher.publish }
       end
 

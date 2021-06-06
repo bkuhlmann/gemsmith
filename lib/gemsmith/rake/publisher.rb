@@ -2,6 +2,7 @@
 
 require "milestoner"
 require "refinements/pathnames"
+require "refinements/structs"
 require "gemsmith/identity"
 require "gemsmith/credentials"
 require "gemsmith/cli"
@@ -12,6 +13,7 @@ module Gemsmith
     # :reek:TooManyInstanceVariables
     class Publisher
       using Refinements::Pathnames
+      using Refinements::Structs
 
       def self.gem_spec_path
         Pathname.pwd.files("*.gemspec").first.to_s
@@ -22,7 +24,8 @@ module Gemsmith
       def initialize gem_spec: Gemsmith::Gem::Specification.new(self.class.gem_spec_path.to_s),
                      gem_config: Gemsmith::CLI.configuration.to_h,
                      credentials: Gemsmith::Credentials,
-                     publisher: Milestoner::Publisher.new,
+                     publisher: Milestoner::Tags::Publisher.new,
+                     milestoner_container: Milestoner::Container,
                      shell: Bundler::UI::Shell.new,
                      kernel: Kernel
 
@@ -30,6 +33,7 @@ module Gemsmith
         @gem_config = gem_config
         @credentials = credentials
         @publisher = publisher
+        @milestoner_container = milestoner_container
         @shell = shell
         @kernel = kernel
       end
@@ -44,9 +48,10 @@ module Gemsmith
       end
 
       def publish
-        publisher.publish gem_spec.version, sign: signed?
+        milestoner_configuration.merge(git_tag_version: gem_spec.version, git_tag_sign: signed?)
+                                .then { |configuration| publisher.call configuration }
         push
-      rescue Milestoner::Errors::Base => error
+      rescue Milestoner::Error => error
         shell.error error.message
       end
 
@@ -56,7 +61,13 @@ module Gemsmith
 
       private
 
-      attr_reader :gem_spec, :gem_config, :credentials, :publisher, :shell, :kernel
+      attr_reader :gem_spec,
+                  :gem_config,
+                  :credentials,
+                  :publisher,
+                  :milestoner_container,
+                  :shell,
+                  :kernel
 
       def gem_host
         gem_spec.allowed_push_host
@@ -82,6 +93,8 @@ module Gemsmith
 
         status
       end
+
+      def milestoner_configuration = milestoner_container[:configuration]
     end
   end
 end
