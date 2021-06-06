@@ -1,34 +1,11 @@
 # frozen_string_literal: true
 
-require "gemsmith/identity"
-require "gemsmith/credentials"
-require "gemsmith/errors/base"
-require "gemsmith/errors/requirement_conversion"
-require "gemsmith/errors/requirement_operator"
-require "gemsmith/errors/specification"
-require "gemsmith/gem/inspector"
-require "gemsmith/gem/module_formatter"
-require "gemsmith/gem/requirement"
-require "gemsmith/gem/specification"
-require "gemsmith/generators/base"
-require "gemsmith/generators/bundler"
-require "gemsmith/generators/bundler_audit"
-require "gemsmith/generators/circle_ci"
-require "gemsmith/generators/cli"
-require "gemsmith/generators/documentation"
-require "gemsmith/generators/gem"
-require "gemsmith/generators/git"
-require "gemsmith/generators/git_lint"
-require "gemsmith/generators/git_hub"
-require "gemsmith/generators/guard"
-require "gemsmith/generators/pragma"
-require "gemsmith/generators/engine"
-require "gemsmith/generators/rake"
-require "gemsmith/generators/reek"
-require "gemsmith/generators/rspec"
-require "gemsmith/generators/rubocop"
-require "gemsmith/generators/ruby"
-require "gemsmith/rake/builder"
-require "gemsmith/rake/publisher"
-require "gemsmith/rake/tasks"
-require "gemsmith/cli"
+require "zeitwerk"
+
+loader = Zeitwerk::Loader.for_gem
+loader.inflector.inflect "cli" => "CLI", "circle_ci" => "CircleCI"
+loader.setup
+
+# Main namespace.
+module Gemsmith
+end
