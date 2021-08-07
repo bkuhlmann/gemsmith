@@ -32,10 +32,6 @@ module Gemsmith
         configuration.dig(:generate, :rspec) ? "spec" : ""
       end
 
-      def bundler_audit_task
-        configuration.dig(:generate, :bundler_audit) ? "bundle:audit" : ""
-      end
-
       def git_lint_task
         configuration.dig(:generate, :git_lint) ? "git_lint" : ""
       end
@@ -49,7 +45,7 @@ module Gemsmith
       end
 
       def code_quality_tasks
-        [bundler_audit_task, git_lint_task, reek_task, rubocop_task].compress.join " "
+        [git_lint_task, reek_task, rubocop_task].compress.join " "
       end
 
       def code_quality_task

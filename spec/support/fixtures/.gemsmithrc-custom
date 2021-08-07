@@ -14,7 +14,6 @@
   :ruby: "1.1.1"
   :rails: "2.2.2"
 :generate:
-  :bundler_audit: false
   :circle_ci: true
   :cli: true
   :engine: true

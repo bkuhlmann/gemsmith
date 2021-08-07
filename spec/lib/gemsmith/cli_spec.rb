@@ -27,7 +27,6 @@ RSpec.describe Gemsmith::CLI do
       let :options do
         [
           gem_name,
-          "--no-bundler-audit",
           "--no-circle-ci",
           "--no-cli",
           "--no-engine",
@@ -119,7 +118,6 @@ RSpec.describe Gemsmith::CLI do
       let :options do
         [
           gem_name,
-          "--bundler-audit",
           "--circle-ci",
           "--engine",
           "--git-lint",
@@ -290,7 +288,6 @@ RSpec.describe Gemsmith::CLI do
           rails: "6.1"
         },
         generate: {
-          bundler_audit: true,
           circle_ci: false,
           cli: false,
           engine: false,
@@ -329,7 +326,6 @@ RSpec.describe Gemsmith::CLI do
         Gemsmith::Generators::CLI,
         Gemsmith::Generators::Ruby,
         Gemsmith::Generators::Engine,
-        Gemsmith::Generators::BundlerAudit,
         Gemsmith::Generators::GitLint,
         Gemsmith::Generators::Rspec,
         Gemsmith::Generators::Reek,

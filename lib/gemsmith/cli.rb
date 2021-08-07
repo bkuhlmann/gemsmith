@@ -59,7 +59,6 @@ module Gemsmith
                              rails: "6.1"
                            },
                            generate: {
-                             bundler_audit: true,
                              circle_ci: false,
                              cli: false,
                              git_lint: true,
@@ -90,7 +89,6 @@ module Gemsmith
         Generators::Ruby,
         Generators::Engine,
         Generators::Rspec,
-        Generators::BundlerAudit,
         Generators::GitLint,
         Generators::Reek,
         Generators::Guard,
@@ -114,10 +112,6 @@ module Gemsmith
 
     desc "-g, [--generate=GEM]", "Generate new gem."
     map %w[-g --generate] => :generate
-    method_option :bundler_audit,
-                  desc: "Add Bundler Audit support.",
-                  type: :boolean,
-                  default: configuration.to_h.dig(:generate, :bundler_audit)
     method_option :circle_ci,
                   desc: "Add Circle CI support.",
                   type: :boolean,

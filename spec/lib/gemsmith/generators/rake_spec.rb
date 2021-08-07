@@ -9,7 +9,6 @@ RSpec.describe Gemsmith::Generators::Rake do
 
   let(:cli) { instance_spy Gemsmith::CLI, destination_root: temp_dir }
   let(:generate_rspec) { false }
-  let(:generate_bundler_audit) { false }
   let(:generate_git_lint) { false }
   let(:generate_reek) { false }
   let(:generate_rubocop) { false }
@@ -21,7 +20,6 @@ RSpec.describe Gemsmith::Generators::Rake do
       },
       generate: {
         rspec: generate_rspec,
-        bundler_audit: generate_bundler_audit,
         git_lint: generate_git_lint,
         reek: generate_reek,
         rubocop: generate_rubocop
@@ -33,16 +31,6 @@ RSpec.describe Gemsmith::Generators::Rake do
 
   describe "generate_code_quality_task" do
     let(:task) { rake.generate_code_quality_task }
-
-    context "when only Bundler Audit is enabled" do
-      let(:generate_bundler_audit) { true }
-
-      it "adds Bundler Audit task" do
-        expect(task).to eq(
-          %(\ndesc "Run code quality checks"\ntask code_quality: %i[bundle:audit]\n)
-        )
-      end
-    end
 
     context "when only Git Lint is enabled" do
       let(:generate_git_lint) { true }
@@ -69,13 +57,12 @@ RSpec.describe Gemsmith::Generators::Rake do
     end
 
     context "when all tasks are enabled" do
-      let(:generate_bundler_audit) { true }
       let(:generate_git_lint) { true }
       let(:generate_reek) { true }
       let(:generate_rubocop) { true }
 
       it "adds all code quality tasks" do
-        tasks = "%i[bundle:audit git_lint reek rubocop]"
+        tasks = "%i[git_lint reek rubocop]"
         expect(task).to eq(%(\ndesc "Run code quality checks"\ntask code_quality: #{tasks}\n))
       end
     end
@@ -131,7 +118,6 @@ RSpec.describe Gemsmith::Generators::Rake do
 
     context "when all tasks are enabled" do
       let(:generate_rspec) { true }
-      let(:generate_bundler_audit) { true }
       let(:generate_git_lint) { true }
       let(:generate_reek) { true }
       let(:generate_rubocop) { true }

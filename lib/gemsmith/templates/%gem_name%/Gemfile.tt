@@ -3,9 +3,6 @@ source "https://rubygems.org"
 gemspec
 
 group :code_quality do
-  <%- if config.dig(:generate, :bundler_audit) -%>
-  gem "bundler-audit", "~> 0.7"
-  <%- end -%>
   <%- if config.dig(:generate, :git_lint) -%>
   gem "git-lint", "~> 2.0"
   <%- end -%>
