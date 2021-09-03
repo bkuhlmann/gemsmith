@@ -4,6 +4,6 @@
     NAME = "<%= config.dig(:gem, :name) %>"
     LABEL = "<%= config.dig(:gem, :label) %>"
     VERSION = "0.1.0"
-    VERSION_LABEL = "#{LABEL} #{VERSION}"
+    VERSION_LABEL = "#{LABEL} #{VERSION}".freeze
   end
 <% end %>

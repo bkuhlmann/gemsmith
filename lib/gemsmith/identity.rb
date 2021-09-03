@@ -6,7 +6,7 @@ module Gemsmith
     NAME = "gemsmith"
     LABEL = "Gemsmith"
     VERSION = "15.5.0"
-    VERSION_LABEL = "#{LABEL} #{VERSION}"
+    VERSION_LABEL = "#{LABEL} #{VERSION}".freeze
     URL = "https://www.alchemists.io/projects/gemsmith"
   end
 end
