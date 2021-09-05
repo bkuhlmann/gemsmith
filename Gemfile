@@ -12,7 +12,6 @@ group :code_quality do
   gem "rubocop-performance", "~> 1.9"
   gem "rubocop-rake", "~> 0.5"
   gem "rubocop-rspec", "~> 2.0"
-  gem "rubycritic", "~> 4.5", require: false
   gem "simplecov", "~> 0.20"
 end
 
