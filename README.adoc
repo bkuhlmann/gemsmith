@@ -11,7 +11,11 @@ image::https://img.shields.io/badge/code_style-alchemists-brightgreen.svg[Alchem
 [link=https://circleci.com/gh/bkuhlmann/gemsmith]
 image::https://circleci.com/gh/bkuhlmann/gemsmith.svg?style=svg[Circle CI Status]
 
-A command line interface for smithing Ruby gems.
+Gemsmith is a command line interface for smithing Ruby gems. Perfect for when you need a
+professional and robust tool beyond link:https://bundler.io[Bundler]'s basic gem skeletons. While
+Bundler is great for creating your first gem, you'll quickly outgrow Bundler when creating and
+maintaining multiple gems. This is where Gemsmith can increase your productivity by providing much
+of the tooling you need from the start with the ability to customize as desired.
 
 toc::[]
 
