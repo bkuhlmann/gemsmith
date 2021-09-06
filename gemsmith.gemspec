@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "milestoner", "~> 12.0"
   spec.add_dependency "pragmater", "~> 9.0"
   spec.add_dependency "refinements", "~> 8.0"
-  spec.add_dependency "rubocop", "~> 1.14"
+  spec.add_dependency "rubocop", "~> 1.20"
   spec.add_dependency "runcom", "~> 7.0"
   spec.add_dependency "thor", "~> 0.20"
   spec.add_dependency "tocer", "~> 12.0"

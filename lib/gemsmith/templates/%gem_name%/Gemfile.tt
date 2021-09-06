@@ -10,12 +10,12 @@ group :code_quality do
   gem "reek", "~> 6.0"
   <%- end -%>
   <%- if config.dig(:generate, :rubocop) -%>
-  gem "rubocop", "~> 1.14"
-  gem "rubocop-performance", "~> 1.8"
-  gem "rubocop-rake", "~> 0.5"
+  gem "rubocop", "~> 1.20"
+  gem "rubocop-performance", "~> 1.11"
+  gem "rubocop-rake", "~> 0.6"
   <%- end -%>
   <%- if config.dig(:generate, :rubocop) && config.dig(:generate, :rspec) -%>
-  gem "rubocop-rspec", "~> 2.0"
+  gem "rubocop-rspec", "~> 2.4"
   <%- end -%>
   <%- if config.dig(:generate, :simple_cov) -%>
   gem "simplecov", "~> 0.20"
