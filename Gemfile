@@ -26,7 +26,7 @@ group :test do
 end
 
 group :tools do
-  gem "amazing_print", "~> 1.2"
+  gem "amazing_print", "~> 1.3"
   gem "pry", "~> 0.13"
   gem "pry-byebug", "~> 3.9"
 end
