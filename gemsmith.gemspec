@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor", "~> 0.20"
   spec.add_dependency "tocer", "~> 12.1"
   spec.add_dependency "versionaire", "~> 9.0"
-  spec.add_dependency "zeitwerk", "~> 2.4"
+  spec.add_dependency "zeitwerk", "~> 2.5"
 
   spec.files = Dir.glob "lib/**/*", File::FNM_DOTMATCH
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
