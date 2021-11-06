@@ -34,8 +34,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "versionaire", "~> 9.0"
   spec.add_dependency "zeitwerk", "~> 2.5"
 
-  spec.files = Dir.glob "lib/**/*", File::FNM_DOTMATCH
-  spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
+  spec.bindir = "exe"
   spec.executables << "gemsmith"
+  spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
+  spec.files = Dir.glob "lib/**/*", File::FNM_DOTMATCH
   spec.require_paths = ["lib"]
 end

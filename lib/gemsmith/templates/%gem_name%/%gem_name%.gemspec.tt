@@ -31,14 +31,15 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor", "~> 0.20"
   <%- end -%>
 
+  <%- if config.dig(:generate, :cli) -%>
+  spec.bindir = "exe"
+  spec.executables << "<%= config.dig(:gem, :name) %>"
+  <%- end -%>
+  spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
   <%- if config.dig(:generate, :engine) -%>
   spec.files = Dir["app/**/*", "bin/**/*", "config/**/*", "lib/**/*", "vendor/**/*"]
   <%- else -%>
   spec.files = Dir["lib/**/*"]
-  <%- end -%>
-  spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
-  <%- if config.dig(:generate, :cli) -%>
-  spec.executables << "<%= config.dig(:gem, :name) %>"
   <%- end -%>
   spec.require_paths = ["lib"]
 end

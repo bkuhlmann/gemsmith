@@ -17,7 +17,7 @@ RSpec.describe Gemsmith::Generators::CLI do
       let(:create_cli) { true }
 
       it "creates gem binary" do
-        expect(cli).to have_received(:template).with("%gem_name%/bin/%gem_name%.tt", configuration)
+        expect(cli).to have_received(:template).with("%gem_name%/exe/%gem_name%.tt", configuration)
       end
 
       it "creates command line interface" do
@@ -33,7 +33,7 @@ RSpec.describe Gemsmith::Generators::CLI do
       end
 
       it "sets excecutable file permission for setup script" do
-        expect(cli).to have_received(:chmod).with("tester/bin/tester", 0o755)
+        expect(cli).to have_received(:chmod).with("tester/exe/tester", 0o755)
       end
     end
 

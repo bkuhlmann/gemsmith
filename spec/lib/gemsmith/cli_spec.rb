@@ -85,7 +85,7 @@ RSpec.describe Gemsmith::CLI do
           ".ruby-version",
           "bin/console",
           "bin/setup",
-          "bin/tester",
+          "exe/tester",
           "lib/tester/identity.rb",
           "lib/tester/cli.rb",
           "lib/tester.rb",
