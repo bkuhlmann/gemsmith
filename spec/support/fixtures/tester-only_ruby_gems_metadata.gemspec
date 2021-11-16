@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata = {
     "allowed_push_key" => "rubygems_api_key",
-    "allowed_push_host" => "https://rubygems.org"
+    "allowed_push_host" => "https://rubygems.org",
+    "rubygems_mfa_required" => "true"
   }
 end

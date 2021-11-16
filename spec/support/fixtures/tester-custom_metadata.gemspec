@@ -6,5 +6,9 @@ Gem::Specification.new do |spec|
   spec.authors = ["Example Author"]
   spec.summary = "A summary."
 
-  spec.metadata = {"allowed_push_key" => "test", "allowed_push_host" => "https://www.test.com"}
+  spec.metadata = {
+    "allowed_push_key" => "test",
+    "allowed_push_host" => "https://www.test.com",
+    "rubygems_mfa_required" => "true"
+  }
 end

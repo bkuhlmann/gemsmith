@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
     "bug_tracker_uri" => "<%= config.dig(:gem, :url) %>/issues",
     "changelog_uri" => "<%= config.dig(:gem, :url) %>/blob/master/CHANGES.md",
     "documentation_uri" => "<%= config.dig(:gem, :url) %>",
+    "rubygems_mfa_required" => "true",
     "source_code_uri" => "<%= config.dig(:gem, :url) %>"
   }
 
