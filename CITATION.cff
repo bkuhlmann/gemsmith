@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: Please use the following metadata when citing this project in your work.
+title: Gemsmith
+abstract: A command line interface for smithing Ruby gems.
+version: 15.5.0
+license: Hippocratic-3.0
+date-released: 2021-06-06
+authors:
+  - family-names: Kuhlmann
+    given-names: Brooke
+    affiliation: Alchemists
+    orcid: https://orcid.org/0000-0002-5810-6268
+keywords:
+ - ruby
+ - gems
+ - command line interface
+ - generator
+repository-code: https://www.alchemists.io/projects/gemsmith
+repository-artifact: https://rubygems.org/gems/gemsmith
