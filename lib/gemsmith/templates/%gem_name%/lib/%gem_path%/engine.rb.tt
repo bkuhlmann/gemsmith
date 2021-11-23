@@ -1,6 +1,0 @@
-<% render_namespace do %>
-  # Defines and registers the Rails engine.
-  class Engine < ::Rails::Engine
-    isolate_namespace <%= config.dig(:gem, :class) %>
-  end
-<% end %>

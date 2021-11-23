@@ -9,7 +9,6 @@ SimpleCov.start { enable_coverage :branch }
 require "git_plus/spec/shared_contexts/temp_dir"
 require "git_plus/spec/shared_contexts/git_repo"
 require "refinements"
-require "climate_control"
 require "gemsmith"
 
 RSpec.configure do |config|

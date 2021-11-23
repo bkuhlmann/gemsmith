@@ -22,7 +22,6 @@ group :development do
 end
 
 group :test do
-  gem "climate_control", "~> 0.2"
   gem "guard-rspec", "~> 4.7", require: false
   gem "rspec", "~> 3.10"
 end

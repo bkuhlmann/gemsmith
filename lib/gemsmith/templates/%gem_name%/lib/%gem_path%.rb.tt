@@ -1,7 +1,0 @@
-require "<%= config.dig(:gem, :path) %>/identity"
-<%- if config.dig(:generate, :cli) -%>
-require "<%= config.dig(:gem, :path) %>/cli"
-<%- end -%>
-<%- if config.dig(:generate, :engine) -%>
-require "<%= config.dig(:gem, :path) %>/engine"
-<%- end -%>

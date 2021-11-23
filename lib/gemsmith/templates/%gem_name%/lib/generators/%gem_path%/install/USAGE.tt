@@ -1,8 +1,0 @@
-Description:
-    Installs additional <%= config.dig(:gem, :label) %> resources.
-
-Example:
-    rails generate <%= config.dig(:gem, :name) %>:install
-
-    This will create:
-        what/will/it/create

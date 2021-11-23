@@ -1,8 +1,0 @@
-Description:
-    Upgrades previously installed <%= config.dig(:gem, :label) %> resources.
-
-Example:
-    rails generate <%= config.dig(:gem, :name) %>:upgrade
-
-    This will create:
-        what/will/it/create

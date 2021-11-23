@@ -18,7 +18,6 @@ jobs:
           command: |
             gem update --system
             bundle config set path "vendor/bundle"
-            gem install rails
             bundle install
 
       - save_cache:
