@@ -7,3 +7,6 @@ inherit_from:
 Gemspec/RequiredRubyVersion:
   Exclude:
     - "spec/support/fixtures/*.gemspec"
+Lint/Void:
+  Exclude:
+    - "lib/gemsmith/container.rb"
