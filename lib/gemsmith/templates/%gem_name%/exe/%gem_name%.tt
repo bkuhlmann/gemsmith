@@ -1,8 +1,0 @@
-#! /usr/bin/env ruby
-
-require "<%= config.dig(:gem, :path) %>"
-require "<%= config.dig(:gem, :path) %>/cli"
-require "<%= config.dig(:gem, :path) %>/identity"
-
-Process.setproctitle <%= config.dig(:gem, :class) %>::Identity::VERSION_LABEL
-<%= config.dig(:gem, :class) %>::CLI.start

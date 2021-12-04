@@ -1,0 +1,8 @@
+#! /usr/bin/env ruby
+
+require "<%= configuration.project_path %>"
+require "<%= configuration.project_path %>/cli"
+require "<%= configuration.project_path %>/identity"
+
+Process.setproctitle <%= configuration.project_class %>::Identity::VERSION_LABEL
+<%= configuration.project_class %>::CLI.start
