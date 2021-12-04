@@ -1,8 +1,5 @@
 #! /usr/bin/env ruby
 
-require "<%= configuration.project_path %>"
-require "<%= configuration.project_path %>/cli"
-require "<%= configuration.project_path %>/identity"
+require "<%= configuration.project_name %>"
 
-Process.setproctitle <%= configuration.project_class %>::Identity::VERSION_LABEL
-<%= configuration.project_class %>::CLI.start
+<%= configuration.project_class %>::CLI::Shell.new.call ARGV
