@@ -11,6 +11,10 @@ require "git_plus/spec/shared_contexts/git_repo"
 require "refinements"
 require "gemsmith"
 
+using Refinements::Pathnames
+
+Pathname.require_tree __dir__, "support/shared_examples/**/*.rb"
+
 RSpec.configure do |config|
   config.color = true
   config.disable_monkey_patching!
