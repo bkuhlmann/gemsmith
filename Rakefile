@@ -2,7 +2,6 @@
 
 require "bundler/setup"
 require "bundler/plumber/task"
-require "gemsmith/rake/setup"
 require "git/lint/rake/setup"
 require "reek/rake/task"
 require "rspec/core/rake_task"
