@@ -2,8 +2,5 @@
 # frozen_string_literal: true
 
 require "gemsmith"
-require "gemsmith/cli"
-require "gemsmith/identity"
 
-Process.setproctitle Gemsmith::Identity::VERSION_LABEL
-Gemsmith::CLI.start
+Gemsmith::CLI::Shell.new.call ARGV
