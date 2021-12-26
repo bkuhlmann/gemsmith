@@ -14,7 +14,7 @@ group :code_quality do
   gem "rubocop-performance", "~> 1.12"
   gem "rubocop-rake", "~> 0.6"
   gem "rubocop-rspec", "~> 2.6"
-  gem "simplecov", "~> 0.20"
+  gem "simplecov", "~> 0.21"
 end
 
 group :development do
