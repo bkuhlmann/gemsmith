@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/bkuhlmann/gemsmith/issues",
-    "changelog_uri" => "https://www.alchemists.io/projects/gemsmith/changes.html",
+    "changelog_uri" => "https://www.alchemists.io/projects/gemsmith/versions",
     "documentation_uri" => "https://www.alchemists.io/projects/gemsmith",
     "rubygems_mfa_required" => "true",
     "source_code_uri" => "https://github.com/bkuhlmann/gemsmith"
