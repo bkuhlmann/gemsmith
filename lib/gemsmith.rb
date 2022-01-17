@@ -2,9 +2,10 @@
 
 require "zeitwerk"
 
-loader = Zeitwerk::Loader.for_gem
-loader.inflector.inflect "cli" => "CLI", "circle_ci" => "CircleCI"
-loader.setup
+Zeitwerk::Loader.for_gem.then do |loader|
+  loader.inflector.inflect "cli" => "CLI", "circle_ci" => "CircleCI"
+  loader.setup
+end
 
 # Main namespace.
 module Gemsmith
