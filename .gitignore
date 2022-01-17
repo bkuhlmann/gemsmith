@@ -1,3 +1,6 @@
 *.gem
-pkg/*
+.bundle
+.rubocop-http*
 Gemfile.lock
+pkg
+tmp
