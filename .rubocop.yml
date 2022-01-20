@@ -10,3 +10,6 @@ Gemspec/RequiredRubyVersion:
 Lint/Void:
   Exclude:
     - "lib/gemsmith/container.rb"
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - "spec/support/fixtures/**/*"
