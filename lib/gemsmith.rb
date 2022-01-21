@@ -4,7 +4,7 @@ require "zeitwerk"
 require "rubysmith"
 
 Zeitwerk::Loader.for_gem.then do |loader|
-  loader.inflector.inflect "cli" => "CLI", "circle_ci" => "CircleCI"
+  loader.inflector.inflect "cli" => "CLI", "circle_ci" => "CircleCI", "rspec" => "RSpec"
   loader.setup
 end
 
