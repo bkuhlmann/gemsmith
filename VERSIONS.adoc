@@ -1,5 +1,95 @@
 = Versions
 
+== 16.0.0 (2022-01-26)
+
+* Fixed Hippocratic license structure - Brooke Kuhlmann
+* Fixed README changes and credits sections - Brooke Kuhlmann
+* Fixed Rubocop Style/MutableConstant issues - Brooke Kuhlmann
+* Fixed contributing documentation - Brooke Kuhlmann
+* Added Bundler builder - Brooke Kuhlmann
+* Added CLI build action - Brooke Kuhlmann
+* Added CLI build parser - Brooke Kuhlmann
+* Added CLI builder - Brooke Kuhlmann
+* Added CLI config action - Brooke Kuhlmann
+* Added CLI core parser - Brooke Kuhlmann
+* Added CLI edit action - Brooke Kuhlmann
+* Added CLI install action - Brooke Kuhlmann
+* Added CLI parser - Brooke Kuhlmann
+* Added CLI publish action - Brooke Kuhlmann
+* Added CLI shell - Brooke Kuhlmann
+* Added CLI view action - Brooke Kuhlmann
+* Added Debug gem - Brooke Kuhlmann
+* Added Dry Container gem - Brooke Kuhlmann
+* Added Dry Monads gem - Brooke Kuhlmann
+* Added Git commit builder - Brooke Kuhlmann
+* Added Git ignore builder - Brooke Kuhlmann
+* Added Pastel gem - Brooke Kuhlmann
+* Added README community link - Brooke Kuhlmann
+* Added RSpec CLI parser shared example - Brooke Kuhlmann
+* Added RSpec helper builder - Brooke Kuhlmann
+* Added Rakefile Bundler gem tasks - Brooke Kuhlmann
+* Added Ruby version to Gemfile - Brooke Kuhlmann
+* Added Rubysmith - Brooke Kuhlmann
+* Added application container - Brooke Kuhlmann
+* Added builder shared example - Brooke Kuhlmann
+* Added cleaner tool - Brooke Kuhlmann
+* Added configuration loader - Brooke Kuhlmann
+* Added editor tool - Brooke Kuhlmann
+* Added gem finder - Brooke Kuhlmann
+* Added gem loader - Brooke Kuhlmann
+* Added gem picker - Brooke Kuhlmann
+* Added gem presenter - Brooke Kuhlmann
+* Added gemspec MFA opt in requirement - Brooke Kuhlmann
+* Added installer tool - Brooke Kuhlmann
+* Added packager tool - Brooke Kuhlmann
+* Added project citation information - Brooke Kuhlmann
+* Added publisher tool - Brooke Kuhlmann
+* Added pusher tool - Brooke Kuhlmann
+* Added specification builder - Brooke Kuhlmann
+* Added template root configuration enhancer - Brooke Kuhlmann
+* Added validator tool - Brooke Kuhlmann
+* Added versioner tool - Brooke Kuhlmann
+* Added viewer tool - Brooke Kuhlmann
+* Updated GitHub issue template - Brooke Kuhlmann
+* Updated README policy section links - Brooke Kuhlmann
+* Updated README project description - Brooke Kuhlmann
+* Updated Rubocop gem dependencies - Brooke Kuhlmann
+* Updated changes as versions documentation - Brooke Kuhlmann
+* Updated templates to use project configuration - Brooke Kuhlmann
+* Updated to Amazing Print 1.3.0 - Brooke Kuhlmann
+* Updated to Amazing Print 1.4.0 - Brooke Kuhlmann
+* Updated to Debug 1.4.0 - Brooke Kuhlmann
+* Updated to Git Lint 3.0.0 - Brooke Kuhlmann
+* Updated to Git+ 0.5.0 - Brooke Kuhlmann
+* Updated to Git+ 0.6.0 - Brooke Kuhlmann
+* Updated to Hippocratic License 3.0.0 - Brooke Kuhlmann
+* Updated to Milestoner 13.0.0 - Brooke Kuhlmann
+* Updated to Reek 6.1.0 - Brooke Kuhlmann
+* Updated to Refinements 8.4.0 - Brooke Kuhlmann
+* Updated to Refinements 8.5.0 - Brooke Kuhlmann
+* Updated to Refinements 9.1.0 - Brooke Kuhlmann
+* Updated to Rubocop dependencies - Brooke Kuhlmann
+* Updated to Ruby 3.0.2 - Brooke Kuhlmann
+* Updated to Ruby 3.0.3 - Brooke Kuhlmann
+* Updated to Ruby 3.1.0 - Brooke Kuhlmann
+* Updated to Runcom 8.0.0 - Brooke Kuhlmann
+* Updated to SimpleCov 0.21.2 - Brooke Kuhlmann
+* Updated to Tocer 12.1.0 - Brooke Kuhlmann
+* Updated to Versionare 10.0.0 - Brooke Kuhlmann
+* Updated to Zeitwerk 2.5.0 - Brooke Kuhlmann
+* Removed Bundler Audit - Brooke Kuhlmann
+* Removed Gemsmith depenendecy - Brooke Kuhlmann
+* Removed Pry dependencies - Brooke Kuhlmann
+* Removed RSpec spec helper GC automatic compaction - Brooke Kuhlmann
+* Removed RubyCritic and associated CLI option - Brooke Kuhlmann
+* Removed Thor implementation - Brooke Kuhlmann
+* Removed code of conduct and contributing files - Brooke Kuhlmann
+* Removed notes from pull request template - Brooke Kuhlmann
+* Refactored Git ignore - Brooke Kuhlmann
+* Refactored binary to exe instead of bin directory - Brooke Kuhlmann
+* Refactored identity into gem specification - Brooke Kuhlmann
+* Refactored loading of gem requirements - Brooke Kuhlmann
+
 == 15.5.0 (2021-06-06)
 
 * Fixed RSpec helper to load Refinements - Brooke Kuhlmann
