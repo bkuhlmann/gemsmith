@@ -13,10 +13,10 @@ RSpec.describe Gemsmith::CLI::Actions::Publish do
   include_context "with application container"
 
   let(:publisher) { instance_spy Gemsmith::Tools::Publisher, call: result }
-  let(:specification) { Gemsmith::Gems::Loader.call temp_dir.join("gemsmith-tester.gemspec") }
+  let(:specification) { Gemsmith::Gems::Loader.call temp_dir.join("gemsmith-test.gemspec") }
 
   describe "#call" do
-    before { Bundler.root.join("spec/support/fixtures/gemsmith-tester.gemspec").copy temp_dir }
+    before { Bundler.root.join("spec/support/fixtures/gemsmith-test.gemspec").copy temp_dir }
 
     context "when success" do
       let(:result) { Success specification }
@@ -31,7 +31,7 @@ RSpec.describe Gemsmith::CLI::Actions::Publish do
       it "logs gem was published" do
         temp_dir.change_dir do
           expectation = proc { action.call configuration }
-          expect(&expectation).to output("Published: gemsmith-tester-0.0.0.gem.\n").to_stdout
+          expect(&expectation).to output("Published: gemsmith-test-0.0.0.gem.\n").to_stdout
         end
       end
     end

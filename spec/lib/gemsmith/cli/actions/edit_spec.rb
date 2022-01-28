@@ -14,7 +14,7 @@ RSpec.describe Gemsmith::CLI::Actions::Edit do
   let(:editor) { instance_double Gemsmith::Tools::Editor, call: result }
 
   let :specification do
-    Gemsmith::Gems::Loader.call Bundler.root.join("spec/support/fixtures/gemsmith-tester.gemspec")
+    Gemsmith::Gems::Loader.call Bundler.root.join("spec/support/fixtures/gemsmith-test.gemspec")
   end
 
   describe "#call" do
@@ -22,8 +22,8 @@ RSpec.describe Gemsmith::CLI::Actions::Edit do
       let(:result) { Success specification }
 
       it "edits gem" do
-        expectation = proc { action.call "gemsmith-tester" }
-        expect(&expectation).to output("Editing: gemsmith-tester 0.0.0.\n").to_stdout
+        expectation = proc { action.call "gemsmith-test" }
+        expect(&expectation).to output("Editing: gemsmith-test 0.0.0.\n").to_stdout
       end
     end
 

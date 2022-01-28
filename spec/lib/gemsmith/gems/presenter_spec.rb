@@ -11,11 +11,11 @@ RSpec.describe Gemsmith::Gems::Presenter do
     Gem::Specification.load Bundler.root.join("spec/support/fixtures", fixture_file).to_s
   end
 
-  let(:fixture_file) { "tester-valid.gemspec" }
+  let(:fixture_file) { "test-valid.gemspec" }
 
   describe "#allowed_push_key" do
     context "with custom gemspec metadata" do
-      let(:fixture_file) { "tester-custom_metadata.gemspec" }
+      let(:fixture_file) { "test-custom_metadata.gemspec" }
 
       it "answers custom key" do
         expect(presenter.allowed_push_key).to eq("test")
@@ -29,7 +29,7 @@ RSpec.describe Gemsmith::Gems::Presenter do
 
   describe "#allowed_push_host" do
     context "with custom metadata" do
-      let(:fixture_file) { "tester-custom_metadata.gemspec" }
+      let(:fixture_file) { "test-custom_metadata.gemspec" }
 
       it "answers custom host" do
         expect(presenter.allowed_push_host).to eq("https://www.test.com")
@@ -43,10 +43,10 @@ RSpec.describe Gemsmith::Gems::Presenter do
 
   describe "#homepage_url" do
     context "with homepage" do
-      let(:fixture_file) { "tester-homepage_url.gemspec" }
+      let(:fixture_file) { "test-homepage_url.gemspec" }
 
       it "answers URL" do
-        expect(presenter.homepage_url).to eq("https://www.example.com")
+        expect(presenter.homepage_url).to eq("https://www.example.com/test")
       end
     end
 
@@ -57,7 +57,7 @@ RSpec.describe Gemsmith::Gems::Presenter do
 
   describe "#label" do
     context "with custom metadata" do
-      let(:fixture_file) { "tester-custom_metadata.gemspec" }
+      let(:fixture_file) { "test-custom_metadata.gemspec" }
 
       it "answers custom label" do
         expect(presenter.label).to eq("Test")
@@ -71,17 +71,17 @@ RSpec.describe Gemsmith::Gems::Presenter do
 
   describe "#labeled_summary" do
     it "answers label and summary" do
-      expect(presenter.labeled_summary).to eq("Undefined - A summary.")
+      expect(presenter.labeled_summary).to eq("Undefined - A test gem.")
     end
 
     it "answers label and summary with custom delimiter" do
-      expect(presenter.labeled_summary(delimiter: ": ")).to eq("Undefined: A summary.")
+      expect(presenter.labeled_summary(delimiter: ": ")).to eq("Undefined: A test gem.")
     end
   end
 
   describe "#labeled_version" do
     it "answers label and version" do
-      expect(presenter.labeled_version).to eq("Undefined 0.1.0")
+      expect(presenter.labeled_version).to eq("Undefined 0.0.0")
     end
   end
 
@@ -93,43 +93,43 @@ RSpec.describe Gemsmith::Gems::Presenter do
 
   describe "#name" do
     it "answers name" do
-      expect(presenter.name).to eq("tester")
+      expect(presenter.name).to eq("test")
     end
   end
 
   describe "#named_version" do
     it "answers name and version" do
-      expect(presenter.named_version).to eq("tester 0.1.0")
+      expect(presenter.named_version).to eq("test 0.0.0")
     end
   end
 
   describe "#package_path" do
     it "answers relative path" do
-      expect(presenter.package_path).to eq(Pathname("tmp/tester-0.1.0.gem"))
+      expect(presenter.package_path).to eq(Pathname("tmp/test-0.0.0.gem"))
     end
   end
 
   describe "#package_name" do
     it "answers file name" do
-      expect(presenter.package_name).to eq("tester-0.1.0.gem")
+      expect(presenter.package_name).to eq("test-0.0.0.gem")
     end
   end
 
   describe "#source_path" do
     it "answers gem path" do
-      expect(presenter.source_path).to eq(Bundler.root.join("spec/support/gems/tester-0.1.0"))
+      expect(presenter.source_path).to eq(Bundler.root.join("spec/support/gems/test-0.0.0"))
     end
   end
 
   describe "#summary" do
     it "answers gem summary" do
-      expect(presenter.summary).to eq("A summary.")
+      expect(presenter.summary).to eq("A test gem.")
     end
   end
 
   describe "#version" do
     it "answers version" do
-      expect(presenter.version).to eq(Version("0.1.0"))
+      expect(presenter.version).to eq(Version("0.0.0"))
     end
   end
 end

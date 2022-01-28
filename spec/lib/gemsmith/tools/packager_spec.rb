@@ -14,14 +14,14 @@ RSpec.describe Gemsmith::Tools::Packager do
   describe "#call" do
     before do
       Bundler.root
-             .join("spec/support/fixtures/gemsmith-tester.gemspec")
-             .copy temp_dir.join("gemsmith-tester.gemspec")
+             .join("spec/support/fixtures/gemsmith-test.gemspec")
+             .copy temp_dir.join("gemsmith-test.gemspec")
     end
 
     it "builds gem when successful" do
       temp_dir.change_dir do
         packager.call specification
-        expect(temp_dir.join("gemsmith-tester-0.0.0.gem").exist?).to eq(true)
+        expect(temp_dir.join("gemsmith-test-0.0.0.gem").exist?).to eq(true)
       end
     end
 
@@ -42,7 +42,7 @@ RSpec.describe Gemsmith::Tools::Packager do
       it "doesn't build gem" do
         temp_dir.change_dir do
           packager.call specification
-          expect(Pathname("gemsmith-tester-0.0.0.gem").exist?).to eq(false)
+          expect(Pathname("gemsmith-test-0.0.0.gem").exist?).to eq(false)
         end
       end
 

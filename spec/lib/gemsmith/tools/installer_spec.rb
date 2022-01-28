@@ -23,7 +23,7 @@ RSpec.describe Gemsmith::Tools::Installer do
         expect(executor).to have_received(:capture3).with(
           "gem",
           "install",
-          "tmp/gemsmith-tester-0.0.0.gem"
+          "tmp/gemsmith-test-0.0.0.gem"
         )
       end
 

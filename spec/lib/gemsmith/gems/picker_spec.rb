@@ -7,7 +7,7 @@ RSpec.describe Gemsmith::Gems::Picker do
 
   let(:kernel) { class_spy Kernel }
   let(:finder) { instance_double Gemsmith::Gems::Finder }
-  let(:fixture_path) { Bundler.root.join "spec/support/fixtures/gemsmith-tester.gemspec" }
+  let(:fixture_path) { Bundler.root.join "spec/support/fixtures/gemsmith-test.gemspec" }
 
   describe ".call" do
     before { allow(finder).to receive(:call).and_return([specification]) }

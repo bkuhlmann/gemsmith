@@ -12,7 +12,7 @@ RSpec.describe Gemsmith::Tools::Cleaner do
   describe "#call" do
     it "deletes Gemsmith artifacts" do
       temp_dir.change_dir do
-        path = temp_dir.join("tmp/gemsmith-tester-0.0.0.gem").deep_touch
+        path = temp_dir.join("tmp/gemsmith-test-0.0.0.gem").deep_touch
         cleaner.call specification
 
         expect(path.exist?).to eq(false)
@@ -21,7 +21,7 @@ RSpec.describe Gemsmith::Tools::Cleaner do
 
     it "deletes Bundler artifacts" do
       temp_dir.change_dir do
-        temp_dir.join("pkg/gemsmith-tester-0.0.0.gem").deep_touch
+        temp_dir.join("pkg/gemsmith-test-0.0.0.gem").deep_touch
         cleaner.call specification
 
         expect(temp_dir.join("pkg").exist?).to eq(false)
@@ -30,7 +30,7 @@ RSpec.describe Gemsmith::Tools::Cleaner do
 
     it "deletes extraneous root artifacts" do
       temp_dir.change_dir do
-        path = temp_dir.join("gemsmith-tester-0.0.0.gem").touch
+        path = temp_dir.join("gemsmith-test-0.0.0.gem").touch
         cleaner.call specification
 
         expect(path.exist?).to eq(false)

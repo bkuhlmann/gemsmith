@@ -22,7 +22,7 @@ RSpec.describe Gemsmith::Tools::Pusher do
       pusher.call specification
 
       expect(command).to have_received(:run).with(
-        ["push", "tmp/gemsmith-tester-0.0.0.gem", "--otp", "abc"]
+        ["push", "tmp/gemsmith-test-0.0.0.gem", "--otp", "abc"]
       )
     end
 
@@ -30,7 +30,7 @@ RSpec.describe Gemsmith::Tools::Pusher do
       allow(status).to receive(:success?).and_return(false)
       pusher.call specification
 
-      expect(command).to have_received(:run).with(["push", "tmp/gemsmith-tester-0.0.0.gem"])
+      expect(command).to have_received(:run).with(["push", "tmp/gemsmith-test-0.0.0.gem"])
     end
 
     it "answers error message when failure" do

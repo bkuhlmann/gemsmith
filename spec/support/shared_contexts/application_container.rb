@@ -42,7 +42,7 @@ RSpec.shared_context "with application container" do
   let(:executor) { class_spy Open3, capture3: ["Output.", "Error.", Process::Status.allocate] }
 
   let :specification do
-    Gemsmith::Gems::Loader.call Bundler.root.join("spec/support/fixtures/gemsmith-tester.gemspec")
+    Gemsmith::Gems::Loader.call Bundler.root.join("spec/support/fixtures/gemsmith-test.gemspec")
   end
 
   before do
