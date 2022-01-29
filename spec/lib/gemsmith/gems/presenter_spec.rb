@@ -13,6 +13,13 @@ RSpec.describe Gemsmith::Gems::Presenter do
 
   let(:fixture_file) { "test-valid.gemspec" }
 
+  describe "#initialize" do
+    it "prints deprecatio warning" do
+      expectation = proc { described_class.new record }
+      expect(&expectation).to output(/DEPRECATION/).to_stderr
+    end
+  end
+
   describe "#allowed_push_key" do
     context "with custom gemspec metadata" do
       let(:fixture_file) { "test-custom_metadata.gemspec" }

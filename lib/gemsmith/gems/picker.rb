@@ -11,6 +11,8 @@ module Gemsmith
       def self.call(name, ...) = new(...).call name
 
       def initialize finder: Finder.new, kernel: Kernel
+        warn "[DEPRECATION]: Picker is deprecated, use Spek gem instead."
+
         @finder = finder
         @kernel = kernel
       end

@@ -19,6 +19,15 @@ RSpec.describe Gemsmith::Gems::Loader do
     end
   end
 
+  describe "#initialize" do
+    it "prints deprecation warning" do
+      path = Bundler.root.join "spec/support/fixtures/gemsmith-test.gemspec"
+      expectation = proc { loader.call path }
+
+      expect(&expectation).to output(/DEPRECATION/).to_stderr
+    end
+  end
+
   describe "#call" do
     let(:path) { Bundler.root.join "spec/support/fixtures/gemsmith-test.gemspec" }
 

@@ -7,6 +7,8 @@ module Gemsmith
       def self.call(path, ...) = new(...).call path
 
       def initialize client: ::Gem::Specification, presenter: Gems::Presenter
+        warn "[DEPRECATION]: Finder is deprecated, use Spek gem instead."
+
         @client = client
         @presenter = presenter
       end

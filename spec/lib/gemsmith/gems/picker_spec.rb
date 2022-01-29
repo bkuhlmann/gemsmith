@@ -8,28 +8,28 @@ RSpec.describe Gemsmith::Gems::Picker do
   let(:kernel) { class_spy Kernel }
   let(:finder) { instance_double Gemsmith::Gems::Finder }
   let(:fixture_path) { Bundler.root.join "spec/support/fixtures/gemsmith-test.gemspec" }
+  let(:specification) { Gemsmith::Gems::Loader.call fixture_path }
+
+  before { allow(finder).to receive(:call).and_return([specification]) }
 
   describe ".call" do
-    before { allow(finder).to receive(:call).and_return([specification]) }
-
-    let(:specification) { Gemsmith::Gems::Loader.call fixture_path }
-
     it "answers specification" do
       result = described_class.call("logger", finder:, kernel:)
       expect(result.success).to eq(specification)
     end
   end
 
+  describe "#initialize" do
+    it "prints deprecation warning" do
+      expectation = proc { picker.call "test" }
+      expect(&expectation).to output(/DEPRECATION/).to_stderr
+    end
+  end
+
   describe "#call" do
-    context "with single selection" do
-      before { allow(finder).to receive(:call).and_return([specification]) }
-
-      let(:specification) { Gemsmith::Gems::Loader.call fixture_path }
-
-      it "answers computed specification" do
-        result = picker.call "logger"
-        expect(result.success).to eq(specification)
-      end
+    it "answers computed specification with single selection" do
+      result = picker.call "logger"
+      expect(result.success).to eq(specification)
     end
 
     context "with multiple selections" do

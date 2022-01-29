@@ -14,6 +14,13 @@ RSpec.describe Gemsmith::Gems::Finder do
     end
   end
 
+  describe "#initialize" do
+    it "prints deprecation warning" do
+      expectation = proc { finder.call "test" }
+      expect(&expectation).to output(/DEPRECATION/).to_stderr
+    end
+  end
+
   describe "#call" do
     it "answers matching specifications" do
       specifications = finder.call "refinements"

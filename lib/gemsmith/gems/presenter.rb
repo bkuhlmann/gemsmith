@@ -17,6 +17,8 @@ module Gemsmith
       delegate %i[metadata name summary] => :record
 
       def initialize record
+        warn "[DEPRECATION]: Presenter is deprecated, use Spek gem instead."
+
         @record = record
       end
 
