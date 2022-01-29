@@ -1,7 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = "<%= configuration.project_name %>"
   spec.version = "<%= configuration.project_version %>"
-  spec.platform = Gem::Platform::RUBY
   spec.authors = ["<%= configuration.author_name %>"]
   spec.email = ["<%= configuration.author_email %>"]
   spec.homepage = "<%= configuration.computed_project_url_home %>"
@@ -45,5 +44,4 @@ Gem::Specification.new do |spec|
   <% end %>
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
   spec.files = Dir["*.gemspec", "lib/**/*"]
-  spec.require_paths = ["lib"]
 end

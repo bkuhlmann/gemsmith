@@ -1,7 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = "test"
   spec.version = "0.0.0"
-  spec.platform = Gem::Platform::RUBY
   spec.authors = ["Jill Smith"]
   spec.email = ["jill@example.com"]
   spec.homepage = "https://www.example.com/test"
@@ -24,5 +23,4 @@ Gem::Specification.new do |spec|
 
   spec.extra_rdoc_files = Dir["README*", "LICENSE*"]
   spec.files = Dir["*.gemspec", "lib/**/*"]
-  spec.require_paths = ["lib"]
 end
