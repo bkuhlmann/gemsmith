@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "dry/monads"
+require "spek"
 
 module Gemsmith
   module CLI
@@ -9,7 +10,7 @@ module Gemsmith
       class Install
         include Dry::Monads[:result]
 
-        def initialize installer: Tools::Installer.new, loader: Gems::Loader, container: Container
+        def initialize installer: Tools::Installer.new, loader: Spek::Loader, container: Container
           @installer = installer
           @loader = loader
           @container = container

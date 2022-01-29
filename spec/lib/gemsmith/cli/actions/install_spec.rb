@@ -13,7 +13,7 @@ RSpec.describe Gemsmith::CLI::Actions::Install do
   include_context "with application container"
 
   let(:installer) { instance_spy Gemsmith::Tools::Installer, call: result }
-  let(:specification) { Gemsmith::Gems::Loader.call temp_dir.join("gemsmith-test.gemspec") }
+  let(:specification) { Spek::Loader.call temp_dir.join("gemsmith-test.gemspec") }
 
   describe "#call" do
     before { Bundler.root.join("spec/support/fixtures/gemsmith-test.gemspec").copy temp_dir }
@@ -24,7 +24,7 @@ RSpec.describe Gemsmith::CLI::Actions::Install do
       it "installs gem" do
         temp_dir.change_dir do
           action.call configuration
-          expect(installer).to have_received(:call).with(kind_of(Gemsmith::Gems::Presenter))
+          expect(installer).to have_received(:call).with(kind_of(Spek::Presenter))
         end
       end
 

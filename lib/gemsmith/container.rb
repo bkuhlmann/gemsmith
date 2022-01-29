@@ -2,6 +2,7 @@
 
 require "dry-container"
 require "open3"
+require "spek"
 
 module Gemsmith
   # Provides a global gem container for injection into other objects.
@@ -13,7 +14,7 @@ module Gemsmith
     merge Rubysmith::Container
 
     register(:configuration) { Gemsmith::Configuration::Loader.call }
-    register(:specification) { Gemsmith::Gems::Loader.call "#{__dir__}/../../gemsmith.gemspec" }
+    register(:specification) { Spek::Loader.call "#{__dir__}/../../gemsmith.gemspec" }
     register(:environment) { ENV }
     register(:executor) { Open3 }
     register(:kernel) { Kernel }

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "dry/monads"
+require "spek"
 
 module Gemsmith
   module CLI
@@ -9,7 +10,7 @@ module Gemsmith
       class Publish
         include Dry::Monads[:result]
 
-        def initialize publisher: Tools::Publisher.new, loader: Gems::Loader, container: Container
+        def initialize publisher: Tools::Publisher.new, loader: Spek::Loader, container: Container
           @publisher = publisher
           @loader = loader
           @container = container

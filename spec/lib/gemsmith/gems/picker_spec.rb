@@ -34,11 +34,10 @@ RSpec.describe Gemsmith::Gems::Picker do
 
     context "with multiple selections" do
       before do
-        allow(finder).to receive(:call).and_return([specification_a, specification_b])
+        allow(finder).to receive(:call).and_return([specification, specification_b])
         allow(kernel).to receive(:gets).and_return("2")
       end
 
-      let(:specification_a) { Gemsmith::Gems::Loader.call fixture_path }
       let(:specification_b) { Gemsmith::Gems::Loader.call fixture_path }
 
       it "answers chosen specification" do

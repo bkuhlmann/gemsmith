@@ -10,11 +10,11 @@ RSpec.describe Gemsmith::CLI::Actions::Edit do
 
   include_context "with application container"
 
-  let(:picker) { instance_double Gemsmith::Gems::Picker, call: result }
+  let(:picker) { instance_double Spek::Picker, call: result }
   let(:editor) { instance_double Gemsmith::Tools::Editor, call: result }
 
   let :specification do
-    Gemsmith::Gems::Loader.call Bundler.root.join("spec/support/fixtures/gemsmith-test.gemspec")
+    Spek::Loader.call Bundler.root.join("spec/support/fixtures/gemsmith-test.gemspec")
   end
 
   describe "#call" do

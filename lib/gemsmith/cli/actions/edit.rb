@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "dry/monads"
+require "spek"
 
 module Gemsmith
   module CLI
@@ -9,7 +10,7 @@ module Gemsmith
       class Edit
         include Dry::Monads[:result]
 
-        def initialize picker: Gems::Picker, editor: Tools::Editor.new, container: Container
+        def initialize picker: Spek::Picker, editor: Tools::Editor.new, container: Container
           @picker = picker
           @editor = editor
           @container = container
