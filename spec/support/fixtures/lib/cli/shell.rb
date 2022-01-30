@@ -30,7 +30,7 @@ module Test
 
       def config(action) = actions.fetch(__method__).call(action)
 
-      def usage = logger.unknown(parser.to_s)
+      def usage = logger.unknown { parser.to_s }
 
       def logger = container[__method__]
     end

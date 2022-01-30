@@ -37,7 +37,7 @@ module Gemsmith
           in action_publish: true then publish configuration
           in action_edit: String => gem_name then edit gem_name
           in action_view: String => gem_name then view gem_name
-          in action_version: true then logger.info specification.labeled_version
+          in action_version: true then logger.info { specification.labeled_version }
           else usage
         end
       end
@@ -54,7 +54,7 @@ module Gemsmith
 
       def view(gem_name) = actions.fetch(__method__).call(gem_name)
 
-      def usage = logger.unknown(parser.to_s)
+      def usage = logger.unknown { parser.to_s }
 
       def logger = container[__method__]
 
