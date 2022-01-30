@@ -1,5 +1,16 @@
 = Versions
 
+== 16.1.0 (2022-01-30)
+
+* Fixed logger unknown to use blocks - Brooke Kuhlmann
+* Added README documentation builder - Brooke Kuhlmann
+* Added Spek gem - Brooke Kuhlmann
+* Added deprecation warnings to gems module - Brooke Kuhlmann
+* Updated to Runcom 8.2.0 - Brooke Kuhlmann
+* Removed gemspec safe defaults - Brooke Kuhlmann
+* Refactored RSpec gemspec fixtures - Brooke Kuhlmann
+* Refactored implementation to use Spek gem - Brooke Kuhlmann
+
 == 16.0.0 (2022-01-26)
 
 * Fixed Hippocratic license structure - Brooke Kuhlmann
