@@ -11,6 +11,7 @@ module Gemsmith
           Rubysmith::Builders::Version,
           Builders::Specification,
           Rubysmith::Builders::Documentation::Readme,
+          Builders::Documentation::Readme,
           Rubysmith::Builders::Documentation::Citation,
           Rubysmith::Builders::Documentation::License,
           Rubysmith::Builders::Documentation::Version,
