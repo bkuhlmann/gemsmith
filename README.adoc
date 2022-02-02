@@ -156,15 +156,17 @@ gemsmith --publish
 gemsmith --publish demo
 ----
 
-Security is important and turned on by default which requires a GPG key for signing your Git tags
-along with link:https://guides.rubygems.org/setting-up-multifactor-authentication[RubyGems
-Multi-Factor Authentication] enabled. Even better, if you are using
-link:https://www.alchemists.io/articles/universal_2nd_factor[Universal Second Factor
-Authentication], Gemsmith supports this by default and will automatically attempt to use your
-YubiKey which makes publishing gems, securely, a breeze.
+Security is important which requires a GPG key for signing your Git tags and
+link:https://www.alchemists.io/articles/ruby_gems_multi_factor_authentication/[RubyGems Multi-Factor
+Authentication] for publishing to RubyGems. Both of which are enabled by default. You'll want to
+read through the linked article which delves into how Gemsmith automatically makes use of your
+YubiKey to authenticate with RubyGems. Spending the time to set this up will allow Gemsmith to use
+of your YubiKey for effortless and secure publishing of new versions of your gems so I highly
+recommend doing this.
 
-As when installing or publishing a gem, Gemsmith can be used for existing gems which were not built
-by Gemsmith too. As long as your gem has a `*.gemspec` file, Gemsmith will be able to publish it.
+As with installing a gem, Gemsmith can be used to publish existing gems which were not built by
+Gemsmith too. As long as your gem has a `*.gemspec` file with a valid version, Gemsmith will be able
+to publish it.
 
 === Edit
 
