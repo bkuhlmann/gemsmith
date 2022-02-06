@@ -1,5 +1,12 @@
 = Versions
 
+== 16.2.0 (2022-02-06)
+
+* Added Spek gem to CLI templates - Brooke Kuhlmann
+* Updated README publish documentation to point to multi-factor article - Brooke Kuhlmann
+* Updated to Rubysmith 1.3.0 - Brooke Kuhlmann
+* Removed README badges - Brooke Kuhlmann
+
 == 16.1.0 (2022-01-30)
 
 * Fixed logger unknown to use blocks - Brooke Kuhlmann
