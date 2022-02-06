@@ -4,13 +4,6 @@
 
 = Gemsmith
 
-[link=http://badge.fury.io/rb/gemsmith]
-image::https://badge.fury.io/rb/gemsmith.svg[Gem Version]
-[link=https://www.alchemists.io/projects/code_quality]
-image::https://img.shields.io/badge/code_style-alchemists-brightgreen.svg[Alchemists Style Guide]
-[link=https://circleci.com/gh/bkuhlmann/gemsmith]
-image::https://circleci.com/gh/bkuhlmann/gemsmith.svg?style=svg[Circle CI Status]
-
 Gemsmith is a command line interface for smithing Ruby gems. Perfect for when you need a
 professional and robust tool beyond link:https://bundler.io[Bundler]'s basic gem skeletons. While
 Bundler is great for creating your first gem, you'll quickly outgrow Bundler when creating and
