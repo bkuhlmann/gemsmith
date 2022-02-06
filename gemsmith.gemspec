@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "milestoner", "~> 13.0"
   spec.add_dependency "pastel", "~> 0.8"
   spec.add_dependency "refinements", "~> 9.1"
-  spec.add_dependency "rubysmith", "~> 1.2"
+  spec.add_dependency "rubysmith", "~> 1.3"
   spec.add_dependency "runcom", "~> 8.2"
   spec.add_dependency "spek", "~> 0.0"
   spec.add_dependency "versionaire", "~> 10.0"
