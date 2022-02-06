@@ -9,13 +9,16 @@ module Test
 
         def self.call(...) = new(...).call
 
-        def initialize configuration = Container[:configuration], client: Parser::CLIENT
+        def initialize configuration = Container[:configuration],
+                       client: Parser::CLIENT,
+                       container: Container
           @configuration = configuration
           @client = client
+          @container = container
         end
 
         def call arguments = []
-          client.banner = "Test"
+          client.banner = specification.labeled_summary
           client.separator "\nUSAGE:\n"
           collate
           client.parse arguments
@@ -24,7 +27,7 @@ module Test
 
         private
 
-        attr_reader :configuration, :client
+        attr_reader :configuration, :client, :container
 
         def collate = private_methods.sort.grep(/add_/).each { |method| __send__ method }
 
@@ -48,6 +51,8 @@ module Test
             configuration.merge! action_help: true
           end
         end
+
+        def specification = container[__method__]
       end
     end
   end

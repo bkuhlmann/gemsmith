@@ -1,6 +1,7 @@
 require "dry-container"
 require "logger"
 require "pastel"
+require "spek"
 
 <% namespace do %>
   # Provides a global gem container for injection into other objects.
@@ -8,6 +9,7 @@ require "pastel"
     extend Dry::Container::Mixin
 
     register(:configuration) { Configuration::Loader.call }
+    register(:specification) { Spek::Loader.call "#{__dir__}/<%= Array.new(2 + configuration.project_levels, "../").join %><%= configuration.project_name %>.gemspec" }
     register(:colorizer) { Pastel.new enabled: $stdout.tty? }
     register(:kernel) { Kernel }
 

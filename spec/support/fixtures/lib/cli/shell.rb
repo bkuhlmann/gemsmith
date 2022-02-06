@@ -23,7 +23,7 @@ module Test
       def perform configuration
         case configuration
           in action_config: Symbol => action then config action
-          in action_version: true then logger.info { "Test 0.0.0" }
+          in action_version: true then logger.info { specification.labeled_version }
           else usage
         end
       end
@@ -31,6 +31,8 @@ module Test
       def config(action) = actions.fetch(__method__).call(action)
 
       def usage = logger.unknown { parser.to_s }
+
+      def specification = container[__method__]
 
       def logger = container[__method__]
     end
