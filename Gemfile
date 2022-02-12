@@ -8,12 +8,9 @@ gemspec
 
 group :code_quality do
   gem "bundler-leak", "~> 0.2"
+  gem "caliber", "~> 0.1"
   gem "git-lint", "~> 3.0"
   gem "reek", "~> 6.1"
-  gem "rubocop", "~> 1.25"
-  gem "rubocop-performance", "~> 1.12"
-  gem "rubocop-rake", "~> 0.6"
-  gem "rubocop-rspec", "~> 2.6"
   gem "simplecov", "~> 0.21"
 end
 
