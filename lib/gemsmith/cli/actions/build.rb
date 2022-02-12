@@ -24,6 +24,7 @@ module Gemsmith
           Rubysmith::Builders::Rake,
           Rubysmith::Builders::Console,
           Rubysmith::Builders::CircleCI,
+          Builders::CircleCI,
           Rubysmith::Builders::Setup,
           Rubysmith::Builders::GitHub,
           Rubysmith::Builders::Guard,
