@@ -1,5 +1,16 @@
 = Versions
 
+== 17.0.0 (2022-02-12)
+
+* Added Caliber - Brooke Kuhlmann
+* Added Circle CI builder - Brooke Kuhlmann
+* Updated to Dead End 3.1.0 - Brooke Kuhlmann
+* Updated to Git Lint 3.2.0 - Brooke Kuhlmann
+* Updated to RSpec 3.11.0 - Brooke Kuhlmann
+* Updated to Refinements 9.2.0 - Brooke Kuhlmann
+* Updated to Rubysmith 2.0.0 - Brooke Kuhlmann
+* Removed gems module - Brooke Kuhlmann
+
 == 16.2.0 (2022-02-06)
 
 * Added Spek gem to CLI templates - Brooke Kuhlmann

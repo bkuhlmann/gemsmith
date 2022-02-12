@@ -35,6 +35,16 @@ To install, run:
 gem install gemsmith
 ----
 
+== Upgrade
+
+If upgrading from 16.0.0 to 17.0.0, you'll need to make the following changes:
+
+* README badges are no longer injected so you can customize as desired.
+* The `:rubocop:` build configuration has been removed. Use `:caliber:` instead.
+* The `--rubocop` build option has been removed. Use `--caliber` instead.
+* You no longer have to Git ignore RuboCop cached configurations since this is handled by the
+  link:https://www.alchemists.io/projects/caliber[Caliber] gem now.
+
 == Usage
 
 === Command Line Interface (CLI)
@@ -55,6 +65,7 @@ USAGE:
 BUILD OPTIONS:
       --[no-]amazing_print                 Add Amazing Print gem. Default: true.
       --[no-]bundler-leak                  Add Bundler Leak gem. Default: true.
+      --[no-]caliber                       Add Caliber gem. Default: true.
       --[no-]circle_ci                     Add Circle CI configuration and badge. Default: false.
       --[no-]citation                      Add citation documentation. Default: true.
       --[no-]community                     Add community documentation. Default: false.
@@ -75,7 +86,6 @@ BUILD OPTIONS:
       --[no-]reek                          Add Reek gem. Default: true.
       --[no-]refinements                   Add Refinements gem. Default: true.
       --[no-]rspec                         Add RSpec gem. Default: true.
-      --[no-]rubocop                       Add RuboCop gems. Default: true.
       --[no-]security                      Add security. Default: true.
       --[no-]setup                         Add setup script. Default: true.
       --[no-]simple_cov                    Add SimpleCov gem. Default: true.
