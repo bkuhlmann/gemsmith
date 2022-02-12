@@ -47,7 +47,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
             gem "bundler-leak", "~> 0.2"
             gem "caliber", "~> 0.1"
             gem "dead_end", "~> 3.1"
-            gem "git-lint", "~> 3.0"
+            gem "git-lint", "~> 3.2"
             gem "reek", "~> 6.1"
             gem "simplecov", "~> 0.21"
           end
