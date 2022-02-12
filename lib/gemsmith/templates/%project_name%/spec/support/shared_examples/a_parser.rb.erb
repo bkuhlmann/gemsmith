@@ -1,7 +1,7 @@
 RSpec.shared_examples "a parser" do
   describe ".call" do
     it "answers configuration" do
-      expect(described_class.call).to be_a(<%= configuration.project_class %>::Configuration::Content)
+      expect(described_class.call).to be_a(<%= configuration.project_namespaced_class %>::Configuration::Content)
     end
   end
 end

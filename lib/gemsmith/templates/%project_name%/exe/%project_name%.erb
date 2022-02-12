@@ -2,4 +2,4 @@
 
 require "<%= configuration.project_name %>"
 
-<%= configuration.project_class %>::CLI::Shell.new.call ARGV
+<%= configuration.project_namespaced_class %>::CLI::Shell.new.call ARGV

@@ -15,7 +15,6 @@ RSpec.describe Gemsmith::CLI::Shell do
       temp_dir.join("test")
               .files("**/*", flag: File::FNM_DOTMATCH)
               .reject { |path| path.fnmatch?("*git/*") && !path.fnmatch?("*git/HEAD") }
-              .reject { |path| path.fnmatch? "*rubocop-https*" }
               .reject { |path| path.fnmatch? "*tags" }
               .map { |path| path.relative_path_from(temp_dir).to_s }
     end
@@ -64,6 +63,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           test
           --no-amazing_print
           --no-bundler-leak
+          --no-caliber
           --no-circle_ci
           --no-citation
           --no-cli
@@ -83,7 +83,6 @@ RSpec.describe Gemsmith::CLI::Shell do
           --no-reek
           --no-refinements
           --no-rspec
-          --no-rubocop
           --no-security
           --no-setup
           --no-simple_cov
@@ -180,6 +179,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           test
           --amazing_print
           --bundler-leak
+          --caliber
           --circle_ci
           --citation
           --cli
@@ -199,7 +199,6 @@ RSpec.describe Gemsmith::CLI::Shell do
           --reek
           --refinements
           --rspec
-          --rubocop
           --security
           --setup
           --simple_cov

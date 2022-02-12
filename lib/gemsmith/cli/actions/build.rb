@@ -31,7 +31,7 @@ module Gemsmith
           Rubysmith::Builders::RSpec::Context,
           Rubysmith::Builders::RSpec::Helper,
           Builders::RSpec::Helper,
-          Rubysmith::Builders::Rubocop,
+          Rubysmith::Builders::Caliber,
           Rubysmith::Extensions::Bundler,
           Rubysmith::Extensions::Pragmater,
           Rubysmith::Extensions::Tocer,

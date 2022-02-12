@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe <%= configuration.project_class %>::Configuration::Content do
+RSpec.describe <%= configuration.project_namespaced_class %>::Configuration::Content do
   subject(:content) { described_class.new }
 
   describe "#initialize" do

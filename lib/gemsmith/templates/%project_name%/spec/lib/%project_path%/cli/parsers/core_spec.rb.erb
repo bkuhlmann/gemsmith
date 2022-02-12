@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe <%= configuration.project_class %>::CLI::Parsers::Core do
+RSpec.describe <%= configuration.project_namespaced_class %>::CLI::Parsers::Core do
   subject(:parser) { described_class.new configuration.dup }
 
   include_context "with application container"

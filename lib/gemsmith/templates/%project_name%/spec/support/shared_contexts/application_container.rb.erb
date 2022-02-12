@@ -5,8 +5,8 @@ RSpec.shared_context "with application container" do
 
   include_context "with temporary directory"
 
-  let(:container) { <%= configuration.project_class %>::Container }
-  let(:configuration) { <%= configuration.project_class %>::Configuration::Loader.with_defaults.call }
+  let(:container) { <%= configuration.project_namespaced_class %>::Container }
+  let(:configuration) { <%= configuration.project_namespaced_class %>::Configuration::Loader.with_defaults.call }
   let(:kernel) { class_spy Kernel }
 
   before do

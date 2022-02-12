@@ -1,13 +1,13 @@
 require "spec_helper"
 
-RSpec.describe <%= configuration.project_class %>::Configuration::Loader do
+RSpec.describe <%= configuration.project_namespaced_class %>::Configuration::Loader do
   subject(:loader) { described_class.with_defaults }
 
-  let(:content) { <%= configuration.project_class %>::Configuration::Content.new }
+  let(:content) { <%= configuration.project_namespaced_class %>::Configuration::Content.new }
 
   describe ".call" do
     it "answers default configuration" do
-      expect(described_class.call).to be_a(<%= configuration.project_class %>::Configuration::Content)
+      expect(described_class.call).to be_a(<%= configuration.project_namespaced_class %>::Configuration::Content)
     end
   end
 

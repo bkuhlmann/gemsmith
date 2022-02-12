@@ -1,13 +1,13 @@
 require "spec_helper"
 
-RSpec.describe <%= configuration.project_class %>::CLI::Shell do
+RSpec.describe <%= configuration.project_namespaced_class %>::CLI::Shell do
   using Refinements::Pathnames
 
   subject(:shell) { described_class.new actions: described_class::ACTIONS.merge(config:) }
 
   include_context "with temporary directory"
 
-  let(:config) { instance_spy <%= configuration.project_class %>::CLI::Actions::Config }
+  let(:config) { instance_spy <%= configuration.project_namespaced_class %>::CLI::Actions::Config }
 
   describe "#call" do
     it "edits configuration" do
