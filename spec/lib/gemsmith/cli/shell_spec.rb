@@ -19,16 +19,6 @@ RSpec.describe Gemsmith::CLI::Shell do
               .map { |path| path.relative_path_from(temp_dir).to_s }
     end
 
-    it "edits configuration" do
-      shell.call %w[--config edit]
-      expect(kernel).to have_received(:system).with(include("EDITOR"))
-    end
-
-    it "views configuration" do
-      shell.call %w[--config view]
-      expect(kernel).to have_received(:system).with(include("cat"))
-    end
-
     context "with minimum forced build" do
       let :options do
         %w[
@@ -146,6 +136,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           "test/lib/test/configuration/defaults.yml",
           "test/lib/test/configuration/loader.rb",
           "test/lib/test/container.rb",
+          "test/lib/test/import.rb",
           "test/LICENSE.adoc",
           "test/Rakefile",
           "test/README.adoc",
@@ -235,6 +226,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           "test/lib/test/configuration/defaults.yml",
           "test/lib/test/configuration/loader.rb",
           "test/lib/test/container.rb",
+          "test/lib/test/import.rb",
           "test/LICENSE.adoc",
           "test/Rakefile",
           "test/README.adoc",

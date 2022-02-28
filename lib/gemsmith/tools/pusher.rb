@@ -7,11 +7,13 @@ module Gemsmith
   module Tools
     # Pushes a gem package to remote gem server.
     class Pusher
+      include Import[:executor]
       include Dry::Monads[:result]
 
-      def initialize command: Gem::CommandManager.new, container: Container
+      def initialize command: Gem::CommandManager.new, **dependencies
+        super(**dependencies)
+
         @command = command
-        @container = container
       end
 
       def call specification
@@ -23,14 +25,12 @@ module Gemsmith
 
       private
 
-      attr_reader :command, :container
+      attr_reader :command
 
       def one_time_password
         executor.capture3("ykman", "oath", "accounts", "code", "--single", "RubyGems")
                 .then { |stdout, _stderr, status| status.success? ? ["--otp", stdout.chomp] : [] }
       end
-
-      def executor = container[__method__]
     end
   end
 end

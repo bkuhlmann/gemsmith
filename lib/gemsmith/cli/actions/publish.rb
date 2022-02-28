@@ -8,12 +8,14 @@ module Gemsmith
     module Actions
       # Handles the publish action.
       class Publish
+        include Import[:logger]
         include Dry::Monads[:result]
 
-        def initialize publisher: Tools::Publisher.new, loader: Spek::Loader, container: Container
+        def initialize publisher: Tools::Publisher.new, loader: Spek::Loader, **dependencies
+          super(**dependencies)
+
           @publisher = publisher
           @loader = loader
-          @container = container
         end
 
         def call configuration
@@ -26,11 +28,9 @@ module Gemsmith
 
         private
 
-        attr_reader :publisher, :loader, :container
+        attr_reader :publisher, :loader
 
         def error(&) = logger.error(&)
-
-        def logger = container[__method__]
       end
     end
   end

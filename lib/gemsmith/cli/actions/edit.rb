@@ -8,12 +8,14 @@ module Gemsmith
     module Actions
       # Handles the edit action for editing an installed gem.
       class Edit
+        include Import[:kernel, :logger]
         include Dry::Monads[:result]
 
-        def initialize picker: Spek::Picker, editor: Tools::Editor.new, container: Container
+        def initialize picker: Spek::Picker, editor: Tools::Editor.new, **dependencies
+          super(**dependencies)
+
           @picker = picker
           @editor = editor
-          @container = container
         end
 
         def call gem_name
@@ -26,13 +28,9 @@ module Gemsmith
 
         private
 
-        attr_reader :picker, :editor, :container
+        attr_reader :picker, :editor
 
         def error(&) = logger.error(&)
-
-        def kernel = container[__method__]
-
-        def logger = container[__method__]
       end
     end
   end

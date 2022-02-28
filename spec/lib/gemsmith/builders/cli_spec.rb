@@ -82,6 +82,16 @@ RSpec.describe Gemsmith::Builders::CLI do
           Bundler.root.join("spec/support/fixtures/lib/container.rb").read
         )
       end
+
+      it "builds application import" do
+        expect(temp_dir.join("test/lib/test/import.rb").read).to eq(<<~CONTENT)
+          require "auto_injector"
+
+          module Test
+            Import = AutoInjector[Container]
+          end
+        CONTENT
+      end
     end
 
     context "when enabled with RSpec" do

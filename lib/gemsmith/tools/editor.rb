@@ -6,11 +6,8 @@ module Gemsmith
   module Tools
     # Edits a gem within default editor.
     class Editor
+      include Import[:executor, :environment]
       include Dry::Monads[:result]
-
-      def initialize container: Container
-        @container = container
-      end
 
       def call specification
         executor.capture3(client, specification.source_path.to_s).then do |_stdout, stderr, status|
@@ -20,11 +17,7 @@ module Gemsmith
 
       private
 
-      attr_reader :container
-
-      def executor = container[__method__]
-
-      def client = container[:environment].fetch("EDITOR")
+      def client = environment.fetch("EDITOR")
     end
   end
 end

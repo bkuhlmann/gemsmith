@@ -4,6 +4,8 @@ module Gemsmith
   module CLI
     # The main Command Line Interface (CLI) object.
     class Shell
+      include Import[:specification, :logger]
+
       ACTIONS = {
         config: Actions::Config.new,
         build: Actions::Build.new,
@@ -13,10 +15,11 @@ module Gemsmith
         view: Actions::View.new
       }.freeze
 
-      def initialize parser: Parser.new, actions: ACTIONS, container: Container
+      def initialize parser: Parser.new, actions: ACTIONS, **dependencies
+        super(**dependencies)
+
         @parser = parser
         @actions = actions
-        @container = container
       end
 
       def call arguments = []
@@ -27,7 +30,7 @@ module Gemsmith
 
       private
 
-      attr_reader :parser, :actions, :container
+      attr_reader :parser, :actions
 
       def perform configuration
         case configuration
@@ -55,12 +58,6 @@ module Gemsmith
       def view(gem_name) = actions.fetch(__method__).call(gem_name)
 
       def usage = logger.unknown { parser.to_s }
-
-      def logger = container[__method__]
-
-      def specification = container[__method__]
-
-      def process = container[__method__]
     end
   end
 end

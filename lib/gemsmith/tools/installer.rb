@@ -6,14 +6,16 @@ module Gemsmith
   module Tools
     # Installs a locally built gem.
     class Installer
+      include Import[:executor]
       include Dry::Monads[:result, :do]
 
       # Order matters.
       STEPS = [Tools::Cleaner.new, Tools::Packager.new].freeze
 
-      def initialize steps: STEPS, container: Container
+      def initialize steps: STEPS, **dependencies
+        super(**dependencies)
+
         @steps = steps
-        @container = container
       end
 
       def call specification
@@ -23,7 +25,7 @@ module Gemsmith
 
       private
 
-      attr_reader :steps, :container
+      attr_reader :steps
 
       def run specification
         path = specification.package_path
@@ -32,8 +34,6 @@ module Gemsmith
           status.success? ? Success(specification) : Failure("Unable to install: #{path}.")
         end
       end
-
-      def executor = container[__method__]
     end
   end
 end

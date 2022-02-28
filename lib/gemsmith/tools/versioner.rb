@@ -7,14 +7,17 @@ module Gemsmith
   module Tools
     # Versions (tags) current project (local and remote).
     class Versioner
+      include Import[:configuration]
       include Dry::Monads[:result]
 
       def initialize client: Milestoner::Tags::Publisher.new,
                      content: Milestoner::Configuration::Content,
-                     container: Container
+                     **dependencies
+
+        super(**dependencies)
+
         @client = client
         @content = content
-        @container = container
       end
 
       def call specification
@@ -26,7 +29,7 @@ module Gemsmith
 
       private
 
-      attr_reader :client, :content, :container
+      attr_reader :client, :content
 
       def settings specification
         content[
@@ -36,8 +39,6 @@ module Gemsmith
           version: specification.version
         ]
       end
-
-      def configuration = container[__method__]
     end
   end
 end

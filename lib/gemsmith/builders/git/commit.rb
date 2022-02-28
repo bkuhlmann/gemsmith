@@ -5,12 +5,15 @@ module Gemsmith
     module Git
       # Builds project skeleton initial Git commit message.
       class Commit
+        include Import[:specification]
+
         def self.call(...) = new(...).call
 
-        def initialize configuration, builder: Rubysmith::Builder, container: Container
+        def initialize configuration, builder: Rubysmith::Builder, **dependencies
+          super(**dependencies)
+
           @configuration = configuration
           @builder = builder
-          @container = container
         end
 
         def call
@@ -28,7 +31,7 @@ module Gemsmith
 
         private
 
-        attr_reader :configuration, :builder, :container
+        attr_reader :configuration, :builder
 
         def body
           <<~CONTENT
@@ -38,8 +41,6 @@ module Gemsmith
         end
 
         def project_name = configuration.project_name
-
-        def specification = container[__method__]
       end
     end
   end

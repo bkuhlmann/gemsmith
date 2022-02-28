@@ -8,12 +8,14 @@ module Gemsmith
     module Actions
       # Handles the install action.
       class Install
+        include Import[:logger]
         include Dry::Monads[:result]
 
-        def initialize installer: Tools::Installer.new, loader: Spek::Loader, container: Container
+        def initialize installer: Tools::Installer.new, loader: Spek::Loader, **dependencies
+          super(**dependencies)
+
           @installer = installer
           @loader = loader
-          @container = container
         end
 
         def call configuration
@@ -26,11 +28,9 @@ module Gemsmith
 
         private
 
-        attr_reader :installer, :loader, :container
+        attr_reader :installer, :loader
 
         def error(&) = logger.error(&)
-
-        def logger = container[__method__]
       end
     end
   end

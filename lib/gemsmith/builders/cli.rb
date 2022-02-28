@@ -47,16 +47,22 @@ module Gemsmith
                CONTENT
       end
 
-      def render_library
+      def render_configuration
+        [
+          "%project_name%/lib/%project_path%/configuration/content.rb.erb",
+          "%project_name%/lib/%project_path%/configuration/defaults.yml.erb",
+          "%project_name%/lib/%project_path%/configuration/loader.rb.erb",
+          "%project_name%/lib/%project_path%/container.rb.erb",
+          "%project_name%/lib/%project_path%/import.rb.erb"
+        ].each { |path| builder.call(configuration.merge(template_path: path)).render }
+      end
+
+      def render_cli
         [
           "%project_name%/lib/%project_path%/cli/actions/config.rb.erb",
           "%project_name%/lib/%project_path%/cli/parser.rb.erb",
           "%project_name%/lib/%project_path%/cli/parsers/core.rb.erb",
-          "%project_name%/lib/%project_path%/cli/shell.rb.erb",
-          "%project_name%/lib/%project_path%/configuration/content.rb.erb",
-          "%project_name%/lib/%project_path%/configuration/defaults.yml.erb",
-          "%project_name%/lib/%project_path%/configuration/loader.rb.erb",
-          "%project_name%/lib/%project_path%/container.rb.erb"
+          "%project_name%/lib/%project_path%/cli/shell.rb.erb"
         ].each { |path| builder.call(configuration.merge(template_path: path)).render }
       end
 
