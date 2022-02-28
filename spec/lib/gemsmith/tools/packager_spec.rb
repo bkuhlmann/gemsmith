@@ -21,7 +21,7 @@ RSpec.describe Gemsmith::Tools::Packager do
     it "builds gem when successful" do
       temp_dir.change_dir do
         packager.call specification
-        expect(temp_dir.join("gemsmith-test-0.0.0.gem").exist?).to eq(true)
+        expect(temp_dir.join("gemsmith-test-0.0.0.gem").exist?).to be(true)
       end
     end
 
@@ -42,7 +42,7 @@ RSpec.describe Gemsmith::Tools::Packager do
       it "doesn't build gem" do
         temp_dir.change_dir do
           packager.call specification
-          expect(Pathname("gemsmith-test-0.0.0.gem").exist?).to eq(false)
+          expect(Pathname("gemsmith-test-0.0.0.gem").exist?).to be(false)
         end
       end
 

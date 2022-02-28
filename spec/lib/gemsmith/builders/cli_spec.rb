@@ -206,7 +206,7 @@ RSpec.describe Gemsmith::Builders::CLI do
       let(:test_configuration) { configuration.minimize }
 
       it "does not build file" do
-        expect(temp_dir.join("test/exe/test").exist?).to eq(false)
+        expect(temp_dir.join("test/exe/test").exist?).to be(false)
       end
     end
   end

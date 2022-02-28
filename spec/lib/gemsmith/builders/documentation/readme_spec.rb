@@ -46,7 +46,7 @@ RSpec.describe Gemsmith::Builders::Documentation::Readme do
       let(:test_configuration) { configuration.minimize }
 
       it "doesn't build README" do
-        expect(temp_dir.join("test", "README.adoc").exist?).to eq(false)
+        expect(temp_dir.join("test", "README.adoc").exist?).to be(false)
       end
     end
   end

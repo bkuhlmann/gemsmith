@@ -15,7 +15,7 @@ RSpec.describe Gemsmith::Tools::Cleaner do
         path = temp_dir.join("tmp/gemsmith-test-0.0.0.gem").deep_touch
         cleaner.call specification
 
-        expect(path.exist?).to eq(false)
+        expect(path.exist?).to be(false)
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe Gemsmith::Tools::Cleaner do
         temp_dir.join("pkg/gemsmith-test-0.0.0.gem").deep_touch
         cleaner.call specification
 
-        expect(temp_dir.join("pkg").exist?).to eq(false)
+        expect(temp_dir.join("pkg").exist?).to be(false)
       end
     end
 
@@ -33,7 +33,7 @@ RSpec.describe Gemsmith::Tools::Cleaner do
         path = temp_dir.join("gemsmith-test-0.0.0.gem").touch
         cleaner.call specification
 
-        expect(path.exist?).to eq(false)
+        expect(path.exist?).to be(false)
       end
     end
   end

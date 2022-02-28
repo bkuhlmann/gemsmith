@@ -47,7 +47,7 @@ RSpec.describe Gemsmith::Builders::Git::Ignore do
 
       it "does not build file" do
         builder.call
-        expect(temp_dir.join("test/.gitignore").exist?).to eq(false)
+        expect(temp_dir.join("test/.gitignore").exist?).to be(false)
       end
     end
   end

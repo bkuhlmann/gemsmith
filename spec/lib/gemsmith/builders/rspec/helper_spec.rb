@@ -20,7 +20,7 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
 
       it "doesn't touch spec helper" do
         builder.call
-        expect(spec_helper_path.exist?).to eq(false)
+        expect(spec_helper_path.exist?).to be(false)
       end
     end
 
@@ -63,7 +63,7 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
 
       it "doesn't touch spec helper" do
         builder.call
-        expect(spec_helper_path.exist?).to eq(false)
+        expect(spec_helper_path.exist?).to be(false)
       end
     end
   end
