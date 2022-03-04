@@ -1,5 +1,14 @@
 = Versions
 
+== 17.0.1 (2022-03-03)
+
+* Fixed Hippocratic License to be 2.1.0 version - Brooke Kuhlmann
+* Fixed Rubocop RSpec issues with boolean and nil identity checks - Brooke Kuhlmann
+* Updated to Caliber 0.2.0 - Brooke Kuhlmann
+* Updated to Milestoner 13.3.0 - Brooke Kuhlmann
+* Updated to Ruby 3.1.1 - Brooke Kuhlmann
+* Updated to Spek 0.2.0 - Brooke Kuhlmann
+
 == 17.0.0 (2022-02-12)
 
 * Added Caliber - Brooke Kuhlmann
