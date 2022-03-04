@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.email = ["jill@example.com"]
   spec.homepage = "https://www.example.com/test"
   spec.summary = ""
-  spec.license = "Hippocratic-3.0"
+  spec.license = "Hippocratic-2.1"
 
   spec.metadata = {
     "bug_tracker_uri" => "https://www.example.com/test/issues",

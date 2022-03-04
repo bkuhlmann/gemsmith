@@ -3,7 +3,7 @@ message: Please use the following metadata when citing this project in your work
 title: Gemsmith
 abstract: A command line interface for smithing Ruby gems.
 version: 17.0.0
-license: Hippocratic-3.0
+license: Hippocratic-2.1
 date-released: 2022-02-12
 authors:
   - family-names: Kuhlmann
