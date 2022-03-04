@@ -36,7 +36,7 @@ RSpec.describe Gemsmith::Builders::CircleCI do
                 - restore_cache:
                     name: Bundler Restore
                     keys:
-                      - gem-cache-{{.Branch}}-{{checksum "test.gemspec"}}
+                      - gem-cache-{{.Branch}}-{{checksum "Gemfile"}}-{{checksum "test.gemspec"}}
                       - gem-cache-
 
                 - run:
@@ -48,7 +48,7 @@ RSpec.describe Gemsmith::Builders::CircleCI do
 
                 - save_cache:
                     name: Bundler Store
-                    key: gem-cache-{{.Branch}}-{{checksum "test.gemspec"}}
+                    key: gem-cache-{{.Branch}}-{{checksum "Gemfile"}}-{{checksum "test.gemspec"}}
                     paths:
                       - vendor/bundle
 

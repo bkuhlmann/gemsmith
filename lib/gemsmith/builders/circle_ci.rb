@@ -19,7 +19,8 @@ module Gemsmith
         return configuration unless configuration.build_circle_ci
 
         builder.call(configuration.merge(template_path: "%project_name%/.circleci/config.yml.erb"))
-               .replace("Gemfile.lock", "#{configuration.project_name}.gemspec")
+               .replace %({{checksum "Gemfile.lock"}}),
+                        %({{checksum "Gemfile"}}-{{checksum "#{project_name}.gemspec"}})
 
         configuration
       end
@@ -27,6 +28,8 @@ module Gemsmith
       private
 
       attr_reader :configuration, :builder
+
+      def project_name = configuration.project_name
     end
   end
 end
