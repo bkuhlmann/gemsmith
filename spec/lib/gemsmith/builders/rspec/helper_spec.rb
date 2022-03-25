@@ -15,15 +15,6 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
   it_behaves_like "a builder"
 
   describe "#call" do
-    context "when enabled" do
-      let(:test_configuration) { configuration.minimize.merge build_rspec: true }
-
-      it "doesn't touch spec helper" do
-        builder.call
-        expect(spec_helper_path.exist?).to be(false)
-      end
-    end
-
     context "when enabled with CLI only" do
       let(:test_configuration) { configuration.minimize.merge build_rspec: true, build_cli: true }
 
@@ -55,6 +46,15 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
             end
           end
         CONTENT
+      end
+    end
+
+    context "when enabled without CLI" do
+      let(:test_configuration) { configuration.minimize.merge build_rspec: true }
+
+      it "doesn't touch spec helper" do
+        builder.call
+        expect(spec_helper_path.exist?).to be(false)
       end
     end
 
