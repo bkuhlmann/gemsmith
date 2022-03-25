@@ -6,7 +6,12 @@ Gemspec/RequiredRubyVersion:
     - "spec/support/fixtures/*.gemspec"
 Lint/Void:
   Exclude:
+    - "lib/gemsmith/cli/actions/container.rb"
     - "lib/gemsmith/container.rb"
+    - "spec/support/fixtures/**/*"
+Metrics/AbcSize:
+  Exclude:
+    - "lib/gemsmith/cli/shell.rb"
 RSpec/FilePath:
   Exclude:
     - "spec/support/fixtures/**/*"

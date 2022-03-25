@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require "dry/container/stub"
+require "auto_injector/stub"
 
 RSpec.shared_context "with application container" do
   using Refinements::Structs
+  using AutoInjector::Stub
 
   include_context "with temporary directory"
-
-  let(:container) { Gemsmith::Container }
 
   let :configuration do
     Gemsmith::Configuration::Loader.with_overrides.call.merge(
@@ -50,18 +50,7 @@ RSpec.shared_context "with application container" do
     Spek::Loader.call Bundler.root.join("spec/support/fixtures/gemsmith-test.gemspec")
   end
 
-  before do
-    container.enable_stubs!
-    container.stub :configuration, configuration
-    container.stub :kernel, kernel
-    container.stub :executor, executor
-    container.stub :logger, logger
-  end
+  before { Gemsmith::Import.stub configuration:, kernel:, executor:, logger: }
 
-  after do
-    container.unstub :configuration
-    container.unstub :kernel
-    container.unstub :executor
-    container.unstub :logger
-  end
+  after { Gemsmith::Import.unstub configuration:, kernel:, executor:, logger: }
 end
