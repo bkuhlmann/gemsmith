@@ -55,6 +55,12 @@ RSpec.describe Gemsmith::Builders::CLI do
         )
       end
 
+      it "builds CLI action import" do
+        expect(temp_dir.join("test/lib/test/cli/actions/import.rb").read).to eq(
+          Bundler.root.join("spec/support/fixtures/lib/cli/actions/import.rb").read
+        )
+      end
+
       it "builds CLI parser" do
         expect(temp_dir.join("test/lib/test/cli/parser.rb").read).to eq(
           Bundler.root.join("spec/support/fixtures/lib/cli/parser.rb").read

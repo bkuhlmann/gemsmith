@@ -61,6 +61,7 @@ module Gemsmith
         [
           "%project_name%/lib/%project_path%/cli/actions/config.rb.erb",
           "%project_name%/lib/%project_path%/cli/actions/container.rb.erb",
+          "%project_name%/lib/%project_path%/cli/actions/import.rb.erb",
           "%project_name%/lib/%project_path%/cli/parser.rb.erb",
           "%project_name%/lib/%project_path%/cli/parsers/core.rb.erb",
           "%project_name%/lib/%project_path%/cli/shell.rb.erb"
