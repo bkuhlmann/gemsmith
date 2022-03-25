@@ -8,7 +8,7 @@ module Gemsmith
     module Actions
       # Handles the install action.
       class Install
-        include Import[:logger]
+        include Gemsmith::Import[:logger]
         include Dry::Monads[:result]
 
         def initialize installer: Tools::Installer.new, loader: Spek::Loader, **dependencies

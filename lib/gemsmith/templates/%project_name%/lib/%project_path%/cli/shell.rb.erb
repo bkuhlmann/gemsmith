@@ -2,15 +2,11 @@
   module CLI
     # The main Command Line Interface (CLI) object.
     class Shell
-      include Import[:specification, :logger]
+      include Actions::Import[:config, :specification, :logger]
 
-      ACTIONS = {config: Actions::Config.new}.freeze
-
-      def initialize parser: Parser.new, actions: ACTIONS, **dependencies
+      def initialize parser: Parser.new, **dependencies
         super(**dependencies)
-
         @parser = parser
-        @actions = actions
       end
 
       def call arguments = []
@@ -21,19 +17,15 @@
 
       private
 
-      attr_reader :parser, :actions
+      attr_reader :parser
 
       def perform configuration
         case configuration
-          in action_config: Symbol => action then config action
+          in action_config: Symbol => action then config.call action
           in action_version: true then logger.info { specification.labeled_version }
-          else usage
+          else logger.unknown { parser.to_s }
         end
       end
-
-      def config(action) = actions.fetch(__method__).call(action)
-
-      def usage = logger.unknown { parser.to_s }
     end
   end
 <% end %>

@@ -2,42 +2,46 @@ require "spec_helper"
 
 RSpec.describe <%= configuration.project_namespaced_class %>::CLI::Shell do
   using Refinements::Pathnames
+  using Refinements::StringIOs
+  using AutoInjector::Stub
 
-  subject(:shell) { described_class.new actions: described_class::ACTIONS.merge(config:) }
+  subject(:shell) { described_class.new }
 
-  include_context "with temporary directory"
+  include_context "with application container"
 
-  let(:config) { instance_spy <%= configuration.project_namespaced_class %>::CLI::Actions::Config }
+  before { <%= configuration.project_namespaced_class %>::CLI::Actions::Import.stub configuration:, kernel:, logger: }
+
+  after { <%= configuration.project_namespaced_class %>::CLI::Actions::Import.unstub configuration:, kernel:, logger: }
 
   describe "#call" do
     it "edits configuration" do
       shell.call %w[--config edit]
-      expect(config).to have_received(:call).with(:edit)
+      expect(kernel).to have_received(:system).with("$EDITOR ")
     end
 
     it "views configuration" do
       shell.call %w[--config view]
-      expect(config).to have_received(:call).with(:view)
+      expect(kernel).to have_received(:system).with("cat ")
     end
 
     it "prints version" do
-      expectation = proc { shell.call %w[--version] }
-      expect(&expectation).to output(/<%= configuration.project_label %>\s\d+\.\d+\.\d+/).to_stdout
+      shell.call %w[--version]
+      expect(io.reread).to match(/<%= configuration.project_label %>\s\d+\.\d+\.\d+/)
     end
 
     it "prints help (usage)" do
-      expectation = proc { shell.call %w[--help] }
-      expect(&expectation).to output(/<%= configuration.project_label %>.+USAGE.+/m).to_stdout
+      shell.call %w[--help]
+      expect(io.reread).to match(/<%= configuration.project_label %>.+USAGE.+/m)
     end
 
     it "prints usage when no options are given" do
-      expectation = proc { shell.call }
-      expect(&expectation).to output(/<%= configuration.project_label %>.+USAGE.+/m).to_stdout
+      shell.call
+      expect(io.reread).to match(/<%= configuration.project_label %>.+USAGE.+/m)
     end
 
     it "prints error with invalid option" do
-      expectation = proc { shell.call %w[--bogus] }
-      expect(&expectation).to output(/invalid option.+bogus/).to_stdout
+      shell.call %w[--bogus]
+      expect(io.reread).to match(/invalid option.+bogus/)
     end
   end
 end

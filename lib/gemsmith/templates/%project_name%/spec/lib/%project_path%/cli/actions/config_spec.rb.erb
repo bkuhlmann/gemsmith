@@ -1,6 +1,8 @@
 require "spec_helper"
 
 RSpec.describe <%= configuration.project_namespaced_class %>::CLI::Actions::Config do
+  using Refinements::StringIOs
+
   subject(:action) { described_class.new }
 
   include_context "with application container"
@@ -17,8 +19,8 @@ RSpec.describe <%= configuration.project_namespaced_class %>::CLI::Actions::Conf
     end
 
     it "logs invalid configuration" do
-      expectation = proc { action.call :bogus }
-      expect(&expectation).to output(/Invalid configuration selection: bogus./).to_stdout
+      action.call :bogus
+      expect(io.reread).to match(/Invalid configuration selection: bogus./)
     end
   end
 end

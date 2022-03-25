@@ -8,7 +8,7 @@ module Gemsmith
     module Actions
       # Handles the edit action for editing an installed gem.
       class Edit
-        include Import[:kernel, :logger]
+        include Gemsmith::Import[:kernel, :logger]
         include Dry::Monads[:result]
 
         def initialize picker: Spek::Picker, editor: Tools::Editor.new, **dependencies

@@ -5,10 +5,15 @@ require "spec_helper"
 RSpec.describe Gemsmith::CLI::Shell do
   using Refinements::Pathnames
   using Refinements::Structs
+  using AutoInjector::Stub
 
   subject(:shell) { described_class.new }
 
   include_context "with application container"
+
+  before { Gemsmith::CLI::Actions::Import.stub configuration:, kernel:, executor: }
+
+  after { Gemsmith::CLI::Actions::Import.unstub configuration:, kernel:, executor: }
 
   describe "#call" do
     let :project_files do
@@ -17,6 +22,16 @@ RSpec.describe Gemsmith::CLI::Shell do
               .reject { |path| path.fnmatch?("*git/*") && !path.fnmatch?("*git/HEAD") }
               .reject { |path| path.fnmatch? "*tags" }
               .map { |path| path.relative_path_from(temp_dir).to_s }
+    end
+
+    it "edits configuration" do
+      shell.call %w[--config edit]
+      expect(kernel).to have_received(:system).with(include("EDITOR"))
+    end
+
+    it "views configuration" do
+      shell.call %w[--config view]
+      expect(kernel).to have_received(:system).with(include("cat"))
     end
 
     context "with minimum forced build" do

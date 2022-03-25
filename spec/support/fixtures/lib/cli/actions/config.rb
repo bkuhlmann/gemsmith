@@ -1,11 +1,9 @@
-# frozen_string_literal: true
-
 module Test
   module CLI
     module Actions
       # Handles the config action.
       class Config
-        include Import[:kernel, :logger]
+        include Test::Import[:kernel, :logger]
 
         def initialize client: Configuration::Loader::CLIENT, **dependencies
           super(**dependencies)

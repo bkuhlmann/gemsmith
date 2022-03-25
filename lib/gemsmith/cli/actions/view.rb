@@ -8,7 +8,7 @@ module Gemsmith
     module Actions
       # Handles the view action for viewing an installed gem in default browser.
       class View
-        include Import[:kernel, :logger]
+        include Gemsmith::Import[:kernel, :logger]
         include Dry::Monads[:result]
 
         def initialize picker: Spek::Picker, viewer: Tools::Viewer.new, **dependencies

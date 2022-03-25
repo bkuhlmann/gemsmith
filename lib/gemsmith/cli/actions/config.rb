@@ -5,7 +5,7 @@ module Gemsmith
     module Actions
       # Handles the config action.
       class Config
-        include Import[:kernel, :logger]
+        include Gemsmith::Import[:kernel, :logger]
 
         def initialize client: Configuration::Loader::CLIENT, **dependencies
           super(**dependencies)

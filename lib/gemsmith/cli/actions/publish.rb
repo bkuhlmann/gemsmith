@@ -8,7 +8,7 @@ module Gemsmith
     module Actions
       # Handles the publish action.
       class Publish
-        include Import[:logger]
+        include Gemsmith::Import[:logger]
         include Dry::Monads[:result]
 
         def initialize publisher: Tools::Publisher.new, loader: Spek::Loader, **dependencies
