@@ -30,8 +30,8 @@ RSpec.describe Gemsmith::CLI::Actions::Publish do
 
       it "logs gem was published" do
         temp_dir.change_dir do
-          expectation = proc { action.call configuration }
-          expect(&expectation).to output("Published: gemsmith-test-0.0.0.gem.\n").to_stdout
+          action.call configuration
+          expect(logger.reread).to eq("Published: gemsmith-test-0.0.0.gem.\n")
         end
       end
     end
@@ -41,8 +41,8 @@ RSpec.describe Gemsmith::CLI::Actions::Publish do
 
       it "logs error" do
         temp_dir.change_dir do
-          expectation = proc { action.call configuration }
-          expect(&expectation).to output("Danger!\n").to_stdout
+          action.call configuration
+          expect(logger.reread).to eq("Danger!\n")
         end
       end
     end
@@ -52,8 +52,8 @@ RSpec.describe Gemsmith::CLI::Actions::Publish do
 
       it "logs error" do
         temp_dir.change_dir do
-          expectation = proc { action.call configuration }
-          expect(&expectation).to output("Unable to handle publish action.\n").to_stdout
+          action.call configuration
+          expect(logger.reread).to eq("Unable to handle publish action.\n")
         end
       end
     end

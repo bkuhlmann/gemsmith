@@ -30,8 +30,8 @@ RSpec.describe Gemsmith::CLI::Actions::Install do
 
       it "logs gem was installed" do
         temp_dir.change_dir do
-          expectation = proc { action.call configuration }
-          expect(&expectation).to output("Installed: gemsmith-test-0.0.0.gem.\n").to_stdout
+          action.call configuration
+          expect(logger.reread).to eq("Installed: gemsmith-test-0.0.0.gem.\n")
         end
       end
     end
@@ -41,8 +41,8 @@ RSpec.describe Gemsmith::CLI::Actions::Install do
 
       it "logs error" do
         temp_dir.change_dir do
-          expectation = proc { action.call configuration }
-          expect(&expectation).to output("Danger!\n").to_stdout
+          action.call configuration
+          expect(logger.reread).to eq("Danger!\n")
         end
       end
     end
@@ -52,8 +52,8 @@ RSpec.describe Gemsmith::CLI::Actions::Install do
 
       it "logs error" do
         temp_dir.change_dir do
-          expectation = proc { action.call configuration }
-          expect(&expectation).to output("Unable to handle install action.\n").to_stdout
+          action.call configuration
+          expect(logger.reread).to eq("Unable to handle install action.\n")
         end
       end
     end

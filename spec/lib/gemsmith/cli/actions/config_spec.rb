@@ -19,8 +19,8 @@ RSpec.describe Gemsmith::CLI::Actions::Config do
     end
 
     it "logs invalid configuration" do
-      expectation = proc { action.call :bogus }
-      expect(&expectation).to output(/Invalid configuration selection: bogus./).to_stdout
+      action.call :bogus
+      expect(logger.reread).to match(/Invalid configuration selection: bogus./)
     end
   end
 end

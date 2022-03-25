@@ -22,8 +22,8 @@ RSpec.describe Gemsmith::CLI::Actions::Edit do
       let(:result) { Success specification }
 
       it "edits gem" do
-        expectation = proc { action.call "gemsmith-test" }
-        expect(&expectation).to output("Editing: gemsmith-test 0.0.0.\n").to_stdout
+        action.call "gemsmith-test"
+        expect(logger.reread).to eq("Editing: gemsmith-test 0.0.0.\n")
       end
     end
 
@@ -31,8 +31,8 @@ RSpec.describe Gemsmith::CLI::Actions::Edit do
       let(:result) { Failure "Danger!" }
 
       it "logs error" do
-        expectation = proc { action.call configuration }
-        expect(&expectation).to output("Danger!\n").to_stdout
+        action.call configuration
+        expect(logger.reread).to eq("Danger!\n")
       end
     end
 
@@ -40,8 +40,8 @@ RSpec.describe Gemsmith::CLI::Actions::Edit do
       let(:result) { Maybe "bogus" }
 
       it "logs error" do
-        expectation = proc { action.call configuration }
-        expect(&expectation).to output("Unable to handle edit action.\n").to_stdout
+        action.call configuration
+        expect(logger.reread).to eq("Unable to handle edit action.\n")
       end
     end
   end

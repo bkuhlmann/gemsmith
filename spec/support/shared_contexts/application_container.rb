@@ -41,6 +41,11 @@ RSpec.shared_context "with application container" do
   let(:kernel) { class_spy Kernel }
   let(:executor) { class_spy Open3, capture3: ["Output.", "Error.", Process::Status.allocate] }
 
+  let :logger do
+    Cogger::Client.new Logger.new(StringIO.new),
+                       formatter: ->(_severity, _name, _at, message) { "#{message}\n" }
+  end
+
   let :specification do
     Spek::Loader.call Bundler.root.join("spec/support/fixtures/gemsmith-test.gemspec")
   end
@@ -50,11 +55,13 @@ RSpec.shared_context "with application container" do
     container.stub :configuration, configuration
     container.stub :kernel, kernel
     container.stub :executor, executor
+    container.stub :logger, logger
   end
 
   after do
     container.unstub :configuration
     container.unstub :kernel
     container.unstub :executor
+    container.unstub :logger
   end
 end

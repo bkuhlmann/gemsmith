@@ -2,7 +2,6 @@ require "spec_helper"
 
 RSpec.describe Test::CLI::Shell do
   using Refinements::Pathnames
-  using Refinements::StringIOs
   using AutoInjector::Stub
 
   subject(:shell) { described_class.new }
@@ -26,22 +25,22 @@ RSpec.describe Test::CLI::Shell do
 
     it "prints version" do
       shell.call %w[--version]
-      expect(io.reread).to match(/Test\s\d+\.\d+\.\d+/)
+      expect(logger.reread).to match(/Test\s\d+\.\d+\.\d+/)
     end
 
     it "prints help (usage)" do
       shell.call %w[--help]
-      expect(io.reread).to match(/Test.+USAGE.+/m)
+      expect(logger.reread).to match(/Test.+USAGE.+/m)
     end
 
     it "prints usage when no options are given" do
       shell.call
-      expect(io.reread).to match(/Test.+USAGE.+/m)
+      expect(logger.reread).to match(/Test.+USAGE.+/m)
     end
 
     it "prints error with invalid option" do
       shell.call %w[--bogus]
-      expect(io.reread).to match(/invalid option.+bogus/)
+      expect(logger.reread).to match(/invalid option.+bogus/)
     end
   end
 end
