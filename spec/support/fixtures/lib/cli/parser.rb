@@ -4,28 +4,32 @@ module Test
   module CLI
     # Assembles and parses all Command Line Interface (CLI) options.
     class Parser
+      include Import[:configuration]
+
       CLIENT = OptionParser.new nil, 40, "  "
 
       # Order is important.
       SECTIONS = [Parsers::Core].freeze
 
-      def initialize sections: SECTIONS, client: CLIENT, container: Container
+      def initialize sections: SECTIONS, client: CLIENT, **dependencies
+        super(**dependencies)
+
         @sections = sections
         @client = client
-        @configuration = container[:configuration].dup
+        @configuration_duplicate = configuration.dup
       end
 
       def call arguments = []
-        sections.each { |section| section.call configuration, client: }
+        sections.each { |section| section.call configuration_duplicate, client: }
         client.parse arguments
-        configuration.freeze
+        configuration_duplicate.freeze
       end
 
       def to_s = client.to_s
 
       private
 
-      attr_reader :sections, :client, :configuration
+      attr_reader :sections, :client, :configuration_duplicate
     end
   end
 end
