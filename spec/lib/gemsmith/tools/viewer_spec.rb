@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Gemsmith::Tools::Viewer do
   subject(:viewer) { described_class.new }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   describe "#call" do
     it "answers specification when success" do

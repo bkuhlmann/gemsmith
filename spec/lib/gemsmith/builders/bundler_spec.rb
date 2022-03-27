@@ -7,7 +7,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
 
   subject(:builder) { described_class.new test_configuration }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   let(:test_configuration) { configuration.minimize }
 

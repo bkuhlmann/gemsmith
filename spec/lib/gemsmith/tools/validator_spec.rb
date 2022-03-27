@@ -7,7 +7,7 @@ RSpec.describe Gemsmith::Tools::Validator do
 
   subject(:validator) { described_class.new }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   describe "#call" do
     it "answers specification when success" do

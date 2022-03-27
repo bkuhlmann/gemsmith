@@ -8,7 +8,7 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
 
   subject(:builder) { described_class.new test_configuration }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   let(:spec_helper_path) { temp_dir.join "test/spec/spec_helper.rb" }
 

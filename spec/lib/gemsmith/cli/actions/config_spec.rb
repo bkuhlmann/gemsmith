@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Gemsmith::CLI::Actions::Config do
   subject(:action) { described_class.new }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   describe "#call" do
     it "edits configuration" do

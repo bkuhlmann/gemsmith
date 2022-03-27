@@ -85,7 +85,7 @@ module Gemsmith
         return unless configuration.build_rspec
 
         [
-          "%project_name%/spec/support/shared_contexts/application_container.rb.erb",
+          "%project_name%/spec/support/shared_contexts/application_dependencies.rb.erb",
           "%project_name%/spec/support/shared_examples/a_parser.rb.erb"
         ].each { |path| builder.call(configuration.merge(template_path: path)).render }
       end

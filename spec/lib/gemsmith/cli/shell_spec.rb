@@ -9,11 +9,11 @@ RSpec.describe Gemsmith::CLI::Shell do
 
   subject(:shell) { described_class.new }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   before { Gemsmith::CLI::Actions::Import.stub configuration:, kernel:, executor: }
 
-  after { Gemsmith::CLI::Actions::Import.unstub configuration:, kernel:, executor: }
+  after { Gemsmith::CLI::Actions::Import.unstub :configuration, :kernel, :executor }
 
   describe "#call" do
     let :project_files do
@@ -164,7 +164,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           "test/spec/lib/test/configuration/content_spec.rb",
           "test/spec/lib/test/configuration/loader_spec.rb",
           "test/spec/spec_helper.rb",
-          "test/spec/support/shared_contexts/application_container.rb",
+          "test/spec/support/shared_contexts/application_dependencies.rb",
           "test/spec/support/shared_contexts/temp_dir.rb",
           "test/spec/support/shared_examples/a_parser.rb",
           "test/test.gemspec",
@@ -256,7 +256,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           "test/spec/lib/test/configuration/content_spec.rb",
           "test/spec/lib/test/configuration/loader_spec.rb",
           "test/spec/spec_helper.rb",
-          "test/spec/support/shared_contexts/application_container.rb",
+          "test/spec/support/shared_contexts/application_dependencies.rb",
           "test/spec/support/shared_contexts/temp_dir.rb",
           "test/spec/support/shared_examples/a_parser.rb",
           "test/test.gemspec",

@@ -8,7 +8,7 @@ RSpec.describe Gemsmith::CLI::Actions::View do
 
   subject(:action) { described_class.new picker:, viewer: }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   let(:picker) { instance_double Spek::Picker, call: result }
   let(:viewer) { instance_double Gemsmith::Tools::Viewer, call: result }

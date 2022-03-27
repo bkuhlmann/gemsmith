@@ -23,7 +23,7 @@
         case configuration
           in action_config: Symbol => action then config.call action
           in action_version: true then logger.info { specification.labeled_version }
-          else logger.unknown { parser.to_s }
+          else logger.any { parser.to_s }
         end
       end
     end

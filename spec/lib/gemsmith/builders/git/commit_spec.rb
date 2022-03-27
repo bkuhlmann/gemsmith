@@ -8,7 +8,7 @@ RSpec.describe Gemsmith::Builders::Git::Commit do
 
   subject(:builder) { described_class.new test_configuration }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   let(:project_dir) { temp_dir.join "test" }
   let(:commit) { project_dir.change_dir { `git log --pretty=format:%s%n%b -1` } }

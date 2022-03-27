@@ -7,7 +7,7 @@ RSpec.describe Gemsmith::Tools::Publisher do
 
   subject(:publisher) { described_class.new steps: }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   describe "#call" do
     context "when success" do

@@ -39,7 +39,7 @@ module Gemsmith
           in action_edit: String => gem_name then edit.call gem_name
           in action_view: String => gem_name then view.call gem_name
           in action_version: true then logger.info { specification.labeled_version }
-          else logger.unknown { parser.to_s }
+          else logger.any { parser.to_s }
         end
       end
     end

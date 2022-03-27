@@ -3,7 +3,7 @@
 require "dry/container/stub"
 require "auto_injector/stub"
 
-RSpec.shared_context "with application container" do
+RSpec.shared_context "with application dependencies" do
   using Refinements::Structs
   using AutoInjector::Stub
 
@@ -52,5 +52,5 @@ RSpec.shared_context "with application container" do
 
   before { Gemsmith::Import.stub configuration:, kernel:, executor:, logger: }
 
-  after { Gemsmith::Import.unstub configuration:, kernel:, executor:, logger: }
+  after { Gemsmith::Import.unstub :configuration, :kernel, :executor, :logger }
 end

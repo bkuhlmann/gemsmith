@@ -7,7 +7,7 @@ RSpec.describe Gemsmith::Builders::CircleCI do
 
   subject(:builder) { described_class.new test_configuration }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   let(:test_configuration) { configuration.minimize.merge build_circle_ci: true }
   let(:build_path) { temp_dir.join "test/.circleci/config.yml" }

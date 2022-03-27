@@ -9,7 +9,7 @@ RSpec.describe Gemsmith::Tools::Installer do
 
   subject(:installer) { described_class.new steps: }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   let(:cleaner) { instance_spy Gemsmith::Tools::Cleaner, call: Success() }
 

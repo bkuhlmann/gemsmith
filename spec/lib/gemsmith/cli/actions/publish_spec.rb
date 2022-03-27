@@ -10,7 +10,7 @@ RSpec.describe Gemsmith::CLI::Actions::Publish do
 
   subject(:action) { described_class.new publisher: }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   let(:publisher) { instance_spy Gemsmith::Tools::Publisher, call: result }
   let(:specification) { Spek::Loader.call temp_dir.join("gemsmith-test.gemspec") }

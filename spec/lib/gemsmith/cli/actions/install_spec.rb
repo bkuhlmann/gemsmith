@@ -10,7 +10,7 @@ RSpec.describe Gemsmith::CLI::Actions::Install do
 
   subject(:action) { described_class.new installer: }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   let(:installer) { instance_spy Gemsmith::Tools::Installer, call: result }
   let(:specification) { Spek::Loader.call temp_dir.join("gemsmith-test.gemspec") }

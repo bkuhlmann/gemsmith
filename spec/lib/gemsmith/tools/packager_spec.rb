@@ -8,7 +8,7 @@ RSpec.describe Gemsmith::Tools::Packager do
 
   subject(:packager) { described_class.new }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   before { Gemsmith::Import.stub executor: Open3 }
 

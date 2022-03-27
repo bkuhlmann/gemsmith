@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Gemsmith::Tools::Pusher do
   subject(:pusher) { described_class.new command: }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   let(:command) { instance_spy Gem::CommandManager, run: nil }
 

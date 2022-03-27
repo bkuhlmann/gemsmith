@@ -6,11 +6,11 @@ RSpec.describe <%= configuration.project_namespaced_class %>::CLI::Shell do
 
   subject(:shell) { described_class.new }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   before { <%= configuration.project_namespaced_class %>::CLI::Actions::Import.stub configuration:, kernel:, logger: }
 
-  after { <%= configuration.project_namespaced_class %>::CLI::Actions::Import.unstub configuration:, kernel:, logger: }
+  after { <%= configuration.project_namespaced_class %>::CLI::Actions::Import.unstub :configuration, :kernel, :logger }
 
   describe "#call" do
     it "edits configuration" do

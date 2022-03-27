@@ -9,7 +9,7 @@ RSpec.describe Gemsmith::Tools::Versioner do
 
   subject(:versioner) { described_class.new client: }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   let(:client) { instance_spy Milestoner::Tags::Publisher }
 

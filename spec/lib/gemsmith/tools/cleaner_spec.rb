@@ -7,7 +7,7 @@ RSpec.describe Gemsmith::Tools::Cleaner do
 
   subject(:cleaner) { described_class.new }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   describe "#call" do
     it "deletes Gemsmith artifacts" do

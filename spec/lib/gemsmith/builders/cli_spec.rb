@@ -8,7 +8,7 @@ RSpec.describe Gemsmith::Builders::CLI do
 
   subject(:builder) { described_class.new test_configuration }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   let(:test_configuration) { configuration.minimize }
 
@@ -151,8 +151,10 @@ RSpec.describe Gemsmith::Builders::CLI do
       end
 
       it "builds RSpec application container shared context" do
-        template_path = temp_dir.join "test/spec/support/shared_contexts/application_container.rb"
-        fixture_path = fixtures_root.join "spec/support/shared_contexts/application_container.rb"
+        template_path = temp_dir.join(
+          "test/spec/support/shared_contexts/application_dependencies.rb"
+        )
+        fixture_path = fixtures_root.join "spec/support/shared_contexts/application_dependencies.rb"
 
         expect(template_path.read).to eq(fixture_path.read)
       end

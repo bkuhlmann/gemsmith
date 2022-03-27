@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Gemsmith::CLI::Parser do
   subject(:parser) { described_class.new }
 
-  include_context "with application container"
+  include_context "with application dependencies"
 
   describe "#call" do
     it "answers hash with valid option" do
