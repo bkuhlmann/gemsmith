@@ -15,7 +15,7 @@ toc::[]
 == Features
 
 * Supports all features provided by link:https://www.alchemists.io/projects/rubysmith[Rubysmith]
-  which is used for smithing Ruby projects.
+  which is used to smith Ruby projects.
 * Supports basic gem skeletons or more advanced Command Line Interface (CLI) skeletons.
 * Supports gem building, installing for local development, and publishing.
 * Supports the editing and viewing of installed gems.
@@ -102,7 +102,7 @@ build options allow you to further customize the kind of gem you want to build. 
 are enabled by default. For detailed documentation on all supported flags, see the
 link:https://www.alchemists.io/projects/rubysmith/#_build[Rubysmith] documentation.
 
-The build option, which is unique to Gemsmith, is the `--cli` option. This allows you to build a gem
+The build option which is unique to Gemsmith is the `--cli` option. This allows you to build a gem
 which has a Command Line Interface (CLI). There are multiple ways a CLI can be built in Ruby but
 Gemsmith takes an approach which builds upon Ruby's native `OptionParser` with help from
 link:https://dry-rb.org/gems/dry-container[Dry Container]. All of this culminates in a design that
@@ -301,7 +301,8 @@ link:https://guides.rubygems.org/security[Security].
 
 == Private Gem Servers
 
-By default, the following Rake task will publish your gem to link:https://rubygems.org[RubyGems]:
+By default, the following command will publicly publish your gem to
+link:https://rubygems.org[RubyGems]:
 
 [source,bash]
 ----
@@ -319,20 +320,19 @@ Add the following metadata to your gemspec:
 [source,ruby]
 ----
 Gem::Specification.new do |spec|
-  spec.metadata = {
-    "allowed_push_key" => "example_key",
-    "allowed_push_host" => "https://gems.example.com"
-  }
+  spec.metadata = {"allowed_push_host" => "https://private.example.com"}
 end
 ----
 
-The gemspec metadata keys and values _must_ be strings per the
-link:https://guides.rubygems.org/specification-reference/#metadata[RubyGems Specification]. Each key
-represents the following:
+💡 The gemspec metadata _must_ be strings per the
+link:https://guides.rubygems.org/specification-reference/#metadata[RubyGems Specification].
 
-* `allowed_push_key`: Provides a reference (look up) to the key defined the RubyGems credentials
-  file so that sensitive credentials are not used within your gemspec.
-* `allowed_push_host`: Provides the URL of the private gem server to push your gem to.
+Use of the `allowed_push_host` key provides two important capabilities:
+
+* Prevents you from accidentally publishing your private gem to the public RubyGems server (default
+  behavior).
+* Defines the lookup key in your `$HOME/.gem/credentials` file which contains your private
+  credentials for authentication to your private server (more on this below).
 
 === Gem Credentials
 
@@ -340,18 +340,52 @@ With your gem specification metadata established, you are ready to publish your 
 private server. If this is your first time publishing a gem and no gem credentials have been
 configured, you'll be prompted for them. Gem credentials are stored in the RubyGems
 `$HOME/.gem/credentials` file. From this point forward, future gem publishing will use your stored
-credentials instead. Multiple credentials can be stored in the `$HOME/.gem/credentials` file.
-Example:
+credentials instead.
+
+Multiple credentials can be stored in the `$HOME/.gem/credentials` file as well. Example:
 
 [source,yaml]
 ----
 :rubygems_api_key: 2a0b460650e67d9b85a60e183defa376
-:some_custom_key: "Basic dXNlcjpwYXNzd29yZA=="
+https://private.example.com: Basic dXNlcjpwYXNzd29yZA==
 ----
 
-Should you need to delete a credential (due to a bad login/password for example), you can open the
-`$HOME/.gem/credentials` in your default editor and remove the line(s) you don't need. Upon next
-publish of your gem, you'll be prompted for the missing credentials.
+Notice how the first line contains credentials for the public RubyGems server while the second line
+is for our private example server. You'll also notice that the key is not a symbol but a URL string
+to our private server. This is important as this is how we link our gem specification metadata to
+our private credentials. To illustrate further, here are both files truncated and shown together:
+
+....
+# Gem specificaiton metadata which defines the private host to publish to.
+spec.metadata = {"allowed_push_host" => "https://private.example.com"}
+
+# Gem credentials where the URL value above becomes the key which enables authentication.
+https://private.example.com: Basic dXNlcjpwYXNzd29yZA==
+....
+
+When the above are linked together like this, you enable Gemsmith to publish your gem using only the
+following command:
+
+[source,bash]
+----
+gemsmith --publish
+----
+
+This is especially powerful when publishing to
+link:https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-rubygems-registry[GitHub's
+Packages registory] which would look like this when properly configured (truncated for brevity):
+
+....
+# Gem specification
+spec.metadata = {"allowed_push_host" => "https://rubygems.pkg.github.com/alchemists"}
+
+# Gem credentials
+https://rubygems.pkg.github.com/alchemists: Bearer ghp_c5b8d394abefebbf45c7b27b379c74978923
+....
+
+Lastly, should you need to delete a credential (due to a bad login/password for example), you can
+open the `$HOME/.gem/credentials` in your default editor and remove the line(s) you don't need. Upon
+next publish of your gem, you'll be prompted for the missing credentials.
 
 == Promotion
 
@@ -359,7 +393,6 @@ Once your gem is released, let the world know about your accomplishment by posti
 these sites:
 
 * link:https://rubyflow.com[RubyFlow]
-* link:https://rubyradar.dev[Ruby Radar]
 * link:https://ruby.libhunt.com[Ruby Library Hunt]
 * link:https://rubydaily.org[RubyDaily]
 * link:https://awesome-ruby.com[Awesome Ruby]
