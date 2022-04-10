@@ -35,7 +35,6 @@ module Gemsmith
         content[
           documentation_format: configuration.extensions_milestoner_documentation_format,
           prefixes: configuration.extensions_milestoner_prefixes,
-          sign: configuration.extensions_milestoner_sign,
           version: specification.version
         ]
       end

@@ -76,7 +76,6 @@ RSpec.describe Gemsmith::CLI::Shell do
           --no-conduct
           --no-console
           --no-contributions
-          --no-dead_end
           --no-debug
           --no-git
           --no-git-lint
@@ -195,7 +194,6 @@ RSpec.describe Gemsmith::CLI::Shell do
           --conduct
           --console
           --contributions
-          --dead_end
           --debug
           --git
           --git-lint
