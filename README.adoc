@@ -14,8 +14,7 @@ toc::[]
 
 == Features
 
-* Supports all features provided by link:https://www.alchemists.io/projects/rubysmith[Rubysmith]
-  which is used to smith Ruby projects.
+* Supports all link:https://www.alchemists.io/projects/rubysmith[Rubysmith] features.
 * Supports basic gem skeletons or more advanced Command Line Interface (CLI) skeletons.
 * Supports gem building, installing for local development, and publishing.
 * Supports the editing and viewing of installed gems.
@@ -37,13 +36,12 @@ gem install gemsmith
 
 == Upgrade
 
-If upgrading from 16.0.0 to 17.0.0, you'll need to make the following changes:
+If upgrading from 17.0.0 to 18.0.0, you'll want to be aware of the following changes:
 
-* README badges are no longer injected so you can customize as desired.
-* The `:rubocop:` build configuration has been removed. Use `:caliber:` instead.
-* The `--rubocop` build option has been removed. Use `--caliber` instead.
-* You no longer have to Git ignore RuboCop cached configurations since this is handled by the
-  link:https://www.alchemists.io/projects/caliber[Caliber] gem now.
+* The `--dead_end` build option has been removed.
+* The Milestoner configuraition has been updated to support ASCII Doc format by default and the
+  ability to sign tags has been removed (this happens dynamically based on your Git configuration
+  which gives you more flexibility).
 
 == Usage
 
@@ -72,7 +70,6 @@ BUILD OPTIONS:
       --[no-]conduct                       Add code of conduct documentation. Default: true.
       --[no-]console                       Add console script. Default: true.
       --[no-]contributions                 Add contributions documentation. Default: true.
-      --[no-]dead_end                      Add Dead End gem. Default: true.
       --[no-]debug                         Add Debug gem. Default: true.
       --[no-]git                           Add Git. Default: true.
       --[no-]git_hub                       Add GitHub templates. Default: false.

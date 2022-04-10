@@ -1,5 +1,31 @@
 = Versions
 
+== 18.0.0 (2022-04-10)
+
+* Fixed Circle CI builder template to include Gemfile and gemspec - Brooke Kuhlmann
+* Fixed Circle CI configuration to check Gemfile and gemspec - Brooke Kuhlmann
+* Fixed README private gem server publising documentation - Brooke Kuhlmann
+* Fixed gem push exception when YubiKey Manager can't be found - Brooke Kuhlmann
+* Added AutoInjector gem - Brooke Kuhlmann
+* Added AutoInjector import - Brooke Kuhlmann
+* Added CLI actions container - Brooke Kuhlmann
+* Added CLI actions import - Brooke Kuhlmann
+* Added Cogger gem - Brooke Kuhlmann
+* Updated CLI parser to inject configuration dependency - Brooke Kuhlmann
+* Updated implementation to auto-inject CLI action dependencies - Brooke Kuhlmann
+* Updated implementation to use AutoInjector stubs - Brooke Kuhlmann
+* Updated implementation to use automatically injected dependencies - Brooke Kuhlmann
+* Updated to Auto Injector 0.4.0 - Brooke Kuhlmann
+* Updated to Caliber 0.5.0 - Brooke Kuhlmann
+* Updated to Debug 1.5.0 - Brooke Kuhlmann
+* Updated to Git Lint 4.0.0 - Brooke Kuhlmann
+* Updated to Rubysmith 3.0.0 - Brooke Kuhlmann
+* Removed DeadEnd gem - Brooke Kuhlmann
+* Removed Pastel gem - Brooke Kuhlmann
+* Refactored RSpec application container as dependencies - Brooke Kuhlmann
+* Refactored RSpec helper builder to start with enabled options first - Brooke Kuhlmann
+* Refactored specs to use cogger - Brooke Kuhlmann
+
 == 17.0.1 (2022-03-03)
 
 * Fixed Hippocratic License to be 2.1.0 version - Brooke Kuhlmann
