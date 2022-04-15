@@ -34,7 +34,7 @@ module Gemsmith
         executor.capture3(check_yubikey.success, "oath", "accounts", "code", "--single", "RubyGems")
                 .then { |stdout, _stderr, status| status.success? ? ["--otp", stdout.chomp] : [] }
       rescue Errno::ENOENT => error
-        logger.warn { "Unable to obtain YubiKey One-Time Password. #{error}." }
+        logger.debug { "Unable to obtain YubiKey One-Time Password. #{error}." }
         []
       end
 
@@ -44,7 +44,7 @@ module Gemsmith
                   if status.success?
                     Success stdout.chomp
                   else
-                    logger.warn { "Unable to find YubiKey Manager. #{stderr}." }
+                    logger.debug { "Unable to find YubiKey Manager. #{stderr}." }
                     Failure()
                   end
                 end
