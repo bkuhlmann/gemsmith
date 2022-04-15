@@ -1,5 +1,12 @@
 = Versions
 
+== 18.0.1 (2022-04-15)
+
+* Added GitHub sponsorship configuration - Brooke Kuhlmann
+* Updated pusher tool to use debug log level - Brooke Kuhlmann
+* Updated to Ruby 3.1.2 - Brooke Kuhlmann
+* Removed Pastel gem from CLI template - Brooke Kuhlmann
+
 == 18.0.0 (2022-04-10)
 
 * Fixed Circle CI builder template to include Gemfile and gemspec - Brooke Kuhlmann

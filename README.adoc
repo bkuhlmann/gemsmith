@@ -39,7 +39,7 @@ gem install gemsmith
 If upgrading from 17.0.0 to 18.0.0, you'll want to be aware of the following changes:
 
 * The `--dead_end` build option has been removed.
-* The Milestoner configuraition has been updated to support ASCII Doc format by default and the
+* The Milestoner configuration has been updated to support ASCII Doc format by default and the
   ability to sign tags has been removed (this happens dynamically based on your Git configuration
   which gives you more flexibility).
 
@@ -290,8 +290,19 @@ gem cert --build you@example.com
 chmod 600 gem-*.pem
 ----
 
-The resulting `.pem` key files can be referenced via the `:private_key:` and `:public_key:` keys
-within the `$HOME/.gemsmithrc` file.
+The resulting `*.pem` key files can be referenced via the `signing_key` and `cert_chain` of your
+`*.gemspec` which Gemsmith provides for you via the `--security` build option. Example:
+
+[source,ruby]
+----
+# frozen_string_literal: true
+
+Gem::Specification.new do |spec|
+  # Truncated for brevity.
+  spec.signing_key = Gem.default_key_path
+  spec.cert_chain = [Gem.default_cert_path]
+end
+----
 
 To learn more about gem certificates, read about RubyGems
 link:https://guides.rubygems.org/security[Security].
@@ -353,7 +364,7 @@ to our private server. This is important as this is how we link our gem specific
 our private credentials. To illustrate further, here are both files truncated and shown together:
 
 ....
-# Gem specificaiton metadata which defines the private host to publish to.
+# Gem specification metadata which defines the private host to publish to.
 spec.metadata = {"allowed_push_host" => "https://private.example.com"}
 
 # Gem credentials where the URL value above becomes the key which enables authentication.
