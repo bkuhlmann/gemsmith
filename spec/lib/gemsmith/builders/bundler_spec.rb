@@ -45,7 +45,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
 
           group :code_quality do
             gem "bundler-leak", "~> 0.2"
-            gem "caliber", "~> 0.5"
+            gem "caliber", "~> 0.6"
             gem "git-lint", "~> 4.0"
             gem "reek", "~> 6.1"
             gem "simplecov", "~> 0.21"
