@@ -47,7 +47,7 @@ RSpec.describe Gemsmith::CLI::Shell do
         [
           "test/.ruby-version",
           "test/Gemfile",
-          ("test/Gemfile.lock" unless ENV["CI"] == "true"),
+          ("test/Gemfile.lock" unless ENV.fetch("CI", false) == "true"),
           "test/lib/test.rb",
           "test/test.gemspec"
         ].compact
@@ -99,7 +99,7 @@ RSpec.describe Gemsmith::CLI::Shell do
         [
           "test/.ruby-version",
           "test/Gemfile",
-          ("test/Gemfile.lock" unless ENV["CI"] == "true"),
+          ("test/Gemfile.lock" unless ENV.fetch("CI", false) == "true"),
           "test/lib/test.rb",
           "test/test.gemspec"
         ].compact
@@ -139,7 +139,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           "test/CITATION.cff",
           "test/exe/test",
           "test/Gemfile",
-          ("test/Gemfile.lock" unless ENV["CI"] == "true"),
+          ("test/Gemfile.lock" unless ENV.fetch("CI", false) == "true"),
           "test/Guardfile",
           "test/lib/test.rb",
           "test/lib/test/cli/actions/config.rb",
@@ -230,7 +230,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           "test/CITATION.cff",
           "test/exe/test",
           "test/Gemfile",
-          ("test/Gemfile.lock" unless ENV["CI"] == "true"),
+          ("test/Gemfile.lock" unless ENV.fetch("CI", false) == "true"),
           "test/Guardfile",
           "test/lib/test.rb",
           "test/lib/test/cli/actions/config.rb",
