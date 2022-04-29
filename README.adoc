@@ -290,8 +290,8 @@ gem cert --build you@example.com
 chmod 600 gem-*.pem
 ----
 
-The resulting `*.pem` key files can be referenced via the `signing_key` and `cert_chain` of your
-`*.gemspec` which Gemsmith provides for you via the `--security` build option. Example:
+The resulting `.pem` key files can be referenced via the `signing_key` and `cert_chain` of your
+`.gemspec` which Gemsmith provides for you via the `--security` build option. Example:
 
 [source,ruby]
 ----
@@ -332,7 +332,7 @@ Gem::Specification.new do |spec|
 end
 ----
 
-💡 The gemspec metadata _must_ be strings per the
+💡 The gemspec metadata (i.e. keys and values) _must_ be strings per the
 link:https://guides.rubygems.org/specification-reference/#metadata[RubyGems Specification].
 
 Use of the `allowed_push_host` key provides two important capabilities:
@@ -360,8 +360,8 @@ https://private.example.com: Basic dXNlcjpwYXNzd29yZA==
 
 Notice how the first line contains credentials for the public RubyGems server while the second line
 is for our private example server. You'll also notice that the key is not a symbol but a URL string
-to our private server. This is important as this is how we link our gem specification metadata to
-our private credentials. To illustrate further, here are both files truncated and shown together:
+to our private server. This is important because this is how we link our gem specification metadata
+to our private credentials. To illustrate further, here are both files truncated and shown together:
 
 ....
 # Gem specification metadata which defines the private host to publish to.
@@ -371,8 +371,8 @@ spec.metadata = {"allowed_push_host" => "https://private.example.com"}
 https://private.example.com: Basic dXNlcjpwYXNzd29yZA==
 ....
 
-When the above are linked together like this, you enable Gemsmith to publish your gem using only the
-following command:
+When the above are linked together, you enable Gemsmith to publish your gem using only the following
+command:
 
 [source,bash]
 ----
@@ -380,8 +380,9 @@ gemsmith --publish
 ----
 
 This is especially powerful when publishing to
-link:https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-rubygems-registry[GitHub's
-Packages registory] which would look like this when properly configured (truncated for brevity):
+link:https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-rubygems-registry[GitHub
+Packages] which would look like this when properly configured (truncated for brevity while using
+fake data):
 
 ....
 # Gem specification
@@ -395,6 +396,62 @@ Lastly, should you need to delete a credential (due to a bad login/password for 
 open the `$HOME/.gem/credentials` in your default editor and remove the line(s) you don't need. Upon
 next publish of your gem, you'll be prompted for the missing credentials.
 
+=== GitHub Actions/Packages Automation
+
+Earlier, I hinted at using GitHub Packages but what if you could automate the entire publishing
+process? Well, good news, you can by using GitHub Actions to publish your packages. Here's the YAML
+necessary to accomplish this endeavor:
+
+``` yaml
+name: Gemsmith
+
+on:
+  push:
+    branches: main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+          ref: ${{github.head_ref}}
+      - name: Setup
+        run: |
+          git config user.email "engineering@example.com"
+          git config user.name "Gemsmith Publisher"
+          mkdir -p $HOME/.gem
+          printf "%s\n" "https://rubygems.pkg.github.com/example: Bearer ${{secrets.GITHUB_TOKEN}}" > $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+      - name: Install
+        run: gem install gemsmith
+      - name: Publish
+        run: |
+          if git describe --tags --abbrev=0 > /dev/null 2>&1; then
+            gemsmith --publish
+          else
+            printf "%s\n" "First gem version must be manually created. Skipping."
+          fi
+```
+
+The above will ensure the following:
+
+* Only the first version requires manual publishing (hence the check for existing Git tags).
+* Duplicate versions are always skipped.
+* Only when a new version is detected (by changing your gemspec version) and you are on the `main`
+  branch will a new version be automatically published.
+
+This entire workflow is explained in my
+link:https://www.alchemists.io/talks/ruby_git_hub_packages[talk] on this exact subject too.
+
 == Promotion
 
 Once your gem is released, let the world know about your accomplishment by posting an update to
@@ -402,7 +459,6 @@ these sites:
 
 * link:https://rubyflow.com[RubyFlow]
 * link:https://ruby.libhunt.com[Ruby Library Hunt]
-* link:https://rubydaily.org[RubyDaily]
 * link:https://awesome-ruby.com[Awesome Ruby]
 * link:https://www.ruby-toolbox.com[Ruby Toolbox]
 * link:https://www.ruby-lang.org/en/community[Ruby Community]
