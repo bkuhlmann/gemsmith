@@ -1,5 +1,11 @@
 = Versions
 
+== 18.1.0 (2022-04-30)
+
+* Added README GitHub Actions/Packages documentation - Brooke Kuhlmann
+* Added gemspec funding URI - Brooke Kuhlmann
+* Updated to Rubysmith 3.1.0 - Brooke Kuhlmann
+
 == 18.0.2 (2022-04-21)
 
 * Updated to Caliber 0.6.0 - Brooke Kuhlmann

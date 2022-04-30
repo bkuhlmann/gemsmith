@@ -71,6 +71,7 @@ BUILD OPTIONS:
       --[no-]console                       Add console script. Default: true.
       --[no-]contributions                 Add contributions documentation. Default: true.
       --[no-]debug                         Add Debug gem. Default: true.
+      --[no-]funding                       Add GitHub funding configuration. Default: false.
       --[no-]git                           Add Git. Default: true.
       --[no-]git_hub                       Add GitHub templates. Default: false.
       --[no-]git-lint                      Add Git Lint gem. Default: true.
