@@ -11,6 +11,7 @@ Gem::Specification.new do |spec|
     "bug_tracker_uri" => "https://www.example.com/test/issues",
     "changelog_uri" => "https://www.example.com/test/versions",
     "documentation_uri" => "https://www.example.com/test",
+    "funding_uri" => "https://www.example.com/test/funding",
     "label" => "Test",
     "rubygems_mfa_required" => "true",
     "source_code_uri" => "https://www.example.com/test/source"

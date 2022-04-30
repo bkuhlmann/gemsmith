@@ -24,6 +24,7 @@ RSpec.shared_context "with application dependencies" do
       project_url_conduct: "https://www.example.com/%project_name%/code_of_conduct",
       project_url_contributions: "https://www.example.com/%project_name%/contributions",
       project_url_download: "https://www.example.com/%project_name%/download",
+      project_url_funding: "https://www.example.com/%project_name%/funding",
       project_url_home: "https://www.example.com/%project_name%",
       project_url_issues: "https://www.example.com/%project_name%/issues",
       project_url_license: "https://www.example.com/%project_name%/license",

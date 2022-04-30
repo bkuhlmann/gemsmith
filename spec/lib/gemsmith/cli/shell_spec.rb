@@ -77,6 +77,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           --no-console
           --no-contributions
           --no-debug
+          --no-funding
           --no-git
           --no-git-lint
           --no-git_hub
@@ -126,6 +127,7 @@ RSpec.describe Gemsmith::CLI::Shell do
         [
           "test/.circleci/config.yml",
           "test/.git/HEAD",
+          "test/.github/FUNDING.yml",
           "test/.github/ISSUE_TEMPLATE.md",
           "test/.github/PULL_REQUEST_TEMPLATE.md",
           "test/.gitignore",
@@ -195,6 +197,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           --console
           --contributions
           --debug
+          --funding
           --git
           --git-lint
           --git_hub
@@ -217,6 +220,7 @@ RSpec.describe Gemsmith::CLI::Shell do
         [
           "test/.circleci/config.yml",
           "test/.git/HEAD",
+          "test/.github/FUNDING.yml",
           "test/.github/ISSUE_TEMPLATE.md",
           "test/.github/PULL_REQUEST_TEMPLATE.md",
           "test/.gitignore",
