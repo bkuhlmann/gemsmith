@@ -1,5 +1,10 @@
 = Versions
 
+== 18.1.1 (2022-05-01)
+
+* Fixed invalid gemspec with blank metadata URLs - Brooke Kuhlmann
+* Refactored RSpec application dependencies to use default configuration - Brooke Kuhlmann
+
 == 18.1.0 (2022-04-30)
 
 * Added README GitHub Actions/Packages documentation - Brooke Kuhlmann

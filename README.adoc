@@ -25,15 +25,6 @@ toc::[]
 . link:https://www.ruby-lang.org[Ruby].
 . link:https://rubygems.org[RubyGems].
 
-== Setup
-
-To install, run:
-
-[source,bash]
-----
-gem install gemsmith
-----
-
 == Upgrade
 
 If upgrading from 17.0.0 to 18.0.0, you'll want to be aware of the following changes:
@@ -42,6 +33,15 @@ If upgrading from 17.0.0 to 18.0.0, you'll want to be aware of the following cha
 * The Milestoner configuration has been updated to support ASCII Doc format by default and the
   ability to sign tags has been removed (this happens dynamically based on your Git configuration
   which gives you more flexibility).
+
+== Setup
+
+To install, run:
+
+[source,bash]
+----
+gem install gemsmith
+----
 
 == Usage
 
@@ -221,6 +221,20 @@ the following:
 
 Feel free to take the combined Rubysmith + Gemsmith configuration, modify, and save as your own
 custom `configuration.yml`.
+
+It is recommended that you provide URLs for your project which would be all keys found in this
+section:
+
+[source,yaml]
+----
+:project:
+  :url:
+    # Add sub-key values here.
+----
+
+When these values exist, you'll benefit from having this information added to your generated
+`gemspec` and project documentation. Otherwise -- if these values are empty -- they are removed from
+new gem generation.
 
 === Workflows
 
