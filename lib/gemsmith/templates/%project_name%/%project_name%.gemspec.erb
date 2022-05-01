@@ -8,13 +8,25 @@ Gem::Specification.new do |spec|
   spec.license = "<%= configuration.license_label_version %>"
 
   spec.metadata = {
-    "bug_tracker_uri" => "<%= configuration.computed_project_url_issues %>",
-    "changelog_uri" => "<%= configuration.computed_project_url_versions %>",
-    "documentation_uri" => "<%= configuration.computed_project_url_home %>",
-    "funding_uri" => "<%= configuration.computed_project_url_funding %>",
+    <% unless configuration.computed_project_url_issues.empty? %>
+      "bug_tracker_uri" => "<%= configuration.computed_project_url_issues %>",
+    <% end %>
+    <% unless configuration.computed_project_url_versions.empty? %>
+      "changelog_uri" => "<%= configuration.computed_project_url_versions %>",
+    <% end %>
+    <% unless configuration.computed_project_url_home.empty? %>
+      "documentation_uri" => "<%= configuration.computed_project_url_home %>",
+    <% end %>
+    <% unless configuration.computed_project_url_funding.empty? %>
+      "funding_uri" => "<%= configuration.computed_project_url_funding %>",
+    <% end %>
     "label" => "<%= configuration.project_label %>",
-    "rubygems_mfa_required" => "true",
-    "source_code_uri" => "<%= configuration.computed_project_url_source %>"
+    <% if configuration.computed_project_url_source.empty? %>
+      "rubygems_mfa_required" => "true"
+    <% else %>
+      "rubygems_mfa_required" => "true",
+      "source_code_uri" => "<%= configuration.computed_project_url_source %>"
+    <% end %>
   }
 
   <% if configuration.build_security %>

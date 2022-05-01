@@ -4,6 +4,9 @@ inherit_gem:
 Gemspec/RequiredRubyVersion:
   Exclude:
     - "spec/support/fixtures/*.gemspec"
+Layout/RedundantLineBreak:
+  Exclude:
+    - "spec/support/fixtures/*.gemspec"
 Metrics/AbcSize:
   Exclude:
     - "lib/gemsmith/cli/shell.rb"

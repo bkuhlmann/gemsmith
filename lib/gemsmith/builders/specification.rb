@@ -20,6 +20,8 @@ module Gemsmith
 
         builder.call(config)
                .render
+               .replace("    \n", "")
+               .replace("      ", "    ")
                .replace("  \n", "")
                .replace("    spec", "  spec")
                .replace(/\}\s+s/m, "}\n\n  s")
