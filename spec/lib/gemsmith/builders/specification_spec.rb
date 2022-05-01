@@ -19,6 +19,28 @@ RSpec.describe Gemsmith::Builders::Specification do
 
       it "builds gemspec" do
         expect(temp_dir.join("test", "test.gemspec").read).to eq(
+          Bundler.root.join("spec/support/fixtures/test-minimum-metadata.gemspec").read
+        )
+      end
+    end
+
+    context "with minimum and no project URLs" do
+      let :test_configuration do
+        configuration.minimize.merge project_url_community: nil,
+                                     project_url_conduct: nil,
+                                     project_url_contributions: nil,
+                                     project_url_download: nil,
+                                     project_url_funding: nil,
+                                     project_url_home: nil,
+                                     project_url_issues: nil,
+                                     project_url_license: nil,
+                                     project_url_security: nil,
+                                     project_url_source: nil,
+                                     project_url_versions: nil
+      end
+
+      it "builds gemspec" do
+        expect(temp_dir.join("test", "test.gemspec").read).to eq(
           Bundler.root.join("spec/support/fixtures/test-minimum.gemspec").read
         )
       end
