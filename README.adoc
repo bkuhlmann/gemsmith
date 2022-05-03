@@ -338,7 +338,7 @@ specification and RubyGems credentials.
 
 === Gem Specification Metadata
 
-Add the following metadata to your gemspec:
+Add the following gemspec metadata to privately publish new versions of your gem:
 
 [source,ruby]
 ----
@@ -379,10 +379,10 @@ to our private server. This is important because this is how we link our gem spe
 to our private credentials. To illustrate further, here are both files truncated and shown together:
 
 ....
-# Gem specification metadata which defines the private host to publish to.
+# Gem Specification: The metadata which defines the private host to publish to.
 spec.metadata = {"allowed_push_host" => "https://private.example.com"}
 
-# Gem credentials where the URL value above becomes the key which enables authentication.
+# Gem Credentials: The URL value -- shown above -- which becomes the key for enabling authentication.
 https://private.example.com: Basic dXNlcjpwYXNzd29yZA==
 ....
 
@@ -410,6 +410,49 @@ https://rubygems.pkg.github.com/alchemists: Bearer ghp_c5b8d394abefebbf45c7b27b3
 Lastly, should you need to delete a credential (due to a bad login/password for example), you can
 open the `$HOME/.gem/credentials` in your default editor and remove the line(s) you don't need. Upon
 next publish of your gem, you'll be prompted for the missing credentials.
+
+=== Bundler Configuration
+
+So far, I've shown how to privately _publish_ a gem but now we need to teach Bundler how to install
+the gem as dependency within your upstream project. For demonstration purposes, I'm going to assume
+you are using GitHub Packages as your private gem server. You should be able to quickly translate
+this documentation if using an alternate private gem server, though.
+
+The first step is to create your own GitHub Personal Access Token (PAT) which is fast to do by
+following GitHub's own
+link:https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token[documentation].
+At a minimum, you'll need to enable _repo_ and _packages_ scopes with read/write access.
+
+With your PAT in hand, you'll need to ensure link:https://bundler.io[Bundler] can authenticate to
+the private GitHub Packages gem server by running the following:
+
+[source,bash]
+----
+bundle config set --global rubygems.pkg.github.com <your GitHub handle>:<PAT>
+# Example: bundle config set --global rubygems.pkg.github.com jdoe:ghp_c5b8d394abefebbf45c7b27b379c74978923
+----
+
+💡 Using Bundler's `--global` flag ensures you only have to define these credentials once for _all_
+projects which reduces maintenance burden on you. The path to this global configuration can be found
+here: `$HOME/.config/bundler/configuration.yml`.
+
+Lastly, you can add this gem to your `Gemfile` as follows:
+
+[source,ruby]
+----
+source "https://rubygems.pkg.github.com/alchemists" do
+  gem "demo", "~> 0.0"
+end
+----
+
+At this point -- if you run `bundle install` -- you should see the following in your console:
+
+....
+Fetching gem metadata from https://rubygems.pkg.github.com/alchemists/...
+Resolving dependencies...Fetching gem metadata from https://rubygems.org/.....
+....
+
+If so, you're all set!
 
 === GitHub Actions/Packages Automation
 
