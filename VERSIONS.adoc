@@ -1,5 +1,17 @@
 = Versions
 
+== 18.2.0 (2022-05-07)
+
+* Added README documentation on using Bundler with private servers - Brooke Kuhlmann
+* Updated to Autoo Injector 0.4.0 - Brooke Kuhlmann
+* Updated to Caliber 0.8.0 - Brooke Kuhlmann
+* Updated to Cogger 0.1.0 - Brooke Kuhlmann
+* Updated to Refinements 9.4.0 - Brooke Kuhlmann
+* Updated to Rubysmth 3.2.0 - Brooke Kuhlmann
+* Updated to Runcom 8.4.0 - Brooke Kuhlmann
+* Updated to Spek 0.3.0 - Brooke Kuhlmann
+* Updated to Versionaire 10.3.0 - Brooke Kuhlmann
+
 == 18.1.1 (2022-05-01)
 
 * Fixed invalid gemspec with blank metadata URLs - Brooke Kuhlmann
