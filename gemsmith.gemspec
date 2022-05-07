@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rubysmith", "~> 3.1"
   spec.add_dependency "runcom", "~> 8.2"
   spec.add_dependency "spek", "~> 0.2"
-  spec.add_dependency "versionaire", "~> 10.0"
+  spec.add_dependency "versionaire", "~> 10.3"
   spec.add_dependency "zeitwerk", "~> 2.5"
 
   spec.bindir = "exe"
