@@ -1,5 +1,14 @@
 = Versions
 
+== 18.3.0 (2022-05-28)
+
+* Updated CLI build action to log build status - Brooke Kuhlmann
+* Updated to Caliber 0.9.0 - Brooke Kuhlmann
+* Updated to Rubysmith 3.3.0 - Brooke Kuhlmann
+* Removed Bundler Leak gem - Brooke Kuhlmann
+* Removed Rakefile Bundler gem tasks - Brooke Kuhlmann
+* Refactored Git commit builder spec to inject gem specification - Brooke Kuhlmann
+
 == 18.2.0 (2022-05-07)
 
 * Added README documentation on using Bundler with private servers - Brooke Kuhlmann
