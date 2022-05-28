@@ -7,7 +7,6 @@ source "https://rubygems.org"
 gemspec
 
 group :code_quality do
-  gem "bundler-leak", "~> 0.2"
   gem "caliber", "~> 0.8"
   gem "git-lint", "~> 4.0"
   gem "reek", "~> 6.1"
