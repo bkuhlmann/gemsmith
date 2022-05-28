@@ -5,6 +5,8 @@ module Gemsmith
     module Actions
       # Handles the build action.
       class Build
+        include Gemsmith::Import[:logger]
+
         # Order is important.
         BUILDERS = [
           Rubysmith::Builders::Core,
@@ -40,15 +42,22 @@ module Gemsmith
           Builders::Git::Commit
         ].freeze
 
-        def initialize builders: BUILDERS
+        def initialize builders: BUILDERS, **dependencies
+          super(**dependencies)
           @builders = builders
         end
 
-        def call(configuration) = builders.each { |builder| builder.call configuration }
+        def call configuration
+          log_info "Building project skeleton: #{configuration.project_name}..."
+          builders.each { |builder| builder.call configuration }
+          log_info "Project skeleton complete!"
+        end
 
         private
 
-        attr_reader :configuration, :builders
+        attr_reader :builders
+
+        def log_info(message) = logger.info { message }
       end
     end
   end
