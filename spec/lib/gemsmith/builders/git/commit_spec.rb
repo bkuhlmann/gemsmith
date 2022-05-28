@@ -6,12 +6,19 @@ RSpec.describe Gemsmith::Builders::Git::Commit do
   using Refinements::Pathnames
   using Refinements::Structs
 
-  subject(:builder) { described_class.new test_configuration }
+  subject(:builder) { described_class.new test_configuration, specification: }
 
   include_context "with application dependencies"
 
   let(:project_dir) { temp_dir.join "test" }
-  let(:commit) { project_dir.change_dir { `git log --pretty=format:%s%n%b -1` } }
+  let(:commit) { project_dir.change_dir { `git log --pretty=format:%s%n%n%b -1` } }
+
+  let :specification do
+    instance_double Spek::Presenter,
+                    label: "Test",
+                    homepage_url: "https://example.com",
+                    version: "0.0.0"
+  end
 
   it_behaves_like "a builder"
 
@@ -31,9 +38,12 @@ RSpec.describe Gemsmith::Builders::Git::Commit do
       let(:test_configuration) { configuration.minimize.merge build_git: true }
 
       it "creates commit" do
-        expect(commit).to match(
-          /Added project skeleton.+Generated with.+Gemsmith.+\d+\.\d+\.\d+\./m
-        )
+        expect(commit).to eq(<<~MESSAGE)
+          Added project skeleton
+
+          Generated with [Test](https://example.com)
+          0.0.0.
+        MESSAGE
       end
     end
 
