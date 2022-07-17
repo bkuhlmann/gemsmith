@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.cert_chain = [Gem.default_cert_path]
 
   spec.required_ruby_version = "~> 3.1"
-  spec.add_dependency "auto_injector", "~> 0.5"
+  spec.add_dependency "auto_injector", "~> 0.6"
   spec.add_dependency "dry-container", "~> 0.10"
   spec.add_dependency "refinements", "~> 9.6"
   spec.add_dependency "runcom", "~> 8.5"
