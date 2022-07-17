@@ -1,5 +1,19 @@
 = Versions
 
+== 18.4.0 (2022-07-17)
+
+* Updated to Auto Injector 0.6.0 - Brooke Kuhlmann
+* Updated to Caliber 0.11.0 - Brooke Kuhlmann
+* Updated to Cogger 0.2.0 - Brooke Kuhlmann
+* Updated to Debug 1.6.0 - Brooke Kuhlmann
+* Updated to Dry Container 0.10.0 - Brooke Kuhlmann
+* Updated to Milestoner 14.2.0 - Brooke Kuhlmann
+* Updated to Refinements 9.6.0 - Brooke Kuhlmann
+* Updated to Rubysmith 3.4.0 - Brooke Kuhlmann
+* Updated to Runcom 8.5.0 - Brooke Kuhlmann
+* Updated to Spek 0.4.0 - Brooke Kuhlmann
+* Updated to Versionaire 10.5.0 - Brooke Kuhlmann
+
 == 18.3.0 (2022-05-28)
 
 * Updated CLI build action to log build status - Brooke Kuhlmann
