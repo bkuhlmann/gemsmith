@@ -4,7 +4,12 @@ require "bundler/setup"
 Bundler.require :tools
 
 require "simplecov"
-SimpleCov.start { enable_coverage :branch }
+
+SimpleCov.start do
+  enable_coverage :branch
+  add_filter %r(^/spec/)
+  minimum_coverage_by_file line: 95, branch: 95
+end
 
 require "git_plus/spec/shared_contexts/temp_dir"
 require "git_plus/spec/shared_contexts/git_repo"
