@@ -32,5 +32,17 @@ RSpec.describe Gemsmith::CLI::Parsers::Build do
       expectation = proc { parser.call %w[--bogus] }
       expect(&expectation).to raise_error(OptionParser::InvalidOption, /--bogus/)
     end
+
+    context "with maximum configuration" do
+      let(:test_configuration) { configuration.maximize.dup }
+
+      it "disables CLI" do
+        expect(parser.call(%w[--no-cli])).to have_attributes(
+          build_cli: false,
+          build_refinements: true,
+          build_zeitwerk: true
+        )
+      end
+    end
   end
 end
