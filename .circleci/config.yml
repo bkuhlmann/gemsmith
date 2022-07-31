@@ -29,3 +29,8 @@ jobs:
       - run:
           name: Build
           command: bundle exec rake
+
+      - store_artifacts:
+          name: SimpleCov Artifacts Upload
+          path: ~/project/coverage
+          destination: coverage
