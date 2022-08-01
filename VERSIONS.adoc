@@ -1,5 +1,15 @@
 = Versions
 
+== 18.5.0 (2022-08-01)
+
+* Added CLI build parser spec for maximum configuration - Brooke Kuhlmann
+* Added CLI shell specs for publish, install, edit, and view actions - Brooke Kuhlmann
+* Added Circle CI SimpleCov artifacts - Brooke Kuhlmann
+* Added installer tool spec for gem install failure - Brooke Kuhlmann
+* Updated SimpleCov configuration to use filters and minimum coverage - Brooke Kuhlmann
+* Updated to Rubysmith 3.5.0 - Brooke Kuhlmann
+* Updated to Spek 0.5.0 - Brooke Kuhlmann
+
 == 18.4.0 (2022-07-17)
 
 * Updated to Auto Injector 0.6.0 - Brooke Kuhlmann
