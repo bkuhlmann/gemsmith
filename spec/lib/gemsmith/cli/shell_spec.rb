@@ -274,6 +274,58 @@ RSpec.describe Gemsmith::CLI::Shell do
       end
     end
 
+    context "with install" do
+      let(:install) { instance_spy Gemsmith::CLI::Actions::Install }
+
+      before { Gemsmith::CLI::Actions::Import.stub install: }
+
+      after { Gemsmith::CLI::Actions::Import.unstub install: }
+
+      it "installs gem" do
+        shell.call %w[--install test-0.0.0.gem]
+        expect(install).to have_received(:call).with(kind_of(Rubysmith::Configuration::Content))
+      end
+    end
+
+    context "with publish" do
+      let(:publish) { instance_spy Gemsmith::CLI::Actions::Publish }
+
+      before { Gemsmith::CLI::Actions::Import.stub publish: }
+
+      after { Gemsmith::CLI::Actions::Import.unstub publish: }
+
+      it "publishes gem" do
+        shell.call %w[--publish test-0.0.0.gem]
+        expect(publish).to have_received(:call).with(kind_of(Rubysmith::Configuration::Content))
+      end
+    end
+
+    context "with edit" do
+      let(:edit) { instance_spy Gemsmith::CLI::Actions::Edit }
+
+      before { Gemsmith::CLI::Actions::Import.stub edit: }
+
+      after { Gemsmith::CLI::Actions::Import.unstub edit: }
+
+      it "edits gem" do
+        shell.call %w[--edit test]
+        expect(edit).to have_received(:call).with("test")
+      end
+    end
+
+    context "with view" do
+      let(:view) { instance_spy Gemsmith::CLI::Actions::View }
+
+      before { Gemsmith::CLI::Actions::Import.stub view: }
+
+      after { Gemsmith::CLI::Actions::Import.unstub view: }
+
+      it "views gem" do
+        shell.call %w[--view test]
+        expect(view).to have_received(:call).with("test")
+      end
+    end
+
     it "prints version" do
       expectation = proc { shell.call %w[--version] }
       expect(&expectation).to output(/Gemsmith\s\d+\.\d+\.\d+/).to_stdout
