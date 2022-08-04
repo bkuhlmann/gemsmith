@@ -9,6 +9,7 @@ module Gemsmith
   module Container
     extend Dry::Container::Mixin
 
+    # TODO: Remove once Rubysmith and Gemsmith configurations can coexist together.
     config.registry = ->(container, key, value, _options) { container[key.to_s] = value }
 
     merge Rubysmith::Container

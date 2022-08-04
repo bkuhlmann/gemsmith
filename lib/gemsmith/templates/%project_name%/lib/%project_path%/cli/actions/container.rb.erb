@@ -7,8 +7,6 @@ require "dry/container"
       module Container
         extend Dry::Container::Mixin
 
-        config.registry = ->(container, key, value, _options) { container[key.to_s] = value }
-
         merge <%= configuration.project_namespaced_class %>::Container
 
         register(:config) { Config.new }
