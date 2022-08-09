@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "refinements", "~> 9.6"
   spec.add_dependency "runcom", "~> 8.5"
   spec.add_dependency "spek", "~> 0.5"
-  spec.add_dependency "zeitwerk", "~> 2.5"
+  spec.add_dependency "zeitwerk", "~> 2.6"
 
   spec.bindir = "exe"
   spec.executables << "test"
