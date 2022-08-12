@@ -28,7 +28,7 @@ RSpec.shared_context "with application dependencies" do
 
   let :logger do
     Cogger::Client.new Logger.new(StringIO.new),
-                       formatter: ->(_severity, _name, _at, message) { "#{message}\n" },
+                       formatter: -> _severity, _name, _at, message { "#{message}\n" },
                        level: Logger::DEBUG
   end
 
