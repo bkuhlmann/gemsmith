@@ -1,5 +1,14 @@
 = Versions
 
+== 18.6.0 (2022-08-13)
+
+* Fixed RuboCop Style/StabbyLambdaParentheses issues - Brooke Kuhlmann
+* Fixed application dependencies shared context lambda syntax - Brooke Kuhlmann
+* Updated to Auto Injector 0.7.0 - Brooke Kuhlmann
+* Updated to Rubysmith 3.6.0 - Brooke Kuhlmann
+* Updated to Zeitwerk 2.6.0 - Brooke Kuhlmann
+* Removed registration of duplicate keys within containers - Brooke Kuhlmann
+
 == 18.5.0 (2022-08-01)
 
 * Added CLI build parser spec for maximum configuration - Brooke Kuhlmann
