@@ -1,5 +1,5 @@
-require "auto_injector"
+require "infusible"
 
 <% namespace do %>
-  Import = AutoInjector[Container]
+  Import = Infusible.with Container
 <% end %>

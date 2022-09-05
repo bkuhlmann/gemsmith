@@ -1,9 +1,9 @@
-require "auto_injector"
+require "infusible"
 
 module Test
   module CLI
     module Actions
-      Import = AutoInjector[Container]
+      Import = Infusible.with Container
     end
   end
 end

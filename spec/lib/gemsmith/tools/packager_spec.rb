@@ -4,7 +4,7 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Tools::Packager do
   using Refinements::Pathnames
-  using AutoInjector::Stub
+  using Infusible::Stub
 
   subject(:packager) { described_class.new }
 

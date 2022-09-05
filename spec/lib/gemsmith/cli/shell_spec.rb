@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Gemsmith::CLI::Shell do
   using Refinements::Pathnames
   using Refinements::Structs
-  using AutoInjector::Stub
+  using Infusible::Stub
 
   subject(:shell) { described_class.new }
 

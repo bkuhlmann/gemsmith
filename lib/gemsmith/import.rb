@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "auto_injector"
+require "infusible"
 
 module Gemsmith
-  Import = AutoInjector[Container]
+  Import = Infusible.with Container
 end

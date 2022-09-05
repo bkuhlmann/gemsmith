@@ -1,9 +1,9 @@
 require "dry/container/stub"
-require "auto_injector/stub"
+require "infusible/stub"
 
 RSpec.shared_context "with application dependencies" do
   using Refinements::Structs
-  using AutoInjector::Stub
+  using Infusible::Stub
 
   include_context "with temporary directory"
 

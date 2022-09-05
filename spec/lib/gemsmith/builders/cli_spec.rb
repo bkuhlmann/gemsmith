@@ -97,10 +97,10 @@ RSpec.describe Gemsmith::Builders::CLI do
 
       it "builds application import" do
         expect(temp_dir.join("test/lib/test/import.rb").read).to eq(<<~CONTENT)
-          require "auto_injector"
+          require "infusible"
 
           module Test
-            Import = AutoInjector[Container]
+            Import = Infusible.with Container
           end
         CONTENT
       end

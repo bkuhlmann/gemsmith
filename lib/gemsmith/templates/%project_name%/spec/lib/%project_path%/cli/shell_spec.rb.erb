@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe <%= configuration.project_namespaced_class %>::CLI::Shell do
   using Refinements::Pathnames
-  using AutoInjector::Stub
+  using Infusible::Stub
 
   subject(:shell) { described_class.new }
 
