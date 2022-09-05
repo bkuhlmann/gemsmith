@@ -1,5 +1,11 @@
 = Versions
 
+== 18.7.0 (2022-09-05)
+
+* Added Infusible gem - Brooke Kuhlmann
+* Removed Auto Injector - Brooke Kuhlmann
+* Refactored implementation to use Infusiable syntax - Brooke Kuhlmann
+
 == 18.6.0 (2022-08-13)
 
 * Fixed RuboCop Style/StabbyLambdaParentheses issues - Brooke Kuhlmann
