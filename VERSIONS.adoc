@@ -1,5 +1,11 @@
 = Versions
 
+== 18.8.0 (2022-09-16)
+
+* Updated README sections - Brooke Kuhlmann
+* Updated to Dry Container 0.11.0 - Brooke Kuhlmann
+* Updated to Rubysmith 3.7.0 - Brooke Kuhlmann
+
 == 18.7.0 (2022-09-05)
 
 * Added Infusible gem - Brooke Kuhlmann
