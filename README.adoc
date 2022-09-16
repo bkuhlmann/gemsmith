@@ -25,15 +25,6 @@ toc::[]
 . link:https://www.ruby-lang.org[Ruby].
 . link:https://rubygems.org[RubyGems].
 
-== Upgrade
-
-If upgrading from 17.0.0 to 18.0.0, you'll want to be aware of the following changes:
-
-* The `--dead_end` build option has been removed.
-* The Milestoner configuration has been updated to support ASCII Doc format by default and the
-  ability to sign tags has been removed (this happens dynamically based on your Git configuration
-  which gives you more flexibility).
-
 == Setup
 
 To install, run:
@@ -93,7 +84,7 @@ BUILD OPTIONS:
       --[no-]cli                           Add command line interface. Default: false.
 ....
 
-=== Build
+==== Build
 
 The core functionality of this gem centers around the `--build` command and associated flags. The
 build options allow you to further customize the kind of gem you want to build. Most build options
@@ -125,7 +116,7 @@ you supports the following options:
 
 From here you can add whatever you wish to make an awesome CLI gem for others to enjoy.
 
-=== Install
+==== Install
 
 After you've designed, implemented, and built your gem, you'll want to test it out within your local
 environment by installing it. You can do this by running:
@@ -143,7 +134,7 @@ Gemsmith can be used to install any gem, in fact. Doesn't matter if the gem was 
 Bundler, or some other tool. As long as your gem has a `*.gemspec` file, Gemsmith will be able to
 install it.
 
-=== Publish
+==== Publish
 
 Once you've built your gem; installed it locally; and thoroughly tested it, you'll want to publish
 your gem so anyone in the world can make use of it. You can do this by running the following:
@@ -169,7 +160,7 @@ As with installing a gem, Gemsmith can be used to publish existing gems which we
 Gemsmith too. As long as your gem has a `*.gemspec` file with a valid version, Gemsmith will be able
 to publish it.
 
-=== Edit
+==== Edit
 
 Gemsmith can be used to edit existing gems on your local system. You can do this by running:
 
@@ -184,7 +175,7 @@ have set in your `EDITOR` environment variable).
 
 Editing a local gem is a great way to learn from others or quickly debug issues.
 
-=== View
+==== View
 
 Gemsmith can be used to view existing gem documentation. You can do this by running:
 
@@ -256,9 +247,9 @@ gemsmith --install
 gemsmith --publish
 ----
 
-== Security
+=== Security
 
-=== Git Signing Key
+==== Git Signing Key
 
 To securely sign your Git tags, install and configure link:https://www.gnupg.org[GPG]:
 
@@ -294,7 +285,7 @@ Add your key to your global Git configuration in the `[user]` section. Example:
 Now, when publishing your gems with Gemsmith (i.e. `bundle exec rake publish`), signing of your Git
 tag will happen automatically.
 
-=== Gem Certificates
+==== Gem Certificates
 
 To create a certificate for your gems, run the following:
 
@@ -322,7 +313,7 @@ end
 To learn more about gem certificates, read about RubyGems
 link:https://guides.rubygems.org/security[Security].
 
-== Private Gem Servers
+=== Private Gem Servers
 
 By default, the following command will publicly publish your gem to
 link:https://rubygems.org[RubyGems]:
@@ -336,7 +327,7 @@ You can change this behavior by adding metadata to your gemspec that will allow 
 your gem to an alternate/private gem server instead. This can be done by updating your gem
 specification and RubyGems credentials.
 
-=== Gem Specification Metadata
+==== Gem Specification Metadata
 
 Add the following gemspec metadata to privately publish new versions of your gem:
 
@@ -357,7 +348,7 @@ Use of the `allowed_push_host` key provides two important capabilities:
 * Defines the lookup key in your `$HOME/.gem/credentials` file which contains your private
   credentials for authentication to your private server (more on this below).
 
-=== Gem Credentials
+==== Gem Credentials
 
 With your gem specification metadata established, you are ready to publish your gem to a public or
 private server. If this is your first time publishing a gem and no gem credentials have been
@@ -411,7 +402,7 @@ Lastly, should you need to delete a credential (due to a bad login/password for 
 open the `$HOME/.gem/credentials` in your default editor and remove the line(s) you don't need. Upon
 next publish of your gem, you'll be prompted for the missing credentials.
 
-=== Bundler Configuration
+==== Bundler Configuration
 
 So far, I've shown how to privately _publish_ a gem but now we need to teach Bundler how to install
 the gem as dependency within your upstream project. For demonstration purposes, I'm going to assume
@@ -454,7 +445,7 @@ Resolving dependencies...Fetching gem metadata from https://rubygems.org/.....
 
 If so, you're all set!
 
-=== GitHub Actions/Packages Automation
+==== GitHub Actions/Packages Automation
 
 Earlier, I hinted at using GitHub Packages but what if you could automate the entire publishing
 process? Well, good news, you can by using GitHub Actions to publish your packages. Here's the YAML
@@ -510,24 +501,13 @@ The above will ensure the following:
 This entire workflow is explained in my
 link:https://www.alchemists.io/talks/ruby_git_hub_packages[talk] on this exact subject too.
 
-== Promotion
-
-Once your gem is released, let the world know about your accomplishment by posting an update to
-these sites:
-
-* link:https://rubyflow.com[RubyFlow]
-* link:https://ruby.libhunt.com[Ruby Library Hunt]
-* link:https://awesome-ruby.com[Awesome Ruby]
-* link:https://www.ruby-toolbox.com[Ruby Toolbox]
-* link:https://www.ruby-lang.org/en/community[Ruby Community]
-
 == Development
 
 To contribute, run:
 
 [source,bash]
 ----
-git clone https://github.com/bkuhlmann/gemsmith.git
+git clone https://github.com/bkuhlmann/gemsmith
 cd gemsmith
 bin/setup
 ----
