@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "infusible", "~> 0.2"
   spec.add_dependency "milestoner", "~> 14.5"
   spec.add_dependency "refinements", "~> 9.7"
-  spec.add_dependency "rubysmith", "~> 3.7"
+  spec.add_dependency "rubysmith", "~> 3.8"
   spec.add_dependency "runcom", "~> 8.7"
   spec.add_dependency "spek", "~> 0.6"
   spec.add_dependency "versionaire", "~> 10.6"
