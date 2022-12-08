@@ -13,10 +13,10 @@ unless ENV["NO_COVERAGE"]
   end
 end
 
-require "git_plus/spec/shared_contexts/temp_dir"
-require "git_plus/spec/shared_contexts/git_repo"
-require "refinements"
 require "gemsmith"
+require "git_plus/spec/shared_contexts/git_repo"
+require "git_plus/spec/shared_contexts/temp_dir"
+require "refinements"
 
 using Refinements::Pathnames
 

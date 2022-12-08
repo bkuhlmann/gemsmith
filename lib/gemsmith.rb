@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "zeitwerk"
 require "rubysmith"
+require "zeitwerk"
 
 Zeitwerk::Loader.for_gem.then do |loader|
   loader.inflector.inflect "cli" => "CLI", "circle_ci" => "CircleCI", "rspec" => "RSpec"
