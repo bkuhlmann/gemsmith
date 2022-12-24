@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "cogger", "~> 0.4"
   spec.add_dependency "dry-container", "~> 0.11"
   spec.add_dependency "dry-monads", "~> 1.5"
-  spec.add_dependency "infusible", "~> 0.2"
+  spec.add_dependency "infusible", "~> 1.0"
   spec.add_dependency "milestoner", "~> 14.5"
   spec.add_dependency "refinements", "~> 9.7"
   spec.add_dependency "rubysmith", "~> 3.8"
