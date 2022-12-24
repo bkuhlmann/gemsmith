@@ -67,7 +67,6 @@ RSpec.describe Gemsmith::CLI::Shell do
           --build
           test
           --no-amazing_print
-          --no-bundler-leak
           --no-caliber
           --no-circle_ci
           --no-citation
@@ -136,6 +135,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           "test/.ruby-version",
           "test/bin/console",
           "test/bin/guard",
+          "test/bin/rspec",
           "test/bin/rubocop",
           "test/bin/setup",
           "test/CITATION.cff",
@@ -187,7 +187,6 @@ RSpec.describe Gemsmith::CLI::Shell do
           --build
           test
           --amazing_print
-          --bundler-leak
           --caliber
           --circle_ci
           --citation
@@ -229,6 +228,7 @@ RSpec.describe Gemsmith::CLI::Shell do
           "test/.ruby-version",
           "test/bin/console",
           "test/bin/guard",
+          "test/bin/rspec",
           "test/bin/rubocop",
           "test/bin/setup",
           "test/CITATION.cff",

@@ -31,6 +31,7 @@ module Gemsmith
           Rubysmith::Builders::GitHub,
           Rubysmith::Builders::Guard,
           Rubysmith::Builders::Reek,
+          Rubysmith::Builders::RSpec::Binstub,
           Rubysmith::Builders::RSpec::Context,
           Rubysmith::Builders::RSpec::Helper,
           Builders::RSpec::Helper,
