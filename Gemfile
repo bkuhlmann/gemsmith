@@ -7,7 +7,7 @@ source "https://rubygems.org"
 gemspec
 
 group :code_quality do
-  gem "caliber", "~> 0.16"
+  gem "caliber", "~> 0.21"
   # gem "git-lint", "~> 4.0"
   gem "reek", "~> 6.1"
   gem "simplecov", "~> 0.21", require: false
