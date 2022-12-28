@@ -53,7 +53,6 @@ USAGE:
 
 BUILD OPTIONS:
       --[no-]amazing_print                 Add Amazing Print gem. Default: true.
-      --[no-]bundler-leak                  Add Bundler Leak gem. Default: true.
       --[no-]caliber                       Add Caliber gem. Default: true.
       --[no-]circle_ci                     Add Circle CI configuration and badge. Default: false.
       --[no-]citation                      Add citation documentation. Default: true.
@@ -65,6 +64,7 @@ BUILD OPTIONS:
       --[no-]funding                       Add GitHub funding configuration. Default: false.
       --[no-]git                           Add Git. Default: true.
       --[no-]git_hub                       Add GitHub templates. Default: false.
+      --[no-]git_hub_ci                    Add GitHub templates. Default: false.
       --[no-]git-lint                      Add Git Lint gem. Default: true.
       --[no-]guard                         Add Guard gem. Default: true.
       --[no-]license                       Add license documentation. Default: true.
