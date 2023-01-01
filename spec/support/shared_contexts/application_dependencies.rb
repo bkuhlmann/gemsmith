@@ -15,11 +15,7 @@ RSpec.shared_context "with application dependencies" do
       author_given_name: "Jill",
       now: Time.local(2020, 1, 1, 0, 0, 0),
       project_name: "test",
-      target_root: temp_dir,
-      template_roots: [
-        Bundler.root.join("lib/gemsmith/templates"),
-        *Rubysmith::Container[:configuration].template_roots
-      ]
+      target_root: temp_dir
     )
   end
 

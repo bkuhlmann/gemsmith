@@ -7,20 +7,8 @@ RSpec.describe Gemsmith::Configuration::Loader do
 
   subject(:loader) { described_class.new }
 
-  describe ".call" do
-    it "answers configuration" do
-      expect(described_class.call).to be_a(Rubysmith::Configuration::Content)
-    end
-  end
-
-  describe ".with_defaults" do
-    it "answers configuration" do
-      expect(described_class.with_defaults.call).to be_a(Rubysmith::Configuration::Content)
-    end
-  end
-
   describe ".with_overrides" do
-    it "answers overrides" do
+    it "answers default overrides" do
       expect(described_class.with_overrides.call).to have_attributes(
         target_root: Bundler.root,
         template_roots: [
@@ -32,13 +20,17 @@ RSpec.describe Gemsmith::Configuration::Loader do
   end
 
   describe "#call" do
+    it "answers content with defaults" do
+      expect(described_class.with_defaults.call).to have_attributes(
+        target_root: Bundler.root,
+        template_roots: []
+      )
+    end
+
     it "answers content with overrides" do
       expect(loader.call).to have_attributes(
         target_root: Bundler.root,
-        template_roots: [
-          Bundler.root.join("lib/gemsmith/templates"),
-          kind_of(Pathname)
-        ]
+        template_roots: [Bundler.root.join("lib/gemsmith/templates"), kind_of(Pathname)]
       )
     end
   end
