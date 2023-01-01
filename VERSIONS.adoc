@@ -1,5 +1,13 @@
 = Versions
 
+== 19.1.0 (2023-01-01)
+
+* Fixed missing Cogger CLI gem specification dependency - Brooke Kuhlmann
+* Updated to Milestoner 15.1.0 - Brooke Kuhlmann
+* Updated to Rubysmith 4.2.0 - Brooke Kuhlmann
+* Removed Git commit word wrap when generating project skeleton - Brooke Kuhlmann
+* Removed configuration template root enhancer - Brooke Kuhlmann
+
 == 19.0.0 (2022-12-28)
 
 * Fixed RuboCop Style/RequireOrder issues - Brooke Kuhlmann
