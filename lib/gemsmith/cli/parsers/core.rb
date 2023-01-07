@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "core"
 require "pathname"
 require "refinements/structs"
 
@@ -23,7 +24,7 @@ module Gemsmith
           @client = client
         end
 
-        def call arguments = []
+        def call arguments = ::Core::EMPTY_ARRAY
           client.banner = specification.labeled_summary
           client.separator "\nUSAGE:\n"
           collate

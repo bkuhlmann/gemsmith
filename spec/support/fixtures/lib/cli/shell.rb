@@ -1,3 +1,5 @@
+require "core"
+
 module Test
   module CLI
     # The main Command Line Interface (CLI) object.
@@ -9,7 +11,7 @@ module Test
         @parser = parser
       end
 
-      def call arguments = []
+      def call arguments = Core::EMPTY_ARRAY
         perform parser.call(arguments)
       rescue OptionParser::ParseError => error
         logger.error { error.message }

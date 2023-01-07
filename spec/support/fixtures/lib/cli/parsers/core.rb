@@ -1,3 +1,4 @@
+require "core"
 require "refinements/structs"
 
 module Test
@@ -20,7 +21,7 @@ module Test
           @client = client
         end
 
-        def call arguments = []
+        def call arguments = ::Core::EMPTY_ARRAY
           client.banner = specification.labeled_summary
           client.separator "\nUSAGE:\n"
           collate

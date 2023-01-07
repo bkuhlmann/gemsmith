@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "core"
 require "optparse"
 
 module Gemsmith
@@ -21,7 +22,7 @@ module Gemsmith
         @configuration_duplicate = configuration.dup
       end
 
-      def call arguments = []
+      def call arguments = Core::EMPTY_ARRAY
         sections.each { |section| section.call configuration_duplicate, client: }
         client.parse arguments
         configuration_duplicate.freeze
