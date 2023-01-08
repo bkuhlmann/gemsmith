@@ -1,5 +1,12 @@
 = Versions
 
+== 19.2.0 (2023-01-08)
+
+* Added Core gem - Brooke Kuhlmann
+* Updated to Milestoner 15.2.0 - Brooke Kuhlmann
+* Updated to Rubysmith 4.3.0 - Brooke Kuhlmann
+* Refactored implementation to use empty core instances - Brooke Kuhlmann
+
 == 19.1.0 (2023-01-01)
 
 * Fixed missing Cogger CLI gem specification dependency - Brooke Kuhlmann
