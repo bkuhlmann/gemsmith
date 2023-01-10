@@ -35,13 +35,7 @@ RSpec.describe Gemsmith::CLI::Shell do
     end
 
     context "with minimum forced build" do
-      let :options do
-        %w[
-          --build
-          test
-          --min
-        ]
-      end
+      let(:options) { %w[--build test --min] }
 
       let :files do
         [
@@ -114,13 +108,7 @@ RSpec.describe Gemsmith::CLI::Shell do
     end
 
     context "with maximum forced build" do
-      let :options do
-        %w[
-          --build
-          test
-          --max
-        ]
-      end
+      let(:options) { %w[--build test --max] }
 
       let :files do
         [
