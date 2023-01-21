@@ -29,7 +29,7 @@ RSpec.shared_context "with application dependencies" do
   end
 
   let :specification do
-    Spek::Loader.call Bundler.root.join("spec/support/fixtures/gemsmith-test.gemspec")
+    Spek::Loader.call SPEC_ROOT.join("support/fixtures/gemsmith-test.gemspec")
   end
 
   before { Gemsmith::Import.stub configuration:, kernel:, executor:, logger: }

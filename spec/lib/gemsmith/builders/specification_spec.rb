@@ -19,7 +19,7 @@ RSpec.describe Gemsmith::Builders::Specification do
 
       it "builds gemspec" do
         expect(temp_dir.join("test", "test.gemspec").read).to eq(
-          Bundler.root.join("spec/support/fixtures/test-minimum.gemspec").read
+          SPEC_ROOT.join("support/fixtures/test-minimum.gemspec").read
         )
       end
     end
@@ -29,7 +29,7 @@ RSpec.describe Gemsmith::Builders::Specification do
 
       it "builds gemspec" do
         expect(temp_dir.join("test", "test.gemspec").read).to eq(
-          Bundler.root.join("spec/support/fixtures/test-minimum-security.gemspec").read
+          SPEC_ROOT.join("support/fixtures/test-minimum-security.gemspec").read
         )
       end
     end
@@ -41,7 +41,7 @@ RSpec.describe Gemsmith::Builders::Specification do
 
       it "builds gemspec" do
         expect(temp_dir.join("test", "test.gemspec").read).to eq(
-          Bundler.root.join("spec/support/fixtures/test-minimum-cli.gemspec").read
+          SPEC_ROOT.join("support/fixtures/test-minimum-cli.gemspec").read
         )
       end
     end
@@ -66,7 +66,7 @@ RSpec.describe Gemsmith::Builders::Specification do
 
       it "builds gemspec" do
         expect(temp_dir.join("test", "test.gemspec").read).to eq(
-          Bundler.root.join("spec/support/fixtures/test-maximum.gemspec").read
+          SPEC_ROOT.join("support/fixtures/test-maximum.gemspec").read
         )
       end
     end

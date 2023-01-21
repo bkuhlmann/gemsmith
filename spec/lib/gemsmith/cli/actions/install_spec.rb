@@ -16,7 +16,7 @@ RSpec.describe Gemsmith::CLI::Actions::Install do
   let(:specification) { Spek::Loader.call temp_dir.join("gemsmith-test.gemspec") }
 
   describe "#call" do
-    before { Bundler.root.join("spec/support/fixtures/gemsmith-test.gemspec").copy temp_dir }
+    before { SPEC_ROOT.join("support/fixtures/gemsmith-test.gemspec").copy temp_dir }
 
     context "when success" do
       let(:result) { Success specification }

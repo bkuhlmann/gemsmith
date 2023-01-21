@@ -20,7 +20,7 @@ RSpec.describe Gemsmith::Builders::CLI do
   it_behaves_like "a builder"
 
   describe "#call" do
-    let(:fixtures_root) { Bundler.root.join "spec/support/fixtures" }
+    let(:fixtures_root) { SPEC_ROOT.join "support/fixtures" }
 
     before { builder.call }
 
@@ -45,37 +45,37 @@ RSpec.describe Gemsmith::Builders::CLI do
 
       it "builds CLI action config" do
         expect(temp_dir.join("test/lib/test/cli/actions/config.rb").read).to eq(
-          Bundler.root.join("spec/support/fixtures/lib/cli/actions/config.rb").read
+          SPEC_ROOT.join("support/fixtures/lib/cli/actions/config.rb").read
         )
       end
 
       it "builds CLI action container" do
         expect(temp_dir.join("test/lib/test/cli/actions/container.rb").read).to eq(
-          Bundler.root.join("spec/support/fixtures/lib/cli/actions/container.rb").read
+          SPEC_ROOT.join("support/fixtures/lib/cli/actions/container.rb").read
         )
       end
 
       it "builds CLI action import" do
         expect(temp_dir.join("test/lib/test/cli/actions/import.rb").read).to eq(
-          Bundler.root.join("spec/support/fixtures/lib/cli/actions/import.rb").read
+          SPEC_ROOT.join("support/fixtures/lib/cli/actions/import.rb").read
         )
       end
 
       it "builds CLI parser" do
         expect(temp_dir.join("test/lib/test/cli/parser.rb").read).to eq(
-          Bundler.root.join("spec/support/fixtures/lib/cli/parser.rb").read
+          SPEC_ROOT.join("support/fixtures/lib/cli/parser.rb").read
         )
       end
 
       it "builds CLI core parser" do
         expect(temp_dir.join("test/lib/test/cli/parsers/core.rb").read).to eq(
-          Bundler.root.join("spec/support/fixtures/lib/cli/parsers/core.rb").read
+          SPEC_ROOT.join("support/fixtures/lib/cli/parsers/core.rb").read
         )
       end
 
       it "builds CLI shell" do
         expect(temp_dir.join("test/lib/test/cli/shell.rb").read).to eq(
-          Bundler.root.join("spec/support/fixtures/lib/cli/shell.rb").read
+          SPEC_ROOT.join("support/fixtures/lib/cli/shell.rb").read
         )
       end
 
@@ -85,13 +85,13 @@ RSpec.describe Gemsmith::Builders::CLI do
 
       it "builds configuration loader" do
         expect(temp_dir.join("test/lib/test/configuration/loader.rb").read).to eq(
-          Bundler.root.join("spec/support/fixtures/lib/configuration/loader.rb").read
+          SPEC_ROOT.join("support/fixtures/lib/configuration/loader.rb").read
         )
       end
 
       it "builds application container" do
         expect(temp_dir.join("test/lib/test/container.rb").read).to eq(
-          Bundler.root.join("spec/support/fixtures/lib/container.rb").read
+          SPEC_ROOT.join("support/fixtures/lib/container.rb").read
         )
       end
 

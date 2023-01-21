@@ -14,7 +14,7 @@ RSpec.describe Gemsmith::CLI::Actions::View do
   let(:viewer) { instance_double Gemsmith::Tools::Viewer, call: result }
 
   let :specification do
-    Spek::Loader.call Bundler.root.join("spec/support/fixtures/gemsmith-test.gemspec")
+    Spek::Loader.call SPEC_ROOT.join("support/fixtures/gemsmith-test.gemspec")
   end
 
   describe "#call" do
