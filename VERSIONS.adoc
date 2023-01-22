@@ -1,5 +1,15 @@
 = Versions
 
+== 19.3.0 (2023-01-22)
+
+* Fixed Guardfile to use RSpec binstub - Brooke Kuhlmann
+* Added Rake binstub - Brooke Kuhlmann
+* Updated to Rubysmith 4.4.0 - Brooke Kuhlmann
+* Refactored Git commit builder to inherit from Rubysmith - Brooke Kuhlmann
+* Refactored RSpec helper to use spec root constant - Brooke Kuhlmann
+* Refactored configuration loader passing of arguments to super class - Brooke Kuhlmann
+* Refactored shell spec to use one line min and max let statements - Brooke Kuhlmann
+
 == 19.2.0 (2023-01-08)
 
 * Added Core gem - Brooke Kuhlmann
