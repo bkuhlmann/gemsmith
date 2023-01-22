@@ -525,7 +525,7 @@ To test, run:
 
 [source,bash]
 ----
-bundle exec rake
+bin/rake
 ----
 
 == link:https://www.alchemists.io/policies/license[License]
