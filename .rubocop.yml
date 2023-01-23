@@ -10,6 +10,9 @@ Layout/RedundantLineBreak:
 Metrics/AbcSize:
   Exclude:
     - "lib/gemsmith/cli/shell.rb"
+Metrics/CyclomaticComplexity:
+  AllowedMethods:
+    - act_on
 RSpec/FilePath:
   Exclude:
     - "spec/support/fixtures/**/*"
