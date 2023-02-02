@@ -12,9 +12,8 @@ module Gemsmith
       # Order matters.
       STEPS = [Tools::Cleaner.new, Tools::Packager.new].freeze
 
-      def initialize steps: STEPS, **dependencies
-        super(**dependencies)
-
+      def initialize(steps: STEPS, **)
+        super(**)
         @steps = steps
       end
 

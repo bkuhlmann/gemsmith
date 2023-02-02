@@ -11,9 +11,8 @@ module Gemsmith
         include Gemsmith::Import[:kernel, :logger]
         include Dry::Monads[:result]
 
-        def initialize picker: Spek::Picker, viewer: Tools::Viewer.new, **dependencies
-          super(**dependencies)
-
+        def initialize(picker: Spek::Picker, viewer: Tools::Viewer.new, **)
+          super(**)
           @picker = picker
           @viewer = viewer
         end

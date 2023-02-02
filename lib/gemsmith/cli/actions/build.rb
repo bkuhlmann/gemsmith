@@ -43,8 +43,8 @@ module Gemsmith
           Builders::Git::Commit
         ].freeze
 
-        def initialize builders: BUILDERS, **dependencies
-          super(**dependencies)
+        def initialize(builders: BUILDERS, **)
+          super(**)
           @builders = builders
         end
 

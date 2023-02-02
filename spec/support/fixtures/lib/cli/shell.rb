@@ -6,8 +6,8 @@ module Test
     class Shell
       include Actions::Import[:config, :specification, :logger]
 
-      def initialize parser: Parser.new, **dependencies
-        super(**dependencies)
+      def initialize(parser: Parser.new, **)
+        super(**)
         @parser = parser
       end
 

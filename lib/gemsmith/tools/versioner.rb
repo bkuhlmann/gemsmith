@@ -10,12 +10,12 @@ module Gemsmith
       include Import[:configuration]
       include Dry::Monads[:result]
 
-      def initialize client: Milestoner::Tags::Publisher.new,
-                     content: Milestoner::Configuration::Content,
-                     **dependencies
-
-        super(**dependencies)
-
+      def initialize(
+        client: Milestoner::Tags::Publisher.new,
+        content: Milestoner::Configuration::Content,
+        **
+      )
+        super(**)
         @client = client
         @content = content
       end

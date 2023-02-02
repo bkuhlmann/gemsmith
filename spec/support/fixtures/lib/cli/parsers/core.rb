@@ -12,11 +12,8 @@ module Test
 
         def self.call(...) = new(...).call
 
-        def initialize configuration = Container[:configuration],
-                       client: Parser::CLIENT,
-                       **dependencies
-
-          super(**dependencies)
+        def initialize(configuration = Container[:configuration], client: Parser::CLIENT, **)
+          super(**)
           @configuration = configuration
           @client = client
         end

@@ -10,9 +10,8 @@ module Gemsmith
       include Import[:executor, :logger]
       include Dry::Monads[:result]
 
-      def initialize command: Gem::CommandManager.new, **dependencies
-        super(**dependencies)
-
+      def initialize(command: Gem::CommandManager.new, **)
+        super(**)
         @command = command
       end
 

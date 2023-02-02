@@ -14,9 +14,8 @@ module Gemsmith
       # Order is important.
       SECTIONS = [Parsers::Core, Rubysmith::CLI::Parsers::Build, Parsers::Build].freeze
 
-      def initialize sections: SECTIONS, client: CLIENT, **dependencies
-        super(**dependencies)
-
+      def initialize(sections: SECTIONS, client: CLIENT, **)
+        super(**)
         @sections = sections
         @client = client
         @configuration_duplicate = configuration.dup

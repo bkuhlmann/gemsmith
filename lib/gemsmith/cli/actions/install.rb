@@ -11,9 +11,8 @@ module Gemsmith
         include Gemsmith::Import[:logger]
         include Dry::Monads[:result]
 
-        def initialize installer: Tools::Installer.new, loader: Spek::Loader, **dependencies
-          super(**dependencies)
-
+        def initialize(installer: Tools::Installer.new, loader: Spek::Loader, **)
+          super(**)
           @installer = installer
           @loader = loader
         end

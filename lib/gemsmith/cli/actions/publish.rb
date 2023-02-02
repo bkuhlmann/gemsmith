@@ -11,9 +11,8 @@ module Gemsmith
         include Gemsmith::Import[:logger]
         include Dry::Monads[:result]
 
-        def initialize publisher: Tools::Publisher.new, loader: Spek::Loader, **dependencies
-          super(**dependencies)
-
+        def initialize(publisher: Tools::Publisher.new, loader: Spek::Loader, **)
+          super(**)
           @publisher = publisher
           @loader = loader
         end
