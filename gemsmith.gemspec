@@ -5,14 +5,14 @@ Gem::Specification.new do |spec|
   spec.version = "19.4.0"
   spec.authors = ["Brooke Kuhlmann"]
   spec.email = ["brooke@alchemists.io"]
-  spec.homepage = "https://www.alchemists.io/projects/gemsmith"
+  spec.homepage = "https://alchemists.io/projects/gemsmith"
   spec.summary = "A command line interface for smithing Ruby gems."
   spec.license = "Hippocratic-2.1"
 
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/bkuhlmann/gemsmith/issues",
-    "changelog_uri" => "https://www.alchemists.io/projects/gemsmith/versions",
-    "documentation_uri" => "https://www.alchemists.io/projects/gemsmith",
+    "changelog_uri" => "https://alchemists.io/projects/gemsmith/versions",
+    "documentation_uri" => "https://alchemists.io/projects/gemsmith",
     "funding_uri" => "https://github.com/sponsors/bkuhlmann",
     "label" => "Gemsmith",
     "rubygems_mfa_required" => "true",

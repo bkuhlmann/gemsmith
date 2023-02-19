@@ -25,7 +25,7 @@ RSpec.describe Gemsmith::Builders::Documentation::Readme do
 
       it "builds README" do
         expect(temp_dir.join("test", "README.md").read).to include(
-          "[Gemsmith](https://www.alchemists.io/projects/gemsmith)"
+          "[Gemsmith](https://alchemists.io/projects/gemsmith)"
         )
       end
     end
@@ -37,7 +37,7 @@ RSpec.describe Gemsmith::Builders::Documentation::Readme do
 
       it "builds README" do
         expect(temp_dir.join("test", "README.adoc").read).to include(
-          "link:https://www.alchemists.io/projects/gemsmith[Gemsmith]"
+          "link:https://alchemists.io/projects/gemsmith[Gemsmith]"
         )
       end
     end

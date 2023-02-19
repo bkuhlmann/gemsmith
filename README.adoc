@@ -14,7 +14,7 @@ toc::[]
 
 == Features
 
-* Supports all link:https://www.alchemists.io/projects/rubysmith[Rubysmith] features.
+* Supports all link:https://alchemists.io/projects/rubysmith[Rubysmith] features.
 * Supports basic gem skeletons or more advanced Command Line Interface (CLI) skeletons.
 * Supports gem building, installing for local development, and publishing.
 * Supports the editing and viewing of installed gems.
@@ -89,7 +89,7 @@ BUILD OPTIONS:
 The core functionality of this gem centers around the `--build` command and associated flags. The
 build options allow you to further customize the kind of gem you want to build. Most build options
 are enabled by default. For detailed documentation on all supported flags, see the
-link:https://www.alchemists.io/projects/rubysmith/#_build[Rubysmith] documentation.
+link:https://alchemists.io/projects/rubysmith/#_build[Rubysmith] documentation.
 
 The build option which is unique to Gemsmith is the `--cli` option. This allows you to build a gem
 which has a Command Line Interface (CLI). There are multiple ways a CLI can be built in Ruby but
@@ -149,7 +149,7 @@ gemsmith --publish demo
 ----
 
 Security is important which requires a GPG key for signing your Git tags and
-link:https://www.alchemists.io/articles/ruby_gems_multi_factor_authentication/[RubyGems Multi-Factor
+link:https://alchemists.io/articles/ruby_gems_multi_factor_authentication/[RubyGems Multi-Factor
 Authentication] for publishing to RubyGems. Both of which are enabled by default. You'll want to
 read through the linked article which delves into how Gemsmith automatically makes use of your
 YubiKey to authenticate with RubyGems. Spending the time to set this up will allow Gemsmith to use
@@ -197,11 +197,11 @@ This gem can be configured via a global configuration:
 $HOME/.config/gemsmith/configuration.yml
 ....
 
-It can also be configured via link:https://www.alchemists.io/projects/xdg[XDG] environment
+It can also be configured via link:https://alchemists.io/projects/xdg[XDG] environment
 variables.
 
 The default configuration is everything provided in the
-link:https://www.alchemists.io/projects/rubysmith/#_configuration[Rubysmith] with the addition of
+link:https://alchemists.io/projects/rubysmith/#_configuration[Rubysmith] with the addition of
 the following:
 
 [source,yaml]
@@ -499,7 +499,7 @@ The above will ensure the following:
   branch will a new version be automatically published.
 
 This entire workflow is explained in my
-link:https://www.alchemists.io/talks/ruby_git_hub_packages[talk] on this exact subject too.
+link:https://alchemists.io/talks/ruby_git_hub_packages[talk] on this exact subject too.
 
 == Development
 
@@ -528,18 +528,18 @@ To test, run:
 bin/rake
 ----
 
-== link:https://www.alchemists.io/policies/license[License]
+== link:https://alchemists.io/policies/license[License]
 
-== link:https://www.alchemists.io/policies/security[Security]
+== link:https://alchemists.io/policies/security[Security]
 
-== link:https://www.alchemists.io/policies/code_of_conduct[Code of Conduct]
+== link:https://alchemists.io/policies/code_of_conduct[Code of Conduct]
 
-== link:https://www.alchemists.io/policies/contributions[Contributions]
+== link:https://alchemists.io/policies/contributions[Contributions]
 
-== link:https://www.alchemists.io/projects/gemsmith/versions[Versions]
+== link:https://alchemists.io/projects/gemsmith/versions[Versions]
 
-== link:https://www.alchemists.io/community[Community]
+== link:https://alchemists.io/community[Community]
 
 == Credits
 
-Engineered by link:https://www.alchemists.io/team/brooke_kuhlmann[Brooke Kuhlmann].
+Engineered by link:https://alchemists.io/team/brooke_kuhlmann[Brooke Kuhlmann].
