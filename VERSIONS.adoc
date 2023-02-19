@@ -1,5 +1,12 @@
 = Versions
 
+== 19.5.0 (2023-02-19)
+
+* Updated Reek dependency to not be required - Brooke Kuhlmann
+* Updated site URLs to use bare domain - Brooke Kuhlmann
+* Updated to Ruby 3.2.1 - Brooke Kuhlmann
+* Updated to Rubysmith 4.6.0 - Brooke Kuhlmann
+
 == 19.4.0 (2023-02-05)
 
 * Fixed Metrics/CyclomaticComplexity issue - Brooke Kuhlmann
