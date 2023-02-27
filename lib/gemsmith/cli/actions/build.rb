@@ -19,6 +19,7 @@ module Gemsmith
           Rubysmith::Builders::Documentation::Version,
           Rubysmith::Builders::Git::Setup,
           Rubysmith::Builders::Git::Ignore,
+          Rubysmith::Builders::Git::Safe,
           Builders::Git::Ignore,
           Rubysmith::Builders::Bundler,
           Builders::Bundler,
