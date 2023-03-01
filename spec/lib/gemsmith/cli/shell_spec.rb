@@ -16,6 +16,23 @@ RSpec.describe Gemsmith::CLI::Shell do
   after { Gemsmith::CLI::Actions::Import.unstub :configuration, :kernel, :executor }
 
   describe "#call" do
+    let :bom_minimum do
+      [
+        "test/.ruby-version",
+        "test/Gemfile",
+        ("test/Gemfile.lock" unless ENV.fetch("CI", false) == "true"),
+        "test/lib/test.rb",
+        "test/test.gemspec"
+      ].compact
+    end
+
+    let :bom_maximum do
+      SPEC_ROOT.join("support/fixtures/boms/maximum.txt")
+               .readlines(chomp: true)
+               .push(("test/Gemfile.lock" unless ENV.fetch("CI", false) == "true"))
+               .compact
+    end
+
     let :project_files do
       temp_dir.join("test")
               .files("**/*", flag: File::FNM_DOTMATCH)
@@ -37,72 +54,23 @@ RSpec.describe Gemsmith::CLI::Shell do
     context "with minimum forced build" do
       let(:options) { %w[--build test --min] }
 
-      let :files do
-        [
-          "test/.ruby-version",
-          "test/Gemfile",
-          ("test/Gemfile.lock" unless ENV.fetch("CI", false) == "true"),
-          "test/lib/test.rb",
-          "test/test.gemspec"
-        ].compact
-      end
-
       it "builds minimum skeleton" do
         temp_dir.change_dir do
           Bundler.with_unbundled_env { shell.call options }
-          expect(project_files).to contain_exactly(*files)
+          expect(project_files).to contain_exactly(*bom_minimum)
         end
       end
     end
 
     context "with minimum optional build" do
       let :options do
-        %w[
-          --build
-          test
-          --no-amazing_print
-          --no-caliber
-          --no-circle_ci
-          --no-citation
-          --no-cli
-          --no-community
-          --no-conduct
-          --no-console
-          --no-contributions
-          --no-debug
-          --no-funding
-          --no-git
-          --no-git-lint
-          --no-git_hub
-          --no-guard
-          --no-license
-          --no-rake
-          --no-readme
-          --no-reek
-          --no-refinements
-          --no-rspec
-          --no-security
-          --no-setup
-          --no-simple_cov
-          --no-versions
-          --no-zeitwerk
-        ]
-      end
-
-      let :files do
-        [
-          "test/.ruby-version",
-          "test/Gemfile",
-          ("test/Gemfile.lock" unless ENV.fetch("CI", false) == "true"),
-          "test/lib/test.rb",
-          "test/test.gemspec"
-        ].compact
+        SPEC_ROOT.join("support/fixtures/arguments/minimum.txt").readlines chomp: true
       end
 
       it "builds minimum skeleton" do
         temp_dir.change_dir do
           Bundler.with_unbundled_env { shell.call options }
-          expect(project_files).to contain_exactly(*files)
+          expect(project_files).to contain_exactly(*bom_minimum)
         end
       end
     end
@@ -110,156 +78,23 @@ RSpec.describe Gemsmith::CLI::Shell do
     context "with maximum forced build" do
       let(:options) { %w[--build test --max] }
 
-      let :files do
-        [
-          "test/.circleci/config.yml",
-          "test/.git/HEAD",
-          "test/.github/FUNDING.yml",
-          "test/.github/ISSUE_TEMPLATE.md",
-          "test/.github/PULL_REQUEST_TEMPLATE.md",
-          "test/.gitignore",
-          "test/.reek.yml",
-          "test/.rubocop.yml",
-          "test/.ruby-version",
-          "test/bin/console",
-          "test/bin/guard",
-          "test/bin/rake",
-          "test/bin/rspec",
-          "test/bin/rubocop",
-          "test/bin/setup",
-          "test/CITATION.cff",
-          "test/exe/test",
-          "test/Gemfile",
-          ("test/Gemfile.lock" unless ENV.fetch("CI", false) == "true"),
-          "test/Guardfile",
-          "test/lib/test.rb",
-          "test/lib/test/cli/actions/config.rb",
-          "test/lib/test/cli/actions/container.rb",
-          "test/lib/test/cli/actions/import.rb",
-          "test/lib/test/cli/parser.rb",
-          "test/lib/test/cli/parsers/core.rb",
-          "test/lib/test/cli/shell.rb",
-          "test/lib/test/configuration/content.rb",
-          "test/lib/test/configuration/defaults.yml",
-          "test/lib/test/configuration/loader.rb",
-          "test/lib/test/container.rb",
-          "test/lib/test/import.rb",
-          "test/LICENSE.adoc",
-          "test/Rakefile",
-          "test/README.adoc",
-          "test/spec/lib/test/cli/actions/config_spec.rb",
-          "test/spec/lib/test/cli/parser_spec.rb",
-          "test/spec/lib/test/cli/parsers/core_spec.rb",
-          "test/spec/lib/test/cli/shell_spec.rb",
-          "test/spec/lib/test/configuration/content_spec.rb",
-          "test/spec/lib/test/configuration/loader_spec.rb",
-          "test/spec/spec_helper.rb",
-          "test/spec/support/shared_contexts/application_dependencies.rb",
-          "test/spec/support/shared_contexts/temp_dir.rb",
-          "test/spec/support/shared_examples/a_parser.rb",
-          "test/test.gemspec",
-          "test/VERSIONS.adoc"
-        ].compact
-      end
-
       it "builds maximum skeleton" do
         temp_dir.change_dir do
           Bundler.with_unbundled_env { shell.call options }
-          expect(project_files).to contain_exactly(*files)
+          expect(project_files).to contain_exactly(*bom_maximum)
         end
       end
     end
 
     context "with maximum optional build" do
       let :options do
-        %w[
-          --build
-          test
-          --amazing_print
-          --caliber
-          --circle_ci
-          --citation
-          --cli
-          --community
-          --conduct
-          --console
-          --contributions
-          --debug
-          --funding
-          --git
-          --git-lint
-          --git_hub
-          --guard
-          --license
-          --rake
-          --readme
-          --reek
-          --refinements
-          --rspec
-          --security
-          --setup
-          --simple_cov
-          --versions
-          --zeitwerk
-        ]
-      end
-
-      let :files do
-        [
-          "test/.circleci/config.yml",
-          "test/.git/HEAD",
-          "test/.github/FUNDING.yml",
-          "test/.github/ISSUE_TEMPLATE.md",
-          "test/.github/PULL_REQUEST_TEMPLATE.md",
-          "test/.gitignore",
-          "test/.reek.yml",
-          "test/.rubocop.yml",
-          "test/.ruby-version",
-          "test/bin/console",
-          "test/bin/guard",
-          "test/bin/rake",
-          "test/bin/rspec",
-          "test/bin/rubocop",
-          "test/bin/setup",
-          "test/CITATION.cff",
-          "test/exe/test",
-          "test/Gemfile",
-          ("test/Gemfile.lock" unless ENV.fetch("CI", false) == "true"),
-          "test/Guardfile",
-          "test/lib/test.rb",
-          "test/lib/test/cli/actions/config.rb",
-          "test/lib/test/cli/actions/container.rb",
-          "test/lib/test/cli/actions/import.rb",
-          "test/lib/test/cli/parser.rb",
-          "test/lib/test/cli/parsers/core.rb",
-          "test/lib/test/cli/shell.rb",
-          "test/lib/test/configuration/content.rb",
-          "test/lib/test/configuration/defaults.yml",
-          "test/lib/test/configuration/loader.rb",
-          "test/lib/test/container.rb",
-          "test/lib/test/import.rb",
-          "test/LICENSE.adoc",
-          "test/Rakefile",
-          "test/README.adoc",
-          "test/spec/lib/test/cli/actions/config_spec.rb",
-          "test/spec/lib/test/cli/parser_spec.rb",
-          "test/spec/lib/test/cli/parsers/core_spec.rb",
-          "test/spec/lib/test/cli/shell_spec.rb",
-          "test/spec/lib/test/configuration/content_spec.rb",
-          "test/spec/lib/test/configuration/loader_spec.rb",
-          "test/spec/spec_helper.rb",
-          "test/spec/support/shared_contexts/application_dependencies.rb",
-          "test/spec/support/shared_contexts/temp_dir.rb",
-          "test/spec/support/shared_examples/a_parser.rb",
-          "test/test.gemspec",
-          "test/VERSIONS.adoc"
-        ].compact
+        SPEC_ROOT.join("support/fixtures/arguments/maximum.txt").readlines chomp: true
       end
 
       it "builds maximum skeleton" do
         temp_dir.change_dir do
           Bundler.with_unbundled_env { shell.call options }
-          expect(project_files).to contain_exactly(*files)
+          expect(project_files).to contain_exactly(*bom_maximum)
         end
       end
     end

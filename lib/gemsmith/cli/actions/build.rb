@@ -8,6 +8,7 @@ module Gemsmith
         include Gemsmith::Import[:logger]
 
         # Order is important.
+        # rubocop:todo Metrics/CollectionLiteralLength
         BUILDERS = [
           Rubysmith::Builders::Core,
           Rubysmith::Builders::Version,
@@ -43,6 +44,7 @@ module Gemsmith
           Rubysmith::Extensions::Rubocop,
           Builders::Git::Commit
         ].freeze
+        # rubocop:enable Metrics/CollectionLiteralLength
 
         def initialize(builders: BUILDERS, **)
           super(**)
