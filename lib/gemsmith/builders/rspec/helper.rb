@@ -33,7 +33,7 @@ module Gemsmith
                  .touch
                  .insert_after(
                    %r(support/shared_contexts),
-                   %(Pathname.require_tree __dir__, "support/shared_examples/**/*.rb"\n)
+                   %(Pathname.require_tree SPEC_ROOT.join("support/shared_examples")\n)
                  )
         end
 

@@ -21,15 +21,15 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
       before do
         temp_dir.join("test/spec")
                 .make_path.join("spec_helper.rb")
-                .write %(Pathname.require_tree __dir__, "support/shared_contexts/**/*.rb"\n)
+                .write %(Pathname.require_tree SPEC_ROOT.join("support/shared_contexts")\n)
       end
 
       it "updates spec helper" do
         builder.call
 
         expect(spec_helper_path.read).to eq(<<~CONTENT)
-          Pathname.require_tree __dir__, "support/shared_contexts/**/*.rb"
-          Pathname.require_tree __dir__, "support/shared_examples/**/*.rb"
+          Pathname.require_tree SPEC_ROOT.join("support/shared_contexts")
+          Pathname.require_tree SPEC_ROOT.join("support/shared_examples")
         CONTENT
       end
 
