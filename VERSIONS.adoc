@@ -1,5 +1,12 @@
 = Versions
 
+== 19.5.1 (2023-03-06)
+
+* Fixed RuboCop Metrics/CollectionLiteralLength - Brooke Kuhlmann
+* Fixed RuboCop RSpec/ContainExactly issues - Brooke Kuhlmann
+* Added Git Safe builder - Brooke Kuhlmann
+* Refactored Pathname require tree refinement to pass single argument - Brooke Kuhlmann
+
 == 19.5.0 (2023-02-19)
 
 * Updated Reek dependency to not be required - Brooke Kuhlmann
