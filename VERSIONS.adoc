@@ -1,5 +1,9 @@
 = Versions
 
+== 19.5.2 (2023-03-22)
+
+* Updated gem certificate documentation - Brooke Kuhlmann
+
 == 19.5.1 (2023-03-06)
 
 * Fixed RuboCop Metrics/CollectionLiteralLength - Brooke Kuhlmann
