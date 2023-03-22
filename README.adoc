@@ -2,6 +2,8 @@
 :toclevels: 5
 :figure-caption!:
 
+:ruby_gems_link: link:https://rubygems.org[RubyGems]
+
 = Gemsmith
 
 Gemsmith is a command line interface for smithing Ruby gems. Perfect for when you need a
@@ -23,7 +25,7 @@ toc::[]
 
 . A UNIX-based system.
 . link:https://www.ruby-lang.org[Ruby].
-. link:https://rubygems.org[RubyGems].
+. {ruby_gems_link}.
 
 == Setup
 
@@ -291,13 +293,20 @@ To create a certificate for your gems, run the following:
 
 [source,bash]
 ----
-cd ~/.ssh
-gem cert --build you@example.com
-chmod 600 gem-*.pem
+cd ~/.gem
+gem cert --build you@example.com --days 730
+gem cert --add gem-public_cert.pem
+cp gem-public_cert.pem <path/to/server/public/folder>/gems.pem
 ----
 
-The resulting `.pem` key files can be referenced via the `signing_key` and `cert_chain` of your
-`.gemspec` which Gemsmith provides for you via the `--security` build option. Example:
+The above breaks down as follows:
+
+* *Source*: The `~/.gem` directory is where your credentials and certificates are stored. This is also where the `Gem.default_key_path` and `Gem.default_cert_path` methods look for your certificates. I'll talk more about these shortly.
+* *Build*: Builds your `gem-private_key.pem` and `gem-public_cert.pem` certificates with a two year duration (i.e. `365 * 2`) before expiring. You can also see this information on the {ruby_gems_link} page for your gem (scroll to the bottom). Security-wise, this isn't great but the way {ruby_gems_link} certification is implemented and enforced is weak to begin with. Regardless, this is important to do in order to be a good citizen within the ecosystem. You'll also be prompted for a private key passphrase so make sure it is long and complicated and then store it in your favorite password manager.
+* *Add*: Once your public certificate has been built, you'll need to add it to your registry so {ruby_gems_link} can look up and verify your certificate upon gem install.
+* *Web*: You'll need to copy your public certificate to the public folder of your web server so you can host this certificate for others to install. I rename my public certificate as `gems.pem` to keep the URL simple but you can name it how you like and document usage for others. For example, here's how you'd add my public certificate (same as done locally but via a URL this time): `gem cert --add <(curl --compressed --location https://alchemists.io/gems.pem)`.
+
+Earlier, I mentioned `Gem.default_key_path` and `Gem.default_cert_path` are paths to where your certificates are stored in your `~/.gem` directory. Well, the `signing_key` and `cert_chain` of your `.gemspec` needs to use these paths. Gemsmith automates for you when the `--security` build option is used (enabled by default). For example, when using Gemsmith to build a new gem, you'll see the following configuration generated in your `.gemspec`:
 
 [source,ruby]
 ----
@@ -310,13 +319,19 @@ Gem::Specification.new do |spec|
 end
 ----
 
-To learn more about gem certificates, read about RubyGems
-link:https://guides.rubygems.org/security[Security].
+The above wires all of this functionality together so you can easily build and publish your gems with minimal effort while increasing your security. 🎉 To test the security of your newly minted gem, you can install it with the `--trust-policy` set to high security for maximum benefit. Example:
+
+[source,bash]
+----
+gem install <your_gem> --trust-policy HighSecurity
+----
+
+To learn more about gem certificates, check out the RubyGems
+link:https://guides.rubygems.org/security[Security] documentation.
 
 === Private Gem Servers
 
-By default, the following command will publicly publish your gem to
-link:https://rubygems.org[RubyGems]:
+By default, the following command will publicly publish your gem to {ruby_gems_link}:
 
 [source,bash]
 ----
