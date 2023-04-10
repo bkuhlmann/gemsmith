@@ -29,7 +29,16 @@ toc::[]
 
 == Setup
 
-To install, run:
+To install _with_ security, run:
+
+[source,bash]
+----
+# 💡 Skip this line if you already have the public certificate installed.
+gem cert --add <(curl --compressed --location https://alchemists.io/gems.pem)
+gem install gemsmith --trust-policy HighSecurity
+----
+
+To install _without_ security, run:
 
 [source,bash]
 ----
