@@ -1,5 +1,11 @@
 = Versions
 
+== 19.6.0 (2023-04-10)
+
+* Updated setup instructions to secure and insecure installs - Brooke Kuhlmann
+* Updated to Ruby 3.2.2 - Brooke Kuhlmann
+* Updated to Rubysmith 4.7.0 - Brooke Kuhlmann
+
 == 19.5.2 (2023-03-22)
 
 * Updated gem certificate documentation - Brooke Kuhlmann
