@@ -8,7 +8,7 @@ module Gemsmith
     module Parsers
       # Handles parsing of Command Line Interface (CLI) build options.
       class Build
-        include Import[:colorizer]
+        include Import[:color]
 
         using Refinements::Structs
 
@@ -44,7 +44,7 @@ module Gemsmith
           option.to_s
                 .sub("add_", "build_")
                 .then { |attribute| configuration.public_send attribute }
-                .then { |boolean| boolean ? colorizer.green(boolean) : colorizer.red(boolean) }
+                .then { |boolean| boolean ? color[boolean, :green] : color[boolean, :red] }
                 .then { |colored_boolean| "Default: #{colored_boolean}" }
         end
       end
