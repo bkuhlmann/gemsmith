@@ -61,7 +61,7 @@ RSpec.describe Gemsmith::Tools::Pusher do
 
       it "logs warning" do
         pusher.call specification
-        expect(logger.reread).to eq("Unable to find YubiKey Manager. Unknown.\n")
+        expect(logger.reread).to match(/🔎.+Unable to find YubiKey Manager. Unknown./)
       end
 
       it "answers specification" do
@@ -81,8 +81,8 @@ RSpec.describe Gemsmith::Tools::Pusher do
       it "logs warning" do
         pusher.call specification
 
-        expect(logger.reread).to eq(
-          "Unable to obtain YubiKey One-Time Password. No such file or directory - Danger.\n"
+        expect(logger.reread).to match(
+          /🔎.+Unable to obtain YubiKey One-Time Password. No such file or directory - Danger./
         )
       end
 

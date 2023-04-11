@@ -7,14 +7,15 @@ module Gemsmith
     # The main Command Line Interface (CLI) object.
     class Shell
       include Actions::Import[
-        :config,
         :build,
-        :install,
-        :publish,
+        :config,
         :edit,
-        :view,
+        :install,
+        :kernel,
+        :logger,
+        :publish,
         :specification,
-        :logger
+        :view
       ]
 
       def initialize(parser: Parser.new, **)
@@ -40,8 +41,8 @@ module Gemsmith
           in action_publish: true then publish.call configuration
           in action_edit: String => gem_name then edit.call gem_name
           in action_view: String => gem_name then view.call gem_name
-          in action_version: true then logger.info { specification.labeled_version }
-          else logger.any { parser.to_s }
+          in action_version: true then kernel.puts specification.labeled_version
+          else kernel.puts parser.to_s
         end
       end
     end

@@ -21,12 +21,7 @@ RSpec.shared_context "with application dependencies" do
 
   let(:kernel) { class_spy Kernel }
   let(:executor) { class_spy Open3, capture3: ["Output.", "Error.", Process::Status.allocate] }
-
-  let :logger do
-    Cogger::Client.new Logger.new(StringIO.new),
-                       formatter: -> _severity, _name, _at, message { "#{message}\n" },
-                       level: Logger::DEBUG
-  end
+  let(:logger) { Cogger.new io: StringIO.new, level: :debug, formatter: :emoji }
 
   let :specification do
     Spek::Loader.call SPEC_ROOT.join("support/fixtures/gemsmith-test.gemspec")

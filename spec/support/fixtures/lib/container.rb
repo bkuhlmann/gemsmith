@@ -10,6 +10,6 @@ module Test
     register(:configuration) { Configuration::Loader.call }
     register(:specification) { Spek::Loader.call "#{__dir__}/../../test.gemspec" }
     register(:kernel) { Kernel }
-    register(:logger) { Cogger::Client.new }
+    register(:logger) { Cogger.new formatter: :emoji }
   end
 end

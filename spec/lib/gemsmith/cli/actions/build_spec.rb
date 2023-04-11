@@ -13,8 +13,8 @@ RSpec.describe Gemsmith::CLI::Actions::Build do
     it "logs message" do
       action.call configuration
       expect(logger.reread).to eq(<<~OUTPUT)
-        Building project skeleton: test...
-        Project skeleton complete!
+        🟢 \e[32mBuilding project skeleton: test...\e[0m
+        🟢 \e[32mProject skeleton complete!\e[0m
       OUTPUT
     end
 

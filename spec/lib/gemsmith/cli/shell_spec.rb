@@ -152,18 +152,18 @@ RSpec.describe Gemsmith::CLI::Shell do
     end
 
     it "prints version" do
-      expectation = proc { shell.call %w[--version] }
-      expect(&expectation).to output(/Gemsmith\s\d+\.\d+\.\d+/).to_stdout
+      shell.call %w[--version]
+      expect(kernel).to have_received(:puts).with(/Gemsmith\s\d+\.\d+\.\d+/)
     end
 
     it "prints help (usage)" do
-      expectation = proc { shell.call %w[--help] }
-      expect(&expectation).to output(/Gemsmith.+USAGE.+BUILD OPTIONS/m).to_stdout
+      shell.call %w[--help]
+      expect(kernel).to have_received(:puts).with(/Gemsmith.+USAGE.+BUILD OPTIONS.+/m)
     end
 
     it "prints usage when no options are given" do
-      expectation = proc { shell.call }
-      expect(&expectation).to output(/Gemsmith.+USAGE.+BUILD OPTIONS.+/m).to_stdout
+      shell.call
+      expect(kernel).to have_received(:puts).with(/Gemsmith.+USAGE.+BUILD OPTIONS.+/m)
     end
 
     it "prints error with invalid option" do

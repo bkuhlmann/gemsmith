@@ -23,7 +23,7 @@ RSpec.describe Gemsmith::CLI::Actions::Edit do
 
       it "edits gem" do
         action.call "gemsmith-test"
-        expect(logger.reread).to eq("Editing: gemsmith-test 0.0.0.\n")
+        expect(logger.reread).to match(/🟢.+Editing: gemsmith-test 0.0.0./)
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe Gemsmith::CLI::Actions::Edit do
 
       it "logs error" do
         action.call configuration
-        expect(logger.reread).to eq("Danger!\n")
+        expect(logger.reread).to match(/🛑.+Danger!/)
       end
     end
 
@@ -41,7 +41,7 @@ RSpec.describe Gemsmith::CLI::Actions::Edit do
 
       it "logs error" do
         action.call configuration
-        expect(logger.reread).to eq("Unable to handle edit action.\n")
+        expect(logger.reread).to match(/🛑.+Unable to handle edit action./)
       end
     end
   end

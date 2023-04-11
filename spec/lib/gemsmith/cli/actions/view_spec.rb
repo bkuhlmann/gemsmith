@@ -23,7 +23,7 @@ RSpec.describe Gemsmith::CLI::Actions::View do
 
       it "views gem" do
         action.call "gemsmith-test"
-        expect(logger.reread).to eq("Viewing: gemsmith-test 0.0.0.\n")
+        expect(logger.reread).to match(/🟢.+Viewing: gemsmith-test 0.0.0./)
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe Gemsmith::CLI::Actions::View do
 
       it "logs error" do
         action.call configuration
-        expect(logger.reread).to eq("Danger!\n")
+        expect(logger.reread).to match(/🛑.+Danger!/)
       end
     end
 
@@ -41,7 +41,7 @@ RSpec.describe Gemsmith::CLI::Actions::View do
 
       it "logs error" do
         action.call configuration
-        expect(logger.reread).to eq("Unable to handle view action.\n")
+        expect(logger.reread).to match(/🛑.+Unable to handle view action./)
       end
     end
   end

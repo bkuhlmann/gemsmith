@@ -10,6 +10,6 @@ require "spek"
     register(:configuration) { Configuration::Loader.call }
     register(:specification) { Spek::Loader.call "#{__dir__}/<%= Array.new(2 + configuration.project_levels, "../").join %><%= configuration.project_name %>.gemspec" }
     register(:kernel) { Kernel }
-    register(:logger) { Cogger::Client.new }
+    register(:logger) { Cogger.new formatter: :emoji }
   end
 <% end %>
