@@ -1,5 +1,12 @@
 = Versions
 
+== 19.7.0 (2023-04-12)
+
+* Updated to Caliber 0.30.0 - Brooke Kuhlmann
+* Updated to Cogger 0.8.0 - Brooke Kuhlmann
+* Updated to Milestoner 15.3.0 - Brooke Kuhlmann
+* Updated to Rubysmith 4.8.0 - Brooke Kuhlmann
+
 == 19.6.0 (2023-04-10)
 
 * Updated setup instructions to secure and insecure installs - Brooke Kuhlmann
