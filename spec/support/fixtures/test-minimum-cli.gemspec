@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "infusible", "~> 2.0"
   spec.add_dependency "refinements", "~> 11.0"
   spec.add_dependency "runcom", "~> 10.0"
-  spec.add_dependency "spek", "~> 1.1"
+  spec.add_dependency "spek", "~> 2.0"
   spec.add_dependency "zeitwerk", "~> 2.6"
 
   spec.bindir = "exe"
