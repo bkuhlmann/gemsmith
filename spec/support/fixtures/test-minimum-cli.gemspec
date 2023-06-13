@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "cogger", "~> 0.10"
   spec.add_dependency "core", "~> 0.1"
   spec.add_dependency "dry-container", "~> 0.11"
-  spec.add_dependency "infusible", "~> 1.0"
+  spec.add_dependency "infusible", "~> 2.0"
   spec.add_dependency "refinements", "~> 11.0"
   spec.add_dependency "runcom", "~> 10.0"
   spec.add_dependency "spek", "~> 1.1"
