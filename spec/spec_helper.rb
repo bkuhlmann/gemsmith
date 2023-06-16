@@ -15,8 +15,8 @@ unless ENV["NO_COVERAGE"]
 end
 
 require "gemsmith"
-require "gitt/shared_contexts/git_repo"
-require "gitt/shared_contexts/temp_dir"
+require "gitt/rspec/shared_contexts/git_repo"
+require "gitt/rspec/shared_contexts/temp_dir"
 require "refinements"
 
 SPEC_ROOT = Pathname(__dir__).realpath.freeze
