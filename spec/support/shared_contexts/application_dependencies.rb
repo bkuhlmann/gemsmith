@@ -3,31 +3,34 @@
 require "dry/container/stub"
 require "infusible/stub"
 
+# rubocop:todo RSpec/MultipleMemoizedHelpers
 RSpec.shared_context "with application dependencies" do
-  using Refinements::Structs
   using Infusible::Stub
 
   include_context "with temporary directory"
 
   let :configuration do
-    Gemsmith::Configuration::Loader.with_overrides.call.merge(
-      author_family_name: "Smith",
-      author_given_name: "Jill",
-      now: Time.local(2020, 1, 1, 0, 0, 0),
-      project_name: "test",
-      target_root: temp_dir
-    )
+    Etcher.new(Gemsmith::Container[:defaults])
+          .call(
+            author_family_name: "Smith",
+            author_given_name: "Jill",
+            git_hub_user: "hubber",
+            now: Time.local(2020, 1, 1, 0, 0, 0),
+            project_name: "test",
+            target_root: temp_dir
+          )
+          .bind(&:dup)
   end
 
-  let(:kernel) { class_spy Kernel }
+  let(:input) { configuration.dup }
+  let(:xdg_config) { Runcom::Config.new Gemsmith::Container[:defaults_path] }
+  let(:specification) { Spek::Loader.call SPEC_ROOT.join("support/fixtures/gemsmith-test.gemspec") }
   let(:executor) { class_spy Open3, capture3: ["Output.", "Error.", Process::Status.allocate] }
+  let(:kernel) { class_spy Kernel }
   let(:logger) { Cogger.new io: StringIO.new, level: :debug, formatter: :emoji }
 
-  let :specification do
-    Spek::Loader.call SPEC_ROOT.join("support/fixtures/gemsmith-test.gemspec")
-  end
+  before { Gemsmith::Import.stub configuration:, input:, xdg_config:, executor:, kernel:, logger: }
 
-  before { Gemsmith::Import.stub configuration:, kernel:, executor:, logger: }
-
-  after { Gemsmith::Import.unstub :configuration, :kernel, :executor, :logger }
+  after { Gemsmith::Import.unstub :configuration, :input, :xdg_config, :executor, :kernel, :logger }
 end
+# rubocop:enable RSpec/MultipleMemoizedHelpers
