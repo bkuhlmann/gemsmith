@@ -1,5 +1,27 @@
 = Versions
 
+== 20.0.0 (2023-06-18)
+
+* Added CLI action - Brooke Kuhlmann
+* Added Dry Schema gem - Brooke Kuhlmann
+* Added Etcher gem - Brooke Kuhlmann
+* Added Sod gem - Brooke Kuhlmann
+* Updated CLI builders and templates to use Sod implementation - Brooke Kuhlmann
+* Updated container to use Etcher configuration - Brooke Kuhlmann
+* Updated implementation to use Sod - Brooke Kuhlmann
+* Updated to Caliber 0.35.0 - Brooke Kuhlmann
+* Updated to Cogger 0.10.0 - Brooke Kuhlmann
+* Updated to Git Lint 6.0.0 - Brooke Kuhlmann
+* Updated to Infusible 2.0.0 - Brooke Kuhlmann
+* Updated to Milestoner 16.0.0 - Brooke Kuhlmann
+* Updated to Refinements 11.0.0 - Brooke Kuhlmann
+* Updated to Rubysmith 5.1.0 - Brooke Kuhlmann
+* Updated to Runcom 10.0.0 - Brooke Kuhlmann
+* Updated to Spek 2.0.0 - Brooke Kuhlmann
+* Updated to Versionare 12.0.0 - Brooke Kuhlmann
+* Removed configuration loader - Brooke Kuhlmann
+* Removed duplicated code from Sod upgrade - Brooke Kuhlmann
+
 == 19.8.0 (2023-05-20)
 
 * Fixed CLI template log and standard output - Brooke Kuhlmann

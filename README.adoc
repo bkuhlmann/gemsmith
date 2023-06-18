@@ -3,6 +3,7 @@
 :figure-caption!:
 
 :ruby_gems_link: link:https://rubygems.org[RubyGems]
+:sod_link: link:https://alchemists.io/projects/sod[Sod]
 
 = Gemsmith
 
@@ -17,7 +18,7 @@ toc::[]
 == Features
 
 * Supports all link:https://alchemists.io/projects/rubysmith[Rubysmith] features.
-* Supports basic gem skeletons or more advanced Command Line Interface (CLI) skeletons.
+* Supports basic gem or more advanced {sod_link}-based Command Line Interface (CLI) skeletons.
 * Supports gem building, installing for local development, and publishing.
 * Supports the editing and viewing of installed gems.
 
@@ -52,52 +53,30 @@ gem install gemsmith
 From the command line, type: `gemsmith --help`
 
 ....
-USAGE:
-  -b, --build NAME [options]               Build new project.
-  -c, --config ACTION                      Manage gem configuration: edit or view.
-      --edit GEM                           Edit installed gem in default editor.
-  -h, --help                               Show this message.
-  -i, --install [NAME]                     Install gem for local development.
-  -p, --publish [NAME]                     Publish gem to remote gem server.
-  -v, --version                            Show gem version.
-      --view GEM                           View installed gem in default browser.
+USAGE
+  gemsmith [OPTIONS]
+  gemsmith COMMAND [OPTIONS]
 
-BUILD OPTIONS:
-      --[no-]amazing_print                 Add Amazing Print gem. Default: true.
-      --[no-]caliber                       Add Caliber gem. Default: true.
-      --[no-]circle_ci                     Add Circle CI configuration and badge. Default: false.
-      --[no-]citation                      Add citation documentation. Default: true.
-      --[no-]community                     Add community documentation. Default: false.
-      --[no-]conduct                       Add code of conduct documentation. Default: true.
-      --[no-]console                       Add console script. Default: true.
-      --[no-]contributions                 Add contributions documentation. Default: true.
-      --[no-]debug                         Add Debug gem. Default: true.
-      --[no-]funding                       Add GitHub funding configuration. Default: false.
-      --[no-]git                           Add Git. Default: true.
-      --[no-]git_hub                       Add GitHub templates. Default: false.
-      --[no-]git_hub_ci                    Add GitHub templates. Default: false.
-      --[no-]git-lint                      Add Git Lint gem. Default: true.
-      --[no-]guard                         Add Guard gem. Default: true.
-      --[no-]license                       Add license documentation. Default: true.
-      --max                                Use maximum/enabled options. Default: false.
-      --min                                Use minimum/disabled options. Default: false.
-      --[no-]rake                          Add Rake gem. Default: true.
-      --[no-]readme                        Add readme documentation. Default: true.
-      --[no-]reek                          Add Reek gem. Default: true.
-      --[no-]refinements                   Add Refinements gem. Default: true.
-      --[no-]rspec                         Add RSpec gem. Default: true.
-      --[no-]security                      Add security. Default: true.
-      --[no-]setup                         Add setup script. Default: true.
-      --[no-]simple_cov                    Add SimpleCov gem. Default: true.
-      --[no-]versions                      Add version history. Default: true.
-      --[no-]yard                          Add Yard gem. Default: false.
-      --[no-]zeitwerk                      Add Zeitwerk gem. Default: true.
-      --[no-]cli                           Add command line interface. Default: false.
+OPTIONS
+  -i, --install [GEM]      Install gem for local development.
+                           Optionally computes gem package based on current directory.
+  -p, --publish [GEM]      Publish gem to remote gem server.
+                           Optionally computes gem package based on current directory.
+                           Default: gemsmith.
+  -e, --edit GEM           Edit installed gem in default editor.
+  -V, --view GEM           View installed gem in default browser.
+  -v, --version            Show version.
+  -h, --help [COMMAND]     Show this message.
+
+COMMANDS
+  config                   Manage configuration.
+                           Path is dynamic per current directory.
+  build                    Build new project.
 ....
 
 ==== Build
 
-The core functionality of this gem centers around the `--build` command and associated flags. The
+The core functionality of this gem centers around the `build` command and associated flags. The
 build options allow you to further customize the kind of gem you want to build. Most build options
 are enabled by default. For detailed documentation on all supported flags, see the
 link:https://alchemists.io/projects/rubysmith/#_build[Rubysmith] documentation.
@@ -111,7 +90,7 @@ simple as running:
 
 [source,bash]
 ----
-gemsmith --build demo --cli
+gemsmith build --name demo --cli
 ----
 
 The above will give you a new gem with CLI support which includes working specs. It's the same
@@ -120,9 +99,9 @@ configuring your gem and adding additional CLI support. Out of the box, the CLI 
 you supports the following options:
 
 ....
-  -c, --config ACTION                      Manage gem configuration: edit or view.
-  -h, --help                               Show this message.
-  -v, --version                            Show gem version.
+  -v, --version     Show version.
+  -h, --help        Show this message.
+  config            Manage configuration.
 ....
 
 From here you can add whatever you wish to make an awesome CLI gem for others to enjoy.
@@ -221,9 +200,6 @@ the following:
   :cli: false
 ----
 
-Feel free to take the combined Rubysmith + Gemsmith configuration, modify, and save as your own
-custom `configuration.yml`.
-
 It is recommended that you provide URLs for your project which would be all keys found in this
 section:
 
@@ -245,7 +221,7 @@ When building/testing your gem locally, a typical workflow is:
 [source,bash]
 ----
 # Build
-gemsmith --build demo
+gemsmith build --name demo
 
 # Design, Implement and Test.
 cd demo
@@ -303,7 +279,7 @@ To create a certificate for your gems, run the following:
 [source,bash]
 ----
 cd ~/.gem
-gem cert --build you@example.com --days 730
+gem cert build you@example.com --days 730
 gem cert --add gem-public_cert.pem
 cp gem-public_cert.pem <path/to/server/public/folder>/gems.pem
 ----
