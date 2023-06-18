@@ -49,44 +49,25 @@ module Gemsmith
 
       def render_configuration
         [
-          "%project_name%/lib/%project_path%/configuration/content.rb.erb",
+          "%project_name%/lib/%project_path%/configuration/contract.rb.erb",
+          "%project_name%/lib/%project_path%/configuration/model.rb.erb",
           "%project_name%/lib/%project_path%/configuration/defaults.yml.erb",
-          "%project_name%/lib/%project_path%/configuration/loader.rb.erb",
           "%project_name%/lib/%project_path%/container.rb.erb",
           "%project_name%/lib/%project_path%/import.rb.erb"
         ].each { |path| builder.call(configuration.merge(template_path: path)).render }
       end
 
-      def render_cli
-        [
-          "%project_name%/lib/%project_path%/cli/actions/config.rb.erb",
-          "%project_name%/lib/%project_path%/cli/actions/container.rb.erb",
-          "%project_name%/lib/%project_path%/cli/actions/import.rb.erb",
-          "%project_name%/lib/%project_path%/cli/parser.rb.erb",
-          "%project_name%/lib/%project_path%/cli/parsers/core.rb.erb",
-          "%project_name%/lib/%project_path%/cli/shell.rb.erb"
-        ].each { |path| builder.call(configuration.merge(template_path: path)).render }
+      def render_shell
+        path = "%project_name%/lib/%project_path%/cli/shell.rb.erb"
+        builder.call(configuration.merge(template_path: path)).render
       end
 
       def render_specs
         return unless configuration.build_rspec
 
         [
-          "%project_name%/spec/lib/%project_path%/cli/actions/config_spec.rb.erb",
-          "%project_name%/spec/lib/%project_path%/cli/parser_spec.rb.erb",
-          "%project_name%/spec/lib/%project_path%/cli/parsers/core_spec.rb.erb",
           "%project_name%/spec/lib/%project_path%/cli/shell_spec.rb.erb",
-          "%project_name%/spec/lib/%project_path%/configuration/content_spec.rb.erb",
-          "%project_name%/spec/lib/%project_path%/configuration/loader_spec.rb.erb"
-        ].each { |path| builder.call(configuration.merge(template_path: path)).render }
-      end
-
-      def render_rspec_support
-        return unless configuration.build_rspec
-
-        [
-          "%project_name%/spec/support/shared_contexts/application_dependencies.rb.erb",
-          "%project_name%/spec/support/shared_examples/a_parser.rb.erb"
+          "%project_name%/spec/support/shared_contexts/application_dependencies.rb.erb"
         ].each { |path| builder.call(configuration.merge(template_path: path)).render }
       end
     end

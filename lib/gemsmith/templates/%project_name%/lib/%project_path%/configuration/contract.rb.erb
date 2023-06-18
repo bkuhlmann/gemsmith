@@ -1,0 +1,9 @@
+require "dry/schema"
+
+Dry::Schema.load_extensions :monads
+
+<% namespace do %>
+  module Configuration
+    Contract = Dry::Schema.Params
+  end
+<% end %>

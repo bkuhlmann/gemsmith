@@ -2,16 +2,14 @@ require "dry/container/stub"
 require "infusible/stub"
 
 RSpec.shared_context "with application dependencies" do
-  using Refinements::Structs
   using Infusible::Stub
 
-  include_context "with temporary directory"
-
-  let(:configuration) { Test::Configuration::Loader.with_defaults.call }
+  let(:configuration) { Etcher.new(Test::Container[:defaults]).call.bind(&:dup) }
+  let(:xdg_config) { Runcom::Config.new Test::Container[:defaults_path] }
   let(:kernel) { class_spy Kernel }
-  let(:logger) { Cogger.new io: StringIO.new, formatter: :emoji }
+  let(:logger) { Cogger.new io: StringIO.new, level: :debug, formatter: :emoji }
 
-  before { Test::Import.stub configuration:, kernel:, logger: }
+  before { Test::Import.stub configuration:, xdg_config:, kernel:, logger: }
 
-  after { Test::Import.unstub :configuration, :kernel, :logger }
+  after { Test::Import.unstub :configuration, :xdg_config, :kernel, :logger }
 end

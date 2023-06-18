@@ -8,19 +8,14 @@ RSpec.describe Test::CLI::Shell do
 
   include_context "with application dependencies"
 
-  before { Test::CLI::Actions::Import.stub configuration:, kernel:, logger: }
+  before { Sod::Import.stub kernel:, logger: }
 
-  after { Test::CLI::Actions::Import.unstub :configuration, :kernel, :logger }
+  after { Sod::Import.unstub :kernel, :logger }
 
   describe "#call" do
-    it "edits configuration" do
-      shell.call %w[--config edit]
-      expect(kernel).to have_received(:system).with("$EDITOR ")
-    end
-
-    it "views configuration" do
-      shell.call %w[--config view]
-      expect(kernel).to have_received(:system).with("cat ")
+    it "prints configuration usage" do
+      shell.call %w[config]
+      expect(kernel).to have_received(:puts).with(/Manage configuration.+/m)
     end
 
     it "prints version" do
@@ -28,19 +23,9 @@ RSpec.describe Test::CLI::Shell do
       expect(kernel).to have_received(:puts).with(/Test\s\d+\.\d+\.\d+/)
     end
 
-    it "prints help (usage)" do
+    it "prints help" do
       shell.call %w[--help]
       expect(kernel).to have_received(:puts).with(/Test.+USAGE.+/m)
-    end
-
-    it "prints usage when no options are given" do
-      shell.call
-      expect(kernel).to have_received(:puts).with(/Test.+USAGE.+/m)
-    end
-
-    it "prints error with invalid option" do
-      shell.call %w[--bogus]
-      expect(logger.reread).to match(/🛑.+invalid option.+bogus/)
     end
   end
 end

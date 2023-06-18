@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe <%= configuration.project_namespaced_class %>::CLI::Shell do
+RSpec.describe Demo::Test::CLI::Shell do
   using Refinements::Pathnames
   using Infusible::Stub
 
@@ -20,12 +20,12 @@ RSpec.describe <%= configuration.project_namespaced_class %>::CLI::Shell do
 
     it "prints version" do
       shell.call %w[--version]
-      expect(kernel).to have_received(:puts).with(/<%= configuration.project_label.gsub(" ", "\\s") %>\s\d+\.\d+\.\d+/)
+      expect(kernel).to have_received(:puts).with(/Demo\sTest\s\d+\.\d+\.\d+/)
     end
 
     it "prints help" do
       shell.call %w[--help]
-      expect(kernel).to have_received(:puts).with(/<%= configuration.project_label.gsub(" ", "\\s") %>.+USAGE.+/m)
+      expect(kernel).to have_received(:puts).with(/Demo\sTest.+USAGE.+/m)
     end
   end
 end
