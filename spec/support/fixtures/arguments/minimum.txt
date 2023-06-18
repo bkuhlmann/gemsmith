@@ -1,4 +1,5 @@
---build
+build
+--name
 test
 --no-amazing_print
 --no-caliber

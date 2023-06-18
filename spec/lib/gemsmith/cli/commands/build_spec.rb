@@ -2,8 +2,8 @@
 
 require "spec_helper"
 
-RSpec.describe Gemsmith::CLI::Actions::Build do
-  subject(:action) { described_class.new builders: [builder] }
+RSpec.describe Gemsmith::CLI::Commands::Build do
+  subject(:command) { described_class.new builders: [builder] }
 
   include_context "with application dependencies"
 
@@ -11,7 +11,7 @@ RSpec.describe Gemsmith::CLI::Actions::Build do
 
   describe "#call" do
     it "logs message" do
-      action.call configuration
+      command.call
       expect(logger.reread).to eq(<<~OUTPUT)
         🟢 \e[32mBuilding project skeleton: test...\e[0m
         🟢 \e[32mProject skeleton complete!\e[0m
@@ -19,7 +19,7 @@ RSpec.describe Gemsmith::CLI::Actions::Build do
     end
 
     it "calls builders" do
-      action.call configuration
+      command.call
       expect(builder).to have_received(:call).with(configuration)
     end
   end

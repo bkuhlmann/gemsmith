@@ -7,18 +7,22 @@ RSpec.describe Gemsmith::Tools::Versioner do
   using Refinements::Structs
   using Versionaire::Cast
 
-  subject(:versioner) { described_class.new client: }
+  subject(:versioner) { described_class.new publisher: }
 
   include_context "with application dependencies"
 
-  let(:client) { instance_spy Milestoner::Tags::Publisher }
+  let(:publisher) { instance_spy Milestoner::Tags::Publisher }
 
   describe "#call" do
     it "answers publishes version when success" do
       versioner.call specification
 
-      expect(client).to have_received(:call).with(
-        Milestoner::Configuration::Loader.with_defaults.call.merge(version: Version("0.0.0"))
+      expect(publisher).to have_received(:call).with(
+        Milestoner::Configuration::Model[
+          documentation_format: "adoc",
+          prefixes: %w[Fixed Added Updated Removed Refactored],
+          version: Version("0.0.0")
+        ]
       )
     end
 
@@ -28,7 +32,7 @@ RSpec.describe Gemsmith::Tools::Versioner do
     end
 
     it "answers error when failure" do
-      allow(client).to receive(:call).and_raise(Milestoner::Error, "Danger!")
+      allow(publisher).to receive(:call).and_raise(Milestoner::Error, "Danger!")
       result = versioner.call specification
 
       expect(result.failure).to eq("Danger!")

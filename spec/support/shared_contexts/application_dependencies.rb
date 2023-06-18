@@ -14,6 +14,7 @@ RSpec.shared_context "with application dependencies" do
           .call(
             author_family_name: "Smith",
             author_given_name: "Jill",
+            author_email: "jill@example.com",
             git_hub_user: "hubber",
             now: Time.local(2020, 1, 1, 0, 0, 0),
             project_name: "test",

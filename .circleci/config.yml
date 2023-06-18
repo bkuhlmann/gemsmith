@@ -27,6 +27,10 @@ jobs:
             - vendor/bundle
 
       - run:
+          name: Configure Git
+          command: git config --add github.user hubber
+
+      - run:
           name: Build
           command: bundle exec rake
 

@@ -23,14 +23,14 @@ RSpec.describe Gemsmith::CLI::Actions::Install do
 
       it "installs gem" do
         temp_dir.change_dir do
-          action.call configuration
+          action.call
           expect(installer).to have_received(:call).with(kind_of(Spek::Presenter))
         end
       end
 
       it "logs gem was installed" do
         temp_dir.change_dir do
-          action.call configuration
+          action.call
           expect(logger.reread).to match(/🟢.+Installed: gemsmith-test-0.0.0.gem./)
         end
       end
@@ -41,7 +41,7 @@ RSpec.describe Gemsmith::CLI::Actions::Install do
 
       it "logs error" do
         temp_dir.change_dir do
-          action.call configuration
+          action.call
           expect(logger.reread).to match(/🛑.+Danger!/)
         end
       end
@@ -52,7 +52,7 @@ RSpec.describe Gemsmith::CLI::Actions::Install do
 
       it "logs error" do
         temp_dir.change_dir do
-          action.call configuration
+          action.call
           expect(logger.reread).to match(/🛑.+Unable to handle install action./)
         end
       end

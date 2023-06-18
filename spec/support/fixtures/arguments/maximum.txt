@@ -1,4 +1,5 @@
---build
+build
+--name
 test
 --amazing_print
 --caliber

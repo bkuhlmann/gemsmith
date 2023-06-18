@@ -5,23 +5,23 @@ require "milestoner"
 
 module Gemsmith
   module Tools
-    # Versions (tags) current project (local and remote).
+    # Versions (tags: local and remote) current project.
     class Versioner
       include Import[:configuration]
       include Dry::Monads[:result]
 
       def initialize(
-        client: Milestoner::Tags::Publisher.new,
-        content: Milestoner::Configuration::Content,
+        publisher: Milestoner::Tags::Publisher.new,
+        model: Milestoner::Configuration::Model,
         **
       )
         super(**)
-        @client = client
-        @content = content
+        @publisher = publisher
+        @model = model
       end
 
       def call specification
-        client.call settings(specification)
+        publisher.call settings(specification)
         Success specification
       rescue Milestoner::Error => error
         Failure error.message
@@ -29,10 +29,10 @@ module Gemsmith
 
       private
 
-      attr_reader :client, :content
+      attr_reader :publisher, :model
 
       def settings specification
-        content[
+        model[
           documentation_format: configuration.extensions_milestoner_documentation_format,
           prefixes: configuration.extensions_milestoner_prefixes,
           version: specification.version
