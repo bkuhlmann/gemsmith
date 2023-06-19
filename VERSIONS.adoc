@@ -1,5 +1,10 @@
 = Versions
 
+== 20.1.0 (2023-06-19)
+
+* Updated to Rubysmith 5.2.0 - Brooke Kuhlmann
+* Removed unused RuboCop configurations - Brooke Kuhlmann
+
 == 20.0.0 (2023-06-18)
 
 * Added CLI action - Brooke Kuhlmann
