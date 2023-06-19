@@ -10,8 +10,8 @@ module Gemsmith
         include Gemsmith::Import[:input, :logger]
 
         # Order is important.
-        # rubocop:todo Metrics/CollectionLiteralLength
         BUILDERS = [
+          Rubysmith::Builders::Init,
           Rubysmith::Builders::Core,
           Rubysmith::Builders::Version,
           Builders::Specification,
@@ -46,7 +46,6 @@ module Gemsmith
           Rubysmith::Extensions::Rubocop,
           Builders::Git::Commit
         ].freeze
-        # rubocop:enable Metrics/CollectionLiteralLength
 
         handle "build"
 
@@ -57,7 +56,7 @@ module Gemsmith
         on Rubysmith::CLI::Actions::Caliber, input: Container[:input]
         on Rubysmith::CLI::Actions::CircleCI, input: Container[:input]
         on Rubysmith::CLI::Actions::Citation, input: Container[:input]
-        on Actions::CLI, input: Container[:input]
+        on Actions::CLI
         on Rubysmith::CLI::Actions::Community, input: Container[:input]
         on Rubysmith::CLI::Actions::Conduct, input: Container[:input]
         on Rubysmith::CLI::Actions::Console, input: Container[:input]

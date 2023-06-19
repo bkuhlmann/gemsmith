@@ -7,6 +7,9 @@ Gemspec/RequiredRubyVersion:
 Layout/RedundantLineBreak:
   Exclude:
     - "spec/support/fixtures/*.gemspec"
+Metrics/CollectionLiteralLength:
+  Exclude:
+    - "lib/gemsmith/cli/commands/build.rb"
 RSpec/FilePath:
   Exclude:
     - "spec/support/fixtures/**/*"
