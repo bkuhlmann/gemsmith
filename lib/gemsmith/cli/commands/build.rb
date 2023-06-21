@@ -7,7 +7,7 @@ module Gemsmith
     module Commands
       # Handles the build action.
       class Build < Sod::Command
-        include Gemsmith::Import[:input, :logger]
+        include Import[:input, :logger]
 
         # Order is important.
         BUILDERS = [

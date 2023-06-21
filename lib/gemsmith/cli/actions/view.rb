@@ -9,7 +9,7 @@ module Gemsmith
     module Actions
       # Handles the view action for viewing an installed gem in default browser.
       class View < Sod::Action
-        include Gemsmith::Import[:kernel, :logger]
+        include Import[:kernel, :logger]
         include Dry::Monads[:result]
 
         description "View installed gem in default browser."
