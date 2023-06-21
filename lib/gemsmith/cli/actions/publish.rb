@@ -27,9 +27,8 @@ module Gemsmith
           @loader = loader
         end
 
-        # :reek:ControlParameter
-        def call name = nil
-          case publisher.call loader.call("#{name || default}.gemspec")
+        def call name = default
+          case publisher.call loader.call("#{name}.gemspec")
             in Success(spec) then logger.info { "Published: #{spec.package_name}." }
             in Failure(message) then log_error { message }
             else log_error { "Unable to handle publish action." }
