@@ -1,5 +1,17 @@
 = Versions
 
+== 20.2.0 (2023-06-22)
+
+* Fixed CLI action to user nil for default value - Brooke Kuhlmann
+* Fixed Reek control parameter issues - Brooke Kuhlmann
+* Fixed RuboCop Packaging/BundlerSetupInTests issues - Brooke Kuhlmann
+* Added Rubysmith init builder - Brooke Kuhlmann
+* Updated Rake RSpec task configuration to not be verbose - Brooke Kuhlmann
+* Updated to Rubysmith 5.3.0 - Brooke Kuhlmann
+* Removed Circle CI Git configuration for GitHub user - Brooke Kuhlmann
+* Removed explicit namespace for dependency import - Brooke Kuhlmann
+* Removed shell spec use of Bundler environment wrapper - Brooke Kuhlmann
+
 == 20.1.0 (2023-06-19)
 
 * Updated to Rubysmith 5.2.0 - Brooke Kuhlmann
