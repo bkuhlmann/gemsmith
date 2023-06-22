@@ -10,12 +10,12 @@ RSpec.describe Gemsmith::CLI::Actions::CLI do
   include_context "with application dependencies"
 
   describe "#call" do
-    it "answers false by default" do
+    it "answers nil without arguments" do
       action.call
-      expect(input.build_cli).to be(false)
+      expect(input.build_cli).to be(nil)
     end
 
-    it "answers true when given true" do
+    it "answers value when given agrument" do
       action.call true
       expect(input.build_cli).to be(true)
     end

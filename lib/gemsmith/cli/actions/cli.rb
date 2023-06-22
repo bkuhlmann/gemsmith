@@ -15,7 +15,7 @@ module Gemsmith
 
         default { Container[:configuration].build_cli }
 
-        def call(value = default) = input.build_cli = value
+        def call(value = nil) = input.build_cli = value
       end
     end
   end
