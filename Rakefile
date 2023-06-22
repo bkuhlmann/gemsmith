@@ -8,7 +8,7 @@ require "rubocop/rake_task"
 
 Git::Lint::Rake::Register.call
 Reek::Rake::Task.new
-RSpec::Core::RakeTask.new
+RSpec::Core::RakeTask.new { |task| task.verbose = false }
 RuboCop::RakeTask.new
 
 desc "Run code quality checks"
