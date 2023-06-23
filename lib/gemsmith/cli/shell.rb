@@ -20,8 +20,6 @@ module Gemsmith
 
       attr_reader :context, :dsl
 
-      # :reek:TooManyStatements
-      # rubocop:todo Metrics/MethodLength
       def cli
         context = build_context
 
@@ -36,7 +34,6 @@ module Gemsmith
           on Sod::Prefabs::Actions::Help, self
         end
       end
-      # rubocop:enable Metrics/MethodLength
 
       def build_context
         context[defaults_path:, xdg_config:, version_label: specification.labeled_version]

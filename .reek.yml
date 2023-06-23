@@ -9,3 +9,6 @@ detectors:
     exclude:
       - "Gemsmith::CLI::Actions::Install#call"
       - "Gemsmith::CLI::Actions::Publish#call"
+  TooManyStatements:
+    exclude:
+      - "Gemsmith::CLI::Shell#cli"

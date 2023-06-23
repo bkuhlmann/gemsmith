@@ -10,6 +10,9 @@ Layout/RedundantLineBreak:
 Metrics/CollectionLiteralLength:
   Exclude:
     - "lib/gemsmith/cli/commands/build.rb"
+Metrics/MethodLength:
+  Exclude:
+    - "lib/gemsmith/cli/shell.rb"
 RSpec/FilePath:
   Exclude:
     - "spec/support/fixtures/**/*"
