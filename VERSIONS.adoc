@@ -1,5 +1,10 @@
 = Versions
 
+== 20.2.1 (2023-06-23)
+
+* Fixed install and publish action defaults - Brooke Kuhlmann
+* Added CLI shell to Reek and RuboCop exclusions - Brooke Kuhlmann
+
 == 20.2.0 (2023-06-22)
 
 * Fixed CLI action to user nil for default value - Brooke Kuhlmann
