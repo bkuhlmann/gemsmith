@@ -27,8 +27,8 @@ module Gemsmith
           @loader = loader
         end
 
-        def call name = default
-          case installer.call loader.call("#{name}.gemspec")
+        def call name = nil
+          case installer.call loader.call("#{name || default}.gemspec")
             in Success(spec) then logger.info { "Installed: #{spec.package_name}." }
             in Failure(message) then log_error { message }
             else log_error { "Unable to handle install action." }

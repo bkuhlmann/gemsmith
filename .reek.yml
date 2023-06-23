@@ -1,0 +1,11 @@
+exclude_paths:
+  - tmp
+  - vendor
+
+detectors:
+  LongParameterList:
+    enabled: false
+  ControlParameter:
+    exclude:
+      - "Gemsmith::CLI::Actions::Install#call"
+      - "Gemsmith::CLI::Actions::Publish#call"
