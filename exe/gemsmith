@@ -3,4 +3,4 @@
 
 require "gemsmith"
 
-Gemsmith::CLI::Shell.new.call ARGV
+Gemsmith::CLI::Shell.new.call

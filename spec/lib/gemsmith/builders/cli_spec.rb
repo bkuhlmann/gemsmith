@@ -35,7 +35,7 @@ RSpec.describe Gemsmith::Builders::CLI do
 
           require "test"
 
-          Test::CLI::Shell.new.call ARGV
+          Test::CLI::Shell.new.call
         CONTENT
       end
 
