@@ -12,12 +12,12 @@ module Gemsmith
   module Container
     extend Dry::Container::Mixin
 
-    register :configuration do
+    register :configuration, memoize: true do
       self[:defaults].add_loader(Etcher::Loaders::YAML.new(self[:xdg_config].active))
                      .then { |registry| Etcher.call registry }
     end
 
-    register :defaults do
+    register :defaults, memoize: true do
       registry = Etcher::Registry.new contract: Rubysmith::Configuration::Contract,
                                       model: Rubysmith::Configuration::Model
 
@@ -35,13 +35,16 @@ module Gemsmith
               .add_transformer(Rubysmith::Configuration::Transformers::TargetRoot)
     end
 
+    register :specification, memoize: true do
+      Spek::Loader.call "#{__dir__}/../../gemsmith.gemspec"
+    end
+
     register(:input, memoize: true) { self[:configuration].dup }
     register(:defaults_path) { Rubysmith::Container[:defaults_path] }
-    register(:xdg_config) { Runcom::Config.new "gemsmith/configuration.yml" }
-    register(:specification) { Spek::Loader.call "#{__dir__}/../../gemsmith.gemspec" }
+    register(:xdg_config, memoize: true) { Runcom::Config.new "gemsmith/configuration.yml" }
     register(:environment) { ENV }
-    register(:executor) { Open3 }
-    register(:kernel) { Kernel }
-    register(:logger) { Cogger.new formatter: :emoji }
+    register(:logger, memoize: true) { Cogger.new formatter: :emoji }
+    register :executor, Open3
+    register :kernel, Kernel
   end
 end

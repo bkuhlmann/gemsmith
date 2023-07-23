@@ -167,9 +167,9 @@ RSpec.describe Gemsmith::Builders::CLI do
         CONTENT
       end
 
-      it "builds application container nested project path to gemspec" do
+      it "builds application container with nested project path to gemspec" do
         expect(temp_dir.join("demo-test/lib/demo/test/container.rb").read).to include(
-          %(register(:specification) { Spek::Loader.call "\#{__dir__}/../../../demo-test.gemspec" })
+          %(Spek::Loader.call "\#{__dir__}/../../../demo-test.gemspec")
         )
       end
 
