@@ -52,27 +52,7 @@ gem install gemsmith
 
 From the command line, type: `gemsmith --help`
 
-....
-USAGE
-  gemsmith [OPTIONS]
-  gemsmith COMMAND [OPTIONS]
-
-OPTIONS
-  -i, --install [GEM]      Install gem for local development.
-                           Optionally computes gem package based on current directory.
-  -p, --publish [GEM]      Publish gem to remote gem server.
-                           Optionally computes gem package based on current directory.
-                           Default: gemsmith.
-  -e, --edit GEM           Edit installed gem in default editor.
-  -V, --view GEM           View installed gem in default browser.
-  -v, --version            Show version.
-  -h, --help [COMMAND]     Show this message.
-
-COMMANDS
-  config                   Manage configuration.
-                           Path is dynamic per current directory.
-  build                    Build new project.
-....
+image:https://alchemists.io/images/projects/gemsmith/screenshots/usage.png[Usage,width=729,height=462,role=focal_point]
 
 ==== Build
 
