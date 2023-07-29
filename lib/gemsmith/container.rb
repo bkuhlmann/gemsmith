@@ -29,7 +29,7 @@ module Gemsmith
               .add_transformer(Rubysmith::Configuration::Transformers::TemplateRoot.new)
               .add_transformer(
                 Rubysmith::Configuration::Transformers::TemplateRoot.new(
-                  Pathname(__dir__).join("templates")
+                  default: Pathname(__dir__).join("templates")
                 )
               )
               .add_transformer(Rubysmith::Configuration::Transformers::TargetRoot)
