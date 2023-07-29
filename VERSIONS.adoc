@@ -1,5 +1,12 @@
 = Versions
 
+== 20.3.0 (2023-07-29)
+
+* Added container memoization to improve performance - Brooke Kuhlmann
+* Added usage screenshot - Brooke Kuhlmann
+* Updated to Rubysmith 5.5.0 - Brooke Kuhlmann
+* Removed ARGV argument from CLI executable - Brooke Kuhlmann
+
 == 20.2.1 (2023-06-23)
 
 * Fixed install and publish action defaults - Brooke Kuhlmann
