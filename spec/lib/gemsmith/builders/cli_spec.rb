@@ -149,6 +149,16 @@ RSpec.describe Gemsmith::Builders::CLI do
                                      project_name: "demo-test"
       end
 
+      it "builds nested executable" do
+        expect(temp_dir.join("demo-test/exe/demo-test").read).to eq(<<~CONTENT)
+          #! /usr/bin/env ruby
+
+          require "demo/test"
+
+          Demo::Test::CLI::Shell.new.call
+        CONTENT
+      end
+
       it "adds CLI inflection" do
         expect(temp_dir.join("demo-test/lib/demo/test.rb").read).to eq(<<~CONTENT)
           require "zeitwerk"
