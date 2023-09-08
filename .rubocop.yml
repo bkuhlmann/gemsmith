@@ -13,7 +13,10 @@ Metrics/CollectionLiteralLength:
 Metrics/MethodLength:
   Exclude:
     - "lib/gemsmith/cli/shell.rb"
-RSpec/FilePath:
+RSpec/SpecFilePathFormat:
+  Exclude:
+    - "spec/support/fixtures/**/*"
+RSpec/SpecFilePathSuffix:
   Exclude:
     - "spec/support/fixtures/**/*"
 Style/FrozenStringLiteralComment:
