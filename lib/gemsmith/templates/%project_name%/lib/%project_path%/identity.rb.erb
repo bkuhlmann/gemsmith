@@ -1,9 +1,0 @@
-<% render_namespace do %>
-  # Gem identity information.
-  module Identity
-    NAME = "<%= config.dig(:gem, :name) %>"
-    LABEL = "<%= config.dig(:gem, :label) %>"
-    VERSION = "0.1.0"
-    VERSION_LABEL = "#{LABEL} #{VERSION}".freeze
-  end
-<% end %>
