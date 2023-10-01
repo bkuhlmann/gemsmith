@@ -128,13 +128,16 @@ RSpec.describe Gemsmith::Builders::CLI do
         expect(temp_dir.join("test/lib/test.rb").read).to eq(<<~CONTENT)
           require "zeitwerk"
 
-          Zeitwerk::Loader.for_gem.then do |loader|
+          Zeitwerk::Loader.new.then do |loader|
             loader.inflector.inflect "cli" => "CLI"
+            loader.tag = File.basename __FILE__, ".rb"
+            loader.push_dir __dir__
             loader.setup
           end
 
           # Main namespace.
           module Test
+            def self.loader(registry = Zeitwerk::Registry) = registry.loader_for __FILE__
           end
         CONTENT
       end
@@ -164,14 +167,16 @@ RSpec.describe Gemsmith::Builders::CLI do
           require "zeitwerk"
 
           Zeitwerk::Loader.new.then do |loader|
-            loader.push_dir "\#{__dir__}/.."
             loader.inflector.inflect "cli" => "CLI"
+            loader.tag = "demo-test"
+            loader.push_dir "\#{__dir__}/.."
             loader.setup
           end
 
           module Demo
             # Main namespace.
             module Test
+              def self.loader(registry = Zeitwerk::Registry) = registry.loader_for __FILE__
             end
           end
         CONTENT

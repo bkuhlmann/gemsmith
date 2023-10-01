@@ -38,13 +38,7 @@ module Gemsmith
         content = configuration.merge template_path: "%project_name%/lib/%project_path%.rb.erb"
 
         builder.call(content)
-               .insert_after(/push_dir/, %(  loader.inflector.inflect "cli" => "CLI"\n))
-               .replace("Zeitwerk::Loader.for_gem.setup", <<~CONTENT.strip)
-                 Zeitwerk::Loader.for_gem.then do |loader|
-                   loader.inflector.inflect "cli" => "CLI"
-                   loader.setup
-                 end
-               CONTENT
+               .insert_before(/tag/, %(  loader.inflector.inflect "cli" => "CLI"\n))
       end
 
       def render_configuration
