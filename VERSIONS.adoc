@@ -1,5 +1,16 @@
 = Versions
 
+== 20.4.0 (2023-10-01)
+
+* Fixed RuboCop SpecFilePathFormat and RSpec/SpecFilePathSuffix - Brooke Kuhlmann
+* Fixed Zeitwerk loader - Brooke Kuhlmann
+* Fixed executable requirement with dashed project name - Brooke Kuhlmann
+* Added console builder - Brooke Kuhlmann
+* Added gem loader - Brooke Kuhlmann
+* Updated GitHub issue template with simplified sections - Brooke Kuhlmann
+* Updated to Rubysmith 5.6.0 - Brooke Kuhlmann
+* Removed identity template - Brooke Kuhlmann
+
 == 20.3.0 (2023-07-29)
 
 * Added container memoization to improve performance - Brooke Kuhlmann
