@@ -28,7 +28,7 @@ module Gemsmith
           Builders::Bundler,
           Builders::CLI,
           Rubysmith::Builders::Rake,
-          Rubysmith::Builders::Console,
+          Builders::Console,
           Rubysmith::Builders::CircleCI,
           Builders::CircleCI,
           Rubysmith::Builders::Setup,
