@@ -1,5 +1,11 @@
 = Versions
 
+== 20.5.0 (2023-10-09)
+
+* Updated to Infusible 2.2.0 - Brooke Kuhlmann
+* Updated to Rubysmith 5.7.0 - Brooke Kuhlmann
+* Refactored Gemfile to use ruby file syntax - Brooke Kuhlmann
+
 == 20.4.0 (2023-10-01)
 
 * Fixed RuboCop SpecFilePathFormat and RSpec/SpecFilePathSuffix - Brooke Kuhlmann
