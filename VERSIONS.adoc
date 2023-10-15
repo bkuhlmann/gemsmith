@@ -1,5 +1,11 @@
 = Versions
 
+== 20.6.0 (2023-10-15)
+
+* Updated to Caliber 0.42.0 - Brooke Kuhlmann
+* Updated to Cogger 0.12.0 - Brooke Kuhlmann
+* Updated to Rubysmith 5.8.0 - Brooke Kuhlmann
+
 == 20.5.0 (2023-10-09)
 
 * Updated to Infusible 2.2.0 - Brooke Kuhlmann
