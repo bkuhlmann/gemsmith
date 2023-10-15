@@ -36,7 +36,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = "~> <%= RUBY_VERSION[/\d+\.\d+/] %>"
   <% if configuration.build_cli %>
-    spec.add_dependency "cogger", "~> 0.10"
+    spec.add_dependency "cogger", "~> 0.12"
   <% end %>
   <% if configuration.build_cli %>
     spec.add_dependency "dry-container", "~> 0.11"

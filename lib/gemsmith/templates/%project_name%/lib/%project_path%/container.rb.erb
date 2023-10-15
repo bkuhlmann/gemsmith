@@ -25,7 +25,7 @@ require "spek"
 
     register(:defaults_path, memoize: true) { Pathname(__dir__).join("configuration/defaults.yml") }
     register(:xdg_config, memoize: true) { Runcom::Config.new "<%= configuration.project_path %>/configuration.yml" }
-    register(:logger, memoize: true) { Cogger.new formatter: :emoji }
+    register(:logger, memoize: true) { Cogger.new id: "<%= configuration.project_name %>" }
     register :kernel, Kernel
   end
 <% end %>

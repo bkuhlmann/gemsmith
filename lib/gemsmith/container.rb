@@ -43,7 +43,7 @@ module Gemsmith
     register(:defaults_path) { Rubysmith::Container[:defaults_path] }
     register(:xdg_config, memoize: true) { Runcom::Config.new "gemsmith/configuration.yml" }
     register(:environment) { ENV }
-    register(:logger, memoize: true) { Cogger.new formatter: :emoji }
+    register(:logger, memoize: true) { Cogger.new id: :gemsmith }
     register :executor, Open3
     register :kernel, Kernel
   end

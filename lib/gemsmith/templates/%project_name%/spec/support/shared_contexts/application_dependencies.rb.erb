@@ -7,7 +7,7 @@ RSpec.shared_context "with application dependencies" do
   let(:configuration) { Etcher.new(<%= configuration.project_namespaced_class %>::Container[:defaults]).call.bind(&:dup) }
   let(:xdg_config) { Runcom::Config.new <%= configuration.project_namespaced_class %>::Container[:defaults_path] }
   let(:kernel) { class_spy Kernel }
-  let(:logger) { Cogger.new io: StringIO.new, level: :debug, formatter: :emoji }
+  let(:logger) { Cogger.new id: "<%= configuration.project_name %>", io: StringIO.new, level: :debug }
 
   before { <%= configuration.project_namespaced_class %>::Import.stub configuration:, xdg_config:, kernel:, logger: }
 
