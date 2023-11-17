@@ -1,5 +1,10 @@
 = Versions
 
+== 20.6.1 (2023-11-16)
+
+* Fixed gem loader to find by tag and cache instance - Brooke Kuhlmann
+* Updated Gemfile to support next minor Ruby version - Brooke Kuhlmann
+
 == 20.6.0 (2023-10-15)
 
 * Updated to Caliber 0.42.0 - Brooke Kuhlmann
