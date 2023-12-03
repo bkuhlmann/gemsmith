@@ -8,20 +8,20 @@ jobs:
       - checkout
 
       - restore_cache:
-          name: Bundler Restore
+          name: Gems Restore
           keys:
             - gem-cache-{{.Branch}}-{{checksum "Gemfile"}}-{{checksum "gemsmith.gemspec"}}
             - gem-cache-
 
       - run:
-          name: Bundler Install
+          name: Gems Install
           command: |
             gem update --system
             bundle config set path "vendor/bundle"
             bundle install
 
       - save_cache:
-          name: Bundler Store
+          name: Gems Store
           key: gem-cache-{{.Branch}}-{{checksum "Gemfile"}}-{{checksum "gemsmith.gemspec"}}
           paths:
             - vendor/bundle
@@ -31,6 +31,6 @@ jobs:
           command: bundle exec rake
 
       - store_artifacts:
-          name: SimpleCov Artifacts Upload
+          name: SimpleCov Report
           path: ~/project/coverage
           destination: coverage
