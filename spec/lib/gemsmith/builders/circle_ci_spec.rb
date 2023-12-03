@@ -34,20 +34,20 @@ RSpec.describe Gemsmith::Builders::CircleCI do
                 - checkout
 
                 - restore_cache:
-                    name: Bundler Restore
+                    name: Gems Restore
                     keys:
                       - gem-cache-{{.Branch}}-{{checksum "Gemfile"}}-{{checksum "test.gemspec"}}
                       - gem-cache-
 
                 - run:
-                    name: Bundler Install
+                    name: Gems Install
                     command: |
                       gem update --system
                       bundle config set path "vendor/bundle"
                       bundle install
 
                 - save_cache:
-                    name: Bundler Store
+                    name: Gems Store
                     key: gem-cache-{{.Branch}}-{{checksum "Gemfile"}}-{{checksum "test.gemspec"}}
                     paths:
                       - vendor/bundle
