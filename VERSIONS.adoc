@@ -1,5 +1,11 @@
 = Versions
 
+== 20.7.0 (2023-12-03)
+
+* Fixed CLI builder spec to match Rubysmith requirements - Brooke Kuhlmann
+* Updated Circle CI step names - Brooke Kuhlmann
+* Updated to Rubysmith 5.9.0 - Brooke Kuhlmann
+
 == 20.6.1 (2023-11-16)
 
 * Fixed gem loader to find by tag and cache instance - Brooke Kuhlmann
