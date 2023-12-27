@@ -53,7 +53,7 @@ RSpec.describe Gemsmith::Builders::CircleCI do
                       - vendor/bundle
 
                 - run:
-                    name: Build
+                    name: Rake
                     command: bundle exec rake
         CONTENT
       end
