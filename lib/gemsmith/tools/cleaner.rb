@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "dry/monads"
-require "refinements/pathnames"
+require "refinements/pathname"
 
 module Gemsmith
   module Tools
@@ -9,7 +9,7 @@ module Gemsmith
     class Cleaner
       include Dry::Monads[:result]
 
-      using Refinements::Pathnames
+      using Refinements::Pathname
 
       def initialize root_dir: Pathname.pwd
         @root_dir = root_dir

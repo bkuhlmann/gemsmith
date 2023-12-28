@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "dry/monads"
-require "refinements/pathnames"
+require "refinements/pathname"
 require "rubygems/command_manager"
 
 module Gemsmith
@@ -10,7 +10,7 @@ module Gemsmith
     class Packager
       include Dry::Monads[:result]
 
-      using Refinements::Pathnames
+      using Refinements::Pathname
 
       def initialize command: Gem::CommandManager.new
         @command = command

@@ -3,8 +3,8 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::CLI::Shell do
-  using Refinements::Pathnames
-  using Refinements::Structs
+  using Refinements::Pathname
+  using Refinements::Struct
   using Infusible::Stub
 
   subject(:shell) { described_class.new }

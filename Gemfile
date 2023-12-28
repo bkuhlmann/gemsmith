@@ -7,14 +7,14 @@ source "https://rubygems.org"
 gemspec
 
 group :quality do
-  gem "caliber", "~> 0.42"
-  gem "git-lint", "~> 6.0"
-  gem "reek", "~> 6.1", require: false
+  gem "caliber", "~> 0.47"
+  gem "git-lint", "~> 7.0"
+  gem "reek", "~> 6.2", require: false
   gem "simplecov", "~> 0.22", require: false
 end
 
 group :development do
-  gem "rake", "~> 13.0"
+  gem "rake", "~> 13.1"
 end
 
 group :test do
@@ -23,6 +23,6 @@ group :test do
 end
 
 group :tools do
-  gem "amazing_print", "~> 1.4"
-  gem "debug", "~> 1.8"
+  gem "amazing_print", "~> 1.5"
+  gem "debug", "~> 1.9"
 end

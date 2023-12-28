@@ -6,7 +6,7 @@ require "spec_helper"
 RSpec.describe Gemsmith::CLI::Actions::Publish do
   include Dry::Monads[:result]
 
-  using Refinements::Pathnames
+  using Refinements::Pathname
 
   subject(:action) { described_class.new publisher: }
 

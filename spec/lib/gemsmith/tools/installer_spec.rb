@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Gemsmith::Tools::Installer do
   include Dry::Monads[:result]
 
-  using Refinements::Pathnames
+  using Refinements::Pathname
 
   subject(:installer) { described_class.new steps: }
 

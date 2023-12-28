@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "refinements/structs"
+require "refinements/struct"
 
 module Gemsmith
   module Builders
     # Builds project skeleton CLI templates.
     class CLI
-      using Refinements::Structs
+      using Refinements::Struct
 
       def self.call(...) = new(...).call
 

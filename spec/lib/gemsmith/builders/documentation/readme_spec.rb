@@ -3,7 +3,7 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Builders::Documentation::Readme do
-  using Refinements::Structs
+  using Refinements::Struct
 
   subject(:builder) { described_class.new test_configuration }
 

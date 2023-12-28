@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require "refinements/structs"
+require "refinements/struct"
 
 module Gemsmith
   module Builders
     module Documentation
       # Builds project skeleton README documentation.
       class Readme
-        using Refinements::Structs
+        using Refinements::Struct
 
         def self.call(...) = new(...).call
 

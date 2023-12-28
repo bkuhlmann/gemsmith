@@ -21,7 +21,7 @@ module Gemsmith
       end
 
       def call specification
-        publisher.call settings(specification)
+        publisher.call specification.version
         Success specification
       rescue Milestoner::Error => error
         Failure error.message
@@ -30,14 +30,6 @@ module Gemsmith
       private
 
       attr_reader :publisher, :model
-
-      def settings specification
-        model[
-          documentation_format: configuration.extensions_milestoner_documentation_format,
-          prefixes: configuration.extensions_milestoner_prefixes,
-          version: specification.version
-        ]
-      end
     end
   end
 end

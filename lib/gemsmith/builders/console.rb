@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "refinements/structs"
+require "refinements/struct"
 
 module Gemsmith
   module Builders
     # Builds project skeleton console for object inspection and exploration.
     class Console < Rubysmith::Builders::Console
-      using Refinements::Structs
+      using Refinements::Struct
 
       def call
         return configuration unless configuration.build_console

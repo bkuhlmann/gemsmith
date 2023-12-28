@@ -3,7 +3,7 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Tools::Packager do
-  using Refinements::Pathnames
+  using Refinements::Pathname
   using Infusible::Stub
 
   subject(:packager) { described_class.new }

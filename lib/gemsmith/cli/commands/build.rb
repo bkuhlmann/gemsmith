@@ -80,7 +80,6 @@ module Gemsmith
         on Rubysmith::CLI::Actions::Setup, input: Container[:input]
         on Rubysmith::CLI::Actions::SimpleCov, input: Container[:input]
         on Rubysmith::CLI::Actions::Versions, input: Container[:input]
-        on Rubysmith::CLI::Actions::Yard, input: Container[:input]
         on Rubysmith::CLI::Actions::Zeitwerk, input: Container[:input]
 
         def initialize(builders: BUILDERS, **)

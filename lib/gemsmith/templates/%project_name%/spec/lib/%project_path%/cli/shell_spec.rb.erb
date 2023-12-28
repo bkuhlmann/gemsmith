@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe <%= configuration.project_namespaced_class %>::CLI::Shell do
-  using Refinements::Pathnames
+  using Refinements::Pathname
   using Infusible::Stub
 
   subject(:shell) { described_class.new }

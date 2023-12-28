@@ -3,7 +3,7 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Tools::Cleaner do
-  using Refinements::Pathnames
+  using Refinements::Pathname
 
   subject(:cleaner) { described_class.new }
 

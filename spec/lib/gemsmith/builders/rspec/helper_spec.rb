@@ -3,8 +3,8 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Builders::RSpec::Helper do
-  using Refinements::Structs
-  using Refinements::Pathnames
+  using Refinements::Struct
+  using Refinements::Pathname
 
   subject(:builder) { described_class.new test_configuration }
 
