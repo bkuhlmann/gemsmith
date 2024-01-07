@@ -2,11 +2,11 @@
 
 == 21.0.0 (2024-01-07)
 
-🔼 Updated Circle CI Rake step name - Brooke Kuhlmann
-🔼 Updated gem dependencies - Brooke Kuhlmann
-🔼 Updated to Ruby 3.3.0 - Brooke Kuhlmann
-⛔️ Removed Gemfile code prefix from quality group - Brooke Kuhlmann
-⛔️ Removed Rakefile code prefix from quality task - Brooke Kuhlmann
+* 🔼 Updated Circle CI Rake step name - Brooke Kuhlmann
+* 🔼 Updated gem dependencies - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.0 - Brooke Kuhlmann
+* ⛔️ Removed Gemfile code prefix from quality group - Brooke Kuhlmann
+* ⛔️ Removed Rakefile code prefix from quality task - Brooke Kuhlmann
 
 == 20.7.0 (2023-12-03)
 
