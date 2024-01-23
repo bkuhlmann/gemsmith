@@ -1,5 +1,11 @@
 = Versions
 
+== 21.1.0 (2024-01-22)
+
+* ✅ Fixed version bullets - Brooke Kuhlmann
+* 🟢 Added repl_type_completor gem - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 6.1.0 - Brooke Kuhlmann
+
 == 21.0.0 (2024-01-07)
 
 * 🔼 Updated Circle CI Rake step name - Brooke Kuhlmann
