@@ -65,7 +65,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
 
           group :tools do
             gem "amazing_print", "~> 1.5"
-            gem "debug", "~> 1.8"
+            gem "debug", "~> 1.9"
             gem "repl_type_completor", "~> 0.1"
           end
         CONTENT
