@@ -1,5 +1,12 @@
 = Versions
 
+== 21.4.0 (2024-03-09)
+
+* 🔼 Updated to Amazing Print 1.6.0 - Brooke Kuhlmann
+* 🔼 Updated to Infusible 3.4.0 - Brooke Kuhlmann
+* 🔼 Updated to Milestoner 17.4.0 - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 6.4.0 - Brooke Kuhlmann
+
 == 21.3.0 (2024-03-03)
 
 * 🔼 Updated RuboCop to use XDG local configuration - Brooke Kuhlmann
