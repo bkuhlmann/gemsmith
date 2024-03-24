@@ -1,8 +1,17 @@
-#! /usr/bin/env bash
+#! /usr/bin/env ruby
+# frozen_string_literal: true
 
-set -o nounset
-set -o errexit
-set -o pipefail
-IFS=$'\n\t'
+require "debug"
+require "fileutils"
+require "pathname"
 
-bundle install
+APP_ROOT = Pathname(__dir__).join("..").expand_path
+
+Runner = lambda do |*arguments, kernel: Kernel|
+  kernel.system(*arguments) || kernel.abort("\nERROR: Command #{arguments.inspect} failed.")
+end
+
+FileUtils.chdir APP_ROOT do
+  puts "Installing dependencies..."
+  Runner.call "bundle install"
+end
