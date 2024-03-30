@@ -4,13 +4,12 @@ require "spec_helper"
 
 RSpec.describe Gemsmith::Tools::Packager do
   using Refinements::Pathname
-  using Infusible::Stub
 
   subject(:packager) { described_class.new }
 
   include_context "with application dependencies"
 
-  before { Gemsmith::Import.stub executor: Open3 }
+  before { Gemsmith::Container.stub executor: Open3 }
 
   describe "#call" do
     before do

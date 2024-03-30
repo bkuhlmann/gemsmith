@@ -1,15 +1,9 @@
-require "dry/container/stub"
-require "infusible/stub"
-
 RSpec.shared_context "with application dependencies" do
-  using Infusible::Stub
-
   let(:configuration) { Etcher.new(<%= configuration.project_namespaced_class %>::Container[:defaults]).call.bind(&:dup) }
   let(:xdg_config) { Runcom::Config.new <%= configuration.project_namespaced_class %>::Container[:defaults_path] }
   let(:kernel) { class_spy Kernel }
   let(:logger) { Cogger.new id: "<%= configuration.project_name %>", io: StringIO.new, level: :debug }
 
-  before { <%= configuration.project_namespaced_class %>::Import.stub configuration:, xdg_config:, kernel:, logger: }
-
-  after { <%= configuration.project_namespaced_class %>::Import.unstub :configuration, :xdg_config, :kernel, :logger }
+  before { <%= configuration.project_namespaced_class %>::Container.stub! configuration:, xdg_config:, kernel:, logger: }
+  after { <%= configuration.project_namespaced_class %>::Container.restore }
 end
