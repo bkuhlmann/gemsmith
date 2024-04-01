@@ -2,16 +2,14 @@
 :toclevels: 5
 :figure-caption!:
 
+:containable_link: link:https://alchemists.io/projects/containable[Containable]
+:infusible_link: link:https://alchemists.io/projects/infusible[Infusible]
 :ruby_gems_link: link:https://rubygems.org[RubyGems]
 :sod_link: link:https://alchemists.io/projects/sod[Sod]
 
 = Gemsmith
 
-Gemsmith is a command line interface for smithing Ruby gems. Perfect for when you need a
-professional and robust tool beyond link:https://bundler.io[Bundler]'s basic gem skeletons. While
-Bundler is great for creating your first gem, you'll quickly outgrow Bundler when creating and
-maintaining multiple gems. This is where Gemsmith can increase your productivity by providing much
-of the tooling you need from the start with the ability to customize as desired.
+Gemsmith is a command line interface for smithing Ruby gems. Perfect for when you need a professional and robust tool beyond link:https://bundler.io[Bundler]'s basic gem skeletons. While Bundler is great for creating your first gem, you'll quickly outgrow Bundler when creating and maintaining multiple gems. This is where Gemsmith can increase your productivity by providing much of the tooling you need from the start with the ability to customize as desired.
 
 toc::[]
 
@@ -56,27 +54,17 @@ image:https://alchemists.io/images/projects/gemsmith/screenshots/usage.png[Usage
 
 ==== Build
 
-The core functionality of this gem centers around the `build` command and associated flags. The
-build options allow you to further customize the kind of gem you want to build. Most build options
-are enabled by default. For detailed documentation on all supported flags, see the
-link:https://alchemists.io/projects/rubysmith/#_build[Rubysmith] documentation.
+The core functionality of this gem centers around the `build` command and associated flags. The build options allow you to further customize the kind of gem you want to build. Most build options
+are enabled by default. For detailed documentation on all supported flags, see the link:https://alchemists.io/projects/rubysmith/#_build[Rubysmith] documentation.
 
-The build option which is unique to Gemsmith is the `--cli` option. This allows you to build a gem
-which has a Command Line Interface (CLI). There are multiple ways a CLI can be built in Ruby but
-Gemsmith takes an approach which builds upon Ruby's native `OptionParser` with help from
-link:https://dry-rb.org/gems/dry-container[Dry Container]. All of this culminates in a design that
-is mix of Objected Oriented + Functional Programming design. Building a gem with CLI support is a
-simple as running:
+The build option which is unique to Gemsmith is the `--cli` option. This allows you to build a gem which has a Command Line Interface (CLI). There are multiple ways a CLI can be built in Ruby but Gemsmith takes an approach which builds upon Ruby's native `OptionParser` with help from the {containable_link} and {infusible_link} gems. All of this culminates in a design that is mix of Objected Oriented + Functional Programming design. Building a gem with CLI support is a simple as running:
 
 [source,bash]
 ----
 gemsmith build --name demo --cli
 ----
 
-The above will give you a new gem with CLI support which includes working specs. It's the same
-design used to build this Gemsmith gem. You'll have both a `configuration` and `CLI` namespace for
-configuring your gem and adding additional CLI support. Out of the box, the CLI gem generated for
-you supports the following options:
+The above will give you a new gem with CLI support which includes working specs. It's the same design used to build this Gemsmith gem. You'll have both a `configuration` and `CLI` namespace for configuring your gem and adding additional CLI support. Out of the box, the CLI gem generated for you supports the following options:
 
 ....
   -v, --version     Show version.
