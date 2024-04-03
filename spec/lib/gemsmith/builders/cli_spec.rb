@@ -89,7 +89,7 @@ RSpec.describe Gemsmith::Builders::CLI do
           require "infusible"
 
           module Test
-            Import = Infusible.with Container
+            Import = Infusible[Container]
           end
         CONTENT
       end
