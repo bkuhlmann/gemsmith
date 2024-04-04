@@ -1,5 +1,9 @@
 = Versions
 
+== 21.5.1 (2024-04-04)
+
+* ✅ Fixed CLI shell spec template - Brooke Kuhlmann
+
 == 21.5.0 (2024-04-03)
 
 * 🟢 Added Containable gem - Brooke Kuhlmann
