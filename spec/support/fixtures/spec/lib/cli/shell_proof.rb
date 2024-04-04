@@ -2,15 +2,14 @@ require "spec_helper"
 
 RSpec.describe Test::CLI::Shell do
   using Refinements::Pathname
-  using Infusible::Stub
 
   subject(:shell) { described_class.new }
 
   include_context "with application dependencies"
 
-  before { Sod::Import.stub kernel:, logger: }
+  before { Sod::Container.stub! kernel:, logger: }
 
-  after { Sod::Import.unstub :kernel, :logger }
+  after { Sod::Container.restore }
 
   describe "#call" do
     it "prints configuration usage" do
