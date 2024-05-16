@@ -1,5 +1,12 @@
 = Versions
 
+== 21.7.0 (2024-05-16)
+
+* 🔼 Updated RSpec configuration to ignore backtraces in pending specs - Brooke Kuhlmann
+* 🔼 Updated to Milestoner 17.7.0 - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.1 - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 6.7.0 - Brooke Kuhlmann
+
 == 21.6.0 (2024-04-21)
 
 * 🔼 Updated to Git Lint 7.3.0 - Brooke Kuhlmann
