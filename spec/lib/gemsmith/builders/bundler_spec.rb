@@ -28,10 +28,6 @@ RSpec.describe Gemsmith::Builders::Bundler do
           source "https://rubygems.org"
 
           gemspec
-
-          group :tools do
-            gem "repl_type_completor", "~> 0.1"
-          end
         CONTENT
       end
     end
@@ -66,6 +62,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
           group :tools do
             gem "amazing_print", "~> 1.6"
             gem "debug", "~> 1.9"
+            gem "irb-kit", "~> 0.0"
             gem "repl_type_completor", "~> 0.1"
           end
         CONTENT

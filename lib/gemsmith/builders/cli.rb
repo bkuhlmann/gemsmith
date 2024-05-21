@@ -5,15 +5,8 @@ require "refinements/struct"
 module Gemsmith
   module Builders
     # Builds project skeleton CLI templates.
-    class CLI
+    class CLI < Rubysmith::Builders::Abstract
       using Refinements::Struct
-
-      def self.call(...) = new(...).call
-
-      def initialize configuration, builder: Rubysmith::Builder
-        @configuration = configuration
-        @builder = builder
-      end
 
       def call
         return configuration unless configuration.build_cli
@@ -23,8 +16,6 @@ module Gemsmith
       end
 
       private
-
-      attr_reader :configuration, :builder
 
       def render = private_methods.sort.grep(/render_/).each { |method| __send__ method }
 

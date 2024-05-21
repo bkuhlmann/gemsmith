@@ -5,15 +5,8 @@ require "refinements/struct"
 module Gemsmith
   module Builders
     # Builds project skeleton Circle CI configuration.
-    class CircleCI
+    class CircleCI < Rubysmith::Builders::Abstract
       using Refinements::Struct
-
-      def self.call(...) = new(...).call
-
-      def initialize configuration, builder: Rubysmith::Builder
-        @configuration = configuration
-        @builder = builder
-      end
 
       def call
         return configuration unless configuration.build_circle_ci
@@ -26,8 +19,6 @@ module Gemsmith
       end
 
       private
-
-      attr_reader :configuration, :builder
 
       def project_name = configuration.project_name
     end

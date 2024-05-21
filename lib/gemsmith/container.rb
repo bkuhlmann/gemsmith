@@ -22,7 +22,6 @@ module Gemsmith
                                       model: Rubysmith::Configuration::Model
 
       registry.add_loader(Etcher::Loaders::YAML.new(self[:defaults_path]))
-              .add_transformer(Rubysmith::Configuration::Transformers::CurrentTime)
               .add_transformer(Rubysmith::Configuration::Transformers::GitHubUser.new)
               .add_transformer(Rubysmith::Configuration::Transformers::GitEmail.new)
               .add_transformer(Rubysmith::Configuration::Transformers::GitUser.new)
@@ -33,6 +32,7 @@ module Gemsmith
                 )
               )
               .add_transformer(Rubysmith::Configuration::Transformers::TargetRoot)
+              .add_transformer(Etcher::Transformers::Time.new)
     end
 
     register(:specification) { Spek::Loader.call "#{__dir__}/../../gemsmith.gemspec" }
