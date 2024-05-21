@@ -15,8 +15,10 @@ module Gemsmith
           builder.call(configuration.merge(template_path: "%project_name%/.gitignore.erb"))
                  .touch
                  .prepend("*.gem\n")
-                 .insert_before("tmp\n", "Gemfile.lock\n")
-                 .insert_before("tmp\n", "pkg\n")
+                 .insert_before "tmp\n", <<~CONTENT
+                   Gemfile.lock
+                   pkg
+                 CONTENT
 
           configuration
         end
