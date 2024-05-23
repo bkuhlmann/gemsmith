@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "core", "~> 1.0"
   spec.add_dependency "dry-monads", "~> 1.6"
   spec.add_dependency "dry-schema", "~> 1.13"
-  spec.add_dependency "etcher", "~> 1.3"
+  spec.add_dependency "etcher", "~> 1.5"
   spec.add_dependency "infusible", "~> 3.5"
   spec.add_dependency "milestoner", "~> 17.7"
   spec.add_dependency "refinements", "~> 12.1"
