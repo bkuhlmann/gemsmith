@@ -93,18 +93,18 @@ RSpec.describe Gemsmith::Builders::Specification do
     context "with maximum flags" do
       let :test_configuration do
         configuration.maximize.merge(
-          author_email: "jill@example.com",
-          project_url_community: "https://www.example.com/%project_name%/community",
-          project_url_conduct: "https://www.example.com/%project_name%/code_of_conduct",
-          project_url_contributions: "https://www.example.com/%project_name%/contributions",
-          project_url_download: "https://www.example.com/%project_name%/download",
-          project_url_funding: "https://www.example.com/%project_name%/funding",
-          project_url_home: "https://www.example.com/%project_name%",
-          project_url_issues: "https://www.example.com/%project_name%/issues",
-          project_url_license: "https://www.example.com/%project_name%/license",
-          project_url_security: "https://www.example.com/%project_name%/security",
-          project_url_source: "https://www.example.com/%project_name%/source",
-          project_url_versions: "https://www.example.com/%project_name%/versions"
+          author_email: "jill@acme.io",
+          project_url_community: "https://acme.io/%project_name%/community",
+          project_url_conduct: "https://acme.io/%project_name%/code_of_conduct",
+          project_url_contributions: "https://acme.io/%project_name%/contributions",
+          project_url_download: "https://acme.io/%project_name%/download",
+          project_url_funding: "https://acme.io/%project_name%/funding",
+          project_url_home: "https://acme.io/%project_name%",
+          project_url_issues: "https://acme.io/%project_name%/issues",
+          project_url_license: "https://acme.io/%project_name%/license",
+          project_url_security: "https://acme.io/%project_name%/security",
+          project_url_source: "https://acme.io/%project_name%/source",
+          project_url_versions: "https://acme.io/%project_name%/versions"
         )
       end
 

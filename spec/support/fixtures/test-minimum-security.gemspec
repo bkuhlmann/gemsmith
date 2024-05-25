@@ -2,7 +2,7 @@ Gem::Specification.new do |spec|
   spec.name = "test"
   spec.version = "0.0.0"
   spec.authors = ["Jill Smith"]
-  spec.email = ["jill@example.com"]
+  spec.email = ["jill@acme.io"]
   spec.homepage = ""
   spec.summary = ""
   spec.license = "Hippocratic-2.1"

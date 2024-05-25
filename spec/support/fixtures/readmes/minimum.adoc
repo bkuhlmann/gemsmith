@@ -43,7 +43,7 @@ To contribute, run:
 
 [source,bash]
 ----
-git clone https://example.com/test/source
+git clone https://acme.io/test/source
 cd test
 ----
 
@@ -59,4 +59,4 @@ bin/rake
 == Credits
 
 * Built with link:https://alchemists.io/projects/gemsmith[Gemsmith].
-* Engineered by link:https://example.com/team/jill[Jill Smith].
+* Engineered by link:https://acme.io/team/jill_smith[Jill Smith].
