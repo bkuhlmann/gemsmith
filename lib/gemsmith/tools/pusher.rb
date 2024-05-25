@@ -28,13 +28,13 @@ module Gemsmith
 
       # :reek:TooManyStatements
       def one_time_password
-        return [] if check_yubikey.failure?
+        return Core::EMPTY_ARRAY if check_yubikey.failure?
 
         executor.capture3(check_yubikey.success, "oath", "accounts", "code", "--single", "RubyGems")
                 .then { |stdout, _stderr, status| status.success? ? ["--otp", stdout.chomp] : [] }
       rescue Errno::ENOENT => error
         logger.debug { "Unable to obtain YubiKey One-Time Password. #{error}." }
-        []
+        Core::EMPTY_ARRAY
       end
 
       def check_yubikey
