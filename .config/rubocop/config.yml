@@ -14,6 +14,9 @@ Metrics/MethodLength:
   Exclude:
     - "lib/gemsmith/cli/shell.rb"
     - "lib/gemsmith/builders/documentation/readme.rb"
+RSpec/MultipleMemoizedHelpers:
+  Exclude:
+    - "spec/support/shared_contexts/application_dependencies.rb"
 RSpec/SpecFilePathFormat:
   Exclude:
     - "spec/support/fixtures/**/*"

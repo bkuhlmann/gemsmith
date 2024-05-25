@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:todo RSpec/MultipleMemoizedHelpers
 RSpec.shared_context "with application dependencies" do
   include_context "with temporary directory"
 
@@ -43,4 +42,3 @@ RSpec.shared_context "with application dependencies" do
 
   after { Gemsmith::Container.restore }
 end
-# rubocop:enable RSpec/MultipleMemoizedHelpers
