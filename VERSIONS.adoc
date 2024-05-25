@@ -1,5 +1,18 @@
 = Versions
 
+== 21.8.0 (2024-05-25)
+
+* ✅ Fixed specification builder spec to ignore URLs - Brooke Kuhlmann
+* 🟢 Added IRB Kit gem - Brooke Kuhlmann
+* 🔼 Updated RuboCop to ignore multiple memoized helpers in shared context - Brooke Kuhlmann
+* 🔼 Updated readme builder to handle gem setup and security - Brooke Kuhlmann
+* 🔼 Updated to Etcher 1.5.0 - Brooke Kuhlmann
+* 🔼 Updated to Milestoner 17.8.0 - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 6.8.0 - Brooke Kuhlmann
+* 🔁 Refactored Git ignore builder insertions - Brooke Kuhlmann
+* 🔁 Refactored RSpec application dependency URLs - Brooke Kuhlmann
+* 🔁 Refactored pusher tool to use Core empty array - Brooke Kuhlmann
+
 == 21.7.0 (2024-05-16)
 
 * 🔼 Updated RSpec configuration to ignore backtraces in pending specs - Brooke Kuhlmann
