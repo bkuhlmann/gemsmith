@@ -15,7 +15,21 @@ RSpec.describe Gemsmith::Builders::Specification do
     before { builder.call }
 
     context "with minimum flags" do
-      let(:test_configuration) { configuration.minimize }
+      let :test_configuration do
+        configuration.minimize.merge(
+          project_url_community: nil,
+          project_url_conduct: nil,
+          project_url_contributions: nil,
+          project_url_download: nil,
+          project_url_funding: nil,
+          project_url_home: nil,
+          project_url_issues: nil,
+          project_url_license: nil,
+          project_url_security: nil,
+          project_url_source: nil,
+          project_url_versions: nil
+        )
+      end
 
       it "builds gemspec" do
         expect(temp_dir.join("test", "test.gemspec").read).to eq(
@@ -25,7 +39,22 @@ RSpec.describe Gemsmith::Builders::Specification do
     end
 
     context "with minimum flags plus security" do
-      let(:test_configuration) { configuration.minimize.merge build_security: true }
+      let :test_configuration do
+        configuration.minimize.merge(
+          build_security: true,
+          project_url_community: nil,
+          project_url_conduct: nil,
+          project_url_contributions: nil,
+          project_url_download: nil,
+          project_url_funding: nil,
+          project_url_home: nil,
+          project_url_issues: nil,
+          project_url_license: nil,
+          project_url_security: nil,
+          project_url_source: nil,
+          project_url_versions: nil
+        )
+      end
 
       it "builds gemspec" do
         expect(temp_dir.join("test", "test.gemspec").read).to eq(
@@ -36,7 +65,22 @@ RSpec.describe Gemsmith::Builders::Specification do
 
     context "with minimum flags plus CLI" do
       let :test_configuration do
-        configuration.minimize.merge build_cli: true, build_refinements: true, build_zeitwerk: true
+        configuration.minimize.merge(
+          build_cli: true,
+          build_refinements: true,
+          build_zeitwerk: true,
+          project_url_community: nil,
+          project_url_conduct: nil,
+          project_url_contributions: nil,
+          project_url_download: nil,
+          project_url_funding: nil,
+          project_url_home: nil,
+          project_url_issues: nil,
+          project_url_license: nil,
+          project_url_security: nil,
+          project_url_source: nil,
+          project_url_versions: nil
+        )
       end
 
       it "builds gemspec" do
