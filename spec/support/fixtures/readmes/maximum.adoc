@@ -1,0 +1,91 @@
+:toc: macro
+:toclevels: 5
+:figure-caption!:
+
+= Test Example
+
+toc::[]
+
+== Features
+
+== Requirements
+
+. link:https://www.ruby-lang.org[Ruby].
+
+== Setup
+
+To install _with_ security, run:
+
+[source,bash]
+----
+# 💡 Skip this line if you already have the public certificate installed.
+gem cert --add <(curl --compressed --location https://example.com/gems.pem)
+gem install test-example --trust-policy HighSecurity
+----
+
+To install _without_ security, run:
+
+[source,bash]
+----
+gem install test-example
+----
+
+You can also add the gem directly to your project:
+
+[source,bash]
+----
+bundle add test-example
+----
+
+Once the gem is installed, you only need to require it:
+
+[source,ruby]
+----
+require "test/example"
+----
+
+== Usage
+
+== Development
+
+To contribute, run:
+
+[source,bash]
+----
+git clone https://example.com/test-example/source
+cd test-example
+bin/setup
+----
+
+You can also use the IRB console for direct access to all objects:
+
+[source,bash]
+----
+bin/console
+----
+
+== Tests
+
+To test, run:
+
+[source,bash]
+----
+bin/rake
+----
+
+== link:https://example.com/test-example/license[License]
+
+== link:https://example.com/test-example/security[Security]
+
+== link:https://example.com/test-example/code_of_conduct[Code of Conduct]
+
+== link:https://example.com/test-example/contributions[Contributions]
+
+== link:https://example.com/test-example/versions[Versions]
+
+== link:https://example.com/test-example/community[Community]
+
+== Credits
+
+* Built with link:https://alchemists.io/projects/gemsmith[Gemsmith].
+* Engineered by link:https://example.com/team/jill[Jill Smith].

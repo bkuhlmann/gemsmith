@@ -1,0 +1,62 @@
+:toc: macro
+:toclevels: 5
+:figure-caption!:
+
+= Test
+
+toc::[]
+
+== Features
+
+== Requirements
+
+. link:https://www.ruby-lang.org[Ruby].
+
+== Setup
+
+To install, run:
+
+[source,bash]
+----
+gem install test
+----
+
+You can also add the gem directly to your project:
+
+[source,bash]
+----
+bundle add test
+----
+
+Once the gem is installed, you only need to require it:
+
+[source,ruby]
+----
+require "test"
+----
+
+== Usage
+
+== Development
+
+To contribute, run:
+
+[source,bash]
+----
+git clone https://example.com/test/source
+cd test
+----
+
+== Tests
+
+To test, run:
+
+[source,bash]
+----
+bin/rake
+----
+
+== Credits
+
+* Built with link:https://alchemists.io/projects/gemsmith[Gemsmith].
+* Engineered by link:https://example.com/team/jill[Jill Smith].

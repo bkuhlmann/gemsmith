@@ -13,6 +13,7 @@ Metrics/CollectionLiteralLength:
 Metrics/MethodLength:
   Exclude:
     - "lib/gemsmith/cli/shell.rb"
+    - "lib/gemsmith/builders/documentation/readme.rb"
 RSpec/SpecFilePathFormat:
   Exclude:
     - "spec/support/fixtures/**/*"
