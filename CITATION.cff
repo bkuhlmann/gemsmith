@@ -15,5 +15,6 @@ keywords:
  - gems
  - command line interface
  - generator
-repository-code: https://alchemists.io/projects/gemsmith
+repository-code: https://github.com/bkuhlmann/gemsmith
 repository-artifact: https://rubygems.org/gems/gemsmith
+url: https://alchemists.io/projects/gemsmith
