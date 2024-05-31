@@ -1,5 +1,12 @@
 = Versions
 
+== 21.9.0 (2024-05-31)
+
+* 🔼 Updated citation URLs - Brooke Kuhlmann
+* 🔼 Updated to Etcher 1.6.0 - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.2 - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 6.9.0 - Brooke Kuhlmann
+
 == 21.8.0 (2024-05-25)
 
 * ✅ Fixed specification builder spec to ignore URLs - Brooke Kuhlmann
