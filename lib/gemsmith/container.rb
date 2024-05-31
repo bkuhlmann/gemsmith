@@ -13,7 +13,7 @@ module Gemsmith
     extend Containable
 
     register :configuration do
-      self[:defaults].add_loader(Etcher::Loaders::YAML.new(self[:xdg_config].active))
+      self[:defaults].add_loader(:yaml, self[:xdg_config].active)
                      .then { |registry| Etcher.call registry }
     end
 
@@ -21,7 +21,7 @@ module Gemsmith
       registry = Etcher::Registry.new contract: Rubysmith::Configuration::Contract,
                                       model: Rubysmith::Configuration::Model
 
-      registry.add_loader(Etcher::Loaders::YAML.new(self[:defaults_path]))
+      registry.add_loader(:yaml, self[:defaults_path])
               .add_transformer(Rubysmith::Configuration::Transformers::GitHubUser.new)
               .add_transformer(Rubysmith::Configuration::Transformers::GitEmail.new)
               .add_transformer(Rubysmith::Configuration::Transformers::GitUser.new)
@@ -32,7 +32,7 @@ module Gemsmith
                 )
               )
               .add_transformer(Rubysmith::Configuration::Transformers::TargetRoot)
-              .add_transformer(Etcher::Transformers::Time.new)
+              .add_transformer(:time)
     end
 
     register(:specification) { Spek::Loader.call "#{__dir__}/../../gemsmith.gemspec" }
