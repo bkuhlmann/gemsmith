@@ -7,15 +7,15 @@ module Gemsmith
     module Actions
       # Stores CLI flag.
       class CLI < Sod::Action
-        include Import[:input]
+        include Import[:settings]
 
         description "Add command line interface."
 
         on "--[no-]cli"
 
-        default { Container[:configuration].build_cli }
+        default { Container[:settings].build_cli }
 
-        def call(value = nil) = input.build_cli = value
+        def call(value = nil) = settings.build_cli = value
       end
     end
   end
