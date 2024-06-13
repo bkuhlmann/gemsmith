@@ -21,23 +21,22 @@ module Gemsmith
           Rubysmith::Builders::Documentation::License,
           Rubysmith::Builders::Documentation::Version,
           Rubysmith::Builders::Git::Setup,
-          Rubysmith::Builders::Git::Ignore,
-          Rubysmith::Builders::Git::Safe,
           Builders::Git::Ignore,
-          Rubysmith::Builders::Bundler,
+          Rubysmith::Builders::Git::Safe,
           Builders::Bundler,
           Builders::CLI,
-          Rubysmith::Builders::Rake,
+          Rubysmith::Builders::Rake::Binstub,
+          Rubysmith::Builders::Rake::Configuration,
           Builders::Console,
-          Rubysmith::Builders::CircleCI,
           Builders::CircleCI,
           Rubysmith::Builders::Setup,
-          Rubysmith::Builders::GitHub,
+          Rubysmith::Builders::GitHub::Template,
+          Rubysmith::Builders::GitHub::Funding,
+          Rubysmith::Builders::GitHub::CI,
           Rubysmith::Builders::Guard,
           Rubysmith::Builders::Reek,
           Rubysmith::Builders::RSpec::Binstub,
           Rubysmith::Builders::RSpec::Context,
-          Rubysmith::Builders::RSpec::Helper,
           Builders::RSpec::Helper,
           Rubysmith::Builders::Caliber,
           Rubysmith::Extensions::Bundler,
@@ -89,7 +88,7 @@ module Gemsmith
 
         def call
           log_info "Building project skeleton: #{settings.project_name}..."
-          builders.each { |builder| builder.call settings }
+          builders.each { |constant| constant.new(settings:).call }
           log_info "Project skeleton complete!"
         end
 

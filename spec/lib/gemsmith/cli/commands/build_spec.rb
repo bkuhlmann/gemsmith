@@ -3,24 +3,25 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::CLI::Commands::Build do
-  subject(:command) { described_class.new builders: [builder] }
+  using Refinements::Pathname
+
+  subject(:command) { described_class.new builders: [Rubysmith::Builders::Version] }
 
   include_context "with application dependencies"
 
-  let(:builder) { class_spy Gemsmith::Builders::Specification }
-
   describe "#call" do
-    it "logs message" do
-      command.call
+    it "builds skeleton" do
+      temp_dir.change_dir { command.call }
+      expect(temp_dir.join("test/.ruby-version").exist?).to be(true)
+    end
+
+    it "logs information" do
+      temp_dir.change_dir { command.call }
+
       expect(logger.reread).to eq(<<~OUTPUT)
         🟢 [\e[32mgemsmith\e[0m] \e[32mBuilding project skeleton: test...\e[0m
         🟢 [\e[32mgemsmith\e[0m] \e[32mProject skeleton complete!\e[0m
       OUTPUT
-    end
-
-    it "calls builders" do
-      command.call
-      expect(builder).to have_received(:call).with(configuration)
     end
   end
 end

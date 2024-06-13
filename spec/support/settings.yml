@@ -2,7 +2,7 @@
 :gem_platform: Gem::Platform::CURRENT
 :author_name: "Testy Tester"
 :author_email: "test@test.com"
-:author_url: "https://www.test.com"
+:author_uri: "https://www.test.com"
 :gem_url: "https://www.gem.com"
 :company_name: "ACME"
 :company_url: "https://www.acme.com"

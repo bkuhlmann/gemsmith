@@ -6,30 +6,28 @@ RSpec.describe Gemsmith::Builders::CLI do
   using Refinements::Struct
   using Refinements::Pathname
 
-  subject(:builder) { described_class.new test_configuration }
+  subject(:builder) { described_class.new settings: }
 
   include_context "with application dependencies"
-
-  let(:test_configuration) { configuration.minimize }
-
-  before do
-    Rubysmith::Builders::Core.call test_configuration
-    Rubysmith::Builders::Bundler.call test_configuration
-  end
-
-  it_behaves_like "a builder"
 
   describe "#call" do
     let(:fixtures_root) { SPEC_ROOT.join "support/fixtures" }
 
-    before { builder.call }
-
     context "when enabled" do
-      let :test_configuration do
-        configuration.minimize.merge build_cli: true, build_refinements: true, build_zeitwerk: true
+      before do
+        settings.merge! settings.minimize.merge(
+          build_cli: true,
+          build_refinements: true,
+          build_zeitwerk: true
+        )
+
+        Rubysmith::Builders::Core.new(settings:).call
+        Rubysmith::Builders::Bundler.new(settings:).call
       end
 
       it "builds executable" do
+        builder.call
+
         expect(temp_dir.join("test/exe/test").read).to eq(<<~CONTENT)
           #! /usr/bin/env ruby
 
@@ -40,20 +38,26 @@ RSpec.describe Gemsmith::Builders::CLI do
       end
 
       it "sets executable as executable" do
+        builder.call
         expect(temp_dir.join("test/exe/test").stat.mode).to eq(33261)
       end
 
       it "builds CLI shell" do
+        builder.call
+
         expect(temp_dir.join("test/lib/test/cli/shell.rb").read).to eq(
           SPEC_ROOT.join("support/fixtures/lib/cli/shell.rb").read
         )
       end
 
       it "builds configuration defaults" do
+        builder.call
         expect(temp_dir.join("test/lib/test/configuration/defaults.yml").read).to eq("")
       end
 
       it "builds configuration contract" do
+        builder.call
+
         expect(temp_dir.join("test/lib/test/configuration/contract.rb").read).to eq(<<~CONTENT)
           require "dry/schema"
 
@@ -68,6 +72,8 @@ RSpec.describe Gemsmith::Builders::CLI do
       end
 
       it "builds configuration model" do
+        builder.call
+
         expect(temp_dir.join("test/lib/test/configuration/model.rb").read).to eq(<<~CONTENT)
           module Test
             module Configuration
@@ -79,12 +85,16 @@ RSpec.describe Gemsmith::Builders::CLI do
       end
 
       it "builds application container" do
+        builder.call
+
         expect(temp_dir.join("test/lib/test/container.rb").read).to eq(
           SPEC_ROOT.join("support/fixtures/lib/container.rb").read
         )
       end
 
       it "builds application import" do
+        builder.call
+
         expect(temp_dir.join("test/lib/test/import.rb").read).to eq(<<~CONTENT)
           require "infusible"
 
@@ -96,14 +106,21 @@ RSpec.describe Gemsmith::Builders::CLI do
     end
 
     context "when enabled with RSpec" do
-      let :test_configuration do
-        configuration.minimize.merge build_cli: true,
-                                     build_refinements: true,
-                                     build_rspec: true,
-                                     build_zeitwerk: true
+      before do
+        settings.merge! settings.minimize.merge(
+          build_cli: true,
+          build_refinements: true,
+          build_rspec: true,
+          build_zeitwerk: true
+        )
+
+        Rubysmith::Builders::Core.new(settings:).call
+        Rubysmith::Builders::Bundler.new(settings:).call
       end
 
       it "builds RSpec CLI shell spec" do
+        builder.call
+
         expect(temp_dir.join("test/spec/lib/test/cli/shell_spec.rb").read).to eq(
           fixtures_root.join("spec/lib/cli/shell_proof.rb").read
         )
@@ -115,16 +132,27 @@ RSpec.describe Gemsmith::Builders::CLI do
         )
         fixture_path = fixtures_root.join "spec/support/shared_contexts/application_dependencies.rb"
 
+        builder.call
+
         expect(template_path.read).to eq(fixture_path.read)
       end
     end
 
     context "when enabled with simple project name" do
-      let :test_configuration do
-        configuration.minimize.merge build_cli: true, build_refinements: true, build_zeitwerk: true
+      before do
+        settings.merge! settings.minimize.merge(
+          build_cli: true,
+          build_refinements: true,
+          build_zeitwerk: true
+        )
+
+        Rubysmith::Builders::Core.new(settings:).call
+        Rubysmith::Builders::Bundler.new(settings:).call
       end
 
       it "adds CLI inflection" do
+        builder.call
+
         expect(temp_dir.join("test/lib/test.rb").read).to eq(<<~CONTENT)
           require "zeitwerk"
 
@@ -147,15 +175,22 @@ RSpec.describe Gemsmith::Builders::CLI do
     end
 
     context "when enabled with dashed project name" do
-      let :test_configuration do
-        configuration.minimize.merge build_cli: true,
-                                     build_refinements: true,
-                                     build_rspec: true,
-                                     build_zeitwerk: true,
-                                     project_name: "demo-test"
+      before do
+        settings.merge! settings.minimize.merge(
+          build_cli: true,
+          build_refinements: true,
+          build_rspec: true,
+          build_zeitwerk: true,
+          project_name: "demo-test"
+        )
+
+        Rubysmith::Builders::Core.new(settings:).call
+        Rubysmith::Builders::Bundler.new(settings:).call
       end
 
       it "builds nested executable" do
+        builder.call
+
         expect(temp_dir.join("demo-test/exe/demo-test").read).to eq(<<~CONTENT)
           #! /usr/bin/env ruby
 
@@ -166,6 +201,8 @@ RSpec.describe Gemsmith::Builders::CLI do
       end
 
       it "adds CLI inflection" do
+        builder.call
+
         expect(temp_dir.join("demo-test/lib/demo/test.rb").read).to eq(<<~CONTENT)
           require "zeitwerk"
 
@@ -189,12 +226,16 @@ RSpec.describe Gemsmith::Builders::CLI do
       end
 
       it "builds application container with nested project path to gemspec" do
+        builder.call
+
         expect(temp_dir.join("demo-test/lib/demo/test/container.rb").read).to include(
           %(Spek::Loader.call "\#{__dir__}/../../../demo-test.gemspec")
         )
       end
 
       it "builds RSpec CLI shell spec" do
+        builder.call
+
         expect(temp_dir.join("demo-test/spec/lib/demo/test/cli/shell_spec.rb").read).to eq(
           fixtures_root.join("spec/lib/cli/shell_dash_proof.rb").read
         )
@@ -202,10 +243,30 @@ RSpec.describe Gemsmith::Builders::CLI do
     end
 
     context "when disabled" do
-      let(:test_configuration) { configuration.minimize }
+      before { settings.merge! settings.minimize }
 
-      it "does not build file" do
+      it "does not build executable" do
+        builder.call
         expect(temp_dir.join("test/exe/test").exist?).to be(false)
+      end
+
+      it "does not lib folder" do
+        builder.call
+        expect(temp_dir.join("test/lib").exist?).to be(false)
+      end
+
+      it "does not spec folder" do
+        builder.call
+        expect(temp_dir.join("test/spec").exist?).to be(false)
+      end
+
+      it "does not gemfile" do
+        builder.call
+        expect(temp_dir.join("test/Gemfile").exist?).to be(false)
+      end
+
+      it "answers false" do
+        expect(builder.call).to be(false)
       end
     end
   end

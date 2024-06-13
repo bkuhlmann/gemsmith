@@ -1,5 +1,5 @@
 #! /usr/bin/env ruby
 
-require "<%= configuration.project_path %>"
+require "<%= settings.project_path %>"
 
-<%= configuration.project_namespaced_class %>::CLI::Shell.new.call
+<%= settings.project_namespaced_class %>::CLI::Shell.new.call

@@ -9,7 +9,7 @@ module Gemsmith
       using Refinements::Struct
 
       def call
-        config = configuration.merge template_path: "%project_name%/%project_name%.gemspec.erb"
+        config = settings.merge template_path: "%project_name%/%project_name%.gemspec.erb"
 
         builder.call(config)
                .render
@@ -19,7 +19,7 @@ module Gemsmith
                .replace("    spec", "  spec")
                .replace(/\}\s+s/m, "}\n\n  s")
 
-        configuration
+        true
       end
     end
   end

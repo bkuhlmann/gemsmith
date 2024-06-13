@@ -5,18 +5,20 @@ require "refinements/struct"
 module Gemsmith
   module Builders
     # Builds project skeleton with Gemfile configuration.
-    class Bundler < Rubysmith::Builders::Abstract
+    class Bundler < Rubysmith::Builders::Bundler
       using Refinements::Struct
 
       def call
-        builder.call(configuration.merge(template_path: "%project_name%/Gemfile.erb"))
+        super
+
+        builder.call(settings.merge(template_path: "%project_name%/Gemfile.erb"))
                .insert_after("source", "\ngemspec\n")
                .replace(/spec\n\n\Z/m, "spec\n")
                .replace(/.+refinements.+/, "")
                .replace(/.+zeitwerk.+/, "")
                .replace("\n\n\n\n", "\n")
 
-        configuration
+        true
       end
     end
   end

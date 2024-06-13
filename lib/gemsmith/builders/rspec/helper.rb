@@ -6,16 +6,17 @@ module Gemsmith
   module Builders
     module RSpec
       # Builds RSpec spec helper for project skeleton.
-      class Helper < Rubysmith::Builders::Abstract
+      class Helper < Rubysmith::Builders::RSpec::Helper
         using Refinements::Struct
 
         def call
-          return configuration unless configuration.build_rspec && configuration.build_cli
+          return false unless settings.build_rspec && settings.build_cli
 
-          builder.call(configuration.merge(template_path: "%project_name%/spec/spec_helper.rb.erb"))
-                 .touch
+          super
+          builder.call(settings.merge(template_path: "%project_name%/spec/spec_helper.rb.erb"))
                  .replace("%r(^/spec/)", "%r((.+/container\\.rb|^/spec/))")
-          configuration
+
+          true
         end
       end
     end

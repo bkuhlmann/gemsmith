@@ -14,7 +14,7 @@
 To install _with_ security, run:
 
     # 💡 Skip this line if you already have the public certificate installed.
-    gem cert --add <(curl --compressed --location https://acme.io/gems.pem)
+    gem cert --add <(curl --compressed --location https://undefined.io/gems.pem)
     gem install test-example --trust-policy HighSecurity
 
 To install _without_ security, run:
@@ -35,7 +35,7 @@ Once the gem is installed, you only need to require it:
 
 To contribute, run:
 
-    git clone https://acme.io/test-example/source
+    git clone https://github.com/undefined/test-example
     cd test-example
     bin/setup
 
@@ -49,19 +49,19 @@ To test, run:
 
     bin/rake
 
-## [License](https://acme.io/test-example/license)
+## [License](https://undefined.io/policies/license)
 
-## [Security](https://acme.io/test-example/security)
+## [Security](https://undefined.io/policies/security)
 
-## [Code of Conduct](https://acme.io/test-example/code_of_conduct)
+## [Code of Conduct](https://undefined.io/policies/code_of_conduct)
 
-## [Contributions](https://acme.io/test-example/contributions)
+## [Contributions](https://undefined.io/policies/contributions)
 
-## [Versions](https://acme.io/test-example/versions)
+## [Versions](https://undefined.io/projects/test-example/versions)
 
-## [Community](https://acme.io/test-example/community)
+## [Community](https://undefined.io/community)
 
 ## Credits
 
 - Built with [Gemsmith](https://alchemists.io/projects/gemsmith).
-- Engineered by [Jill Smith](https://acme.io/team/jill_smith).
+- Engineered by [Jill Smith](https://undefined.io/team/undefined).

@@ -5,15 +5,13 @@ require "spec_helper"
 RSpec.describe Gemsmith::Builders::Console do
   using Refinements::Struct
 
-  subject(:builder) { described_class.new test_configuration }
+  subject(:builder) { described_class.new settings: }
 
   include_context "with application dependencies"
 
-  let(:build_path) { temp_dir.join "test/bin/console" }
-
-  it_behaves_like "a builder"
-
   describe "#call" do
+    let(:build_path) { temp_dir.join "test/bin/console" }
+
     context "when enabled" do
       let(:test_configuration) { configuration.minimize.merge build_console: true }
 
@@ -32,11 +30,15 @@ RSpec.describe Gemsmith::Builders::Console do
           IRB.start __FILE__
         CONTENT
       end
+
+      it "answers true" do
+        expect(builder.call).to be(true)
+      end
     end
 
     context "when enabled with dashed project name" do
-      let :test_configuration do
-        configuration.minimize.merge project_name: "demo-test", build_console: true
+      before do
+        settings.merge! settings.minimize.merge project_name: "demo-test", build_console: true
       end
 
       let(:build_path) { temp_dir.join "demo-test/bin/console" }
@@ -56,14 +58,22 @@ RSpec.describe Gemsmith::Builders::Console do
           IRB.start __FILE__
         CONTENT
       end
+
+      it "answers true" do
+        expect(builder.call).to be(true)
+      end
     end
 
     context "when disabled" do
-      let(:test_configuration) { configuration.minimize }
+      before { settings.merge! settings.minimize }
 
       it "does not build console script" do
         builder.call
         expect(build_path.exist?).to be(false)
+      end
+
+      it "answers false" do
+        expect(builder.call).to be(false)
       end
     end
   end

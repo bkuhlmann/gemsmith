@@ -40,8 +40,6 @@ RSpec.describe Gemsmith::CLI::Shell do
       let(:options) { %w[build --name test --min] }
 
       it "builds minimum skeleton" do
-        pending "Requires manual testing."
-
         temp_dir.change_dir do
           shell.call options
           expect(project_files).to match_array(bom_minimum)
@@ -55,8 +53,6 @@ RSpec.describe Gemsmith::CLI::Shell do
       end
 
       it "builds minimum skeleton" do
-        pending "Requires manual testing."
-
         temp_dir.change_dir do
           shell.call options
           expect(project_files).to match_array(bom_minimum)
@@ -68,8 +64,6 @@ RSpec.describe Gemsmith::CLI::Shell do
       let(:options) { %w[build --name test --max] }
 
       it "builds maximum skeleton" do
-        pending "Requires manual testing."
-
         temp_dir.change_dir do
           shell.call options
           expect(project_files).to match_array(bom_maximum)
@@ -83,8 +77,6 @@ RSpec.describe Gemsmith::CLI::Shell do
       end
 
       it "builds maximum skeleton" do
-        pending "Requires manual testing."
-
         temp_dir.change_dir do
           shell.call options
           expect(project_files).to match_array(bom_maximum)

@@ -9,10 +9,10 @@ module Gemsmith
       using Refinements::Struct
 
       def call
-        return configuration unless configuration.build_cli
+        return false unless settings.build_cli
 
         render
-        configuration
+        true
       end
 
       private
@@ -20,13 +20,13 @@ module Gemsmith
       def render = private_methods.sort.grep(/render_/).each { |method| __send__ method }
 
       def render_exe
-        builder.call(configuration.merge(template_path: "%project_name%/exe/%project_name%.erb"))
+        builder.call(settings.merge(template_path: "%project_name%/exe/%project_name%.erb"))
                .render
                .permit 0o755
       end
 
       def render_core
-        content = configuration.merge template_path: "%project_name%/lib/%project_path%.rb.erb"
+        content = settings.merge template_path: "%project_name%/lib/%project_path%.rb.erb"
 
         builder.call(content)
                .insert_before(/tag/, %(  loader.inflector.inflect "cli" => "CLI"\n))
@@ -39,21 +39,21 @@ module Gemsmith
           "%project_name%/lib/%project_path%/configuration/defaults.yml.erb",
           "%project_name%/lib/%project_path%/container.rb.erb",
           "%project_name%/lib/%project_path%/import.rb.erb"
-        ].each { |path| builder.call(configuration.merge(template_path: path)).render }
+        ].each { |path| builder.call(settings.merge(template_path: path)).render }
       end
 
       def render_shell
         path = "%project_name%/lib/%project_path%/cli/shell.rb.erb"
-        builder.call(configuration.merge(template_path: path)).render
+        builder.call(settings.merge(template_path: path)).render
       end
 
       def render_specs
-        return unless configuration.build_rspec
+        return unless settings.build_rspec
 
         [
           "%project_name%/spec/lib/%project_path%/cli/shell_spec.rb.erb",
           "%project_name%/spec/support/shared_contexts/application_dependencies.rb.erb"
-        ].each { |path| builder.call(configuration.merge(template_path: path)).render }
+        ].each { |path| builder.call(settings.merge(template_path: path)).render }
       end
     end
   end

@@ -31,7 +31,7 @@ RSpec.describe Gemsmith::CLI::Actions::Edit do
       let(:result) { Failure "Danger!" }
 
       it "logs error" do
-        action.call configuration
+        action.call "test"
         expect(logger.reread).to match(/🛑.+Danger!/)
       end
     end
@@ -40,7 +40,7 @@ RSpec.describe Gemsmith::CLI::Actions::Edit do
       let(:result) { Maybe "bogus" }
 
       it "logs error" do
-        action.call configuration
+        action.call "test"
         expect(logger.reread).to match(/🛑.+Unable to handle edit action./)
       end
     end

@@ -5,23 +5,17 @@ require "spec_helper"
 RSpec.describe Gemsmith::Builders::Bundler do
   using Refinements::Struct
 
-  subject(:builder) { described_class.new test_configuration }
+  subject(:builder) { described_class.new settings: }
 
   include_context "with application dependencies"
 
-  let(:test_configuration) { configuration.minimize }
-
-  before { Rubysmith::Builders::Bundler.call test_configuration }
-
-  it_behaves_like "a builder"
-
   describe "#call" do
-    before { builder.call }
-
     context "with minimum flags" do
-      let(:test_configuration) { configuration.minimize }
+      before { settings.merge! settings.minimize }
 
       it "builds gemspec" do
+        builder.call
+
         expect(temp_dir.join("test", "Gemfile").read).to eq(<<~CONTENT)
           ruby file: ".ruby-version"
 
@@ -30,10 +24,14 @@ RSpec.describe Gemsmith::Builders::Bundler do
           gemspec
         CONTENT
       end
+
+      it "answers true" do
+        expect(builder.call).to be(true)
+      end
     end
 
     context "with maximum flags" do
-      let(:test_configuration) { configuration.maximize }
+      before { settings.merge! settings.maximize }
 
       let :proof do
         <<~CONTENT
@@ -69,7 +67,12 @@ RSpec.describe Gemsmith::Builders::Bundler do
       end
 
       it "builds gemspec" do
+        builder.call
         expect(temp_dir.join("test", "Gemfile").read).to eq(proof)
+      end
+
+      it "answers true" do
+        expect(builder.call).to be(true)
       end
     end
   end

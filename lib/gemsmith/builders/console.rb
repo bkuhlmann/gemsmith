@@ -9,13 +9,13 @@ module Gemsmith
       using Refinements::Struct
 
       def call
-        return configuration unless configuration.build_console
+        return false unless settings.build_console
 
         super
-        builder.call(configuration.merge(template_path: "%project_name%/bin/console.erb"))
-               .replace(/require Bundler.root.+/, %(require "#{configuration.project_path}"))
+        builder.call(settings.merge(template_path: "%project_name%/bin/console.erb"))
+               .replace(/require Bundler.root.+/, %(require "#{settings.project_path}"))
 
-        configuration
+        true
       end
     end
   end

@@ -5,20 +5,15 @@ require "spec_helper"
 RSpec.describe Gemsmith::Builders::CircleCI do
   using Refinements::Struct
 
-  subject(:builder) { described_class.new test_configuration }
+  subject(:builder) { described_class.new settings: }
 
   include_context "with application dependencies"
 
-  let(:test_configuration) { configuration.minimize.merge build_circle_ci: true }
-  let(:build_path) { temp_dir.join "test/.circleci/config.yml" }
-
-  before { Rubysmith::Builders::CircleCI.call test_configuration }
-
-  it_behaves_like "a builder"
-
   describe "#call" do
+    let(:build_path) { temp_dir.join "test/.circleci/config.yml" }
+
     context "when enabled" do
-      let(:test_configuration) { configuration.minimize.merge build_circle_ci: true }
+      before { settings.merge! settings.merge build_circle_ci: true }
 
       it "updates configuration to use gemspec for cache" do
         builder.call
@@ -57,14 +52,22 @@ RSpec.describe Gemsmith::Builders::CircleCI do
                     command: bundle exec rake
         CONTENT
       end
+
+      it "answers true" do
+        expect(builder.call).to be(true)
+      end
     end
 
     context "when disabled" do
-      let(:test_configuration) { configuration.minimize }
+      before { settings.merge! settings.minimize }
 
       it "does not build configuration" do
         builder.call
         expect(build_path.exist?).to be(false)
+      end
+
+      it "answers false" do
+        expect(builder.call).to be(false)
       end
     end
   end

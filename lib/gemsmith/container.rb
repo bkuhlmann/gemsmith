@@ -28,8 +28,20 @@ module Gemsmith
                           default: Pathname(__dir__).join("templates")
                         )
                       )
-                      .add_transformer(Rubysmith::Configuration::Transformers::TargetRoot)
-                      .add_transformer(:time)
+                      .add_transformer(:root, :target_root)
+                      .add_transformer(:format, :author_uri)
+                      .add_transformer(:format, :project_uri_community)
+                      .add_transformer(:format, :project_uri_conduct)
+                      .add_transformer(:format, :project_uri_contributions)
+                      .add_transformer(:format, :project_uri_download, :project_name)
+                      .add_transformer(:format, :project_uri_funding)
+                      .add_transformer(:format, :project_uri_home, :project_name)
+                      .add_transformer(:format, :project_uri_issues, :project_name)
+                      .add_transformer(:format, :project_uri_license)
+                      .add_transformer(:format, :project_uri_security)
+                      .add_transformer(:format, :project_uri_source, :project_name)
+                      .add_transformer(:format, :project_uri_versions, :project_name)
+                      .add_transformer(:time, :loaded_at)
     end
 
     register(:settings) { Etcher.call(self[:registry]).dup }

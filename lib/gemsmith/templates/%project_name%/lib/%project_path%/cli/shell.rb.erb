@@ -21,7 +21,7 @@ require "sod"
       def cli
         context = build_context
 
-        dsl.new <%= configuration.project_levels.positive? ? configuration.project_name.inspect : configuration.project_name.to_sym.inspect %>, banner: specification.banner do
+        dsl.new <%= settings.project_levels.positive? ? settings.project_name.inspect : settings.project_name.to_sym.inspect %>, banner: specification.banner do
           on(Sod::Prefabs::Commands::Config, context:)
           on(Sod::Prefabs::Actions::Version, context:)
           on Sod::Prefabs::Actions::Help, self

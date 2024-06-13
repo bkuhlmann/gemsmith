@@ -10,25 +10,25 @@ module Gemsmith
         using Refinements::Struct
 
         def call
-          return configuration unless configuration.build_readme
+          return false unless settings.build_readme
 
           super
-          builder.call(configuration.merge(template_path: "%project_name%/README.#{kind}.erb"))
+          builder.call(settings.merge(template_path: "%project_name%/README.#{kind}.erb"))
                  .replace(/Setup.+Usage/m, setup)
                  .replace("Rubysmith", "Gemsmith")
                  .replace("rubysmith", "gemsmith")
 
-          configuration
+          true
         end
 
         private
 
         def setup = kind == "adoc" ? ascii_setup : markdown_setup
 
-        def ascii_setup = configuration.build_security ? ascii_secure : ascii_insecure
+        def ascii_setup = settings.build_security ? ascii_secure : ascii_insecure
 
         def ascii_secure
-          project_name = configuration.project_name
+          project_name = settings.project_name
 
           <<~CONTENT.strip
             Setup
@@ -38,7 +38,7 @@ module Gemsmith
             [source,bash]
             ----
             # 💡 Skip this line if you already have the public certificate installed.
-            gem cert --add <(curl --compressed --location #{configuration.organization_url}/gems.pem)
+            gem cert --add <(curl --compressed --location #{settings.organization_uri}/gems.pem)
             gem install #{project_name} --trust-policy HighSecurity
             ----
 
@@ -61,7 +61,7 @@ module Gemsmith
 
             [source,bash]
             ----
-            gem install #{configuration.project_name}
+            gem install #{settings.project_name}
             ----
 
             #{ascii_common}
@@ -74,24 +74,24 @@ module Gemsmith
 
             [source,bash]
             ----
-            bundle add #{configuration.project_name}
+            bundle add #{settings.project_name}
             ----
 
             Once the gem is installed, you only need to require it:
 
             [source,ruby]
             ----
-            require "#{configuration.project_path}"
+            require "#{settings.project_path}"
             ----
 
             == Usage
           CONTENT
         end
 
-        def markdown_setup = configuration.build_security ? markdown_secure : markdown_insecure
+        def markdown_setup = settings.build_security ? markdown_secure : markdown_insecure
 
         def markdown_secure
-          project_name = configuration.project_name
+          project_name = settings.project_name
 
           <<~CONTENT.strip
             Setup
@@ -99,7 +99,7 @@ module Gemsmith
             To install _with_ security, run:
 
                 # 💡 Skip this line if you already have the public certificate installed.
-                gem cert --add <(curl --compressed --location #{configuration.organization_url}/gems.pem)
+                gem cert --add <(curl --compressed --location #{settings.organization_uri}/gems.pem)
                 gem install #{project_name} --trust-policy HighSecurity
 
             To install _without_ security, run:
@@ -116,7 +116,7 @@ module Gemsmith
 
             To install, run:
 
-                gem install #{configuration.project_name}
+                gem install #{settings.project_name}
 
             #{markdown_common}
           CONTENT
@@ -126,11 +126,11 @@ module Gemsmith
           <<~CONTENT.strip
             You can also add the gem directly to your project:
 
-                bundle add #{configuration.project_name}
+                bundle add #{settings.project_name}
 
             Once the gem is installed, you only need to require it:
 
-                require "#{configuration.project_path}"
+                require "#{settings.project_path}"
 
             ## Usage
           CONTENT

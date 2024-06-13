@@ -4,23 +4,24 @@ require "refinements/struct"
 
 module Gemsmith
   module Builders
-    # Builds project skeleton Circle CI configuration.
-    class CircleCI < Rubysmith::Builders::Abstract
+    # Builds project skeleton Circle CI settings.
+    class CircleCI < Rubysmith::Builders::CircleCI
       using Refinements::Struct
 
       def call
-        return configuration unless configuration.build_circle_ci
+        return false unless settings.build_circle_ci
 
-        builder.call(configuration.merge(template_path: "%project_name%/.circleci/config.yml.erb"))
+        super
+        builder.call(settings.merge(template_path: "%project_name%/.circleci/config.yml.erb"))
                .replace %({{checksum "Gemfile.lock"}}),
                         %({{checksum "Gemfile"}}-{{checksum "#{project_name}.gemspec"}})
 
-        configuration
+        true
       end
 
       private
 
-      def project_name = configuration.project_name
+      def project_name = settings.project_name
     end
   end
 end

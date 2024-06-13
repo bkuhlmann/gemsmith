@@ -9,20 +9,17 @@ require "spek"
   module Container
     extend Containable
 
-    register :configuration do
-      self[:defaults].add_loader(:yaml, self[:xdg_config].active)
-                     .then { |registry| Etcher.call registry }
-    end
-
-    register :defaults do
+    register :registry do
       Etcher::Registry.new(contract: Configuration::Contract, model: Configuration::Model)
                       .add_loader(:yaml, self[:defaults_path])
+                      .add_loader(:yaml, self[:xdg_config].active)
     end
 
-    register(:specification) { Spek::Loader.call "#{__dir__}/<%= Array.new(2 + configuration.project_levels, "../").join %><%= configuration.project_name %>.gemspec" }
+    register(:settings) { Etcher.call(self[:registry]).dup }
+    register(:specification) { Spek::Loader.call "#{__dir__}/<%= Array.new(2 + settings.project_levels, "../").join %><%= settings.project_name %>.gemspec" }
     register(:defaults_path) { Pathname(__dir__).join("configuration/defaults.yml") }
-    register(:xdg_config) { Runcom::Config.new "<%= configuration.project_path %>/configuration.yml" }
-    register(:logger) { Cogger.new id: "<%= configuration.project_name %>" }
+    register(:xdg_config) { Runcom::Config.new "<%= settings.project_path %>/configuration.yml" }
+    register(:logger) { Cogger.new id: "<%= settings.project_name %>" }
     register :kernel, Kernel
   end
 <% end %>

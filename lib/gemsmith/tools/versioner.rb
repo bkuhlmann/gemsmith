@@ -7,7 +7,6 @@ module Gemsmith
   module Tools
     # Versions (tags: local and remote) current project.
     class Versioner
-      include Import[:configuration]
       include Dry::Monads[:result]
 
       def initialize(

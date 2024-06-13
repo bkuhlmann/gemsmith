@@ -29,7 +29,7 @@ Once the gem is installed, you only need to require it:
 
 To contribute, run:
 
-    git clone https://acme.io/test/source
+    git clone https://github.com/undefined/test
     cd test
 
 ## Tests
@@ -41,4 +41,4 @@ To test, run:
 ## Credits
 
 - Built with [Gemsmith](https://alchemists.io/projects/gemsmith).
-- Engineered by [Jill Smith](https://acme.io/team/jill_smith).
+- Engineered by [Jill Smith](https://undefined.io/team/undefined).

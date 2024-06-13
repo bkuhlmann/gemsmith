@@ -1,9 +1,14 @@
 RSpec.shared_context "with application dependencies" do
-  let(:configuration) { Etcher.new(<%= configuration.project_namespaced_class %>::Container[:defaults]).call.bind(&:dup) }
-  let(:xdg_config) { Runcom::Config.new <%= configuration.project_namespaced_class %>::Container[:defaults_path] }
-  let(:kernel) { class_spy Kernel }
-  let(:logger) { Cogger.new id: "<%= configuration.project_name %>", io: StringIO.new, level: :debug }
+  using Refinements::Struct
 
-  before { <%= configuration.project_namespaced_class %>::Container.stub! configuration:, xdg_config:, kernel:, logger: }
-  after { <%= configuration.project_namespaced_class %>::Container.restore }
+  let(:settings) { <%= settings.project_namespaced_class %>::Container[:settings] }
+  let(:kernel) { class_spy Kernel }
+  let(:logger) { Cogger.new id: "<%= settings.project_name %>", io: StringIO.new, level: :debug }
+
+  before do
+    settings.merge! Etcher.call(<%= settings.project_namespaced_class %>::Container[:registry].remove_loader(1))
+    <%= settings.project_namespaced_class %>::Container.stub! kernel:, logger:
+  end
+
+  after { <%= settings.project_namespaced_class %>::Container.restore }
 end

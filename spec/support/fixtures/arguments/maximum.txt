@@ -13,8 +13,9 @@ test
 --debug
 --funding
 --git
---git-lint
 --git_hub
+--git_hub_ci
+--git-lint
 --guard
 --license
 --rake

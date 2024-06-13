@@ -3,18 +3,18 @@ Gem::Specification.new do |spec|
   spec.version = "0.0.0"
   spec.authors = ["Jill Smith"]
   spec.email = ["jill@acme.io"]
-  spec.homepage = "https://acme.io/test"
+  spec.homepage = "https://undefined.io/projects/test"
   spec.summary = ""
   spec.license = "Hippocratic-2.1"
 
   spec.metadata = {
-    "bug_tracker_uri" => "https://acme.io/test/issues",
-    "changelog_uri" => "https://acme.io/test/versions",
-    "documentation_uri" => "https://acme.io/test",
-    "funding_uri" => "https://acme.io/test/funding",
+    "bug_tracker_uri" => "https://github.com/undefined/test/issues",
+    "changelog_uri" => "https://undefined.io/projects/test/versions",
+    "documentation_uri" => "https://undefined.io/projects/test",
+    "funding_uri" => "https://github.com/sponsors/undefined",
     "label" => "Test",
     "rubygems_mfa_required" => "true",
-    "source_code_uri" => "https://acme.io/test/source"
+    "source_code_uri" => "https://github.com/undefined/test"
   }
 
   spec.signing_key = Gem.default_key_path
