@@ -53,7 +53,7 @@ RSpec.describe Gemsmith::CLI::Actions::Publish do
       it "logs error" do
         temp_dir.change_dir do
           action.call configuration
-          expect(logger.reread).to match(/🛑.+Unable to handle publish action./)
+          expect(logger.reread).to match(/🛑.+Publish failed, unable to parse result./)
         end
       end
     end

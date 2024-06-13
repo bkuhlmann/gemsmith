@@ -11,7 +11,7 @@ RSpec.describe Gemsmith::Tools::Publisher do
 
   describe "#call" do
     context "when success" do
-      let(:steps) { [proc { Success() }, proc { Success() }] }
+      let(:steps) { [proc { Success(specification) }, proc { Success(specification) }] }
 
       it "answers specification" do
         result = publisher.call specification
@@ -20,7 +20,7 @@ RSpec.describe Gemsmith::Tools::Publisher do
     end
 
     context "when failure" do
-      let(:steps) { [proc { Failure "Danger!" }, proc { Success() }] }
+      let(:steps) { [proc { Failure "Danger!" }, proc { Success(specification) }] }
 
       it "answers failure" do
         result = publisher.call specification

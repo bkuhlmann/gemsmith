@@ -20,12 +20,7 @@ module Gemsmith
         @model = model
       end
 
-      def call specification
-        publisher.call specification.version
-        Success specification
-      rescue Milestoner::Error => error
-        Failure error.message
-      end
+      def call(specification) = publisher.call(specification.version).fmap { specification }
 
       private
 

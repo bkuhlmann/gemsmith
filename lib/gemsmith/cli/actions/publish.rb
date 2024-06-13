@@ -30,8 +30,8 @@ module Gemsmith
         def call name = nil
           case publisher.call loader.call("#{name || default}.gemspec")
             in Success(spec) then logger.info { "Published: #{spec.package_name}." }
-            in Failure(message) then log_error { message }
-            else log_error { "Unable to handle publish action." }
+            in Failure(message) then log_error message
+            else log_error "Publish failed, unable to parse result."
           end
         end
 
@@ -39,7 +39,7 @@ module Gemsmith
 
         attr_reader :publisher, :loader
 
-        def log_error(&) = logger.error(&)
+        def log_error(message) = logger.error { message }
       end
     end
   end
