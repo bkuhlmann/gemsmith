@@ -20,6 +20,6 @@ module Test
     register(:defaults_path) { Pathname(__dir__).join("configuration/defaults.yml") }
     register(:xdg_config) { Runcom::Config.new "test/configuration.yml" }
     register(:logger) { Cogger.new id: "test" }
-    register :kernel, Kernel
+    register :io, STDOUT
   end
 end

@@ -51,6 +51,6 @@ module Gemsmith
     register :environment, ENV
     register(:logger) { Cogger.new id: :gemsmith }
     register :executor, Open3
-    register :kernel, Kernel
+    register :io, STDOUT
   end
 end

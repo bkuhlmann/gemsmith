@@ -8,8 +8,8 @@ RSpec.shared_context "with application dependencies" do
   let(:settings) { Gemsmith::Container[:settings] }
   let(:specification) { Spek::Loader.call SPEC_ROOT.join("support/fixtures/gemsmith-test.gemspec") }
   let(:executor) { class_spy Open3, capture3: ["Output.", "Error.", Process::Status.allocate] }
-  let(:kernel) { class_spy Kernel }
   let(:logger) { Cogger.new id: :gemsmith, io: StringIO.new, level: :debug }
+  let(:io) { StringIO.new }
 
   before do
     settings.merge! Etcher.call(
@@ -22,7 +22,7 @@ RSpec.shared_context "with application dependencies" do
       project_name: "test"
     )
 
-    Gemsmith::Container.stub! executor:, kernel:, logger:
+    Gemsmith::Container.stub! executor:, logger:, io:
   end
 
   after { Gemsmith::Container.restore }

@@ -20,6 +20,6 @@ require "spek"
     register(:defaults_path) { Pathname(__dir__).join("configuration/defaults.yml") }
     register(:xdg_config) { Runcom::Config.new "<%= settings.project_path %>/configuration.yml" }
     register(:logger) { Cogger.new id: "<%= settings.project_name %>" }
-    register :kernel, Kernel
+    register :io, STDOUT
   end
 <% end %>

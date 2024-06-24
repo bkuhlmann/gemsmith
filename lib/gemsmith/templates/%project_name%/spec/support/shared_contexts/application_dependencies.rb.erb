@@ -2,12 +2,12 @@ RSpec.shared_context "with application dependencies" do
   using Refinements::Struct
 
   let(:settings) { <%= settings.project_namespaced_class %>::Container[:settings] }
-  let(:kernel) { class_spy Kernel }
   let(:logger) { Cogger.new id: "<%= settings.project_name %>", io: StringIO.new, level: :debug }
+  let(:io) { StringIO.new }
 
   before do
     settings.merge! Etcher.call(<%= settings.project_namespaced_class %>::Container[:registry].remove_loader(1))
-    <%= settings.project_namespaced_class %>::Container.stub! kernel:, logger:
+    <%= settings.project_namespaced_class %>::Container.stub! logger:, io:
   end
 
   after { <%= settings.project_namespaced_class %>::Container.restore }
