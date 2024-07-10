@@ -164,8 +164,8 @@ the following:
 
 [source,yaml]
 ----
-:build:
-  :cli: false
+build:
+  cli: false
 ----
 
 It is recommended that you provide URLs for your project which would be all keys found in this
@@ -173,8 +173,8 @@ section:
 
 [source,yaml]
 ----
-:project:
-  :url:
+project:
+  uri:
     # Add sub-key values here.
 ----
 

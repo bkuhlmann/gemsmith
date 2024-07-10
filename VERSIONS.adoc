@@ -1,5 +1,20 @@
 = Versions
 
+== 22.0.0 (2024-07-10)
+
+* 🟢 Added version release notes - Brooke Kuhlmann
+* 🔼 Updated to Containable 0.2.0 - Brooke Kuhlmann
+* 🔼 Updated to Etcher 2.1.0 - Brooke Kuhlmann
+* 🔼 Updated to Git Lint 8.0.0 - Brooke Kuhlmann
+* 🔼 Updated to IRB Kit 0.3.0 - Brooke Kuhlmann
+* 🔼 Updated to Infusible 3.8.0 - Brooke Kuhlmann
+* 🔼 Updated to Milestoner 18.0.0 - Brooke Kuhlmann
+* 🔼 Updated to Refinements 12.5.0 - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.4 - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 7.0.0 - Brooke Kuhlmann
+* 🔼 Updated to Runcom 11.5.0 - Brooke Kuhlmann
+* 🔼 Updated to Sod 0.12.0 - Brooke Kuhlmann
+
 == 21.10.0 (2024-06-16)
 
 * 🔼 Updated to Caliber 0.58.0 - Brooke Kuhlmann
