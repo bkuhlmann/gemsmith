@@ -80,7 +80,7 @@ RSpec.describe Gemsmith::Builders::CLI do
           module Test
             module Configuration
               # Defines the configuration model for use throughout the gem.
-              Model = Data.define
+              Model = Struct.new
             end
           end
         CONTENT
