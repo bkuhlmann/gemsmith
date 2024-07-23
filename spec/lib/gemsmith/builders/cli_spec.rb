@@ -52,7 +52,9 @@ RSpec.describe Gemsmith::Builders::CLI do
 
       it "builds configuration defaults" do
         builder.call
-        expect(temp_dir.join("test/lib/test/configuration/defaults.yml").read).to eq("")
+        expect(temp_dir.join("test/lib/test/configuration/defaults.yml").read).to eq(
+          %(todo: "Add your own attributes here."\n)
+        )
       end
 
       it "builds configuration contract" do
