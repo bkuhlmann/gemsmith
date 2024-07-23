@@ -10,9 +10,12 @@ module Gemsmith
         using Refinements::Struct
 
         def call
-          return false unless settings.build_rspec && settings.build_cli
+          return false unless settings.build_rspec
 
           super
+
+          return false unless settings.build_cli
+
           builder.call(settings.merge(template_path: "%project_name%/spec/spec_helper.rb.erb"))
                  .replace("%r(^/spec/)", "%r((.+/container\\.rb|^/spec/))")
 

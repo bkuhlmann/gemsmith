@@ -13,12 +13,12 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
   describe "#call" do
     let(:spec_helper_path) { temp_dir.join "test/spec/spec_helper.rb" }
 
-    context "when enabled with CLI only" do
+    context "when enabled with CLI and SimpleCov" do
       before do
         settings.merge! settings.minimize.merge(
           build_rspec: true,
-          build_cli: true,
-          build_simple_cov: true
+          build_simple_cov: true,
+          build_cli: true
         )
       end
 
@@ -33,11 +33,15 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
     end
 
     context "when enabled without CLI" do
-      before { settings.merge! settings.minimize.merge(build_rspec: true) }
+      before { settings.merge! settings.minimize.merge(build_rspec: true, build_simple_cov: true) }
 
-      it "doesn't touch spec helper" do
+      it "updates spec helper" do
         builder.call
-        expect(spec_helper_path.exist?).to be(false)
+        expect(spec_helper_path.read).not_to include("add_filter %r((.+/container\\.rb|^/spec/))")
+      end
+
+      it "answers false" do
+        expect(builder.call).to be(false)
       end
     end
 
