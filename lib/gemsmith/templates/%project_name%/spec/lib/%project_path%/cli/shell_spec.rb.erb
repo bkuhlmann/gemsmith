@@ -1,8 +1,10 @@
 require "spec_helper"
 
 RSpec.describe <%= settings.project_namespaced_class %>::CLI::Shell do
+<% if settings.build_refinements %>
   using Refinements::Pathname
   using Refinements::StringIO
+<% end %>
 
   subject(:shell) { described_class.new }
 
@@ -15,17 +17,29 @@ RSpec.describe <%= settings.project_namespaced_class %>::CLI::Shell do
   describe "#call" do
     it "prints configuration usage" do
       shell.call %w[config]
+<% if settings.build_refinements %>
       expect(io.reread).to match(/Manage configuration.+/m)
+<% else %>
+      expect(io.tap(&:rewind).read).to match(/Manage configuration.+/m)
+<% end %>
     end
 
     it "prints version" do
       shell.call %w[--version]
+<% if settings.build_refinements %>
       expect(io.reread).to match(/<%= settings.project_label.gsub(" ", "\\s") %>\s\d+\.\d+\.\d+/)
+<% else %>
+      expect(io.tap(&:rewind).read).to match(/<%= settings.project_label.gsub(" ", "\\s") %>\s\d+\.\d+\.\d+/)
+<% end %>
     end
 
     it "prints help" do
       shell.call %w[--help]
+<% if settings.build_refinements %>
       expect(io.reread).to match(/<%= settings.project_label.gsub(" ", "\\s") %>.+USAGE.+/m)
+<% else %>
+      expect(io.tap(&:rewind).read).to match(/<%= settings.project_label.gsub(" ", "\\s") %>.+USAGE.+/m)
+<% end %>
     end
   end
 end

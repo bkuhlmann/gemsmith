@@ -124,7 +124,7 @@ RSpec.describe Gemsmith::Builders::CLI do
         builder.call
 
         expect(temp_dir.join("test/spec/lib/test/cli/shell_spec.rb").read).to eq(
-          fixtures_root.join("spec/lib/cli/shell_proof.rb").read
+          fixtures_root.join("spec/lib/cli/shell_with_refinements_proof.rb").read
         )
       end
 
@@ -137,6 +137,48 @@ RSpec.describe Gemsmith::Builders::CLI do
         builder.call
 
         expect(template_path.read).to eq(fixture_path.read)
+      end
+    end
+
+    context "when enabled with RSpec but without Refinements" do
+      before do
+        settings.merge! settings.minimize.merge(
+          build_cli: true,
+          build_rspec: true,
+          build_zeitwerk: true
+        )
+
+        Rubysmith::Builders::Core.new(settings:).call
+        Rubysmith::Builders::Bundler.new(settings:).call
+      end
+
+      it "builds RSpec CLI shell spec" do
+        builder.call
+
+        expect(temp_dir.join("test/spec/lib/test/cli/shell_spec.rb").read).to eq(
+          fixtures_root.join("spec/lib/cli/shell_without_refinements_proof.rb").read
+        )
+      end
+
+      it "builds RSpec application container shared context" do
+        template_path = temp_dir.join(
+          "test/spec/support/shared_contexts/application_dependencies.rb"
+        )
+
+        builder.call
+
+        expect(template_path.read).to eq(<<~CONTENT)
+          RSpec.shared_context "with application dependencies" do
+
+            let(:settings) { Test::Container[:settings] }
+            let(:logger) { Cogger.new id: "test", io: StringIO.new, level: :debug }
+            let(:io) { StringIO.new }
+
+            before { Demo::Container.stub! logger:, io: }
+
+            after { Test::Container.restore }
+          end
+        CONTENT
       end
     end
 
