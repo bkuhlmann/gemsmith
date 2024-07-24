@@ -1,5 +1,16 @@
 = Versions
 
+== 22.1.0 (2024-07-23)
+
+* ✅ Fixed CLI builder defaults - Brooke Kuhlmann
+* ✅ Fixed CLI builder to use a Struct instead of Data for model - Brooke Kuhlmann
+* ✅ Fixed CLI builder with Refinements disabled - Brooke Kuhlmann
+* ✅ Fixed CLI builder with Zeitwerk disabled - Brooke Kuhlmann
+* ✅ Fixed RSpec builder to ensure spec helper is built - Brooke Kuhlmann
+* 🔼 Updated to Refinements 12.7.0 - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 7.1.0 - Brooke Kuhlmann
+* ⛔️ Removed Guard - Brooke Kuhlmann
+
 == 22.0.0 (2024-07-10)
 
 * 🟢 Added version release notes - Brooke Kuhlmann
