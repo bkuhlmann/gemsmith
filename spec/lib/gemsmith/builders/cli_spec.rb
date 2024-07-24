@@ -107,6 +107,32 @@ RSpec.describe Gemsmith::Builders::CLI do
       end
     end
 
+    context "when enabled without Zeitwerk" do
+      before do
+        settings.merge! settings.minimize.merge(build_cli: true)
+
+        Rubysmith::Builders::Core.new(settings:).call
+        Rubysmith::Builders::Bundler.new(settings:).call
+      end
+
+      it "builds requirements" do
+        builder.call
+
+        expect(temp_dir.join("test/lib/test.rb").read).to eq(<<~CONTENT)
+          require "demo/configuration/contract"
+          require "demo/configuration/model"
+          require "demo/container"
+          require "demo/import"
+
+          require "demo/cli/shell"
+
+          # Main namespace.
+          module Test
+          end
+        CONTENT
+      end
+    end
+
     context "when enabled with RSpec" do
       before do
         settings.merge! settings.minimize.merge(

@@ -47,6 +47,23 @@ module Gemsmith
         builder.call(settings.merge(template_path: path)).render
       end
 
+      def render_requirements
+        return if settings.build_zeitwerk
+
+        builder.call(settings.merge(template_path: "%project_name%/lib/%project_path%.rb.erb"))
+               .render
+               .prepend <<~CONTENT
+                 require "demo/configuration/contract"
+                 require "demo/configuration/model"
+                 require "demo/container"
+                 require "demo/import"
+
+                 require "demo/cli/shell"
+
+                 # Main namespace.
+               CONTENT
+      end
+
       def render_specs
         return unless settings.build_rspec
 
