@@ -1,5 +1,10 @@
 = Versions
 
+== 22.2.0 (2024-08-11)
+
+* 🔼 Updated to Rubysmith 7.2.0 - Brooke Kuhlmann
+* 🔼 Updated to Sod 0.14.0 - Brooke Kuhlmann
+
 == 22.1.0 (2024-07-23)
 
 * ✅ Fixed CLI builder defaults - Brooke Kuhlmann
