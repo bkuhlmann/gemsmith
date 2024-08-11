@@ -5,10 +5,6 @@ exclude_paths:
 detectors:
   LongParameterList:
     enabled: false
-  ControlParameter:
-    exclude:
-      - "Gemsmith::CLI::Actions::Install#call"
-      - "Gemsmith::CLI::Actions::Publish#call"
   TooManyStatements:
     exclude:
       - "Gemsmith::CLI::Shell#cli"
