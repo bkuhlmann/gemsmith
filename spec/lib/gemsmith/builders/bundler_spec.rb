@@ -41,6 +41,8 @@ RSpec.describe Gemsmith::Builders::Bundler do
 
           gemspec
 
+          gem "bootsnap", "~> 1.18"
+
           group :quality do
             gem "caliber", "~> 0.58"
             gem "git-lint", "~> 8.0"
