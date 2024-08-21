@@ -17,11 +17,7 @@ RSpec.describe Gemsmith::CLI::Commands::Build do
 
     it "logs information" do
       temp_dir.change_dir { command.call }
-
-      expect(logger.reread).to eq(<<~OUTPUT)
-        🟢 [\e[32mgemsmith\e[0m] \e[32mBuilding project skeleton: test...\e[0m
-        🟢 [\e[32mgemsmith\e[0m] \e[32mProject skeleton complete!\e[0m
-      OUTPUT
+      expect(logger.reread).to match(%r(🟢.+Rendering: test/.ruby-version))
     end
   end
 end

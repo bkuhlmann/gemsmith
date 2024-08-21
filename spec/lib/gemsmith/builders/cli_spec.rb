@@ -6,7 +6,7 @@ RSpec.describe Gemsmith::Builders::CLI do
   using Refinements::Struct
   using Refinements::Pathname
 
-  subject(:builder) { described_class.new settings: }
+  subject(:builder) { described_class.new settings:, logger: }
 
   include_context "with application dependencies"
 
@@ -21,8 +21,8 @@ RSpec.describe Gemsmith::Builders::CLI do
           build_zeitwerk: true
         )
 
-        Rubysmith::Builders::Core.new(settings:).call
-        Rubysmith::Builders::Bundler.new(settings:).call
+        Rubysmith::Builders::Core.new(settings:, logger:).call
+        Rubysmith::Builders::Bundler.new(settings:, logger:).call
       end
 
       it "builds executable" do
@@ -111,8 +111,8 @@ RSpec.describe Gemsmith::Builders::CLI do
       before do
         settings.merge! settings.minimize.merge(build_cli: true)
 
-        Rubysmith::Builders::Core.new(settings:).call
-        Rubysmith::Builders::Bundler.new(settings:).call
+        Rubysmith::Builders::Core.new(settings:, logger:).call
+        Rubysmith::Builders::Bundler.new(settings:, logger:).call
       end
 
       it "builds requirements" do
@@ -142,8 +142,8 @@ RSpec.describe Gemsmith::Builders::CLI do
           build_zeitwerk: true
         )
 
-        Rubysmith::Builders::Core.new(settings:).call
-        Rubysmith::Builders::Bundler.new(settings:).call
+        Rubysmith::Builders::Core.new(settings:, logger:).call
+        Rubysmith::Builders::Bundler.new(settings:, logger:).call
       end
 
       it "builds RSpec CLI shell spec" do
@@ -174,8 +174,8 @@ RSpec.describe Gemsmith::Builders::CLI do
           build_zeitwerk: true
         )
 
-        Rubysmith::Builders::Core.new(settings:).call
-        Rubysmith::Builders::Bundler.new(settings:).call
+        Rubysmith::Builders::Core.new(settings:, logger:).call
+        Rubysmith::Builders::Bundler.new(settings:, logger:).call
       end
 
       it "builds RSpec CLI shell spec" do
@@ -216,8 +216,8 @@ RSpec.describe Gemsmith::Builders::CLI do
           build_zeitwerk: true
         )
 
-        Rubysmith::Builders::Core.new(settings:).call
-        Rubysmith::Builders::Bundler.new(settings:).call
+        Rubysmith::Builders::Core.new(settings:, logger:).call
+        Rubysmith::Builders::Bundler.new(settings:, logger:).call
       end
 
       it "adds CLI inflection" do
@@ -254,8 +254,8 @@ RSpec.describe Gemsmith::Builders::CLI do
           project_name: "demo-test"
         )
 
-        Rubysmith::Builders::Core.new(settings:).call
-        Rubysmith::Builders::Bundler.new(settings:).call
+        Rubysmith::Builders::Core.new(settings:, logger:).call
+        Rubysmith::Builders::Bundler.new(settings:, logger:).call
       end
 
       it "builds nested executable" do

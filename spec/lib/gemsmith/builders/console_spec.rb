@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe Gemsmith::Builders::Console do
   using Refinements::Struct
 
-  subject(:builder) { described_class.new settings: }
+  subject(:builder) { described_class.new settings:, logger: }
 
   include_context "with application dependencies"
 

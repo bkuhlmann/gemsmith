@@ -6,7 +6,7 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
   using Refinements::Struct
   using Refinements::Pathname
 
-  subject(:builder) { described_class.new settings: }
+  subject(:builder) { described_class.new settings:, logger: }
 
   include_context "with application dependencies"
 
