@@ -1,5 +1,10 @@
 = Versions
 
+== 22.3.0 (2024-08-20)
+
+* 🟢 Added README Developer Certificate of Origin documentation - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 7.3.0 - Brooke Kuhlmann
+
 == 22.2.0 (2024-08-11)
 
 * 🔼 Updated to Rubysmith 7.2.0 - Brooke Kuhlmann
