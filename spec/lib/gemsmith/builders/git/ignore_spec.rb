@@ -24,7 +24,7 @@ RSpec.describe Gemsmith::Builders::Git::Ignore do
         CONTENT
       end
 
-      it "builds Git ignore" do
+      it "builds file" do
         builder.call
 
         expect(temp_dir.join("test/.gitignore").read).to eq(<<~CONTENT)
@@ -47,7 +47,7 @@ RSpec.describe Gemsmith::Builders::Git::Ignore do
     context "when disabled" do
       before { settings.merge! settings.minimize }
 
-      it "does not build file" do
+      it "doesn't build file" do
         builder.call
         expect(temp_dir.join("test/.gitignore").exist?).to be(false)
       end

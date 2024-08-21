@@ -11,7 +11,7 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
   include_context "with application dependencies"
 
   describe "#call" do
-    let(:spec_helper_path) { temp_dir.join "test/spec/spec_helper.rb" }
+    let(:path) { temp_dir.join "test/spec/spec_helper.rb" }
 
     context "when enabled with CLI and SimpleCov" do
       before do
@@ -22,9 +22,9 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
         )
       end
 
-      it "updates spec helper" do
+      it "updates file" do
         builder.call
-        expect(spec_helper_path.read).to include("add_filter %r((.+/container\\.rb|^/spec/))")
+        expect(path.read).to include("add_filter %r((.+/container\\.rb|^/spec/))")
       end
 
       it "answers true" do
@@ -35,9 +35,9 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
     context "when enabled without CLI" do
       before { settings.merge! settings.minimize.merge(build_rspec: true, build_simple_cov: true) }
 
-      it "updates spec helper" do
+      it "updates file" do
         builder.call
-        expect(spec_helper_path.read).not_to include("add_filter %r((.+/container\\.rb|^/spec/))")
+        expect(path.read).not_to include("add_filter %r((.+/container\\.rb|^/spec/))")
       end
 
       it "answers false" do
@@ -48,9 +48,9 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
     context "when disabled" do
       before { settings.merge! settings.minimize }
 
-      it "doesn't touch spec helper" do
+      it "doesn't update file" do
         builder.call
-        expect(spec_helper_path.exist?).to be(false)
+        expect(path.exist?).to be(false)
       end
 
       it "answers false" do

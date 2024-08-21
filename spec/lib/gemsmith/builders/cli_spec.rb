@@ -315,22 +315,22 @@ RSpec.describe Gemsmith::Builders::CLI do
     context "when disabled" do
       before { settings.merge! settings.minimize }
 
-      it "does not build executable" do
+      it "doesn't build executable" do
         builder.call
         expect(temp_dir.join("test/exe/test").exist?).to be(false)
       end
 
-      it "does not lib folder" do
+      it "doesn't build lib folder" do
         builder.call
         expect(temp_dir.join("test/lib").exist?).to be(false)
       end
 
-      it "does not spec folder" do
+      it "doesn't build spec folder" do
         builder.call
         expect(temp_dir.join("test/spec").exist?).to be(false)
       end
 
-      it "does not gemfile" do
+      it "doesn't build gemfile" do
         builder.call
         expect(temp_dir.join("test/Gemfile").exist?).to be(false)
       end

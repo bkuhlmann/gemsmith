@@ -10,15 +10,15 @@ RSpec.describe Gemsmith::Builders::Console do
   include_context "with application dependencies"
 
   describe "#call" do
-    let(:build_path) { temp_dir.join "test/bin/console" }
+    let(:path) { temp_dir.join "test/bin/console" }
 
     context "when enabled" do
       let(:test_configuration) { configuration.minimize.merge build_console: true }
 
-      it "builds console script" do
+      it "builds file" do
         builder.call
 
-        expect(build_path.read).to eq(<<~CONTENT)
+        expect(path.read).to eq(<<~CONTENT)
           #! /usr/bin/env ruby
 
           require "bundler/setup"
@@ -41,12 +41,12 @@ RSpec.describe Gemsmith::Builders::Console do
         settings.merge! settings.minimize.merge project_name: "demo-test", build_console: true
       end
 
-      let(:build_path) { temp_dir.join "demo-test/bin/console" }
+      let(:path) { temp_dir.join "demo-test/bin/console" }
 
-      it "builds console script" do
+      it "builds file" do
         builder.call
 
-        expect(build_path.read).to eq(<<~CONTENT)
+        expect(path.read).to eq(<<~CONTENT)
           #! /usr/bin/env ruby
 
           require "bundler/setup"
@@ -67,9 +67,9 @@ RSpec.describe Gemsmith::Builders::Console do
     context "when disabled" do
       before { settings.merge! settings.minimize }
 
-      it "does not build console script" do
+      it "doesn't build file" do
         builder.call
-        expect(build_path.exist?).to be(false)
+        expect(path.exist?).to be(false)
       end
 
       it "answers false" do

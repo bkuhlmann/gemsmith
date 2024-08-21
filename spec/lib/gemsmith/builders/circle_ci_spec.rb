@@ -10,15 +10,15 @@ RSpec.describe Gemsmith::Builders::CircleCI do
   include_context "with application dependencies"
 
   describe "#call" do
-    let(:build_path) { temp_dir.join "test/.circleci/config.yml" }
+    let(:path) { temp_dir.join "test/.circleci/config.yml" }
 
     context "when enabled" do
       before { settings.merge! settings.merge build_circle_ci: true }
 
-      it "updates configuration to use gemspec for cache" do
+      it "updates file to use gemspec for cache" do
         builder.call
 
-        expect(build_path.read).to include(<<~CONTENT)
+        expect(path.read).to include(<<~CONTENT)
           version: 2.1
           jobs:
             build:
@@ -61,9 +61,9 @@ RSpec.describe Gemsmith::Builders::CircleCI do
     context "when disabled" do
       before { settings.merge! settings.minimize }
 
-      it "does not build configuration" do
+      it "doesn't build file" do
         builder.call
-        expect(build_path.exist?).to be(false)
+        expect(path.exist?).to be(false)
       end
 
       it "answers false" do
