@@ -2,9 +2,9 @@ cff-version: 1.2.0
 message: Please use the following metadata when citing this project in your work.
 title: Gemsmith
 abstract: A command line interface for smithing Ruby gems.
-version: 22.3.0
+version: 22.4.0
 license: Hippocratic-2.1
-date-released: 2024-08-20
+date-released: 2024-08-22
 authors:
   - family-names: Kuhlmann
     given-names: Brooke
