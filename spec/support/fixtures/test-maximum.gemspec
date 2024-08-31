@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     "bug_tracker_uri" => "https://github.com/undefined/test/issues",
     "changelog_uri" => "https://undefined.io/projects/test/versions",
-    "documentation_uri" => "https://undefined.io/projects/test",
+    "homepage_uri" => "https://undefined.io/projects/test",
     "funding_uri" => "https://github.com/sponsors/undefined",
     "label" => "Test",
     "rubygems_mfa_required" => "true",
