@@ -1,5 +1,14 @@
 = Versions
 
+== 22.5.0 (2024-09-01)
+
+* 🔼 Updated gem specification documentation URI as homepage URI - Brooke Kuhlmann
+* 🔼 Updated gem specification to support Ruby 3.4.0 - Brooke Kuhlmann
+* 🔼 Updated to Cogger 0.26.0 - Brooke Kuhlmann
+* 🔼 Updated to Core 1.7.0 - Brooke Kuhlmann
+* 🔼 Updated to Refinements 12.8.0 - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 7.5.0 - Brooke Kuhlmann
+
 == 22.4.0 (2024-08-22)
 
 * 🔼 Updated to Rubysmith 7.4.0 - Brooke Kuhlmann
