@@ -1,5 +1,11 @@
 = Versions
 
+== 22.6.0 (2024-09-07)
+
+* 🔼 Updated to Milestoner 8.4.0 - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.5 - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 7.6.0 - Brooke Kuhlmann
+
 == 22.5.0 (2024-09-01)
 
 * 🔼 Updated gem specification documentation URI as homepage URI - Brooke Kuhlmann
