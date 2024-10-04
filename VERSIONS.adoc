@@ -1,5 +1,11 @@
 = Versions
 
+== 22.7.0 (2024-10-04)
+
+* ✅ Fixed Git ignore builder to call superclass - Brooke Kuhlmann
+* ✅ Fixed missing container transforms - Brooke Kuhlmann
+* 🔼 Updated to Refinements 12.9.0 - Brooke Kuhlmann
+
 == 22.6.0 (2024-09-07)
 
 * 🔼 Updated to Milestoner 8.4.0 - Brooke Kuhlmann
