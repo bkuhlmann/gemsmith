@@ -12,17 +12,7 @@ RSpec.describe Gemsmith::Builders::Git::Ignore do
 
   describe "#call" do
     context "when enabled" do
-      before do
-        settings.minimize.merge build_git: true
-
-        temp_dir.join("test").make_path.join(".gitignore").write(<<~CONTENT)
-          .bundle
-          .rubocop-http*
-          .yardoc
-          doc/yard
-          tmp
-        CONTENT
-      end
+      before { settings.minimize.merge build_git: true }
 
       it "builds file" do
         builder.call
@@ -30,9 +20,6 @@ RSpec.describe Gemsmith::Builders::Git::Ignore do
         expect(temp_dir.join("test/.gitignore").read).to eq(<<~CONTENT)
           *.gem
           .bundle
-          .rubocop-http*
-          .yardoc
-          doc/yard
           Gemfile.lock
           pkg
           tmp
