@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "refinements", "~> 12.9"
   spec.add_dependency "rubysmith", "~> 7.6"
   spec.add_dependency "runcom", "~> 11.5"
-  spec.add_dependency "sod", "~> 0.14"
+  spec.add_dependency "sod", "~> 0.17"
   spec.add_dependency "spek", "~> 3.0"
   spec.add_dependency "zeitwerk", "~> 2.7"
 
