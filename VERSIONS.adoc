@@ -1,5 +1,14 @@
 = Versions
 
+== 22.9.0 (2024-11-05)
+
+* 🔼 Updated to Cogger 0.30.0 - Brooke Kuhlmann
+* 🔼 Updated to Milestoner 18.9.0 - Brooke Kuhlmann
+* 🔼 Updated to Refinements 12.10.0 - Brooke Kuhlmann
+* 🔼 Updated to Ruby 3.3.6 - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 7.8.0 - Brooke Kuhlmann
+* 🔼 Updated to Sod 0.18.0 - Brooke Kuhlmann
+
 == 22.8.0 (2024-10-13)
 
 * 🔼 Updated to Infusible 3.11.0 - Brooke Kuhlmann
