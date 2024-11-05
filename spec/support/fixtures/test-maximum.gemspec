@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "infusible", "~> 3.11"
   spec.add_dependency "refinements", "~> 12.10"
   spec.add_dependency "runcom", "~> 11.5"
-  spec.add_dependency "sod", "~> 0.17"
+  spec.add_dependency "sod", "~> 0.18"
   spec.add_dependency "spek", "~> 3.0"
   spec.add_dependency "zeitwerk", "~> 2.7"
 
