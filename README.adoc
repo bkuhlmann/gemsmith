@@ -50,7 +50,7 @@ gem install gemsmith
 
 From the command line, type: `gemsmith --help`
 
-image:https://alchemists.io/images/projects/gemsmith/screenshots/usage.png[Usage,width=729,height=462,role=focal_point]
+image:https://alchemists.io/images/projects/gemsmith/screenshots/usage.png[Usage,width=729,role=focal_point]
 
 ==== Build
 
