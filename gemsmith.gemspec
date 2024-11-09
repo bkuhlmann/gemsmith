@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "milestoner", "~> 18.9"
   spec.add_dependency "refinements", "~> 12.10"
   spec.add_dependency "rubysmith", "~> 7.8"
-  spec.add_dependency "runcom", "~> 11.5"
+  spec.add_dependency "runcom", "~> 11.10"
   spec.add_dependency "sod", "~> 0.19"
   spec.add_dependency "spek", "~> 3.0"
   spec.add_dependency "zeitwerk", "~> 2.7"
