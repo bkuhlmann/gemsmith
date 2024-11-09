@@ -1,5 +1,19 @@
 = Versions
 
+== 22.10.0 (2024-11-09)
+
+* 🔼 Updated to Caliber 0.64.0 - Brooke Kuhlmann
+* 🔼 Updated to Cogger 0.31.0 - Brooke Kuhlmann
+* 🔼 Updated to Core 1.10.0 - Brooke Kuhlmann
+* 🔼 Updated to Etcher 2.7.0 - Brooke Kuhlmann
+* 🔼 Updated to Git Lint 8.7.0 - Brooke Kuhlmann
+* 🔼 Updated to Infusible 3.12.0 - Brooke Kuhlmann
+* 🔼 Updated to Milestoner 18.10.0 - Brooke Kuhlmann
+* 🔼 Updated to Rubysmith 7.9.0 - Brooke Kuhlmann
+* 🔼 Updated to Runcom 11.10.0 - Brooke Kuhlmann
+* 🔼 Updated to Sod 0.19.0 - Brooke Kuhlmann
+* 🔼 Updated to Sod 0.20.0 - Brooke Kuhlmann
+
 == 22.9.0 (2024-11-05)
 
 * 🔼 Updated to Cogger 0.30.0 - Brooke Kuhlmann
