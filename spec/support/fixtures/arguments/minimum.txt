@@ -20,7 +20,6 @@ test
 --no-git_hub
 --no-git_hub_ci
 --no-git-lint
---no-guard
 --no-irb-kit
 --no-license
 --no-rake

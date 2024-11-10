@@ -20,7 +20,6 @@ test
 --git_hub
 --git_hub_ci
 --git-lint
---guard
 --irb-kit
 --license
 --rake

@@ -15,7 +15,6 @@ test/.ruby-version
 test/CITATION.cff
 test/Dockerfile
 test/Gemfile
-test/Guardfile
 test/LICENSE.adoc
 test/README.adoc
 test/Rakefile
@@ -24,7 +23,6 @@ test/bin/console
 test/bin/docker/build
 test/bin/docker/console
 test/bin/docker/entrypoint
-test/bin/guard
 test/bin/rake
 test/bin/rspec
 test/bin/rubocop

@@ -33,7 +33,6 @@ module Gemsmith
           Rubysmith::Builders::GitHub::Template,
           Rubysmith::Builders::GitHub::Funding,
           Rubysmith::Builders::GitHub::CI,
-          Rubysmith::Builders::Guard,
           Rubysmith::Builders::Reek,
           Rubysmith::Builders::RSpec::Binstub,
           Rubysmith::Builders::RSpec::Context,
@@ -78,7 +77,6 @@ module Gemsmith
         on Rubysmith::CLI::Actions::GitHub, settings: Container[:settings]
         on Rubysmith::CLI::Actions::GitHubCI, settings: Container[:settings]
         on Rubysmith::CLI::Actions::GitLint, settings: Container[:settings]
-        on Rubysmith::CLI::Actions::Guard, settings: Container[:settings]
         on Rubysmith::CLI::Actions::IRBKit, settings: Container[:settings]
         on Rubysmith::CLI::Actions::License, settings: Container[:settings]
         on Rubysmith::CLI::Actions::Maximum, settings: Container[:settings]
