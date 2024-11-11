@@ -6,7 +6,7 @@ module Gemsmith
   module Tools
     # Installs a locally built gem.
     class Installer
-      include Import[:executor]
+      include Dependencies[:executor]
       include Dry::Monads[:result, :do]
 
       # Order matters.

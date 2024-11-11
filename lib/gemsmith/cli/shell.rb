@@ -6,7 +6,7 @@ module Gemsmith
   module CLI
     # The main Command Line Interface (CLI) object.
     class Shell
-      include Import[:defaults_path, :xdg_config, :specification]
+      include Dependencies[:defaults_path, :xdg_config, :specification]
 
       def initialize(context: Sod::Context, dsl: Sod, **)
         super(**)

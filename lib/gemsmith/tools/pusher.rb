@@ -7,7 +7,7 @@ module Gemsmith
   module Tools
     # Pushes a gem package to remote gem server.
     class Pusher
-      include Import[:executor, :logger]
+      include Dependencies[:executor, :logger]
       include Dry::Monads[:result]
 
       def initialize(command: Gem::CommandManager.new, **)

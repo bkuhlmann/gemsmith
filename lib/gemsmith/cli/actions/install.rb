@@ -10,7 +10,7 @@ module Gemsmith
     module Actions
       # Handles the install action.
       class Install < Sod::Action
-        include Import[:logger]
+        include Dependencies[:logger]
         include Dry::Monads[:result]
 
         description "Install gem for local development."

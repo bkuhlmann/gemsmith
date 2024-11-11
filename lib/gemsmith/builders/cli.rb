@@ -38,7 +38,7 @@ module Gemsmith
           "%project_name%/lib/%project_path%/configuration/model.rb.erb",
           "%project_name%/lib/%project_path%/configuration/defaults.yml.erb",
           "%project_name%/lib/%project_path%/container.rb.erb",
-          "%project_name%/lib/%project_path%/import.rb.erb"
+          "%project_name%/lib/%project_path%/dependencies.rb.erb"
         ].each { |path| builder.call(settings.merge(template_path: path)).render }
       end
 
@@ -56,7 +56,7 @@ module Gemsmith
                  require "demo/configuration/contract"
                  require "demo/configuration/model"
                  require "demo/container"
-                 require "demo/import"
+                 require "demo/dependencies"
 
                  require "demo/cli/shell"
 

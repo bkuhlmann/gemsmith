@@ -7,7 +7,7 @@ module Gemsmith
     module Actions
       # Stores CLI flag.
       class CLI < Sod::Action
-        include Import[:settings]
+        include Dependencies[:settings]
 
         description "Add command line interface."
 

@@ -3,5 +3,5 @@
 require "infusible"
 
 module Gemsmith
-  Import = Infusible[Container]
+  Dependencies = Infusible[Container]
 end

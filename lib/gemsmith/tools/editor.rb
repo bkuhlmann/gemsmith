@@ -6,7 +6,7 @@ module Gemsmith
   module Tools
     # Edits a gem within default editor.
     class Editor
-      include Import[:executor, :environment]
+      include Dependencies[:executor, :environment]
       include Dry::Monads[:result]
 
       def call specification

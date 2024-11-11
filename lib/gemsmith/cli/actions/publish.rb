@@ -10,7 +10,7 @@ module Gemsmith
     module Actions
       # Handles the publish action.
       class Publish < Sod::Action
-        include Import[:logger]
+        include Dependencies[:logger]
         include Dry::Monads[:result]
 
         description "Publish gem to remote gem server."

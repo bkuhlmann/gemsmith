@@ -6,7 +6,7 @@ module Gemsmith
   module Tools
     # Views a gem within default browser.
     class Viewer
-      include Import[:executor]
+      include Dependencies[:executor]
       include Dry::Monads[:result]
 
       def call specification

@@ -6,7 +6,7 @@ module Gemsmith
   module Tools
     # Validates whether a gem can be published or not.
     class Validator
-      include Import[:executor]
+      include Dependencies[:executor]
       include Dry::Monads[:result]
 
       def call specification

@@ -5,7 +5,7 @@ module Gemsmith
     module Git
       # Builds project skeleton initial Git commit message.
       class Commit < Rubysmith::Builders::Git::Commit
-        include Import[:specification]
+        include Dependencies[:specification]
       end
     end
   end

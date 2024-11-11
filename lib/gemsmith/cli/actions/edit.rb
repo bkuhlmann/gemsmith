@@ -9,7 +9,7 @@ module Gemsmith
     module Actions
       # Handles the edit action for editing an installed gem.
       class Edit < Sod::Action
-        include Import[:logger]
+        include Dependencies[:logger]
         include Dry::Monads[:result]
 
         description "Edit installed gem in default editor."

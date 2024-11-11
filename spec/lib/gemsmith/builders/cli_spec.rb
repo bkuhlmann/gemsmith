@@ -97,11 +97,11 @@ RSpec.describe Gemsmith::Builders::CLI do
       it "builds application import" do
         builder.call
 
-        expect(temp_dir.join("test/lib/test/import.rb").read).to eq(<<~CONTENT)
+        expect(temp_dir.join("test/lib/test/dependencies.rb").read).to eq(<<~CONTENT)
           require "infusible"
 
           module Test
-            Import = Infusible[Container]
+            Dependencies = Infusible[Container]
           end
         CONTENT
       end
@@ -122,7 +122,7 @@ RSpec.describe Gemsmith::Builders::CLI do
           require "demo/configuration/contract"
           require "demo/configuration/model"
           require "demo/container"
-          require "demo/import"
+          require "demo/dependencies"
 
           require "demo/cli/shell"
 

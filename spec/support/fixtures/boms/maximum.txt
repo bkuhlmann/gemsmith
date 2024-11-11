@@ -34,7 +34,7 @@ test/lib/test/configuration/contract.rb
 test/lib/test/configuration/defaults.yml
 test/lib/test/configuration/model.rb
 test/lib/test/container.rb
-test/lib/test/import.rb
+test/lib/test/dependencies.rb
 test/spec/lib/test/cli/shell_spec.rb
 test/spec/lib/test_spec.rb
 test/spec/spec_helper.rb
