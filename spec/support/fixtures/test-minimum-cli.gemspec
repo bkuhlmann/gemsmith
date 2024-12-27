@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
     "rubygems_mfa_required" => "true"
   }
 
-  spec.required_ruby_version = "~> 3.3"
+  spec.required_ruby_version = "~> 3.4"
   spec.add_dependency "cogger", "~> 0.31"
   spec.add_dependency "containable", "~> 0.2"
   spec.add_dependency "dry-monads", "~> 1.6"
