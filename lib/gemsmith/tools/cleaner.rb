@@ -16,7 +16,7 @@ module Gemsmith
       end
 
       def call specification
-        root_dir.join("pkg").remove_tree
+        root_dir.join("pkg").rmtree
         root_dir.files("**/*.gem").each(&:delete)
         Success specification
       end
