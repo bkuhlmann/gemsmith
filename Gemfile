@@ -22,7 +22,7 @@ group :test do
 end
 
 group :tools do
-  gem "amazing_print", "~> 1.6"
+  gem "amazing_print", "~> 1.7"
   gem "debug", "~> 1.10"
   gem "irb-kit", "~> 1.0"
   gem "repl_type_completor", "~> 0.1"
