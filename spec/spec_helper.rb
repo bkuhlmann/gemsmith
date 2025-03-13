@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "simplecov"
+require "warning"
 
 unless ENV["NO_COVERAGE"]
   SimpleCov.start do
@@ -24,6 +25,8 @@ SPEC_ROOT = Pathname(__dir__).realpath.freeze
 using Refinements::Pathname
 
 Pathname.require_tree SPEC_ROOT.join("support/shared_contexts")
+
+Gem.path.each { |path| Warning.ignore(/rouge/, path) }
 
 RSpec.configure do |config|
   config.color = true
