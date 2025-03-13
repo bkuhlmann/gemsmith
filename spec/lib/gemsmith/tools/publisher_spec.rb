@@ -3,8 +3,6 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Tools::Publisher do
-  include Dry::Monads[:result]
-
   subject(:publisher) { described_class.new steps: }
 
   include_context "with application dependencies"

@@ -3,8 +3,6 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Tools::Versioner do
-  include Dry::Monads[:result]
-
   subject(:versioner) { described_class.new publisher: }
 
   include_context "with application dependencies"
@@ -18,12 +16,12 @@ RSpec.describe Gemsmith::Tools::Versioner do
     end
 
     it "answers specification when success" do
-      expect(versioner.call(specification)).to eq(Success(specification))
+      expect(versioner.call(specification)).to be_success(specification)
     end
 
     it "answers failure when publish fails" do
       allow(publisher).to receive(:call).and_return(Failure("Danger!"))
-      expect(versioner.call(specification)).to eq(Failure("Danger!"))
+      expect(versioner.call(specification)).to be_failure("Danger!")
     end
   end
 end

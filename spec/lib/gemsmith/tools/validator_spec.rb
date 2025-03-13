@@ -3,8 +3,6 @@
 require "spec_helper"
 
 RSpec.describe Gemsmith::Tools::Validator do
-  include Dry::Monads[:result]
-
   subject(:validator) { described_class.new }
 
   include_context "with application dependencies"
