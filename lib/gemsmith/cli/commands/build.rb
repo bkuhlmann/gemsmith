@@ -81,6 +81,7 @@ module Gemsmith
         on Rubysmith::CLI::Actions::License, settings: Container[:settings]
         on Rubysmith::CLI::Actions::Maximum, settings: Container[:settings]
         on Rubysmith::CLI::Actions::Minimum, settings: Container[:settings]
+        on Rubysmith::CLI::Actions::Monads, settings: Container[:settings]
         on Rubysmith::CLI::Actions::Rake, settings: Container[:settings]
         on Rubysmith::CLI::Actions::Readme, settings: Container[:settings]
         on Rubysmith::CLI::Actions::Reek, settings: Container[:settings]

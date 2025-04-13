@@ -14,7 +14,7 @@ module Gemsmith
         builder.call(settings.merge(template_path: "%project_name%/Gemfile.erb"))
                .insert_after("source", "\ngemspec\n")
                .replace(/spec\n\n\Z/m, "spec\n")
-               .replace(/.+(refinements|zeitwerk).+/, "")
+               .replace(/.+(dry-monads|refinements|zeitwerk).+/, "")
                .replace(/"\s+group/m, %("\n\ngroup))
                .replace("\n\n\n\n", "\n")
 
