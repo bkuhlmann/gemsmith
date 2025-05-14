@@ -59,7 +59,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
           end
 
           group :tools do
-            gem "amazing_print", "~> 1.7"
+            gem "amazing_print", "~> 1.8"
             gem "debug", "~> 1.10"
             gem "irb-kit", "~> 1.1"
             gem "repl_type_completor", "~> 0.1"
