@@ -236,7 +236,7 @@ RSpec.describe Gemsmith::Builders::CLI do
           # Main namespace.
           module Test
             def self.loader registry = Zeitwerk::Registry
-                @loader ||= registry.loaders.find { |loader| loader.tag == File.basename(__FILE__, ".rb") }
+                @loader ||= registry.loaders.each.find { |loader| loader.tag == File.basename(__FILE__, ".rb") }
           end
 
           end
@@ -287,7 +287,7 @@ RSpec.describe Gemsmith::Builders::CLI do
             # Main namespace.
             module Test
               def self.loader registry = Zeitwerk::Registry
-                  @loader ||= registry.loaders.find { |loader| loader.tag == "demo-test" }
+                  @loader ||= registry.loaders.each.find { |loader| loader.tag == "demo-test" }
             end
 
             end
