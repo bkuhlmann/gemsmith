@@ -6,7 +6,8 @@ test/.devcontainer/Dockerfile
 test/.dockerignore
 test/.git/HEAD
 test/.github/FUNDING.yml
-test/.github/ISSUE_TEMPLATE.md
+test/.github/ISSUE_TEMPLATE/config.yml
+test/.github/ISSUE_TEMPLATE/issue.md
 test/.github/PULL_REQUEST_TEMPLATE.md
 test/.github/workflows/ci.yml
 test/.gitignore
