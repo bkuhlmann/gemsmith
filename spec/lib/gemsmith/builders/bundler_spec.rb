@@ -11,7 +11,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
 
   describe "#call" do
     context "with minimum flags" do
-      before { settings.merge! settings.minimize }
+      before { settings.with! settings.minimize }
 
       it "builds gemspec" do
         builder.call
@@ -31,7 +31,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
     end
 
     context "with maximum flags" do
-      before { settings.merge! settings.maximize }
+      before { settings.with! settings.maximize }
 
       let :proof do
         <<~CONTENT

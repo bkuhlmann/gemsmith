@@ -15,7 +15,7 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
 
     context "when enabled with CLI and SimpleCov" do
       before do
-        settings.merge! settings.minimize.merge(
+        settings.with! settings.minimize.with(
           build_rspec: true,
           build_simple_cov: true,
           build_cli: true
@@ -33,7 +33,7 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
     end
 
     context "when enabled without CLI" do
-      before { settings.merge! settings.minimize.merge(build_rspec: true, build_simple_cov: true) }
+      before { settings.with! settings.minimize.with(build_rspec: true, build_simple_cov: true) }
 
       it "updates file" do
         builder.call
@@ -46,7 +46,7 @@ RSpec.describe Gemsmith::Builders::RSpec::Helper do
     end
 
     context "when disabled" do
-      before { settings.merge! settings.minimize }
+      before { settings.with! settings.minimize }
 
       it "doesn't update file" do
         builder.call

@@ -9,7 +9,7 @@ RSpec.shared_context "with application dependencies" do
 
 <% if settings.build_refinements %>
   before do
-    settings.merge! Etcher.call(<%= settings.project_namespaced_class %>::Container[:registry].remove_loader(1))
+    settings.with! Etcher.call(<%= settings.project_namespaced_class %>::Container[:registry].remove_loader(1))
     <%= settings.project_namespaced_class %>::Container.stub! logger:, io:
   end
 <% else %>

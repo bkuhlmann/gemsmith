@@ -13,7 +13,7 @@ RSpec.describe Gemsmith::Builders::CircleCI do
     let(:path) { temp_dir.join "test/.circleci/config.yml" }
 
     context "when enabled" do
-      before { settings.merge! settings.merge build_circle_ci: true }
+      before { settings.with! settings.with build_circle_ci: true }
 
       it "updates file to use gemspec for cache" do
         builder.call
@@ -59,7 +59,7 @@ RSpec.describe Gemsmith::Builders::CircleCI do
     end
 
     context "when disabled" do
-      before { settings.merge! settings.minimize }
+      before { settings.with! settings.minimize }
 
       it "doesn't build file" do
         builder.call

@@ -11,7 +11,7 @@ module Gemsmith
       def call
         super
 
-        builder.call(settings.merge(template_path: "%project_name%/Gemfile.erb"))
+        builder.call(settings.with(template_path: "%project_name%/Gemfile.erb"))
                .insert_after("source", "\ngemspec\n")
                .replace(/spec\n\n\Z/m, "spec\n")
                .replace(/.+(dry-monads|refinements|zeitwerk).+/, "")

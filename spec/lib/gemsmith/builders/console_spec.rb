@@ -38,7 +38,7 @@ RSpec.describe Gemsmith::Builders::Console do
 
     context "when enabled with dashed project name" do
       before do
-        settings.merge! settings.minimize.merge project_name: "demo-test", build_console: true
+        settings.with! settings.minimize.with project_name: "demo-test", build_console: true
       end
 
       let(:path) { temp_dir.join "demo-test/bin/console" }
@@ -65,7 +65,7 @@ RSpec.describe Gemsmith::Builders::Console do
     end
 
     context "when disabled" do
-      before { settings.merge! settings.minimize }
+      before { settings.with! settings.minimize }
 
       it "doesn't build file" do
         builder.call

@@ -15,7 +15,7 @@ RSpec.describe Gemsmith::Builders::CLI do
 
     context "when enabled" do
       before do
-        settings.merge! settings.minimize.merge(
+        settings.with! settings.minimize.with(
           build_cli: true,
           build_refinements: true,
           build_zeitwerk: true
@@ -109,7 +109,7 @@ RSpec.describe Gemsmith::Builders::CLI do
 
     context "when enabled without Zeitwerk" do
       before do
-        settings.merge! settings.minimize.merge(build_cli: true)
+        settings.with! settings.minimize.with(build_cli: true)
 
         Rubysmith::Builders::Core.new(settings:, logger:).call
         Rubysmith::Builders::Bundler.new(settings:, logger:).call
@@ -135,7 +135,7 @@ RSpec.describe Gemsmith::Builders::CLI do
 
     context "when enabled with RSpec" do
       before do
-        settings.merge! settings.minimize.merge(
+        settings.with! settings.minimize.with(
           build_cli: true,
           build_refinements: true,
           build_rspec: true,
@@ -168,7 +168,7 @@ RSpec.describe Gemsmith::Builders::CLI do
 
     context "when enabled with RSpec but without Refinements" do
       before do
-        settings.merge! settings.minimize.merge(
+        settings.with! settings.minimize.with(
           build_cli: true,
           build_rspec: true,
           build_zeitwerk: true
@@ -210,7 +210,7 @@ RSpec.describe Gemsmith::Builders::CLI do
 
     context "when enabled with simple project name" do
       before do
-        settings.merge! settings.minimize.merge(
+        settings.with! settings.minimize.with(
           build_cli: true,
           build_refinements: true,
           build_zeitwerk: true
@@ -246,7 +246,7 @@ RSpec.describe Gemsmith::Builders::CLI do
 
     context "when enabled with dashed project name" do
       before do
-        settings.merge! settings.minimize.merge(
+        settings.with! settings.minimize.with(
           build_cli: true,
           build_refinements: true,
           build_rspec: true,
@@ -313,7 +313,7 @@ RSpec.describe Gemsmith::Builders::CLI do
     end
 
     context "when disabled" do
-      before { settings.merge! settings.minimize }
+      before { settings.with! settings.minimize }
 
       it "doesn't build executable" do
         builder.call

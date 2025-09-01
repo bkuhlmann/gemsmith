@@ -13,7 +13,7 @@ module Gemsmith
           return false unless settings.build_readme
 
           super
-          builder.call(settings.merge(template_path: "%project_name%/README.#{kind}.erb"))
+          builder.call(settings.with(template_path: "%project_name%/README.#{kind}.erb"))
                  .replace(/Setup.+Usage/m, setup)
                  .replace("Rubysmith", "Gemsmith")
                  .replace("rubysmith", "gemsmith")

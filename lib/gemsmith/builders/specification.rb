@@ -9,7 +9,7 @@ module Gemsmith
       using Refinements::Struct
 
       def call
-        config = settings.merge template_path: "%project_name%/%project_name%.gemspec.erb"
+        config = settings.with template_path: "%project_name%/%project_name%.gemspec.erb"
 
         builder.call(config)
                .render

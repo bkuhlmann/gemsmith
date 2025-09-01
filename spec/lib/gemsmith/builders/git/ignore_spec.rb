@@ -12,7 +12,7 @@ RSpec.describe Gemsmith::Builders::Git::Ignore do
 
   describe "#call" do
     context "when enabled" do
-      before { settings.minimize.merge build_git: true }
+      before { settings.minimize.with build_git: true }
 
       it "builds file" do
         builder.call
@@ -32,7 +32,7 @@ RSpec.describe Gemsmith::Builders::Git::Ignore do
     end
 
     context "when disabled" do
-      before { settings.merge! settings.minimize }
+      before { settings.with! settings.minimize }
 
       it "doesn't build file" do
         builder.call

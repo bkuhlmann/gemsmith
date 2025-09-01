@@ -14,7 +14,7 @@ module Gemsmith
 
           return false unless settings.build_git
 
-          builder.call(settings.merge(template_path: "%project_name%/.gitignore.erb"))
+          builder.call(settings.with(template_path: "%project_name%/.gitignore.erb"))
                  .touch
                  .prepend("*.gem\n")
                  .insert_before "tmp\n", <<~CONTENT

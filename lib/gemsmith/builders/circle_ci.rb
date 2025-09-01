@@ -12,7 +12,7 @@ module Gemsmith
         return false unless settings.build_circle_ci
 
         super
-        builder.call(settings.merge(template_path: "%project_name%/.circleci/config.yml.erb"))
+        builder.call(settings.with(template_path: "%project_name%/.circleci/config.yml.erb"))
                .replace %({{checksum "Gemfile.lock"}}),
                         %({{checksum "Gemfile"}}-{{checksum "#{project_name}.gemspec"}})
 

@@ -6,7 +6,7 @@ RSpec.shared_context "with application dependencies" do
   let(:io) { StringIO.new }
 
   before do
-    settings.merge! Etcher.call(Test::Container[:registry].remove_loader(1))
+    settings.with! Etcher.call(Test::Container[:registry].remove_loader(1))
     Test::Container.stub! logger:, io:
   end
 

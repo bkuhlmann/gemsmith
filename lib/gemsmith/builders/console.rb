@@ -12,7 +12,7 @@ module Gemsmith
         return false unless settings.build_console
 
         super
-        builder.call(settings.merge(template_path: "%project_name%/bin/console.erb"))
+        builder.call(settings.with(template_path: "%project_name%/bin/console.erb"))
                .replace(/require Bundler.root.+/, %(require "#{settings.project_path}"))
 
         true

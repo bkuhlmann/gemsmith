@@ -16,7 +16,7 @@ module Gemsmith
 
           return false unless settings.build_cli
 
-          builder.call(settings.merge(template_path: "%project_name%/spec/spec_helper.rb.erb"))
+          builder.call(settings.with(template_path: "%project_name%/spec/spec_helper.rb.erb"))
                  .replace("%r(^/spec/)", "%r((.+/container\\.rb|^/spec/))")
 
           true

@@ -12,7 +12,7 @@ RSpec.describe Gemsmith::Builders::Specification do
   describe "#call" do
     context "with minimum flags" do
       before do
-        settings.merge! settings.minimize.merge(
+        settings.with! settings.minimize.with(
           project_uri_community: nil,
           project_uri_conduct: nil,
           project_uri_contributions: nil,
@@ -42,7 +42,7 @@ RSpec.describe Gemsmith::Builders::Specification do
 
     context "with minimum flags plus security" do
       before do
-        settings.merge! settings.minimize.merge(
+        settings.with! settings.minimize.with(
           build_security: true,
           project_uri_community: nil,
           project_uri_conduct: nil,
@@ -73,7 +73,7 @@ RSpec.describe Gemsmith::Builders::Specification do
 
     context "with minimum flags plus CLI" do
       before do
-        settings.merge! settings.minimize.merge(
+        settings.with! settings.minimize.with(
           build_cli: true,
           build_refinements: true,
           build_zeitwerk: true,
@@ -106,7 +106,7 @@ RSpec.describe Gemsmith::Builders::Specification do
 
     context "with minimum flags plus monads" do
       before do
-        settings.merge! settings.minimize.merge(
+        settings.with! settings.minimize.with(
           build_monads: true,
           project_uri_community: nil,
           project_uri_conduct: nil,
@@ -136,7 +136,7 @@ RSpec.describe Gemsmith::Builders::Specification do
     end
 
     context "with maximum flags" do
-      before { settings.merge! settings.maximize }
+      before { settings.with! settings.maximize }
 
       it "builds gemspec" do
         builder.call
