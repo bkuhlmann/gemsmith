@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "etcher", "~> 3.0"
   spec.add_dependency "infusible", "~> 4.0"
   spec.add_dependency "milestoner", "~> 19.8"
-  spec.add_dependency "refinements", "~> 13.6"
+  spec.add_dependency "refinements", "~> 14.0"
   spec.add_dependency "rubysmith", "~> 8.9"
   spec.add_dependency "runcom", "~> 12.0"
   spec.add_dependency "sod", "~> 1.5"
