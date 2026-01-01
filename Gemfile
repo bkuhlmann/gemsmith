@@ -25,6 +25,6 @@ end
 group :tools do
   gem "amazing_print", "~> 2.0"
   gem "debug", "~> 1.11"
-  gem "irb-kit", "~> 1.1"
+  gem "irb-kit", "~> 2.0"
   gem "repl_type_completor", "~> 0.1"
 end
