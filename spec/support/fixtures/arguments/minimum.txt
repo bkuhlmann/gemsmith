@@ -13,7 +13,6 @@ test
 --no-contributions
 --no-dcoo
 --no-debug
---no-devcontainer
 --no-docker
 --no-funding
 --no-git

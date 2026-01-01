@@ -1,8 +1,5 @@
 test/.circleci/config.yml
 test/.config/rubocop/config.yml
-test/.devcontainer/compose.yaml
-test/.devcontainer/devcontainer.json
-test/.devcontainer/Dockerfile
 test/.dockerignore
 test/.git/HEAD
 test/.github/FUNDING.yml
