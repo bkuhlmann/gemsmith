@@ -18,7 +18,6 @@ module Gemsmith
                .replace("  \n", "")
                .replace("    spec", "  spec")
                .replace(/\}\s+s/m, "}\n\n  s")
-
         true
       end
     end

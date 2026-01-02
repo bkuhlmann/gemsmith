@@ -7,6 +7,10 @@ Gemspec/RequiredRubyVersion:
 Layout/RedundantLineBreak:
   Exclude:
     - "spec/support/fixtures/*.gemspec"
+Layout/EmptyLines:
+  Exclude:
+    - "spec/support/fixtures/test-minimum-security.gemspec"
+    - "spec/support/fixtures/test-minimum.gemspec"
 Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - "spec/support/fixtures/spec/lib/cli/shell_without_refinements_proof.rb"
