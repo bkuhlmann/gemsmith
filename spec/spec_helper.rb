@@ -3,9 +3,7 @@
 require "simplecov"
 require "warning"
 
-if ENV["COVERAGE"] == "no"
-  puts "SimpleCov skipped due to being disabled."
-else
+unless ENV["COVERAGE"] == "no"
   SimpleCov.start do
     add_filter %r((.+/container\.rb|^/spec/))
     enable_coverage :branch

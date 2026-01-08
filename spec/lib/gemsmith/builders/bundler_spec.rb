@@ -44,7 +44,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
           gem "bootsnap", "~> 1.18"
 
           group :quality do
-            gem "caliber", "~> 0.82"
+            gem "caliber", "~> 0.87"
             gem "git-lint", "~> 10.0"
             gem "reek", "~> 6.5", require: false
             gem "simplecov", "~> 0.22", require: false
