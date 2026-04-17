@@ -51,7 +51,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
           end
 
           group :development do
-            gem "rake", "~> 13.3"
+            gem "rake", "~> 13.4"
           end
 
           group :test do
