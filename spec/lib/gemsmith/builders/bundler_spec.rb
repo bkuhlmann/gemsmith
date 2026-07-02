@@ -41,10 +41,10 @@ RSpec.describe Gemsmith::Builders::Bundler do
 
           gemspec
 
-          gem "bootsnap", "~> 1.18"
+          gem "bootsnap", "~> 1.24"
 
           group :quality do
-            gem "caliber", "~> 0.90"
+            gem "caliber", "~> 0.94"
             gem "git-lint", "~> 11.0"
             gem "reek", "~> 6.5", require: false
             gem "simplecov", "~> 0.22", require: false
@@ -61,7 +61,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
           group :tools do
             gem "amazing_print", "~> 2.0"
             gem "debug", "~> 1.11"
-            gem "irb-kit", "~> 2.0"
+            gem "irb-kit", "~> 2.2"
             gem "repl_type_completor", "~> 0.1"
           end
         CONTENT
