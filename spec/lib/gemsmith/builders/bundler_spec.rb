@@ -47,7 +47,7 @@ RSpec.describe Gemsmith::Builders::Bundler do
             gem "caliber", "~> 0.94"
             gem "git-lint", "~> 11.0"
             gem "reek", "~> 6.5", require: false
-            gem "simplecov", "~> 0.22", require: false
+            gem "simplecov", "~> 1.0", require: false
           end
 
           group :development do

@@ -3,15 +3,7 @@
 require "simplecov"
 require "warning"
 
-unless ENV["COVERAGE"] == "no"
-  SimpleCov.start do
-    add_filter %r((.+/container\.rb|^/spec/))
-    enable_coverage :branch
-    enable_coverage_for_eval
-    minimum_coverage_by_file line: 95, branch: 95
-  end
-end
-
+SimpleCov.start :strict unless ENV["COVERAGE"] == "no"
 Bundler.require :tools
 
 require "dry/monads"
