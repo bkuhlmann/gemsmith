@@ -36,7 +36,7 @@ module Gemsmith
           Rubysmith::Builders::Reek,
           Rubysmith::Builders::RSpec::Binstub,
           Rubysmith::Builders::RSpec::Context,
-          Builders::RSpec::Helper,
+          Rubysmith::Builders::RSpec::Helper,
           Rubysmith::Builders::Caliber,
           Rubysmith::Builders::Docker::Build,
           Rubysmith::Builders::Docker::Console,
