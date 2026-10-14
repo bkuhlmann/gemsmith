@@ -8,3 +8,5 @@ detectors:
   TooManyStatements:
     exclude:
       - "Gemsmith::CLI::Shell#cli"
+  UnusedParameters:
+    enabled: false
