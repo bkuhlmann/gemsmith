@@ -7,8 +7,6 @@ module Gemsmith
     module Commands
       # Handles the build action.
       class Build < Sod::Command
-        include Dependencies[:settings, :logger]
-
         # Order is important.
         BUILDERS = [
           Rubysmith::Builders::Init,
@@ -49,6 +47,8 @@ module Gemsmith
           Rubysmith::Extensions::Rubocop,
           Builders::Git::Commit
         ].freeze
+
+        include Dependencies[:settings, :logger]
 
         handle "build"
 

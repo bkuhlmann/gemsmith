@@ -6,8 +6,6 @@ module Gemsmith
   module Tools
     # Handles the publication of a gem version.
     class Publisher
-      include Dry::Monads[:result, :do]
-
       # Order matters.
       STEPS = [
         Tools::Cleaner.new,
@@ -16,6 +14,8 @@ module Gemsmith
         Tools::Versioner.new,
         Tools::Pusher.new
       ].freeze
+
+      include Dry::Monads[:result, :do]
 
       def initialize steps: STEPS
         @steps = steps

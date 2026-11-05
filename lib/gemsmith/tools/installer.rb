@@ -6,11 +6,11 @@ module Gemsmith
   module Tools
     # Installs a locally built gem.
     class Installer
-      include Dependencies[:executor]
-      include Dry::Monads[:result, :do]
-
       # Order matters.
       STEPS = [Tools::Cleaner.new, Tools::Packager.new].freeze
+
+      include Dependencies[:executor]
+      include Dry::Monads[:result, :do]
 
       def initialize(steps: STEPS, **)
         super(**)
